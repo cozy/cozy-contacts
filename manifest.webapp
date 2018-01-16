@@ -1,0 +1,30 @@
+{
+  "name": "cozy-contacts",
+  "slug": "cozy-contacts",
+  "icon": "icon.svg",
+  "description": "Contact manager for Cozy Cloud",
+  "category": "",
+  "version": "0.1.0",
+  "licence": "AGPL-3.0",
+  "source": "https://github.com/cozy/cozy-contacts.git@build",
+  "developer": {
+    "name": "cozy",
+    "url": "https://cozy.io"
+  },
+  "default_locale": "en",
+  "locales": {},
+  "routes": {
+    "/": {
+      "folder": "/",
+      "index": "index.html",
+      "public": false
+    }
+  },
+  "permissions": {
+    "apps": {
+      "description": "Required by the cozy-bar to display the icons of the apps",
+      "type": "io.cozy.apps",
+      "verbs": ["GET"]
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "name": "cozy-contacts",
+  "version": "0.1.0",
+  "scripts": {
+    "clean:browser": "rm -rf build/*",
+    "clean:mobile": "rm -rf mobile/www/*",
+    "tx": "tx pull --all || true",
+    "lint": "npm-run-all --parallel 'lint:*'",
+    "lint:js": "eslint '{src,test}/**/*.{js,jsx}'",
+    "prettier": "prettier --write '{src,test}/**/*.{js,jsx}' && eslint --fix '{src,test}/**/*.{js,jsx}'",
+    "lint:styles": "stylint src/styles --config ./.stylintrc",
+    "build": "yarn run build:browser",
+    "commons:build": "cozy-scripts build",
+    "build:browser": "NODE_ENV=browser:production npm-run-all --serial clean:browser lint:js tx commons:build",
+    "build:mobile": "NODE_ENV=mobile:production npm-run-all --serial clean:mobile lint:js tx commons:build",
+    "prewatch:mobile": "yarn run clean:mobile",
+    "watch": "yarn run watch:browser",
+    "commons:watch": "cozy-scripts watch",
+    "watch:browser": "NODE_ENV=browser:development npm-run-all --serial clean:browser commons:watch",
+    "watch:mobile": "NODE_ENV=mobile:development npm-run-all --serial clean:mobile commons:watch",
+    "watch:standalone": "yarn run watch:browser:standalone",
+    "commons:watch:standalone": "cozy-scripts standalone",
+    "watch:browser:standalone": "NODE_ENV=browser:development yarn run commons:watch:standalone",
+    "watch:mobile:standalone": "NODE_ENV=mobile:development yarn run commons:watch:standalone",
+    "config:browser:production": "NODE_ENV=browser:production cozy-scripts --show-config",
+    "config:browser:development": "NODE_ENV=browser:development cozy-scripts --show-config",
+    "config:mobile:production": "NODE_ENV=mobile:production cozy-scripts --show-config",
+    "config:mobile:development": "NODE_ENV=mobile:development cozy-scripts --show-config",
+    "deploy": "git-directory-deploy --username cozy --email contact@cozycloud.cc --directory build/ --repo=https://$GITHUB_TOKEN@github.com/cozy/cozy-contacts.git",
+    "test": "npm-run-all --serial lint test:jest",
+    "test:jest": "jest --verbose --coverage",
+    "stack:docker": "docker run --rm -it -p 8080:8080 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev",
+    "android:prepare": "(cd src/targets/mobile && cordova platform add android && cordova prepare)",
+    "android:run": "(cd src/targets/mobile && cordova run android --device)",
+    "android:run:emulator": "(cd src/targets/mobile && cordova run android --emulator)",
+    "android:release": "npm run build:mobile && (cd src/targets/mobile && cordova build android --release)",
+    "android:signed": "npm run android:release && (cd src/targets/mobile && apksigner sign --ks keys/android/cozy-contacts-release-key.jks --out build/android/cozy-contacts.apk platforms/android/build/outputs/apk/android-release-unsigned.apk)",
+    "android:publish": "npm run android:signed && (cd src/targets/mobile && fastlane supply)",
+    "ios:prepare": "(cd src/targets/mobile && cordova platform add ios && cordova prepare)",
+    "ios:run": "(cd src/targets/mobile && cordova run ios --device)",
+    "ios:run:emulator": "(cd src/targets/mobile && cordova run ios --emulator)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cozy/cozy-contacts.git"
+  },
+  "author": "",
+  "contributors": [],
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/cozy/cozy-contacts/issues"
+  },
+  "homepage": "https://github.com/cozy/cozy-contacts#readme",
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-jest": "22.0.6",
+    "babel-polyfill": "6.26.0",
+    "babel-preset-cozy-app": "0.3.1",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.1",
+    "eslint": "4.15.0",
+    "eslint-config-cozy-app": "0.3.1",
+    "git-directory-deploy": "1.5.1",
+    "identity-obj-proxy": "3.0.0",
+    "jest": "22.0.6",
+    "npm-run-all": "4.1.2",
+    "prettier": "1.10.2",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
+    "react-test-renderer": "16.2.0",
+    "redux-logger": "3.0.6",
+    "redux-mock-store": "1.4.0",
+    "stylint": "1.5.9"
+  },
+  "dependencies": {
+    "cozy-bar": "4.8.2",
+    "cozy-client-js": "0.4.5",
+    "cozy-ui": "6.0.3",
+    "preact": "8.2.7",
+    "preact-compat": "3.17.0",
+    "react-redux": "5.0.6",
+    "react-router-dom": "4.2.2",
+    "redux": "3.7.2",
+    "redux-raven-middleware": "1.2.0",
+    "redux-thunk": "2.2.0",
+    "cozy-scripts": "0.4.1"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "styl"
+    ],
+    "setupFiles": [
+      "<rootDir>/test/jestLib/setup.js"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "moduleNameMapper": {
+      "\\.(png|gif|jpe?g|svg)$": "<rootDir>/test/__mocks__/fileMock.js",
+      "styles": "identity-obj-proxy"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!cozy-ui)"
+    ],
+    "globals": {
+      "__ALLOW_HTTP__": false,
+      "__TARGET__": "browser",
+      "cozy": {}
+    }
+  }
+}
