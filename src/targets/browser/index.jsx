@@ -6,10 +6,7 @@ import 'styles'
 
 import React from 'react'
 import { render } from 'react-dom'
-import { Provider } from 'react-redux'
 import { I18n } from 'cozy-ui/react/I18n'
-
-import store from 'lib/store'
 
 if (__DEVELOPMENT__) {
   // Enables React dev tools for Preact
@@ -28,9 +25,7 @@ const renderApp = function () {
       lang={appLocale}
       dictRequire={appLocale => require(`locales/${appLocale}`)}
     >
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <App />
     </I18n>,
     document.querySelector('[role=application]')
   )
