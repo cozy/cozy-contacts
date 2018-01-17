@@ -24,12 +24,16 @@ let appLocale
 const renderApp = function () {
   const App = require('components/App').default
   render(
-    <I18n lang={appLocale} dictRequire={appLocale => require(`locales/${appLocale}`)}>
+    <I18n
+      lang={appLocale}
+      dictRequire={appLocale => require(`locales/${appLocale}`)}
+    >
       <Provider store={store}>
         <App />
       </Provider>
-    </I18n>
-    , document.querySelector('[role=application]'))
+    </I18n>,
+    document.querySelector('[role=application]')
+  )
 }
 
 if (module.hot) {
@@ -50,11 +54,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // default data will allow to display correctly the cozy-bar
   // in the standalone (without cozy-stack connexion)
-  const appIcon = getDataOrDefault(data.cozyIconPath, require('../vendor/assets/icon.svg'))
+  const appIcon = getDataOrDefault(
+    data.cozyIconPath,
+    require('../vendor/assets/icon.svg')
+  )
 
   const appEditor = getDataOrDefault(data.cozyAppEditor, '')
 
-  const appName = getDataOrDefault(data.cozyAppName, require('../../../package.json').name)
+  const appName = getDataOrDefault(
+    data.cozyAppName,
+    require('../../../package.json').name
+  )
 
   appLocale = getDataOrDefault(data.cozyLocale, 'en')
 
