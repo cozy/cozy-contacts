@@ -2,32 +2,25 @@
   "name": "cozy-contacts",
   "version": "0.1.0",
   "scripts": {
-    "clean:browser": "rm -rf build/*",
+    "clean": "rm -rf build/*",
     "tx": "tx pull --all || true",
     "lint": "npm-run-all --parallel 'lint:*'",
     "lint:js":
       "prettier --write '{src,test}/**/*.{js,jsx}' && eslint --fix '{src,test}/**/*.{js,jsx}'",
     "lint:styles": "stylint src/styles --config ./.stylintrc",
-    "build": "yarn run build:browser",
-    "commons:build": "cozy-scripts build",
-    "build:browser":
-      "NODE_ENV=browser:production npm-run-all --serial clean:browser lint:js tx commons:build",
-    "watch": "yarn run watch:browser",
-    "commons:watch": "cozy-scripts watch",
-    "watch:browser":
-      "NODE_ENV=browser:development npm-run-all --serial clean:browser commons:watch",
-    "watch:standalone": "yarn run watch:browser:standalone",
-    "commons:watch:standalone": "cozy-scripts standalone",
-    "watch:browser:standalone":
-      "NODE_ENV=browser:development yarn run commons:watch:standalone",
+    "build": "NODE_ENV=browser:production cozy-scripts build",
+    "prebuild": "npm-run-all --serial clean lint:js tx",
+    "watch": "cozy-scripts watch",
+    "prewatch": "NODE_ENV=browser:development npm-run-all --serial clean",
+    "watch:standalone": "NODE_ENV=browser:development cozy-scripts standalone",
     "config:browser:production":
       "NODE_ENV=browser:production cozy-scripts --show-config",
     "config:browser:development":
       "NODE_ENV=browser:development cozy-scripts --show-config",
     "deploy":
       "git-directory-deploy --username cozy --email contact@cozycloud.cc --directory build/ --repo=https://$GITHUB_TOKEN@github.com/cozy/cozy-contacts.git",
-    "test": "npm-run-all --serial lint test:jest",
-    "test:jest": "jest --verbose --coverage",
+    "pretest": "npm-run-all --serial lint",
+    "test": "jest",
     "stack:docker":
       "docker run --rm -it -p 8080:8080 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev"
   },
