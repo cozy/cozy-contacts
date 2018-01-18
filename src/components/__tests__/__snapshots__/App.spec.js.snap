@@ -2,13 +2,592 @@
 
 exports[`App component only should be mounted correctly 1`] = `
 <div
-  className="app-wrapper o-layout--2panes"
+  className="app-wrapper c-layout"
 >
   <main
     className="app-content"
   >
     <div>
-      Hello World!
+      <div
+        style={
+          Object {
+            "border": "1px dashed silver",
+            "margin": "12px 0",
+          }
+        }
+      >
+        <h2>
+          ContactsHeader
+        </h2>
+        <div>
+          ContactsFilter
+        </div>
+        <div>
+          ContactsIntentLink
+        </div>
+        <div>
+          ContactsCreationButton
+        </div>
+      </div>
+      <div>
+        <div
+          className="contact-header"
+        >
+          A
+        </div>
+        <div
+          className="contact"
+        >
+          <div
+            className="contact-badge"
+            style={
+              Object {
+                "backgroundColor": "#f1c40f",
+                "color": "white",
+              }
+            }
+          >
+            <span
+              className="contact-badge-name"
+            >
+              AP
+            </span>
+          </div>
+          <div
+            className="contact-name"
+          >
+            <span
+              className="contact-name-firstname"
+            >
+              Amélie
+            </span>
+            <span>
+               
+            </span>
+            <span
+              className="contact-name-lastname"
+            >
+              Poulain
+            </span>
+          </div>
+          <div
+            className="contact-phone"
+          >
+            06 12345678
+          </div>
+          <div
+            className="contact-email"
+          >
+            jeanneige@mail.com
+          </div>
+        </div>
+        <div
+          className="contact"
+        >
+          <div
+            className="contact-badge"
+            style={
+              Object {
+                "backgroundColor": "#1abc9c",
+                "color": "white",
+              }
+            }
+          >
+            <span
+              className="contact-badge-name"
+            >
+              AM
+            </span>
+          </div>
+          <div
+            className="contact-name"
+          >
+            <span
+              className="contact-name-firstname"
+            >
+              André
+            </span>
+            <span>
+               
+            </span>
+            <span
+              className="contact-name-lastname"
+            >
+              Manoukian
+            </span>
+          </div>
+          <div
+            className="contact-phone"
+          >
+            —
+          </div>
+          <div
+            className="contact-email"
+          >
+            —
+          </div>
+        </div>
+        <div
+          className="contact"
+        >
+          <div
+            className="contact-badge"
+            style={
+              Object {
+                "backgroundColor": "#2ecc71",
+                "color": "white",
+              }
+            }
+          >
+            <span
+              className="contact-badge-name"
+            >
+              A
+            </span>
+          </div>
+          <div
+            className="contact-name"
+          >
+            <span
+              className="contact-name-firstname"
+            >
+              Aylin
+            </span>
+            <span>
+               
+            </span>
+            <span
+              className="contact-name-lastname"
+            >
+              
+            </span>
+          </div>
+          <div
+            className="contact-phone"
+          >
+            06 12345678
+          </div>
+          <div
+            className="contact-email"
+          >
+            jeanneige@mail.com
+          </div>
+        </div>
+        <div
+          className="contact"
+        >
+          <div
+            className="contact-badge"
+            style={
+              Object {
+                "backgroundColor": "#f1c40f",
+                "color": "white",
+              }
+            }
+          >
+            <span
+              className="contact-badge-name"
+            >
+              BA
+            </span>
+          </div>
+          <div
+            className="contact-name"
+          >
+            <span
+              className="contact-name-firstname"
+            >
+              Benjamin
+            </span>
+            <span>
+               
+            </span>
+            <span
+              className="contact-name-lastname"
+            >
+              André
+            </span>
+          </div>
+          <div
+            className="contact-phone"
+          >
+            06 12345678
+          </div>
+          <div
+            className="contact-email"
+          >
+            —
+          </div>
+        </div>
+        <div
+          className="contact"
+        >
+          <div
+            className="contact-badge"
+            style={
+              Object {
+                "backgroundColor": "#16a085",
+                "color": "white",
+              }
+            }
+          >
+            <span
+              className="contact-badge-name"
+            >
+              BA
+            </span>
+          </div>
+          <div
+            className="contact-name"
+          >
+            <span
+              className="contact-name-firstname"
+            >
+              Bertrand
+            </span>
+            <span>
+               
+            </span>
+            <span
+              className="contact-name-lastname"
+            >
+              Alevin
+            </span>
+          </div>
+          <div
+            className="contact-phone"
+          >
+            06 12345678
+          </div>
+          <div
+            className="contact-email"
+          >
+            jeanneige@mail.com
+          </div>
+        </div>
+        <div
+          className="contact"
+        >
+          <div
+            className="contact-badge"
+            style={
+              Object {
+                "backgroundColor": "#e74c3c",
+                "color": "white",
+              }
+            }
+          >
+            <span
+              className="contact-badge-name"
+            >
+              BA
+            </span>
+          </div>
+          <div
+            className="contact-name"
+          >
+            <span
+              className="contact-name-firstname"
+            >
+              Brendan
+            </span>
+            <span>
+               
+            </span>
+            <span
+              className="contact-name-lastname"
+            >
+              Abolivier
+            </span>
+          </div>
+          <div
+            className="contact-phone"
+          >
+            —
+          </div>
+          <div
+            className="contact-email"
+          >
+            jeanneige@mail.com
+          </div>
+        </div>
+        <div
+          className="contact"
+        >
+          <div
+            className="contact-badge"
+            style={
+              Object {
+                "backgroundColor": "#e74c3c",
+                "color": "white",
+              }
+            }
+          >
+            <span
+              className="contact-badge-name"
+            >
+              C
+            </span>
+          </div>
+          <div
+            className="contact-name"
+          >
+            <span
+              className="contact-name-firstname"
+            >
+              CAF
+            </span>
+            <span>
+               
+            </span>
+            <span
+              className="contact-name-lastname"
+            >
+              
+            </span>
+          </div>
+          <div
+            className="contact-phone"
+          >
+            06 12345678
+          </div>
+          <div
+            className="contact-email"
+          >
+            jeanneige@mail.com
+          </div>
+        </div>
+        <div
+          className="contact"
+        >
+          <div
+            className="contact-badge"
+            style={
+              Object {
+                "backgroundColor": "#3498db",
+                "color": "white",
+              }
+            }
+          >
+            <span
+              className="contact-badge-name"
+            >
+              C
+            </span>
+          </div>
+          <div
+            className="contact-name"
+          >
+            <span
+              className="contact-name-firstname"
+            >
+              COZY
+            </span>
+            <span>
+               
+            </span>
+            <span
+              className="contact-name-lastname"
+            >
+              
+            </span>
+          </div>
+          <div
+            className="contact-phone"
+          >
+            06 12345678
+          </div>
+          <div
+            className="contact-email"
+          >
+            jeanneige@mail.com
+          </div>
+        </div>
+        <div
+          className="contact"
+        >
+          <div
+            className="contact-badge"
+            style={
+              Object {
+                "backgroundColor": "#bdc3c7",
+                "color": "white",
+              }
+            }
+          >
+            <span
+              className="contact-badge-name"
+            >
+              E
+            </span>
+          </div>
+          <div
+            className="contact-name"
+          >
+            <span
+              className="contact-name-firstname"
+            >
+              EDF
+            </span>
+            <span>
+               
+            </span>
+            <span
+              className="contact-name-lastname"
+            >
+              
+            </span>
+          </div>
+          <div
+            className="contact-phone"
+          >
+            06 12345678
+          </div>
+          <div
+            className="contact-email"
+          >
+            jeanneige@mail.com
+          </div>
+        </div>
+        <div
+          className="contact"
+        >
+          <div
+            className="contact-badge"
+            style={
+              Object {
+                "backgroundColor": "#3498db",
+                "color": "white",
+              }
+            }
+          >
+            <span
+              className="contact-badge-name"
+            >
+              ES
+            </span>
+          </div>
+          <div
+            className="contact-name"
+          >
+            <span
+              className="contact-name-firstname"
+            >
+              Edward
+            </span>
+            <span>
+               
+            </span>
+            <span
+              className="contact-name-lastname"
+            >
+              Snowden
+            </span>
+          </div>
+          <div
+            className="contact-phone"
+          >
+            06 12345678
+          </div>
+          <div
+            className="contact-email"
+          >
+            jeanneige@mail.com
+          </div>
+        </div>
+        <div
+          className="contact"
+        >
+          <div
+            className="contact-badge"
+            style={
+              Object {
+                "backgroundColor": "#27ae60",
+                "color": "white",
+              }
+            }
+          >
+            <span
+              className="contact-badge-name"
+            >
+              ED
+            </span>
+          </div>
+          <div
+            className="contact-name"
+          >
+            <span
+              className="contact-name-firstname"
+            >
+              Eric
+            </span>
+            <span>
+               
+            </span>
+            <span
+              className="contact-name-lastname"
+            >
+              D
+            </span>
+          </div>
+          <div
+            className="contact-phone"
+          >
+            06 12345678
+          </div>
+          <div
+            className="contact-email"
+          >
+            jeanneige@mail.com
+          </div>
+        </div>
+        <div
+          className="contact"
+        >
+          <div
+            className="contact-badge"
+            style={
+              Object {
+                "backgroundColor": "#9b59b6",
+                "color": "white",
+              }
+            }
+          >
+            <span
+              className="contact-badge-name"
+            >
+              ES
+            </span>
+          </div>
+          <div
+            className="contact-name"
+          >
+            <span
+              className="contact-name-firstname"
+            >
+              Erika
+            </span>
+            <span>
+               
+            </span>
+            <span
+              className="contact-name-lastname"
+            >
+              Shell
+            </span>
+          </div>
+          <div
+            className="contact-phone"
+          >
+            06 12345678
+          </div>
+          <div
+            className="contact-email"
+          >
+            jeanneige@mail.com
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 </div>
