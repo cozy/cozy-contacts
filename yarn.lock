@@ -2704,7 +2704,7 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-prettier@^2.9.0:
+eslint-config-prettier@2.9.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-2.9.0.tgz#5ecd65174d486c22dff389fe036febf502d468a3"
   dependencies:
@@ -2772,7 +2772,7 @@ eslint-plugin-promise@~3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-3.5.0.tgz#78fbb6ffe047201627569e85a6c5373af2a68fca"
 
-eslint-plugin-react@^7.5.1:
+eslint-plugin-react@7.5.1:
   version "7.5.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.5.1.tgz#52e56e8d80c810de158859ef07b880d2f56ee30b"
   dependencies:
@@ -3975,7 +3975,7 @@ https-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
 
-husky@^0.14.3:
+husky@0.14.3:
   version "0.14.3"
   resolved "https://registry.yarnpkg.com/husky/-/husky-0.14.3.tgz#c69ed74e2d2779769a17ba8399b54ce0b63c12c3"
   dependencies:
@@ -7068,7 +7068,7 @@ pretty-format@^3.5.1:
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-3.8.0.tgz#bfbed56d5e9a776645f4b1ff7aa1a3ac4fa3c385"
 
-pretty-quick@^1.2.2:
+pretty-quick@1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/pretty-quick/-/pretty-quick-1.2.2.tgz#4ebb2bafa86aa5f67948c3d2ead6f196770f9e32"
   dependencies:
