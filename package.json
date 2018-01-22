@@ -66,6 +66,6 @@
     "cozy-scripts": "0.4.1",
     "cozy-ui": "7.0.3",
     "preact": "8.2.7",
-    "preact-compat": "3.17.0"
+    "preact-compat": "3.18.0"
   }
 }
