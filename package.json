@@ -61,7 +61,7 @@
     "stylint": "1.5.9"
   },
   "dependencies": {
-    "cozy-bar": "4.8.2",
+    "cozy-bar": "4.8.5",
     "cozy-client-js": "0.4.5",
     "cozy-scripts": "0.4.1",
     "cozy-ui": "7.0.3",
