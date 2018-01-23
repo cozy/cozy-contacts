@@ -23,7 +23,7 @@ const contactPropTypes = {
   })
 };
 
-const btohex = (name = "") => {
+const nametohex = (name = "") => {
   const colors = [
     "#1abc9c",
     "#2ecc71",
@@ -52,44 +52,45 @@ const btohex = (name = "") => {
   ];
 };
 
-const ContactBadge = ({ name }) => {
+const ContactBadge = ({ firstname, lastname }) => {
   const style = {
-    backgroundColor: `${btohex(name.givenName)}`,
+    backgroundColor: `${nametohex(firstname)}`,
     color: "white"
   };
   return (
     <div className="contact-badge" style={style}>
       <span className="contact-badge-name">
-        {[name.givenName[0], name.familyName[0]].join("")}
+        {[
+          (firstname[0] || "").toUpperCase(),
+          (lastname[0] || "").toUpperCase()
+        ].join("")}
       </span>
     </div>
   );
 };
 ContactBadge.propTypes = {
-  name: contactPropTypes.name
+  firstname: PropTypes.string,
+  lastname: PropTypes.string
 };
 ContactBadge.defaultProps = {
-  name: {
-    givenName: "",
-    familyName: ""
-  }
+  firstname: "",
+  lastname: ""
 };
 
-const ContactName = ({ name }) => (
+const ContactName = ({ firstname, lastname }) => (
   <div className="contact-name">
-    <span className="contact-name-firstname">{name.givenName}</span>
+    <span className="contact-name-firstname">{firstname}</span>
     <span>&nbsp;</span>
-    <span className="contact-name-lastname">{name.familyName}</span>
+    <span className="contact-name-lastname">{lastname}</span>
   </div>
 );
 ContactName.propTypes = {
-  name: contactPropTypes.name
+  firstname: PropTypes.string,
+  lastname: PropTypes.string
 };
 ContactName.defaultProps = {
-  name: {
-    givenName: "(unknown)",
-    familyName: ""
-  }
+  firstname: "",
+  lastname: ""
 };
 
 const ContactPhone = ({ phone }) => (
@@ -116,12 +117,22 @@ ContactEmail.defaultProps = {
 };
 
 const ContactRow = props => {
-  const { number: phone } = getPrimaryOrFirst(props.contact.phone);
-  const { address: email } = getPrimaryOrFirst(props.contact.email);
+  const { number: phone } = getPrimaryOrFirst(props.contact.phone) || {
+    number: undefined
+  };
+  const { address: email } = getPrimaryOrFirst(props.contact.email) || {
+    address: undefined
+  };
+  const {
+    name: { givenName: firstname, familyName: lastname } = {
+      givenName: "",
+      familyName: ""
+    }
+  } = props.contact;
   return (
     <div className="contact">
-      <ContactBadge name={props.contact.name} />
-      <ContactName name={props.contact.name} />
+      <ContactBadge firstname={firstname} lastname={lastname} />
+      <ContactName firstname={firstname} lastname={lastname} />
       <ContactPhone phone={phone} />
       <ContactEmail email={email} />
     </div>
@@ -130,7 +141,7 @@ const ContactRow = props => {
 ContactRow.propTypes = {
   contact: PropTypes.shape({
     name: contactPropTypes.name,
-    email: PropTypes.arrayOf(contactPropTypes.email),
+    email: PropTypes.arrayOf(contactPropTypes.email.isRequired).isRequired,
     phone: PropTypes.arrayOf(contactPropTypes.phone)
   }).isRequired
 };

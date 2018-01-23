@@ -2,123 +2,34 @@
 import React, { Component } from "react";
 import ContactsError from "./ContactsError";
 
-let sampleId = 0;
-const sampleContacts = [
-  {
-    _id: sampleId++,
-    name: { givenName: "Amélie", familyName: "Poulain" },
-    avatar: "",
-    phone: [{ number: "06 12345678", primary: true }],
-    email: [{ address: "jeanneige@mail.com", primary: true }]
-  },
-  {
-    _id: sampleId++,
-    name: { givenName: "Edward", familyName: "Snowden" },
-    avatar: "",
-    phone: [{ number: "06 12345678", primary: true }],
-    email: [{ address: "jeanneige@mail.com", primary: true }]
-  },
-  {
-    _id: sampleId++,
-    name: { givenName: "Aylin", familyName: "" },
-    avatar: "",
-    phone: [{ number: "06 12345678", primary: true }],
-    email: [{ address: "jeanneige@mail.com", primary: true }]
-  },
-  {
-    _id: sampleId++,
-    name: { givenName: "Benjamin", familyName: "André" },
-    avatar: "",
-    phone: [{ number: "06 12345678", primary: true }]
-  },
-  {
-    _id: sampleId++,
-    name: { givenName: "Bertrand", familyName: "Alevin" },
-    avatar: "",
-    phone: [{ number: "06 12345678", primary: true }],
-    email: [{ address: "jeanneige@mail.com", primary: true }]
-  },
-  {
-    _id: sampleId++,
-    name: { givenName: "André", familyName: "Manoukian" },
-    avatar: ""
-  },
-  {
-    _id: sampleId++,
-    name: { givenName: "Erika", familyName: "Shell" },
-    avatar: "",
-    phone: [{ number: "06 12345678", primary: true }],
-    email: [{ address: "jeanneige@mail.com", primary: true }]
-  },
-  {
-    _id: sampleId++,
-    name: { givenName: "Brendan", familyName: "Abolivier" },
-    avatar: "",
-    email: [{ address: "jeanneige@mail.com", primary: true }]
-  },
-  {
-    _id: sampleId++,
-    name: { givenName: "COZY", familyName: "" },
-    avatar: "",
-    phone: [{ number: "06 12345678", primary: true }],
-    email: [{ address: "jeanneige@mail.com", primary: true }]
-  },
-  {
-    _id: sampleId++,
-    name: { givenName: "EDF", familyName: "" },
-    avatar: "",
-    phone: [{ number: "06 12345678", primary: true }],
-    email: [{ address: "jeanneige@mail.com", primary: true }]
-  },
-  {
-    _id: sampleId++,
-    name: { givenName: "CAF", familyName: "" },
-    avatar: "",
-    phone: [{ number: "06 12345678", primary: true }],
-    email: [{ address: "jeanneige@mail.com", primary: true }]
-  },
-  {
-    _id: sampleId++,
-    name: { givenName: "Eric", familyName: "D" },
-    avatar: "",
-    phone: [{ number: "06 12345678", primary: true }],
-    email: [{ address: "jeanneige@mail.com", primary: true }]
-  }
-];
-
-export const contactSort = (contact, comparedContact) => {
-  const firstNameA =
+export function getDisplayedName(contact) {
+  const givenNameA =
     contact.name && contact.name.givenName
       ? contact.name.givenName.toUpperCase()
       : "";
-  const firstNameB = comparedContact.name
-    ? comparedContact.name.givenName.toUpperCase()
-    : "";
-
-  if (firstNameB === "") return -1;
-  if (firstNameA === "") return 1;
-  if (firstNameA < firstNameB) return -1;
-
-  if (firstNameA > firstNameB) return 1;
-
-  const lastNameA =
+  const familyNameA =
     contact.name && contact.name.familyName
       ? contact.name.familyName.toUpperCase()
       : "";
-  const lastNameB =
-    comparedContact.name && comparedContact.name.familyName
-      ? comparedContact.name.familyName.toUpperCase()
-      : "";
-  if (lastNameA < lastNameB) return -1;
-  if (lastNameA > lastNameB) return 1;
-  return 0;
+  const nameA = `${givenNameA} ${familyNameA}`.trim();
+  return nameA;
+}
+
+export const sortGivenNameFirst = (contact, comparedContact) => {
+  const nameA = getDisplayedName(contact);
+  const nameB = getDisplayedName(comparedContact);
+  if (nameA === "") return 1;
+  if (nameB === "") return -1;
+
+  return nameA.localeCompare(nameB);
 };
 
 export const withContacts = BaseComponent =>
   class WithContacts extends Component {
     state = {
-      contacts: sampleContacts,
-      error: undefined
+      contacts: [],
+      error: undefined,
+      loading: true
     };
 
     async componentDidMount() {
@@ -133,12 +44,19 @@ export const withContacts = BaseComponent =>
           ...row.doc
         }))
         .filter(contact => contact.email);
-      this.setState(state => ({ contacts: [...state.contacts, ...contacts] }));
+      this.setState(state => ({
+        ...state,
+        contacts: [...state.contacts, ...contacts],
+        loading: false
+      }));
     }
 
     render() {
       if (this.state.error) {
         return <ContactsError error={this.state.error} />;
+      }
+      if (this.state.loading) {
+        return <div>Loading...</div>;
       }
       return <BaseComponent contacts={this.state.contacts} />;
     }

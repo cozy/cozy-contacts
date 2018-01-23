@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { contactSort } from "./";
+import { sortGivenNameFirst, getDisplayedName } from "./";
 import ContactRow from "./ContactRow";
 
 const ContactHeaderRow = props => (
@@ -24,15 +24,18 @@ const ContactsList = props => {
   if (props.contacts.length === 0) {
     return <ContactsEmptyList />;
   }
-  const sortedContacts = [...props.contacts].sort(contactSort);
-  return (
-    <div>
-      <ContactHeaderRow header="A" />
-      {sortedContacts.map(contact => (
-        <ContactRow key={contact._id} contact={contact} />
-      ))}
-    </div>
-  );
+  const sortedContacts = [...props.contacts].sort(sortGivenNameFirst);
+  const rows = [];
+  let lastLetter = null;
+  sortedContacts.forEach(contact => {
+    const name = getDisplayedName(contact);
+    if (name[0] !== lastLetter) {
+      rows.push(<ContactHeaderRow header={name[0] || "EMPTY"} />);
+    }
+    rows.push(<ContactRow key={contact._id} contact={contact} />);
+    lastLetter = name[0];
+  });
+  return <div>{rows}</div>;
 };
 ContactsList.propTypes = {
   contacts: PropTypes.array.isRequired

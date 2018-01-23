@@ -38,9 +38,17 @@ describe("ContactRow", () => {
     const contactrow = mount(contactRowInstance);
     const contactrowname = contactrow.find("ContactName");
     expect(contactrowname).toBeDefined();
-    expect(contactrowname.text().trim()).toBe("(unknown)");
+    expect(contactrowname.text().trim()).toBe("");
     const contactrowphone = contactrow.find("ContactPhone");
     expect(contactrowphone).toBeDefined();
     expect(contactrowphone.text().trim()).toBe("—");
+  });
+  test("should accept empty array", () => {
+    const contact = { email: [] };
+    const contactRowInstance = <ContactRow contact={contact} />;
+    const contactrow = mount(contactRowInstance);
+    const contactrowemail = contactrow.find("ContactEmail");
+    expect(contactrowemail).toBeDefined();
+    expect(contactrowemail.text()).toBe("—");
   });
 });
