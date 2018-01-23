@@ -22,9 +22,15 @@
   },
   "permissions": {
     "apps": {
-      "description": "Required by the cozy-bar to display the icons of the apps",
+      "description":
+        "Required by the cozy-bar to display the icons of the apps",
       "type": "io.cozy.apps",
       "verbs": ["GET"]
+    },
+    "contacts": {
+      "description": "Required to manage your contacts",
+      "type": "io.cozy.contacts",
+      "methods": ["GET", "POST"]
     }
   }
 }
