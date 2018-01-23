@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import ContactsApp from "./ContactsApp";
 
-const App = ({ children }) => (
-  <div className='app-wrapper o-layout--2panes'>
-    <main className='app-content'>
-      <div>Hello World!</div>
+const App = () => (
+  <div className="app-wrapper c-layout">
+    <main className="app-content">
+      <ContactsApp />
     </main>
   </div>
-)
+);
 
-export default App
+export default App;
