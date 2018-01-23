@@ -1,9 +1,10 @@
 import React from "react";
+import ContactsApp from "./ContactsApp";
 
 const App = () => (
-  <div className="app-wrapper o-layout--2panes">
+  <div className="app-wrapper c-layout">
     <main className="app-content">
-      <div>Hello World!</div>
+      <ContactsApp />
     </main>
   </div>
 );
