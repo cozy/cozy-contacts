@@ -18,6 +18,11 @@
       "folder": "/",
       "index": "index.html",
       "public": false
+    },
+    "/services/pick": {
+      "folder": "/intents",
+      "index": "index.html",
+      "public": false
     }
   },
   "permissions": {
@@ -32,5 +37,12 @@
       "type": "io.cozy.contacts",
       "methods": ["GET", "POST"]
     }
-  }
+  },
+  "intents": [
+    {
+      "action": "PICK",
+      "type": ["io.cozy.contacts"],
+      "href": "/services/pick"
+    }
+  ]
 }

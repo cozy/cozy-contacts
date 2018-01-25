@@ -58,6 +58,6 @@ export const withContacts = BaseComponent =>
       if (this.state.loading) {
         return <div>Loading...</div>;
       }
-      return <BaseComponent contacts={this.state.contacts} />;
+      return <BaseComponent contacts={this.state.contacts} {...this.props} />;
     }
   };
