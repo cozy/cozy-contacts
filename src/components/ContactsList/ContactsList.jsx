@@ -32,13 +32,32 @@ const ContactsList = props => {
     if (name[0] !== lastLetter) {
       rows.push(<ContactHeaderRow header={name[0] || "EMPTY"} />);
     }
-    rows.push(<ContactRow key={contact._id} contact={contact} />);
+    rows.push(
+      <ContactRow
+        key={contact._id}
+        contact={contact}
+        selection={
+          props.onSelect && {
+            onSelect: () => {
+              props.onSelect(contact._id);
+            },
+            selected: props.selection.includes(contact._id)
+          }
+        }
+      />
+    );
     lastLetter = name[0];
   });
   return <div>{rows}</div>;
 };
 ContactsList.propTypes = {
-  contacts: PropTypes.array.isRequired
+  contacts: PropTypes.array.isRequired,
+  onSelect: PropTypes.func,
+  selection: PropTypes.array
+};
+ContactsList.defaultProps = {
+  onSelect: null,
+  selection: []
 };
 
 export default ContactsList;

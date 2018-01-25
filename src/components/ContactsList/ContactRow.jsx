@@ -116,6 +116,19 @@ ContactEmail.defaultProps = {
   email: "—"
 };
 
+const ContactSelection = props => (
+  <div onClick={props.onSelect}>
+    <span data-input="checkbox">
+      <input type="checkbox" checked={props.selected} />
+      <label />
+    </span>
+  </div>
+);
+ContactSelection.propTypes = {
+  selected: PropTypes.bool.isRequired,
+  onSelect: PropTypes.func.isRequired
+};
+
 const ContactRow = props => {
   const { number: phone } = getPrimaryOrFirst(props.contact.phone) || {
     number: undefined
@@ -131,6 +144,12 @@ const ContactRow = props => {
   } = props.contact;
   return (
     <div className="contact">
+      {props.selection && (
+        <ContactSelection
+          selected={props.selection.selected}
+          onSelect={props.selection.onSelect}
+        />
+      )}
       <ContactBadge firstname={firstname} lastname={lastname} />
       <ContactName firstname={firstname} lastname={lastname} />
       <ContactPhone phone={phone} />
@@ -143,7 +162,14 @@ ContactRow.propTypes = {
     name: contactPropTypes.name,
     email: PropTypes.arrayOf(contactPropTypes.email.isRequired).isRequired,
     phone: PropTypes.arrayOf(contactPropTypes.phone)
-  }).isRequired
+  }).isRequired,
+  selection: PropTypes.shape({
+    selected: PropTypes.bool,
+    onSelect: PropTypes.func
+  })
+};
+ContactRow.defaultProps = {
+  selection: null
 };
 
 export default ContactRow;
