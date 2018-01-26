@@ -1,9 +1,10 @@
 {
-  "name": "Cozy Contacts",
-  "slug": "cozy-contacts",
+  "name": "Contacts",
+  "editor": "Cozy",
+  "slug": "contacts",
   "icon": "icon.svg",
   "description": "Contact manager for Cozy Cloud",
-  "category": "",
+  "category": "cozy",
   "version": "0.1.0",
   "licence": "AGPL-3.0",
   "source": "https://github.com/cozy/cozy-contacts.git@build",
