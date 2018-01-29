@@ -1,8 +1,6 @@
-
 {
-  "Nav": {
-    "hello_nav_1": "First",
-    "hello_nav_2": "Second",
-    "hello_nav_3": "Third"
-  }
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "selected_contacts":
+    "%{smart_count} selected contact |||| %{smart_count} selected contacts"
 }
