@@ -1891,9 +1891,9 @@ cozy-client-js@^0.3.19:
   version "0.3.21"
   resolved "https://registry.yarnpkg.com/cozy-client-js/-/cozy-client-js-0.3.21.tgz#d27d0288077ce95139333c41dfb537b8584ff254"
 
-cozy-scripts@0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/cozy-scripts/-/cozy-scripts-0.4.3.tgz#41506b73b14782097fc497e473478038d2891ae5"
+cozy-scripts@0.4.5:
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/cozy-scripts/-/cozy-scripts-0.4.5.tgz#b7b1a9d2810dc7eb7fb6a4f98dcb9d253fbffdd7"
   dependencies:
     autoprefixer "7.2.5"
     babel-core "6.26.0"
@@ -1902,9 +1902,9 @@ cozy-scripts@0.4.3:
     chalk "2.2.2"
     commander "2.13.0"
     copy-webpack-plugin "4.3.1"
-    cross-spawn "6.0.3"
+    cross-spawn "6.0.4"
     css-loader "0.28.9"
-    css-mqpacker "6.0.1"
+    css-mqpacker "6.0.2"
     csswring "6.0.2"
     eslint "4.16.0"
     eslint-loader "1.9.0"
@@ -1923,7 +1923,7 @@ cozy-scripts@0.4.3:
     script-ext-html-webpack-plugin "1.8.8"
     standard "10.0.3"
     standard-loader "6.0.1"
-    style-loader "0.19.1"
+    style-loader "0.20.1"
     stylus "0.54.5"
     stylus-loader "3.0.1"
     svg-sprite-loader "3.6.2"
@@ -1971,9 +1971,9 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-cross-spawn@6.0.3:
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-6.0.3.tgz#7cbe31768ba0f1cc37acc925bf09e7a9a4a9b0ab"
+cross-spawn@6.0.4:
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-6.0.4.tgz#bbf44ccb30fb8314a08f178b62290c669c36d808"
   dependencies:
     nice-try "^1.0.4"
     path-key "^2.0.1"
@@ -2044,12 +2044,12 @@ css-loader@0.28.9:
     postcss-value-parser "^3.3.0"
     source-list-map "^2.0.0"
 
-css-mqpacker@6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/css-mqpacker/-/css-mqpacker-6.0.1.tgz#33c463c6f24ef29582e9ea615c2e04eee115dd97"
+css-mqpacker@6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/css-mqpacker/-/css-mqpacker-6.0.2.tgz#ced48675c644e846b3c9459e0a473f2aead1ff31"
   dependencies:
     minimist "^1.2.0"
-    postcss "^6.0.0"
+    postcss "^6.0.16"
 
 css-parse@1.7.x:
   version "1.7.0"
@@ -7940,6 +7940,13 @@ schema-utils@^0.3.0:
   dependencies:
     ajv "^5.0.0"
 
+schema-utils@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-0.4.3.tgz#e2a594d3395834d5e15da22b48be13517859458e"
+  dependencies:
+    ajv "^5.0.0"
+    ajv-keywords "^2.1.0"
+
 script-ext-html-webpack-plugin@1.8.8:
   version "1.8.8"
   resolved "https://registry.yarnpkg.com/script-ext-html-webpack-plugin/-/script-ext-html-webpack-plugin-1.8.8.tgz#faa888a286ce746fcd06a5e0a9e39ed7b9d24f66"
@@ -8555,12 +8562,12 @@ strip-json-comments@2.0.1, strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-style-loader@0.19.1:
-  version "0.19.1"
-  resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.19.1.tgz#591ffc80bcefe268b77c5d9ebc0505d772619f85"
+style-loader@0.20.1:
+  version "0.20.1"
+  resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.20.1.tgz#33ac2bf4d5c65a8906bc586ad253334c246998d0"
   dependencies:
-    loader-utils "^1.0.2"
-    schema-utils "^0.3.0"
+    loader-utils "^1.1.0"
+    schema-utils "^0.4.3"
 
 stylint@1.5.9:
   version "1.5.9"
