@@ -3,9 +3,7 @@ import PropTypes from "prop-types";
 import { sortGivenNameFirst, getDisplayedName } from "./";
 import ContactRow from "./ContactRow";
 
-const ContactHeaderRow = props => (
-  <div className="contact-header">{props.header}</div>
-);
+const ContactHeaderRow = props => <div className="divider">{props.header}</div>;
 ContactHeaderRow.propTypes = {
   header: PropTypes.string.isRequired
 };
@@ -48,7 +46,7 @@ const ContactsList = props => {
     );
     lastLetter = name[0];
   });
-  return <div>{rows}</div>;
+  return <div className="contact-content">{rows}</div>;
 };
 ContactsList.propTypes = {
   contacts: PropTypes.array.isRequired,

@@ -1,43 +1,53 @@
 @require 'settings/palette.styl'
+@require 'components/table.styl'
 
 .contact
-    display flex
-    height 3rem
-    box-shadow 0 1px 0 0 silver
-    padding-left 2rem
-    align-items center
-    line-height 1.5rem
+    width 100%
+    max-width 80rem
+    margin auto
 
-    &\-name
-        flex 1 0 10rem
+.contact-content
+    @extend $table
+    box-shadow: 0 4px 4px 0 silver;
 
-        &\-lastname
-            font-weight bold
-    
-    &\-phone
-        flex 1 0 6rem
-        color coolGrey
-        
-    &\-email
-        flex 1 0 6rem
-        color coolGrey
-
-    &\-badge
-        flex 0 0 auto
-        width 2rem
-        height 2rem
-        line-height 2rem
-        border-radius 50%
-        text-align center
-        margin-right 1rem
-
-
-.contact-header
-    font-size .75rem
-    height 1rem
-    line-height 1.33rem
-    font-weight bold
+.contact-item
+    @extend $table-row
     color coolGrey
-    background-color paleGrey
+
+    +small-screen()
+        flex-direction column
+        align-items flex-start
+        height auto
+
+.name
+    @extend $table-cell
+    @extend $table-cell--primary
+    display inline-flex
+    align-items center
+    flex-basis 30%
     padding-left 2rem
-    
+
+.name-firstname
+    margin-left 1rem
+
+.name-lastname
+    font-weight bold
+
+.phone
+    @extend $table-cell
+    flex 0 0 12rem
+
+.email
+    @extend $table-cell
+    flex-basis 30%
+
+.name
+.phone
+.email
+    +small-screen()
+        flex-basis auto
+        padding .3rem 1rem
+
+.divider
+    @extend $table-divider
+
