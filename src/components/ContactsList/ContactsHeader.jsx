@@ -27,7 +27,7 @@ class ContactsIntentLink extends Component {
 const ContactsHeader = () => {
   const fakeintent = new URL(window.location).searchParams.get("fakeintent");
   return (
-    <div style={{ border: "1px dashed silver", margin: "12px 0" }}>
+    <div className="topbar">
       <h2>ContactsHeader</h2>
       <ContactsFilter />
       {fakeintent !== null && <ContactsIntentLink />}

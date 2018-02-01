@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Badge } from "cozy-ui/react/Badge";
+import { Avatar } from "cozy-ui/react/Avatar";
 
 const contactPropTypes = {
   phone: PropTypes.shape({
@@ -24,12 +24,26 @@ const contactPropTypes = {
   })
 };
 
+const ContactIdentity = ({ firstname, lastname }) => (
+  <div className="contact-identity">
+    <Avatar firstname={firstname} lastname={lastname} size="small" />
+    <ContactName firstname={firstname} lastname={lastname} />
+  </div>
+);
+ContactIdentity.propTypes = {
+  firstname: PropTypes.string,
+  lastname: PropTypes.string
+};
+ContactIdentity.defaultProps = {
+  firstname: "",
+  lastname: ""
+};
+
 const ContactName = ({ firstname, lastname }) => (
-  <div className="name">
-    <Badge firstname={firstname} lastname={lastname} />
-    <span className="name-firstname">{firstname}</span>
+  <div>
+    <span className="contact-firstname">{firstname}</span>
     &nbsp;
-    <span className="name-lastname">{lastname}</span>
+    <span className="contact-lastname">{lastname}</span>
   </div>
 );
 ContactName.propTypes = {
@@ -41,7 +55,9 @@ ContactName.defaultProps = {
   lastname: ""
 };
 
-const ContactPhone = ({ phone }) => <div className="phone">{phone}</div>;
+const ContactPhone = ({ phone }) => (
+  <div className="contact-phone">{phone}</div>
+);
 ContactPhone.propTypes = {
   phone: PropTypes.string
 };
@@ -52,7 +68,9 @@ ContactPhone.defaultProps = {
 const getPrimaryOrFirst = (arr = [{}]) =>
   arr.find(obj => obj.primary) || arr[0];
 
-const ContactEmail = ({ email }) => <div className="email">{email}</div>;
+const ContactEmail = ({ email }) => (
+  <div className="contact-email">{email}</div>
+);
 ContactEmail.propTypes = {
   email: PropTypes.string
 };
@@ -61,7 +79,7 @@ ContactEmail.defaultProps = {
 };
 
 const ContactSelection = props => (
-  <div onClick={props.onSelect}>
+  <div className="contact-selection" onClick={props.onSelect}>
     <span data-input="checkbox">
       <input type="checkbox" checked={props.selected} />
       <label />
@@ -87,14 +105,14 @@ const ContactRow = props => {
     }
   } = props.contact;
   return (
-    <div className="contact-item">
+    <div className="contact">
       {props.selection && (
         <ContactSelection
           selected={props.selection.selected}
           onSelect={props.selection.onSelect}
         />
       )}
-      <ContactName firstname={firstname} lastname={lastname} />
+      <ContactIdentity firstname={firstname} lastname={lastname} />
       <ContactPhone phone={phone} />
       <ContactEmail email={email} />
     </div>
