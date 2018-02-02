@@ -13,57 +13,6 @@ import IconFlag from "../../assets/icons/flag.svg";
 import IconLocation from "../../assets/icons/location.svg";
 import IconPhone from "../../assets/icons/phone-number.svg";
 
-const getIcon = fieldType => {
-  switch (fieldType) {
-    case "birthday":
-      return IconCalendar;
-    case "note":
-      return IconComment;
-    case "company":
-      return IconCompany;
-    case "cozy":
-      return IconCozy;
-    case "email":
-      return IconEmail;
-    case "address":
-      return IconLocation;
-    case "phone":
-      return IconPhone;
-    default:
-      return IconFlag;
-  }
-};
-
-const emptyAddress = {
-  street: "",
-  pobox: "",
-  city: "",
-  region: "",
-  postcode: "",
-  country: ""
-};
-
-const renderFieldValue = (value, type, t) => {
-  if (!value) return false;
-  if (type === "birthday") return new Date(value).toLocaleDateString();
-  if (typeof value !== "object") return value.toString();
-
-  switch (type) {
-    case "address":
-      return t("formatted_address", { ...emptyAddress, ...value }).trim();
-    case "email":
-      return <a href={`mailto:${value.address}`}>{value.address}</a>;
-    case "phone":
-      return <a href={`tel:${value.number}`}>{value.number}</a>;
-    case "cozy":
-      return value.url;
-    default:
-      return Object.keys(value)
-        .map(label => `${label}: ${value[label]}`)
-        .join(", ");
-  }
-};
-
 const ContactFields = ({ fields, title }) => (
   <div>
     {title && <h3 className="contact-fields-title">{title}</h3>}
@@ -124,5 +73,56 @@ FieldValue.propTypes = {
 };
 
 const FieldValueWithI18n = translate()(FieldValue);
+
+const getIcon = fieldType => {
+  switch (fieldType) {
+    case "birthday":
+      return IconCalendar;
+    case "note":
+      return IconComment;
+    case "company":
+      return IconCompany;
+    case "cozy":
+      return IconCozy;
+    case "email":
+      return IconEmail;
+    case "address":
+      return IconLocation;
+    case "phone":
+      return IconPhone;
+    default:
+      return IconFlag;
+  }
+};
+
+const emptyAddress = {
+  street: "",
+  pobox: "",
+  city: "",
+  region: "",
+  postcode: "",
+  country: ""
+};
+
+const renderFieldValue = (value, type, t) => {
+  if (!value) return false;
+  if (type === "birthday") return new Date(value).toLocaleDateString();
+  if (typeof value !== "object") return value.toString();
+
+  switch (type) {
+    case "address":
+      return t("formatted_address", { ...emptyAddress, ...value }).trim();
+    case "email":
+      return <a href={`mailto:${value.address}`}>{value.address}</a>;
+    case "phone":
+      return <a href={`tel:${value.number}`}>{value.number}</a>;
+    case "cozy":
+      return value.url;
+    default:
+      return Object.keys(value)
+        .map(label => `${label}: ${value[label]}`)
+        .join(", ");
+  }
+};
 
 export default ContactFields;
