@@ -1,9 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
 import ContactsList from "./ContactsList/ContactsList";
 import { withContacts } from "./ContactsList";
 import ContactsHeader from "./ContactsList/ContactsHeader";
 import ContactCard from "./ContactCard/ContactCard";
+
+const ConnectedContactsList = withContacts(ContactsList);
 
 class ContactsApp extends React.Component {
   state = {
@@ -24,12 +25,11 @@ class ContactsApp extends React.Component {
 
   render() {
     const { displayedContact } = this.state;
-    const { contacts } = this.props;
 
     return (
       <div>
         <ContactsHeader />
-        <ContactsList contacts={contacts} onClickContact={this.showContact} />
+        <ConnectedContactsList onClickContact={this.showContact} />
         {displayedContact && (
           <ContactCard contact={displayedContact} onClose={this.hideContact} />
         )}
@@ -37,9 +37,5 @@ class ContactsApp extends React.Component {
     );
   }
 }
-
-ContactsApp.propTypes = {
-  contacts: PropTypes.array.isRequired
-};
 
 export default withContacts(ContactsApp);
