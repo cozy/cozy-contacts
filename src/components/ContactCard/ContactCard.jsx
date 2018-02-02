@@ -51,7 +51,7 @@ const makeValuesArray = fields =>
     values: Array.isArray(field.values) ? field.values : [field.values]
   }));
 
-const ContactModal = ({ t, onClose, contact }) => {
+const ContactCard = ({ t, onClose, contact }) => {
   const fields = contactToFieldList(contact);
   const filteredFields = filterFieldList(fields);
   const groupedFields = groupUnsupportedFields(filteredFields);
@@ -71,7 +71,7 @@ const ContactModal = ({ t, onClose, contact }) => {
   );
 };
 
-ContactModal.propTypes = {
+ContactCard.propTypes = {
   contact: PropTypes.shape({
     name: contactPropTypes.name.isRequired,
     email: PropTypes.arrayOf(contactPropTypes.email),
@@ -84,4 +84,4 @@ ContactModal.propTypes = {
   onClose: PropTypes.func.isRequired
 };
 
-export default translate()(ContactModal);
+export default translate()(ContactCard);

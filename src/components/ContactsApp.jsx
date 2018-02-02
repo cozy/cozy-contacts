@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import ContactsList from "./ContactsList/ContactsList";
 import { withContacts } from "./ContactsList";
 import ContactsHeader from "./ContactsList/ContactsHeader";
-import ContactModal from "./ContactModal/";
+import ContactCard from "./ContactCard/ContactCard";
 
 class ContactsApp extends React.Component {
   state = {
@@ -31,7 +31,7 @@ class ContactsApp extends React.Component {
         <ContactsHeader />
         <ContactsList contacts={contacts} onClickContact={this.showContact} />
         {displayedContact && (
-          <ContactModal contact={displayedContact} onClose={this.hideContact} />
+          <ContactCard contact={displayedContact} onClose={this.hideContact} />
         )}
       </div>
     );
