@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-company-16</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M195.333333,255 L192,255 L192,271 L202,271 L202,255 L197.555556,255 L195.333333,255 Z M196,267 L194,267 L194,265 L196,265 L196,267 Z M196,263 L194,263 L194,261 L196,261 L196,263 Z M196,259 L194,259 L194,257 L196,257 L196,259 Z M200,259 L198,259 L198,257 L200,257 L200,259 Z M200,263 L198,263 L198,261 L200,261 L200,263 Z M200,267 L198,267 L198,265 L200,265 L200,267 Z M203,259 L208,259 L208,271 L203,271 L203,259 Z M206.5,267 L206.5,265 L204.5,265 L204.5,267 L206.5,267 Z M206.5,263 L206.5,261 L204.5,261 L204.5,263 L206.5,263 Z" id="path-1"></path>
+    </defs>
+    <g id="16px" stroke="none" stroke-width="1" fill-rule="evenodd" transform="translate(-192.000000, -255.000000)">
+        <g id="slices" transform="translate(32.000000, 32.000000)"></g>
+        <mask id="mask-2">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>
