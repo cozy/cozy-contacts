@@ -68,12 +68,16 @@ const ContactRow = props => {
       familyName: ""
     }
   } = props.contact;
+  const stopPropagationAndSelect = e => {
+    e.stopPropagation();
+    props.selection.onSelect(e);
+  };
   return (
-    <div className="contact">
+    <div className="contact" onClick={props.onClick}>
       {props.selection && (
         <ContactSelection
           selected={props.selection.selected}
-          onSelect={props.selection.onSelect}
+          onSelect={stopPropagationAndSelect}
         />
       )}
       <ContactBadge firstname={firstname} lastname={lastname} />
@@ -92,10 +96,12 @@ ContactRow.propTypes = {
   selection: PropTypes.shape({
     selected: PropTypes.bool,
     onSelect: PropTypes.func
-  })
+  }),
+  onClick: PropTypes.func
 };
 ContactRow.defaultProps = {
-  selection: null
+  selection: null,
+  onClick: null
 };
 
 export default ContactRow;

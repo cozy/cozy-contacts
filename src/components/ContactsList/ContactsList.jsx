@@ -44,6 +44,7 @@ const ContactsList = props => {
             selected: props.selection.includes(contact._id)
           }
         }
+        onClick={e => props.onClickContact(contact, e)}
       />
     );
     lastLetter = name[0];
@@ -52,11 +53,13 @@ const ContactsList = props => {
 };
 ContactsList.propTypes = {
   contacts: PropTypes.array.isRequired,
+  onClickContact: PropTypes.func,
   onSelect: PropTypes.func,
   selection: PropTypes.array
 };
 ContactsList.defaultProps = {
   onSelect: null,
+  onClickContact: null,
   selection: []
 };
 

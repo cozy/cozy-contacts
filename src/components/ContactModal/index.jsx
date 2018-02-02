@@ -21,7 +21,9 @@ const supportedFieldsInOrder = [
 const contactToFieldList = contact =>
   Object.keys(contact).map(type => ({ type, values: contact[type] }));
 const filterFieldList = fields =>
-  fields.filter(field => ["name", "_id"].includes(field.type) === false);
+  fields.filter(
+    field => ["name", "_id", "_rev"].includes(field.type) === false
+  );
 const groupUnsupportedFields = fields => {
   const supportedFields = fields.filter(field =>
     supportedFieldsInOrder.includes(field.type)
@@ -49,7 +51,7 @@ const makeValuesArray = fields =>
     values: Array.isArray(field.values) ? field.values : [field.values]
   }));
 
-const ContactModal = ({ t, contact }) => {
+const ContactModal = ({ t, onClose, contact }) => {
   const fields = contactToFieldList(contact);
   const filteredFields = filterFieldList(fields);
   const groupedFields = groupUnsupportedFields(filteredFields);
@@ -57,7 +59,7 @@ const ContactModal = ({ t, contact }) => {
   const normalizedFields = makeValuesArray(orderedFields);
 
   return (
-    <Modal into="body">
+    <Modal into="body" dismissAction={onClose}>
       <ModalContent>
         <header>
           <ContactIdentity name={contact.name} groups={[]} />
@@ -78,7 +80,8 @@ ContactModal.propTypes = {
     birthday: contactPropTypes.birthday,
     note: contactPropTypes.note
   }).isRequired,
-  t: PropTypes.func.isRequired
+  t: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired
 };
 
 export default translate()(ContactModal);

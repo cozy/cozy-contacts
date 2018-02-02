@@ -68,9 +68,11 @@ const ContactFields = ({ fields, title }) => (
   <div>
     {title && <h3 className="contact-fields-title">{title}</h3>}
     <ol className="contact-field-list">
-      {fields.map((field, index) => (
-        <ContactField type={field.type} values={field.values} key={index} />
-      ))}
+      {fields
+        .filter(field => field.values.length > 0)
+        .map((field, index) => (
+          <ContactField type={field.type} values={field.values} key={index} />
+        ))}
     </ol>
   </div>
 );
