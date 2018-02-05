@@ -37,7 +37,7 @@ describe("Filter fields", () => {
     { type: "stays", values: "Hi!" }
   ];
 
-  it("should filter out CouchDB fields", () => {
+  it("should filter out _id and _rev fields", () => {
     const filtered = filterFieldList(fields);
 
     expect(filtered).toBeInstanceOf(Array);
@@ -76,7 +76,7 @@ describe("Group fields", () => {
   ];
 
   it("should group unsupported fields together", () => {
-    const grouped = groupUnsupportedFields(fields);
+    const grouped = groupUnsupportedFields(fields, supportedFieldsInOrder);
     const others = grouped.filter(field => field.type === "other");
 
     expect(grouped).toBeInstanceOf(Array);
@@ -92,7 +92,7 @@ describe("Group fields", () => {
   });
 
   it("should leave supported fields alone", () => {
-    const grouped = groupUnsupportedFields(fields);
+    const grouped = groupUnsupportedFields(fields, supportedFieldsInOrder);
 
     expect(
       grouped.filter(field => supportedFieldsInOrder.includes(field.type))
@@ -101,11 +101,14 @@ describe("Group fields", () => {
   });
 
   it('should group an unsupported field called "other"', () => {
-    const grouped = groupUnsupportedFields([
-      { type: "other", values: "whatever" },
-      { type: "unsupported", values: "whatever" },
-      { type: "phone", values: "whatever" }
-    ]);
+    const grouped = groupUnsupportedFields(
+      [
+        { type: "other", values: "whatever" },
+        { type: "unsupported", values: "whatever" },
+        { type: "phone", values: "whatever" }
+      ],
+      supportedFieldsInOrder
+    );
     const others = grouped.filter(field => field.type === "other");
 
     expect(others.length).toEqual(1);
@@ -128,7 +131,7 @@ describe("Order fields", () => {
       { type: "other", values: "whatever" }
     ];
     const shuffled = shuffleArray(fields);
-    const sorted = orderFieldList(shuffled);
+    const sorted = orderFieldList(shuffled, supportedFieldsInOrder);
 
     expect(sorted).toBeInstanceOf(Array);
     expect(sorted.length).toEqual(fields.length);
@@ -148,7 +151,7 @@ describe("Order fields", () => {
       { type: "other", values: "whatever" }
     ];
     const shuffled = shuffleArray(fields);
-    const sorted = orderFieldList(shuffled);
+    const sorted = orderFieldList(shuffled, supportedFieldsInOrder);
 
     expect(sorted).toBeInstanceOf(Array);
     expect(sorted.length).toEqual(fields.length);

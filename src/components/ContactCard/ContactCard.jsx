@@ -23,12 +23,12 @@ export const filterFieldList = fields =>
   fields.filter(
     field => ["name", "_id", "_rev"].includes(field.type) === false
   );
-export const groupUnsupportedFields = fields => {
+export const groupUnsupportedFields = (fields, supportedFieldTypes) => {
   const supportedFields = fields.filter(field =>
-    supportedFieldsInOrder.includes(field.type)
+    supportedFieldTypes.includes(field.type)
   );
   const unsupportedFields = fields.filter(
-    field => !supportedFieldsInOrder.includes(field.type)
+    field => !supportedFieldTypes.includes(field.type)
   );
 
   return supportedFields.concat([
@@ -38,11 +38,9 @@ export const groupUnsupportedFields = fields => {
     }
   ]);
 };
-export const orderFieldList = fields =>
+export const orderFieldList = (fields, fieldsInOrder) =>
   fields.sort(
-    (a, b) =>
-      supportedFieldsInOrder.indexOf(a.type) -
-      supportedFieldsInOrder.indexOf(b.type)
+    (a, b) => fieldsInOrder.indexOf(a.type) - fieldsInOrder.indexOf(b.type)
   );
 export const makeValuesArray = fields =>
   fields.map(field => ({
@@ -53,8 +51,11 @@ export const makeValuesArray = fields =>
 const ContactCard = ({ t, contact }) => {
   const fields = getFieldListFrom(contact);
   const filteredFields = filterFieldList(fields);
-  const groupedFields = groupUnsupportedFields(filteredFields);
-  const orderedFields = orderFieldList(groupedFields);
+  const groupedFields = groupUnsupportedFields(
+    filteredFields,
+    supportedFieldsInOrder
+  );
+  const orderedFields = orderFieldList(groupedFields, supportedFieldsInOrder);
   const normalizedFields = makeValuesArray(orderedFields);
 
   return (

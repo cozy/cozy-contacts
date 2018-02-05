@@ -17,11 +17,11 @@ const ContactFields = ({ fields, title }) => (
   <div>
     {title && <h3 className="contact-fields-title">{title}</h3>}
     <ol className="contact-field-list">
-      {fields
-        .filter(field => field.values.length > 0)
-        .map((field, index) => (
-          <ContactField type={field.type} values={field.values} key={index} />
-        ))}
+      {fields.filter(field => field.values.length > 0).map((field, index) => (
+        <li key={index}>
+          <ContactField type={field.type} values={field.values} />
+        </li>
+      ))}
     </ol>
   </div>
 );
@@ -37,7 +37,7 @@ ContactFields.propTypes = {
 };
 
 const ContactField = ({ type, values }) => (
-  <li className="contact-field">
+  <div className="contact-field">
     <div className="contact-field-icon">
       <Icon icon={getIcon(type)} color={palette["coolGrey"]} />
     </div>
@@ -46,7 +46,7 @@ const ContactField = ({ type, values }) => (
         <FieldValueWithI18n type={type} value={value} key={index} />
       ))}
     </div>
-  </li>
+  </div>
 );
 
 ContactField.propTypes = {
