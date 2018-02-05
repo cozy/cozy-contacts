@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { translate } from "cozy-ui/react/I18n";
-import { Modal, ModalContent } from "cozy-ui/react";
+import Modal, { ModalContent } from "cozy-ui/react/Modal";
 import ContactIdentity from "./ContactIdentity";
 import ContactFields from "./ContactFields";
 import contactPropTypes from "../ContactPropTypes";
 
 const HeaderActions = () => null;
 
-const supportedFieldsInOrder = [
+export const supportedFieldsInOrder = [
   "phone",
   "email",
   "address",
@@ -18,13 +18,13 @@ const supportedFieldsInOrder = [
   "note"
 ].reverse();
 
-const contactToFieldList = contact =>
+export const contactToFieldList = contact =>
   Object.keys(contact).map(type => ({ type, values: contact[type] }));
-const filterFieldList = fields =>
+export const filterFieldList = fields =>
   fields.filter(
     field => ["name", "_id", "_rev"].includes(field.type) === false
   );
-const groupUnsupportedFields = fields => {
+export const groupUnsupportedFields = fields => {
   const supportedFields = fields.filter(field =>
     supportedFieldsInOrder.includes(field.type)
   );
@@ -39,13 +39,13 @@ const groupUnsupportedFields = fields => {
     }
   ]);
 };
-const orderFieldList = fields =>
+export const orderFieldList = fields =>
   fields.sort(
     (a, b) =>
       supportedFieldsInOrder.indexOf(b.type) -
       supportedFieldsInOrder.indexOf(a.type)
   );
-const makeValuesArray = fields =>
+export const makeValuesArray = fields =>
   fields.map(field => ({
     ...field,
     values: Array.isArray(field.values) ? field.values : [field.values]
