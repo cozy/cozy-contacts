@@ -3,6 +3,12 @@ import PropTypes from "prop-types";
 import { Avatar } from "cozy-ui/react/Avatar";
 import contactPropTypes from "../ContactPropTypes";
 
+const getFullContactName = name =>
+  ["namePrefix", "givenName", "additionalName", "familyName", "nameSuffix"]
+    .map(part => name[part])
+    .join(" ")
+    .trim();
+
 const ContactIdentity = ({ name, groups }) => (
   <div className="contact-card-identity">
     <Avatar
@@ -12,9 +18,7 @@ const ContactIdentity = ({ name, groups }) => (
     />
     <div>
       <h1 className="contact-card-identity__title">
-        {`${name.namePrefix || ""} ${name.givenName ||
-          ""} ${name.additionalName || ""} ${name.familyName ||
-          ""} ${name.nameSuffix || ""}`.trim()}
+        {getFullContactName(name)}
       </h1>
       <ContactGroups groups={groups} />
     </div>
