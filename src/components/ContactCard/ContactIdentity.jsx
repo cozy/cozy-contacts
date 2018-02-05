@@ -1,13 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ContactBadge from "../ContactBadge";
+import { Avatar } from "cozy-ui/react/Avatar";
 import contactPropTypes from "../ContactPropTypes";
 
 const ContactIdentity = ({ name, groups }) => (
-  <div className="contact-identity">
-    <ContactBadge firstname={name.givenName} lastname={name.familyName} />
+  <div className="contact-card-identity">
+    <Avatar
+      firstname={name.givenName}
+      lastname={name.familyName}
+      size="medium"
+    />
     <div>
-      <h1 className="contact-identity__title">
+      <h1 className="contact-card-identity__title">
         {`${name.namePrefix || ""} ${name.givenName ||
           ""} ${name.additionalName || ""} ${name.familyName ||
           ""} ${name.nameSuffix || ""}`.trim()}

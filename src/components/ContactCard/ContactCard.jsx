@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { translate } from "cozy-ui/react/I18n";
-import Modal, { ModalContent } from "cozy-ui/react/Modal";
 import ContactIdentity from "./ContactIdentity";
 import ContactFields from "./ContactFields";
 import contactPropTypes from "../ContactPropTypes";
@@ -51,7 +50,7 @@ export const makeValuesArray = fields =>
     values: Array.isArray(field.values) ? field.values : [field.values]
   }));
 
-const ContactCard = ({ t, onClose, contact }) => {
+const ContactCard = ({ t, contact }) => {
   const fields = contactToFieldList(contact);
   const filteredFields = filterFieldList(fields);
   const groupedFields = groupUnsupportedFields(filteredFields);
@@ -59,15 +58,13 @@ const ContactCard = ({ t, onClose, contact }) => {
   const normalizedFields = makeValuesArray(orderedFields);
 
   return (
-    <Modal into="body" dismissAction={onClose}>
-      <ModalContent>
-        <header>
-          <ContactIdentity name={contact.name} groups={[]} />
-          <HeaderActions />
-        </header>
-        <ContactFields fields={normalizedFields} title={t("contact_info")} />
-      </ModalContent>
-    </Modal>
+    <div>
+      <header>
+        <ContactIdentity name={contact.name} groups={[]} />
+        <HeaderActions />
+      </header>
+      <ContactFields fields={normalizedFields} title={t("contact_info")} />
+    </div>
   );
 };
 
@@ -80,8 +77,7 @@ ContactCard.propTypes = {
     birthday: contactPropTypes.birthday,
     note: contactPropTypes.note
   }).isRequired,
-  t: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired
+  t: PropTypes.func.isRequired
 };
 
 export default translate()(ContactCard);

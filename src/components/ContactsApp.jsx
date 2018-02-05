@@ -3,6 +3,7 @@ import ContactsList from "./ContactsList/ContactsList";
 import { withContacts } from "./ContactsList";
 import ContactsHeader from "./ContactsList/ContactsHeader";
 import ContactCard from "./ContactCard/ContactCard";
+import Modal, { ModalContent } from "cozy-ui/react/Modal";
 
 const ConnectedContactsList = withContacts(ContactsList);
 
@@ -30,10 +31,14 @@ class ContactsApp extends React.Component {
       <main className="app-content">
         <ContactsHeader />
         <div role="contentinfo">
-          <ConnectedContactsList />
+          <ConnectedContactsList onClickContact={this.showContact} />
         </div>
         {displayedContact && (
-          <ContactCard contact={displayedContact} onClose={this.hideContact} />
+          <Modal into="body" dismissAction={this.hideContact}>
+            <ModalContent>
+              <ContactCard contact={displayedContact} />
+            </ModalContent>
+          </Modal>
         )}
       </main>
     );
