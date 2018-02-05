@@ -17,7 +17,7 @@ export const supportedFieldsInOrder = [
   "note"
 ];
 
-export const contactToFieldList = contact =>
+export const getFieldListFrom = contact =>
   Object.keys(contact).map(type => ({ type, values: contact[type] }));
 export const filterFieldList = fields =>
   fields.filter(
@@ -51,7 +51,7 @@ export const makeValuesArray = fields =>
   }));
 
 const ContactCard = ({ t, contact }) => {
-  const fields = contactToFieldList(contact);
+  const fields = getFieldListFrom(contact);
   const filteredFields = filterFieldList(fields);
   const groupedFields = groupUnsupportedFields(filteredFields);
   const orderedFields = orderFieldList(groupedFields);

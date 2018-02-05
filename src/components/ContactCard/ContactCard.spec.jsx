@@ -1,6 +1,6 @@
 import {
   supportedFieldsInOrder,
-  contactToFieldList,
+  getFieldListFrom,
   filterFieldList,
   groupUnsupportedFields,
   orderFieldList,
@@ -16,7 +16,7 @@ describe("Transform contacts", () => {
       b: 2,
       c: 3
     };
-    const transformed = contactToFieldList(contact);
+    const transformed = getFieldListFrom(contact);
 
     expect(transformed).toBeInstanceOf(Array);
     expect(transformed.length).toEqual(3);
