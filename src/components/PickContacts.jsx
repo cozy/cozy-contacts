@@ -2,20 +2,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { translate } from "cozy-ui/react/I18n";
-import { Button } from "cozy-ui/react";
+import { Button, IntentHeader } from "cozy-ui/react";
 import ContactsList from "./ContactsList/ContactsList";
 import { withContacts } from "./ContactsList";
 
 const ConnectedContactsList = withContacts(ContactsList);
-
-const IntentHeader = () => (
-  <div className="intent-header">
-    <h1 className="intent-header-title">
-      <img className="intent-header-icon" src="/icon.svg" />
-      <span>Cozy</span> <strong>Contacts</strong>
-    </h1>
-  </div>
-);
 
 const IntentFooter = ({ label, onSubmit, onCancel, t }) => (
   <div className="intent-footer">
@@ -90,7 +81,7 @@ class PickContacts extends React.Component {
     const { t } = this.props;
     return (
       <div className="intent-layout">
-        <IntentHeader />
+        <IntentHeader appEditor="Cozy" appName="Contacts" appIcon="/icon.svg" />
         <IntentMain>
           <ConnectedContactsList
             selection={this.state.selection}

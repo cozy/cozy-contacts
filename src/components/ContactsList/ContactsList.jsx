@@ -3,9 +3,7 @@ import PropTypes from "prop-types";
 import { sortGivenNameFirst, getDisplayedName } from "./";
 import ContactRow from "./ContactRow";
 
-const ContactHeaderRow = props => (
-  <div className="contact-header">{props.header}</div>
-);
+const ContactHeaderRow = props => <div className="divider">{props.header}</div>;
 ContactHeaderRow.propTypes = {
   header: PropTypes.string.isRequired
 };
@@ -25,30 +23,46 @@ const ContactsList = props => {
     return <ContactsEmptyList />;
   }
   const sortedContacts = [...props.contacts].sort(sortGivenNameFirst);
-  const rows = [];
   let lastLetter = null;
-  sortedContacts.forEach(contact => {
+  const categorizedContacts = sortedContacts.reduce((acc, contact) => {
     const name = getDisplayedName(contact);
-    if (name[0] !== lastLetter) {
-      rows.push(<ContactHeaderRow header={name[0] || "EMPTY"} />);
+    const header = name[0] || "EMPTY";
+    if (header !== lastLetter) {
+      acc[header] = [];
     }
-    rows.push(
-      <ContactRow
-        key={contact._id}
-        contact={contact}
-        selection={
-          props.onSelect && {
-            onSelect: () => {
-              props.onSelect(contact._id);
-            },
-            selected: props.selection.includes(contact._id)
-          }
-        }
-      />
-    );
-    lastLetter = name[0];
-  });
-  return <div>{rows}</div>;
+    acc[header].push(contact);
+    lastLetter = header;
+    return acc;
+  }, {});
+  return (
+    <div className="list-wrapper">
+      <ol className="list-contact">
+        {Object.keys(categorizedContacts).map(header => (
+          <li key={`cat-${header}`}>
+            <ContactHeaderRow key={header} header={header} />
+            <ol className="sublist-contact">
+              {categorizedContacts[header].map(contact => (
+                <li key={`contact-${contact._id}`}>
+                  <ContactRow
+                    key={contact._id}
+                    contact={contact}
+                    selection={
+                      props.onSelect && {
+                        onSelect: () => {
+                          props.onSelect(contact._id);
+                        },
+                        selected: props.selection.includes(contact._id)
+                      }
+                    }
+                  />
+                </li>
+              ))}
+            </ol>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
 };
 ContactsList.propTypes = {
   contacts: PropTypes.array.isRequired,

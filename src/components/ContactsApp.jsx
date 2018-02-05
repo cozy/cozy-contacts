@@ -6,10 +6,12 @@ import ContactsHeader from "./ContactsList/ContactsHeader";
 const ConnectedContactsList = withContacts(ContactsList);
 
 const ContactsApp = () => (
-  <div>
+  <main className="app-content">
     <ContactsHeader />
-    <ConnectedContactsList />
-  </div>
+    <div role="contentinfo">
+      <ConnectedContactsList />
+    </div>
+  </main>
 );
 
 export default ContactsApp;

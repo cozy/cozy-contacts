@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Avatar } from "cozy-ui/react/Avatar";
 
 const contactPropTypes = {
   phone: PropTypes.shape({
@@ -23,65 +24,26 @@ const contactPropTypes = {
   })
 };
 
-const nametohex = (name = "") => {
-  const colors = [
-    "#1abc9c",
-    "#2ecc71",
-    "#3498db",
-    "#9b59b6",
-    "#34495e",
-    "#16a085",
-    "#27ae60",
-    "#2980b9",
-    "#8e44ad",
-    "#2c3e50",
-    "#f1c40f",
-    "#e67e22",
-    "#e74c3c",
-    "#95a5a6",
-    "#f39c12",
-    "#d35400",
-    "#c0392b",
-    "#bdc3c7",
-    "#7f8c8d"
-  ];
-  return colors[
-    Array.from(name.toUpperCase())
-      .map(letter => letter.charCodeAt(0))
-      .reduce((sum, number) => sum + number, 0) % colors.length
-  ];
-};
-
-const ContactBadge = ({ firstname, lastname }) => {
-  const style = {
-    backgroundColor: `${nametohex(firstname)}`,
-    color: "white"
-  };
-  return (
-    <div className="contact-badge" style={style}>
-      <span className="contact-badge-name">
-        {[
-          (firstname[0] || "").toUpperCase(),
-          (lastname[0] || "").toUpperCase()
-        ].join("")}
-      </span>
-    </div>
-  );
-};
-ContactBadge.propTypes = {
+const ContactIdentity = ({ firstname, lastname }) => (
+  <div className="contact-identity">
+    <Avatar firstname={firstname} lastname={lastname} size="small" />
+    <ContactName firstname={firstname} lastname={lastname} />
+  </div>
+);
+ContactIdentity.propTypes = {
   firstname: PropTypes.string,
   lastname: PropTypes.string
 };
-ContactBadge.defaultProps = {
+ContactIdentity.defaultProps = {
   firstname: "",
   lastname: ""
 };
 
 const ContactName = ({ firstname, lastname }) => (
-  <div className="contact-name">
-    <span className="contact-name-firstname">{firstname}</span>
-    <span>&nbsp;</span>
-    <span className="contact-name-lastname">{lastname}</span>
+  <div>
+    <span className="contact-firstname">{firstname}</span>
+    &nbsp;
+    <span className="contact-lastname">{lastname}</span>
   </div>
 );
 ContactName.propTypes = {
@@ -117,7 +79,7 @@ ContactEmail.defaultProps = {
 };
 
 const ContactSelection = props => (
-  <div onClick={props.onSelect}>
+  <div className="contact-selection" onClick={props.onSelect}>
     <span data-input="checkbox">
       <input type="checkbox" checked={props.selected} />
       <label />
@@ -150,8 +112,7 @@ const ContactRow = props => {
           onSelect={props.selection.onSelect}
         />
       )}
-      <ContactBadge firstname={firstname} lastname={lastname} />
-      <ContactName firstname={firstname} lastname={lastname} />
+      <ContactIdentity firstname={firstname} lastname={lastname} />
       <ContactPhone phone={phone} />
       <ContactEmail email={email} />
     </div>
