@@ -1951,9 +1951,9 @@ cozy-scripts@0.4.5:
     webpack-dev-server "2.11.1"
     webpack-merge "4.1.1"
 
-cozy-ui@7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-7.1.0.tgz#e678bf1c524c5640c2fddeeb55e745d77d570de7"
+cozy-ui@7.3.0:
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-7.3.0.tgz#86f7974d40b3b98b2ec0e4c69001c496c6bde7ac"
   dependencies:
     babel-preset-cozy-app "^0.3.1"
     classnames "^2.2.5"
@@ -1961,6 +1961,7 @@ cozy-ui@7.1.0:
     hammerjs "^2.0.8"
     md5 "^2.2.0"
     normalize.css "^7.0.0"
+    preact-portal "^1.1.2"
     stylus "^0.54.5"
 
 create-ecdh@^4.0.0:
@@ -6995,6 +6996,10 @@ preact-compat@^3.17.0:
     preact-transition-group "^1.1.0"
     prop-types "^15.5.8"
     standalone-react-addons-pure-render-mixin "^0.1.1"
+
+preact-portal@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/preact-portal/-/preact-portal-1.1.2.tgz#14313ed97a8ee28ee405f5ff17456d31797a11cd"
 
 preact-render-to-string@^3.6.0:
   version "3.7.0"
