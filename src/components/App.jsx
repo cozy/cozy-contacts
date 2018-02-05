@@ -3,9 +3,7 @@ import ContactsApp from "./ContactsApp";
 
 const App = () => (
   <div className="app-wrapper c-layout">
-    <main className="app-content">
-      <ContactsApp />
-    </main>
+    <ContactsApp />
   </div>
 );
 

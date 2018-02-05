@@ -27,13 +27,15 @@ class ContactsApp extends React.Component {
     const { displayedContact } = this.state;
 
     return (
-      <div>
+      <main className="app-content">
         <ContactsHeader />
-        <ConnectedContactsList onClickContact={this.showContact} />
+        <div role="contentinfo">
+          <ConnectedContactsList />
+        </div>
         {displayedContact && (
           <ContactCard contact={displayedContact} onClose={this.hideContact} />
         )}
-      </div>
+      </main>
     );
   }
 }

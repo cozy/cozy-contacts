@@ -1,13 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ContactBadge from "../ContactBadge";
 import contactPropTypes from "../ContactPropTypes";
+import { Avatar } from "cozy-ui/react/Avatar";
+
+const ContactIdentity = ({ firstname, lastname }) => (
+  <div className="contact-identity">
+    <Avatar firstname={firstname} lastname={lastname} size="small" />
+    <ContactName firstname={firstname} lastname={lastname} />
+  </div>
+);
+ContactIdentity.propTypes = {
+  firstname: PropTypes.string,
+  lastname: PropTypes.string
+};
+ContactIdentity.defaultProps = {
+  firstname: "",
+  lastname: ""
+};
 
 const ContactName = ({ firstname, lastname }) => (
-  <div className="contact-name">
-    <span className="contact-name-firstname">{firstname}</span>
-    <span>&nbsp;</span>
-    <span className="contact-name-lastname">{lastname}</span>
+  <div>
+    <span className="contact-firstname">{firstname}</span>
+    &nbsp;
+    <span className="contact-lastname">{lastname}</span>
   </div>
 );
 ContactName.propTypes = {
@@ -43,7 +58,7 @@ ContactEmail.defaultProps = {
 };
 
 const ContactSelection = props => (
-  <div onClick={props.onSelect}>
+  <div className="contact-selection" onClick={props.onSelect}>
     <span data-input="checkbox">
       <input type="checkbox" checked={props.selected} />
       <label />
@@ -80,8 +95,7 @@ const ContactRow = props => {
           onSelect={stopPropagationAndSelect}
         />
       )}
-      <ContactBadge firstname={firstname} lastname={lastname} />
-      <ContactName firstname={firstname} lastname={lastname} />
+      <ContactIdentity firstname={firstname} lastname={lastname} />
       <ContactPhone phone={phone} />
       <ContactEmail email={email} />
     </div>
