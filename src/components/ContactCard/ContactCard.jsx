@@ -15,7 +15,7 @@ export const supportedFieldsInOrder = [
   "company",
   "birthday",
   "note"
-].reverse();
+];
 
 export const contactToFieldList = contact =>
   Object.keys(contact).map(type => ({ type, values: contact[type] }));
@@ -41,8 +41,8 @@ export const groupUnsupportedFields = fields => {
 export const orderFieldList = fields =>
   fields.sort(
     (a, b) =>
-      supportedFieldsInOrder.indexOf(b.type) -
-      supportedFieldsInOrder.indexOf(a.type)
+      supportedFieldsInOrder.indexOf(a.type) -
+      supportedFieldsInOrder.indexOf(b.type)
   );
 export const makeValuesArray = fields =>
   fields.map(field => ({
