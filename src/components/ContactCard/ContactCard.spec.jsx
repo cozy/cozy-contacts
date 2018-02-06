@@ -7,7 +7,7 @@ import {
   makeValuesArray
 } from "./ContactCard.jsx";
 
-const shuffleArray = arr => arr.sort(() => Math.random() - 0.5);
+const shuffleArray = arr => arr.slice().sort(() => Math.random() - 0.5);
 
 describe("Transform contacts", () => {
   it("should transform an object into an array of fields", () => {
@@ -168,6 +168,29 @@ describe("Order fields", () => {
     for (let i = 0; i < sorted.length; ++i) {
       expect(sorted[i]).toEqual(fields[i]);
     }
+  });
+
+  it("should put unknown fields at the end", () => {
+    const fields = [
+      { type: "phone", values: "whatever" },
+      { type: "address", values: "whatever" },
+      { type: "cozy", values: "whatever" }
+    ];
+    const sorted = orderFieldList(fields, ["cozy", "address"]);
+
+    expect(sorted).toBeInstanceOf(Array);
+    expect(sorted.length).toEqual(fields.length);
+    expect(sorted[2]).toEqual(fields[0]);
+  });
+
+  it("should not modify the original array", () => {
+    const original = [
+      { type: "phone", values: "whatever" },
+      { type: "address", values: "whatever" }
+    ];
+    const sorted = orderFieldList(original, ["phone", "address"]);
+
+    expect(sorted).not.toBe(original);
   });
 });
 
