@@ -79,26 +79,17 @@ FieldValue.propTypes = {
 
 const FieldValueWithI18n = translate()(FieldValue);
 
-const getIcon = fieldType => {
-  switch (fieldType) {
-    case "birthday":
-      return IconCalendar;
-    case "note":
-      return IconComment;
-    case "company":
-      return IconCompany;
-    case "cozy":
-      return IconCozy;
-    case "email":
-      return IconEmail;
-    case "address":
-      return IconLocation;
-    case "phone":
-      return IconPhone;
-    default:
-      return IconFlag;
-  }
+const iconsByType = {
+  birthday: IconCalendar,
+  note: IconComment,
+  company: IconCompany,
+  cozy: IconCozy,
+  email: IconEmail,
+  address: IconLocation,
+  phone: IconPhone
 };
+
+const getIcon = fieldType => iconsByType[fieldType] || IconFlag;
 
 const emptyAddress = {
   street: "",
