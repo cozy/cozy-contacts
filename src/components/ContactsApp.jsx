@@ -4,8 +4,13 @@ import { withContacts } from "./ContactsList";
 import ContactsHeader from "./ContactsList/ContactsHeader";
 import ContactCard from "./ContactCard/ContactCard";
 import Modal, { ModalContent } from "cozy-ui/react/Modal";
+import { translate } from "cozy-ui/react/I18n";
 
 const ConnectedContactsList = withContacts(ContactsList);
+
+const TranslatedContactCard = translate()(({ t, ...props }) => (
+  <ContactCard title={t("contact_info")} {...props} />
+));
 
 class ContactsApp extends React.Component {
   state = {
@@ -36,7 +41,7 @@ class ContactsApp extends React.Component {
         {displayedContact && (
           <Modal into="body" dismissAction={this.hideContact}>
             <ModalContent>
-              <ContactCard contact={displayedContact} />
+              <TranslatedContactCard contact={displayedContact} />
             </ModalContent>
           </Modal>
         )}
