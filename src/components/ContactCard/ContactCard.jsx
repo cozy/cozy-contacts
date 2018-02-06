@@ -39,9 +39,15 @@ export const groupUnsupportedFields = (fields, supportedFieldTypes) => {
   ]);
 };
 export const orderFieldList = (fields, fieldsInOrder) =>
-  fields.sort(
-    (a, b) => fieldsInOrder.indexOf(a.type) - fieldsInOrder.indexOf(b.type)
-  );
+  fields.slice().sort((a, b) => {
+    const indexA = fieldsInOrder.includes(a.type)
+      ? fieldsInOrder.indexOf(a.type)
+      : fieldsInOrder.length;
+    const indexB = fieldsInOrder.includes(b.type)
+      ? fieldsInOrder.indexOf(b.type)
+      : fieldsInOrder.length;
+    return indexA - indexB;
+  });
 export const makeValuesArray = fields =>
   fields.map(field => ({
     ...field,
