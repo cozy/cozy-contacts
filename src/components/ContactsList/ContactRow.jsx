@@ -58,7 +58,13 @@ ContactEmail.defaultProps = {
 };
 
 const ContactSelection = props => (
-  <div className="contact-selection" onClick={props.onSelect}>
+  <div
+    className="contact-selection"
+    onClick={e => {
+      e.stopPropagation();
+      props.onSelect(e);
+    }}
+  >
     <span data-input="checkbox">
       <input type="checkbox" checked={props.selected} />
       <label />
@@ -83,16 +89,12 @@ const ContactRow = props => {
       familyName: ""
     }
   } = props.contact;
-  const stopPropagationAndSelect = e => {
-    e.stopPropagation();
-    props.selection.onSelect(e);
-  };
   return (
     <div className="contact" onClick={props.onClick}>
       {props.selection && (
         <ContactSelection
           selected={props.selection.selected}
-          onSelect={stopPropagationAndSelect}
+          onSelect={props.selection.onSelect}
         />
       )}
       <ContactIdentity firstname={firstname} lastname={lastname} />
