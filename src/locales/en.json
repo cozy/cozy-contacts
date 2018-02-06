@@ -2,5 +2,8 @@
   "cancel": "Cancel",
   "confirm": "Confirm",
   "selected_contacts":
-    "%{smart_count} selected contact |||| %{smart_count} selected contacts"
+    "%{smart_count} selected contact |||| %{smart_count} selected contacts",
+  "contact_info": "Contact informations",
+  "formatted_address":
+    "%{pobox} %{street} %{postcode} %{city} %{region} %{country}"
 }

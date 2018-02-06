@@ -1,28 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import contactPropTypes from "../ContactPropTypes";
 import { Avatar } from "cozy-ui/react/Avatar";
-
-const contactPropTypes = {
-  phone: PropTypes.shape({
-    number: PropTypes.string.isRequired,
-    type: PropTypes.string,
-    label: PropTypes.string,
-    primary: PropTypes.bool
-  }),
-  email: PropTypes.shape({
-    address: PropTypes.string.isRequired,
-    primary: PropTypes.bool,
-    type: PropTypes.string,
-    label: PropTypes.string
-  }),
-  name: PropTypes.shape({
-    familyName: PropTypes.string,
-    givenName: PropTypes.string,
-    additionalName: PropTypes.string,
-    namePrefix: PropTypes.string,
-    nameSuffix: PropTypes.string
-  })
-};
 
 const ContactIdentity = ({ firstname, lastname }) => (
   <div className="contact-identity">
@@ -79,7 +58,13 @@ ContactEmail.defaultProps = {
 };
 
 const ContactSelection = props => (
-  <div className="contact-selection" onClick={props.onSelect}>
+  <div
+    className="contact-selection"
+    onClick={e => {
+      e.stopPropagation();
+      props.onSelect(e);
+    }}
+  >
     <span data-input="checkbox">
       <input type="checkbox" checked={props.selected} />
       <label />
@@ -105,7 +90,7 @@ const ContactRow = props => {
     }
   } = props.contact;
   return (
-    <div className="contact">
+    <div className="contact" onClick={props.onClick}>
       {props.selection && (
         <ContactSelection
           selected={props.selection.selected}
@@ -127,10 +112,12 @@ ContactRow.propTypes = {
   selection: PropTypes.shape({
     selected: PropTypes.bool,
     onSelect: PropTypes.func
-  })
+  }),
+  onClick: PropTypes.func
 };
 ContactRow.defaultProps = {
-  selection: null
+  selection: null,
+  onClick: null
 };
 
 export default ContactRow;
