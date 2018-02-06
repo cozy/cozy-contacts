@@ -20,7 +20,6 @@
       "NODE_ENV=browser:development cozy-scripts --show-config",
     "deploy":
       "git-directory-deploy --username cozy --email contact@cozycloud.cc --directory build/ --repo=https://$GITHUB_TOKEN@github.com/cozy/cozy-contacts.git",
-    "pretest": "npm-run-all --serial lint",
     "test": "jest",
     "stack:docker":
       "docker run --rm -it -p 8080:8080 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev"
