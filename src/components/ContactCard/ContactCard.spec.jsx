@@ -76,7 +76,16 @@ describe("Group fields", () => {
   ];
 
   it("should group unsupported fields together", () => {
-    const grouped = groupUnsupportedFields(fields, supportedFieldsInOrder);
+    const supportedFields = [
+      "phone",
+      "email",
+      "address",
+      "cozy",
+      "company",
+      "birthday",
+      "note"
+    ];
+    const grouped = groupUnsupportedFields(fields, supportedFields);
     const others = grouped.filter(field => field.type === "other");
 
     expect(grouped).toBeInstanceOf(Array);
@@ -92,12 +101,12 @@ describe("Group fields", () => {
   });
 
   it("should leave supported fields alone", () => {
-    const grouped = groupUnsupportedFields(fields, supportedFieldsInOrder);
+    const supportedFields = ["phone", "email", "address", "cozy", "company"];
+    const grouped = groupUnsupportedFields(fields, supportedFields);
 
     expect(
-      grouped.filter(field => supportedFieldsInOrder.includes(field.type))
-        .length
-    ).toEqual(7);
+      grouped.filter(field => supportedFields.includes(field.type)).length
+    ).toEqual(supportedFields.length);
   });
 
   it('should group an unsupported field called "other"', () => {
