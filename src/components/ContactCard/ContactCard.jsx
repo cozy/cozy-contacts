@@ -71,7 +71,8 @@ const ContactCard = ({ t, contact }) => {
 
 ContactCard.propTypes = {
   contact: PropTypes.shape({
-    name: contactPropTypes.name.isRequired,
+    name: contactPropTypes.name,
+    phone: PropTypes.arrayOf(contactPropTypes.phone),
     email: PropTypes.arrayOf(contactPropTypes.email),
     address: PropTypes.arrayOf(contactPropTypes.address),
     cozy: PropTypes.arrayOf(contactPropTypes.cozy),
