@@ -21,7 +21,8 @@ export const getFieldListFrom = contact =>
   Object.keys(contact).map(type => ({ type, values: contact[type] }));
 export const filterFieldList = fields =>
   fields.filter(
-    field => ["name", "_id", "_rev"].includes(field.type) === false
+    field =>
+      ["name", "_id", "_rev"].includes(field.type) === false && field.values
   );
 export const groupUnsupportedFields = (fields, supportedFieldTypes) => {
   const supportedFields = fields.filter(field =>

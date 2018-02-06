@@ -60,6 +60,13 @@ describe("Filter fields", () => {
       filtered.filter(field => ["stays"].includes(field.type)).length
     ).toEqual(1);
   });
+
+  it("should filter out empty values", () => {
+    const filtered = filterFieldList([{ type: "something", values: "" }]);
+
+    expect(filtered).toBeInstanceOf(Array);
+    expect(filtered.length).toEqual(0);
+  });
 });
 
 describe("Group fields", () => {
