@@ -6,6 +6,8 @@ import "styles";
 
 import React from "react";
 import { render } from "react-dom";
+import CozyClient, { CozyProvider } from "cozy-client";
+import CozyStackLink from "cozy-stack-link";
 import { I18n } from "cozy-ui/react/I18n";
 
 if (__DEVELOPMENT__) {
@@ -18,14 +20,16 @@ if (__DEVELOPMENT__) {
 }
 
 let appLocale;
-const renderApp = function() {
+const renderApp = function(client) {
   const App = require("components/App").default;
   render(
     <I18n
       lang={appLocale}
       dictRequire={appLocale => require(`locales/${appLocale}`)}
     >
-      <App />
+      <CozyProvider client={client}>
+        <App />
+      </CozyProvider>
     </I18n>,
     document.querySelector("[role=application]")
   );
@@ -65,10 +69,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const protocol = window.location ? window.location.protocol : "https:";
 
-  cozy.client.init({
-    cozyURL: `${protocol}//${data.cozyDomain}`,
-    token: data.cozyToken
+  const client = new CozyClient({
+    link: new CozyStackLink({
+      uri: `${protocol}//${data.cozyDomain}`,
+      token: data.cozyToken
+    })
   });
+
   cozy.bar.init({
     appEditor: appEditor,
     appName: appName,
@@ -77,5 +84,5 @@ document.addEventListener("DOMContentLoaded", () => {
     replaceTitleOnMobile: true
   });
 
-  renderApp();
+  renderApp(client);
 });

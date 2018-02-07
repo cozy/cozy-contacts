@@ -1,5 +1,7 @@
-/* global cozy */
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from "prop-types";
+import { connect, all } from "cozy-client";
+import ContactsList from "./ContactsList";
 import ContactsError from "./ContactsError";
 
 export function getDisplayedName(contact) {
