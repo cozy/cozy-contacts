@@ -10,15 +10,20 @@
     padding 0
     padding-left 1.5rem
 
+    +small-screen()
+        padding-left 0
+
 .contact-field
     display flex
     margin 1rem 0
 
 .contact-field-icon
     margin-right 1rem
+    margin-top .1rem
 
 .contact-field-value
     margin-bottom .5rem
+    word-break break-word
 
     a
         color dodgerBlue
@@ -34,6 +39,22 @@
 .contact-card-identity
     display flex
 
+    +small-screen()
+        flex-direction column
+        justify-content flex-start
+        align-items center
+
+.contact-card-identity__infos
+    max-width 70%
+
+    +small-screen()
+        max-width 100%
+        width 100%
+        text-align center
+
 .contact-card-identity__title
     font-size 1.5rem
     margin .5rem 1rem
+    max-width 100%
+    overflow hidden
+    text-overflow ellipsis

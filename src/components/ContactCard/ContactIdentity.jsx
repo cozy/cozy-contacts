@@ -16,7 +16,7 @@ const ContactIdentity = ({ name, groups }) => (
       lastname={name.familyName}
       size="medium"
     />
-    <div>
+    <div className="contact-card-identity__infos">
       <h1 className="contact-card-identity__title">
         {getFullContactName(name)}
       </h1>
