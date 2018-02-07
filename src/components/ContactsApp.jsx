@@ -1,32 +1,49 @@
 import React from "react";
 import ContactsList from "./ContactsList/ContactsList";
-import { withContacts } from "./ContactsList";
 import ContactsHeader from "./ContactsList/ContactsHeader";
 import ContactCard from "./ContactCard/ContactCard";
 import Modal, { ModalContent } from "cozy-ui/react/Modal";
+import { Button } from "cozy-ui/react/Button";
 import { translate } from "cozy-ui/react/I18n";
-
-const ConnectedContactsList = withContacts(ContactsList);
+import { PropTypes } from "prop-types";
 
 const TranslatedContactCard = translate()(({ t, ...props }) => (
   <ContactCard title={t("contact_info")} {...props} />
 ));
 
+const ContactActions = ({ contact, deleteContact }) => (
+  <div>
+    <Button theme="danger" onClick={() => deleteContact(contact)}>
+      delete
+    </Button>
+  </div>
+);
+
 class ContactsApp extends React.Component {
+  static propTypes = {
+    contacts: PropTypes.array,
+    deleteContact: PropTypes.func
+  };
+
   state = {
     displayedContact: null
   };
 
-  showContact = contact => {
+  displayContactCard = contact => {
     this.setState({
       displayedContact: contact
     });
   };
 
-  hideContact = () => {
+  hideContactCard = () => {
     this.setState({
       displayedContact: null
     });
+  };
+
+  onDeleteContact = contact => {
+    this.props.deleteContact(contact);
+    this.hideContactCard();
   };
 
   render() {
@@ -36,12 +53,23 @@ class ContactsApp extends React.Component {
       <main className="app-content">
         <ContactsHeader />
         <div role="contentinfo">
-          <ConnectedContactsList onClickContact={this.showContact} />
+          <ContactsList
+            onClickContact={this.displayContactCard}
+            contacts={this.props.contacts}
+          />
         </div>
         {displayedContact && (
-          <Modal into="body" dismissAction={this.hideContact}>
+          <Modal into="body" dismissAction={this.hideContactCard}>
             <ModalContent>
-              <TranslatedContactCard contact={displayedContact} />
+              <TranslatedContactCard
+                contact={displayedContact}
+                renderActions={() => (
+                  <ContactActions
+                    contact={displayedContact}
+                    deleteContact={this.onDeleteContact}
+                  />
+                )}
+              />
             </ModalContent>
           </Modal>
         )}
@@ -50,4 +78,4 @@ class ContactsApp extends React.Component {
   }
 }
 
-export default withContacts(ContactsApp);
+export default ContactsApp;
