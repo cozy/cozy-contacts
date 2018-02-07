@@ -2,6 +2,7 @@ import React from "react";
 import { mount } from "enzyme";
 
 import ContactFields from "./ContactFields";
+import { I18n } from "cozy-ui/react/I18n";
 
 describe("ContactFields", () => {
   it("should accept the strict minimum", () => {
@@ -26,14 +27,18 @@ describe("ContactFields", () => {
     expect(titleNode.text()).toEqual(title);
   });
 
-  xit("should display simple values", () => {
+  it("should display simple values", () => {
     const fields = [
       { type: "phone", values: [{ phone: "+XX X XX XX XX XX" }] },
       { type: "email", values: [{ address: "mail@example.com" }] },
       { type: "other", values: [{ text: "something" }] }
     ];
 
-    const contactFieldsInstance = <ContactFields fields={fields} />;
+    const contactFieldsInstance = (
+      <I18n lang="en" dictRequire={() => ""}>
+        <ContactFields fields={fields} />
+      </I18n>
+    );
     const contactFields = mount(contactFieldsInstance);
     const fieldsNodes = contactFields.find("ContactField");
 

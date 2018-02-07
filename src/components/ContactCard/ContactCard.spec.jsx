@@ -1,9 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import ContactCard from "./ContactCard";
+import { I18n } from "cozy-ui/react/I18n";
 
 describe("ContactCard", () => {
-  test.skip("should match snapshot", () => {
+  test("should match snapshot", () => {
     const contact = {
       _id: "c6899688-6cc6-4ffb-82d4-ab9f9b82c582",
       _rev: "1-9368a4f2e467c449f4a1f5171a784aa8",
@@ -29,7 +30,11 @@ describe("ContactCard", () => {
       unsupportedField: "unsupportedField"
     };
     const tree = renderer
-      .create(<ContactCard contact={contact} title="title" />)
+      .create(
+        <I18n lang="en" dictRequire={() => ""}>
+          <ContactCard contact={contact} title="title" />
+        </I18n>
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
