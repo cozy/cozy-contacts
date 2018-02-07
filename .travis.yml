@@ -29,6 +29,7 @@ before_install:
 - install -m0644 .transifexrc.tpl ~/.transifexrc
 - echo "password = $TX_PASSWD" >> ~/.transifexrc
 script:
+- yarn lint
 - yarn test
 - yarn build
 after_success:
