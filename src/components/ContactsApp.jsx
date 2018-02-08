@@ -4,27 +4,34 @@ import ContactsHeader from "./ContactsList/ContactsHeader";
 import ContactCard from "./ContactCard/ContactCard";
 import Modal, { ModalContent } from "cozy-ui/react/Modal";
 import { Button } from "cozy-ui/react/Button";
-import { translate } from "cozy-ui/react/I18n";
 import { PropTypes } from "prop-types";
+import { Icon, Menu, MenuItem } from "cozy-ui/react";
 
-const TranslatedContactCard = translate()(({ t, ...props }) => (
+const TranslatedContactCard = ({ ...props }, { t }) => (
   <ContactCard title={t("contact_info")} {...props} />
-));
-
-const ContactActions = ({ contact, deleteContact }) => (
-  <div>
-    <Button theme="danger" onClick={() => deleteContact(contact)}>
-      delete
-    </Button>
-  </div>
 );
 
-class ContactsApp extends React.Component {
-  static propTypes = {
-    contacts: PropTypes.array,
-    deleteContact: PropTypes.func
-  };
+const ContactCardMenu = ({ deleteAction }) => (
+  <Menu
+    component={
+      <Button theme="secondary" extension="narrow">
+        <Icon icon="dots" />
+      </Button>
+    }
+  >
+    <MenuItem icon={<Icon icon="delete" />} onSelect={deleteAction.action}>
+      {deleteAction.label}
+    </MenuItem>
+  </Menu>
+);
+ContactCardMenu.propTypes = {
+  deleteAction: PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    action: PropTypes.func.isRequired
+  }).isRequired
+};
 
+class ContactsApp extends React.Component {
   state = {
     displayedContact: null
   };
@@ -64,9 +71,11 @@ class ContactsApp extends React.Component {
               <TranslatedContactCard
                 contact={displayedContact}
                 renderActions={() => (
-                  <ContactActions
-                    contact={displayedContact}
-                    deleteContact={this.onDeleteContact}
+                  <ContactCardMenu
+                    deleteAction={{
+                      label: this.context.t("delete"),
+                      action: () => this.onDeleteContact(displayedContact)
+                    }}
                   />
                 )}
               />
@@ -77,5 +86,9 @@ class ContactsApp extends React.Component {
     );
   }
 }
+ContactsApp.propTypes = {
+  contacts: PropTypes.array,
+  deleteContact: PropTypes.func
+};
 
 export default ContactsApp;

@@ -2,7 +2,9 @@
 
 exports[`ContactCard should match snapshot 1`] = `
 <div>
-  <header>
+  <header
+    className="contact-card-header"
+  >
     <div
       className="contact-card-identity"
     >
@@ -15,14 +17,16 @@ exports[`ContactCard should match snapshot 1`] = `
           }
         }
       >
+        
         <span
           className="c-avatar-initials"
         >
           RW
         </span>
-        
       </div>
-      <div>
+      <div
+        className="contact-card-identity__infos"
+      >
         <h1
           className="contact-card-identity__title"
         >

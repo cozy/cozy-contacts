@@ -24,7 +24,7 @@ const ContactCard = ({ title, contact, renderActions }) => {
 
   return (
     <div>
-      <header>
+      <header className="contact-card-header">
         <ContactIdentity name={contact.name} groups={[]} />
         {renderActions()}
       </header>

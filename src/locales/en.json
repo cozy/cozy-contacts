@@ -1,6 +1,7 @@
 {
   "cancel": "Cancel",
   "confirm": "Confirm",
+  "delete": "Delete",
   "selected_contacts":
     "%{smart_count} selected contact |||| %{smart_count} selected contacts",
   "contact_info": "Contact informations",
