@@ -66,7 +66,11 @@ class ContactsApp extends React.Component {
           />
         </div>
         {displayedContact && (
-          <Modal into="body" dismissAction={this.hideContactCard}>
+          <Modal
+            into="body"
+            dismissAction={this.hideContactCard}
+            size="xxlarge"
+          >
             <ModalContent>
               <TranslatedContactCard
                 contact={displayedContact}
