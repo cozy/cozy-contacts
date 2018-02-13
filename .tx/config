@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[<project_slug.resource_slug>]
+[cozy-contacts.global]
 file_filter = src/locales/<lang>.json
 source_file = src/locales/en.json
 source_lang = en
