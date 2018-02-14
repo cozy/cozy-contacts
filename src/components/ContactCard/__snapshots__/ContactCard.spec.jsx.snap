@@ -1,0 +1,231 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactCard should match snapshot 1`] = `
+<div>
+  <header
+    className="contact-card-header"
+  >
+    <div
+      className="contact-card-identity"
+    >
+      <div
+        className="c-avatar c-avatar--medium"
+        style={
+          Object {
+            "backgroundColor": "#6984CE",
+            "color": "white",
+          }
+        }
+      >
+        
+        <span
+          className="c-avatar-initials"
+        >
+          RW
+        </span>
+      </div>
+      <div
+        className="contact-card-identity__infos"
+      >
+        <h1
+          className="contact-card-identity__title"
+        >
+          Rikki  White
+        </h1>
+      </div>
+    </div>
+  </header>
+  <div>
+    <h3
+      className="contact-fields-title"
+    >
+      title
+    </h3>
+    <ol
+      className="contact-field-list"
+    >
+      <li>
+        <div
+          className="contact-field"
+        >
+          <div
+            className="contact-field-icon"
+          >
+            <svg
+              className="icon"
+              height="16"
+              style={
+                Object {
+                  "fill": "#95999D",
+                }
+              }
+              width="16"
+            >
+              <use
+                xlinkHref="#icon-0"
+              />
+            </svg>
+          </div>
+          <div>
+            <div
+              className="contact-field-value"
+            >
+              <a
+                href="tel:+33 (1)9 14 02 28 31"
+              >
+                +33 (1)9 14 02 28 31
+              </a>
+            </div>
+            <div
+              className="contact-field-value"
+            >
+              <a
+                href="tel:+33 (2)3 99 53 65 21"
+              >
+                +33 (2)3 99 53 65 21
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div
+          className="contact-field"
+        >
+          <div
+            className="contact-field-icon"
+          >
+            <svg
+              className="icon"
+              height="16"
+              style={
+                Object {
+                  "fill": "#95999D",
+                }
+              }
+              width="16"
+            >
+              <use
+                xlinkHref="#icon-0"
+              />
+            </svg>
+          </div>
+          <div>
+            <div
+              className="contact-field-value"
+            >
+              <a
+                href="mailto:rikki.white@celmax.name"
+              >
+                rikki.white@celmax.name
+              </a>
+            </div>
+            <div
+              className="contact-field-value"
+            >
+              <a
+                href="mailto:eleanore.fennell@thermolock.name"
+              >
+                eleanore.fennell@thermolock.name
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div
+          className="contact-field"
+        >
+          <div
+            className="contact-field-icon"
+          >
+            <svg
+              className="icon"
+              height="16"
+              style={
+                Object {
+                  "fill": "#95999D",
+                }
+              }
+              width="16"
+            >
+              <use
+                xlinkHref="#icon-0"
+              />
+            </svg>
+          </div>
+          <div>
+            <div
+              className="contact-field-value"
+            >
+              formatted_address
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div
+          className="contact-field"
+        >
+          <div
+            className="contact-field-icon"
+          >
+            <svg
+              className="icon"
+              height="16"
+              style={
+                Object {
+                  "fill": "#95999D",
+                }
+              }
+              width="16"
+            >
+              <use
+                xlinkHref="#icon-0"
+              />
+            </svg>
+          </div>
+          <div>
+            <div
+              className="contact-field-value"
+            >
+              1998-6-3
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div
+          className="contact-field"
+        >
+          <div
+            className="contact-field-icon"
+          >
+            <svg
+              className="icon"
+              height="16"
+              style={
+                Object {
+                  "fill": "#95999D",
+                }
+              }
+              width="16"
+            >
+              <use
+                xlinkHref="#icon-0"
+              />
+            </svg>
+          </div>
+          <div>
+            <div
+              className="contact-field-value"
+            >
+              unsupportedField
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</div>
+`;

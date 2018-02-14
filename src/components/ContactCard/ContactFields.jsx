@@ -54,8 +54,8 @@ ContactField.propTypes = {
   values: PropTypes.array.isRequired
 };
 
-const FieldValue = ({ t, type, value }) => {
-  const renderedValue = renderFieldValue(value, type, t);
+const FieldValue = ({ type, value, t, f }) => {
+  const renderedValue = renderFieldValue(value, type, t, f);
   const label = value.type || value.label || null;
 
   return (
@@ -74,7 +74,8 @@ FieldValue.propTypes = {
     PropTypes.number,
     PropTypes.object
   ]),
-  t: PropTypes.func.isRequired
+  t: PropTypes.func.isRequired,
+  f: PropTypes.func.isRequired
 };
 
 const FieldValueWithI18n = translate()(FieldValue);
@@ -100,9 +101,9 @@ const emptyAddress = {
   country: ""
 };
 
-const renderFieldValue = (value, type, t) => {
+const renderFieldValue = (value, type, t, f) => {
   if (!value) return false;
-  if (type === "birthday") return new Date(value).toLocaleDateString();
+  if (type === "birthday") return f(new Date(value), "YYYY-M-D");
   if (typeof value !== "object") return value.toString();
 
   switch (type) {
