@@ -15,7 +15,7 @@ const ContactCardMenu = ({ deleteAction }) => (
   <Menu
     position="right"
     component={
-      <Button theme="secondary" extension="narrow">
+      <Button theme="secondary" extension="narrow" class="fix-c-btn">
         <Icon icon="dots" />
       </Button>
     }
