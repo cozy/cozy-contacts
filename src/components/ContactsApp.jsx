@@ -13,6 +13,7 @@ const TranslatedContactCard = ({ ...props }, { t }) => (
 
 const ContactCardMenu = ({ deleteAction }) => (
   <Menu
+    position="right"
     component={
       <Button theme="secondary" extension="narrow">
         <Icon icon="dots" />
