@@ -20,7 +20,11 @@ const ContactCardMenu = ({ deleteAction }) => (
       </Button>
     }
   >
-    <MenuItem icon={<Icon icon="delete" />} onSelect={deleteAction.action}>
+    <MenuItem
+      className="menu__item--danger"
+      icon={<Icon icon="delete" />}
+      onSelect={deleteAction.action}
+    >
       {deleteAction.label}
     </MenuItem>
   </Menu>
