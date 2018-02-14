@@ -15,12 +15,16 @@ const ContactCardMenu = ({ deleteAction }) => (
   <Menu
     position="right"
     component={
-      <Button theme="secondary" extension="narrow">
+      <Button theme="secondary" extension="narrow" class="fix-c-btn">
         <Icon icon="dots" />
       </Button>
     }
   >
-    <MenuItem icon={<Icon icon="delete" />} onSelect={deleteAction.action}>
+    <MenuItem
+      className="menu__item--danger"
+      icon={<Icon icon="delete" />}
+      onSelect={deleteAction.action}
+    >
       {deleteAction.label}
     </MenuItem>
   </Menu>

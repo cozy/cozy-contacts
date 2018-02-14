@@ -1,6 +1,11 @@
 @require 'settings/palette.styl'
 @require 'components/table.styl'
 
+// @stylint off
+.fix-c-btn svg
+    margin-right 0 !important // hack https://github.com/cozy/cozy-ui/issues/338
+// @stylint on
+
 .list-wrapper
     width 100%
     max-width 80rem
@@ -73,3 +78,6 @@ $reset-list
 
 .divider
     @extend $table-divider
+
+.menu__item--danger
+    color pomegranate
