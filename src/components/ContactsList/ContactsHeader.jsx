@@ -1,39 +1,28 @@
-import React, { Component } from "react";
-import { Button, IntentOpener } from "cozy-ui/react";
+import React from "react";
+import PropTypes from "prop-types";
 
-const ContactsFilter = () => <div>ContactsFilter</div>;
+const ContactsFilter = () => (
+  <div>
+    <select name="text">
+      <option value="value1">Value 1</option>
+      <option value="value2" selected>
+        Value 2
+      </option>
+      <option value="value3">Value 3</option>
+    </select>
+  </div>
+);
 
-const ContactsCreationButton = () => <div>ContactsCreationButton</div>;
-
-class ContactsIntentLink extends Component {
-  render() {
-    return (
-      <div>
-        <IntentOpener
-          onComplete={res => {
-            alert(`intent has completed: ${JSON.stringify(res)}`);
-          }}
-          onDismiss={() => {}}
-          action="PICK"
-          doctype="io.cozy.contacts"
-        >
-          <Button>Select a contact</Button>
-        </IntentOpener>
-      </div>
-    );
-  }
-}
-
-const ContactsHeader = () => {
-  const fakeintent = new URL(window.location).searchParams.get("fakeintent");
-  return (
-    <div className="topbar">
-      <h2>ContactsHeader</h2>
+const ContactsHeader = ({ renderActions }) => (
+  <div className="topbar">
+    <div className="topbar__left">
       <ContactsFilter />
-      {fakeintent !== null && <ContactsIntentLink />}
-      <ContactsCreationButton />
     </div>
-  );
+    <div className="topbar__right">{renderActions()}</div>
+  </div>
+);
+ContactsHeader.propTypes = {
+  renderActions: PropTypes.func.isRequired
 };
 
 export default ContactsHeader;
