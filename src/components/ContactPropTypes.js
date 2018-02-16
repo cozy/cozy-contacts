@@ -38,7 +38,7 @@ const contactPropTypes = {
     primary: PropTypes.bool
   }),
   birthday: PropTypes.string,
-  note: PropTypes.string
+  notes: PropTypes.string
 };
 
 export default contactPropTypes;

@@ -4,13 +4,13 @@ import Icon from "cozy-ui/react/Icon";
 import palette from "cozy-ui/stylus/settings/palette.json";
 import { translate } from "cozy-ui/react/I18n";
 
-import IconCalendar from "../../assets/icons/calendar.svg";
-import IconComment from "../../assets/icons/comment.svg";
+import IconBirthday from "../../assets/icons/calendar.svg";
+import IconNotes from "../../assets/icons/comment.svg";
 import IconCompany from "../../assets/icons/company.svg";
 import IconCozy from "../../assets/icons/cozy.svg";
 import IconEmail from "../../assets/icons/email.svg";
 import IconFlag from "../../assets/icons/flag.svg";
-import IconLocation from "../../assets/icons/location.svg";
+import IconAddress from "../../assets/icons/location.svg";
 import IconPhone from "../../assets/icons/phone-number.svg";
 
 const ContactFields = ({ fields, title }) => (
@@ -81,12 +81,12 @@ FieldValue.propTypes = {
 const FieldValueWithI18n = translate()(FieldValue);
 
 const iconsByType = {
-  birthday: IconCalendar,
-  note: IconComment,
+  birthday: IconBirthday,
+  notes: IconNotes,
   company: IconCompany,
   cozy: IconCozy,
   email: IconEmail,
-  address: IconLocation,
+  address: IconAddress,
   phone: IconPhone
 };
 

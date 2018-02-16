@@ -33,7 +33,7 @@ ContactsHeaderWithActions.propTypes = {
 class ContactsApp extends React.Component {
   state = {
     displayedContact: null,
-    isCreationFormDisplayed: false
+    isCreationFormDisplayed: true
   };
 
   displayContactCard = contact => {
@@ -67,6 +67,7 @@ class ContactsApp extends React.Component {
 
   render() {
     const { displayedContact, isCreationFormDisplayed } = this.state;
+    const { t } = this.context;
 
     return (
       <main className="app-content">
@@ -87,7 +88,13 @@ class ContactsApp extends React.Component {
           />
         )}
         {isCreationFormDisplayed && (
-          <ContactFormModal hideModal={this.hideContactForm} />
+          <ContactFormModal
+            hideModal={this.hideContactForm}
+            title={t("create_contact")}
+            createContact={data => {
+              console.log("Create a contact", data);
+            }}
+          />
         )}
       </main>
     );

@@ -7,5 +7,16 @@
     "%{smart_count} selected contact |||| %{smart_count} selected contacts",
   "contact_info": "Contact informations",
   "formatted_address":
-    "%{pobox} %{street} %{postcode} %{city} %{region} %{country}"
+    "%{pobox} %{street} %{postcode} %{city} %{region} %{country}",
+  "field": {
+    "firstname": "Firstname",
+    "lastname": "Lastname",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "cozy": "Cozy URL",
+    "company": "Company",
+    "birthday": "Birthday",
+    "notes": "Notes"
+  }
 }

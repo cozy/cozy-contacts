@@ -41,7 +41,7 @@ ContactCard.propTypes = {
     address: PropTypes.arrayOf(contactPropTypes.address),
     cozy: PropTypes.arrayOf(contactPropTypes.cozy),
     birthday: contactPropTypes.birthday,
-    note: contactPropTypes.note
+    notes: contactPropTypes.notes
   }).isRequired,
   title: PropTypes.string.isRequired,
   renderActions: PropTypes.func
