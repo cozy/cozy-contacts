@@ -60,6 +60,12 @@ class ContactsApp extends React.Component {
     });
   };
 
+  onCreateContact = async data => {
+    const contact = await this.props.createContact(data);
+    this.hideContactForm();
+    this.displayContactCard(contact);
+  };
+
   onDeleteContact = contact => {
     this.props.deleteContact(contact);
     this.hideContactCard();
@@ -91,9 +97,7 @@ class ContactsApp extends React.Component {
           <ContactFormModal
             hideModal={this.hideContactForm}
             title={t("create_contact")}
-            createContact={data => {
-              console.log("Create a contact", data);
-            }}
+            createContact={this.onCreateContact}
           />
         )}
       </main>
@@ -102,6 +106,7 @@ class ContactsApp extends React.Component {
 }
 ContactsApp.propTypes = {
   contacts: PropTypes.array,
+  createContact: PropTypes.func,
   deleteContact: PropTypes.func
 };
 

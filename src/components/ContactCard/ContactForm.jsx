@@ -60,12 +60,9 @@ ContactFieldForm.defaultProps = {
   icon: null
 };
 
-const validate = console.log.bind(console);
-
 const ContactForm = ({ onSubmit, onCancel }, { t }) => (
   <Form
     onSubmit={onSubmit}
-    validate={validate}
     render={({ handleSubmit }) => (
       <div>
         <form onSubmit={handleSubmit}>
