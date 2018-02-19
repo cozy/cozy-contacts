@@ -4,7 +4,12 @@ import Modal, { ModalTitle, ModalDescription } from "cozy-ui/react/Modal";
 import ContactForm from "../ContactCard/ContactForm";
 
 const ContactFormModal = ({ hideModal, title, createContact }) => (
-  <Modal overflowHidden={true} dismissAction={hideModal}>
+  <Modal
+    overflowHidden={true}
+    dismissAction={hideModal}
+    into="body"
+    size="xxlarge"
+  >
     <ModalTitle>{title}</ModalTitle>
     <ModalDescription className="u-mt-half">
       <ContactForm onSubmit={createContact} onCancel={hideModal} />

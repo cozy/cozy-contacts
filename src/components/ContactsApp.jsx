@@ -33,7 +33,7 @@ ContactsHeaderWithActions.propTypes = {
 class ContactsApp extends React.Component {
   state = {
     displayedContact: null,
-    isCreationFormDisplayed: true
+    isCreationFormDisplayed: false
   };
 
   displayContactCard = contact => {

@@ -9,92 +9,241 @@ import IconAddress from "../../assets/icons/location.svg";
 import IconCozy from "../../assets/icons/cozy.svg";
 import IconCompany from "../../assets/icons/company.svg";
 import IconBirthday from "../../assets/icons/calendar.svg";
-import IconNotes from "../../assets/icons/comment.svg";
+import IconNote from "../../assets/icons/comment.svg";
 
 const fields = [
   {
-    labelKey: "firstname",
+    name: "givenName",
     icon: null,
     type: "text"
   },
   {
-    labelKey: "lastname",
+    name: "familyName",
     icon: null,
     type: "text"
   },
   {
-    labelKey: "phone",
+    name: "phone",
     icon: IconPhone,
+    type: "tel",
+    hasLabel: true
+  },
+  {
+    name: "email",
+    icon: IconEmail,
+    type: "email",
+    hasLabel: true
+  },
+  {
+    name: "address",
+    icon: IconAddress,
+    type: "text",
+    hasLabel: true
+  },
+  {
+    name: "cozy",
+    icon: IconCozy,
+    type: "url",
+    hasLabel: true
+  },
+  {
+    name: "company",
+    icon: IconCompany,
     type: "text"
   },
   {
-    labelKey: "email",
-    icon: IconEmail,
-    type: "text"
+    name: "birthday",
+    icon: IconBirthday,
+    type: "date"
   },
-  { labelKey: "address", icon: IconAddress, type: "text" },
-  { labelKey: "cozy", icon: IconCozy, type: "text" },
-  { labelKey: "company", icon: IconCompany, type: "text" },
-  { labelKey: "birthday", icon: IconBirthday, type: "text" },
-  { labelKey: "notes", icon: IconNotes, type: "text" }
+  {
+    name: "note",
+    icon: IconNote,
+    type: "textarea"
+  }
 ];
 
-const ContactFieldForm = ({ icon, label, type, input, meta }) => (
-  <div style={{ display: "flex" }}>
-    <div style={{ flex: "1" }}>
-      {icon && <Icon icon={icon} color="silver" />}
-      <label>{label}</label>
-    </div>
-    <input type={type} {...input} placeholder={label} />
-    {meta.touched && meta.error && <span>{meta.error}</span>}
+const getInputComponent = inputType =>
+  inputType === "textarea" ? "textarea" : "input";
+
+class ContactFieldInput extends React.Component {
+  state = {
+    renderLabel: false
+  };
+
+  showLabel = () => {
+    this.setState({
+      renderLabel: true
+    });
+  };
+
+  hideLabelIfEmpty = e => {
+    this.setState({
+      renderLabel: e.target.value
+    });
+  };
+
+  render() {
+    const { name, type, withLabel } = this.props;
+    const { renderLabel } = this.state;
+
+    return (
+      <div className="contact-form__input-wrapper">
+        <Field
+          name={name}
+          type={type}
+          onFocus={this.showLabel}
+          onBlur={this.hideLabelIfEmpty}
+          component={getInputComponent(type)}
+          className="contact-form__input"
+        />
+        {withLabel &&
+          renderLabel && (
+            <Field
+              name={`${name}Label`}
+              type="text"
+              component="input"
+              className="contact-form__label-input"
+            />
+          )}
+      </div>
+    );
+  }
+}
+ContactFieldInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  withLabel: PropTypes.bool
+};
+ContactFieldInput.defaultProps = {
+  hasLabel: false
+};
+
+const ContactFieldForm = ({ icon, name, type, label, inputWithLabel }) => (
+  <div className="contact-form__field">
+    <label className="contact-form__label">
+      {icon && (
+        <Icon icon={icon} color="coolGrey" className="contact-form__icon" />
+      )}
+      {label}
+    </label>
+    <ContactFieldInput name={name} type={type} withLabel={inputWithLabel} />
   </div>
 );
 ContactFieldForm.propTypes = {
   icon: PropTypes.any, // shall be a SVG prop type
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(["text"]).isRequired,
-  input: PropTypes.object.isRequired,
-  meta: PropTypes.object.isRequired
+  inputWithLabel: PropTypes.bool
 };
 ContactFieldForm.defaultProps = {
-  icon: null
+  icon: null,
+  hasLabel: false
 };
 
-const ContactForm = ({ onSubmit, onCancel }, { t }) => (
-  <Form
-    onSubmit={onSubmit}
-    render={({ handleSubmit }) => (
-      <div>
-        <form onSubmit={handleSubmit}>
-          {fields.map(({ labelKey, icon, type }) => (
-            <Field
-              name={labelKey}
-              key={labelKey}
-              render={({ input, meta }) => (
-                <ContactFieldForm
-                  input={input}
-                  meta={meta}
-                  icon={icon}
-                  label={t(`field.${labelKey}`)}
-                  type={type}
-                />
-              )}
-            />
-          ))}
-          <div className="modal__footer">
-            <div style={{ flex: 1 }}>Plus de champ</div>
-            <div>
-              <Button theme="secondary" onClick={onCancel}>
-                Annuler
-              </Button>
-              <Button type="submit">Enregistrer</Button>
-            </div>
+class ContactForm extends React.Component {
+  formDataToContact = data => {
+    const {
+      givenName,
+      familyName,
+      phone,
+      email,
+      address,
+      cozy,
+      company,
+      birthday,
+      note
+    } = data;
+
+    const contact = {
+      fullname: data.givenName + " " + data.familyName,
+      name: {
+        givenName,
+        familyName
+      },
+      email: email
+        ? [
+            {
+              address: email,
+              type: data["emailLabel"],
+              primary: true
+            }
+          ]
+        : undefined,
+      address: address
+        ? [
+            {
+              formattedAddress: address,
+              type: data["addressLabel"],
+              primary: true
+            }
+          ]
+        : undefined,
+      phone: phone
+        ? [
+            {
+              number: phone,
+              type: data["phoneLabel"],
+              primary: true
+            }
+          ]
+        : undefined,
+      cozy: cozy
+        ? [
+            {
+              url: cozy,
+              label: data["cozyLabel"],
+              primary: true
+            }
+          ]
+        : undefined,
+      company,
+      birthday,
+      note
+    };
+
+    this.props.onSubmit(contact);
+  };
+
+  render() {
+    const { onCancel } = this.props;
+    const { t } = this.context;
+    return (
+      <Form
+        onSubmit={this.formDataToContact}
+        render={({ handleSubmit }) => (
+          <div>
+            <form onSubmit={handleSubmit} className="contact-form">
+              <div className="contact-form__fields">
+                {fields.map(({ name, icon, type, hasLabel }, index) => (
+                  <ContactFieldForm
+                    key={index}
+                    icon={icon}
+                    name={name}
+                    label={t(`field.${name}`)}
+                    type={type}
+                    inputWithLabel={hasLabel}
+                  />
+                ))}
+              </div>
+
+              <div className="contact-form__footer">
+                <div>
+                  <Button theme="secondary" onClick={onCancel}>
+                    {t("cancel")}
+                  </Button>
+                  <Button type="submit">{t("save")}</Button>
+                </div>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
-    )}
-  />
-);
+        )}
+      />
+    );
+  }
+}
+
 ContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired

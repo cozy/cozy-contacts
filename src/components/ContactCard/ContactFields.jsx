@@ -5,7 +5,7 @@ import palette from "cozy-ui/stylus/settings/palette.json";
 import { translate } from "cozy-ui/react/I18n";
 
 import IconBirthday from "../../assets/icons/calendar.svg";
-import IconNotes from "../../assets/icons/comment.svg";
+import IconNote from "../../assets/icons/comment.svg";
 import IconCompany from "../../assets/icons/company.svg";
 import IconCozy from "../../assets/icons/cozy.svg";
 import IconEmail from "../../assets/icons/email.svg";
@@ -82,7 +82,7 @@ const FieldValueWithI18n = translate()(FieldValue);
 
 const iconsByType = {
   birthday: IconBirthday,
-  notes: IconNotes,
+  notes: IconNote,
   company: IconCompany,
   cozy: IconCozy,
   email: IconEmail,
@@ -108,7 +108,9 @@ const renderFieldValue = (value, type, t, f) => {
 
   switch (type) {
     case "address":
-      return t("formatted_address", { ...emptyAddress, ...value }).trim();
+      return value.formattedAddress
+        ? value.formattedAddress
+        : t("formatted_address", { ...emptyAddress, ...value }).trim();
     case "email":
       return <a href={`mailto:${value.address}`}>{value.address}</a>;
     case "phone":

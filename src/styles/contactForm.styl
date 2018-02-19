@@ -1,0 +1,65 @@
+@require 'settings/palette.styl'
+
+
+.contact-form
+    height 50%
+    display flex
+    flex-direction column
+    justify-content flex-start
+    align-items stretch
+    overflow hidden
+
+.contact-form__fields
+    height 50%
+    flex-shrink 1
+    overflow auto
+
+.contact-form__footer
+    height 4.5rem
+    display flex
+    justify-content flex-end
+    align-items center
+
+.contact-form__field
+    display flex
+    justify-content space-between
+    align-items baseline
+    max-width 30rem
+    margin .5rem auto .5rem
+
+.contact-form__label
+    position relative
+    width 30%
+    padding-right .5rem
+    padding-left 2rem
+    font-size .75rem
+    text-transform uppercase
+    color coolGrey
+
+.contact-form__icon
+    position absolute
+    left 0
+
+.contact-form__input-wrapper
+    display inline-flex
+    width 70%
+
+.contact-form__input
+    padding .5rem 1rem
+    border 1px solid silver
+    width 0
+    flex-grow 1
+
+    &:focus
+        border .0625rem solid dodgerBlue
+        outline 0
+
+    &::placeholder
+        color coolGrey
+        font-size 1rem
+
+.contact-form__label-input
+    margin-left .5rem
+    width 0
+    flex-grow 1
+
