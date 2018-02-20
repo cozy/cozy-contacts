@@ -44,7 +44,9 @@ const cozyHTTP = {
     cozy.client.fetchJSON(
       "DELETE",
       `/data/io.cozy.contacts/${contact._id}?rev=${contact._rev}`
-    )
+    ),
+
+  createContact: contact => cozy.client.data.create("io.cozy.contacts", contact)
 };
 
 export const withContacts = BaseComponent =>
@@ -63,6 +65,16 @@ export const withContacts = BaseComponent =>
         loading: false
       }));
     }
+
+    createContact = async data => {
+      const contact = await cozyHTTP.createContact(data);
+      this.setState(state => ({
+        ...state,
+        contacts: [...state.contacts, contact]
+      }));
+
+      return contact;
+    };
 
     deleteContact = async contact => {
       const index = this.state.contacts.indexOf(contact);
@@ -100,6 +112,7 @@ export const withContacts = BaseComponent =>
       return (
         <BaseComponent
           contacts={this.state.contacts}
+          createContact={this.createContact}
           deleteContact={this.deleteContact}
           {...this.props}
         />

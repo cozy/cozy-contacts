@@ -4,13 +4,13 @@ import Icon from "cozy-ui/react/Icon";
 import palette from "cozy-ui/stylus/settings/palette.json";
 import { translate } from "cozy-ui/react/I18n";
 
-import IconCalendar from "../../assets/icons/calendar.svg";
-import IconComment from "../../assets/icons/comment.svg";
+import IconBirthday from "../../assets/icons/calendar.svg";
+import IconNote from "../../assets/icons/comment.svg";
 import IconCompany from "../../assets/icons/company.svg";
 import IconCozy from "../../assets/icons/cozy.svg";
 import IconEmail from "../../assets/icons/email.svg";
 import IconFlag from "../../assets/icons/flag.svg";
-import IconLocation from "../../assets/icons/location.svg";
+import IconAddress from "../../assets/icons/location.svg";
 import IconPhone from "../../assets/icons/phone-number.svg";
 
 const ContactFields = ({ fields, title }) => (
@@ -81,12 +81,12 @@ FieldValue.propTypes = {
 const FieldValueWithI18n = translate()(FieldValue);
 
 const iconsByType = {
-  birthday: IconCalendar,
-  note: IconComment,
+  birthday: IconBirthday,
+  note: IconNote,
   company: IconCompany,
   cozy: IconCozy,
   email: IconEmail,
-  address: IconLocation,
+  address: IconAddress,
   phone: IconPhone
 };
 
@@ -108,7 +108,9 @@ const renderFieldValue = (value, type, t, f) => {
 
   switch (type) {
     case "address":
-      return t("formatted_address", { ...emptyAddress, ...value }).trim();
+      return value.formattedAddress
+        ? value.formattedAddress
+        : t("formatted_address", { ...emptyAddress, ...value }).trim();
     case "email":
       return <a href={`mailto:${value.address}`}>{value.address}</a>;
     case "phone":

@@ -1,44 +1,39 @@
 import React from "react";
 import ContactsList from "./ContactsList/ContactsList";
 import ContactsHeader from "./ContactsList/ContactsHeader";
-import ContactCard from "./ContactCard/ContactCard";
-import Modal, { ModalContent } from "cozy-ui/react/Modal";
-import { Button } from "cozy-ui/react/Button";
 import { PropTypes } from "prop-types";
-import { Icon, Menu, MenuItem } from "cozy-ui/react";
+import OpenContactFormButton from "./Buttons/OpenContactFormButton";
+import ContactsIntentButton from "./Buttons/ContactsIntentButton";
+import ContactCardModal from "./Modals/ContactCardModal";
+import ContactFormModal from "./Modals/ContactFormModal";
 
-const TranslatedContactCard = ({ ...props }, { t }) => (
-  <ContactCard title={t("contact_info")} {...props} />
+const ContactsHeaderWithActions = ({ displayContactForm }, { t }) => (
+  <ContactsHeader
+    renderActions={() => {
+      const fakeintent = new URL(window.location).searchParams.get(
+        "fakeintent"
+      );
+      return (
+        <div className="actions">
+          {fakeintent !== null && (
+            <ContactsIntentButton>{"Select a Contact"}</ContactsIntentButton>
+          )}
+          <OpenContactFormButton onClick={displayContactForm}>
+            {t("create_contact")}
+          </OpenContactFormButton>
+        </div>
+      );
+    }}
+  />
 );
-
-const ContactCardMenu = ({ deleteAction }) => (
-  <Menu
-    position="right"
-    component={
-      <Button theme="secondary" extension="narrow" class="fix-c-btn">
-        <Icon icon="dots" />
-      </Button>
-    }
-  >
-    <MenuItem
-      className="menu__item--danger"
-      icon={<Icon icon="delete" />}
-      onSelect={deleteAction.action}
-    >
-      {deleteAction.label}
-    </MenuItem>
-  </Menu>
-);
-ContactCardMenu.propTypes = {
-  deleteAction: PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    action: PropTypes.func.isRequired
-  }).isRequired
+ContactsHeaderWithActions.propTypes = {
+  displayContactForm: PropTypes.func.isRequired
 };
 
 class ContactsApp extends React.Component {
   state = {
-    displayedContact: null
+    displayedContact: null,
+    isCreationFormDisplayed: false
   };
 
   displayContactCard = contact => {
@@ -53,17 +48,38 @@ class ContactsApp extends React.Component {
     });
   };
 
+  displayContactForm = () => {
+    this.setState({
+      isCreationFormDisplayed: true
+    });
+  };
+
+  hideContactForm = () => {
+    this.setState({
+      isCreationFormDisplayed: false
+    });
+  };
+
+  onCreateContact = async data => {
+    const contact = await this.props.createContact(data);
+    this.hideContactForm();
+    this.displayContactCard(contact);
+  };
+
   onDeleteContact = contact => {
     this.props.deleteContact(contact);
     this.hideContactCard();
   };
 
   render() {
-    const { displayedContact } = this.state;
+    const { displayedContact, isCreationFormDisplayed } = this.state;
+    const { t } = this.context;
 
     return (
       <main className="app-content">
-        <ContactsHeader />
+        <ContactsHeaderWithActions
+          displayContactForm={this.displayContactForm}
+        />
         <div role="contentinfo">
           <ContactsList
             onClickContact={this.displayContactCard}
@@ -71,25 +87,18 @@ class ContactsApp extends React.Component {
           />
         </div>
         {displayedContact && (
-          <Modal
-            into="body"
-            dismissAction={this.hideContactCard}
-            size="xxlarge"
-          >
-            <ModalContent>
-              <TranslatedContactCard
-                contact={displayedContact}
-                renderActions={() => (
-                  <ContactCardMenu
-                    deleteAction={{
-                      label: this.context.t("delete"),
-                      action: () => this.onDeleteContact(displayedContact)
-                    }}
-                  />
-                )}
-              />
-            </ModalContent>
-          </Modal>
+          <ContactCardModal
+            hideModal={this.hideContactCard}
+            contact={displayedContact}
+            onDeleteContact={this.onDeleteContact}
+          />
+        )}
+        {isCreationFormDisplayed && (
+          <ContactFormModal
+            hideModal={this.hideContactForm}
+            title={t("create_contact")}
+            createContact={this.onCreateContact}
+          />
         )}
       </main>
     );
@@ -97,6 +106,7 @@ class ContactsApp extends React.Component {
 }
 ContactsApp.propTypes = {
   contacts: PropTypes.array,
+  createContact: PropTypes.func,
   deleteContact: PropTypes.func
 };
 
