@@ -13,7 +13,8 @@ export const getFieldListFrom = contact =>
 export const filterFieldList = fields =>
   fields.filter(
     field =>
-      ["name", "_id", "_rev"].includes(field.type) === false && field.values
+      ["name", "fullname", "_id", "_rev", "_type"].includes(field.type) ===
+        false && field.values
   );
 export const groupUnsupportedFields = (fields, supportedFieldTypes) => {
   const supportedFields = fields.filter(field =>

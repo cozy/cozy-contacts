@@ -12,6 +12,7 @@ describe("Manage Contacts fields", () => {
     const contact = {
       _id: "c6899688-6cc6-4ffb-82d4-ab9f9b82c582",
       _rev: "1-9368a4f2e467c449f4a1f5171a784aa8",
+      _type: "io.cozy.contacts",
       address: [
         {
           city: "Stafford",
@@ -27,6 +28,7 @@ describe("Manage Contacts fields", () => {
         { address: "eleanore.fennell@thermolock.name", primary: false }
       ],
       name: { familyName: "White", givenName: "Rikki" },
+      fullname: "Rikki White",
       phone: [
         { number: "+33 (1)9 14 02 28 31", primary: true },
         { number: "+33 (2)3 99 53 65 21", primary: false }
