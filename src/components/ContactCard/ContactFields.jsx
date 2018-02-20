@@ -82,7 +82,7 @@ const FieldValueWithI18n = translate()(FieldValue);
 
 const iconsByType = {
   birthday: IconBirthday,
-  notes: IconNote,
+  note: IconNote,
   company: IconCompany,
   cozy: IconCozy,
   email: IconEmail,
