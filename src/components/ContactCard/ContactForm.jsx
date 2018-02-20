@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { Form, Field } from "react-final-form";
 import Icon from "cozy-ui/react/Icon";
 import { Button } from "cozy-ui/react/Button";
+import { translate } from "cozy-ui/react/I18n";
+
 import IconEmail from "../../assets/icons/email.svg";
 import IconPhone from "../../assets/icons/phone-number.svg";
 import IconAddress from "../../assets/icons/location.svg";
@@ -156,8 +158,10 @@ class ContactForm extends React.Component {
       note
     } = data;
 
+    const fullName = (givenName || "") + " " + (familyName || "");
+
     const contact = {
-      fullname: data.givenName + " " + data.familyName,
+      fullname: fullName.trim(),
       name: {
         givenName,
         familyName
@@ -207,8 +211,7 @@ class ContactForm extends React.Component {
   };
 
   render() {
-    const { onCancel } = this.props;
-    const { t } = this.context;
+    const { onCancel, t } = this.props;
     return (
       <Form
         onSubmit={this.formDataToContact}
@@ -246,7 +249,8 @@ class ContactForm extends React.Component {
 
 ContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  onCancel: PropTypes.func.isRequired
+  onCancel: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired
 };
 
-export default ContactForm;
+export default translate()(ContactForm);
