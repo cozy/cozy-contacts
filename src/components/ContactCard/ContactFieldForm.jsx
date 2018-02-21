@@ -24,7 +24,7 @@ class ContactFieldInput extends React.Component {
   };
 
   render() {
-    const { name, type, withLabel } = this.props;
+    const { name, type, placeholder, withLabel, labelPlaceholder } = this.props;
     const { renderLabel } = this.state;
 
     return (
@@ -32,6 +32,7 @@ class ContactFieldInput extends React.Component {
         <Field
           name={name}
           type={type}
+          placeholder={placeholder}
           onFocus={this.showLabel}
           onBlur={this.hideLabelIfEmpty}
           component={getInputComponent(type)}
@@ -44,6 +45,7 @@ class ContactFieldInput extends React.Component {
               type="text"
               component="input"
               className="contact-form__label-input"
+              placeholder={labelPlaceholder}
             />
           )}
       </div>
@@ -53,13 +55,25 @@ class ContactFieldInput extends React.Component {
 ContactFieldInput.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  withLabel: PropTypes.bool
+  placeholder: PropTypes.string,
+  withLabel: PropTypes.bool,
+  labelPlaceholder: PropTypes.string
 };
 ContactFieldInput.defaultProps = {
-  withLabel: false
+  withLabel: false,
+  placeholder: "",
+  labelPlaceholder: ""
 };
 
-const ContactFieldForm = ({ icon, name, type, label, inputWithLabel }) => (
+const ContactFieldForm = ({
+  icon,
+  name,
+  type,
+  label,
+  placeholder,
+  inputWithLabel,
+  labelPlaceholder
+}) => (
   <div className="contact-form__field">
     <label className="contact-form__label">
       {icon && (
@@ -67,7 +81,13 @@ const ContactFieldForm = ({ icon, name, type, label, inputWithLabel }) => (
       )}
       {label}
     </label>
-    <ContactFieldInput name={name} type={type} withLabel={inputWithLabel} />
+    <ContactFieldInput
+      name={name}
+      type={type}
+      placeholder={placeholder}
+      withLabel={inputWithLabel}
+      labelPlaceholder={labelPlaceholder}
+    />
   </div>
 );
 ContactFieldForm.propTypes = {
@@ -75,11 +95,15 @@ ContactFieldForm.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  labelPlaceholder: PropTypes.string,
   inputWithLabel: PropTypes.bool
 };
 ContactFieldForm.defaultProps = {
   icon: null,
-  inputWithLabel: false
+  inputWithLabel: false,
+  placeholder: "",
+  labelPlaceholder: ""
 };
 
 export default ContactFieldForm;

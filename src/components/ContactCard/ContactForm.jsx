@@ -146,8 +146,10 @@ class ContactForm extends React.Component {
                     icon={icon}
                     name={name}
                     label={t(`field.${name}`)}
+                    placeholder={t(`placeholder.${name}`)}
                     type={type}
                     inputWithLabel={hasLabel}
+                    labelPlaceholder={t("placeholder.label")}
                   />
                 ))}
               </div>

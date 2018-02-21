@@ -19,5 +19,17 @@
     "company": "Company",
     "birthday": "Birthday",
     "note": "Notes"
+  },
+  "placeholder": {
+    "givenName": "Claude",
+    "familyName": "Douillet",
+    "phone": "01 23 45 67 89",
+    "email": "claude@mycozy.cloud",
+    "address": "",
+    "cozy": "",
+    "company": "",
+    "birthday": "",
+    "note": "",
+    "label": "Work"
   }
 }
