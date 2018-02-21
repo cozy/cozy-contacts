@@ -26,6 +26,7 @@ exports[`ContactForm should match snapshot 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            placeholder="placeholder.givenName"
             type="text"
             value=""
           />
@@ -48,6 +49,7 @@ exports[`ContactForm should match snapshot 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            placeholder="placeholder.familyName"
             type="text"
             value=""
           />
@@ -84,6 +86,7 @@ exports[`ContactForm should match snapshot 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            placeholder="placeholder.phone"
             type="tel"
             value=""
           />
@@ -120,6 +123,7 @@ exports[`ContactForm should match snapshot 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            placeholder="placeholder.email"
             type="email"
             value=""
           />
@@ -156,6 +160,7 @@ exports[`ContactForm should match snapshot 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            placeholder="placeholder.address"
             type="text"
             value=""
           />
@@ -192,6 +197,7 @@ exports[`ContactForm should match snapshot 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            placeholder="placeholder.cozy"
             type="url"
             value=""
           />
@@ -228,6 +234,7 @@ exports[`ContactForm should match snapshot 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            placeholder="placeholder.company"
             type="text"
             value=""
           />
@@ -264,6 +271,7 @@ exports[`ContactForm should match snapshot 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            placeholder="placeholder.birthday"
             type="date"
             value=""
           />
@@ -300,6 +308,7 @@ exports[`ContactForm should match snapshot 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            placeholder="placeholder.note"
             type="textarea"
             value=""
           />
