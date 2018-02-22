@@ -1,5 +1,6 @@
 import React from "react";
 import { PropTypes } from "prop-types";
+import { withMutation, destroy } from "cozy-client";
 import Modal, { ModalContent } from "cozy-ui/react/Modal";
 import { Icon, Menu, MenuItem, Button } from "cozy-ui/react";
 import ContactCard from "../ContactCard/ContactCard";
@@ -30,8 +31,11 @@ ContactCardMenu.propTypes = {
   }).isRequired
 };
 
-const ContactCardModal = ({ hideModal, contact, onDeleteContact }, { t }) => (
-  <Modal into="body" dismissAction={hideModal} size="xlarge">
+const ContactCardModal = (
+  { onClose, contact, deleteContact, onDeleteContact },
+  { t }
+) => (
+  <Modal into="body" dismissAction={onClose} size="xlarge">
     <ModalContent>
       <ContactCard
         title={t("contact_info")}
@@ -40,7 +44,7 @@ const ContactCardModal = ({ hideModal, contact, onDeleteContact }, { t }) => (
           <ContactCardMenu
             deleteAction={{
               label: t("delete"),
-              action: () => onDeleteContact(contact)
+              action: () => deleteContact(contact).then(() => onDeleteContact())
             }}
           />
         )}
@@ -49,7 +53,7 @@ const ContactCardModal = ({ hideModal, contact, onDeleteContact }, { t }) => (
   </Modal>
 );
 ContactCardModal.propTypes = {
-  hideModal: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
   contact: PropTypes.shape({
     name: contactPropTypes.name,
     phone: PropTypes.arrayOf(contactPropTypes.phone),
@@ -59,7 +63,16 @@ ContactCardModal.propTypes = {
     birthday: contactPropTypes.birthday,
     note: contactPropTypes.note
   }).isRequired,
+  deleteContact: PropTypes.func.isRequired,
   onDeleteContact: PropTypes.func.isRequired
 };
 
-export default ContactCardModal;
+export default withMutation(destroy, {
+  name: "deleteContact",
+  updateQueries: {
+    allContacts: (previousData, result) => {
+      const idx = previousData.findIndex(c => c.id === result.data[0].id);
+      return [...previousData.slice(0, idx), ...previousData.slice(idx + 1)];
+    }
+  }
+})(ContactCardModal);
