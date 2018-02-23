@@ -24,7 +24,14 @@ class ContactFieldInput extends React.Component {
   };
 
   render() {
-    const { name, type, placeholder, withLabel, labelPlaceholder } = this.props;
+    const {
+      name,
+      type,
+      placeholder,
+      required,
+      withLabel,
+      labelPlaceholder
+    } = this.props;
     const { renderLabel } = this.state;
 
     return (
@@ -33,6 +40,7 @@ class ContactFieldInput extends React.Component {
           name={name}
           type={type}
           placeholder={placeholder}
+          required={required}
           onFocus={this.showLabel}
           onBlur={this.hideLabelIfEmpty}
           component={getInputComponent(type)}
@@ -57,21 +65,24 @@ ContactFieldInput.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   withLabel: PropTypes.bool,
+  required: PropTypes.bool,
   labelPlaceholder: PropTypes.string
 };
 ContactFieldInput.defaultProps = {
   withLabel: false,
+  required: false,
   placeholder: "",
   labelPlaceholder: ""
 };
 
-const ContactFieldForm = ({
+const ContactFormField = ({
   icon,
   name,
   type,
   label,
   placeholder,
   inputWithLabel,
+  required,
   labelPlaceholder
 }) => (
   <div className="contact-form__field">
@@ -86,24 +97,27 @@ const ContactFieldForm = ({
       type={type}
       placeholder={placeholder}
       withLabel={inputWithLabel}
+      required={required}
       labelPlaceholder={labelPlaceholder}
     />
   </div>
 );
-ContactFieldForm.propTypes = {
+ContactFormField.propTypes = {
   icon: PropTypes.any, // shall be a SVG prop type
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   labelPlaceholder: PropTypes.string,
-  inputWithLabel: PropTypes.bool
+  inputWithLabel: PropTypes.bool,
+  required: PropTypes.bool
 };
-ContactFieldForm.defaultProps = {
+ContactFormField.defaultProps = {
   icon: null,
   inputWithLabel: false,
+  required: false,
   placeholder: "",
   labelPlaceholder: ""
 };
 
-export default ContactFieldForm;
+export default ContactFormField;

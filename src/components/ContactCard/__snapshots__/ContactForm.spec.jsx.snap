@@ -27,6 +27,7 @@ exports[`ContactForm should match snapshot 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="placeholder.givenName"
+            required={false}
             type="text"
             value=""
           />
@@ -50,6 +51,7 @@ exports[`ContactForm should match snapshot 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="placeholder.familyName"
+            required={true}
             type="text"
             value=""
           />
@@ -87,6 +89,7 @@ exports[`ContactForm should match snapshot 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="placeholder.phone"
+            required={false}
             type="tel"
             value=""
           />
@@ -124,6 +127,7 @@ exports[`ContactForm should match snapshot 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="placeholder.email"
+            required={false}
             type="email"
             value=""
           />
@@ -161,6 +165,7 @@ exports[`ContactForm should match snapshot 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="placeholder.address"
+            required={false}
             type="text"
             value=""
           />
@@ -198,6 +203,7 @@ exports[`ContactForm should match snapshot 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="placeholder.cozy"
+            required={false}
             type="url"
             value=""
           />
@@ -235,6 +241,7 @@ exports[`ContactForm should match snapshot 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="placeholder.company"
+            required={false}
             type="text"
             value=""
           />
@@ -272,6 +279,7 @@ exports[`ContactForm should match snapshot 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="placeholder.birthday"
+            required={false}
             type="date"
             value=""
           />
@@ -309,6 +317,7 @@ exports[`ContactForm should match snapshot 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="placeholder.note"
+            required={false}
             type="textarea"
             value=""
           />

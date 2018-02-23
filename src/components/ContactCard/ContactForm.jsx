@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Form } from "react-final-form";
-import ContactFieldForm from "./ContactFieldForm";
+import ContactFormField from "./ContactFormField";
 import { Button } from "cozy-ui/react/Button";
 import { translate } from "cozy-ui/react/I18n";
 
@@ -22,7 +22,8 @@ const fields = [
   {
     name: "familyName",
     icon: null,
-    type: "text"
+    type: "text",
+    required: true
   },
   {
     name: "phone",
@@ -140,8 +141,8 @@ class ContactForm extends React.Component {
           <div>
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="contact-form__fields">
-                {fields.map(({ name, icon, type, hasLabel }) => (
-                  <ContactFieldForm
+                {fields.map(({ name, icon, type, required, hasLabel }) => (
+                  <ContactFormField
                     key={name}
                     icon={icon}
                     name={name}
@@ -149,6 +150,7 @@ class ContactForm extends React.Component {
                     placeholder={t(`placeholder.${name}`)}
                     type={type}
                     inputWithLabel={hasLabel}
+                    required={required}
                     labelPlaceholder={t("placeholder.label")}
                   />
                 ))}
