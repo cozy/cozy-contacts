@@ -12,7 +12,7 @@ exports[`ContactCard should match snapshot 1`] = `
         className="c-avatar c-avatar--medium"
         style={
           Object {
-            "backgroundColor": "#6984CE",
+            "backgroundColor": "#FD7461",
             "color": "white",
           }
         }
