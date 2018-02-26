@@ -46,3 +46,15 @@ export const makeValuesArray = fields =>
     ...field,
     values: Array.isArray(field.values) ? field.values : [field.values]
   }));
+
+export const getInitials = name =>
+  ["givenName", "familyName"]
+    .map(part => name[part] || "")
+    .map(name => name[0])
+    .join("");
+
+export const getFullContactName = name =>
+  ["namePrefix", "givenName", "additionalName", "familyName", "nameSuffix"]
+    .map(part => name[part])
+    .join(" ")
+    .trim();
