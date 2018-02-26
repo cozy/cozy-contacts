@@ -8,7 +8,7 @@ const ContactFormModal = ({ hideModal, title, createContact }) => (
     overflowHidden={true}
     dismissAction={hideModal}
     into="body"
-    size="xxlarge"
+    size="xlarge"
   >
     <ModalTitle>{title}</ModalTitle>
     <ModalDescription className="u-mt-half">

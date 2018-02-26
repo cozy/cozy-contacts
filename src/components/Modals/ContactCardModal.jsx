@@ -31,7 +31,7 @@ ContactCardMenu.propTypes = {
 };
 
 const ContactCardModal = ({ hideModal, contact, onDeleteContact }, { t }) => (
-  <Modal into="body" dismissAction={hideModal} size="xxlarge">
+  <Modal into="body" dismissAction={hideModal} size="xlarge">
     <ModalContent>
       <ContactCard
         title={t("contact_info")}
