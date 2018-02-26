@@ -2,20 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import contactPropTypes from "../ContactPropTypes";
 import { Avatar } from "cozy-ui/react/Avatar";
+import { getInitials } from "../../helpers/contacts";
 
-const ContactIdentity = ({ firstname, lastname }) => (
+const ContactIdentity = ({ name }) => (
   <div className="contact-identity">
-    <Avatar firstname={firstname} lastname={lastname} size="small" />
-    <ContactName firstname={firstname} lastname={lastname} />
+    <Avatar text={getInitials(name)} size="small" />
+    <ContactName firstname={name.givenName} lastname={name.familyName} />
   </div>
 );
 ContactIdentity.propTypes = {
-  firstname: PropTypes.string,
-  lastname: PropTypes.string
-};
-ContactIdentity.defaultProps = {
-  firstname: "",
-  lastname: ""
+  name: contactPropTypes.name.isRequired
 };
 
 const ContactName = ({ firstname, lastname }) => (
@@ -83,12 +79,6 @@ const ContactRow = props => {
   const { address: email } = getPrimaryOrFirst(props.contact.email) || {
     address: undefined
   };
-  const {
-    name: { givenName: firstname, familyName: lastname } = {
-      givenName: "",
-      familyName: ""
-    }
-  } = props.contact;
   return (
     <div className="contact" onClick={props.onClick}>
       {props.selection && (
@@ -97,7 +87,7 @@ const ContactRow = props => {
           onSelect={props.selection.onSelect}
         />
       )}
-      <ContactIdentity firstname={firstname} lastname={lastname} />
+      <ContactIdentity name={props.contact.name} />
       <ContactPhone phone={phone} />
       <ContactEmail email={email} />
     </div>
