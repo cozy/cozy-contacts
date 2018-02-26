@@ -79,6 +79,7 @@ const ContactRow = props => {
   const { address: email } = getPrimaryOrFirst(props.contact.email) || {
     address: undefined
   };
+  const name = props.contact.name || {};
   return (
     <div className="contact" onClick={props.onClick}>
       {props.selection && (
@@ -87,7 +88,7 @@ const ContactRow = props => {
           onSelect={props.selection.onSelect}
         />
       )}
-      <ContactIdentity name={props.contact.name} />
+      <ContactIdentity name={name} />
       <ContactPhone phone={phone} />
       <ContactEmail email={email} />
     </div>
