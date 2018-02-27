@@ -59,7 +59,7 @@
     "stylint": "1.5.9"
   },
   "dependencies": {
-    "cozy-bar": "4.8.8",
+    "cozy-bar": "4.8.9",
     "cozy-client": "1.0.0-beta.1",
     "cozy-scripts": "0.5.2",
     "cozy-stack-link": "1.0.0-beta.1",
