@@ -1,5 +1,5 @@
 import React from "react";
-import ContactsList from "./ContactsList/ContactsList";
+import ConnectedContactsList from "./ContactsList";
 import ContactsHeader from "./ContactsList/ContactsHeader";
 import { PropTypes } from "prop-types";
 import OpenContactFormButton from "./Buttons/OpenContactFormButton";
@@ -60,15 +60,9 @@ class ContactsApp extends React.Component {
     });
   };
 
-  onCreateContact = async data => {
-    const contact = await this.props.createContact(data);
+  onCreateContact = contact => {
     this.hideContactForm();
     this.displayContactCard(contact);
-  };
-
-  onDeleteContact = contact => {
-    this.props.deleteContact(contact);
-    this.hideContactCard();
   };
 
   render() {
@@ -81,33 +75,26 @@ class ContactsApp extends React.Component {
           displayContactForm={this.displayContactForm}
         />
         <div role="contentinfo">
-          <ContactsList
-            onClickContact={this.displayContactCard}
-            contacts={this.props.contacts}
-          />
+          <ConnectedContactsList onClickContact={this.displayContactCard} />
         </div>
         {displayedContact && (
           <ContactCardModal
-            hideModal={this.hideContactCard}
+            onClose={this.hideContactCard}
             contact={displayedContact}
-            onDeleteContact={this.onDeleteContact}
+            onDeleteContact={this.hideContactCard}
           />
         )}
         {isCreationFormDisplayed && (
           <ContactFormModal
-            hideModal={this.hideContactForm}
+            onClose={this.hideContactForm}
             title={t("create_contact")}
-            createContact={this.onCreateContact}
+            onCreateContact={this.onCreateContact}
           />
         )}
       </main>
     );
   }
 }
-ContactsApp.propTypes = {
-  contacts: PropTypes.array,
-  createContact: PropTypes.func,
-  deleteContact: PropTypes.func
-};
+ContactsApp.propTypes = {};
 
 export default ContactsApp;
