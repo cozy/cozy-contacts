@@ -6736,9 +6736,9 @@ react-dom@16.2.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-final-form@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/react-final-form/-/react-final-form-3.1.0.tgz#79711cd54631354981562cac3f924f786be2c232"
+react-final-form@3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/react-final-form/-/react-final-form-3.1.2.tgz#94eae1c8ed8ef0cef48144f88f1f669dd21e5181"
 
 react-reconciler@^0.7.0:
   version "0.7.0"
