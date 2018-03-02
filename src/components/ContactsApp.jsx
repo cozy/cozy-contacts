@@ -1,6 +1,7 @@
 import React from "react";
 import ConnectedContactsList from "./ContactsList";
 import ContactsHeader from "./ContactsList/ContactsHeader";
+import withSelection from "./HOCs/withSelection";
 import { PropTypes } from "prop-types";
 import OpenContactFormButton from "./Buttons/OpenContactFormButton";
 import ContactsIntentButton from "./Buttons/ContactsIntentButton";
@@ -35,8 +36,7 @@ ContactsHeaderWithActions.propTypes = {
 class ContactsApp extends React.Component {
   state = {
     displayedContact: null,
-    isCreationFormDisplayed: false,
-    selection: []
+    isCreationFormDisplayed: false
   };
 
   displayContactCard = contact => {
@@ -68,28 +68,8 @@ class ContactsApp extends React.Component {
     this.displayContactCard(contact);
   };
 
-  toggleSelection = data => {
-    const index = this.state.selection.indexOf(data);
-    this.setState(state => ({
-      ...state,
-      selection:
-        index === -1
-          ? [...state.selection, data]
-          : [
-              ...state.selection.slice(0, index),
-              ...state.selection.slice(index + 1)
-            ]
-    }));
-  };
-
-  clearSelection = () =>
-    this.setState(state => ({
-      ...state,
-      selection: []
-    }));
-
   deleteSelectedContacts = () => {
-    const { selection } = this.state;
+    const { selection } = this.props;
     selection.forEach(contact => {
       this.props.deleteContact(contact);
     });
@@ -97,8 +77,9 @@ class ContactsApp extends React.Component {
   };
 
   render() {
-    const { displayedContact, isCreationFormDisplayed, selection } = this.state;
+    const { displayedContact, isCreationFormDisplayed } = this.state;
     const { t } = this.context;
+    const { selection, toggleSelection, clearSelection } = this.props;
     const actions = {
       trash: {
         action: this.deleteSelectedContacts
@@ -110,7 +91,7 @@ class ContactsApp extends React.Component {
         {selection.length > 0 && (
           <SelectionBar
             selected={selection}
-            hideSelectionBar={this.clearSelection}
+            hideSelectionBar={clearSelection}
             actions={actions}
           />
         )}
@@ -120,8 +101,8 @@ class ContactsApp extends React.Component {
         <div role="contentinfo">
           <ConnectedContactsList
             onClickContact={this.displayContactCard}
-            onSelect={this.toggleSelection}
-            selection={this.state.selection}
+            onSelect={toggleSelection}
+            selection={selection}
           />
         </div>
         {displayedContact && (
@@ -143,7 +124,10 @@ class ContactsApp extends React.Component {
   }
 }
 ContactsApp.propTypes = {
+  selection: PropTypes.array.isRequired,
+  toggleSelection: PropTypes.func.isRequired,
+  clearSelection: PropTypes.func.isRequired,
   deleteContact: PropTypes.func.isRequired
 };
 
-export default withDeletion(ContactsApp);
+export default withSelection(withDeletion(ContactsApp));

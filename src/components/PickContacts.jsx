@@ -5,6 +5,7 @@ import { translate } from "cozy-ui/react/I18n";
 import { Button, IntentHeader } from "cozy-ui/react";
 import ContactsList from "./ContactsList/ContactsList";
 import { withContacts } from "./ContactsList";
+import withSelection from "./HOCs/withSelection";
 
 const ConnectedContactsList = withContacts(ContactsList);
 
@@ -36,8 +37,7 @@ IntentMain.propTypes = {
 
 class PickContacts extends React.Component {
   state = {
-    service: null,
-    selection: []
+    service: null
   };
   async componentDidMount() {
     cozy.client.intents
@@ -51,7 +51,7 @@ class PickContacts extends React.Component {
     if (this.state.service) {
       try {
         this.state.service.terminate({
-          contacts: this.state.selection.map(contact => contact._id)
+          contacts: this.props.selection.map(contact => contact._id)
         });
       } catch (error) {
         this.state.service.throw(error);
@@ -65,20 +65,6 @@ class PickContacts extends React.Component {
     }
   };
 
-  toggleSelection = data => {
-    const index = this.state.selection.indexOf(data);
-    this.setState(state => ({
-      ...state,
-      selection:
-        index === -1
-          ? [...state.selection, data]
-          : [
-              ...state.selection.slice(0, index),
-              ...state.selection.slice(index + 1)
-            ]
-    }));
-  };
-
   render() {
     const { t } = this.props;
     return (
@@ -86,7 +72,7 @@ class PickContacts extends React.Component {
         <IntentHeader appEditor="Cozy" appName="Contacts" appIcon="/icon.svg" />
         <IntentMain>
           <ConnectedContactsList
-            selection={this.state.selection}
+            selection={this.props.selection}
             onSelect={this.toggleSelection}
           />
         </IntentMain>
@@ -95,7 +81,7 @@ class PickContacts extends React.Component {
           onSubmit={this.pickContacts}
           onCancel={this.cancel}
           label={t("selected_contacts", {
-            smart_count: this.state.selection.length
+            smart_count: this.props.selection.length
           })}
         />
       </div>
@@ -104,7 +90,10 @@ class PickContacts extends React.Component {
 }
 PickContacts.propTypes = {
   intentId: PropTypes.string.isRequired,
+  selection: PropTypes.array.isRequired,
+  toggleSelection: PropTypes.func.isRequired,
+  clearSelection: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired
 };
 
-export default translate()(PickContacts);
+export default translate()(withSelection(PickContacts));
