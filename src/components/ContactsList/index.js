@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { connect, all } from "cozy-client";
+import { withContacts } from "../../connections/allContacts";
 import ContactsList from "./ContactsList";
 import ContactsError from "./ContactsError";
 
@@ -42,6 +42,4 @@ ContactsListWithLoading.propTypes = {
   fetchStatus: PropTypes.string
 };
 
-export default connect(all("io.cozy.contacts"), { as: "allContacts" })(
-  ContactsListWithLoading
-);
+export default withContacts(ContactsListWithLoading);
