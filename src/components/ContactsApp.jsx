@@ -7,6 +7,7 @@ import ContactsIntentButton from "./Buttons/ContactsIntentButton";
 import ContactCardModal from "./Modals/ContactCardModal";
 import ContactFormModal from "./Modals/ContactFormModal";
 import { SelectionBar } from "cozy-ui/react";
+import { withDeletion } from "../connections/allContacts";
 
 const ContactsHeaderWithActions = ({ displayContactForm }, { t }) => (
   <ContactsHeader
@@ -89,9 +90,10 @@ class ContactsApp extends React.Component {
 
   deleteSelectedContacts = () => {
     const { selection } = this.state;
-    selection.forEach(id => {
-      console.log("delete contact", id);
+    selection.forEach(contact => {
+      this.props.deleteContact(contact);
     });
+    this.clearSelection();
   };
 
   render() {
@@ -140,6 +142,8 @@ class ContactsApp extends React.Component {
     );
   }
 }
-ContactsApp.propTypes = {};
+ContactsApp.propTypes = {
+  deleteContact: PropTypes.func.isRequired
+};
 
-export default ContactsApp;
+export default withDeletion(ContactsApp);
