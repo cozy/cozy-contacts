@@ -6,6 +6,7 @@ import OpenContactFormButton from "./Buttons/OpenContactFormButton";
 import ContactsIntentButton from "./Buttons/ContactsIntentButton";
 import ContactCardModal from "./Modals/ContactCardModal";
 import ContactFormModal from "./Modals/ContactFormModal";
+import { SelectionBar } from "cozy-ui/react";
 
 const ContactsHeaderWithActions = ({ displayContactForm }, { t }) => (
   <ContactsHeader
@@ -33,7 +34,8 @@ ContactsHeaderWithActions.propTypes = {
 class ContactsApp extends React.Component {
   state = {
     displayedContact: null,
-    isCreationFormDisplayed: false
+    isCreationFormDisplayed: false,
+    selection: []
   };
 
   displayContactCard = contact => {
@@ -65,17 +67,55 @@ class ContactsApp extends React.Component {
     this.displayContactCard(contact);
   };
 
+  toggleSelection = data => {
+    const index = this.state.selection.indexOf(data);
+    this.setState(state => ({
+      ...state,
+      selection:
+        index === -1
+          ? [...state.selection, data]
+          : [
+              ...state.selection.slice(0, index),
+              ...state.selection.slice(index + 1)
+            ]
+    }));
+  };
+
+  clearSelection = () =>
+    this.setState(state => ({
+      ...state,
+      selection: []
+    }));
+
   render() {
-    const { displayedContact, isCreationFormDisplayed } = this.state;
+    const { displayedContact, isCreationFormDisplayed, selection } = this.state;
     const { t } = this.context;
+    const actions = {
+      trash: {
+        action: () => {
+          console.log("tras shit");
+        }
+      }
+    };
 
     return (
       <main className="app-content">
+        {selection.length > 0 && (
+          <SelectionBar
+            selected={selection}
+            hideSelectionBar={this.clearSelection}
+            actions={actions}
+          />
+        )}
         <ContactsHeaderWithActions
           displayContactForm={this.displayContactForm}
         />
         <div role="contentinfo">
-          <ConnectedContactsList onClickContact={this.displayContactCard} />
+          <ConnectedContactsList
+            onClickContact={this.displayContactCard}
+            onSelect={this.toggleSelection}
+            selection={this.state.selection}
+          />
         </div>
         {displayedContact && (
           <ContactCardModal
