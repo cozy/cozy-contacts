@@ -49,9 +49,9 @@ const ContactsList = props => {
                     selection={
                       props.onSelect && {
                         onSelect: () => {
-                          props.onSelect(contact._id);
+                          props.onSelect(contact);
                         },
-                        selected: props.selection.includes(contact._id)
+                        selected: props.selection.includes(contact)
                       }
                     }
                     onClick={e => props.onClickContact(contact, e)}

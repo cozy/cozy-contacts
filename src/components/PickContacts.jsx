@@ -50,7 +50,9 @@ class PickContacts extends React.Component {
   pickContacts = async () => {
     if (this.state.service) {
       try {
-        this.state.service.terminate({ contacts: this.state.selection });
+        this.state.service.terminate({
+          contacts: this.state.selection.map(contact => contact._id)
+        });
       } catch (error) {
         this.state.service.throw(error);
       }
