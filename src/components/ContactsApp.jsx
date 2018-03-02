@@ -87,14 +87,19 @@ class ContactsApp extends React.Component {
       selection: []
     }));
 
+  deleteSelectedContacts = () => {
+    const { selection } = this.state;
+    selection.forEach(id => {
+      console.log("delete contact", id);
+    });
+  };
+
   render() {
     const { displayedContact, isCreationFormDisplayed, selection } = this.state;
     const { t } = this.context;
     const actions = {
       trash: {
-        action: () => {
-          console.log("tras shit");
-        }
+        action: this.deleteSelectedContacts
       }
     };
 
