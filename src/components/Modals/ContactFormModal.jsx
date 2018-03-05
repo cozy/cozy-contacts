@@ -1,6 +1,6 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-import { withMutation, create } from "cozy-client";
+import { withCreation } from "../../connections/allContacts";
 import Modal, { ModalTitle, ModalDescription } from "cozy-ui/react/Modal";
 import ContactForm from "../ContactCard/ContactForm";
 
@@ -36,9 +36,4 @@ ContactFormModal.propTypes = {
   onCreateContact: PropTypes.func.isRequired
 };
 
-export default withMutation(create, {
-  name: "createContact",
-  updateQueries: {
-    allContacts: (previousData, result) => [...previousData, result.data[0]]
-  }
-})(ContactFormModal);
+export default withCreation(ContactFormModal);

@@ -1,6 +1,6 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-import { withMutation, destroy } from "cozy-client";
+import { withDeletion } from "../../connections/allContacts";
 import Modal, { ModalContent } from "cozy-ui/react/Modal";
 import { Icon, Menu, MenuItem, Button } from "cozy-ui/react";
 import ContactCard from "../ContactCard/ContactCard";
@@ -67,12 +67,4 @@ ContactCardModal.propTypes = {
   onDeleteContact: PropTypes.func.isRequired
 };
 
-export default withMutation(destroy, {
-  name: "deleteContact",
-  updateQueries: {
-    allContacts: (previousData, result) => {
-      const idx = previousData.findIndex(c => c.id === result.data[0].id);
-      return [...previousData.slice(0, idx), ...previousData.slice(idx + 1)];
-    }
-  }
-})(ContactCardModal);
+export default withDeletion(ContactCardModal);
