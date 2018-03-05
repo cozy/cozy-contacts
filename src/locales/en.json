@@ -31,5 +31,9 @@
     "birthday": "",
     "note": "",
     "label": "Work"
+  },
+  "SelectionBar": {
+    "selected_count": "contact selected |||| contacts selected",
+    "trash": "delete"
   }
 }
