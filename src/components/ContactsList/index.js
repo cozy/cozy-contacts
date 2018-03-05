@@ -33,8 +33,7 @@ const ContactsListWithLoading = ({ data, fetchStatus, ...props }) => {
   if (fetchStatus === "loading") {
     return <div>Loading...</div>;
   }
-  const contacts = data.filter(contact => contact.email);
-  return <ContactsList contacts={contacts} {...props} />;
+  return <ContactsList contacts={data} {...props} />;
 };
 
 ContactsListWithLoading.propTypes = {
