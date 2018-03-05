@@ -158,7 +158,7 @@ class ContactForm extends React.Component {
 
               <div className="contact-form__footer">
                 <div>
-                  <Button theme="secondary" onClick={onCancel}>
+                  <Button type="button" theme="secondary" onClick={onCancel}>
                     {t("cancel")}
                   </Button>
                   <Button type="submit">{t("save")}</Button>
