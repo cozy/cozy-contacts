@@ -89,11 +89,12 @@ class ContactsApp extends React.Component {
     this.displayContactCard(contact);
   };
 
-  deleteSelectedContacts = () => {
+  deleteSelectedContacts = async () => {
     const { selection } = this.props;
-    selection.forEach(contact => {
-      this.props.deleteContact(contact);
-    });
+    const promises = selection.map(contact =>
+      this.props.deleteContact(contact)
+    );
+    await Promise.all(promises);
     this.props.clearSelection();
   };
 
