@@ -33,6 +33,27 @@ ContactsHeaderWithActions.propTypes = {
   displayContactForm: PropTypes.func.isRequired
 };
 
+const SelectionBarWithActions = ({
+  selected,
+  hideSelectionBar,
+  trashAction
+}) => (
+  <SelectionBar
+    selected={selected}
+    hideSelectionBar={hideSelectionBar}
+    actions={{
+      trash: {
+        action: trashAction
+      }
+    }}
+  />
+);
+SelectionBarWithActions.propTypes = {
+  selected: PropTypes.array.isRequired,
+  hideSelectionBar: PropTypes.func.isRequired,
+  trashAction: PropTypes.func.isRequired
+};
+
 class ContactsApp extends React.Component {
   state = {
     displayedContact: null,
@@ -73,26 +94,21 @@ class ContactsApp extends React.Component {
     selection.forEach(contact => {
       this.props.deleteContact(contact);
     });
-    this.clearSelection();
+    this.props.clearSelection();
   };
 
   render() {
     const { displayedContact, isCreationFormDisplayed } = this.state;
     const { t } = this.context;
     const { selection, toggleSelection, clearSelection } = this.props;
-    const actions = {
-      trash: {
-        action: this.deleteSelectedContacts
-      }
-    };
 
     return (
       <main className="app-content">
         {selection.length > 0 && (
-          <SelectionBar
+          <SelectionBarWithActions
             selected={selection}
             hideSelectionBar={clearSelection}
-            actions={actions}
+            trashAction={this.deleteSelectedContacts}
           />
         )}
         <ContactsHeaderWithActions
