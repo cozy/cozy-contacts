@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Form } from "react-final-form";
+import arrayMutators from "final-form-arrays";
 import ContactFormField from "./ContactFormField";
 import { Button } from "cozy-ui/react/Button";
 import { translate } from "cozy-ui/react/I18n";
@@ -29,19 +30,22 @@ const fields = [
     name: "phone",
     icon: IconPhone,
     type: "tel",
-    hasLabel: true
+    hasLabel: true,
+    isArray: true
   },
   {
     name: "email",
     icon: IconEmail,
     type: "email",
-    hasLabel: true
+    hasLabel: true,
+    isArray: true
   },
   {
     name: "address",
     icon: IconAddress,
     type: "text",
-    hasLabel: true
+    hasLabel: true,
+    isArray: true
   },
   {
     name: "cozy",
@@ -134,26 +138,37 @@ class ContactForm extends React.Component {
 
   render() {
     const { onCancel, t } = this.props;
+    const initialValues = {};
+    fields.forEach(({ name, isArray }) => {
+      initialValues[name] = isArray ? [undefined] : undefined;
+    });
+
     return (
       <Form
+        mutators={{ ...arrayMutators }}
         onSubmit={this.formDataToContact}
+        initialValues={initialValues}
         render={({ handleSubmit }) => (
           <div>
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="contact-form__fields">
-                {fields.map(({ name, icon, type, required, hasLabel }) => (
-                  <ContactFormField
-                    key={name}
-                    icon={icon}
-                    name={name}
-                    label={t(`field.${name}`)}
-                    placeholder={t(`placeholder.${name}`)}
-                    type={type}
-                    inputWithLabel={hasLabel}
-                    required={required}
-                    labelPlaceholder={t("placeholder.label")}
-                  />
-                ))}
+                {fields.map(
+                  ({ name, icon, type, required, hasLabel, isArray }) => (
+                    <div key={name}>
+                      <ContactFormField
+                        icon={icon}
+                        name={name}
+                        label={t(`field.${name}`)}
+                        placeholder={t(`placeholder.${name}`)}
+                        type={type}
+                        isArray={isArray}
+                        inputWithLabel={hasLabel}
+                        required={required}
+                        labelPlaceholder={t("placeholder.label")}
+                      />
+                    </div>
+                  )
+                )}
               </div>
 
               <div className="contact-form__footer">

@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Field } from "react-final-form";
+import { FieldArray } from "react-final-form-arrays";
 import Icon from "cozy-ui/react/Icon";
+import IconPlus from "../../assets/icons/plus.svg";
 
 const getInputComponent = inputType =>
   inputType === "textarea" ? "textarea" : "input";
@@ -83,6 +85,7 @@ const ContactFormField = ({
   placeholder,
   inputWithLabel,
   required,
+  isArray,
   labelPlaceholder
 }) => (
   <div className="contact-form__field">
@@ -92,14 +95,57 @@ const ContactFormField = ({
       )}
       {label}
     </label>
-    <ContactFieldInput
-      name={name}
-      type={type}
-      placeholder={placeholder}
-      withLabel={inputWithLabel}
-      required={required}
-      labelPlaceholder={labelPlaceholder}
-    />
+    {isArray ? (
+      <FieldArray name={name}>
+        {({ fields }) => (
+          <div className="contact-form__inputs-wrapper">
+            {fields.map((nameWithIndex, index) => (
+              <div className="contact-form__meta-wrapper" key={nameWithIndex}>
+                <ContactFieldInput
+                  name={`${nameWithIndex}.${name}`}
+                  type={type}
+                  placeholder={placeholder}
+                  withLabel={inputWithLabel}
+                  required={required}
+                  labelPlaceholder={labelPlaceholder}
+                />
+                {index < fields.length - 1 && (
+                  <button
+                    type="button"
+                    onClick={() => fields.remove(index)}
+                    className="contact-form__meta-button contact-form__meta-button--remove"
+                  >
+                    <Icon icon={IconPlus} />
+                  </button>
+                )}
+                {index === fields.length - 1 &&
+                  fields.value[index] &&
+                  fields.value[index][name] && (
+                    <button
+                      type="button"
+                      onClick={() => fields.push(undefined)}
+                      className="contact-form__meta-button contact-form__meta-button--add"
+                    >
+                      <Icon icon={IconPlus} />
+                    </button>
+                  )}
+              </div>
+            ))}
+          </div>
+        )}
+      </FieldArray>
+    ) : (
+      <div className="contact-form__inputs-wrapper">
+        <ContactFieldInput
+          name={name}
+          type={type}
+          placeholder={placeholder}
+          withLabel={inputWithLabel}
+          required={required}
+          labelPlaceholder={labelPlaceholder}
+        />
+      </div>
+    )}
   </div>
 );
 ContactFormField.propTypes = {
@@ -110,12 +156,14 @@ ContactFormField.propTypes = {
   placeholder: PropTypes.string,
   labelPlaceholder: PropTypes.string,
   inputWithLabel: PropTypes.bool,
-  required: PropTypes.bool
+  required: PropTypes.bool,
+  isArray: PropTypes.bool
 };
 ContactFormField.defaultProps = {
   icon: null,
   inputWithLabel: false,
   required: false,
+  isArray: false,
   placeholder: "",
   labelPlaceholder: ""
 };

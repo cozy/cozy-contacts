@@ -57,7 +57,7 @@ SelectionBarWithActions.propTypes = {
 class ContactsApp extends React.Component {
   state = {
     displayedContact: null,
-    isCreationFormDisplayed: false
+    isCreationFormDisplayed: true
   };
 
   displayContactCard = contact => {
