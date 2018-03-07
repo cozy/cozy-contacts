@@ -30,9 +30,9 @@ describe("ContactForm", () => {
     const fields = {
       givenName: "Jean-Claude",
       familyName: "Van Cozy",
-      phone: "+33678987654",
-      email: "jcvc@cozy.cloud",
-      address: "18 rue des fleurs, Pecado",
+      "phone[0].phone": "+33678987654",
+      "email[0].email": "jcvc@cozy.cloud",
+      "address[0].address": "18 rue des fleurs, Pecado",
       cozy: "https://jcvd.cozy.cloud",
       company: "Cozy CLoud",
       birthday: "31/12/2015",
