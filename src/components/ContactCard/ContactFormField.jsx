@@ -45,10 +45,12 @@ export class ContactFieldInput extends React.Component {
       labelPlaceholder
     } = this.props;
     const { renderLabel, hasFocus } = this.state;
-    const focusedClass = hasFocus ? "contact-form__input-wrapper--focused" : "";
+    const focusedClass = hasFocus
+      ? " contact-form__input-wrapper--focused"
+      : "";
 
     return (
-      <div className={`contact-form__input-wrapper ${focusedClass}`}>
+      <div className={`contact-form__input-wrapper${focusedClass}`}>
         <Field
           name={name}
           type={type}
@@ -91,7 +93,8 @@ ContactFieldInput.defaultProps = {
 };
 
 export class ContactFormField extends React.Component {
-  render({ name, icon, label, isArray, renderInput }) {
+  render() {
+    const { name, icon, label, isArray, renderInput } = this.props;
     return (
       <div className="contact-form__field">
         <label className="contact-form__label">
