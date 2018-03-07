@@ -144,24 +144,23 @@ class ContactForm extends React.Component {
               <div className="contact-form__fields">
                 {fields.map(
                   ({ name, icon, type, required, hasLabel, isArray }) => (
-                    <div key={name}>
-                      <ContactFormField
-                        name={name}
-                        icon={icon}
-                        label={t(`field.${name}`)}
-                        isArray={isArray}
-                        renderInput={inputName => (
-                          <ContactFieldInput
-                            name={inputName}
-                            type={type}
-                            placeholder={t(`placeholder.${name}`)}
-                            required={required}
-                            withLabel={hasLabel}
-                            labelPlaceholder={t("placeholder.label")}
-                          />
-                        )}
-                      />
-                    </div>
+                    <ContactFormField
+                      key={name}
+                      name={name}
+                      icon={icon}
+                      label={t(`field.${name}`)}
+                      isArray={isArray}
+                      renderInput={inputName => (
+                        <ContactFieldInput
+                          name={inputName}
+                          type={type}
+                          placeholder={t(`placeholder.${name}`)}
+                          required={required}
+                          withLabel={hasLabel}
+                          labelPlaceholder={t("placeholder.label")}
+                        />
+                      )}
+                    />
                   )
                 )}
               </div>
