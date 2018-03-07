@@ -8,7 +8,7 @@ import IconPlus from "../../assets/icons/plus.svg";
 const getInputComponent = inputType =>
   inputType === "textarea" ? "textarea" : "input";
 
-class ContactFieldInput extends React.Component {
+export class ContactFieldInput extends React.Component {
   state = {
     renderLabel: false
   };
@@ -67,8 +67,8 @@ ContactFieldInput.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   withLabel: PropTypes.bool,
-  required: PropTypes.bool,
-  labelPlaceholder: PropTypes.string
+  labelPlaceholder: PropTypes.string,
+  required: PropTypes.bool
 };
 ContactFieldInput.defaultProps = {
   withLabel: false,
@@ -77,16 +77,12 @@ ContactFieldInput.defaultProps = {
   labelPlaceholder: ""
 };
 
-const ContactFormField = ({
-  icon,
+export const ContactFormField = ({
   name,
-  type,
+  icon,
   label,
-  placeholder,
-  inputWithLabel,
-  required,
   isArray,
-  labelPlaceholder
+  renderInput
 }) => (
   <div className="contact-form__field">
     <label className="contact-form__label">
@@ -95,32 +91,32 @@ const ContactFormField = ({
       )}
       {label}
     </label>
-    {isArray ? (
+    {!isArray ? (
+      <div className="contact-form__inputs-wrapper">{renderInput(name)}</div>
+    ) : (
       <FieldArray name={name}>
         {({ fields }) => (
           <div className="contact-form__inputs-wrapper">
-            {fields.map((nameWithIndex, index) => (
-              <div className="contact-form__meta-wrapper" key={nameWithIndex}>
-                <ContactFieldInput
-                  name={`${nameWithIndex}.${name}`}
-                  type={type}
-                  placeholder={placeholder}
-                  withLabel={inputWithLabel}
-                  required={required}
-                  labelPlaceholder={labelPlaceholder}
-                />
-                {index < fields.length - 1 && (
-                  <button
-                    type="button"
-                    onClick={() => fields.remove(index)}
-                    className="contact-form__meta-button contact-form__meta-button--remove"
-                  >
-                    <Icon icon={IconPlus} />
-                  </button>
-                )}
-                {index === fields.length - 1 &&
-                  fields.value[index] &&
-                  fields.value[index][name] && (
+            {fields.map((nameWithIndex, index) => {
+              const isLastField = index === fields.length - 1;
+              const canAddField =
+                isLastField && fields.value[index] && fields.value[index][name];
+
+              return (
+                <div className="contact-form__meta-wrapper" key={nameWithIndex}>
+                  {renderInput(`${nameWithIndex}.${name}`)}
+
+                  {!isLastField && (
+                    <button
+                      type="button"
+                      onClick={() => fields.remove(index)}
+                      className="contact-form__meta-button contact-form__meta-button--remove"
+                    >
+                      <Icon icon={IconPlus} />
+                    </button>
+                  )}
+
+                  {canAddField && (
                     <button
                       type="button"
                       onClick={() => fields.push(undefined)}
@@ -129,43 +125,23 @@ const ContactFormField = ({
                       <Icon icon={IconPlus} />
                     </button>
                   )}
-              </div>
-            ))}
+                </div>
+              );
+            })}
           </div>
         )}
       </FieldArray>
-    ) : (
-      <div className="contact-form__inputs-wrapper">
-        <ContactFieldInput
-          name={name}
-          type={type}
-          placeholder={placeholder}
-          withLabel={inputWithLabel}
-          required={required}
-          labelPlaceholder={labelPlaceholder}
-        />
-      </div>
     )}
   </div>
 );
 ContactFormField.propTypes = {
-  icon: PropTypes.any, // shall be a SVG prop type
   name: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  icon: PropTypes.any, // shall be a SVG prop type
   label: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
-  labelPlaceholder: PropTypes.string,
-  inputWithLabel: PropTypes.bool,
-  required: PropTypes.bool,
-  isArray: PropTypes.bool
+  isArray: PropTypes.bool,
+  renderInput: PropTypes.func.isRequired
 };
 ContactFormField.defaultProps = {
   icon: null,
-  inputWithLabel: false,
-  required: false,
-  isArray: false,
-  placeholder: "",
-  labelPlaceholder: ""
+  isArray: false
 };
-
-export default ContactFormField;

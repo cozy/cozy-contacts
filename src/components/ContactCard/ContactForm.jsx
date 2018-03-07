@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Form } from "react-final-form";
 import arrayMutators from "final-form-arrays";
-import ContactFormField from "./ContactFormField";
+import { ContactFormField, ContactFieldInput } from "./ContactFormField";
 import { Button } from "cozy-ui/react/Button";
 import { translate } from "cozy-ui/react/I18n";
 
@@ -69,6 +69,11 @@ const fields = [
     type: "textarea"
   }
 ];
+
+const initialFieldValues = fields.reduce((initialValues, { name, isArray }) => {
+  initialValues[name] = isArray ? [undefined] : undefined;
+  return initialValues;
+}, {});
 
 class ContactForm extends React.Component {
   formDataToContact = data => {
@@ -138,16 +143,11 @@ class ContactForm extends React.Component {
 
   render() {
     const { onCancel, t } = this.props;
-    const initialValues = {};
-    fields.forEach(({ name, isArray }) => {
-      initialValues[name] = isArray ? [undefined] : undefined;
-    });
-
     return (
       <Form
         mutators={{ ...arrayMutators }}
         onSubmit={this.formDataToContact}
-        initialValues={initialValues}
+        initialValues={initialFieldValues}
         render={({ handleSubmit }) => (
           <div>
             <form onSubmit={handleSubmit} className="contact-form">
@@ -156,15 +156,20 @@ class ContactForm extends React.Component {
                   ({ name, icon, type, required, hasLabel, isArray }) => (
                     <div key={name}>
                       <ContactFormField
-                        icon={icon}
                         name={name}
+                        icon={icon}
                         label={t(`field.${name}`)}
-                        placeholder={t(`placeholder.${name}`)}
-                        type={type}
                         isArray={isArray}
-                        inputWithLabel={hasLabel}
-                        required={required}
-                        labelPlaceholder={t("placeholder.label")}
+                        renderInput={inputName => (
+                          <ContactFieldInput
+                            name={inputName}
+                            type={type}
+                            placeholder={t(`placeholder.${name}`)}
+                            required={required}
+                            withLabel={hasLabel}
+                            labelPlaceholder={t("placeholder.label")}
+                          />
+                        )}
                       />
                     </div>
                   )
