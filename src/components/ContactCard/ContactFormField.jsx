@@ -29,7 +29,7 @@ export class ContactFieldInput extends React.Component {
     });
   };
 
-  onSecondaryInputBlur = e => {
+  onSecondaryInputBlur = () => {
     this.setState({
       hasFocus: false
     });
