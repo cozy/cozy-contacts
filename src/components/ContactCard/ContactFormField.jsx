@@ -3,25 +3,35 @@ import PropTypes from "prop-types";
 import { Field } from "react-final-form";
 import { FieldArray } from "react-final-form-arrays";
 import Icon from "cozy-ui/react/Icon";
-import IconPlus from "../../assets/icons/plus.svg";
+import IconPlus from "../../assets/icons/small-plus.svg";
+import IconCross from "../../assets/icons/small-cross.svg";
 
 const getInputComponent = inputType =>
   inputType === "textarea" ? "textarea" : "input";
 
 export class ContactFieldInput extends React.Component {
   state = {
-    renderLabel: false
+    renderLabel: false,
+    hasFocus: false
   };
 
-  showLabel = () => {
+  onFocus = () => {
     this.setState({
-      renderLabel: this.props.withLabel
+      renderLabel: this.props.withLabel,
+      hasFocus: true
     });
   };
 
-  hideLabelIfEmpty = e => {
+  onMainInputBlur = e => {
     this.setState({
-      renderLabel: e.target.value && this.props.withLabel
+      renderLabel: e.target.value && this.props.withLabel,
+      hasFocus: false
+    });
+  };
+
+  onSecondaryInputBlur = e => {
+    this.setState({
+      hasFocus: false
     });
   };
 
@@ -34,17 +44,18 @@ export class ContactFieldInput extends React.Component {
       withLabel,
       labelPlaceholder
     } = this.props;
-    const { renderLabel } = this.state;
+    const { renderLabel, hasFocus } = this.state;
+    const focusedClass = hasFocus ? "contact-form__input-wrapper--focused" : "";
 
     return (
-      <div className="contact-form__input-wrapper">
+      <div className={`contact-form__input-wrapper ${focusedClass}`}>
         <Field
           name={name}
           type={type}
           placeholder={placeholder}
           required={required}
-          onFocus={this.showLabel}
-          onBlur={this.hideLabelIfEmpty}
+          onFocus={this.onFocus}
+          onBlur={this.onMainInputBlur}
           component={getInputComponent(type)}
           className="contact-form__input"
         />
@@ -56,6 +67,8 @@ export class ContactFieldInput extends React.Component {
               component="input"
               className="contact-form__label-input"
               placeholder={labelPlaceholder}
+              onFocus={this.onFocus}
+              onBlur={this.onSecondaryInputBlur}
             />
           )}
       </div>
@@ -77,63 +90,81 @@ ContactFieldInput.defaultProps = {
   labelPlaceholder: ""
 };
 
-export const ContactFormField = ({
-  name,
-  icon,
-  label,
-  isArray,
-  renderInput
-}) => (
-  <div className="contact-form__field">
-    <label className="contact-form__label">
-      {icon && (
-        <Icon icon={icon} color="coolGrey" className="contact-form__icon" />
-      )}
-      {label}
-    </label>
-    {!isArray ? (
-      <div className="contact-form__inputs-wrapper">{renderInput(name)}</div>
-    ) : (
-      <FieldArray name={name}>
-        {({ fields }) => (
+export class ContactFormField extends React.Component {
+  render({ name, icon, label, isArray, renderInput }) {
+    return (
+      <div className="contact-form__field">
+        <label className="contact-form__label">
+          {icon && (
+            <Icon icon={icon} color="coolGrey" className="contact-form__icon" />
+          )}
+          {label}
+        </label>
+        {isArray ? (
+          <FieldArray name={name}>
+            {({ fields }) => (
+              <div className="contact-form__inputs-wrapper">
+                {fields.map((nameWithIndex, index) =>
+                  this.renderArrayField(
+                    fields,
+                    index,
+                    nameWithIndex,
+                    name,
+                    renderInput
+                  )
+                )}
+              </div>
+            )}
+          </FieldArray>
+        ) : (
           <div className="contact-form__inputs-wrapper">
-            {fields.map((nameWithIndex, index) => {
-              const isLastField = index === fields.length - 1;
-              const canAddField =
-                isLastField && fields.value[index] && fields.value[index][name];
-
-              return (
-                <div className="contact-form__meta-wrapper" key={nameWithIndex}>
-                  {renderInput(`${nameWithIndex}.${name}`)}
-
-                  {!isLastField && (
-                    <button
-                      type="button"
-                      onClick={() => fields.remove(index)}
-                      className="contact-form__meta-button contact-form__meta-button--remove"
-                    >
-                      <Icon icon={IconPlus} />
-                    </button>
-                  )}
-
-                  {canAddField && (
-                    <button
-                      type="button"
-                      onClick={() => fields.push(undefined)}
-                      className="contact-form__meta-button contact-form__meta-button--add"
-                    >
-                      <Icon icon={IconPlus} />
-                    </button>
-                  )}
-                </div>
-              );
-            })}
+            {renderInput(name)}
           </div>
         )}
-      </FieldArray>
-    )}
-  </div>
-);
+      </div>
+    );
+  }
+
+  addField = fields => fields.push(undefined);
+
+  removeField = (fields, index) => {
+    const isLastRemainignField = fields.length === 1;
+    fields.remove(index);
+    if (isLastRemainignField) this.addField(fields);
+  };
+
+  renderArrayField = (fields, index, nameWithIndex, name, renderInput) => {
+    const isLastField = index === fields.length - 1;
+    const hasValue = fields.value[index] && fields.value[index][name];
+    const canAddField = isLastField && hasValue;
+
+    return (
+      <div className="contact-form__meta-wrapper" key={nameWithIndex}>
+        {renderInput(`${nameWithIndex}.${name}`)}
+
+        {hasValue && (
+          <button
+            type="button"
+            onClick={() => this.removeField(fields, index)}
+            className="contact-form__meta-button contact-form__meta-button--remove"
+          >
+            <Icon icon={IconCross} color="silver" />
+          </button>
+        )}
+
+        {canAddField && (
+          <button
+            type="button"
+            onClick={() => this.addField(fields)}
+            className="contact-form__meta-button contact-form__meta-button--add"
+          >
+            <Icon icon={IconPlus} color="white" />
+          </button>
+        )}
+      </div>
+    );
+  };
+}
 ContactFormField.propTypes = {
   name: PropTypes.string.isRequired,
   icon: PropTypes.any, // shall be a SVG prop type

@@ -1,6 +1,5 @@
 @require 'settings/palette.styl'
 
-
 .contact-form
     height 50%
     display flex
@@ -52,12 +51,14 @@
     align-items center
     position absolute
     left 100%
-    top 20%
+    top 25%
     width 1.2rem
     height 1.2rem
-    padding 0 .25rem
+    padding 0 0.2rem
     border 0
     border-radius 50%
+    cursor pointer
+    transition all .2s ease-out
 
     &:focus
         outline 0
@@ -68,7 +69,13 @@
 
 .contact-form__meta-button--remove
     margin-left 1rem
-    background coolGrey
+    background none
+    border 1px solid silver
+    opacity 1
+
+.contact-form__meta-wrapper:hover .contact-form__meta-button--remove,
+.contact-form__input-wrapper--focused ~ .contact-form__meta-button--remove
+    opacity 1
 
 .contact-form__input-wrapper
     display inline-flex
