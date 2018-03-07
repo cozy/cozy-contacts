@@ -97,33 +97,23 @@ class ContactForm extends React.Component {
         givenName,
         familyName
       },
-      email: email
-        ? [
-            {
-              address: email,
-              type: data["emailLabel"],
-              primary: true
-            }
-          ]
-        : undefined,
+      email: email.filter(val => val).map(({ email, emailLabel }, index) => ({
+        address: email,
+        type: emailLabel,
+        primary: index === 0
+      })),
       address: address
-        ? [
-            {
-              formattedAddress: address,
-              type: data["addressLabel"],
-              primary: true
-            }
-          ]
-        : undefined,
-      phone: phone
-        ? [
-            {
-              number: phone,
-              type: data["phoneLabel"],
-              primary: true
-            }
-          ]
-        : undefined,
+        .filter(val => val)
+        .map(({ address, addressLabel }, index) => ({
+          formattedAddress: address,
+          type: addressLabel,
+          primary: index === 0
+        })),
+      phone: phone.filter(val => val).map(({ phone, phoneLabel }, index) => ({
+        number: phone,
+        type: phoneLabel,
+        primary: index === 0
+      })),
       cozy: cozy
         ? [
             {
