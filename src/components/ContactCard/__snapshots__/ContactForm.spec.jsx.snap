@@ -18,19 +18,23 @@ exports[`ContactForm should match snapshot 1`] = `
           field.givenName
         </label>
         <div
-          className="contact-form__input-wrapper"
+          className="contact-form__inputs-wrapper"
         >
-          <input
-            className="contact-form__input"
-            name="givenName"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="placeholder.givenName"
-            required={false}
-            type="text"
-            value=""
-          />
+          <div
+            className="contact-form__input-wrapper"
+          >
+            <input
+              className="contact-form__input"
+              name="givenName"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="placeholder.givenName"
+              required={false}
+              type="text"
+              value=""
+            />
+          </div>
         </div>
       </div>
       <div
@@ -42,19 +46,23 @@ exports[`ContactForm should match snapshot 1`] = `
           field.familyName
         </label>
         <div
-          className="contact-form__input-wrapper"
+          className="contact-form__inputs-wrapper"
         >
-          <input
-            className="contact-form__input"
-            name="familyName"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="placeholder.familyName"
-            required={true}
-            type="text"
-            value=""
-          />
+          <div
+            className="contact-form__input-wrapper"
+          >
+            <input
+              className="contact-form__input"
+              name="familyName"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="placeholder.familyName"
+              required={true}
+              type="text"
+              value=""
+            />
+          </div>
         </div>
       </div>
       <div
@@ -68,7 +76,7 @@ exports[`ContactForm should match snapshot 1`] = `
             height="16"
             style={
               Object {
-                "fill": "coolGrey",
+                "fill": "#95999D",
               }
             }
             width="16"
@@ -80,19 +88,27 @@ exports[`ContactForm should match snapshot 1`] = `
           field.phone
         </label>
         <div
-          className="contact-form__input-wrapper"
+          className="contact-form__inputs-wrapper"
         >
-          <input
-            className="contact-form__input"
-            name="phone"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="placeholder.phone"
-            required={false}
-            type="tel"
-            value=""
-          />
+          <div
+            className="contact-form__meta-wrapper"
+          >
+            <div
+              className="contact-form__input-wrapper"
+            >
+              <input
+                className="contact-form__input"
+                name="phone[0].phone"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="placeholder.phone"
+                required={false}
+                type="tel"
+                value=""
+              />
+            </div>
+          </div>
         </div>
       </div>
       <div
@@ -106,7 +122,7 @@ exports[`ContactForm should match snapshot 1`] = `
             height="16"
             style={
               Object {
-                "fill": "coolGrey",
+                "fill": "#95999D",
               }
             }
             width="16"
@@ -118,19 +134,27 @@ exports[`ContactForm should match snapshot 1`] = `
           field.email
         </label>
         <div
-          className="contact-form__input-wrapper"
+          className="contact-form__inputs-wrapper"
         >
-          <input
-            className="contact-form__input"
-            name="email"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="placeholder.email"
-            required={false}
-            type="email"
-            value=""
-          />
+          <div
+            className="contact-form__meta-wrapper"
+          >
+            <div
+              className="contact-form__input-wrapper"
+            >
+              <input
+                className="contact-form__input"
+                name="email[0].email"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="placeholder.email"
+                required={false}
+                type="email"
+                value=""
+              />
+            </div>
+          </div>
         </div>
       </div>
       <div
@@ -144,7 +168,7 @@ exports[`ContactForm should match snapshot 1`] = `
             height="16"
             style={
               Object {
-                "fill": "coolGrey",
+                "fill": "#95999D",
               }
             }
             width="16"
@@ -156,19 +180,27 @@ exports[`ContactForm should match snapshot 1`] = `
           field.address
         </label>
         <div
-          className="contact-form__input-wrapper"
+          className="contact-form__inputs-wrapper"
         >
-          <input
-            className="contact-form__input"
-            name="address"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="placeholder.address"
-            required={false}
-            type="text"
-            value=""
-          />
+          <div
+            className="contact-form__meta-wrapper"
+          >
+            <div
+              className="contact-form__input-wrapper"
+            >
+              <input
+                className="contact-form__input"
+                name="address[0].address"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="placeholder.address"
+                required={false}
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
         </div>
       </div>
       <div
@@ -182,7 +214,7 @@ exports[`ContactForm should match snapshot 1`] = `
             height="16"
             style={
               Object {
-                "fill": "coolGrey",
+                "fill": "#95999D",
               }
             }
             width="16"
@@ -194,19 +226,23 @@ exports[`ContactForm should match snapshot 1`] = `
           field.cozy
         </label>
         <div
-          className="contact-form__input-wrapper"
+          className="contact-form__inputs-wrapper"
         >
-          <input
-            className="contact-form__input"
-            name="cozy"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="placeholder.cozy"
-            required={false}
-            type="url"
-            value=""
-          />
+          <div
+            className="contact-form__input-wrapper"
+          >
+            <input
+              className="contact-form__input"
+              name="cozy"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="placeholder.cozy"
+              required={false}
+              type="url"
+              value=""
+            />
+          </div>
         </div>
       </div>
       <div
@@ -220,7 +256,7 @@ exports[`ContactForm should match snapshot 1`] = `
             height="16"
             style={
               Object {
-                "fill": "coolGrey",
+                "fill": "#95999D",
               }
             }
             width="16"
@@ -232,19 +268,23 @@ exports[`ContactForm should match snapshot 1`] = `
           field.company
         </label>
         <div
-          className="contact-form__input-wrapper"
+          className="contact-form__inputs-wrapper"
         >
-          <input
-            className="contact-form__input"
-            name="company"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="placeholder.company"
-            required={false}
-            type="text"
-            value=""
-          />
+          <div
+            className="contact-form__input-wrapper"
+          >
+            <input
+              className="contact-form__input"
+              name="company"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="placeholder.company"
+              required={false}
+              type="text"
+              value=""
+            />
+          </div>
         </div>
       </div>
       <div
@@ -258,7 +298,7 @@ exports[`ContactForm should match snapshot 1`] = `
             height="16"
             style={
               Object {
-                "fill": "coolGrey",
+                "fill": "#95999D",
               }
             }
             width="16"
@@ -270,19 +310,23 @@ exports[`ContactForm should match snapshot 1`] = `
           field.birthday
         </label>
         <div
-          className="contact-form__input-wrapper"
+          className="contact-form__inputs-wrapper"
         >
-          <input
-            className="contact-form__input"
-            name="birthday"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="placeholder.birthday"
-            required={false}
-            type="date"
-            value=""
-          />
+          <div
+            className="contact-form__input-wrapper"
+          >
+            <input
+              className="contact-form__input"
+              name="birthday"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="placeholder.birthday"
+              required={false}
+              type="date"
+              value=""
+            />
+          </div>
         </div>
       </div>
       <div
@@ -296,7 +340,7 @@ exports[`ContactForm should match snapshot 1`] = `
             height="16"
             style={
               Object {
-                "fill": "coolGrey",
+                "fill": "#95999D",
               }
             }
             width="16"
@@ -308,19 +352,23 @@ exports[`ContactForm should match snapshot 1`] = `
           field.note
         </label>
         <div
-          className="contact-form__input-wrapper"
+          className="contact-form__inputs-wrapper"
         >
-          <textarea
-            className="contact-form__input"
-            name="note"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="placeholder.note"
-            required={false}
-            type="textarea"
-            value=""
-          />
+          <div
+            className="contact-form__input-wrapper"
+          >
+            <textarea
+              className="contact-form__input"
+              name="note"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="placeholder.note"
+              required={false}
+              type="textarea"
+              value=""
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -399,17 +447,17 @@ Object {
 
 exports[`ContactForm should submit empty fields 1`] = `
 Object {
-  "address": undefined,
+  "address": Array [],
   "birthday": undefined,
   "company": undefined,
   "cozy": undefined,
-  "email": undefined,
+  "email": Array [],
   "fullname": "",
   "name": Object {
     "familyName": undefined,
     "givenName": undefined,
   },
   "note": undefined,
-  "phone": undefined,
+  "phone": Array [],
 }
 `;

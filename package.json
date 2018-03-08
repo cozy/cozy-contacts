@@ -59,14 +59,17 @@
     "stylint": "1.5.9"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "cozy-bar": "4.8.9",
     "cozy-client": "1.0.0-beta.1",
     "cozy-scripts": "0.5.4",
     "cozy-stack-link": "1.0.0-beta.1",
     "cozy-ui": "7.5.0",
     "final-form": "4.2.1",
+    "final-form-arrays": "^1.0.4",
     "preact": "8.2.7",
     "preact-compat": "3.18.0",
-    "react-final-form": "3.1.2"
+    "react-final-form": "3.1.2",
+    "react-final-form-arrays": "^1.0.4"
   }
 }

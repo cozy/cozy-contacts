@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Form } from "react-final-form";
+import arrayMutators from "final-form-arrays";
 import ContactFormField from "./ContactFormField";
+import ContactFieldInput from "./ContactFieldInput";
 import { Button } from "cozy-ui/react/Button";
 import { translate } from "cozy-ui/react/I18n";
 
@@ -29,19 +31,22 @@ const fields = [
     name: "phone",
     icon: IconPhone,
     type: "tel",
-    hasLabel: true
+    hasLabel: true,
+    isArray: true
   },
   {
     name: "email",
     icon: IconEmail,
     type: "email",
-    hasLabel: true
+    hasLabel: true,
+    isArray: true
   },
   {
     name: "address",
     icon: IconAddress,
     type: "text",
-    hasLabel: true
+    hasLabel: true,
+    isArray: true
   },
   {
     name: "cozy",
@@ -66,6 +71,12 @@ const fields = [
   }
 ];
 
+// initialize the form values, required so that array fields start with at least one editable field
+const initialFieldValues = fields.reduce((initialValues, { name, isArray }) => {
+  initialValues[name] = isArray ? [undefined] : undefined;
+  return initialValues;
+}, {});
+
 class ContactForm extends React.Component {
   formDataToContact = data => {
     const {
@@ -88,33 +99,23 @@ class ContactForm extends React.Component {
         givenName,
         familyName
       },
-      email: email
-        ? [
-            {
-              address: email,
-              type: data["emailLabel"],
-              primary: true
-            }
-          ]
-        : undefined,
+      email: email.filter(val => val).map(({ email, emailLabel }, index) => ({
+        address: email,
+        type: emailLabel,
+        primary: index === 0
+      })),
       address: address
-        ? [
-            {
-              formattedAddress: address,
-              type: data["addressLabel"],
-              primary: true
-            }
-          ]
-        : undefined,
-      phone: phone
-        ? [
-            {
-              number: phone,
-              type: data["phoneLabel"],
-              primary: true
-            }
-          ]
-        : undefined,
+        .filter(val => val)
+        .map(({ address, addressLabel }, index) => ({
+          formattedAddress: address,
+          type: addressLabel,
+          primary: index === 0
+        })),
+      phone: phone.filter(val => val).map(({ phone, phoneLabel }, index) => ({
+        number: phone,
+        type: phoneLabel,
+        primary: index === 0
+      })),
       cozy: cozy
         ? [
             {
@@ -136,24 +137,34 @@ class ContactForm extends React.Component {
     const { onCancel, t } = this.props;
     return (
       <Form
+        mutators={{ ...arrayMutators }}
         onSubmit={this.formDataToContact}
+        initialValues={initialFieldValues}
         render={({ handleSubmit }) => (
           <div>
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="contact-form__fields">
-                {fields.map(({ name, icon, type, required, hasLabel }) => (
-                  <ContactFormField
-                    key={name}
-                    icon={icon}
-                    name={name}
-                    label={t(`field.${name}`)}
-                    placeholder={t(`placeholder.${name}`)}
-                    type={type}
-                    inputWithLabel={hasLabel}
-                    required={required}
-                    labelPlaceholder={t("placeholder.label")}
-                  />
-                ))}
+                {fields.map(
+                  ({ name, icon, type, required, hasLabel, isArray }) => (
+                    <ContactFormField
+                      key={name}
+                      name={name}
+                      icon={icon}
+                      label={t(`field.${name}`)}
+                      isArray={isArray}
+                      renderInput={inputName => (
+                        <ContactFieldInput
+                          name={inputName}
+                          type={type}
+                          placeholder={t(`placeholder.${name}`)}
+                          required={required}
+                          withLabel={hasLabel}
+                          labelPlaceholder={t("placeholder.label")}
+                        />
+                      )}
+                    />
+                  )
+                )}
               </div>
 
               <div className="contact-form__footer">
