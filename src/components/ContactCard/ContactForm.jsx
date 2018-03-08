@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Form } from "react-final-form";
 import arrayMutators from "final-form-arrays";
-import { ContactFormField, ContactFieldInput } from "./ContactFormField";
+import ContactFormField from "./ContactFormField";
+import ContactFieldInput from "./ContactFieldInput";
 import { Button } from "cozy-ui/react/Button";
 import { translate } from "cozy-ui/react/I18n";
 
@@ -70,6 +71,7 @@ const fields = [
   }
 ];
 
+// initialize the form values, required so that array fields start with at least one editable field
 const initialFieldValues = fields.reduce((initialValues, { name, isArray }) => {
   initialValues[name] = isArray ? [undefined] : undefined;
   return initialValues;

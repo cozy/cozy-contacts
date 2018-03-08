@@ -1,98 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Field } from "react-final-form";
 import { FieldArray } from "react-final-form-arrays";
 import Icon from "cozy-ui/react/Icon";
 import IconPlus from "../../assets/icons/small-plus.svg";
 import IconCross from "../../assets/icons/small-cross.svg";
 
-const getInputComponent = inputType =>
-  inputType === "textarea" ? "textarea" : "input";
-
-export class ContactFieldInput extends React.Component {
-  state = {
-    renderLabel: false,
-    hasFocus: false
-  };
-
-  onFocus = () => {
-    this.setState({
-      renderLabel: this.props.withLabel,
-      hasFocus: true
-    });
-  };
-
-  onMainInputBlur = e => {
-    this.setState({
-      renderLabel: e.target.value && this.props.withLabel,
-      hasFocus: false
-    });
-  };
-
-  onSecondaryInputBlur = () => {
-    this.setState({
-      hasFocus: false
-    });
-  };
-
-  render() {
-    const {
-      name,
-      type,
-      placeholder,
-      required,
-      withLabel,
-      labelPlaceholder
-    } = this.props;
-    const { renderLabel, hasFocus } = this.state;
-    const focusedClass = hasFocus
-      ? " contact-form__input-wrapper--focused"
-      : "";
-
-    return (
-      <div className={`contact-form__input-wrapper${focusedClass}`}>
-        <Field
-          name={name}
-          type={type}
-          placeholder={placeholder}
-          required={required}
-          onFocus={this.onFocus}
-          onBlur={this.onMainInputBlur}
-          component={getInputComponent(type)}
-          className="contact-form__input"
-        />
-        {withLabel &&
-          renderLabel && (
-            <Field
-              name={`${name}Label`}
-              type="text"
-              component="input"
-              className="contact-form__label-input"
-              placeholder={labelPlaceholder}
-              onFocus={this.onFocus}
-              onBlur={this.onSecondaryInputBlur}
-            />
-          )}
-      </div>
-    );
-  }
-}
-ContactFieldInput.propTypes = {
-  name: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
-  withLabel: PropTypes.bool,
-  labelPlaceholder: PropTypes.string,
-  required: PropTypes.bool
-};
-ContactFieldInput.defaultProps = {
-  withLabel: false,
-  required: false,
-  placeholder: "",
-  labelPlaceholder: ""
-};
-
-export class ContactFormField extends React.Component {
+class ContactFormField extends React.Component {
   render() {
     const { name, icon, label, isArray, renderInput } = this.props;
     return (
@@ -179,3 +92,5 @@ ContactFormField.defaultProps = {
   icon: null,
   isArray: false
 };
+
+export default ContactFormField;

@@ -59,6 +59,7 @@
     "stylint": "1.5.9"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "cozy-bar": "4.8.9",
     "cozy-client": "1.0.0-beta.1",
     "cozy-scripts": "0.5.4",
