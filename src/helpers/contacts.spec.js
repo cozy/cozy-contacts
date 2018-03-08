@@ -11,6 +11,7 @@ describe("Manage Contacts fields", () => {
   test("full transformation", () => {
     const contact = {
       _id: "c6899688-6cc6-4ffb-82d4-ab9f9b82c582",
+      id: "c6899688-6cc6-4ffb-82d4-ab9f9b82c582",
       _rev: "1-9368a4f2e467c449f4a1f5171a784aa8",
       _type: "io.cozy.contacts",
       address: [
