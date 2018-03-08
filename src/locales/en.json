@@ -21,10 +21,10 @@
     "note": "Notes"
   },
   "placeholder": {
-    "givenName": "Claude",
-    "familyName": "Douillet",
-    "phone": "01 23 45 67 89",
-    "email": "claude@mycozy.cloud",
+    "givenName": "",
+    "familyName": "",
+    "phone": "",
+    "email": "",
     "address": "",
     "cozy": "",
     "company": "",
