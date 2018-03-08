@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { FieldArray } from "react-final-form-arrays";
 import Icon from "cozy-ui/react/Icon";
+import palette from "cozy-ui/stylus/settings/palette.json";
 import IconPlus from "../../assets/icons/small-plus.svg";
 import IconCross from "../../assets/icons/small-cross.svg";
 
@@ -12,7 +13,11 @@ class ContactFormField extends React.Component {
       <div className="contact-form__field">
         <label className="contact-form__label">
           {icon && (
-            <Icon icon={icon} color="coolGrey" className="contact-form__icon" />
+            <Icon
+              icon={icon}
+              color={palette["coolGrey"]}
+              className="contact-form__icon"
+            />
           )}
           {label}
         </label>
@@ -64,7 +69,7 @@ class ContactFormField extends React.Component {
             onClick={() => this.removeField(fields, index)}
             className="contact-form__meta-button contact-form__meta-button--remove"
           >
-            <Icon icon={IconCross} color="silver" />
+            <Icon icon={IconCross} color={palette["coolGrey"]} />
           </button>
         )}
 
