@@ -69,7 +69,12 @@ class ContactFormField extends React.Component {
             onClick={() => this.removeField(fields, index)}
             className="contact-form__meta-button contact-form__meta-button--remove"
           >
-            <Icon icon={IconCross} color={palette["coolGrey"]} />
+            <Icon
+              icon={IconCross}
+              color={palette["coolGrey"]}
+              width="10"
+              height="10"
+            />
           </button>
         )}
 
@@ -79,7 +84,7 @@ class ContactFormField extends React.Component {
             onClick={() => this.addField(fields)}
             className="contact-form__meta-button contact-form__meta-button--add"
           >
-            <Icon icon={IconPlus} color="white" />
+            <Icon icon={IconPlus} color="white" width="10" height="10" />
           </button>
         )}
       </div>
