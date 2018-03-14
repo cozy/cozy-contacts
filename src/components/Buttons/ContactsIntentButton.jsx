@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, IntentOpener } from "cozy-ui/react";
 
-const ContactsIntentButton = ({ children }) => (
+const ContactsIntentButton = ({ label }) => (
   <div>
     <IntentOpener
       onComplete={res => {
@@ -12,15 +12,15 @@ const ContactsIntentButton = ({ children }) => (
       action="PICK"
       doctype="io.cozy.contacts"
     >
-      <Button>{children}</Button>
+      <Button label={label} />
     </IntentOpener>
   </div>
 );
 ContactsIntentButton.propTypes = {
-  children: PropTypes.string
+  label: PropTypes.string
 };
 ContactsIntentButton.defaultProps = {
-  children: "Select a Contact"
+  label: "Select a Contact"
 };
 
 export default ContactsIntentButton;

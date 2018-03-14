@@ -1,22 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Icon, Button } from "cozy-ui/react";
+import { Button } from "cozy-ui/react";
 import IconPlus from "../../assets/icons/plus.svg";
 
-const OpenContactFormButton = ({ children, onClick }) => (
+const OpenContactFormButton = ({ label, onClick }) => (
   <div>
-    <Button onClick={onClick}>
-      <Icon icon={IconPlus} />
-      {children}
-    </Button>
+    <Button onClick={onClick} label={label} icon={IconPlus} />
   </div>
 );
 OpenContactFormButton.propTypes = {
-  children: PropTypes.string,
+  label: PropTypes.string,
   onClick: PropTypes.func.isRequired
 };
 OpenContactFormButton.defaultProps = {
-  children: "Create a contact"
+  label: "Create a contact"
 };
 
 export default OpenContactFormButton;
