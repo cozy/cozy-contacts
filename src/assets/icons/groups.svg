@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-groups-16</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M66.944,258.473 C66.944,259.285 66.285,259.945 65.471,259.945 C64.658,259.945 64,259.285 64,258.473 C64,257.66 64.658,257 65.471,257 C66.285,257 66.944,257.66 66.944,258.473 Z M68.9997,259.7219 L68.9997,257.2219 L79.9997,257.2219 L79.9997,259.7219 L68.9997,259.7219 Z M68.9997,264.3619 L68.9997,261.8619 L79.9997,261.8619 L79.9997,264.3619 L68.9997,264.3619 Z M68.9997,269.0009 L68.9997,266.5009 L79.9997,266.5009 L79.9997,269.0009 L68.9997,269.0009 Z" id="path-1"></path>
+    </defs>
+    <g id="16px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-64.000000, -255.000000)">
+        <g id="slices" transform="translate(32.000000, 32.000000)"></g>
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Mask" fill="#000000" xlink:href="#path-1"></use>
+    </g>
+</svg>
