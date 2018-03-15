@@ -5,53 +5,72 @@ import contactPropTypes from "../ContactPropTypes";
 import ContactGroupManager from "../ContactGroups/ContactGroupManager";
 import { getFullContactName, getInitials } from "../../helpers/contacts";
 import { withGroups } from "../../connections/allGroups";
+import { withUpdate } from "../../connections/allContacts";
 
-const ContactIdentity = ({ name, groups }) => (
+const ContactIdentity = ({ contact }) => (
   <div className="contact-card-identity">
-    <Avatar text={getInitials(name)} size="medium" />
+    <Avatar text={getInitials(contact.name)} size="medium" />
     <div className="contact-card-identity__infos">
       <h1 className="contact-card-identity__title">
-        {getFullContactName(name)}
+        {getFullContactName(contact.name)}
       </h1>
-      <ConnectedContactGroups contactGroups={groups} />
+      <ConnectedContactGroups contact={contact} />
     </div>
   </div>
 );
 
 ContactIdentity.propTypes = {
-  name: contactPropTypes.name,
-  groups: PropTypes.array.isRequired
+  contact: contactPropTypes
 };
 
-const ContactGroups = ({ contactGroups, allGroups }) => (
-  <div>
-    <ContactGroupManager contactGroups={contactGroups} allGroups={allGroups} />
-    <ol>{contactGroups.map(group => <li>{group.name}</li>)}</ol>
-  </div>
-);
+class ContactGroups extends React.Component {
+  render() {
+    const { contactGroups, allGroups } = this.props;
+    return (
+      <div>
+        <ContactGroupManager
+          contactGroups={contactGroups}
+          allGroups={allGroups}
+          onGroupSelectionChange={this.props.updateContactGroups}
+        />
+        <ol>{contactGroups.map(group => <li>{group.name}</li>)}</ol>
+      </div>
+    );
+  }
+}
 
 ContactGroups.propTypes = {
   contactGroups: PropTypes.array.isRequired,
-  allGroups: PropTypes.array.isRequired
+  allGroups: PropTypes.array.isRequired,
+  updateContactGroups: PropTypes.func.isRequired
 };
 
-const ContactGroupsWithLoading = ({ data, fetchStatus, contactGroups }) => {
-  if (fetchStatus === "error") {
-    return "error";
-  } else if (fetchStatus === "loading") {
-    return <div>Loading...</div>;
-  } else {
-    return (
-      <ContactGroups
-        contactGroups={contactGroups.map(groupId =>
-          data.find(group => group._id === groupId)
-        )}
-        allGroups={data}
-      />
-    );
+class ContactGroupsWithLoading extends React.Component {
+  updateContactGroups = (groups, reason) => {
+    const modifiedContact = { ...this.props.contact };
+    modifiedContact.groups = groups.map(group => group._id);
+    this.props.updateContact(modifiedContact);
+  };
+
+  render({ data, fetchStatus, contact, updateContact }) {
+    if (fetchStatus === "error") {
+      return false;
+    } else if (fetchStatus === "loading") {
+      return <div>Loading...</div>;
+    } else {
+      return (
+        <ContactGroups
+          contactGroups={contact.groups.map(groupId =>
+            data.find(group => group._id === groupId)
+          )}
+          allGroups={data}
+          updateContactGroups={this.updateContactGroups}
+        />
+      );
+    }
   }
-};
+}
 
-const ConnectedContactGroups = withGroups(ContactGroupsWithLoading);
+const ConnectedContactGroups = withGroups(withUpdate(ContactGroupsWithLoading));
 
 export default ContactIdentity;

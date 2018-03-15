@@ -7,8 +7,6 @@ import palette from "cozy-ui/stylus/settings/palette.json";
 
 import IconGroups from "../../assets/icons/groups.svg";
 
-const GroupCreationForm = () => null;
-
 const MainButton = ({ innerProps, children }) => (
   <div {...innerProps}>
     <Button theme="secondary">
@@ -20,46 +18,41 @@ const MainButton = ({ innerProps, children }) => (
 );
 
 const CustomOption = ({ label, isSelected, innerProps }) => (
-  <label {...innerProps} className="group-option">
+  <div {...innerProps} className="group-option">
     <input
       type="checkbox"
       checked={isSelected}
       className="group-option__checkbox"
     />
     {label}
-  </label>
+  </div>
 );
 
-class ContactGroupManager extends React.Component {
-  onChange = selectedGroups => {
-    console.log("changed groups", selectedGroups);
-  };
-
-  render() {
-    const { contactGroups, allGroups } = this.props;
-
-    return (
-      <Select
-        isMulti
-        defaultValue={contactGroups}
-        options={allGroups}
-        onChange={this.onChange}
-        hideSelectedOptions={false}
-        isSearchable={false}
-        getOptionLabel={group => group.name}
-        getOptionValue={group => group._id}
-        components={{
-          Option: CustomOption,
-          Control: MainButton
-        }}
-      />
-    );
-  }
-}
+const ContactGroupManager = ({
+  contactGroups,
+  allGroups,
+  onGroupSelectionChange
+}) => (
+  <Select
+    isMulti
+    defaultValue={contactGroups}
+    options={allGroups}
+    onChange={onGroupSelectionChange}
+    hideSelectedOptions={false}
+    isSearchable={false}
+    getOptionLabel={group => group.name}
+    getOptionValue={group => group._id}
+    components={{
+      Option: CustomOption,
+      Control: MainButton
+    }}
+  />
+);
 
 ContactGroupManager.propTypes = {
   contactGroups: PropTypes.array.isRequired,
-  allGroups: PropTypes.array.isRequired
+  allGroups: PropTypes.array.isRequired,
+  onGroupSelectionChange: PropTypes.func.isRequired
 };
 
 export default ContactGroupManager;
