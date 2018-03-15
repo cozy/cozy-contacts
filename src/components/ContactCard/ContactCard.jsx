@@ -24,7 +24,7 @@ const ContactCard = ({ title, contact, renderHeader, renderBody }) => {
 
   return (
     <div>
-      {renderHeader(<ContactIdentity name={contact.name} groups={[]} />)}
+      {renderHeader(<ContactIdentity name={contact.name} groups={contact.groups} />)}
       {renderBody(<ContactFields fields={normalizedFields} title={title} />)}
     </div>
   );
