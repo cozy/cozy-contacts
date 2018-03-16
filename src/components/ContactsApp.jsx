@@ -99,6 +99,17 @@ class ContactsApp extends React.Component {
     this.props.clearSelection();
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (this.state.displayedContact) {
+      this.setState(state => ({
+        ...state,
+        displayedContact: nextProps.contacts.find(
+          contact => contact._id === state.displayedContact._id
+        )
+      }));
+    }
+  }
+
   render() {
     const { displayedContact, isCreationFormDisplayed } = this.state;
     const { t } = this.context;
