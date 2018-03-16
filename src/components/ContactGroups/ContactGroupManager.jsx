@@ -8,7 +8,7 @@ import palette from "cozy-ui/stylus/settings/palette.json";
 import IconGroups from "../../assets/icons/groups.svg";
 import IconDown from "../../assets/icons/down.svg";
 
-const MainButton = ({ innerProps, isFocused, children }) => (
+const MainButton = ({ innerProps, children }) => (
   <div {...innerProps}>
     <Button theme="secondary" size="small">
       <Icon icon={IconGroups} color={palette["coolGrey"]} />
