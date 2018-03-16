@@ -1,7 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
 import ContactsList from "./ContactsList";
-import ContactsError from "./ContactsError";
 
 export function getDisplayedName(contact) {
   const givenNameA =
