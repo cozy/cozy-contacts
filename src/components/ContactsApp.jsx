@@ -1,5 +1,5 @@
 import React from "react";
-import ConnectedContactsList from "./ContactsList";
+import ContactsList from "./ContactsList";
 import ContactsHeader from "./ContactsList/ContactsHeader";
 import withSelection from "./HOCs/withSelection";
 import { PropTypes } from "prop-types";
@@ -8,7 +8,7 @@ import ContactsIntentButton from "./Buttons/ContactsIntentButton";
 import ContactCardModal from "./Modals/ContactCardModal";
 import ContactFormModal from "./Modals/ContactFormModal";
 import { SelectionBar } from "cozy-ui/react";
-import { withDeletion } from "../connections/allContacts";
+import { withContacts, withDeletion } from "../connections/allContacts";
 
 const ContactsHeaderWithActions = ({ displayContactForm }, { t }) => (
   <ContactsHeader
@@ -102,7 +102,7 @@ class ContactsApp extends React.Component {
   render() {
     const { displayedContact, isCreationFormDisplayed } = this.state;
     const { t } = this.context;
-    const { selection, toggleSelection, clearSelection } = this.props;
+    const { contacts, selection, toggleSelection, clearSelection } = this.props;
 
     return (
       <main className="app-content">
@@ -117,7 +117,8 @@ class ContactsApp extends React.Component {
           displayContactForm={this.displayContactForm}
         />
         <div role="contentinfo">
-          <ConnectedContactsList
+          <ContactsList
+            contacts={contacts}
             onClickContact={this.displayContactCard}
             onSelect={toggleSelection}
             selection={selection}
@@ -145,7 +146,20 @@ ContactsApp.propTypes = {
   selection: PropTypes.array.isRequired,
   toggleSelection: PropTypes.func.isRequired,
   clearSelection: PropTypes.func.isRequired,
-  deleteContact: PropTypes.func.isRequired
+  deleteContact: PropTypes.func.isRequired,
+  contacts: PropTypes.array.isRequired
 };
 
-export default withSelection(withDeletion(ContactsApp));
+const ContactAppWithLoading = ({ data, fetchStatus, ...props }) => {
+  if (fetchStatus === "error") {
+    return <div>Error</div>;
+  }
+  return <ContactsApp contacts={data} {...props} />;
+};
+
+ContactAppWithLoading.propTypes = {
+  data: PropTypes.array.isRequired,
+  fetchStatus: PropTypes.string
+};
+
+export default withSelection(withDeletion(withContacts(ContactAppWithLoading)));
