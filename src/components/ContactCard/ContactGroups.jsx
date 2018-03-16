@@ -6,13 +6,19 @@ import { withGroups } from "../../connections/allGroups";
 import { withUpdate } from "../../connections/allContacts";
 
 const ContactGroups = ({ contactGroups, allGroups, updateContactGroups }) => (
-  <div>
+  <div className="contact-card-identity__groups">
     <ContactGroupManager
       contactGroups={contactGroups}
       allGroups={allGroups}
       onGroupSelectionChange={updateContactGroups}
     />
-    <ol>{contactGroups.map(group => <li key={group._id}>{group.name}</li>)}</ol>
+    <ol className="contact-groups-list">
+      {contactGroups.map(group => (
+        <li key={group._id} className="contact-groups-list__tag">
+          {group.name}
+        </li>
+      ))}
+    </ol>
   </div>
 );
 

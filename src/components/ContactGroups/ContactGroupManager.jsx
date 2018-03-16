@@ -6,14 +6,21 @@ import Icon from "cozy-ui/react/Icon";
 import palette from "cozy-ui/stylus/settings/palette.json";
 
 import IconGroups from "../../assets/icons/groups.svg";
+import IconDown from "../../assets/icons/down.svg";
 
-const MainButton = ({ innerProps, children }) => (
+const MainButton = ({ innerProps, isFocused, children }) => (
   <div {...innerProps}>
-    <Button theme="secondary">
+    <Button theme="secondary" size="small">
       <Icon icon={IconGroups} color={palette["coolGrey"]} />
       Gérer les groupes
+      <Icon
+        icon={IconDown}
+        color={palette["coolGrey"]}
+        width="12"
+        className="group-manager__indicator"
+      />
     </Button>
-    <div style={{ width: 0, height: 0, overflow: "hidden" }}>{children}</div>
+    <div className="group-manager__input">{children}</div>
   </div>
 );
 
@@ -28,6 +35,14 @@ const CustomOption = ({ label, isSelected, innerProps }) => (
   </div>
 );
 
+const customStyles = {
+  container: base => ({
+    ...base,
+    display: "inline-block",
+    verticalAlign: "middle"
+  })
+};
+
 const ContactGroupManager = ({
   contactGroups,
   allGroups,
@@ -35,17 +50,18 @@ const ContactGroupManager = ({
 }) => (
   <Select
     isMulti
-    defaultValue={contactGroups}
-    options={allGroups}
-    onChange={onGroupSelectionChange}
     hideSelectedOptions={false}
     isSearchable={false}
+    options={allGroups}
+    defaultValue={contactGroups}
+    onChange={onGroupSelectionChange}
     getOptionLabel={group => group.name}
     getOptionValue={group => group._id}
     components={{
       Option: CustomOption,
       Control: MainButton
     }}
+    styles={customStyles}
   />
 );
 
