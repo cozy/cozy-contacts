@@ -1,7 +1,7 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 import { withDeletion } from "../../connections/allContacts";
-import Modal, { ModalContent } from "cozy-ui/react/Modal";
+import Modal, { ModalHeader, ModalContent } from "cozy-ui/react/Modal";
 import { Icon, Menu, MenuItem, Button } from "cozy-ui/react";
 import ContactCard from "../ContactCard/ContactCard";
 import contactPropTypes from "../ContactPropTypes";
@@ -9,12 +9,13 @@ import contactPropTypes from "../ContactPropTypes";
 const ContactCardMenu = ({ deleteAction }) => (
   <Menu
     position="right"
+    className="contact-card-modal__menu"
     component={
       <Button
         theme="secondary"
         extension="narrow"
         icon="dots"
-        class="fix-c-btn"
+        className="fix-c-btn"
       />
     }
   >
@@ -39,20 +40,22 @@ const ContactCardModal = (
   { t }
 ) => (
   <Modal into="body" dismissAction={onClose} size="xlarge">
-    <ModalContent>
-      <ContactCard
-        title={t("contact_info")}
-        contact={contact}
-        renderActions={() => (
+    <ContactCard
+      title={t("contact_info")}
+      contact={contact}
+      renderHeader={children => (
+        <ModalHeader className="contact-card-modal__header">
+          {children}
           <ContactCardMenu
             deleteAction={{
               label: t("delete"),
               action: () => deleteContact(contact).then(() => onDeleteContact())
             }}
           />
-        )}
-      />
-    </ModalContent>
+        </ModalHeader>
+      )}
+      renderBody={children => <ModalContent>{children}</ModalContent>}
+    />
   </Modal>
 );
 ContactCardModal.propTypes = {
