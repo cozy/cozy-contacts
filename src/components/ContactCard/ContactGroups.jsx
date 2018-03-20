@@ -41,9 +41,11 @@ class ConnectedContactGroups extends React.Component {
     } else if (fetchStatus === "loading") {
       return <div>Loading...</div>;
     } else {
+      const contactGroups = contact.groups || [];
+
       return (
         <ContactGroups
-          contactGroups={contact.groups.map(groupId =>
+          contactGroups={contactGroups.map(groupId =>
             data.find(group => group._id === groupId)
           )}
           allGroups={data}

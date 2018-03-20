@@ -116,6 +116,7 @@ class ContactForm extends React.Component {
         type: phoneLabel,
         primary: index === 0
       })),
+      groups: [],
       cozy: cozy
         ? [
             {
@@ -127,7 +128,10 @@ class ContactForm extends React.Component {
         : undefined,
       company,
       birthday,
-      note
+      note,
+      metadata: {
+        version: 1
+      }
     };
 
     this.props.onSubmit(contact);
