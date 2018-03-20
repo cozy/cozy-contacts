@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "cozy-ui/react";
 import Select, {
-  withCustomControl,
+  reactSelectControl,
   CheckboxOption
 } from "cozy-ui/react/select";
 import Icon from "cozy-ui/react/Icon";
@@ -24,7 +24,7 @@ const MainButton = (
   </Button>
 );
 
-const MainButtonControl = withCustomControl(MainButton);
+const MainButtonControl = reactSelectControl(MainButton);
 
 const customStyles = {
   container: base => ({
