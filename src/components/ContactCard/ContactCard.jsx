@@ -12,7 +12,7 @@ import {
   makeValuesArray
 } from "../../helpers/contacts";
 
-const ContactCard = ({ title, contact, renderActions }) => {
+const ContactCard = ({ title, contact, renderHeader, renderBody }) => {
   const fields = getFieldListFrom(contact);
   const filteredFields = filterFieldList(fields);
   const groupedFields = groupUnsupportedFields(
@@ -24,11 +24,8 @@ const ContactCard = ({ title, contact, renderActions }) => {
 
   return (
     <div>
-      <header className="contact-card-header">
-        <ContactIdentity name={contact.name} groups={[]} />
-        {renderActions()}
-      </header>
-      <ContactFields fields={normalizedFields} title={title} />
+      {renderHeader(<ContactIdentity name={contact.name} groups={[]} />)}
+      {renderBody(<ContactFields fields={normalizedFields} title={title} />)}
     </div>
   );
 };
@@ -44,11 +41,13 @@ ContactCard.propTypes = {
     note: contactPropTypes.note
   }).isRequired,
   title: PropTypes.string.isRequired,
-  renderActions: PropTypes.func
+  renderHeader: PropTypes.func,
+  renderBody: PropTypes.func
 };
 
 ContactCard.defaultProps = {
-  renderActions: () => null
+  renderHeader: children => children,
+  renderBody: children => children
 };
 
 export default ContactCard;

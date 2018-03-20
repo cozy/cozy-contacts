@@ -382,9 +382,12 @@ exports[`ContactForm should match snapshot 1`] = `
           disabled={false}
           onClick={[Function]}
           role="button"
+          type="button"
         >
           <span>
-            cancel
+            <span>
+              cancel
+            </span>
           </span>
         </button>
         <button
@@ -393,9 +396,12 @@ exports[`ContactForm should match snapshot 1`] = `
           disabled={false}
           onClick={null}
           role="button"
+          type="submit"
         >
           <span>
-            save
+            <span>
+              save
+            </span>
           </span>
         </button>
       </div>

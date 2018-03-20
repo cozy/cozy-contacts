@@ -19,11 +19,12 @@ const ContactsHeaderWithActions = ({ displayContactForm }, { t }) => (
       return (
         <div className="actions">
           {fakeintent !== null && (
-            <ContactsIntentButton>{"Select a Contact"}</ContactsIntentButton>
+            <ContactsIntentButton label={"Select a Contact"} />
           )}
-          <OpenContactFormButton onClick={displayContactForm}>
-            {t("create_contact")}
-          </OpenContactFormButton>
+          <OpenContactFormButton
+            onClick={displayContactForm}
+            label={t("create_contact")}
+          />
         </div>
       );
     }}

@@ -2,39 +2,35 @@
 
 exports[`ContactCard should match snapshot 1`] = `
 <div>
-  <header
-    className="contact-card-header"
+  <div
+    className="contact-card-identity"
   >
     <div
-      className="contact-card-identity"
-    >
-      <div
-        className="c-avatar c-avatar--medium"
-        style={
-          Object {
-            "backgroundColor": "#FD7461",
-            "color": "white",
-          }
+      className="c-avatar c-avatar--medium"
+      style={
+        Object {
+          "backgroundColor": "#FD7461",
+          "color": "white",
         }
+      }
+    >
+      
+      <span
+        className="c-avatar-initials"
       >
-        
-        <span
-          className="c-avatar-initials"
-        >
-          RW
-        </span>
-      </div>
-      <div
-        className="contact-card-identity__infos"
-      >
-        <h1
-          className="contact-card-identity__title"
-        >
-          Rikki  White
-        </h1>
-      </div>
+        RW
+      </span>
     </div>
-  </header>
+    <div
+      className="contact-card-identity__infos"
+    >
+      <h1
+        className="contact-card-identity__title"
+      >
+        Rikki  White
+      </h1>
+    </div>
+  </div>
   <div>
     <h3
       className="contact-fields-title"

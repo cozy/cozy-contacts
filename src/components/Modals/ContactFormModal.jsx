@@ -1,7 +1,7 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 import { withCreation } from "../../connections/allContacts";
-import Modal, { ModalTitle, ModalDescription } from "cozy-ui/react/Modal";
+import Modal, { ModalHeader, ModalDescription } from "cozy-ui/react/Modal";
 import ContactForm from "../ContactCard/ContactForm";
 
 const ContactFormModal = ({
@@ -16,7 +16,7 @@ const ContactFormModal = ({
     into="body"
     size="xlarge"
   >
-    <ModalTitle>{title}</ModalTitle>
+    <ModalHeader>{title}</ModalHeader>
     <ModalDescription className="u-mt-half">
       <ContactForm
         onSubmit={contact =>
