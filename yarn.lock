@@ -1879,9 +1879,9 @@ cozy-stack-link@1.0.0-beta.1:
   version "1.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/cozy-stack-link/-/cozy-stack-link-1.0.0-beta.1.tgz#9005812afec111f46a95ef8ac2078ff5303fa175"
 
-cozy-ui@7.7.3:
-  version "7.7.3"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-7.7.3.tgz#aacb36ca0e2fc30aebeab227341266887286e3a3"
+cozy-ui@7.8.0:
+  version "7.8.0"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-7.8.0.tgz#5bd04c39d8ef577a04e91ab711f4a6e5fb582b52"
   dependencies:
     babel-preset-cozy-app "^0.3.1"
     classnames "^2.2.5"
@@ -1890,6 +1890,7 @@ cozy-ui@7.7.3:
     md5 "^2.2.0"
     normalize.css "^7.0.0"
     preact-portal "^1.1.2"
+    react-select "2.0.0-alpha.7"
     stylus "^0.54.5"
 
 create-ecdh@^4.0.0:
