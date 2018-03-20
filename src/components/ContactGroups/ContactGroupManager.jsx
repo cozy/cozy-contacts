@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "cozy-ui/react";
-import Select, {
+import SelectBox, {
   reactSelectControl,
   CheckboxOption
-} from "cozy-ui/react/select";
+} from "cozy-ui/react/SelectBox";
 import Icon from "cozy-ui/react/Icon";
 import palette from "cozy-ui/stylus/settings/palette.json";
 
@@ -31,6 +31,11 @@ const customStyles = {
     ...base,
     display: "inline-block",
     verticalAlign: "middle"
+  }),
+  noOptionsMessage: base => ({
+    ...base,
+    fontSize: "1rem",
+    fontWeight: "normal"
   })
 };
 
@@ -39,10 +44,11 @@ const ContactGroupManager = ({
   allGroups,
   onGroupSelectionChange
 }) => (
-  <Select
+  <SelectBox
     isMulti
     hideSelectedOptions={false}
     isSearchable={false}
+    noOptionsMessage={() => "No groups"}
     options={allGroups}
     defaultValue={contactGroups}
     onChange={onGroupSelectionChange}
