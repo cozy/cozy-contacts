@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "cozy-ui/react";
+import { translate } from "cozy-ui/react/I18n";
 import SelectBox, {
   reactSelectControl,
   CheckboxOption
@@ -11,10 +12,10 @@ import palette from "cozy-ui/stylus/settings/palette.json";
 import IconGroups from "../../assets/icons/groups.svg";
 import IconDown from "../../assets/icons/down.svg";
 
-const MainButton = (
+const MainButton = ({ t }) => (
   <Button theme="secondary" size="small">
     <Icon icon={IconGroups} color={palette["coolGrey"]} />
-    Gérer les groupes
+    {t("groups.manage")}
     <Icon
       icon={IconDown}
       color={palette["coolGrey"]}
@@ -23,8 +24,9 @@ const MainButton = (
     />
   </Button>
 );
+const MainButtonWithTranslation = translate()(MainButton);
 
-const MainButtonControl = reactSelectControl(MainButton);
+const MainButtonControl = reactSelectControl(<MainButtonWithTranslation />);
 
 const customStyles = {
   container: base => ({
@@ -42,13 +44,14 @@ const customStyles = {
 const ContactGroupManager = ({
   contactGroups,
   allGroups,
-  onGroupSelectionChange
+  onGroupSelectionChange,
+  t
 }) => (
   <SelectBox
     isMulti
     hideSelectedOptions={false}
     isSearchable={false}
-    noOptionsMessage={() => "No groups"}
+    noOptionsMessage={() => t("groups.none")}
     options={allGroups}
     defaultValue={contactGroups}
     onChange={onGroupSelectionChange}
@@ -65,7 +68,8 @@ const ContactGroupManager = ({
 ContactGroupManager.propTypes = {
   contactGroups: PropTypes.array.isRequired,
   allGroups: PropTypes.array.isRequired,
-  onGroupSelectionChange: PropTypes.func.isRequired
+  onGroupSelectionChange: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired
 };
 
-export default ContactGroupManager;
+export default translate()(ContactGroupManager);
