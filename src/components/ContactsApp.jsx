@@ -1,4 +1,5 @@
 import React from "react";
+import { flow } from "lodash";
 import ContactsList from "./ContactsList";
 import ContactsHeader from "./ContactsList/ContactsHeader";
 import withSelection from "./HOCs/withSelection";
@@ -173,4 +174,6 @@ ContactAppWithLoading.propTypes = {
   fetchStatus: PropTypes.string
 };
 
-export default withSelection(withDeletion(withContacts(ContactAppWithLoading)));
+export default flow([withContacts, withDeletion, withSelection])(
+  ContactAppWithLoading
+);
