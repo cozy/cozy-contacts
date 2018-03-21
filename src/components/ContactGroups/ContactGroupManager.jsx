@@ -38,11 +38,6 @@ const customStyles = {
     ...base,
     display: "inline-block",
     verticalAlign: "middle"
-  }),
-  noOptionsMessage: base => ({
-    ...base,
-    fontSize: "1rem",
-    fontWeight: "normal"
   })
 };
 
