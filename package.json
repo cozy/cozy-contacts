@@ -67,7 +67,7 @@
     "cozy-ui": "7.9.0",
     "final-form": "4.2.1",
     "final-form-arrays": "1.0.4",
-    "lodash": "^4.17.5",
+    "lodash": "4.17.5",
     "preact": "8.2.7",
     "preact-compat": "3.18.0",
     "react-final-form": "3.1.3",
