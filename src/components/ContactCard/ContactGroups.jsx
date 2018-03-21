@@ -5,56 +5,65 @@ import ContactGroupManager from "../ContactGroups/ContactGroupManager";
 import { withGroups } from "../../connections/allGroups";
 import { withUpdate } from "../../connections/allContacts";
 
-const ContactGroups = ({ contactGroups, allGroups, updateContactGroups }) => (
-  <div className="contact-card-identity__groups">
-    <ContactGroupManager
-      contactGroups={contactGroups}
-      allGroups={allGroups}
-      onGroupSelectionChange={updateContactGroups}
-    />
-    <ol className="contact-groups-list">
-      {contactGroups.map(group => (
-        <li key={group._id} className="contact-groups-list__tag">
-          {group.name}
-        </li>
-      ))}
-    </ol>
-  </div>
-);
-
-ContactGroups.propTypes = {
-  contactGroups: PropTypes.array.isRequired,
-  allGroups: PropTypes.array.isRequired,
-  updateContactGroups: PropTypes.func.isRequired
-};
-
-class ConnectedContactGroups extends React.Component {
+export class ContactGroups extends React.Component {
   updateContactGroups = groups => {
     const modifiedContact = { ...this.props.contact };
     modifiedContact.groups = groups.map(group => group._id);
     this.props.updateContact(modifiedContact);
   };
 
-  render({ data, fetchStatus, contact }) {
-    if (fetchStatus === "error") {
-      return false;
-    } else if (fetchStatus === "loading") {
-      return <div>Loading...</div>;
-    } else {
-      const contactGroups = contact.groups || [];
+  render() {
+    const { allGroups, contact } = this.props;
+    const contactGroups = contact.groups || [];
+    const fullGroups = contactGroups
+      .map(groupId => allGroups.find(group => group._id === groupId))
+      .filter(value => value);
 
-      return (
-        <ContactGroups
-          contactGroups={contactGroups.map(groupId =>
-            data.find(group => group._id === groupId)
-          )}
-          allGroups={data}
-          updateContactGroups={this.updateContactGroups}
+    return (
+      <div className="contact-card-identity__groups">
+        <ContactGroupManager
+          contactGroups={fullGroups}
+          allGroups={allGroups}
+          onGroupSelectionChange={this.updateContactGroups}
         />
-      );
-    }
+        <ol className="contact-groups-list">
+          {fullGroups.map(group => (
+            <li key={group._id} className="contact-groups-list__tag">
+              {group.name}
+            </li>
+          ))}
+        </ol>
+      </div>
+    );
   }
 }
+
+ContactGroups.propTypes = {
+  contact: fullContactPropTypes.isRequired,
+  allGroups: PropTypes.array.isRequired,
+  updateContact: PropTypes.func.isRequired
+};
+
+const ConnectedContactGroups = ({
+  data,
+  fetchStatus,
+  contact,
+  updateContact
+}) => {
+  if (fetchStatus === "error") {
+    return false;
+  } else if (fetchStatus === "loading") {
+    return <div>Loading...</div>;
+  } else {
+    return (
+      <ContactGroups
+        contact={contact}
+        allGroups={data}
+        updateContact={updateContact}
+      />
+    );
+  }
+};
 
 ConnectedContactGroups.propTypes = {
   data: PropTypes.array.isRequired,

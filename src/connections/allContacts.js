@@ -1,7 +1,7 @@
 import {
   connect,
-  all,
   withMutation,
+  all,
   create,
   update,
   destroy
