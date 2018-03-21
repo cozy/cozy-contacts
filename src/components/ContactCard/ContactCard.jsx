@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import ContactIdentity from "./ContactIdentity";
 import ContactFields from "./ContactFields";
-import contactPropTypes from "../ContactPropTypes";
+import { fullContactPropTypes } from "../ContactPropTypes";
 import {
   getFieldListFrom,
   filterFieldList,
@@ -24,22 +24,14 @@ const ContactCard = ({ title, contact, renderHeader, renderBody }) => {
 
   return (
     <div>
-      {renderHeader(<ContactIdentity name={contact.name} groups={[]} />)}
+      {renderHeader(<ContactIdentity contact={contact} />)}
       {renderBody(<ContactFields fields={normalizedFields} title={title} />)}
     </div>
   );
 };
 
 ContactCard.propTypes = {
-  contact: PropTypes.shape({
-    name: contactPropTypes.name,
-    phone: PropTypes.arrayOf(contactPropTypes.phone),
-    email: PropTypes.arrayOf(contactPropTypes.email),
-    address: PropTypes.arrayOf(contactPropTypes.address),
-    cozy: PropTypes.arrayOf(contactPropTypes.cozy),
-    birthday: contactPropTypes.birthday,
-    note: contactPropTypes.note
-  }).isRequired,
+  contact: fullContactPropTypes.isRequired,
   title: PropTypes.string.isRequired,
   renderHeader: PropTypes.func,
   renderBody: PropTypes.func

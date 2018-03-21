@@ -1,8 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { withContacts } from "../../connections/allContacts";
 import ContactsList from "./ContactsList";
-import ContactsError from "./ContactsError";
 
 export function getDisplayedName(contact) {
   const givenNameA =
@@ -26,19 +22,4 @@ export const sortGivenNameFirst = (contact, comparedContact) => {
   return nameA.localeCompare(nameB);
 };
 
-const ContactsListWithLoading = ({ data, fetchStatus, ...props }) => {
-  if (fetchStatus === "error") {
-    return <ContactsError error={new Error("Fetch failed")} />;
-  }
-  if (fetchStatus === "loading") {
-    return <div>Loading...</div>;
-  }
-  return <ContactsList contacts={data} {...props} />;
-};
-
-ContactsListWithLoading.propTypes = {
-  data: PropTypes.array.isRequired,
-  fetchStatus: PropTypes.string
-};
-
-export default withContacts(ContactsListWithLoading);
+export default ContactsList;

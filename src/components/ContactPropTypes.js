@@ -41,4 +41,14 @@ const contactPropTypes = {
   note: PropTypes.string
 };
 
+export const fullContactPropTypes = PropTypes.shape({
+  name: contactPropTypes.name,
+  phone: PropTypes.arrayOf(contactPropTypes.phone),
+  email: PropTypes.arrayOf(contactPropTypes.email),
+  address: PropTypes.arrayOf(contactPropTypes.address),
+  cozy: PropTypes.arrayOf(contactPropTypes.cozy),
+  birthday: contactPropTypes.birthday,
+  note: contactPropTypes.note
+});
+
 export default contactPropTypes;

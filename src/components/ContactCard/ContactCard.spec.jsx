@@ -27,6 +27,7 @@ describe("ContactCard", () => {
         { number: "+33 (1)9 14 02 28 31", primary: true },
         { number: "+33 (2)3 99 53 65 21", primary: false }
       ],
+      groups: [],
       unsupportedField: "unsupportedField"
     };
     const tree = renderer

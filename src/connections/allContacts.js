@@ -1,4 +1,11 @@
-import { connect, all, withMutation, create, destroy } from "cozy-client";
+import {
+  connect,
+  withMutation,
+  all,
+  create,
+  update,
+  destroy
+} from "cozy-client";
 
 const CONNECTION_NAME = "allContacts";
 
@@ -13,6 +20,18 @@ export const withCreation = component =>
         ...previousData,
         result.data[0]
       ]
+    }
+  })(component);
+
+export const withUpdate = component =>
+  withMutation(update, {
+    name: "updateContact",
+    updateQueries: {
+      [CONNECTION_NAME]: (previousData, result) =>
+        previousData.map(
+          contact =>
+            contact._id === result.data[0]._id ? result.data[0] : contact
+        )
     }
   })(component);
 

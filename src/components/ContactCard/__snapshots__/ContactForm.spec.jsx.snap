@@ -436,6 +436,10 @@ Object {
     },
   ],
   "fullname": "Jean-Claude Van Cozy",
+  "groups": Array [],
+  "metadata": Object {
+    "version": 1,
+  },
   "name": Object {
     "familyName": "Van Cozy",
     "givenName": "Jean-Claude",
@@ -459,6 +463,10 @@ Object {
   "cozy": undefined,
   "email": Array [],
   "fullname": "",
+  "groups": Array [],
+  "metadata": Object {
+    "version": 1,
+  },
   "name": Object {
     "familyName": undefined,
     "givenName": undefined,
