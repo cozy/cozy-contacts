@@ -24,6 +24,11 @@ const MainButton = ({ t }) => (
     />
   </Button>
 );
+
+MainButton.propTypes = {
+  t: PropTypes.func.isRequired
+};
+
 const MainButtonWithTranslation = translate()(MainButton);
 
 const MainButtonControl = reactSelectControl(<MainButtonWithTranslation />);
