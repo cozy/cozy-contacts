@@ -51,6 +51,7 @@ const ContactGroupManager = ({
     isMulti
     hideSelectedOptions={false}
     isSearchable={false}
+    closeMenuOnSelect={false}
     noOptionsMessage={() => t("groups.none")}
     options={allGroups}
     defaultValue={contactGroups}
