@@ -1,5 +1,5 @@
 import React from "react";
-import { flow } from "lodash";
+import flow from "lodash/flow";
 import ContactsList from "./ContactsList";
 import ContactsHeader from "./ContactsList/ContactsHeader";
 import withSelection from "./HOCs/withSelection";
