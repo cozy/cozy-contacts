@@ -35,10 +35,7 @@ ContactCardMenu.propTypes = {
   }).isRequired
 };
 
-const ContactCardModal = (
-  { onClose, contact, deleteContact, onDeleteContact },
-  { t }
-) => (
+const ContactCardModal = ({ onClose, contact }, { t }) => (
   <Modal into="body" dismissAction={onClose} size="xlarge">
     <ContactCard
       title={t("contact_info")}
@@ -46,12 +43,6 @@ const ContactCardModal = (
       renderHeader={children => (
         <ModalHeader className="contact-card-modal__header">
           {children}
-          <ContactCardMenu
-            deleteAction={{
-              label: t("delete"),
-              action: () => deleteContact(contact).then(() => onDeleteContact())
-            }}
-          />
         </ModalHeader>
       )}
       renderBody={children => <ModalContent>{children}</ModalContent>}
