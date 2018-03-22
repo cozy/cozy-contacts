@@ -6,7 +6,7 @@ import { getInitials } from "../../helpers/contacts";
 
 const ContactIdentity = ({ name }) => (
   <div className="contact-identity">
-    <Avatar text={getInitials(name)} size="small" />
+    <Avatar text={getInitials(name).toUpperCase()} size="small" />
     <ContactName firstname={name.givenName} lastname={name.familyName} />
   </div>
 );
