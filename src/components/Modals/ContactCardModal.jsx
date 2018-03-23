@@ -35,29 +35,64 @@ ContactCardMenu.propTypes = {
   }).isRequired
 };
 
-const ContactCardModal = (
-  { onClose, contact, deleteContact, onDeleteContact },
-  { t }
-) => (
-  <Modal into="body" dismissAction={onClose} size="xlarge">
-    <ContactCard
-      title={t("contact_info")}
-      contact={contact}
-      renderHeader={children => (
-        <ModalHeader className="contact-card-modal__header">
-          {children}
-          <ContactCardMenu
-            deleteAction={{
-              label: t("delete"),
-              action: () => deleteContact(contact).then(() => onDeleteContact())
-            }}
+class ContactCardModal extends React.Component {
+  state = {
+    showConfirmDeleteModal: false
+  };
+
+  toggleConfirmDeleteModal = () => {
+    this.setState(state => ({
+      ...state,
+      showConfirmDeleteModal: !state.showConfirmDeleteModal
+    }));
+  };
+
+  deleteContact = async () => {
+    const { contact, deleteContact, onDeleteContact } = this.props;
+    await deleteContact(contact);
+    onDeleteContact();
+  };
+
+  render() {
+    const { onClose, contact } = this.props;
+    const { showConfirmDeleteModal } = this.state;
+    const { t } = this.context;
+
+    return (
+      <Modal into="body" dismissAction={onClose} size="xlarge">
+        <ContactCard
+          title={t("contact_info")}
+          contact={contact}
+          renderHeader={children => (
+            <ModalHeader className="contact-card-modal__header">
+              {children}
+              <ContactCardMenu
+                deleteAction={{
+                  label: t("delete"),
+                  action: this.toggleConfirmDeleteModal
+                }}
+              />
+            </ModalHeader>
+          )}
+          renderBody={children => <ModalContent>{children}</ModalContent>}
+        />
+        {showConfirmDeleteModal && (
+          <Modal
+            into="body"
+            title="Supprimer ce contact ?"
+            description="Apu contact"
+            primaryText="ouais"
+            primaryType="danger"
+            primaryAction={this.deleteContact}
+            secondaryText="en fait non"
+            secondaryAction={this.toggleConfirmDeleteModal}
           />
-        </ModalHeader>
-      )}
-      renderBody={children => <ModalContent>{children}</ModalContent>}
-    />
-  </Modal>
-);
+        )}
+      </Modal>
+    );
+  }
+}
+
 ContactCardModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   contact: PropTypes.shape({
