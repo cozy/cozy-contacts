@@ -1879,9 +1879,9 @@ cozy-stack-link@1.0.0-beta.1:
   version "1.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/cozy-stack-link/-/cozy-stack-link-1.0.0-beta.1.tgz#9005812afec111f46a95ef8ac2078ff5303fa175"
 
-cozy-ui@7.9.0:
-  version "7.9.0"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-7.9.0.tgz#458927d8309642643a8ae97cfb7f0912b225b6fd"
+cozy-ui@7.9.1:
+  version "7.9.1"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-7.9.1.tgz#c19a623f8ea973b304fed0946b0aeda7c64e4d55"
   dependencies:
     babel-preset-cozy-app "^0.3.1"
     classnames "^2.2.5"
