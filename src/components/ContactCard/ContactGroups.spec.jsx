@@ -5,7 +5,7 @@ import { ContactGroups } from "./ContactGroups";
 import { I18n } from "cozy-ui/react/I18n";
 
 describe("ContactGroups", () => {
-  it("lol", () => {
+  it("should display groups", () => {
     const contactMock = { groups: ["a", "b"] };
     const groupsMock = [
       { _id: "a", name: "The A Team" },
@@ -30,13 +30,5 @@ describe("ContactGroups", () => {
     expect(contactGroupTags.length).toEqual(2);
     expect(contactGroupTags.at(0).text()).toEqual(groupsMock[0].name);
     expect(contactGroupTags.at(1).text()).toEqual(groupsMock[1].name);
-
-    const groupManager = app.find("ContactGroupManager");
-    groupManager.prop("onGroupSelectionChange")(groupsMock);
-    expect(updateContactMock).toHaveBeenCalledTimes(1);
-    expect(updateContactMock).toHaveBeenCalledWith({
-      ...contactMock,
-      groups: groupsMock.map(group => group._id)
-    });
   });
 });
