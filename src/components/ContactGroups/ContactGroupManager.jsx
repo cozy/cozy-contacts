@@ -41,6 +41,13 @@ const customStyles = {
   })
 };
 
+const captureEscapeEvent = e => {
+  if (e.key === "Escape") {
+    e.stopPropagation();
+    e.target.blur();
+  }
+};
+
 const ContactGroupManager = ({
   contactGroups,
   allGroups,
@@ -52,6 +59,8 @@ const ContactGroupManager = ({
     hideSelectedOptions={false}
     isSearchable={false}
     closeMenuOnSelect={false}
+    tabSelectsValue={false}
+    onKeyDown={captureEscapeEvent}
     noOptionsMessage={() => t("groups.none")}
     options={allGroups}
     defaultValue={contactGroups}
