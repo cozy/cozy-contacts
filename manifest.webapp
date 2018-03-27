@@ -1,0 +1,68 @@
+{
+  "name": "Contacts",
+  "editor": "Cozy",
+  "slug": "contacts",
+  "icon": "icon.svg",
+  "description": "Contact manager for Cozy Cloud",
+  "category": "cozy",
+  "version": "0.1.0",
+  "licence": "AGPL-3.0",
+  "source": "https://github.com/cozy/cozy-contacts.git@build",
+  "developer": {
+    "name": "cozy",
+    "url": "https://cozy.io"
+  },
+  "default_locale": "en",
+  "locales": {
+    "en": {},
+    "fr": {}
+  },
+  "routes": {
+    "/": {
+      "folder": "/",
+      "index": "index.html",
+      "public": false
+    },
+    "/services/pick": {
+      "folder": "/intents",
+      "index": "index.html",
+      "public": false
+    }
+  },
+  "permissions": {
+    "apps": {
+      "description": "Required by the cozy-bar to display the icons of the apps",
+      "type": "io.cozy.apps",
+      "verbs": [
+        "GET"
+      ]
+    },
+    "contacts": {
+      "description": "Required to manage your contacts",
+      "type": "io.cozy.contacts",
+      "methods": [
+        "ALL"
+      ]
+    },
+    "contactsgroups": {
+      "description": "Required to manage groups of contacts",
+      "type": "io.cozy.contacts.groups",
+      "methods": [
+        "ALL"
+      ]
+    }
+  },
+  "intents": [
+    {
+      "action": "PICK",
+      "type": [
+        "io.cozy.contacts"
+      ],
+      "href": "/services/pick"
+    }
+  ],
+  "langs": [
+    "en",
+    "fr"
+  ]
+}
