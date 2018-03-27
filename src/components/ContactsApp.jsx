@@ -8,8 +8,9 @@ import OpenContactFormButton from "./Buttons/OpenContactFormButton";
 import ContactsIntentButton from "./Buttons/ContactsIntentButton";
 import ContactCardModal from "./Modals/ContactCardModal";
 import ContactFormModal from "./Modals/ContactFormModal";
-import { SelectionBar } from "cozy-ui/react";
+import { SelectionBar, Alerter } from "cozy-ui/react";
 import { withContacts, withDeletion } from "../connections/allContacts";
+import { getFullContactName } from "../helpers/contacts";
 
 const ContactsHeaderWithActions = ({ displayContactForm }, { t }) => (
   <ContactsHeader
@@ -66,6 +67,11 @@ class ContactsApp extends React.Component {
     this.setState({
       displayedContact: contact
     });
+  };
+
+  onDeleteContact = contact => {
+    this.hideContactCard();
+    Alerter.info("deleted", { name: getFullContactName(contact.name) });
   };
 
   hideContactCard = () => {
@@ -140,7 +146,7 @@ class ContactsApp extends React.Component {
           <ContactCardModal
             onClose={this.hideContactCard}
             contact={displayedContact}
-            onDeleteContact={this.hideContactCard}
+            onDeleteContact={this.onDeleteContact}
           />
         )}
         {isCreationFormDisplayed && (
@@ -150,6 +156,7 @@ class ContactsApp extends React.Component {
             onCreateContact={this.onCreateContact}
           />
         )}
+        <Alerter t={t} />
       </main>
     );
   }

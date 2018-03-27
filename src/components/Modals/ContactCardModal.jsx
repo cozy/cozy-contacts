@@ -50,7 +50,7 @@ class ContactCardModal extends React.Component {
   deleteContact = async () => {
     const { contact, deleteContact, onDeleteContact } = this.props;
     await deleteContact(contact);
-    onDeleteContact();
+    onDeleteContact(contact);
   };
 
   render() {
@@ -86,6 +86,7 @@ class ContactCardModal extends React.Component {
             primaryAction={this.deleteContact}
             secondaryText="en fait non"
             secondaryAction={this.toggleConfirmDeleteModal}
+            dismissAction={this.toggleConfirmDeleteModal}
           />
         )}
       </Modal>
