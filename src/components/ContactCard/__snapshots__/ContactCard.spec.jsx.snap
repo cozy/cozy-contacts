@@ -93,7 +93,7 @@ exports[`ContactCard should match snapshot 1`] = `
               className="select-control__input"
             >
               <div
-                className="react-select__value-container react-select__value-container--isMulti css-6rkci4"
+                className="react-select__value-container react-select__value-container--isMulti css-12sevwg"
               >
                 <div
                   className="react-select__placeholder css-16ucli7"
@@ -113,12 +113,12 @@ exports[`ContactCard should match snapshot 1`] = `
                 className="react-select__indicators css-1lfa1d8"
               >
                 <span
-                  className="react-select__indicator-separator css-1cnd6ox"
+                  className="react-select__indicator-separator css-1hq2z0s"
                   css={undefined}
                   role="presentation"
                 />
                 <div
-                  className="react-select__indicator react-select__dropdown-indicator css-1c0gw5t"
+                  className="react-select__indicator react-select__dropdown-indicator css-1k2060c"
                   css={undefined}
                   onMouseDown={[Function]}
                   onTouchEnd={[Function]}

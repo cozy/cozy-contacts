@@ -39,5 +39,11 @@
   "groups": {
     "none": "There are no existing groups yet.",
     "manage": "Manage groups"
+  },
+  "delete-confirmation": {
+    "deleted": "The contact %{name} has been deleted.",
+    "title": "Delete this contact?",
+    "description":
+      "This contact will also be deleted from your Google address book"
   }
 }
