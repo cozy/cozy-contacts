@@ -79,12 +79,12 @@ class ContactCardModal extends React.Component {
         {showConfirmDeleteModal && (
           <Modal
             into="body"
-            title="Supprimer ce contact ?"
-            description="Apu contact"
-            primaryText="ouais"
+            title={t("delete-confirmation.title")}
+            description={t("delete-confirmation.description")}
+            primaryText={t("delete")}
             primaryType="danger"
             primaryAction={this.deleteContact}
-            secondaryText="en fait non"
+            secondaryText={t("cancel")}
             secondaryAction={this.toggleConfirmDeleteModal}
             dismissAction={this.toggleConfirmDeleteModal}
           />
