@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { fullContactPropTypes } from "../ContactPropTypes";
+import ContactGroupManager from "../ContactGroups/ContactGroupManager";
 import { withGroups } from "../../connections/allGroups";
 import { withUpdate } from "../../connections/allContacts";
 
@@ -20,6 +21,11 @@ export class ContactGroups extends React.Component {
 
     return (
       <div className="contact-card-identity__groups">
+        <ContactGroupManager
+          contactGroups={fullGroups}
+          allGroups={allGroups}
+          onGroupSelectionChange={this.updateContactGroups}
+        />
         <ol className="contact-groups-list">
           {fullGroups.map(group => (
             <li key={group._id} className="contact-groups-list__tag">
