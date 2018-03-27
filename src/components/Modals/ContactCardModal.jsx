@@ -37,13 +37,13 @@ ContactCardMenu.propTypes = {
 
 class ContactCardModal extends React.Component {
   state = {
-    showConfirmDeleteModal: false
+    shouldDisplayConfirmDeleteModal: false
   };
 
   toggleConfirmDeleteModal = () => {
     this.setState(state => ({
       ...state,
-      showConfirmDeleteModal: !state.showConfirmDeleteModal
+      shouldDisplayConfirmDeleteModal: !state.shouldDisplayConfirmDeleteModal
     }));
   };
 
@@ -55,7 +55,7 @@ class ContactCardModal extends React.Component {
 
   render() {
     const { onClose, contact } = this.props;
-    const { showConfirmDeleteModal } = this.state;
+    const { shouldDisplayConfirmDeleteModal } = this.state;
     const { t } = this.context;
 
     return (
@@ -76,7 +76,7 @@ class ContactCardModal extends React.Component {
           )}
           renderBody={children => <ModalContent>{children}</ModalContent>}
         />
-        {showConfirmDeleteModal && (
+        {shouldDisplayConfirmDeleteModal && (
           <Modal
             into="body"
             title={t("delete-confirmation.title")}
