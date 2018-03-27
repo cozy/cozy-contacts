@@ -122,14 +122,26 @@ class ContactsApp extends React.Component {
   render() {
     const { displayedContact, isCreationFormDisplayed } = this.state;
     const { t } = this.context;
-    const { contacts } = this.props;
+    const { contacts, selection, toggleSelection, clearSelection } = this.props;
 
     return (
       <main className="app-content">
+        {selection.length > 0 && (
+          <SelectionBarWithActions
+            selected={selection}
+            hideSelectionBar={clearSelection}
+            trashAction={this.deleteSelectedContacts}
+          />
+        )}
+        <ContactsHeaderWithActions
+          displayContactForm={this.displayContactForm}
+        />
         <div role="contentinfo">
           <ContactsList
             contacts={contacts}
             onClickContact={this.displayContactCard}
+            onSelect={toggleSelection}
+            selection={selection}
           />
         </div>
         {displayedContact && (
