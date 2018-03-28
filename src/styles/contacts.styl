@@ -1,5 +1,6 @@
 @require 'settings/palette.styl'
 @require 'components/table.styl'
+@require 'components/empty.styl'
 
 // @stylint off
 .fix-c-btn svg
@@ -88,3 +89,9 @@ $reset-list
 
 .menu__item--danger
     color pomegranate
+
+.list-empty
+    @extend $empty
+
+    &:before
+        background-image embedurl('../assets/icons/empty-contact-list.svg')
