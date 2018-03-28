@@ -1,22 +1,59 @@
+/* global cozy */
 import React from "react";
 import PropTypes from "prop-types";
 import { sortGivenNameFirst, getDisplayedName } from "./";
 import ContactRow from "./ContactRow";
+import { Button, IntentOpener } from "cozy-ui/react";
 
 const ContactHeaderRow = props => <div className="divider">{props.header}</div>;
 ContactHeaderRow.propTypes = {
   header: PropTypes.string.isRequired
 };
 
-const ContactsEmptyList = () => (
-  <div>
-    <p>No Contact</p>
-    <p>Try to create one with the big button on the top</p>
-    <p>
-      Or to import your contacts with this <a href="#">link</a>
-    </p>
-  </div>
-);
+class ContactsEmptyList extends React.Component {
+  state = {
+    hasConnector: false
+  };
+
+  componentWillMount() {
+    // cozy-client-js is needed for intents
+    const root = document.querySelector("[role=application]");
+    const data = root.dataset;
+    cozy.client.init({
+      cozyURL: `${window.location.protocol}//${data.cozyDomain}`,
+      token: data.cozyToken
+    });
+  }
+
+  afterConnection = result => {
+    this.setState({ hasConnector: result !== null });
+  };
+
+  render() {
+    const { hasConnector } = this.state;
+    const { t } = this.context;
+
+    return (
+      <div className="list-empty">
+        <h1>{t("empty.title")}</h1>
+        <p>{t("empty.description")}</p>
+
+        {hasConnector ? (
+          <p>{t("empty.after")}</p>
+        ) : (
+          <IntentOpener
+            action="CREATE"
+            doctype="io.cozy.accounts"
+            options={{ slug: "google" }}
+            onComplete={this.afterConnection}
+          >
+            <Button label={t("empty.google")} />
+          </IntentOpener>
+        )}
+      </div>
+    );
+  }
+}
 
 const ContactsList = props => {
   if (props.contacts.length === 0) {
