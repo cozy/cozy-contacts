@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { sortGivenNameFirst, getDisplayedName } from "./";
+import { sortLastNameFirst, buildLastNameFirst } from "./";
 import ContactRow from "./ContactRow";
 
 const ContactHeaderRow = props => <div className="divider">{props.header}</div>;
@@ -22,10 +22,10 @@ const ContactsList = props => {
   if (props.contacts.length === 0) {
     return <ContactsEmptyList />;
   }
-  const sortedContacts = [...props.contacts].sort(sortGivenNameFirst);
+  const sortedContacts = [...props.contacts].sort(sortLastNameFirst);
   let lastLetter = null;
   const categorizedContacts = sortedContacts.reduce((acc, contact) => {
-    const name = getDisplayedName(contact);
+    const name = buildLastNameFirst(contact);
     const header = name[0] || "EMPTY";
     if (header !== lastLetter) {
       acc[header] = [];
