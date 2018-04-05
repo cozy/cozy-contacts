@@ -9,7 +9,10 @@ import ContactsIntentButton from "./Buttons/ContactsIntentButton";
 import ContactCardModal from "./Modals/ContactCardModal";
 import ContactFormModal from "./Modals/ContactFormModal";
 import { SelectionBar, Alerter } from "cozy-ui/react";
-import { withContacts, withDeletion } from "../connections/allContacts";
+import {
+  withContacts,
+  withContactsMutations
+} from "../connections/allContacts";
 import { getFullContactName } from "../helpers/contacts";
 
 const ContactsHeaderWithActions = ({ displayContactForm }, { t }) => (
@@ -172,6 +175,9 @@ ContactsApp.propTypes = {
 };
 
 const ContactAppWithLoading = ({ data, fetchStatus, ...props }) => {
+  if (!data) {
+    return null;
+  }
   if (fetchStatus === "error") {
     return <div>Error</div>;
   }
@@ -179,10 +185,10 @@ const ContactAppWithLoading = ({ data, fetchStatus, ...props }) => {
 };
 
 ContactAppWithLoading.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.array,
   fetchStatus: PropTypes.string
 };
 
-export default flow([withContacts, withDeletion, withSelection])(
+export default flow([withContacts, withContactsMutations, withSelection])(
   ContactAppWithLoading
 );

@@ -1,6 +1,6 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-import { withCreation } from "../../connections/allContacts";
+import { withContactsMutations } from "../../connections/allContacts";
 import Modal, { ModalHeader, ModalDescription } from "cozy-ui/react/Modal";
 import ContactForm from "../ContactCard/ContactForm";
 
@@ -20,9 +20,7 @@ const ContactFormModal = ({
     <ModalDescription className="u-mt-half">
       <ContactForm
         onSubmit={contact =>
-          createContact({ ...contact, _type: "io.cozy.contacts" }).then(resp =>
-            onCreateContact(resp.data[0])
-          )
+          createContact(contact).then(resp => onCreateContact(resp.data))
         }
         onCancel={onClose}
       />
@@ -36,4 +34,4 @@ ContactFormModal.propTypes = {
   onCreateContact: PropTypes.func.isRequired
 };
 
-export default withCreation(ContactFormModal);
+export default withContactsMutations(ContactFormModal);

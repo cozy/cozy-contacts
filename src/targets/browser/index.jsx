@@ -7,7 +7,6 @@ import "styles";
 import React from "react";
 import { render } from "react-dom";
 import CozyClient, { CozyProvider } from "cozy-client";
-import CozyStackLink from "cozy-stack-link";
 import { I18n } from "cozy-ui/react/I18n";
 
 if (__DEVELOPMENT__) {
@@ -70,10 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const protocol = window.location ? window.location.protocol : "https:";
 
   const client = new CozyClient({
-    link: new CozyStackLink({
-      uri: `${protocol}//${data.cozyDomain}`,
-      token: data.cozyToken
-    })
+    uri: `${protocol}//${data.cozyDomain}`,
+    token: data.cozyToken
   });
 
   cozy.bar.init({
