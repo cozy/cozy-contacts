@@ -1,14 +1,14 @@
 import React from "react";
 import flow from "lodash/flow";
 import ContactsList from "./ContactsList";
+import ComingSoon from "./ComingSoon";
 import ContactsHeader from "./ContactsList/ContactsHeader";
-import withSelection from "./HOCs/withSelection";
 import { PropTypes } from "prop-types";
 import OpenContactFormButton from "./Buttons/OpenContactFormButton";
 import ContactsIntentButton from "./Buttons/ContactsIntentButton";
 import ContactCardModal from "./Modals/ContactCardModal";
 import ContactFormModal from "./Modals/ContactFormModal";
-import { SelectionBar, Alerter } from "cozy-ui/react";
+import { Alerter } from "cozy-ui/react";
 import {
   withContacts,
   withContactsMutations
@@ -26,9 +26,11 @@ const ContactsHeaderWithActions = ({ displayContactForm }, { t }) => (
           {fakeintent !== null && (
             <ContactsIntentButton label={"Select a Contact"} />
           )}
+          <ComingSoon />
           <OpenContactFormButton
             onClick={displayContactForm}
             label={t("create_contact")}
+            disabled
           />
         </div>
       );
@@ -37,27 +39,6 @@ const ContactsHeaderWithActions = ({ displayContactForm }, { t }) => (
 );
 ContactsHeaderWithActions.propTypes = {
   displayContactForm: PropTypes.func.isRequired
-};
-
-const SelectionBarWithActions = ({
-  selected,
-  hideSelectionBar,
-  trashAction
-}) => (
-  <SelectionBar
-    selected={selected}
-    hideSelectionBar={hideSelectionBar}
-    actions={{
-      trash: {
-        action: trashAction
-      }
-    }}
-  />
-);
-SelectionBarWithActions.propTypes = {
-  selected: PropTypes.array.isRequired,
-  hideSelectionBar: PropTypes.func.isRequired,
-  trashAction: PropTypes.func.isRequired
 };
 
 class ContactsApp extends React.Component {
@@ -108,7 +89,6 @@ class ContactsApp extends React.Component {
       this.props.deleteContact(contact)
     );
     await Promise.all(promises);
-    this.props.clearSelection();
   };
 
   componentWillReceiveProps(nextProps) {
@@ -125,17 +105,10 @@ class ContactsApp extends React.Component {
   render() {
     const { displayedContact, isCreationFormDisplayed } = this.state;
     const { t } = this.context;
-    const { contacts, selection, toggleSelection, clearSelection } = this.props;
+    const { contacts } = this.props;
 
     return (
       <main className="app-content">
-        {selection.length > 0 && (
-          <SelectionBarWithActions
-            selected={selection}
-            hideSelectionBar={clearSelection}
-            trashAction={this.deleteSelectedContacts}
-          />
-        )}
         <ContactsHeaderWithActions
           displayContactForm={this.displayContactForm}
         />
@@ -143,8 +116,6 @@ class ContactsApp extends React.Component {
           <ContactsList
             contacts={contacts}
             onClickContact={this.displayContactCard}
-            onSelect={toggleSelection}
-            selection={selection}
           />
         </div>
         {displayedContact && (
@@ -167,9 +138,6 @@ class ContactsApp extends React.Component {
   }
 }
 ContactsApp.propTypes = {
-  selection: PropTypes.array.isRequired,
-  toggleSelection: PropTypes.func.isRequired,
-  clearSelection: PropTypes.func.isRequired,
   deleteContact: PropTypes.func.isRequired,
   contacts: PropTypes.array.isRequired
 };
@@ -189,6 +157,6 @@ ContactAppWithLoading.propTypes = {
   fetchStatus: PropTypes.string
 };
 
-export default flow([withContacts, withContactsMutations, withSelection])(
+export default flow([withContacts, withContactsMutations])(
   ContactAppWithLoading
 );

@@ -2,10 +2,31 @@
 @require 'components/table.styl'
 @require 'components/empty.styl'
 
-// @stylint off
-.fix-c-btn svg
-    margin-right 0 !important // hack https://github.com/cozy/cozy-ui/issues/338
-// @stylint on
+.fix-modal-menu
+    margin-right 2rem
+
+.coming-soon
+    box-sizing border-box
+    display inline-flex
+    align-items center
+    background malachite
+    color white
+    min-height 2.5rem
+    padding .5rem 1rem
+    border-radius .4rem
+    position relative
+    margin-right .4rem
+
+    &:after
+        content ''
+        width 0
+        height 0
+        border-top .4rem solid transparent
+        border-bottom .4rem solid transparent
+        border-left .4rem solid malachite
+        position absolute
+        left 100%
+        top .8rem
 
 .list-wrapper
     width 100%

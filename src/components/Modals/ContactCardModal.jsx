@@ -2,38 +2,20 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import { withContactsMutations } from "../../connections/allContacts";
 import Modal, { ModalHeader, ModalContent } from "cozy-ui/react/Modal";
-import { Icon, Menu, MenuItem, Button } from "cozy-ui/react";
+import ComingSoon from "../ComingSoon";
+import { Button } from "cozy-ui/react";
 import ContactCard from "../ContactCard/ContactCard";
 import contactPropTypes from "../ContactPropTypes";
+import IconEdit from "../../assets/icons/edit.svg";
 
-const ContactCardMenu = ({ deleteAction }) => (
-  <Menu
-    position="right"
-    className="contact-card-modal__menu"
-    component={
-      <Button
-        theme="secondary"
-        extension="narrow"
-        icon="dots"
-        className="fix-c-btn"
-      />
-    }
-  >
-    <MenuItem
-      className="menu__item--danger"
-      icon={<Icon icon="delete" />}
-      onSelect={deleteAction.action}
-    >
-      {deleteAction.label}
-    </MenuItem>
-  </Menu>
+const ContactCardMenu = () => (
+  <div className="fix-modal-menu">
+    <ComingSoon />
+    <Button theme="secondary" extension="narrow" icon={IconEdit} disabled />
+    <Button theme="secondary" extension="narrow" icon="delete" disabled />
+  </div>
 );
-ContactCardMenu.propTypes = {
-  deleteAction: PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    action: PropTypes.func.isRequired
-  }).isRequired
-};
+ContactCardMenu.propTypes = {};
 
 class ContactCardModal extends React.Component {
   state = {
