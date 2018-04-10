@@ -1,4 +1,5 @@
 {
+  "coming_soon": "Coming soon ;)",
   "create_contact": "Create a Contact",
   "cancel": "Cancel",
   "confirm": "Confirm",
@@ -7,6 +8,14 @@
   "selected_contacts":
     "%{smart_count} selected contact |||| %{smart_count} selected contacts",
   "contact_info": "Contact informations",
+  "empty": {
+    "title": "Your contact list is empty!",
+    "description":
+      "Click the \"Create a Contact\" button to start using the app.",
+    "google": "Sync your Google contacts",
+    "after":
+      "Importing your contacts might take a few minutes, time to enjoy a well deserved coffee break ☕️"
+  },
   "formatted_address":
     "%{pobox} %{street} %{postcode} %{city} %{region} %{country}",
   "field": {
@@ -39,5 +48,11 @@
   "groups": {
     "none": "There are no existing groups yet.",
     "manage": "Manage groups"
+  },
+  "delete-confirmation": {
+    "deleted": "The contact %{name} has been deleted.",
+    "title": "Delete this contact?",
+    "description":
+      "This contact will also be deleted from your Google address book"
   }
 }

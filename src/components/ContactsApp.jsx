@@ -1,15 +1,19 @@
 import React from "react";
 import flow from "lodash/flow";
 import ContactsList from "./ContactsList";
+import ComingSoon from "./ComingSoon";
 import ContactsHeader from "./ContactsList/ContactsHeader";
-import withSelection from "./HOCs/withSelection";
 import { PropTypes } from "prop-types";
 import OpenContactFormButton from "./Buttons/OpenContactFormButton";
 import ContactsIntentButton from "./Buttons/ContactsIntentButton";
 import ContactCardModal from "./Modals/ContactCardModal";
 import ContactFormModal from "./Modals/ContactFormModal";
-import { SelectionBar } from "cozy-ui/react";
-import { withContacts, withDeletion } from "../connections/allContacts";
+import { Alerter } from "cozy-ui/react";
+import {
+  withContacts,
+  withContactsMutations
+} from "../connections/allContacts";
+import { getFullContactName } from "../helpers/contacts";
 
 const ContactsHeaderWithActions = ({ displayContactForm }, { t }) => (
   <ContactsHeader
@@ -22,9 +26,11 @@ const ContactsHeaderWithActions = ({ displayContactForm }, { t }) => (
           {fakeintent !== null && (
             <ContactsIntentButton label={"Select a Contact"} />
           )}
+          <ComingSoon />
           <OpenContactFormButton
             onClick={displayContactForm}
             label={t("create_contact")}
+            disabled
           />
         </div>
       );
@@ -33,27 +39,6 @@ const ContactsHeaderWithActions = ({ displayContactForm }, { t }) => (
 );
 ContactsHeaderWithActions.propTypes = {
   displayContactForm: PropTypes.func.isRequired
-};
-
-const SelectionBarWithActions = ({
-  selected,
-  hideSelectionBar,
-  trashAction
-}) => (
-  <SelectionBar
-    selected={selected}
-    hideSelectionBar={hideSelectionBar}
-    actions={{
-      trash: {
-        action: trashAction
-      }
-    }}
-  />
-);
-SelectionBarWithActions.propTypes = {
-  selected: PropTypes.array.isRequired,
-  hideSelectionBar: PropTypes.func.isRequired,
-  trashAction: PropTypes.func.isRequired
 };
 
 class ContactsApp extends React.Component {
@@ -65,6 +50,13 @@ class ContactsApp extends React.Component {
   displayContactCard = contact => {
     this.setState({
       displayedContact: contact
+    });
+  };
+
+  onDeleteContact = contact => {
+    this.hideContactCard();
+    Alerter.info("delete-confirmation.deleted", {
+      name: getFullContactName(contact.name)
     });
   };
 
@@ -97,7 +89,6 @@ class ContactsApp extends React.Component {
       this.props.deleteContact(contact)
     );
     await Promise.all(promises);
-    this.props.clearSelection();
   };
 
   componentWillReceiveProps(nextProps) {
@@ -118,6 +109,9 @@ class ContactsApp extends React.Component {
 
     return (
       <main className="app-content">
+        <ContactsHeaderWithActions
+          displayContactForm={this.displayContactForm}
+        />
         <div role="contentinfo">
           <ContactsList
             contacts={contacts}
@@ -128,7 +122,7 @@ class ContactsApp extends React.Component {
           <ContactCardModal
             onClose={this.hideContactCard}
             contact={displayedContact}
-            onDeleteContact={this.hideContactCard}
+            onDeleteContact={this.onDeleteContact}
           />
         )}
         {isCreationFormDisplayed && (
@@ -138,19 +132,20 @@ class ContactsApp extends React.Component {
             onCreateContact={this.onCreateContact}
           />
         )}
+        <Alerter t={t} />
       </main>
     );
   }
 }
 ContactsApp.propTypes = {
-  selection: PropTypes.array.isRequired,
-  toggleSelection: PropTypes.func.isRequired,
-  clearSelection: PropTypes.func.isRequired,
   deleteContact: PropTypes.func.isRequired,
   contacts: PropTypes.array.isRequired
 };
 
 const ContactAppWithLoading = ({ data, fetchStatus, ...props }) => {
+  if (!data) {
+    return null;
+  }
   if (fetchStatus === "error") {
     return <div>Error</div>;
   }
@@ -158,10 +153,10 @@ const ContactAppWithLoading = ({ data, fetchStatus, ...props }) => {
 };
 
 ContactAppWithLoading.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.array,
   fetchStatus: PropTypes.string
 };
 
-export default flow([withContacts, withDeletion, withSelection])(
+export default flow([withContacts, withContactsMutations])(
   ContactAppWithLoading
 );

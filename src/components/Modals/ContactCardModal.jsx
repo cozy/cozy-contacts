@@ -1,54 +1,81 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-import { withDeletion } from "../../connections/allContacts";
+import { withContactsMutations } from "../../connections/allContacts";
 import Modal, { ModalHeader, ModalContent } from "cozy-ui/react/Modal";
-import { Icon, Menu, MenuItem, Button } from "cozy-ui/react";
+import ComingSoon from "../ComingSoon";
+import { Button } from "cozy-ui/react";
 import ContactCard from "../ContactCard/ContactCard";
 import contactPropTypes from "../ContactPropTypes";
+import IconEdit from "../../assets/icons/edit.svg";
 
-const ContactCardMenu = ({ deleteAction }) => (
-  <Menu
-    position="right"
-    className="contact-card-modal__menu"
-    component={
-      <Button
-        theme="secondary"
-        extension="narrow"
-        icon="dots"
-        className="fix-c-btn"
-      />
-    }
-  >
-    <MenuItem
-      className="menu__item--danger"
-      icon={<Icon icon="delete" />}
-      onSelect={deleteAction.action}
-    >
-      {deleteAction.label}
-    </MenuItem>
-  </Menu>
+const ContactCardMenu = () => (
+  <div className="fix-modal-menu">
+    <ComingSoon />
+    <Button theme="secondary" extension="narrow" icon={IconEdit} disabled />
+    <Button theme="secondary" extension="narrow" icon="delete" disabled />
+  </div>
 );
-ContactCardMenu.propTypes = {
-  deleteAction: PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    action: PropTypes.func.isRequired
-  }).isRequired
-};
+ContactCardMenu.propTypes = {};
 
-const ContactCardModal = ({ onClose, contact }, { t }) => (
-  <Modal into="body" dismissAction={onClose} size="xlarge">
-    <ContactCard
-      title={t("contact_info")}
-      contact={contact}
-      renderHeader={children => (
-        <ModalHeader className="contact-card-modal__header">
-          {children}
-        </ModalHeader>
-      )}
-      renderBody={children => <ModalContent>{children}</ModalContent>}
-    />
-  </Modal>
-);
+class ContactCardModal extends React.Component {
+  state = {
+    shouldDisplayConfirmDeleteModal: false
+  };
+
+  toggleConfirmDeleteModal = () => {
+    this.setState(state => ({
+      ...state,
+      shouldDisplayConfirmDeleteModal: !state.shouldDisplayConfirmDeleteModal
+    }));
+  };
+
+  deleteContact = async () => {
+    const { contact, deleteContact, onDeleteContact } = this.props;
+    await deleteContact(contact);
+    onDeleteContact(contact);
+  };
+
+  render() {
+    const { onClose, contact } = this.props;
+    const { shouldDisplayConfirmDeleteModal } = this.state;
+    const { t } = this.context;
+
+    return (
+      <Modal into="body" dismissAction={onClose} size="xlarge">
+        <ContactCard
+          title={t("contact_info")}
+          contact={contact}
+          renderHeader={children => (
+            <ModalHeader className="contact-card-modal__header">
+              {children}
+              <ContactCardMenu
+                deleteAction={{
+                  label: t("delete"),
+                  action: this.toggleConfirmDeleteModal
+                }}
+              />
+            </ModalHeader>
+          )}
+          renderBody={children => <ModalContent>{children}</ModalContent>}
+        />
+        {shouldDisplayConfirmDeleteModal && (
+          <Modal
+            into="body"
+            title={t("delete-confirmation.title")}
+            description={t("delete-confirmation.description")}
+            primaryText={t("delete")}
+            primaryType="danger"
+            primaryAction={this.deleteContact}
+            secondaryText={t("cancel")}
+            secondaryAction={this.toggleConfirmDeleteModal}
+            dismissAction={this.toggleConfirmDeleteModal}
+          />
+        )}
+      </Modal>
+    );
+  }
+}
+
 ContactCardModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   contact: PropTypes.shape({
@@ -64,4 +91,4 @@ ContactCardModal.propTypes = {
   onDeleteContact: PropTypes.func.isRequired
 };
 
-export default withDeletion(ContactCardModal);
+export default withContactsMutations(ContactCardModal);

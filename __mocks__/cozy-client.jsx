@@ -3,14 +3,10 @@ import React from "react";
 const connect = () => WrappedComponent => ({ ...props }) => (
   <WrappedComponent data={[]} fetchStatus={"ready"} {...props} />
 );
-const withMutation = (whatever, { name }) => WrappedComponent => ({
-  ...props
-}) => {
-  const mockedMutatorProps = { [name]: () => {} };
+const withMutations = whatever => WrappedComponent => ({ ...props }) => {
+  const mockedMutatorProps = whatever({});
   return <WrappedComponent {...props} {...mockedMutatorProps} />;
 };
-const all = () => {};
 
-exports.withMutation = withMutation;
+exports.withMutations = withMutations;
 exports.connect = connect;
-exports.all = all;
