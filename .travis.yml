@@ -34,4 +34,4 @@ script:
 - yarn build
 after_success:
 - test $TRAVIS_BRANCH = "master" && test "$TRAVIS_PULL_REQUEST" = "false" && yarn run deploy --branch=build
-- test $TRAVIS_BRANCH = "prod" && test "$TRAVIS_PULL_REQUEST" = "false" && yarn run deploy --branch=latest
+- test $TRAVIS_BRANCH = "readonly" && test "$TRAVIS_PULL_REQUEST" = "false" && yarn run deploy --branch=latest
