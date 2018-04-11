@@ -6617,9 +6617,9 @@ react-final-form-arrays@1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/react-final-form-arrays/-/react-final-form-arrays-1.0.4.tgz#888b9b81a806844cf66d73f4e8b60e5f18fa2a11"
 
-react-final-form@3.1.5:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/react-final-form/-/react-final-form-3.1.5.tgz#6fa0e4c61e49b691b679ef4c8a5ad3fe92df0956"
+react-final-form@3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/react-final-form/-/react-final-form-3.2.1.tgz#189e21e58f4381d5ed40817a2ca4167590bb3405"
 
 react-input-autosize@^2.2.1:
   version "2.2.1"
