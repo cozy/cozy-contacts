@@ -1,7 +1,6 @@
 import React from "react";
 import flow from "lodash/flow";
 import ContactsList from "./ContactsList";
-import ComingSoon from "./ComingSoon";
 import ContactsHeader from "./ContactsList/ContactsHeader";
 import { PropTypes } from "prop-types";
 import OpenContactFormButton from "./Buttons/OpenContactFormButton";
@@ -26,11 +25,9 @@ const ContactsHeaderWithActions = ({ displayContactForm }, { t }) => (
           {fakeintent !== null && (
             <ContactsIntentButton label={"Select a Contact"} />
           )}
-          <ComingSoon />
           <OpenContactFormButton
             onClick={displayContactForm}
             label={t("create_contact")}
-            disabled
           />
         </div>
       );
