@@ -16,7 +16,7 @@ const OpenContactFormButton = ({ label, onClick, disabled }) => (
 OpenContactFormButton.propTypes = {
   label: PropTypes.string,
   onClick: PropTypes.func.isRequired,
-  disabled: PropTypes.func
+  disabled: PropTypes.bool
 };
 OpenContactFormButton.defaultProps = {
   label: "Create a contact",
