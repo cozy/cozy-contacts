@@ -438,6 +438,7 @@ Object {
   "fullname": "Jean-Claude Van Cozy",
   "groups": Array [],
   "metadata": Object {
+    "cozy": true,
     "version": 1,
   },
   "name": Object {
@@ -465,6 +466,7 @@ Object {
   "fullname": "",
   "groups": Array [],
   "metadata": Object {
+    "cozy": true,
     "version": 1,
   },
   "name": Object {

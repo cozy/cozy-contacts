@@ -130,7 +130,8 @@ class ContactForm extends React.Component {
       birthday,
       note,
       metadata: {
-        version: 1
+        version: 1,
+        cozy: true
       }
     };
 
