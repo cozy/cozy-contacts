@@ -1,6 +1,7 @@
 /* global cozy */
 import React from "react";
-import { Button, IntentOpener } from "cozy-ui/react";
+import { Button, IntentOpener, Empty } from "cozy-ui/react";
+import EmptyIcon from "../../assets/icons/empty-contact-list.svg";
 
 export default class ContactsEmptyList extends React.Component {
   state = {
@@ -27,12 +28,12 @@ export default class ContactsEmptyList extends React.Component {
     const { t } = this.context;
 
     return (
-      <div className="list-empty">
-        <h1>{t("empty.title")}</h1>
-
-        {hasConnector ? (
-          <p>{t("empty.after")}</p>
-        ) : (
+      <Empty
+        icon={EmptyIcon}
+        title={t("empty.title")}
+        text={hasConnector ? t("empty.after") : ""}
+      >
+        {!hasConnector && (
           <IntentOpener
             action="CREATE"
             doctype="io.cozy.accounts"
@@ -42,7 +43,7 @@ export default class ContactsEmptyList extends React.Component {
             <Button label={t("empty.google")} />
           </IntentOpener>
         )}
-      </div>
+      </Empty>
     );
   }
 }
