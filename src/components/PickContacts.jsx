@@ -4,10 +4,20 @@ import PropTypes from "prop-types";
 import { translate } from "cozy-ui/react/I18n";
 import { Button, IntentHeader } from "cozy-ui/react";
 import ContactsList from "./ContactsList/ContactsList";
-import { withContacts } from "./ContactsList";
 import withSelection from "./HOCs/withSelection";
+import { withContacts } from "../connections/allContacts";
 
-const ConnectedContactsList = withContacts(ContactsList);
+const ContactAppWithLoading = ({ data, fetchStatus, ...props }) => {
+  if (!data) {
+    return null;
+  }
+  if (fetchStatus === "error") {
+    return <div>Error</div>;
+  }
+  return <ContactsList contacts={data} {...props} />;
+};
+
+const ConnectedContactsList = withContacts(ContactAppWithLoading);
 
 const IntentFooter = ({ label, onSubmit, onCancel, t }) => (
   <div className="intent-footer">
@@ -64,7 +74,7 @@ class PickContacts extends React.Component {
   };
 
   render() {
-    const { t } = this.props;
+    const { t } = this.context;
     return (
       <div className="intent-layout">
         <IntentHeader appEditor="Cozy" appName="Contacts" appIcon="/icon.svg" />
@@ -90,8 +100,7 @@ PickContacts.propTypes = {
   intentId: PropTypes.string.isRequired,
   selection: PropTypes.array.isRequired,
   toggleSelection: PropTypes.func.isRequired,
-  clearSelection: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired
+  clearSelection: PropTypes.func.isRequired
 };
 
 export default translate()(withSelection(PickContacts));
