@@ -57,14 +57,15 @@ const ContactsList = props => {
   );
 };
 ContactsList.propTypes = {
-  contacts: PropTypes.array.isRequired,
+  contacts: PropTypes.array,
   onClickContact: PropTypes.func,
   onSelect: PropTypes.func,
   selection: PropTypes.array
 };
 ContactsList.defaultProps = {
-  onSelect: null,
+  contacts: [],
   onClickContact: null,
+  onSelect: null,
   selection: []
 };
 
