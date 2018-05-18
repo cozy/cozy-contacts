@@ -50,10 +50,7 @@ exports[`ContactCard should match snapshot 1`] = `
             onTouchEnd={[Function]}
           >
             <button
-              aria-busy={false}
               className="c-btn c-btn--secondary c-btn--small"
-              disabled={false}
-              onClick={null}
               role="button"
               type="submit"
             >
@@ -74,7 +71,7 @@ exports[`ContactCard should match snapshot 1`] = `
                 </svg>
                 groups.manage
                 <svg
-                  className="icon group-manager__indicator"
+                  className="group-manager__indicator icon"
                   height="16"
                   style={
                     Object {
