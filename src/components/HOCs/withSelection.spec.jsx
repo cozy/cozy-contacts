@@ -1,9 +1,14 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { shallow } from "enzyme";
 import withSelection from "./withSelection";
 
-const DummyComponent = () => <span />;
+const DummyComponent = ({ title = "" }) => <span title={title} />;
 const DummyComponentWithSelection = withSelection(DummyComponent);
+
+DummyComponent.propTypes = {
+  title: PropTypes.string
+};
 
 describe("A component with selection", () => {
   let testedComponent;
@@ -40,5 +45,12 @@ describe("A component with selection", () => {
     testedComponent.update();
 
     expect(testedComponent.prop("selection").length).toEqual(0);
+  });
+
+  it("should pass other props", () => {
+    const root = <DummyComponentWithSelection title="with prop" />;
+    testedComponent = shallow(root);
+
+    expect(testedComponent.prop("title")).toEqual("with prop");
   });
 });

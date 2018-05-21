@@ -32,6 +32,7 @@ const withSelection = WrappedComponent => {
           selection={this.state.selection}
           toggleSelection={this.toggleSelection}
           clearSelection={this.clearSelection}
+          {...this.props}
         />
       );
     }
