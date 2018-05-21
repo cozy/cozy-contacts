@@ -22,7 +22,7 @@
       "git-directory-deploy --username cozy --email contact@cozycloud.cc --directory build/ --repo=https://$GITHUB_TOKEN@github.com/cozy/cozy-contacts.git",
     "test": "jest",
     "stack:docker":
-      "docker run --rm -it -p 8080:8080 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev"
+      "docker run --rm -it -p 8080:8080 -p 5984:5984 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev"
   },
   "repository": {
     "type": "git",
