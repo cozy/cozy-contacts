@@ -16,6 +16,10 @@ const ContactAppWithLoading = ({ data, fetchStatus, ...props }) => {
   }
   return <ContactsList contacts={data} {...props} />;
 };
+ContactAppWithLoading.propTypes = {
+  data: PropTypes.array.isRequired,
+  fetchStatus: PropTypes.string.isRequired
+};
 
 const ConnectedContactsList = withContacts(ContactAppWithLoading);
 
@@ -47,15 +51,13 @@ class PickContacts extends React.Component {
   state = {
     service: null
   };
-  async componentDidMount() {
-    cozy.client.intents
-      .createService(this.props.intentId, window)
-      .then(service => {
-        this.setState(state => ({ ...state, service }));
-      });
+  componentDidMount() {
+    cozy.client.intents.createService().then(service => {
+      this.setState(state => ({ ...state, service }));
+    });
   }
 
-  pickContacts = async () => {
+  pickContacts = () => {
     if (this.state.service) {
       try {
         this.state.service.terminate({
@@ -81,7 +83,8 @@ class PickContacts extends React.Component {
         <IntentMain>
           <ConnectedContactsList
             selection={this.props.selection}
-            onSelect={this.toggleSelection}
+            onSelect={this.props.toggleSelection}
+            onClickContact={this.props.toggleSelection}
           />
         </IntentMain>
         <IntentFooter
