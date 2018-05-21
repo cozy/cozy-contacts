@@ -1,4 +1,4 @@
-/* global __DEVELOPMENT__ */
+/* global cozy, __DEVELOPMENT__ */
 
 import "babel-polyfill";
 
@@ -55,6 +55,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const client = new cozyClient({
     uri: `${protocol}//${data.cozyDomain}`,
+    token: data.cozyToken
+  });
+
+  cozy.client.init({
+    cozyURL: `${protocol}//${data.cozyDomain}`,
     token: data.cozyToken
   });
 
