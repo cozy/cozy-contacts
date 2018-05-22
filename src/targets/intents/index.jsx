@@ -22,6 +22,8 @@ if (__DEVELOPMENT__) {
 const renderApp = function(client, appLocale, appData) {
   const IntentHandler = require("components/intents/IntentHandler").default;
   const PickContacts = require("components/PickContacts").default;
+  const CreateContactIntent = require("components/intents/CreateContactIntent")
+    .default;
   render(
     <I18n
       lang={appLocale}
@@ -30,6 +32,7 @@ const renderApp = function(client, appLocale, appData) {
       <CozyProvider client={client}>
         <IntentHandler appData={appData} intents={cozy.client.intents}>
           <PickContacts action="PICK" type="io.cozy.contacts" />
+          <CreateContactIntent action="CREATE" type="io.cozy.contacts" />
         </IntentHandler>
       </CozyProvider>
     </I18n>,
