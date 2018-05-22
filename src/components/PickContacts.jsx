@@ -1,4 +1,3 @@
-/*global cozy*/
 import React from "react";
 import PropTypes from "prop-types";
 import { translate } from "cozy-ui/react/I18n";
@@ -48,31 +47,18 @@ IntentMain.propTypes = {
 };
 
 class PickContacts extends React.Component {
-  state = {
-    service: null
-  };
-  componentDidMount() {
-    cozy.client.intents.createService().then(service => {
-      this.setState(state => ({ ...state, service }));
-    });
-  }
-
   pickContacts = () => {
-    if (this.state.service) {
-      try {
-        this.state.service.terminate({
-          contacts: this.props.selection.map(contact => contact._id)
-        });
-      } catch (error) {
-        this.state.service.throw(error);
-      }
+    try {
+      this.props.onTerminate({
+        contacts: this.props.selection.map(contact => contact._id)
+      });
+    } catch (error) {
+      this.state.service.throw(error);
     }
   };
 
   cancel = () => {
-    if (this.state.service) {
-      this.state.service.terminate({ contacts: [] });
-    }
+    this.props.onCancel();
   };
 
   render() {
@@ -100,7 +86,6 @@ class PickContacts extends React.Component {
   }
 }
 PickContacts.propTypes = {
-  intentId: PropTypes.string.isRequired,
   selection: PropTypes.array.isRequired,
   toggleSelection: PropTypes.func.isRequired,
   clearSelection: PropTypes.func.isRequired
