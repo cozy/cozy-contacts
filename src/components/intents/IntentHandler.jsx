@@ -1,10 +1,11 @@
 import React, { Children, Component } from "react";
+import { PropTypes } from "prop-types";
 import { translate } from "cozy-ui/react/I18n";
 
 import Spinner from "cozy-ui/react/Spinner";
 
 class IntentHandler extends Component {
-  constructor(props, context) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -36,7 +37,8 @@ class IntentHandler extends Component {
   }
 
   render() {
-    const { appData, children, t } = this.props;
+    const { t } = this.context;
+    const { appData, children } = this.props;
     const { error, service, status } = this.state;
     const intent = service && service.getIntent();
     const child =
@@ -73,5 +75,13 @@ class IntentHandler extends Component {
     );
   }
 }
+IntentHandler.propTypes = {
+  appData: PropTypes.object,
+  intents: PropTypes.object.isRequired,
+  children: PropTypes.element.isRequired
+};
+IntentHandler.defaultProps = {
+  appData: {}
+};
 
 export default translate()(IntentHandler);

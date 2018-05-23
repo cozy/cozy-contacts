@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { translate } from "cozy-ui/react/I18n";
 import { Button, IntentHeader } from "cozy-ui/react";
-import ContactsList from "./ContactsList/ContactsList";
-import withSelection from "./HOCs/withSelection";
-import { withContacts } from "../connections/allContacts";
+import ContactsList from "../ContactsList/ContactsList";
+import withSelection from "../HOCs/withSelection";
+import { withContacts } from "../../connections/allContacts";
 
 const ContactAppWithLoading = ({ data, fetchStatus, ...props }) => {
   if (!data) {
@@ -53,7 +53,7 @@ class PickContacts extends React.Component {
         contacts: this.props.selection.map(contact => contact._id)
       });
     } catch (error) {
-      this.state.service.throw(error);
+      this.props.onError(error);
     }
   };
 
@@ -88,7 +88,10 @@ class PickContacts extends React.Component {
 PickContacts.propTypes = {
   selection: PropTypes.array.isRequired,
   toggleSelection: PropTypes.func.isRequired,
-  clearSelection: PropTypes.func.isRequired
+  clearSelection: PropTypes.func.isRequired,
+  onTerminate: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  onError: PropTypes.func.isRequired
 };
 
 export default translate()(withSelection(PickContacts));

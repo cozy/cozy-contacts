@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { translate } from "cozy-ui/react/I18n";
-import { Button, IntentHeader } from "cozy-ui/react";
+import { IntentHeader } from "cozy-ui/react";
 import ContactForm from "../ContactCard/ContactForm";
 import { withContactsMutations } from "../../connections/allContacts";
 
@@ -29,8 +29,6 @@ class CreateContact extends React.Component {
   };
 
   render() {
-    const { t } = this.context;
-
     return (
       <div className="intent-layout">
         <IntentHeader appEditor="Cozy" appName="Contacts" appIcon="/icon.svg" />
@@ -41,6 +39,15 @@ class CreateContact extends React.Component {
     );
   }
 }
-CreateContact.propTypes = {};
+CreateContact.propTypes = {
+  data: PropTypes.object,
+  onTerminate: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  onError: PropTypes.func.isRequired,
+  createContact: PropTypes.func.isRequired
+};
+CreateContact.defaultProps = {
+  data: {}
+};
 
 export default translate()(withContactsMutations(CreateContact));
