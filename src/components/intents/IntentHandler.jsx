@@ -3,6 +3,7 @@ import { PropTypes } from "prop-types";
 import { translate } from "cozy-ui/react/I18n";
 
 import Spinner from "cozy-ui/react/Spinner";
+import Empty from "cozy-ui/react/Empty";
 
 class IntentHandler extends Component {
   constructor(props) {
@@ -53,12 +54,17 @@ class IntentHandler extends Component {
     return (
       <div className="app-wrapper">
         <main className="app-content">
-          {status === "creating" && <Spinner size="xxlarge" />}
-          {error && (
-            <div className="coz-error coz-intent-error">
-              <p>{t("intent.service.creation.error.title")}</p>
-              <p>{error.message}</p>
+          {status === "creating" && (
+            <div className="intent-loader">
+              <Spinner size="xxlarge" />
             </div>
+          )}
+          {error && (
+            <Empty
+              icon="cozy"
+              title={t("intent.service.creation.error.title")}
+              text={error.message}
+            />
           )}
           {child &&
             // In the future, we may switch here between available intents
