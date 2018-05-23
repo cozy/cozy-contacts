@@ -6,6 +6,7 @@ import ContactFormField from "./ContactFormField";
 import ContactFieldInput from "./ContactFieldInput";
 import { Button } from "cozy-ui/react/Button";
 import { translate } from "cozy-ui/react/I18n";
+import Portal from "preact-portal";
 
 import IconEmail from "../../assets/icons/email.svg";
 import IconPhone from "../../assets/icons/phone-number.svg";
@@ -77,6 +78,21 @@ const initialFieldValues = fields.reduce((initialValues, { name, isArray }) => {
   return initialValues;
 }, {});
 
+const ContactFormFooterWrapper = ({ portalInto, children }) => {
+  return portalInto ? (
+    <Portal into={portalInto}>{children}</Portal>
+  ) : (
+    <div className="contact-form__footer-wrapper">{children}</div>
+  );
+};
+ContactFormFooterWrapper.propTypes = {
+  portalInto: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  children: PropTypes.element.isRequired
+};
+ContactFormFooterWrapper.defaultProps = {
+  portalInto: false
+};
+
 class ContactForm extends React.Component {
   formDataToContact = data => {
     const {
@@ -139,7 +155,8 @@ class ContactForm extends React.Component {
   };
 
   render() {
-    const { onCancel, t } = this.props;
+    const { onCancel, t, footerPortalInto } = this.props;
+
     return (
       <Form
         mutators={{ ...arrayMutators }}
@@ -172,17 +189,19 @@ class ContactForm extends React.Component {
                 )}
               </div>
 
-              <div className="contact-form__footer">
-                <div>
-                  <Button
-                    type="button"
-                    theme="secondary"
-                    label={t("cancel")}
-                    onClick={onCancel}
-                  />
-                  <Button type="submit" label={t("save")} />
+              <ContactFormFooterWrapper portalInto={footerPortalInto}>
+                <div className="contact-form__footer">
+                  <div>
+                    <Button
+                      type="button"
+                      theme="secondary"
+                      label={t("cancel")}
+                      onClick={onCancel}
+                    />
+                    <Button type="submit" label={t("save")} />
+                  </div>
                 </div>
-              </div>
+              </ContactFormFooterWrapper>
             </form>
           </div>
         )}
@@ -194,7 +213,11 @@ class ContactForm extends React.Component {
 ContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
+  footerPortalInto: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   t: PropTypes.func.isRequired
+};
+ContactForm.defaultProps = {
+  footerPortalInto: false
 };
 
 export default translate()(ContactForm);

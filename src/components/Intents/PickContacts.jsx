@@ -25,8 +25,10 @@ const ConnectedContactsList = withContacts(ContactAppWithLoading);
 const IntentFooter = ({ label, onSubmit, onCancel, t }) => (
   <div className="intent-footer">
     <div className="intent-footer-label">{label}</div>
-    <Button theme="secondary" label={t("cancel")} onClick={onCancel} />
-    <Button label={t("confirm")} onClick={onSubmit} />
+    <div className="intent-footer-buttons">
+      <Button theme="secondary" label={t("cancel")} onClick={onCancel} />
+      <Button label={t("confirm")} onClick={onSubmit} />
+    </div>
   </div>
 );
 IntentFooter.propTypes = {
