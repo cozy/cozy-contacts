@@ -373,32 +373,36 @@ exports[`ContactForm should match snapshot 1`] = `
       </div>
     </div>
     <div
-      className="contact-form__footer"
+      className="contact-form__footer-wrapper"
     >
-      <div>
-        <button
-          className="c-btn c-btn--secondary"
-          onClick={[Function]}
-          role="button"
-          type="button"
-        >
-          <span>
+      <div
+        className="contact-form__footer"
+      >
+        <div>
+          <button
+            className="c-btn c-btn--secondary"
+            onClick={[Function]}
+            role="button"
+            type="button"
+          >
             <span>
-              cancel
+              <span>
+                cancel
+              </span>
             </span>
-          </span>
-        </button>
-        <button
-          className="c-btn"
-          role="button"
-          type="submit"
-        >
-          <span>
+          </button>
+          <button
+            className="c-btn"
+            role="button"
+            type="submit"
+          >
             <span>
-              save
+              <span>
+                save
+              </span>
             </span>
-          </span>
-        </button>
+          </button>
+        </div>
       </div>
     </div>
   </form>
@@ -433,6 +437,7 @@ Object {
   "fullname": "Jean-Claude Van Cozy",
   "groups": Array [],
   "metadata": Object {
+    "cozy": true,
     "version": 1,
   },
   "name": Object {
@@ -460,6 +465,7 @@ Object {
   "fullname": "",
   "groups": Array [],
   "metadata": Object {
+    "cozy": true,
     "version": 1,
   },
   "name": Object {

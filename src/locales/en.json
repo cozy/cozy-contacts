@@ -53,5 +53,9 @@
     "title": "Delete this contact?",
     "description":
       "This contact will also be deleted from your Google address book"
+  },
+  "intent": {
+    "creation_error":
+      "An error occured while trying to contact the other app. Please try again later?"
   }
 }

@@ -92,7 +92,7 @@ const ContactRow = props => {
     address: undefined
   };
   const name = props.contact.name || {};
-  const { me = false } = props.contact.metadata;
+  const me = props.contact.metadata ? !!props.contact.metadata.me : false;
   return (
     <div className="contact" onClick={props.onClick}>
       {props.selection && (
