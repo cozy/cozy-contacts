@@ -4,30 +4,42 @@ import contactPropTypes from "../ContactPropTypes";
 import { Avatar } from "cozy-ui/react/Avatar";
 import { getInitials } from "../../helpers/contacts";
 
-const ContactIdentity = ({ name }) => (
+const ContactIdentity = ({ name, me }) => (
   <div className="contact-identity">
     <Avatar text={getInitials(name).toUpperCase()} size="small" />
-    <ContactName firstname={name.givenName} lastname={name.familyName} />
+    <ContactName
+      firstname={name.givenName}
+      lastname={name.familyName}
+      me={me}
+    />
   </div>
 );
 ContactIdentity.propTypes = {
-  name: contactPropTypes.name.isRequired
+  name: contactPropTypes.name.isRequired,
+  me: PropTypes.bool
+};
+ContactIdentity.defaultProps = {
+  me: false
 };
 
-const ContactName = ({ firstname, lastname }) => (
+const ContactName = ({ firstname, lastname, me }) => (
   <div>
     <span className="contact-firstname">{firstname}</span>
     &nbsp;
     <span className="contact-lastname">{lastname}</span>
+    &nbsp;
+    {me && <span className="contact-me">(moi)</span>}
   </div>
 );
 ContactName.propTypes = {
   firstname: PropTypes.string,
-  lastname: PropTypes.string
+  lastname: PropTypes.string,
+  me: PropTypes.bool
 };
 ContactName.defaultProps = {
   firstname: "",
-  lastname: ""
+  lastname: "",
+  me: false
 };
 
 const ContactPhone = ({ phone }) => (
@@ -80,6 +92,7 @@ const ContactRow = props => {
     address: undefined
   };
   const name = props.contact.name || {};
+  const { me = false } = props.contact.metadata;
   return (
     <div className="contact" onClick={props.onClick}>
       {props.selection && (
@@ -88,7 +101,7 @@ const ContactRow = props => {
           onSelect={props.selection.onSelect}
         />
       )}
-      <ContactIdentity name={name} />
+      <ContactIdentity name={name} me={me} />
       <ContactPhone phone={phone} />
       <ContactEmail email={email} />
     </div>
@@ -98,7 +111,8 @@ ContactRow.propTypes = {
   contact: PropTypes.shape({
     name: contactPropTypes.name,
     email: PropTypes.arrayOf(contactPropTypes.email.isRequired).isRequired,
-    phone: PropTypes.arrayOf(contactPropTypes.phone)
+    phone: PropTypes.arrayOf(contactPropTypes.phone),
+    metadata: contactPropTypes.metadata
   }).isRequired,
   selection: PropTypes.shape({
     selected: PropTypes.bool,

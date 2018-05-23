@@ -15,6 +15,8 @@ IntentMain.propTypes = {
 class CreateContact extends React.Component {
   createContact = async contact => {
     try {
+      const me = !!this.props.data.me;
+      if (me) contact.metadata.me = true;
       const resp = await this.props.createContact(contact);
       this.props.onTerminate(resp.data);
     } catch (e) {
@@ -28,6 +30,7 @@ class CreateContact extends React.Component {
 
   render() {
     const { t } = this.context;
+
     return (
       <div className="intent-layout">
         <IntentHeader appEditor="Cozy" appName="Contacts" appIcon="/icon.svg" />
