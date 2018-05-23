@@ -7,11 +7,8 @@ import { getInitials } from "../../helpers/contacts";
 const ContactIdentity = ({ name, me }) => (
   <div className="contact-identity">
     <Avatar text={getInitials(name).toUpperCase()} size="small" />
-    <ContactName
-      firstname={name.givenName}
-      lastname={name.familyName}
-      me={me}
-    />
+    <ContactName firstname={name.givenName} lastname={name.familyName} />
+    {me && <MeMarker />}
   </div>
 );
 ContactIdentity.propTypes = {
@@ -22,13 +19,11 @@ ContactIdentity.defaultProps = {
   me: false
 };
 
-const ContactName = ({ firstname, lastname, me }) => (
+const ContactName = ({ firstname, lastname }) => (
   <div>
     <span className="contact-firstname">{firstname}</span>
     &nbsp;
     <span className="contact-lastname">{lastname}</span>
-    &nbsp;
-    {me && <span className="contact-me">(moi)</span>}
   </div>
 );
 ContactName.propTypes = {
@@ -41,6 +36,10 @@ ContactName.defaultProps = {
   lastname: "",
   me: false
 };
+
+const MeMarker = (props, { t }) => (
+  <span className="contact-me">({t("me")})</span>
+);
 
 const ContactPhone = ({ phone }) => (
   <div className="contact-phone">{phone}</div>
