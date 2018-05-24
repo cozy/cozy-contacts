@@ -15,9 +15,7 @@ const ContactsFilter = () => (
 
 const ContactsHeader = ({ renderActions }) => (
   <div className="topbar">
-    <div className="topbar__left">
-      <ContactsFilter />
-    </div>
+    <div className="topbar__left">{false && <ContactsFilter />}</div>
     <div className="topbar__right">{renderActions()}</div>
   </div>
 );

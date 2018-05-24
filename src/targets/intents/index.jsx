@@ -3,6 +3,7 @@
 import "babel-polyfill";
 
 import "styles";
+import "styles/intent";
 
 import React from "react";
 import { render } from "react-dom";
@@ -18,15 +19,20 @@ if (__DEVELOPMENT__) {
   window.React = React;
 }
 
-const renderApp = function(client, appLocale) {
-  const IntentApp = require("components/IntentApp").default;
+const renderApp = function(client, appLocale, appData) {
+  const IntentHandler = require("components/Intents/IntentHandler").default;
+  const PickContacts = require("components/Intents/PickContacts").default;
+  const CreateContact = require("components/Intents/CreateContact").default;
   render(
     <I18n
       lang={appLocale}
       dictRequire={appLocale => require(`locales/${appLocale}`)}
     >
       <CozyProvider client={client}>
-        <IntentApp />
+        <IntentHandler appData={appData} intents={cozy.client.intents}>
+          <PickContacts action="PICK" type="io.cozy.contacts" />
+          <CreateContact action="CREATE" type="io.cozy.contacts" />
+        </IntentHandler>
       </CozyProvider>
     </I18n>,
     document.querySelector("[role=application]")
@@ -63,5 +69,5 @@ document.addEventListener("DOMContentLoaded", () => {
     token: data.cozyToken
   });
 
-  renderApp(client, appLocale);
+  renderApp(client, appLocale, data);
 });

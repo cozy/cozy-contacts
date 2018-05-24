@@ -38,7 +38,12 @@ const contactPropTypes = {
     primary: PropTypes.bool
   }),
   birthday: PropTypes.string,
-  note: PropTypes.string
+  note: PropTypes.string,
+  metadata: PropTypes.shape({
+    version: PropTypes.number,
+    cozy: PropTypes.bool,
+    me: PropTypes.bool
+  })
 };
 
 export const fullContactPropTypes = PropTypes.shape({

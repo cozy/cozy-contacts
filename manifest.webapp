@@ -21,7 +21,7 @@
       "index": "index.html",
       "public": false
     },
-    "/services/pick": {
+    "/services": {
       "folder": "/intents",
       "index": "index.html",
       "public": false
@@ -49,7 +49,12 @@
     {
       "action": "PICK",
       "type": ["io.cozy.contacts"],
-      "href": "/services/pick"
+      "href": "/services"
+    },
+    {
+      "action": "CREATE",
+      "type": ["io.cozy.contacts"],
+      "href": "/services"
     }
   ]
 }
