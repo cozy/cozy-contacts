@@ -373,36 +373,32 @@ exports[`ContactForm should match snapshot 1`] = `
       </div>
     </div>
     <div
-      className="contact-form__footer-wrapper"
+      className="contact-form__footer"
     >
-      <div
-        className="contact-form__footer"
-      >
-        <div>
-          <button
-            className="c-btn c-btn--secondary"
-            onClick={[Function]}
-            role="button"
-            type="button"
-          >
+      <div>
+        <button
+          className="c-btn c-btn--secondary"
+          onClick={[Function]}
+          role="button"
+          type="button"
+        >
+          <span>
             <span>
-              <span>
-                cancel
-              </span>
+              cancel
             </span>
-          </button>
-          <button
-            className="c-btn"
-            role="button"
-            type="submit"
-          >
+          </span>
+        </button>
+        <button
+          className="c-btn"
+          role="button"
+          type="submit"
+        >
+          <span>
             <span>
-              <span>
-                save
-              </span>
+              save
             </span>
-          </button>
-        </div>
+          </span>
+        </button>
       </div>
     </div>
   </form>
