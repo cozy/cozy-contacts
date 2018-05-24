@@ -4,7 +4,7 @@
   "scripts": {
     "precommit": "pretty-quick --staged",
     "clean": "rm -rf build/*",
-    "tx": "tx pull --all || true",
+    "tx": "tx pull --all --no-interactive || true",
     "format": "prettier --write '{src,test}/**/*.{js,jsx}'",
     "lint": "npm-run-all --parallel 'lint:*'",
     "lint:js": "eslint '{src,test}/**/*.{js,jsx}'",
