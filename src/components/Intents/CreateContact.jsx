@@ -33,13 +33,8 @@ class CreateContact extends React.Component {
       <div className="intent-layout">
         <IntentHeader appEditor="Cozy" appName="Contacts" appIcon="/icon.svg" />
         <IntentMain>
-          <ContactForm
-            onSubmit={this.createContact}
-            onCancel={this.cancel}
-            footerPortalInto=".intent-footer"
-          />
+          <ContactForm onSubmit={this.createContact} onCancel={this.cancel} />
         </IntentMain>
-        <div className="intent-footer" />
       </div>
     );
   }
