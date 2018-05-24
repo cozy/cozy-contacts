@@ -4,13 +4,7 @@ import { translate } from "cozy-ui/react/I18n";
 import { IntentHeader } from "cozy-ui/react";
 import ContactForm from "../ContactCard/ContactForm";
 import { withContactsMutations } from "../../connections/allContacts";
-
-const IntentMain = ({ children }) => (
-  <div className="intent-main">{children}</div>
-);
-IntentMain.propTypes = {
-  children: PropTypes.element.isRequired
-};
+import IntentMain from "./IntentMain";
 
 class CreateContact extends React.Component {
   createContact = async contact => {
@@ -33,7 +27,9 @@ class CreateContact extends React.Component {
       <div className="intent-layout">
         <IntentHeader appEditor="Cozy" appName="Contacts" appIcon="/icon.svg" />
         <IntentMain>
-          <ContactForm onSubmit={this.createContact} onCancel={this.cancel} />
+          <div className="intent-create-form-wrapper">
+            <ContactForm onSubmit={this.createContact} onCancel={this.cancel} />
+          </div>
         </IntentMain>
       </div>
     );
