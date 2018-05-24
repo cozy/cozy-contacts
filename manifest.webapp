@@ -1,6 +1,7 @@
 {
   "name": "Contacts",
   "editor": "Cozy",
+  "name_prefix": "Cozy",
   "slug": "contacts",
   "icon": "icon.svg",
   "description": "Contact manager for Cozy Cloud",
