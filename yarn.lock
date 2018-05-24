@@ -1948,6 +1948,13 @@ cozy-ui@9.0.1:
     react-select "2.0.0-alpha.7"
     stylus "^0.54.5"
 
+cozy-vcard@^0.2.18:
+  version "0.2.18"
+  resolved "https://registry.yarnpkg.com/cozy-vcard/-/cozy-vcard-0.2.18.tgz#9f4147da175fafca86475ddc7e212b989bdc0542"
+  dependencies:
+    quoted-printable "0.2.1"
+    utf8 "2.0.0"
+
 create-ecdh@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/create-ecdh/-/create-ecdh-4.0.0.tgz#888c723596cdf7612f6498233eebd7a35301737d"
@@ -6776,6 +6783,12 @@ querystringify@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-1.0.0.tgz#6286242112c5b712fa654e526652bf6a13ff05cb"
 
+quoted-printable@0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/quoted-printable/-/quoted-printable-0.2.1.tgz#448649cc22ea66a1b614d0eb93343c47602004b5"
+  dependencies:
+    utf8 "~2.0.0"
+
 raf@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/raf/-/raf-3.4.0.tgz#a28876881b4bc2ca9117d4138163ddb80f781575"
@@ -8496,6 +8509,10 @@ user-home@2.0.0:
   resolved "https://registry.yarnpkg.com/user-home/-/user-home-2.0.0.tgz#9c70bfd8169bc1dcbf48604e0f04b8b49cde9e9f"
   dependencies:
     os-homedir "^1.0.0"
+
+utf8@2.0.0, utf8@~2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/utf8/-/utf8-2.0.0.tgz#79ce59eced874809cab9a71fc7102c7d45d4118d"
 
 util-deprecate@~1.0.1:
   version "1.0.2"
