@@ -4,19 +4,19 @@ import contactPropTypes from "../ContactPropTypes";
 import { Avatar } from "cozy-ui/react/Avatar";
 import { getInitials } from "../../helpers/contacts";
 
-const ContactIdentity = ({ name, me }) => (
+const ContactIdentity = ({ name, myself }) => (
   <div className="contact-identity">
     <Avatar text={getInitials(name).toUpperCase()} size="small" />
     <ContactName firstname={name.givenName} lastname={name.familyName} />
-    {me && <MeMarker />}
+    {myself && <MyselfMarker />}
   </div>
 );
 ContactIdentity.propTypes = {
   name: contactPropTypes.name.isRequired,
-  me: PropTypes.bool
+  myself: PropTypes.bool
 };
 ContactIdentity.defaultProps = {
-  me: false
+  myself: false
 };
 
 const ContactName = ({ firstname, lastname }) => (
@@ -37,8 +37,8 @@ ContactName.defaultProps = {
   me: false
 };
 
-const MeMarker = (props, { t }) => (
-  <span className="contact-me">({t("me")})</span>
+const MyselfMarker = (props, { t }) => (
+  <span className="contact-myself">({t("me")})</span>
 );
 
 const ContactPhone = ({ phone }) => (
@@ -91,7 +91,7 @@ const ContactRow = props => {
     address: undefined
   };
   const name = props.contact.name || {};
-  const me = props.contact.metadata ? !!props.contact.metadata.me : false;
+  const isMyself = props.contact.metadata ? !!props.contact.metadata.me : false;
   return (
     <div className="contact" onClick={props.onClick}>
       {props.selection && (
@@ -100,7 +100,7 @@ const ContactRow = props => {
           onSelect={props.selection.onSelect}
         />
       )}
-      <ContactIdentity name={name} me={me} />
+      <ContactIdentity name={name} myself={isMyself} />
       <ContactPhone phone={phone} />
       <ContactEmail email={email} />
     </div>
