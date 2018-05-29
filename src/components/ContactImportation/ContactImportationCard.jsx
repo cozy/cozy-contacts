@@ -132,7 +132,7 @@ ContactImportationCard.defaultProps = {
 };
 
 function CardWrapper({ clickable, children }) {
-  let wrapperClass = "importation-card";
+  const wrapperClass = "importation-card";
   if (clickable) {
     return (
       <label className={`${wrapperClass} ${wrapperClass}-clickable`}>
