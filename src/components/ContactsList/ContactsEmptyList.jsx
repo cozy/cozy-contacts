@@ -1,5 +1,6 @@
 /* global cozy */
 import React from "react";
+import { PropTypes } from "prop-types";
 import { Button, Icon, IntentOpener, Empty } from "cozy-ui/react";
 import EmptyIcon from "../../assets/icons/empty-contact-list.svg";
 import IconGoogle from "../../assets/icons/connect-google.svg";
@@ -62,6 +63,7 @@ export default class ContactsEmptyList extends React.Component {
                 icon={<Icon icon={IconTeam} color={palette.coolGrey} />}
                 label={t("empty.importation")}
                 theme="secondary"
+                onClick={this.props.displayImportation}
               />
             </span>
           </div>
@@ -70,3 +72,6 @@ export default class ContactsEmptyList extends React.Component {
     );
   }
 }
+ContactsEmptyList.propTypes = {
+  displayImportation: PropTypes.func
+};
