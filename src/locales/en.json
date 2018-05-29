@@ -36,8 +36,13 @@
     "complete_success":
       "Congratulations! %{smart_count} contact was imported into your Cozy. |||| Congratulations! %{smart_count} contacts were imported into your Cozy.",
     "empty_file": "This file is empty.",
+    "export_steps_intro":
+      "To get your contacts from another program, you must first export the whole list:",
+    "export_to_vcard_step":
+      "Export your contacts in a file with vCard (*.vcf) format..",
     "invalid_file_type": "This file type is unsupported.",
     "no_file": "Select your file here",
+    "open_contact_manager_step": "Open your favorite contacts manager",
     "partial_success":
       "%{smart_count} of %{total} contact was imported. |||| %{smart_count} of %{total} contacts were imported.",
     "ready": "Ready to import",

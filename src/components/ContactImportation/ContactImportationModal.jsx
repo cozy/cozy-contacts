@@ -80,16 +80,14 @@ class ContactImportationModal extends React.Component {
         <ModalHeader title={t("importation.title")} />
         <ModalContent>
           <p className="importation-section">
-            Pour récupérer vos contacts depuis un autre programme, vous devez
-            d&apos;abord tous les exporter dans une liste :
+            {t("importation.export_steps_intro")}
           </p>
           <ol className="importation-section importation-step-list">
             <li className="importation-step">
-              Ouvrez le gestionnaire de contacts de votre choix
+              {t("importation.open_contact_manager_step")}
             </li>
             <li className="importation-step">
-              Exportez vos contacts dans un fichier de format vcard
-              &ldquo;.vcf&rdquo;.
+              {t("importation.export_to_vcard_step")}
             </li>
           </ol>
           <p className="importation-section">
