@@ -178,28 +178,24 @@ ImportationFile.defaultProps = {
   unselectAction: undefined
 };
 
-class TransferButton extends React.Component {
-  render() {
-    const { fileAction } = this.props;
-    const { t } = this.context;
-    return (
-      <span
-        role="button"
-        className="c-btn c-btn--secondary c-btn--subtle importation-file-selection-button"
-      >
-        <span>
-          <Icon icon="upload" className="importation-file-selection-icon" />
-          {t("importation.transfer_file")}
-          <input
-            className="importation-file-selection-input"
-            type="file"
-            accept={Importation.VALID_FILE_TYPES.join(", ")}
-            onChange={event => fileAction(event.target.files[0])}
-          />
-        </span>
+function TransferButton({ fileAction }, { t }) {
+  return (
+    <span
+      role="button"
+      className="c-btn c-btn--secondary c-btn--subtle importation-file-selection-button"
+    >
+      <span>
+        <Icon icon="upload" className="importation-file-selection-icon" />
+        {t("importation.transfer_file")}
+        <input
+          className="importation-file-selection-input"
+          type="file"
+          accept={Importation.VALID_FILE_TYPES.join(", ")}
+          onChange={event => fileAction(event.target.files[0])}
+        />
       </span>
-    );
-  }
+    </span>
+  );
 }
 TransferButton.propTypes = {
   fileAction: PropTypes.func.isRequired
