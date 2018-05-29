@@ -73,5 +73,5 @@ export default class ContactsEmptyList extends React.Component {
   }
 }
 ContactsEmptyList.propTypes = {
-  displayImportation: PropTypes.func
+  displayImportation: PropTypes.func.isRequired
 };

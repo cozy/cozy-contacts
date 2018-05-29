@@ -61,7 +61,7 @@ ContactsList.propTypes = {
   onClickContact: PropTypes.func,
   onSelect: PropTypes.func,
   selection: PropTypes.array,
-  displayImportation: PropTypes.func
+  displayImportation: PropTypes.func.isRequired
 };
 ContactsList.defaultProps = {
   contacts: [],

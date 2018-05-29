@@ -127,6 +127,9 @@ ContactImportationCard.propTypes = {
   onFileSelected: PropTypes.func.isRequired,
   onFileUnselected: PropTypes.func.isRequired
 };
+ContactImportationCard.defaultProps = {
+  progress: undefined
+};
 
 function CardWrapper({ clickable, children }) {
   let wrapperClass = "importation-card";
@@ -143,6 +146,9 @@ function CardWrapper({ clickable, children }) {
 CardWrapper.propTypes = {
   clickable: PropTypes.bool,
   children: PropTypes.node.isRequired
+};
+CardWrapper.defaultProps = {
+  clickable: false
 };
 
 function ImportationFile({ icon, name, unselectAction }) {
@@ -166,6 +172,10 @@ ImportationFile.propTypes = {
   icon: PropTypes.object.isRequired,
   name: PropTypes.string,
   unselectAction: PropTypes.func
+};
+ImportationFile.defaultProps = {
+  name: undefined,
+  unselectAction: undefined
 };
 
 class TransferButton extends React.Component {
