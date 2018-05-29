@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Contact with invalid BDAY
+BDAY:1234
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+FN:Contact with invalid BDAY value
+BDAY:value=1234
+END:VCARD

@@ -1,0 +1,3820 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`importation/vcard src/importation/__fixtures__/apple-contacts-7_1.vcf v2 1`] = `
+Array [
+  Object {
+    "datapoints": Array [
+      Object {
+        "name": "email",
+        "type": "home pref",
+        "value": "me@joebloggs.com",
+      },
+      Object {
+        "name": "tel",
+        "type": "cell voice pref",
+        "value": "+44 20 1234 5678",
+      },
+      Object {
+        "name": "adr",
+        "type": "home pref",
+        "value": Array [
+          "",
+          "",
+          "1 Trafalgar Square",
+          "London",
+          "",
+          "WC2N",
+          "United Kingdom",
+        ],
+      },
+      Object {
+        "name": "url",
+        "pref": true,
+        "type": "homepage",
+        "value": "http://joebloggs.com",
+      },
+      Object {
+        "name": "social",
+        "type": "twitter",
+        "value": "https://twitter.com/joebloggs",
+      },
+    ],
+    "fn": "Joe Bloggs",
+    "n": "Bloggs;Joe;;;",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/apple-contacts-7_1.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "city": "London",
+        "country": "United Kingdom",
+        "postcode": "WC2N",
+        "primary": true,
+        "street": "1 Trafalgar Square",
+        "type": "home",
+      },
+    ],
+    "email": Array [
+      Object {
+        "address": "me@joebloggs.com",
+        "primary": true,
+        "type": "home",
+      },
+    ],
+    "fullname": "Joe Bloggs",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "Bloggs",
+      "givenName": "Joe",
+    },
+    "phone": Array [
+      Object {
+        "number": "+44 20 1234 5678",
+        "primary": true,
+        "type": "cell voice",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/broken/begin-vcard-only.vcf v2 1`] = `Array []`;
+
+exports[`importation/vcard src/importation/__fixtures__/broken/begin-vcard-only.vcf v3 1`] = `Array []`;
+
+exports[`importation/vcard src/importation/__fixtures__/broken/end-vcard-duplicate.vcf v2 1`] = `
+Array [
+  Object {
+    "datapoints": Array [],
+    "fn": "Contact with duplicate END:VCARD",
+    "n": ";Contact with duplicate END:VCARD;;;",
+  },
+  Object {
+    "datapoints": Array [],
+    "fn": "Contact with duplicate END:VCARD",
+    "n": ";Contact with duplicate END:VCARD;;;",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/broken/end-vcard-duplicate.vcf v3 1`] = `
+Array [
+  Object {
+    "fullname": "Contact with duplicate END:VCARD",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "givenName": "Contact with duplicate END:VCARD",
+    },
+  },
+  Object {
+    "fullname": "Contact with duplicate END:VCARD",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "givenName": "Contact with duplicate END:VCARD",
+    },
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/broken/end-vcard-missing.vcf v2 1`] = `Array []`;
+
+exports[`importation/vcard src/importation/__fixtures__/broken/end-vcard-missing.vcf v3 1`] = `Array []`;
+
+exports[`importation/vcard src/importation/__fixtures__/broken/property-bday-invalid.vcf v2 1`] = `
+Array [
+  Object {
+    "bday": "1234",
+    "datapoints": Array [],
+    "fn": "Contact with invalid BDAY",
+    "n": ";Contact with invalid BDAY;;;",
+  },
+  Object {
+    "bday": "value=1234",
+    "datapoints": Array [],
+    "fn": "Contact with invalid BDAY value",
+    "n": ";Contact with invalid BDAY value;;;",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/broken/property-bday-invalid.vcf v3 1`] = `
+Array [
+  Object {
+    "fullname": "Contact with invalid BDAY",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "givenName": "Contact with invalid BDAY",
+    },
+  },
+  Object {
+    "fullname": "Contact with invalid BDAY value",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "givenName": "Contact with invalid BDAY value",
+    },
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/broken/unknown-property.vcf v2 1`] = `
+Array [
+  Object {
+    "datapoints": Array [],
+    "fn": "Contact with unknown property",
+    "n": ";Contact with unknown property;;;",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/broken/unknown-property.vcf v3 1`] = `
+Array [
+  Object {
+    "fullname": "Contact with unknown property",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "givenName": "Contact with unknown property",
+    },
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/android.vcf v2 1`] = `
+Array [
+  Object {
+    "bday": "1989-02-02",
+    "datapoints": Array [
+      Object {
+        "name": "tel",
+        "type": "cell",
+        "value": "060-000-0000",
+      },
+      Object {
+        "name": "email",
+        "type": "work",
+        "value": "cozytest@cozycloud.cc",
+      },
+      Object {
+        "name": "email",
+        "type": "home",
+        "value": "cozytest2@cozycloud.cc",
+      },
+      Object {
+        "name": "adr",
+        "type": "home",
+        "value": Array [
+          "",
+          "",
+          "1 Sample Adress 75001 Paris",
+          "",
+          "",
+          "",
+          "",
+        ],
+      },
+      Object {
+        "name": "about",
+        "type": "Date Perso",
+        "value": "2013-01-01",
+      },
+      Object {
+        "name": "about",
+        "type": "anniversary",
+        "value": "2013-01-01",
+      },
+      Object {
+        "name": "relation",
+        "type": "friend",
+        "value": "Cozypouet",
+      },
+      Object {
+        "name": "adr",
+        "type": "home2",
+        "value": Array [
+          "",
+          "",
+          "2 Sample Adress 75001 Paris",
+          "",
+          "",
+          "",
+          "",
+        ],
+      },
+    ],
+    "fn": "Cozy Test",
+    "n": "Test;Cozy;;;",
+    "nickname": "Cozypseudo",
+    "note": "Something",
+    "org": "Cozycloud",
+    "title": "Testeur Fou",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/android.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "formattedAddress": "1 Sample Adress 75001 Paris",
+        "type": "home",
+      },
+      Object {
+        "formattedAddress": "2 Sample Adress 75001 Paris",
+        "type": "home2",
+      },
+    ],
+    "birthday": 1989-02-02T00:00:00.000Z,
+    "email": Array [
+      Object {
+        "address": "cozytest@cozycloud.cc",
+        "type": "work",
+      },
+      Object {
+        "address": "cozytest2@cozycloud.cc",
+        "type": "home",
+      },
+    ],
+    "fullname": "Cozy Test",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "Test",
+      "givenName": "Cozy",
+    },
+    "note": "Something",
+    "phone": Array [
+      Object {
+        "number": "060-000-0000",
+        "type": "cell",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/android-full.vcf v2 1`] = `
+Array [
+  Object {
+    "bday": "2015-03-03",
+    "datapoints": Array [
+      Object {
+        "name": "about",
+        "type": "phonetic first name",
+        "value": "Jon",
+      },
+      Object {
+        "name": "about",
+        "type": "phonetic middle name",
+        "value": "Middle",
+      },
+      Object {
+        "name": "about",
+        "type": "phonetic last name",
+        "value": "Smiss",
+      },
+      Object {
+        "name": "email",
+        "type": "home",
+        "value": "mail@supercorp.com",
+      },
+      Object {
+        "name": "email",
+        "type": "work",
+        "value": "mail2@supercorp.com",
+      },
+      Object {
+        "name": "adr",
+        "type": "home",
+        "value": Array [
+          "",
+          "",
+          "678 Plain Home Address
+All one field 354
+Bridgeport CT 06",
+        ],
+      },
+      Object {
+        "name": "tel",
+        "type": "cell",
+        "value": "060-000-0001",
+      },
+      Object {
+        "name": "tel",
+        "type": "home",
+        "value": "060-000-0002",
+      },
+      Object {
+        "name": "tel",
+        "type": "work",
+        "value": "060-000-0003",
+      },
+      Object {
+        "name": "tel",
+        "type": "work fax",
+        "value": "060-000-0004",
+      },
+      Object {
+        "name": "tel",
+        "type": "home fax",
+        "value": "060-000-0005",
+      },
+      Object {
+        "name": "tel",
+        "type": "pager",
+        "value": "06 00 00 00 06",
+      },
+      Object {
+        "name": "tel",
+        "type": "car",
+        "value": "060-000-0009",
+      },
+      Object {
+        "name": "tel",
+        "pref": true,
+        "type": "work pref",
+        "value": "060-000-0010",
+      },
+      Object {
+        "name": "tel",
+        "type": "isdn",
+        "value": "060-000-0011",
+      },
+      Object {
+        "name": "tel",
+        "pref": true,
+        "type": "pref",
+        "value": "060-000-0012",
+      },
+      Object {
+        "name": "tel",
+        "type": "fax",
+        "value": "060-000-0013",
+      },
+      Object {
+        "name": "tel",
+        "type": "tlx",
+        "value": "060-000-0015",
+      },
+      Object {
+        "name": "tel",
+        "type": "work cell",
+        "value": "060-000-0017",
+      },
+      Object {
+        "name": "tel",
+        "type": "work pager",
+        "value": "060-000-0018",
+      },
+      Object {
+        "name": "about",
+        "type": "anniversary",
+        "value": "2015-03-04",
+      },
+      Object {
+        "name": "about",
+        "type": "",
+        "value": "2015-03-05",
+      },
+      Object {
+        "name": "chat",
+        "type": "skype-username",
+        "value": "skypeaccount",
+      },
+      Object {
+        "name": "chat",
+        "type": "aim",
+        "value": "aimaccount",
+      },
+      Object {
+        "name": "chat",
+        "type": "msn",
+        "value": "winaccount",
+      },
+      Object {
+        "name": "chat",
+        "type": "yahoo",
+        "value": "yahooaccount",
+      },
+      Object {
+        "name": "chat",
+        "type": "qq",
+        "value": "qqaccount",
+      },
+      Object {
+        "name": "chat",
+        "type": "google-talk",
+        "value": "account",
+      },
+      Object {
+        "name": "chat",
+        "type": "icq",
+        "value": "account",
+      },
+      Object {
+        "name": "chat",
+        "type": "jabber",
+        "value": "account",
+      },
+      Object {
+        "name": "chat",
+        "type": "sip",
+        "value": "appel-internet",
+      },
+      Object {
+        "name": "relation",
+        "type": "assistant",
+        "value": "Assistant",
+      },
+      Object {
+        "name": "relation",
+        "type": "brother",
+        "value": "Brother",
+      },
+      Object {
+        "name": "relation",
+        "type": "child",
+        "value": "Child",
+      },
+      Object {
+        "name": "relation",
+        "type": "domestic partner",
+        "value": "Domestic Partner",
+      },
+      Object {
+        "name": "relation",
+        "type": "father",
+        "value": "Father",
+      },
+      Object {
+        "name": "relation",
+        "type": "friend",
+        "value": "Friend",
+      },
+      Object {
+        "name": "relation",
+        "type": "manager",
+        "value": "Manager",
+      },
+      Object {
+        "name": "relation",
+        "type": "mother",
+        "value": "Mother",
+      },
+      Object {
+        "name": "relation",
+        "type": "parent",
+        "value": "Parent",
+      },
+      Object {
+        "name": "relation",
+        "type": "partner",
+        "value": "Partner",
+      },
+      Object {
+        "name": "relation",
+        "type": "referred by",
+        "value": "Referred by",
+      },
+      Object {
+        "name": "relation",
+        "type": "relative",
+        "value": "Relative",
+      },
+      Object {
+        "name": "relation",
+        "type": "sister",
+        "value": "Sister",
+      },
+      Object {
+        "name": "relation",
+        "type": "spouse",
+        "value": "Spouse",
+      },
+      Object {
+        "name": "tel",
+        "type": "msg",
+        "value": "060-000-0020",
+      },
+    ],
+    "fn": "Dr. Jhon middle 2, Suffix",
+    "n": "Smith;Jhon;Middle;Dr.;Suffix",
+    "nickname": "Pseudo",
+    "note": "Notes",
+    "org": "SuperCorp",
+    "title": "Chairman",
+    "url": "http://cozy.io",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/android-full.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "formattedAddress": "678 Plain Home Address
+All one field 354
+Bridgeport CT 06",
+        "type": "home",
+      },
+    ],
+    "birthday": 2015-03-03T00:00:00.000Z,
+    "email": Array [
+      Object {
+        "address": "mail@supercorp.com",
+        "type": "home",
+      },
+      Object {
+        "address": "mail2@supercorp.com",
+        "type": "work",
+      },
+    ],
+    "fullname": "Dr. Jhon middle 2, Suffix",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "additionalName": "Middle",
+      "familyName": "Smith",
+      "givenName": "Jhon",
+      "namePrefix": "Dr.",
+      "nameSuffix": "Suffix",
+    },
+    "note": "Notes",
+    "phone": Array [
+      Object {
+        "number": "060-000-0001",
+        "type": "cell",
+      },
+      Object {
+        "number": "060-000-0002",
+        "type": "home",
+      },
+      Object {
+        "number": "060-000-0003",
+        "type": "work",
+      },
+      Object {
+        "number": "060-000-0004",
+        "type": "work fax",
+      },
+      Object {
+        "number": "060-000-0005",
+        "type": "home fax",
+      },
+      Object {
+        "number": "06 00 00 00 06",
+        "type": "pager",
+      },
+      Object {
+        "number": "060-000-0009",
+        "type": "car",
+      },
+      Object {
+        "number": "060-000-0010",
+        "primary": true,
+        "type": "work",
+      },
+      Object {
+        "number": "060-000-0011",
+        "type": "isdn",
+      },
+      Object {
+        "number": "060-000-0012",
+        "primary": true,
+      },
+      Object {
+        "number": "060-000-0013",
+        "type": "fax",
+      },
+      Object {
+        "number": "060-000-0015",
+        "type": "tlx",
+      },
+      Object {
+        "number": "060-000-0017",
+        "type": "work cell",
+      },
+      Object {
+        "number": "060-000-0018",
+        "type": "work pager",
+      },
+      Object {
+        "number": "060-000-0020",
+        "type": "msg",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/android-quotedprintable.vcf v2 1`] = `
+Array [
+  Object {
+    "bday": "1989-02-02",
+    "datapoints": Array [
+      Object {
+        "name": "tel",
+        "type": "cell",
+        "value": "060-000-0000",
+      },
+      Object {
+        "name": "email",
+        "type": "work",
+        "value": "cozytest@cozycloud.cc",
+      },
+      Object {
+        "name": "email",
+        "type": "home",
+        "value": "cozytest2@cozycloud.cc",
+      },
+      Object {
+        "charset": "utf-8",
+        "name": "adr",
+        "type": "home",
+        "value": Array [
+          "",
+          "",
+          "1, rue Accentuée 75010 Paris",
+          "",
+          "",
+          "",
+          "",
+        ],
+      },
+      Object {
+        "name": "about",
+        "type": "Date Perso",
+        "value": "2013-01-01",
+      },
+      Object {
+        "name": "relation",
+        "type": "assistant",
+        "value": "Cozypouet",
+      },
+      Object {
+        "name": "adr",
+        "type": "home",
+        "value": Array [
+          "",
+          "",
+          "2 Sample Adress 75001 Paris",
+          "",
+          "",
+          "",
+          "",
+        ],
+      },
+    ],
+    "fn": "Testé de Cozy",
+    "n": "de Cozy;Testé;;;",
+    "nickname": "Cozypseudo",
+    "note": "Something",
+    "org": "Société Cozycloud",
+    "title": "Tésteur Fou",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/android-quotedprintable.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "formattedAddress": "1, rue Accentuée 75010 Paris",
+        "type": "home",
+      },
+      Object {
+        "formattedAddress": "2 Sample Adress 75001 Paris",
+        "type": "home",
+      },
+    ],
+    "birthday": 1989-02-02T00:00:00.000Z,
+    "email": Array [
+      Object {
+        "address": "cozytest@cozycloud.cc",
+        "type": "work",
+      },
+      Object {
+        "address": "cozytest2@cozycloud.cc",
+        "type": "home",
+      },
+    ],
+    "fullname": "Testé de Cozy",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "de Cozy",
+      "givenName": "Testé",
+    },
+    "note": "Something",
+    "phone": Array [
+      Object {
+        "number": "060-000-0000",
+        "type": "cell",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/apple.vcf v2 1`] = `
+Array [
+  Object {
+    "bday": "1999-02-01",
+    "datapoints": Array [
+      Object {
+        "name": "email",
+        "type": "work pref",
+        "value": "cozytest@cozycloud.cc",
+      },
+      Object {
+        "name": "email",
+        "type": "home",
+        "value": "cozytest2@cozycloud.cc",
+      },
+      Object {
+        "name": "tel",
+        "type": "cell pref",
+        "value": "06 00 00 00 00",
+      },
+      Object {
+        "name": "tel",
+        "type": "cell work",
+        "value": "06 00 00 00 00",
+      },
+      Object {
+        "name": "adr",
+        "type": "home pref",
+        "value": Array [
+          "",
+          "",
+          "43 rue blabla",
+          "Paris",
+          "",
+          "750000",
+          "France",
+        ],
+      },
+      Object {
+        "name": "adr",
+        "type": "work pref fr",
+        "value": Array [
+          "",
+          "",
+          "18 rue poulet",
+          "Paris",
+          "",
+          "75000",
+          "France",
+        ],
+      },
+      Object {
+        "name": "relation",
+        "pref": true,
+        "type": "friend",
+        "value": "Cozypouet",
+      },
+    ],
+    "department": "",
+    "fn": "Cozy Test",
+    "n": "Test;Cozy;;;",
+    "note": "Something",
+    "org": "Cozycloud",
+    "title": "Testeur Fou",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/apple.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "city": "Paris",
+        "country": "France",
+        "postcode": "750000",
+        "primary": true,
+        "street": "43 rue blabla",
+        "type": "home",
+      },
+      Object {
+        "city": "Paris",
+        "country": "France",
+        "postcode": "75000",
+        "primary": true,
+        "street": "18 rue poulet",
+        "type": "work fr",
+      },
+    ],
+    "birthday": 1999-02-01T00:00:00.000Z,
+    "email": Array [
+      Object {
+        "address": "cozytest@cozycloud.cc",
+        "primary": true,
+        "type": "work",
+      },
+      Object {
+        "address": "cozytest2@cozycloud.cc",
+        "type": "home",
+      },
+    ],
+    "fullname": "Cozy Test",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "Test",
+      "givenName": "Cozy",
+    },
+    "note": "Something",
+    "phone": Array [
+      Object {
+        "number": "06 00 00 00 00",
+        "primary": true,
+        "type": "cell",
+      },
+      Object {
+        "number": "06 00 00 00 00",
+        "type": "cell work",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/android.vcf v2 1`] = `
+Array [
+  Object {
+    "bday": "1989-02-02",
+    "datapoints": Array [
+      Object {
+        "name": "tel",
+        "type": "cell",
+        "value": "+33612345678",
+      },
+      Object {
+        "name": "tel",
+        "type": "work",
+        "value": "012-345-6789",
+      },
+      Object {
+        "name": "email",
+        "type": "work",
+        "value": "test.decozy@cozycloud.cc",
+      },
+      Object {
+        "name": "email",
+        "type": "home",
+        "value": "testcozy@cozycloud.cc",
+      },
+      Object {
+        "charset": "utf-8",
+        "name": "adr",
+        "type": "home",
+        "value": Array [
+          "",
+          "",
+          "12, rue René Boulanger
+75010 Paris",
+          "",
+          "",
+          "",
+          "",
+        ],
+      },
+      Object {
+        "charset": "utf-8",
+        "name": "adr",
+        "type": "work",
+        "value": Array [
+          "",
+          "",
+          "4, rue Léon Jouhaux
+75010 Paris",
+          "",
+          "",
+          "",
+          "",
+        ],
+      },
+    ],
+    "fn": "Testé de Cozy",
+    "n": "de Cozy;Testé;;;",
+    "note": "46b12,
+3ème étage droite.",
+    "org": "Société Cozycloud",
+    "title": "Tésteur Fou",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/android.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "formattedAddress": "12, rue René Boulanger
+75010 Paris",
+        "type": "home",
+      },
+      Object {
+        "formattedAddress": "4, rue Léon Jouhaux
+75010 Paris",
+        "type": "work",
+      },
+    ],
+    "birthday": 1989-02-02T00:00:00.000Z,
+    "email": Array [
+      Object {
+        "address": "test.decozy@cozycloud.cc",
+        "type": "work",
+      },
+      Object {
+        "address": "testcozy@cozycloud.cc",
+        "type": "home",
+      },
+    ],
+    "fullname": "Testé de Cozy",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "de Cozy",
+      "givenName": "Testé",
+    },
+    "note": "46b12,
+3ème étage droite.",
+    "phone": Array [
+      Object {
+        "number": "+33612345678",
+        "type": "cell",
+      },
+      Object {
+        "number": "012-345-6789",
+        "type": "work",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/contact.json v2 1`] = `Array []`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/contact.json v3 1`] = `Array []`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/cozy.vcf v2 1`] = `
+Array [
+  Object {
+    "datapoints": Array [
+      Object {
+        "name": "adr",
+        "type": "work",
+        "value": Array [
+          "",
+          "",
+          "4, rue Léon Jouhaux
+75010 Paris",
+          "",
+          "",
+          "",
+          "",
+        ],
+      },
+      Object {
+        "name": "adr",
+        "type": "home",
+        "value": Array [
+          "",
+          "",
+          "12, rue René Boulanger
+75010 Paris",
+          "",
+          "",
+          "",
+          "",
+        ],
+      },
+      Object {
+        "name": "tel",
+        "type": "work",
+        "value": "0123456789",
+      },
+      Object {
+        "name": "tel",
+        "type": "cell",
+        "value": "+33612345678",
+      },
+      Object {
+        "name": "email",
+        "type": "work",
+        "value": "test.decozy@cozycloud.cc",
+      },
+      Object {
+        "name": "email",
+        "type": "home",
+        "value": "testcozy@cozycloud.cc",
+      },
+    ],
+    "fn": "Testé de Cozy",
+    "n": "de Cozy;Testé;;;",
+    "note": "46b12,
+3ème étage droite.",
+    "tags": Array [
+      "groupe1",
+      "groupe2",
+    ],
+    "uid": "92419c7d397efcfdcb55e0cd4e566acd",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/cozy.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "formattedAddress": "4, rue Léon Jouhaux
+75010 Paris",
+        "type": "work",
+      },
+      Object {
+        "formattedAddress": "12, rue René Boulanger
+75010 Paris",
+        "type": "home",
+      },
+    ],
+    "email": Array [
+      Object {
+        "address": "test.decozy@cozycloud.cc",
+        "type": "work",
+      },
+      Object {
+        "address": "testcozy@cozycloud.cc",
+        "type": "home",
+      },
+    ],
+    "fullname": "Testé de Cozy",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "de Cozy",
+      "givenName": "Testé",
+    },
+    "note": "46b12,
+3ème étage droite.",
+    "phone": Array [
+      Object {
+        "number": "0123456789",
+        "type": "work",
+      },
+      Object {
+        "number": "+33612345678",
+        "type": "cell",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/davdroid.vcf v2 1`] = `
+Array [
+  Object {
+    "datapoints": Array [
+      Object {
+        "name": "tel",
+        "type": "work",
+        "value": "0123456789",
+      },
+      Object {
+        "name": "tel",
+        "type": "cell",
+        "value": "+33612345678",
+      },
+      Object {
+        "name": "email",
+        "type": "work",
+        "value": "test.decozy@cozycloud.cc",
+      },
+      Object {
+        "name": "email",
+        "type": "home",
+        "value": "testcozy@cozycloud.cc",
+      },
+      Object {
+        "name": "adr",
+        "type": "work",
+        "value": Array [
+          "",
+          "",
+          "4, rue Léon Jouhaux
+75010 Paris",
+          "",
+          "",
+          "",
+          "",
+        ],
+      },
+      Object {
+        "name": "adr",
+        "type": "home",
+        "value": Array [
+          "",
+          "",
+          "12, rue René Boulanger
+75010 Paris",
+          "",
+          "",
+          "",
+          "",
+        ],
+      },
+    ],
+    "fn": "Testé de Cozy",
+    "n": "de Cozy;Testé;;;",
+    "note": "46b12,
+3ème étage droite.",
+    "tags": Array [
+      "groupe1",
+      "groupe2",
+    ],
+    "uid": "2b838d8f3980384187b8f6ee7f00b372",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/davdroid.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "formattedAddress": "4, rue Léon Jouhaux
+75010 Paris",
+        "type": "work",
+      },
+      Object {
+        "formattedAddress": "12, rue René Boulanger
+75010 Paris",
+        "type": "home",
+      },
+    ],
+    "email": Array [
+      Object {
+        "address": "test.decozy@cozycloud.cc",
+        "type": "work",
+      },
+      Object {
+        "address": "testcozy@cozycloud.cc",
+        "type": "home",
+      },
+    ],
+    "fullname": "Testé de Cozy",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "de Cozy",
+      "givenName": "Testé",
+    },
+    "note": "46b12,
+3ème étage droite.",
+    "phone": Array [
+      Object {
+        "number": "0123456789",
+        "type": "work",
+      },
+      Object {
+        "number": "+33612345678",
+        "type": "cell",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/extra-fields.vcf v2 1`] = `
+Array [
+  Object {
+    "bday": "1989-02-02",
+    "datapoints": Array [
+      Object {
+        "name": "email",
+        "type": "work",
+        "value": "test.decozy@cozycloud.cc",
+      },
+      Object {
+        "name": "email",
+        "type": "home",
+        "value": "testcozy@cozycloud.cc",
+      },
+      Object {
+        "name": "tel",
+        "type": "cell",
+        "value": "+33 6 12 34 56 78",
+      },
+      Object {
+        "name": "tel",
+        "type": "work",
+        "value": "0123456789",
+      },
+      Object {
+        "name": "adr",
+        "type": "home",
+        "value": Array [
+          "",
+          "",
+          "12, rue René Boulanger
+75010 Paris",
+          "",
+          "",
+          "",
+          "",
+        ],
+      },
+      Object {
+        "name": "adr",
+        "type": "work",
+        "value": Array [
+          "",
+          "",
+          "4, rue Léon Jouhaux
+75010 Paris",
+          "",
+          "",
+          "",
+          "",
+        ],
+      },
+    ],
+    "fn": "Testé de Cozy",
+    "gender": "M",
+    "geo": "geo:48.8352,2.2409",
+    "kind": "individual",
+    "lang": "fr",
+    "n": "de Cozy;Testé;;;",
+    "note": "46b12,
+3ème étage droite.",
+    "org": "Société Cozycloud",
+    "title": "Tésteur Fou",
+    "tz": "+0100",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/extra-fields.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "formattedAddress": "12, rue René Boulanger
+75010 Paris",
+        "type": "home",
+      },
+      Object {
+        "formattedAddress": "4, rue Léon Jouhaux
+75010 Paris",
+        "type": "work",
+      },
+    ],
+    "birthday": 1989-02-02T00:00:00.000Z,
+    "email": Array [
+      Object {
+        "address": "test.decozy@cozycloud.cc",
+        "type": "work",
+      },
+      Object {
+        "address": "testcozy@cozycloud.cc",
+        "type": "home",
+      },
+    ],
+    "fullname": "Testé de Cozy",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "de Cozy",
+      "givenName": "Testé",
+    },
+    "note": "46b12,
+3ème étage droite.",
+    "phone": Array [
+      Object {
+        "number": "+33 6 12 34 56 78",
+        "type": "cell",
+      },
+      Object {
+        "number": "0123456789",
+        "type": "work",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/google.vcf v2 1`] = `
+Array [
+  Object {
+    "bday": "1989-02-02",
+    "datapoints": Array [
+      Object {
+        "name": "email",
+        "type": "work",
+        "value": "test.decozy@cozycloud.cc",
+      },
+      Object {
+        "name": "email",
+        "type": "home",
+        "value": "testcozy@cozycloud.cc",
+      },
+      Object {
+        "name": "tel",
+        "type": "cell",
+        "value": "+33 6 12 34 56 78",
+      },
+      Object {
+        "name": "tel",
+        "type": "work",
+        "value": "0123456789",
+      },
+      Object {
+        "name": "adr",
+        "type": "home",
+        "value": Array [
+          "",
+          "",
+          "12, rue René Boulanger
+75010 Paris",
+          "",
+          "",
+          "",
+          "",
+        ],
+      },
+      Object {
+        "name": "adr",
+        "type": "work",
+        "value": Array [
+          "",
+          "",
+          "4, rue Léon Jouhaux
+75010 Paris",
+          "",
+          "",
+          "",
+          "",
+        ],
+      },
+    ],
+    "fn": "Testé de Cozy",
+    "n": "de Cozy;Testé;;;",
+    "note": "46b12,
+3ème étage droite.",
+    "org": "Société Cozycloud",
+    "title": "Tésteur Fou",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/google.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "formattedAddress": "12, rue René Boulanger
+75010 Paris",
+        "type": "home",
+      },
+      Object {
+        "formattedAddress": "4, rue Léon Jouhaux
+75010 Paris",
+        "type": "work",
+      },
+    ],
+    "birthday": 1989-02-02T00:00:00.000Z,
+    "email": Array [
+      Object {
+        "address": "test.decozy@cozycloud.cc",
+        "type": "work",
+      },
+      Object {
+        "address": "testcozy@cozycloud.cc",
+        "type": "home",
+      },
+    ],
+    "fullname": "Testé de Cozy",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "de Cozy",
+      "givenName": "Testé",
+    },
+    "note": "46b12,
+3ème étage droite.",
+    "phone": Array [
+      Object {
+        "number": "+33 6 12 34 56 78",
+        "type": "cell",
+      },
+      Object {
+        "number": "0123456789",
+        "type": "work",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/ios.vcf v2 1`] = `
+Array [
+  Object {
+    "bday": "1604-02-02",
+    "datapoints": Array [
+      Object {
+        "name": "email",
+        "type": "home",
+        "value": "testcozy@cozycloud.cc",
+      },
+      Object {
+        "name": "email",
+        "type": "work",
+        "value": "test.decozy@cozycloud.cc",
+      },
+      Object {
+        "name": "tel",
+        "type": "cell",
+        "value": "+33 6 12 34 56 78",
+      },
+      Object {
+        "name": "tel",
+        "type": "work",
+        "value": "01 23 45 67 89",
+      },
+      Object {
+        "name": "adr",
+        "type": "home fr",
+        "value": Array [
+          "",
+          "",
+          "12, rue René Boulanger",
+          "Paris",
+          "",
+          "75010",
+          "France",
+        ],
+      },
+      Object {
+        "name": "adr",
+        "type": "work fr",
+        "value": Array [
+          "",
+          "",
+          "4, rue Léon Jouhaux",
+          "Paris",
+          "",
+          "75010",
+          "France",
+        ],
+      },
+    ],
+    "department": "",
+    "fn": "Testé de Cozy",
+    "n": "de Cozy;Testé;;;",
+    "note": "46b12,
+3ème étage droite.",
+    "org": "Société Cozycloud",
+    "uid": "8925F4AF-9773-4030-ACDE-F12D78627DBD",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/ios.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "city": "Paris",
+        "country": "France",
+        "postcode": "75010",
+        "street": "12, rue René Boulanger",
+        "type": "home fr",
+      },
+      Object {
+        "city": "Paris",
+        "country": "France",
+        "postcode": "75010",
+        "street": "4, rue Léon Jouhaux",
+        "type": "work fr",
+      },
+    ],
+    "birthday": 1604-02-02T00:00:00.000Z,
+    "email": Array [
+      Object {
+        "address": "testcozy@cozycloud.cc",
+        "type": "home",
+      },
+      Object {
+        "address": "test.decozy@cozycloud.cc",
+        "type": "work",
+      },
+    ],
+    "fullname": "Testé de Cozy",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "de Cozy",
+      "givenName": "Testé",
+    },
+    "note": "46b12,
+3ème étage droite.",
+    "phone": Array [
+      Object {
+        "number": "+33 6 12 34 56 78",
+        "type": "cell",
+      },
+      Object {
+        "number": "01 23 45 67 89",
+        "type": "work",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/ios_fromcozysync.vcf v2 1`] = `
+Array [
+  Object {
+    "datapoints": Array [
+      Object {
+        "name": "email",
+        "type": "work",
+        "value": "test.decozy@cozycloud.cc",
+      },
+      Object {
+        "name": "email",
+        "type": "home",
+        "value": "testcozy@cozycloud.cc",
+      },
+      Object {
+        "name": "tel",
+        "type": "work",
+        "value": "0123456789",
+      },
+      Object {
+        "name": "tel",
+        "type": "cell",
+        "value": "+33612345678",
+      },
+      Object {
+        "name": "adr",
+        "type": "work",
+        "value": Array [
+          "",
+          "",
+          "4, rue Léon Jouhaux
+75010 Paris",
+          "",
+          "",
+          "",
+          "",
+        ],
+      },
+      Object {
+        "name": "adr",
+        "type": "home",
+        "value": Array [
+          "",
+          "",
+          "12, rue René Boulanger
+75010 Paris",
+          "",
+          "",
+          "",
+          "",
+        ],
+      },
+    ],
+    "fn": "Testé de Cozy",
+    "n": "de Cozy;Testé;;;",
+    "note": "46b12,
+3ème étage droite.",
+    "tags": Array [
+      "groupe1",
+      "groupe2",
+    ],
+    "uid": "2b838d8f3980384187b8f6ee7f00b372",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/ios_fromcozysync.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "formattedAddress": "4, rue Léon Jouhaux
+75010 Paris",
+        "type": "work",
+      },
+      Object {
+        "formattedAddress": "12, rue René Boulanger
+75010 Paris",
+        "type": "home",
+      },
+    ],
+    "email": Array [
+      Object {
+        "address": "test.decozy@cozycloud.cc",
+        "type": "work",
+      },
+      Object {
+        "address": "testcozy@cozycloud.cc",
+        "type": "home",
+      },
+    ],
+    "fullname": "Testé de Cozy",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "de Cozy",
+      "givenName": "Testé",
+    },
+    "note": "46b12,
+3ème étage droite.",
+    "phone": Array [
+      Object {
+        "number": "0123456789",
+        "type": "work",
+      },
+      Object {
+        "number": "+33612345678",
+        "type": "cell",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/sogo.vcf v2 1`] = `
+Array [
+  Object {
+    "bday": "1989-02-02",
+    "datapoints": Array [
+      Object {
+        "name": "adr",
+        "type": "work",
+        "value": Array [
+          "",
+          "",
+          "4, rue Léon Jouhaux",
+          "Paris",
+          "",
+          "75010",
+          "France",
+        ],
+      },
+      Object {
+        "name": "adr",
+        "type": "home",
+        "value": Array [
+          "",
+          "",
+          "12, rue René Boulanger",
+          "Paris",
+          "",
+          "75010",
+          "France",
+        ],
+      },
+      Object {
+        "name": "tel",
+        "type": "work",
+        "value": "01 23 45 67 89",
+      },
+      Object {
+        "name": "tel",
+        "type": "cell",
+        "value": "+33612345678",
+      },
+      Object {
+        "name": "email",
+        "type": "work",
+        "value": "test.decozy@cozycloud.cc",
+      },
+      Object {
+        "name": "email",
+        "type": "home",
+        "value": "testcozy@cozycloud.cc",
+      },
+    ],
+    "department": "",
+    "fn": "Testé de Cozy",
+    "n": "de Cozy;Testé;;;",
+    "note": "46b12,
+3ème étage droite.",
+    "org": "CozyCloud",
+    "tags": Array [
+      "groupe1",
+      "groupe2",
+    ],
+    "uid": "C67C51E2-8A60-0001-38DA-18D01DBF80D0",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/sogo.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "city": "Paris",
+        "country": "France",
+        "postcode": "75010",
+        "street": "4, rue Léon Jouhaux",
+        "type": "work",
+      },
+      Object {
+        "city": "Paris",
+        "country": "France",
+        "postcode": "75010",
+        "street": "12, rue René Boulanger",
+        "type": "home",
+      },
+    ],
+    "birthday": 1989-02-02T00:00:00.000Z,
+    "email": Array [
+      Object {
+        "address": "test.decozy@cozycloud.cc",
+        "type": "work",
+      },
+      Object {
+        "address": "testcozy@cozycloud.cc",
+        "type": "home",
+      },
+    ],
+    "fullname": "Testé de Cozy",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "de Cozy",
+      "givenName": "Testé",
+    },
+    "note": "46b12,
+3ème étage droite.",
+    "phone": Array [
+      Object {
+        "number": "01 23 45 67 89",
+        "type": "work",
+      },
+      Object {
+        "number": "+33612345678",
+        "type": "cell",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/sogo_fromcozysync.vcf v2 1`] = `
+Array [
+  Object {
+    "datapoints": Array [
+      Object {
+        "name": "adr",
+        "type": "work",
+        "value": Array [
+          "",
+          "",
+          "4, rue Léon Jouhaux, 75010 Paris",
+          "",
+          "",
+          "",
+          "",
+        ],
+      },
+      Object {
+        "name": "adr",
+        "type": "home",
+        "value": Array [
+          "",
+          "",
+          "12, rue René Boulanger, 75010 Paris",
+          "",
+          "",
+          "",
+          "",
+        ],
+      },
+      Object {
+        "name": "tel",
+        "type": "work",
+        "value": "0123456789",
+      },
+      Object {
+        "name": "tel",
+        "type": "cell",
+        "value": "+33612345678",
+      },
+      Object {
+        "name": "email",
+        "type": "work",
+        "value": "test.decozy@cozycloud.cc",
+      },
+      Object {
+        "name": "email",
+        "type": "home",
+        "value": "testcozy@cozycloud.cc",
+      },
+    ],
+    "fn": "Testé de Cozy",
+    "n": "de Cozy;Testé;;;",
+    "note": "46b12,
+3ème étage droite.",
+    "tags": Array [
+      "groupe1",
+      "groupe2",
+    ],
+    "uid": "2b838d8f3980384187b8f6ee7f00bbe0",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/sogo_fromcozysync.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "formattedAddress": "4, rue Léon Jouhaux, 75010 Paris",
+        "type": "work",
+      },
+      Object {
+        "formattedAddress": "12, rue René Boulanger, 75010 Paris",
+        "type": "home",
+      },
+    ],
+    "email": Array [
+      Object {
+        "address": "test.decozy@cozycloud.cc",
+        "type": "work",
+      },
+      Object {
+        "address": "testcozy@cozycloud.cc",
+        "type": "home",
+      },
+    ],
+    "fullname": "Testé de Cozy",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "de Cozy",
+      "givenName": "Testé",
+    },
+    "note": "46b12,
+3ème étage droite.",
+    "phone": Array [
+      Object {
+        "number": "0123456789",
+        "type": "work",
+      },
+      Object {
+        "number": "+33612345678",
+        "type": "cell",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/thundersync.vcf v2 1`] = `
+Array [
+  Object {
+    "bday": "19890202",
+    "datapoints": Array [
+      Object {
+        "name": "email",
+        "type": "internet",
+        "value": "testcozy@cozycloud.cc",
+      },
+      Object {
+        "charset": "utf-8",
+        "name": "adr",
+        "type": "home",
+        "value": Array [
+          "",
+          "",
+          "12, rue René Boulanger",
+          "Paris",
+          "",
+          "75010",
+          "France",
+        ],
+      },
+      Object {
+        "charset": "utf-8",
+        "name": "adr",
+        "type": "work",
+        "value": Array [
+          "",
+          "",
+          "4, rue Léon Jouhaux",
+          "Paris",
+          "",
+          "75010",
+          "France",
+        ],
+      },
+      Object {
+        "name": "tel",
+        "type": "work",
+        "value": "0123456789",
+      },
+      Object {
+        "name": "tel",
+        "type": "cell",
+        "value": "+33612345678",
+      },
+    ],
+    "department": "",
+    "fn": "Testé de Cozy",
+    "n": "de Cozy;Testé;;;",
+    "note": "46b12,=0A3=E8me =E9tage droite.",
+    "org": "Société Cozycloud",
+    "uid": "c01b4a11-b7ab-4223-bd72-cbef2849258d",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/contactA/thundersync.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "city": "Paris",
+        "country": "France",
+        "postcode": "75010",
+        "street": "12, rue René Boulanger",
+        "type": "home",
+      },
+      Object {
+        "city": "Paris",
+        "country": "France",
+        "postcode": "75010",
+        "street": "4, rue Léon Jouhaux",
+        "type": "work",
+      },
+    ],
+    "birthday": 1989-02-02T00:00:00.000Z,
+    "email": Array [
+      Object {
+        "address": "testcozy@cozycloud.cc",
+        "type": "internet",
+      },
+    ],
+    "fullname": "Testé de Cozy",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "de Cozy",
+      "givenName": "Testé",
+    },
+    "note": "46b12,=0A3=E8me =E9tage droite.",
+    "phone": Array [
+      Object {
+        "number": "0123456789",
+        "type": "work",
+      },
+      Object {
+        "number": "+33612345678",
+        "type": "cell",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/cozy.vcf v2 1`] = `
+Array [
+  Object {
+    "datapoints": Array [
+      Object {
+        "name": "tel",
+        "type": "main",
+        "value": "+33 6 48 60 43 31",
+      },
+      Object {
+        "name": "email",
+        "type": "main",
+        "value": "johny@flash.com",
+      },
+      Object {
+        "name": "adr",
+        "type": "home,postal",
+        "value": Array [
+          "",
+          "",
+          "157 rue de la pompe",
+          "92100 Boulogne-Billancourt",
+          "France",
+          "",
+          "",
+          "",
+          "",
+        ],
+      },
+    ],
+    "fn": "Johny Flash",
+    "n": ";Johny;;;",
+    "note": "We met at a party.",
+    "photo": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAEsASwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9UvxpPxo5owaAF/Gj8aTmjBoAX8aPxo5pOaAF/GjB9aTnFGDQAv40fjSYNGDQAv40n40c0c0AH40v40mDRg0ALj3pPxowaMGgBfxo/Gk5owaAF/Gk/GjBpeaAE/4FS/jScijmgA/Gl/Gk57UYNAB+NL+NHNJz6UAH/AqUfWk5o5oAX8aT/gVGDS89aAD8aT/gVHNHNAC/jSfjRz3peR6UAGfej/gVHPpScmgA/wCBUv8AwKk5o59BQAuT6UZoz70maAFyaM/WjNGaAEyfSlz7UZozxQAfnSZNLQCKAEyc0vNGaM0AJn2NH50pNGRigA/A0A+1JmlzQAmT6UUuaCaAE/Ojn0NGRRmgBcnHSjP+cUZozQAc0ZoyKM0AGTRk+lGaMigAz7UZozRketABk0ZPpRkdqM0AGT6UZPvRnmjIoAMmjJ9KMijNABk0Z9qMj1ozQAZPpRmjPvRkUAGaTJ9KXNGR60AGaM0mB6UvHpQAUlLijHtQAZozR+FJgelAC5ozR+FJ+FAC5ozSY9qMD0oAUmjNJ+FGPagBaM0n4Vz/AIx8feE/AVh/aHijV4bRG4SMndJIfRVHJ/lWlKjUrzVOlFyk9ktWZV69LDU3VrSUYrdt2S+Z0OaqalrGl6PAbrVdRt7OEdXmkCD9TXyn4/8A2u9f1LzLDwHpyaZAcj7ZOu+Yj1Vfur+IP4V4VrfiXxD4kuXvNe1m7vpnOWaaQtz9K+7yzw/xuJSnjJKmu28v8l9/yPzTOPFHL8G3TwEHVl3+GP8Am/uXqfb3iD9o/wCE3h9jFJ4i+2yDI2WUZm5HuOB+dcZqP7ZHgiFT/ZnhzV7ph083ZED+ILH9K+QsUYr63D8AZVSS9pzTfm7flY+GxXihndZv2XJBeUb/AJt/kfUD/trKHIj+HBZexOq4P5eTWhp37Z+gSsBqvgq+tl7mC6WY/qFr5PorslwTkklZUrf9vS/zPPh4i8RQld10/Jwh+kUz7Z0j9q/4UanIsVzcajp7McZubb5R9WUkCvR9B8eeDvE6g6D4ksLwkZ2xzqW/LOa/N+nwT3FrKJraaSKRTkMjEEH6ivIxfh5gaivhqkoPztJfo/xPdwPitmVJ2xdKM15Xi/1X4H6d5or4W8C/tI/EfwY0Vtc3y6zp6cG3vcsyr/suOR+OR7V9MfDf9oXwJ8QTFYm5Gl6o/H2S6bG4/wCy/Q/TrXw2bcI5jlSdRx54LrHX71uvy8z9JyPjrKc7apxl7Oo/sy0v6PZ/n5HqOfWjNHB5o/Cvlz7MKM0fhSfhQAueaM0n4UuB6UAGaM0fhRgelABmjNJ+FL+FABmjNFH4UAFGaMD0o/CgA4o4o5pOaAF49KOKTmjmgBeKOPSk5o5FAC8elHHpSc0c0ALxRxSUc+tAC8UcUhzXzl+0R+0EdE87wN4IvFN8QUvryNs+QOnloR/F6ntXpZVlWIzjErDYda9X0S7s8jO86wuQ4SWLxb0Wy6t9l/Wm5vfGr9o/S/AjS+HPCoi1DW9pEj5BitT6N6t7fSvkTxF4m13xbqkus+ItTmvbqY5LyNkD2UdFHsKzXeSV2klZndjksxySabn2r9zyTh7CZHS5aSvN7ye7/wAl5H82cR8VY7iOs5V5Wpr4YLZf5vzfysFFd98N/gr42+Jdwr6VYm108NiS/uAVjUd9vdz7CvqXwH+zR8PfByRXF/aNrV+qjfNdgFN3fanQD65rDOOK8vydunOXNP8Aljv83svz8jqyDgjNM/Sq048lP+aWifot3+XmfHPh/wAD+MPFRx4c8NX+oDIBaGElQfdug/E16No/7KXxX1OFZrq307Tt3WO5uPnH1CBh+tfa9vbW9nCtvaW8cMSDCxxrtVR6ACpOa+DxfiJjqjthqcYLzvJ/ovwP0zA+FOW0Uni6spvytFfq/wAT4/T9jjx2Vy/iLRlPoPMP/stVLz9kH4lwKWtdQ0W4x2851J/NK+y+aOa4I8eZwndyi/8At1HqS8M8gkrKMl/28z8+PEHwV+KHhnzH1PwffGGPJM8CiWPA75XOB9cVxTK0bFJEKsOoIwRX6ec1yHjD4TeAvG8Mkeu+H7ZpXB/0iJRHKD67h3+te7gfEZ3UcbR07xf6P/M+ZzLwmjZyy6vr2mv/AG5f5H540qO0biSNirKcgg4INe9fE/8AZU8Q+G1m1bwRLJrGnr8xtmH+kxD8OHH0GfavB5opreV4LiJ4pIztZHBDKfQg9K/QsuzTCZrS9rhZqS6916roflWa5Lj8krexxtNxfR9H5p7M94+D/wC0/rHhh4NB8dSTanpYxGl0TungHbJP3wPc5xX1xpWrabrmnQatpN3FdWl0gkiljYFWU1+ZmT6V6d8FfjZq/wALtVW1uXe60G5cfabYkkx88vH6H1HevjuJuDKeMjLFZfHlqbuPSXp2f4M+/wCDvEGtgJRwWaScqWyk9XH17x/Femh94celHHpVLRtZ03xBplvrGj3kd1aXSB45UOQQf61c5r8glGUJOMlZo/eoTjUipwd09mLxRxSc0c1JQvHpRx6UnNHNAC8UcUnNHNAC8elHHpSc0c0ALx6UcUnNHNABz6UYNHNH40AHNGDRk0UALg0mDRmjP+c0AGDRg0Zo5oAMHNGD6UVm+JfEGn+FtBv/ABFqsoS10+B55DnkhR0HuTwPc1UISqSUIK7eiIqVI0oOpN2SV2+yR5f+0V8YU+Hvh86Fo1wP7e1OMrGVwTbxHgyH36gfn2r4mlllnleeeRpJJGLOzHJYnqSa2/HPi/UvHXii+8TapITLdyZRSeI4xwqj6DFYNf0Bw3kdPJMGqdv3ktZPz7ei6ff1P5c4u4jq8R4+VW/7qOkF5d/V7v7uguK+h/gT+zZJ4iW38X+Pbdo9NbElrYnIa4H95+6r7dTVX9mn4Ix+K7pfHPii03aVaSYtIJF+W5kH8Rz1QH8yK+v1ARQqAAKMADoBXy3F/FssNJ5fgJWl9qS6eS8+76ep9rwHwNDFxjmmZxvDeEX1/vPy7Lru9N4rKxtNOto7KwtYreCJQqRxqFVR6ACpsGjJ/wAmivydtyd2fuEYqKstgwfSjB9KKOaQw59KXB9KTJooAMH0ox7UUUAGMdq8j+Mv7P2g/EW0l1XR4IdP8QIpKzqNqXBxwsgH/oXWvXKK7MDj8RltZYjDS5ZL+rPujgzLLMLm+HlhcZBSi/w80+j8z80tf8P6v4X1e40PXLN7W8tm2SRsP1B7g+tZ+K+6Pjx8GbL4m6G19p8SRa/YoTbSgD98o58pj6HnHoa+G7q1ubG6msbuFop7eRopY2GCrqcEEeoIr924dz+lnuG51pUj8S/VeT/4B/NPFnC9bhrF+zfvUpaxl3XZ+a6/ee0/s2/GOTwTrieE9euj/YmpyBULci2nPAYeik4B/OvtAEEBlwQeQRX5g8jkZBFfbP7MnxNfxr4P/sHU5t+qaGqwsWb5pYeiN+Awp+lfG8eZBGK/tTDrymvyl+j+Xmff+GfE8pv+xsU/Om3+Mf1XzXY9m/CkwfSjP+c0f561+Xn7MGPajHtRRQAY9qXFJ/nrRQAYPpRj2oooAMH0pcZ7UlGf85oAXPtRk0cUZHtQAc0ZNHHtRx7UAGaMn0oyKOKADJpOaXj2pMj0oAXNfNX7YHjmSCy07wJZSkG5/wBLvAD1QcIp/HJ/CvpQlQCT0Ffn38YfFA8Y/EbWtZimMtt9oaC2bOR5KHauPY9fxr7TgXL1jMy9vNe7TV/m9F+r+R+e+JOavAZR9Xpu0qr5f+3VrL9F8zh9h/umus+F/gK6+InjKx8OQKwhdvMunBxshU/MfrjgfWuY2n/Ir67/AGSfAy6R4VuvGV7bqLrV32W7MvzLAhPT/ePP4Cv07iTNv7Iy+deL996R9X/lv8j8b4RyP+3c1p4aa9xe9L/Cv83ZfM9x0fSbDQdLttH0q2W3tLSMRRRqOFUVcoyKOPav5/lJzblJ3bP6khCNOKhFWS2AZoo4o4zUlBzRk0cUZFABRzRx7Uce1ABn2ozzRxRxQAE0ZNHHtRx7UAFfKX7WPwtTT7yL4i6NbbYbt/J1FUHCyY+WTHvyD74r6t49qxvGHhuy8X+GdR8OXqK0d9A0WWH3WI+VvqDg17OQ5rPJ8dDERfu7SXdPf/NeZ8/xPklPP8tqYSS97eL7SW337PyZ+bez/ZNd18F/HEvw++IGnayWcWkzfZbtR/FE5GfyIB/CuV1bS7rRtTutJvYyk9pM0MikdGU4NVACOQcEelfv2IpUsdh5UZ6xmrfJn8vYWvWy3FRr09Jwlf5pn6bI6yIsiHKsAwPqKdXBfA7xO/iv4Z6PqNxL5k8UX2aZickunBz+GK73j2r+cMXh5YSvOhPeLa+5n9b4HFwx2Gp4qntNJr5q4Z4oo49qOK5zqAE0c0ce1HHtQAZoz7UcUcUAGaM0cUce1ACYopcUYoAMUlLijFACYpcUYFBwByeKAExRgVxXi74x/DvwUZItY8QRNdR5Btbf95Ln0wOn4kV5B4i/bChDGPwr4Udl7S30oB/75XP869nA8PZlmC5qFJ27vRfe7fgfPZlxVlGVNxxNdcy6L3n9yvb5nuvj/WE8P+Ctb1hiR9mspWBH94rgfqRX52MGZixIyTk16j4z/aE8f+NdKudDv5bO3sbobZI4YQCRnONx5rzLaK/VOEskrZJQqLE25pNba6Jf8OfifHXEmG4ixNJ4S/JBPdW1b169kgtLR7u6htY/vTSLGMepOK/RfwhosPh3wtpOiQKFSys4ocD1CjJ/OvhD4X6YmrfEPw/p7YxLfx5+gOf6V+g+BjAr5zxDxLc6GHW1nL9F+p9b4UYRKniMW97qK/N/oJgUuKMUYr81P2AMUmBS4FGPegBKMClxRgUAGKMUYoxQAmKMUuPejFABj3oxRijFABikpcUYoA+Jf2nfDEegfFC5urcYi1aBLzHYOcqwH/fOfxryXafavpj9sfS4hceHdYA+d0mtj9AQw/ma+bNq1++cMYp4rKaE5bpW+52/Q/l/jLBxwWeYinFWTlzf+BJS/U+pf2OdYabQte0F3H+i3Mdygz2kUqf/AEAfnX0Tivz08F+P/FPw/u573wrqQtZLpBHNmNXDKDkDB969N0j9rTx/ZFf7U0/Tb9R1yhjJ/EV8dxFwjjsdjqmLwvK4ys7Xs72V/LfzPv8AhTjzLcuy2lgcbzKULq9rq121s77eR9fUuK8K8MftaeCtUeO38RaXe6TK3BlGJYR7kjDD8jXr/h/xV4c8VWv2vw9rNtfxd2hkDY+o7V8Ljcox2XP/AGmk4rv0+9aH6Xl2e5bmy/2OtGT7Xs/udn+BrYpMUuKMV5x6wlLijAoxQAYoxRiigBMUYpeaTmgAxRjvRyBXg3xq/aIj8OPP4X8ETJNqQGye8GGS3PcL2Zv0Fd+XZbiM1rqhho3fXsl3Z5ebZxhMkw7xOLlZdF1b7Jd/6Z6B8RfjB4P+HEBXVLwXN+wJjsoGBkP1/uj3NfLfxB+P/jrxy8lrFdnStNLHbbWrFWK/7b9W/Qe1efX99fapdy6hqN1Lc3M7F5JZG3MxPcmq+0+lfruTcKYLK0p1Fz1O72XounrufhHEHG+Y503Tpv2dL+VPV/4n19NiNtzsXclmJySTkmk2+wq3a2V3fTpbWVtLcTSHCxxoWZj7AV6l4V/Zo+JHiKKO6u7a30m3fBBu3+fHrtXJ/OvdxeY4XAR5sTUUV5v8kfM4HKcbmc+TCUpTfkvzeyPI9o9BRtHoK+qdL/ZC8Pxorax4nvZ3/iWGNUU/nk10Vr+y18LoCDLb6hcYxkPdEA/livnavG+VU3aLlL0X+dj6uh4b55VV5RjH1l/lc8C/Z18MajrnxO0y+tbdjbaWzXNxLj5UAUhQT6kkCvtzFY/hjwf4c8G2H9m+GtJhsYCdzBMlmPqzEkn8TWzzX5vxFnX9t4v20Y2ilZX376n69wnw8+HMD9XnLmnJ80mtr2SsvLQTHvRj3peaOfSvAPqBMe9GKXn0pOaADFGPel5o5oATHvS4o59KOfSgBMe9GKXmjmgBMUY96XmjmgAxSYpefSjmgDw79q/w3fat4Ks9Wsrd5l0u5LzhBkrGwxuPsDivkXb7Cv0omgiuYXt7iJJYpFKujjIYHqCK801X9nH4U6pdNdf2A9qzkkrb3DouT6LnA/CvvuGuLaGVYX6piouybaa136PVH5fxhwLic7xv17BTSbSTUrrbS6aT6HxDtHoKXaPSvsK9/ZQ+HE6EWlzqlqx6ETBwPwIrkfEH7IM6RmTwx4oWRx0jvI9uf+BLn+VfW0ONMprOzm4+qf6XPhMT4eZ5h05Kmp/4ZL8nY+a9o9BVzS9X1XQ7pL7R9Qns50ORJDIVP6V1vjD4OfEDwQTJq+hySWwyftNt+9jx7kcj8RXF7SOCK+io4jD42nzUpKcX2s0fKV8Jisuq8laMoTXe6Z9B/Dj9qrULRo9L+INsLqD5UW/gXEiD1df4vqMH619JaFr+jeJtOj1XQtRhvLWUcSRNkA+h9D7Gvzp2n0rq/h/8SPFHw61Rb/Q7xvIY/v7VzmKZfQjsfcc18bnfBeHxadbAe5Pt9l/5fkfoHDniHisDJUMzbqU/5vtL/wCSXrr59D77xRiuP+GvxO0H4laOt/pkoiu4gBdWjn54m/qvoa7HmvyrEYerharo1o2kt0z9uwuKo42jHEYeSlCWqaExS496OfSjmsToE3UZo4rzn43fE2H4eeF2FpKn9r6gDFaR9So/ikPsP5kV04TC1cbXjh6KvKTscmPx1HLcNPFYh2jFXf8Al6vZHDftCfG59GSXwR4SvSL6RSt9dRNzAD/ApH8XXPpXy6QxJYnJPUmpp5ZbqeS5uJWkllYu7scliTyTTAo/Gv3HJ8qo5Ph1Qpb9X1b/AK2R/NWf53iOIMW8TXdl9mPSK/z7vqMwa9V+FnwB8RePWj1TVvM0vRic+c6fvJx/sKe3+10rs/gX8Alv1t/GXja1P2c4ksrJ/wDlp3Ej+3oO/evpeNI4kWOJFRFGAqjAAr5XiHjD6tJ4XAO8lvLovJd357H23CfAP1yMcbmitB6qGzfm+y8t35HM+C/hv4P8BWyxeH9Iijm27XunUNNJ9W6/h0rqMmjijivzStXq4ibqVpOUn1ep+yYfDUcJTVKhFRitklZBmjNFFZGwZozRRQAZozR+FHBoAM0Zoo70ABNGTRRQAZozRxR+VABn60Zo49KKADdRmjijigAzRmjijj0oAM0Zo4o4oAM0Zo49qKAEYK6lWGVIwQehFeVfEP8AZ48GeMo5bzSrdNG1MjIlt4wI3P8AtoMD8RXq34UcV14PHYjL6ntcNNxfl+q6nDmGW4TNKTo4umpx8+no918j4A8bfD/xP4A1NtO8Q2LRAk+TOoJimA7q39Otc7g+tfoV4p8KaF4y0iXRdfsUuLeUfRkP95T1Br4x+Kvwo1b4Z6x5Exa4024JNrdgcMP7rejCv1jh7iiGbL2Ff3av4S9PPyPwvizgqrkT+s4a8qL++Pr5dn9/nzXhPxVrXgvW4Ne0G7aC4hODg/LIvdWHcHFfb3w1+I2kfEjw9Hq+nsI7hMJdWxbLQyY6e4PY18G7R612Hwt+IF78OfFMGrQsz2cjCO8hB4kiJ549R1FacS5DDN6HtKa/ex2ffyf6dmY8HcT1MhxKo1nehN6rs/5l+vdfI+7t1Gaq6XqdjrOnW2q6bOk1tdRiWJ16FTVrivxmUXFuMt0f0NGUZxUou6Yy4nitYJLmdgscSF2JPQAZJr4Z+K3jW48e+M77WGkc2qOYbRCchIl4GPr1/GvpT9o7xe/hvwHJplnLsu9Zb7MpB5EX/LT8xx+NfIG0j0r9J4Hy1Qpyx81q9I+nV/N6fI/H/ErOHUqwyum9I+9L1ey+S1+aItvtXsf7PnwmTxjqv/CTa5b50nT3+SNl4uJh0B/2R1P5V5l4d0C+8T65ZaBpwH2i+mWFCei5PLH2A5/Cvuzwn4b0/wAI+H7Lw/pkYSG0jC57s3VmPuTk16XFudPL8OsPRdpz/BdX89l8zx+BOHY5ti3isQr0qfTvLovRbv5dzXVERQiKFVRgAcAD0peKKSvyM/ehcCjiik/GgBeKOKSigBeKOKT8aWgA4o4FJS80AHFHFJzRQAtHFB9qSgBeKOKT60v40AHFHFH40c0AGBRxRR+NABxRgUUfjQAUcUfjRQAcUcUfjR+NABxRgUUUAHGKxPGPhLSPG2gXOgazArxTqdjkfNE/Z19CDW3+NH41dKpOjNVKbs1qmZ1qNPEU5UqqvFqzT6o+AfGnhHUfBXiO88Pamh8y2fCPjAkQ/dYfUYrD2ivrX9pP4fR+IfDI8VWEJOo6Ry+0f6yA/eB9wcEfjXydg+1ft2Q5ss2wcaz+JaS9f+DufzdxPkcsizCWHXwPWL8n+q2/E+j/ANlnx408Nz4C1CbmBWubIs38JPzoPxOfzr6H49a+AfCOv3XhTxLp3iGzI82xnEmD0ZejA+xBIr7102/t9U0+21K1cGG6iWZDnswyP51+f8ZZasJjFiYL3an/AKUt/v3+8/VPDzOHjsveDqv3qWi/wvb7tV9x8s/tP64+o+OYNJSUmLTrVRt7B2JJ/TFeO7a6r4mXzap4/wBevGOd19Ig+inaP5VzO32r9Cymh9UwNKkukV971f4n5Nn2KeOzOvXfWT+5aL8Ee4fss+FVvde1HxRcwgpp8awwsR/y0fOcfQD9a+nPzrzX9nrRP7H+GljKybZNRke7bPo3C/8AjoB/GvSsH0r8o4jxbxmZVJdIvlXy0/O7P3ThDALL8nowtrJcz9Za/lZC0lGD6UYrwz6YBRQAaKACjpRg0YPpQAcUdqMGjBoAKX86TBqpq1/DpWmXWpXLhIraJpWYnGABTjFyait2TKShFylsi0roWKKwLL1APIpa+TvgTqviLWPiyl3/AGjcypOJpbvdISGTB6j64r6xINernGVvKK6oSlzNpPtv0PE4eztZ/hZYmMHBKTWrve1tfxA0Y4oowa8k90KWkwaMH0oAWj8KTB9KKAEd0TG9wuTgZOMml/Cvmn9qS51208S6Q8V7cRWTWxaJUcqBIG+Y8d+le3fDHXG8R+AtF1SSczTPaIk7k5JkUYbPvkZ/GvXxWUyw2BpY7mup9LbfP5HgYLPoYzNK+WOHK6dne++3Tpujqc0UmD6UYryD3wHNL70mD6UYNAC0UmDRg+lABS0lGD6UAHTtS0mPajB9KAI7u2hvbaW0uEDxTI0bqehBGDXwZ4z8OS+FfFOpeH5eTZXDRqw6MuflP4jFfe/4V8rftP6DHYeN7XV4lAXU7QF8d5EOCfyK/lX2fBWMdHGSw7ek1+K/4Fz868R8Aq+XwxaWtOX4S0/Ox4xtr68+Avi6G9+G9hFe3IMtk72p3HkBcY/Qivkfb7Vu6H4w1bw/ZtZWMzpG0hlIBxyQB/QV9tn2WPNsMqSeqdz834Xzr+wcY68leLi019zM/ULlr2/ubx8lp5XkJ9yc1X2+1TTQvBK8LghkYqfqKbtNepFpJJbHhTu5Ny3PuP4e2v2LwNoNqF/1enwD/wAcFdDWH4JmWfwfosy9HsYSP++BW3kV+E4pt15t73f5n9QYJKOGpqO3KvyFopKKwOoXmjnOaSigAH0peaSigBTRSUUAKM183/tA/Fi+uru6+H2jxPDBEwW9m/ilOM7B6Lzz64r6Prnr34f+DNS1xfEl94etJ9QXB851zkjoSOhI9xXq5PjMNgcR7fEwcrLRefRnhcQZfjMzwn1bB1FDmfvN9Y9Urf09rnyT4J8U+IPhP4mj1J9LZDLGBNb3CbTJCeeCensa+sPBPxF8M+PLJLrRr0CbH721kIEsZ9x3HuKb47+HPhzx/p5tdXtgtwikQXSKBJEfY9x7V83+KvhB4++HN62q6Q1xc20JzHe2W4Oo/wBpV5X+VfS1KuX8TpOo/ZV9vJ/5/n6nx1Kjm3BTcaUfb4V66bx7vy/FejPrrmk5r5f8L/tJeLdFRbPxFYxatGnyl2byph9Tgg/lXpGlftJ+AbyMHUEvbGQ9VaLev5j/AArw8Vw3mOGf8PmXeOv4b/gfS4LjLKMbFfveR9pafjt+J6zzR+Feej48fDEru/t/8PJbP8qzdS/aO+HdlGxtJb28kHRY4NoP4muOGT4+b5VRl9zPRnxBlVOPNLEQ/wDAk/yPVKxPFHjDw94N099R16/SBFBKpnLyEdlXua8E8TftO69fRtbeGtHh08HgTSt5smPYYAH61yWh/D/4k/FXURqN79rkidsPfXxYKo77c9foK9rDcLzpr22ZTVOC81f/AC/P0Pm8bxtTrS+rZNTdao9nZpL9X+C8xnxM+IusfFrXYLOw05xaQOVsrZE3SsT1Y47n06VqfBj4oal8P9X/AOEX1a2lk0+8uVjeIjElvKTtJA9PUe1e8fDn4SeHPh7AJbZBeak64kvJEG7nso/hFbF58P8AwbqGuR+I7vw9aSajEwdZynJYHIYjoSPU12V+IMt9jLL40W6KWj6376/nuefheFM4+sRzWeISxDd5LdcvbTfTpa3n1OhzkZHelpOlFfDn6YL2opKKAFopKKACiiigBaKT8KKAFr5//autVNt4fvMfN5k0f4YBr3+vBv2q3U6boMWfm8+Zvw2ive4ZbWa0ref5M+W40SeR17+X/pSPnHB9KQoSe4qTaaNtfsPMfz5Y3/G1gdP8X6zZ42CK9mAGOg3HH6Vi7Pf9K9L+P2hLpXxEup0UhNQjS5+rHg/yrzjy/rXnZfiFiMLTqrrFfketm2FeEx1ai/syf56fgfYvwY1RNV+G2iyqcm3gFq49Gj+X+gP4121eF/sweIQ9hqnheVsGGRbuEeoYYf8Akte681+S51h3hcfVp+d16PU/euG8YsdlVCqt+VJ+sdH+QUnFLRzXlnuCUcZpaKAEopcmigBKBjFLRQAg+tKKKPwoAKQgHg0vNBoA5PxF8LPAniiR59V0CAzuOZosxv8AXK4rgb/9l/wxM5bT9dv7dT0Vgr4/SvaqK9LD5vjsKuWlVaXbdfiePi+H8sxz5q9CLfe1n96seBH9liLd8vit9ue8AzV+y/Zc8PRurX3iK+mXuqKq5/Q17dRmuqXEmZyVva/gv8jhhwdksHdUF823+pxPh74N/D7w48c9roUc9xHgia5JkbPrg8fpXaKiRgIiBVAwABgCnZo5ryq+JrYmXNWk5Pzdz3cNg8Pgo8mHgorySQUUUVgdIYoozRzQAUUZooAKKOaM0AB6UUc0ZoAKKKKACvm79qTUUn1/R9KR/mt7Z5nHpvbA/wDQTX0gTgEk4Ar4x+KuvJ4o8earqcMjPAJfJhOf4E4GPryfxr6rhHDupj/a9IJ/e9P8z4bxAxaoZWqHWpJL5LV/p95x2z3qSOzuJl3RRswzjIo8v619CfBX4d2WqeCE1LUIFZ7m5kddyZ+UAAfyNff5nmUMto+2n3sflGS5PUznE/V6WmjZf/aW8MG80Oy8T28W5rCTyZyO0bng/wDfX86+cce1fdGvaPa6/o17o16geG8heJge2RwfqDz+FfFfiDQ7vw7rV5ol6hE1pKYz7jsfxGDXznCWPVXDvCy3ht6P/Jn1/H+VOhjI46C92orP/Ev81+TNT4a+Kz4M8X2OsSOy2u8RXWBn903DHHfHX8K+y4JormGO4hcPHKodGHIIIyDXwgV9q+jf2fviGup6cPBurXBN5ZqTas55ki/uj3X+VZcWZa60FjKa1jo/Tv8AI24CzlYarLLqz0nrH/F1Xz6efqezYoxxRijFfnx+tgBSd8UuKMUAJiilxRQAhFLjiiigAAoxRijFABikxzS4oxQAnHrRxS0YoASlxRiigBKMUuKBQAlGKXFGKADFJ3pcUUAJS4oxRQAYowKKMUAJRS0YoATFGKXFRzzw2sMlzcSLHHEpd2Y4CgckmhK+iE2krs4/4t+MI/Bvg27u0kUXd0Ps1svcuwPP4DJr48OSSSCSe9d78XPHknjrxK8lvI39m2RMVovZh3f6kj8sVw2Pav1bh7Lv7Owvv/HLV+XZfL8z8J4uzhZxjn7N/u4aR8+7+f5JC2dnPfXUNnbRM8s7rGiqMkknFfbnhTQ4vDnhzT9FjUL9lt0Rsd2x8x/PNfPX7Pfgw614nPiS8iJtdJG6I44ac8D8gSfrivpvH0r5ri7HqtWjhYPSOr9X/kvzPs/D/K3Qw88dUWs9F6Ld/N/kFeL/ALQHw7Op2Y8ZaTDm6tVC3aIuTJH2f6r0+n0r2jNMlijmjeKVFdHBVlbkEHqK+awGNqZfiI16fTfzXVH2ea5bSzbCSwtXrs+z6M+E9vvU+n3t5pd7DqNhO0NxbuHjdTgqRXovxf8AhdL4N1FtW0uNn0i7clccmBj/AAn29DXm+0V+s4bF0cdRVWnrF/1Zn4DjcDiMrxLoVlaUX/wzX6H1f8Lvifp/jvTUt7iSOHWIEAngJx5mOroO4/lXeV8O6dqF7pN5FqGnXUlvcQsGSRGwQRX0N8O/jtpetpFpfit0sr/7on6RS/X+6f0r4XOuHp4eTr4RXh26r/NH6jw1xhTxcVhce+WotFJ7S9ez/BnrlJmkR1kUOjBlIyCDkEUtfKH3wUUUfWgBaKTmigBaKSl59KAEooFFAC0lBooAM0tJS0AHNGaKKACig0n40ALmiij8aACiiigAzRzR+NBoAKM0Vn63r+j+HLJ9Q1q/itYF7ueSfQDqTVRhKclGKu2ROpGlFzm7JdWX2ZUUu7BVUZJJwAK+ePjV8XF1nzPCnhm6zZA4urhD/rjn7gP93+dZ/wATPjZf+Klk0bw/5lnpZ+V3PEs49/RfYV5ZtHrX3WRcP+wksTi173RdvN+f5H5ZxTxcsVF4LAP3XpKXfyXl3fX03j2H1q5o+i3+u6pbaRpsLS3F1II0UD1PU+gHUmoEiaR1jjUszHCgckmvpf4MfC3/AIROy/t7WoR/at0vyIefs6Ht/vHvXv5rmsMtoOb+J7Lu/wDJdT5XIcjq51ilSjpBayfZf5vodp4H8J2fgvw5a6HaYZo13TSY5kkPLH8+ntW/zRR+NflFWrOtN1Ju7erP3uhRp4anGjSVoxVkvJCZopeKPwFZmpV1LTbHWLGbTdSt0nt7hSkkbjIINfM/xO+Ed/4MnfUtMSS60iRuHC5aE/3Wx29DX1FxTJoYp4ngnjWSNwVZWGQR6V6mWZrWyypeGsXuu/8AwTw88yHD53S5amk1tLqv815Hw3gf3f0owPSvffiB8BIblpNV8FlYpSSz2TnCH/cPb6HivEtS0jUtIumstUspbaZDgpIuD/8AXr9GwOaYfMIc1KWvVdUfjeaZHi8oqcmIjp0ktn8/03Og8JfFTxf4PCwWV81xaL/y7XBLoB6L3X8K9c8P/tE+G75RHr9jcadL03IPNj/Tkfka+edppNprDGZNgsa+acbS7rR/5HTl3EuZZYlClUvFdJar/NfJn2JpnjnwjrEay6f4isJMjO0zqGH1BORWsl/YyjMd5Aw/2ZAf618ShSDkVKtxdR8Jcyr9HIrw6nCVNv3KrXqv+Cj6el4hVUv3tBN+Urfoz7Y+1W//AD8R/wDfYoF1bf8APxH/AN9ivin7Zff8/k//AH8aj7Zff8/k/wD38b/Gs/8AVH/p9+H/AATb/iIa/wCgf/yb/gH2r9qtv+fiP/vsUv2q3/5+I/8Avsf418U/bL7/AJ/J/wDv4aPtl9/z+T/9/G/xo/1R/wCn34f8EP8AiIS/6B//ACb/AIB9rfabb/n4j/77H+NJ9qtv+fiP/vsV8VfbL7/n8n/7+N/jR9svv+fyf/v41H+qP/T78P8Agh/xEJf9A/8A5N/wD7WN1b/8/Ef/AH2KPtVt/wA/Ef8A32K+Kftd9/z+T/8AfxqPtl9/z+T/APfxv8aP9Uf+n34f8EP+Ihr/AKB//Jv/ALU+1vtVt/z8R/8AfY/xo+1W/wDz8R/99ivin7Zff8/k/wD38b/Gj7Zff8/k/wD38b/Gj/VH/p9+H/BD/iIa/wCgf/yb/wC1Ptb7Vbf8/Ef/AH2P8aT7Tbf8/Ef/AH2K+Kvtl9/z+T/9/G/xo+2X3/P5P/38b/Gj/VH/AKffh/wQ/wCIhL/oH/8AJv8AgH2t9qtv+fiP/vsf40n2m3/5+I/++xXxV9svv+fyf/v43+NH2y+/5/J/+/jf40f6o/8AT78P+CH/ABEJf9A//k3/AAD7W+1W3/PxH/32P8aPtVt/z8R/99j/ABr4p+2X3/P5P/38b/Gj7Zff8/k//fxv8aP9Uf8Ap9+H/BD/AIiEv+gf/wAm/wCAfav2m3H/AC8R/wDfYpftVt/z8R/99j/Gvin7Zff8/k//AH8b/Gj7Zff8/k//AH8P+NH+qP8A0+/D/gh/xEJf9A//AJN/wD7Ql1fS4BmbUrWMf7Uyj+tc1rXxZ8B6HkXGvwTyD/lnbHzWz6Hb0/GvlB3mk/1krt/vMTTNlb0uE6MXerUb9Fb/ADOav4gYiStQopPzbf8Ake0+Jf2jp5BJb+FtH8oHIW4uTk/XYOP1ryTXfEet+Jrs3ut6hPdSE8B2JVfZR0H4VR2fSjafavfweXYXA/wIWffd/efI5jnWOzV/7TUbXbZfciLA/umpLa1nu50trW3kllkYKiIu5mPoAK6Xwn8PPE/jKdU0uxZYM/Pcy/LGo+vf8K+iPAPwq0DwPEtwi/bNRI+a6kHI9lHYfrXNmWeYfL48t+afZfr2O7JeGMXm8lK3LT/mf6d/yOY+E3wai0DyvEXieFZNRI3Q27DKwe59W/lXrnvRS1+dYzG1sfVdWs7v8vJH7JluW4fKqCw+GVl+LfdiZope/Sjg1yHeJRS496TmgA4ooxRzQAVl674Y0HxLata63pkFyjDAZlG9fo3UfhWrSc1UJypyUoOzRFSlCtFwqJNPo9UeKeI/2dIJJHn8Mav5SnlYLkbgPow/wrzzVvhN470gsZdCmuI1/jtx5g/Ic/pX1dRXvYbiTG0FabUl57/ej5TG8FZZim5U04Py2+53/Cx8UXNjdWchhu7eWF16rIhUj8DUO0etfbMlvBMNs0Ebg9mUGqL+GfDkp3SaDpzt6m2Qn+VepDi1W96l+P8AwDwanh7K/wC7rr5x/wCCfGm0ev6UbR619k/8Ir4Z/wChd03/AMBU/wAKP+EV8M/9C9pv/gKn+FX/AK2U/wDn2/v/AOAZ/wDEPq3/AD/X/gL/AMz422j1/SjaPX9K+yf+EV8M/wDQu6b/AOAqf4UDwr4Z/wChe03/AMBU/wAKP9bKf/Pp/f8A8AP+IfVv+f6/8Bf+Z8bbR60bR619k/8ACK+Gf+hd03/wFT/Cj/hFfDP/AELum/8AgKn+FH+tlP8A59P7/wDgB/xD6t/z/X/gL/zPjbaPX9KNo9f0r7JPhXwz/wBC9pv/AICp/hR/wivhn/oXtN/8BU/wo/1sp/8APp/f/wAAP+IfVv8An+v/AAF/5nxttHr+lG0ev6V9k/8ACK+GP+he03/wFT/Cl/4RXwx/0Lum/wDgKn+FH+tlP/n0/v8A+AH/ABD6t/z/AF9z/wAz412j1/SjaPX9K+yf+EV8M/8AQvab/wCAqf4Uf8Ir4Z/6F7Tf/AVP8KP9bKf/AD6f3h/xD6t/z/X3P/M+Nto9f0o2j1/Svsn/AIRXwx/0L2m/+Aqf4Uf8Ir4Y/wChe03/AMBU/wAKP9bKf/Pp/ev8g/4h9W/5/r7n/mfG20ev6UbR6/pX2T/wivhn/oXdN/8AAVP8KP8AhFfDH/Qvab/4Cp/hR/rZT/59P7/+AH/EPq3/AD/X/gL/AMz422j1/SjaPWvsn/hFfDP/AELum/8AgKn+FH/CK+GP+he03/wFT/Cj/Wyn/wA+n9//AAA/4h9W/wCf6/8AAX/mfG233P5Vo6b4b13WGC6XpF3dE/8APKEsPz6Cvr+30LRbQ7rXSLKEjvHAq/yFXFjRBhVAHtxWVTi12/d0vvf/AADej4fK/wC+r6eUf1b/AEPmfQ/gV421V1N7DFp0ZwSZ2y35CvTvC3wI8K6JsudYLarcodw8wbYh/wAA7/jXphorx8Vn+NxS5eblXlp+O59HgOEsswLUuTnkustfw2/Ait7e3tIlgtYI4YkGFSNQqgewFSUcf5NL/nrXjNt6s+lSSVkJRS/jSf560hhxRS4/zmkwP8mgBeKTiijmgBeKOKSloAKTijml5oAOKTilFJmgBeKTijmigBeKO1IaKAAUv40UlAC/jRSUc0ALScetHNFAC8UcUlLzQAcUcUlFAC0ZpKOaAFyKM0lFAC8UUlFAC8UcetHNFABxRx60lHNAC0ZpKKAFo4pKKAF49aM0nNLQAUn40tANABRQTQOaACijNGf5UAHNJ70vpQDmgAFJ1pc80maAA9uaXtRnpQTxQAc0CjNHegAFJ3oBpScHFACfjR+NBNLnkUAHaigUCgA570Cg0CgA6d6KO9FABzSd6Wg0AFFAooAKOaDS0AJQRRmigANFHaigBKWg0UAHNFBpaAP/2QA=",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/cozy.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "city": "92100 Boulogne-Billancourt",
+        "region": "France",
+        "street": "157 rue de la pompe",
+        "type": "home,postal",
+      },
+    ],
+    "email": Array [
+      Object {
+        "address": "johny@flash.com",
+        "type": "main",
+      },
+    ],
+    "fullname": "Johny Flash",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "givenName": "Johny",
+    },
+    "note": "We met at a party.",
+    "phone": Array [
+      Object {
+        "number": "+33 6 48 60 43 31",
+        "type": "main",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/ffos.vcf v2 1`] = `
+Array [
+  Object {
+    "datapoints": Array [
+      Object {
+        "name": "tel",
+        "type": "cell",
+        "value": "+966238347324",
+      },
+    ],
+    "fn": "Barbara Firefox",
+    "n": "Firefox;Barbara;;;;",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/ffos.vcf v3 1`] = `
+Array [
+  Object {
+    "fullname": "Barbara Firefox",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "Firefox",
+      "givenName": "Barbara",
+    },
+    "phone": Array [
+      Object {
+        "number": "+966238347324",
+        "type": "cell",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/google.vcf v2 1`] = `
+Array [
+  Object {
+    "bday": "1989-02-02",
+    "datapoints": Array [
+      Object {
+        "name": "email",
+        "type": "work",
+        "value": "cozytest@cozycloud.cc",
+      },
+      Object {
+        "name": "email",
+        "type": "home",
+        "value": "cozytest2@cozycloud.cc",
+      },
+      Object {
+        "name": "tel",
+        "type": "cell",
+        "value": "0600000000",
+      },
+      Object {
+        "name": "tel",
+        "type": "work",
+        "value": "0610000000",
+      },
+      Object {
+        "name": "adr",
+        "type": "home",
+        "value": Array [
+          "",
+          "",
+          "1 Sample Adress",
+          "PARIS",
+          "",
+          "75001",
+          "FRANCE",
+        ],
+      },
+      Object {
+        "name": "adr",
+        "type": "work",
+        "value": Array [
+          "",
+          "",
+          "2 Sample Address",
+          "PARIS",
+          "",
+          "75002",
+          "FRANCE",
+        ],
+      },
+      Object {
+        "name": "url",
+        "type": "profile",
+        "value": "http\\\\://test.example.com",
+      },
+      Object {
+        "name": "email",
+        "type": "truc",
+        "value": "test3@example.com",
+      },
+      Object {
+        "name": "about",
+        "type": "anniversary",
+        "value": "2013-01-01",
+      },
+      Object {
+        "name": "relation",
+        "type": "friend",
+        "value": "Cozypouet",
+      },
+    ],
+    "fn": "Cozy Test",
+    "n": "Test;Cozy;;;",
+    "note": "Something",
+    "org": "Cozycloud",
+    "title": "CEO",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/google.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "city": "PARIS",
+        "country": "FRANCE",
+        "postcode": "75001",
+        "street": "1 Sample Adress",
+        "type": "home",
+      },
+      Object {
+        "city": "PARIS",
+        "country": "FRANCE",
+        "postcode": "75002",
+        "street": "2 Sample Address",
+        "type": "work",
+      },
+    ],
+    "birthday": 1989-02-02T00:00:00.000Z,
+    "email": Array [
+      Object {
+        "address": "cozytest@cozycloud.cc",
+        "type": "work",
+      },
+      Object {
+        "address": "cozytest2@cozycloud.cc",
+        "type": "home",
+      },
+      Object {
+        "address": "test3@example.com",
+        "type": "truc",
+      },
+    ],
+    "fullname": "Cozy Test",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "Test",
+      "givenName": "Cozy",
+    },
+    "note": "Something",
+    "phone": Array [
+      Object {
+        "number": "0600000000",
+        "type": "cell",
+      },
+      Object {
+        "number": "0610000000",
+        "type": "work",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/google-full.vcf v2 1`] = `
+Array [
+  Object {
+    "bday": "1961-04-05",
+    "datapoints": Array [
+      Object {
+        "name": "email",
+        "type": "home",
+        "value": "homeEmail@example.com",
+      },
+      Object {
+        "name": "email",
+        "type": "work",
+        "value": "workEmail@example.com",
+      },
+      Object {
+        "name": "chat",
+        "type": "aim",
+        "value": "AIM",
+      },
+      Object {
+        "name": "chat",
+        "type": "gtalk",
+        "value": "gTalk",
+      },
+      Object {
+        "name": "chat",
+        "type": "yahoo",
+        "value": "Yahoo",
+      },
+      Object {
+        "name": "chat",
+        "type": "jabber",
+        "value": "Jabber",
+      },
+      Object {
+        "name": "chat",
+        "type": "msn",
+        "value": "MSN",
+      },
+      Object {
+        "name": "chat",
+        "type": "skype",
+        "value": "Skype",
+      },
+      Object {
+        "name": "chat",
+        "type": "qq",
+        "value": "QQ",
+      },
+      Object {
+        "name": "chat",
+        "type": "icq",
+        "value": "ICQ",
+      },
+      Object {
+        "name": "email",
+        "type": "arbitrary string",
+        "value": "customEmail@example.com",
+      },
+      Object {
+        "name": "tel",
+        "type": "home",
+        "value": "+1 860 355 3887",
+      },
+      Object {
+        "name": "tel",
+        "type": "work",
+        "value": "+1 860 350 0301",
+      },
+      Object {
+        "name": "tel",
+        "type": "cell",
+        "value": "+1 203 207 1047",
+      },
+      Object {
+        "name": "tel",
+        "type": "main",
+        "value": "+1 212 555 1234",
+      },
+      Object {
+        "name": "tel",
+        "type": "work fax",
+        "value": "+1 212 555 2345",
+      },
+      Object {
+        "name": "tel",
+        "type": "home fax",
+        "value": "+1 212 555 3456",
+      },
+      Object {
+        "name": "tel",
+        "type": "grand_central",
+        "value": "+1 212 555 4567",
+      },
+      Object {
+        "name": "tel",
+        "type": "pager",
+        "value": "+1 212 555 0000",
+      },
+      Object {
+        "name": "adr",
+        "type": "home",
+        "value": Array [
+          "",
+          "",
+          "678 Plain Home Address
+All one field 354
+Bridgeport CT 06",
+        ],
+      },
+      Object {
+        "name": "adr",
+        "type": "work",
+        "value": Array [
+          "POB 999",
+          "Northville",
+          "80 Maple Road",
+          "Danbury",
+          "CT",
+          "06810",
+          "USA",
+        ],
+      },
+      Object {
+        "name": "adr",
+        "type": "weekends",
+        "value": Array [
+          "",
+          "",
+          "678 Elm Street
+Apt 354
+",
+          "Bridgeport",
+          "CT",
+          "06834",
+          "USA",
+        ],
+      },
+      Object {
+        "name": "url",
+        "type": "profile",
+        "value": "http://profile.example.com/",
+      },
+      Object {
+        "name": "url",
+        "type": "blog",
+        "value": "http://blog.example.com/",
+      },
+      Object {
+        "name": "url",
+        "type": "homepage",
+        "value": "http://home.example.com/",
+      },
+      Object {
+        "name": "url",
+        "type": "work",
+        "value": "http\\\\://work.example.com/",
+      },
+      Object {
+        "name": "url",
+        "type": "arbitrarystring",
+        "value": "http://custom.example.com/",
+      },
+      Object {
+        "name": "about",
+        "type": "died",
+        "value": "2014-12-31",
+      },
+      Object {
+        "name": "about",
+        "type": "anniversary",
+        "value": "2001-01-01",
+      },
+      Object {
+        "name": "relation",
+        "type": "spouse",
+        "value": "Spouse",
+      },
+      Object {
+        "name": "relation",
+        "type": "child",
+        "value": "Child One",
+      },
+      Object {
+        "name": "relation",
+        "type": "mother",
+        "value": "Mom",
+      },
+      Object {
+        "name": "relation",
+        "type": "father",
+        "value": "Dad",
+      },
+      Object {
+        "name": "relation",
+        "type": "parent",
+        "value": "Step-parent",
+      },
+      Object {
+        "name": "relation",
+        "type": "brother",
+        "value": "Big Bro",
+      },
+      Object {
+        "name": "relation",
+        "type": "sister",
+        "value": "Lil Sis",
+      },
+      Object {
+        "name": "relation",
+        "type": "friend",
+        "value": "Good Friend",
+      },
+      Object {
+        "name": "relation",
+        "type": "relative",
+        "value": "Some Relative",
+      },
+      Object {
+        "name": "relation",
+        "type": "manager",
+        "value": "Big Boss",
+      },
+      Object {
+        "name": "relation",
+        "type": "assistant",
+        "value": "Personal Assistant",
+      },
+      Object {
+        "name": "relation",
+        "type": "referred_by",
+        "value": "Referred By",
+      },
+      Object {
+        "name": "relation",
+        "type": "partner",
+        "value": "Partner",
+      },
+      Object {
+        "name": "relation",
+        "type": "domestic_partner",
+        "value": "Domestic Partner",
+      },
+      Object {
+        "name": "relation",
+        "type": "arbitrary-string",
+        "value": "Custom",
+      },
+    ],
+    "fn": "Mr AAAgoogleFirst Middleone Middletwo von AAALast Jr",
+    "n": "von AAALast;AAAgoogleFirst;Middleone Middletwo;Mr;Jr",
+    "note": "Blah, blah
+
+blah blah blah.
+
+blahblah
+Custom: Custom field data",
+    "org": "SuperCorp",
+    "title": "Chairman",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/google-full.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "formattedAddress": "678 Plain Home Address
+All one field 354
+Bridgeport CT 06",
+        "type": "home",
+      },
+      Object {
+        "city": "Danbury",
+        "country": "USA",
+        "pobox": "POB 999",
+        "postcode": "06810",
+        "region": "CT",
+        "street": "Northville
+80 Maple Road",
+        "type": "work",
+      },
+      Object {
+        "city": "Bridgeport",
+        "country": "USA",
+        "postcode": "06834",
+        "region": "CT",
+        "street": "678 Elm Street
+Apt 354
+",
+        "type": "weekends",
+      },
+    ],
+    "birthday": 1961-04-05T00:00:00.000Z,
+    "email": Array [
+      Object {
+        "address": "homeEmail@example.com",
+        "type": "home",
+      },
+      Object {
+        "address": "workEmail@example.com",
+        "type": "work",
+      },
+      Object {
+        "address": "customEmail@example.com",
+        "type": "arbitrary string",
+      },
+    ],
+    "fullname": "Mr AAAgoogleFirst Middleone Middletwo von AAALast Jr",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "additionalName": "Middleone Middletwo",
+      "familyName": "von AAALast",
+      "givenName": "AAAgoogleFirst",
+      "namePrefix": "Mr",
+      "nameSuffix": "Jr",
+    },
+    "note": "Blah, blah
+
+blah blah blah.
+
+blahblah
+Custom: Custom field data",
+    "phone": Array [
+      Object {
+        "number": "+1 860 355 3887",
+        "type": "home",
+      },
+      Object {
+        "number": "+1 860 350 0301",
+        "type": "work",
+      },
+      Object {
+        "number": "+1 203 207 1047",
+        "type": "cell",
+      },
+      Object {
+        "number": "+1 212 555 1234",
+        "type": "main",
+      },
+      Object {
+        "number": "+1 212 555 2345",
+        "type": "work fax",
+      },
+      Object {
+        "number": "+1 212 555 3456",
+        "type": "home fax",
+      },
+      Object {
+        "number": "+1 212 555 4567",
+        "type": "grand_central",
+      },
+      Object {
+        "number": "+1 212 555 0000",
+        "type": "pager",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/ios-complex-types.vcf v2 1`] = `
+Array [
+  Object {
+    "bday": "1604-02-02",
+    "datapoints": Array [
+      Object {
+        "name": "email",
+        "type": "home pref",
+        "value": "testcozy@cozycloud.cc",
+      },
+      Object {
+        "name": "email",
+        "type": "work",
+        "value": "test.decozy@cozycloud.cc",
+      },
+      Object {
+        "name": "tel",
+        "type": "cell voice pref",
+        "value": "+33 6 12 34 56 78",
+      },
+      Object {
+        "name": "tel",
+        "type": "work voice",
+        "value": "01 23 45 67 89",
+      },
+      Object {
+        "name": "adr",
+        "type": "home pref fr",
+        "value": Array [
+          "",
+          "",
+          "12, rue René Boulanger",
+          "Paris",
+          "",
+          "75010",
+          "France",
+        ],
+      },
+      Object {
+        "name": "adr",
+        "type": "work fr",
+        "value": Array [
+          "",
+          "",
+          "4, rue Léon Jouhaux",
+          "Paris",
+          "",
+          "75010",
+          "France",
+        ],
+      },
+    ],
+    "department": "",
+    "fn": "Testé de Cozy",
+    "n": "de Cozy;Testé;;;",
+    "note": "46b12,
+3ème étage droite.",
+    "org": "Société Cozycloud",
+    "uid": "8925F4AF-9773-4030-ACDE-F12D78627DBD",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/ios-complex-types.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "city": "Paris",
+        "country": "France",
+        "postcode": "75010",
+        "primary": true,
+        "street": "12, rue René Boulanger",
+        "type": "home fr",
+      },
+      Object {
+        "city": "Paris",
+        "country": "France",
+        "postcode": "75010",
+        "street": "4, rue Léon Jouhaux",
+        "type": "work fr",
+      },
+    ],
+    "birthday": 1604-02-02T00:00:00.000Z,
+    "email": Array [
+      Object {
+        "address": "testcozy@cozycloud.cc",
+        "primary": true,
+        "type": "home",
+      },
+      Object {
+        "address": "test.decozy@cozycloud.cc",
+        "type": "work",
+      },
+    ],
+    "fullname": "Testé de Cozy",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "de Cozy",
+      "givenName": "Testé",
+    },
+    "note": "46b12,
+3ème étage droite.",
+    "phone": Array [
+      Object {
+        "number": "+33 6 12 34 56 78",
+        "primary": true,
+        "type": "cell voice",
+      },
+      Object {
+        "number": "01 23 45 67 89",
+        "type": "work voice",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/ios-full.vcf v2 1`] = `
+Array [
+  Object {
+    "bday": "2015-03-03",
+    "datapoints": Array [
+      Object {
+        "name": "about",
+        "type": "phonetic first name",
+        "value": "Phonetic First Name",
+      },
+      Object {
+        "name": "about",
+        "type": "phonetic middle name",
+        "value": "Phonetic Middle Name",
+      },
+      Object {
+        "name": "about",
+        "type": "phonetic last name",
+        "value": "Phonetic Last Name",
+      },
+      Object {
+        "name": "email",
+        "type": "home pref",
+        "value": "test@cozy.io",
+      },
+      Object {
+        "name": "email",
+        "type": "work",
+        "value": "test2@cozy.io",
+      },
+      Object {
+        "name": "email",
+        "type": "icloud",
+        "value": "test3@cozy.io",
+      },
+      Object {
+        "name": "email",
+        "type": "other",
+        "value": "test4@cozy.io",
+      },
+      Object {
+        "name": "email",
+        "type": "customemail",
+        "value": "test5@cozy.io",
+      },
+      Object {
+        "name": "email",
+        "type": "home",
+        "value": "gelnior@free.fr",
+      },
+      Object {
+        "name": "tel",
+        "type": "home voice pref",
+        "value": "0102030400",
+      },
+      Object {
+        "name": "tel",
+        "type": "work voice",
+        "value": "0102030401",
+      },
+      Object {
+        "name": "tel",
+        "type": "iphone cell voice",
+        "value": "0102030402",
+      },
+      Object {
+        "name": "tel",
+        "type": "cell voice",
+        "value": "0102030403",
+      },
+      Object {
+        "name": "tel",
+        "type": "main",
+        "value": "010203040Nickname4",
+      },
+      Object {
+        "name": "tel",
+        "type": "home fax",
+        "value": "0102030405",
+      },
+      Object {
+        "name": "tel",
+        "type": "work fax",
+        "value": "0102030406",
+      },
+      Object {
+        "name": "tel",
+        "type": "pager",
+        "value": "0102030407",
+      },
+      Object {
+        "name": "tel",
+        "type": "other voice",
+        "value": "0102030408",
+      },
+      Object {
+        "name": "tel",
+        "type": "customphone",
+        "value": "0102030409",
+      },
+      Object {
+        "name": "tel",
+        "type": "home voice",
+        "value": "0867 45346",
+      },
+      Object {
+        "name": "adr",
+        "type": "home pref fr",
+        "value": Array [
+          "",
+          "",
+          "52
+Rue Bonsergent",
+          "Paris",
+          "Ile De France",
+          "75010",
+          "France",
+        ],
+      },
+      Object {
+        "name": "adr",
+        "type": "work fr",
+        "value": Array [
+          "",
+          "",
+          "53
+Rue Bonsergent",
+          "Paris",
+          "Ile De France",
+          "75010",
+          "France",
+        ],
+      },
+      Object {
+        "name": "adr",
+        "type": "other fr",
+        "value": Array [
+          "",
+          "",
+          "54
+Rue Bonsergent",
+          "Paris",
+          "Ile De France",
+          "75010",
+          "France",
+        ],
+      },
+      Object {
+        "name": "adr",
+        "type": "home customaddress fr",
+        "value": Array [
+          "",
+          "",
+          "55
+Rue Bonsergent",
+          "75010",
+          "Ile De France",
+          "Paris",
+          "France",
+        ],
+      },
+      Object {
+        "name": "url",
+        "pref": true,
+        "type": "homepage",
+        "value": "http://homepage.fr",
+      },
+      Object {
+        "name": "url",
+        "type": "home",
+        "value": "http://home.fr",
+      },
+      Object {
+        "name": "url",
+        "type": "work",
+        "value": "http://work.fr",
+      },
+      Object {
+        "name": "url",
+        "type": "other",
+        "value": "http://other.fr",
+      },
+      Object {
+        "name": "url",
+        "type": "custom",
+        "value": "http://custom.fr",
+      },
+      Object {
+        "name": "chat",
+        "type": "msn",
+        "value": "msn",
+      },
+      Object {
+        "name": "chat",
+        "type": "aim",
+        "value": "aim",
+      },
+      Object {
+        "name": "chat",
+        "type": "yahoo",
+        "value": "yahoo",
+      },
+      Object {
+        "name": "chat",
+        "type": "icq",
+        "value": "icq",
+      },
+      Object {
+        "name": "chat",
+        "type": "jabber",
+        "value": "jabber",
+      },
+      Object {
+        "name": "chat",
+        "pref": true,
+        "type": "skype",
+        "value": "skype",
+        "x-service-type": "skype",
+      },
+      Object {
+        "name": "chat",
+        "type": "msn",
+        "value": "msn",
+        "x-service-type": "msn",
+      },
+      Object {
+        "name": "chat",
+        "type": "googletalk",
+        "value": "gtalk",
+        "x-service-type": "googletalk",
+      },
+      Object {
+        "name": "chat",
+        "type": "facebook",
+        "value": "facebook",
+        "x-service-type": "facebook",
+      },
+      Object {
+        "name": "chat",
+        "type": "aim",
+        "value": "aim",
+        "x-service-type": "aim",
+      },
+      Object {
+        "name": "chat",
+        "type": "yahoo",
+        "value": "yahoo",
+        "x-service-type": "yahoo",
+      },
+      Object {
+        "name": "chat",
+        "type": "icq",
+        "value": "icq",
+        "x-service-type": "icq",
+      },
+      Object {
+        "name": "chat",
+        "type": "jabber",
+        "value": "jabber",
+        "x-service-type": "jabber",
+      },
+      Object {
+        "name": "chat",
+        "type": "qq",
+        "value": "qq",
+        "x-service-type": "qq",
+      },
+      Object {
+        "name": "chat",
+        "type": "gadugadu",
+        "value": "gad",
+        "x-service-type": "gadugadu",
+      },
+      Object {
+        "name": "social",
+        "type": "twitter",
+        "value": "twitteruser",
+      },
+      Object {
+        "name": "social",
+        "type": "facebook",
+        "value": "facebookuser",
+      },
+      Object {
+        "name": "social",
+        "type": "flickr",
+        "value": "flickruser",
+      },
+      Object {
+        "name": "social",
+        "type": "linkedin",
+        "value": "linkedinuser",
+      },
+      Object {
+        "name": "social",
+        "type": "myspace",
+        "value": "myspaceuser",
+      },
+      Object {
+        "name": "social",
+        "type": "sinaweibo",
+        "value": "sinauser",
+      },
+      Object {
+        "name": "social",
+        "type": "customsocial",
+        "value": "custom socialuser",
+      },
+      Object {
+        "name": "chat",
+        "type": "customim",
+        "value": "custom%20im",
+        "x-service-type": "customim",
+      },
+      Object {
+        "name": "about",
+        "pref": true,
+        "type": "anniversary",
+        "value": "2013-03-12",
+      },
+      Object {
+        "name": "about",
+        "type": "other",
+        "value": "2012-03-12",
+      },
+      Object {
+        "name": "about",
+        "type": "customdate",
+        "value": "2006-03-12",
+      },
+      Object {
+        "name": "relation",
+        "pref": true,
+        "type": "mother",
+        "value": "Mother",
+      },
+      Object {
+        "name": "relation",
+        "type": "father",
+        "value": "Father",
+      },
+      Object {
+        "name": "relation",
+        "type": "parent",
+        "value": "Parent",
+      },
+      Object {
+        "name": "relation",
+        "type": "brother",
+        "value": "Brother",
+      },
+      Object {
+        "name": "relation",
+        "type": "sister",
+        "value": "Sister",
+      },
+      Object {
+        "name": "relation",
+        "type": "child",
+        "value": "Child",
+      },
+      Object {
+        "name": "relation",
+        "type": "friend",
+        "value": "Friend",
+      },
+      Object {
+        "name": "relation",
+        "type": "spouse",
+        "value": "Spouse",
+      },
+      Object {
+        "name": "relation",
+        "type": "partner",
+        "value": "Partner",
+      },
+      Object {
+        "name": "relation",
+        "type": "assistant",
+        "value": "Assistant",
+      },
+      Object {
+        "name": "relation",
+        "type": "manager",
+        "value": "Manager",
+      },
+      Object {
+        "name": "relation",
+        "type": "other",
+        "value": "Other",
+      },
+      Object {
+        "name": "alerts",
+        "type": "call",
+        "value": "snd=system:Bulletin\\\\,vib=Alert",
+      },
+      Object {
+        "name": "alerts",
+        "type": "text",
+        "value": "snd=<none>",
+      },
+      Object {
+        "name": "relation",
+        "type": "customrelation",
+        "value": "Custom Relation",
+      },
+    ],
+    "department": "Department",
+    "fn": "Dr. Full Middle Contact Suffix",
+    "n": "Contact;Full;Middle;Dr.;Suffix",
+    "nickname": "Pseudo",
+    "note": "My note",
+    "org": "SuperCorp",
+    "title": "Chairman",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/ios-full.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "city": "Paris",
+        "country": "France",
+        "postcode": "75010",
+        "primary": true,
+        "region": "Ile De France",
+        "street": "52
+Rue Bonsergent",
+        "type": "home fr",
+      },
+      Object {
+        "city": "Paris",
+        "country": "France",
+        "postcode": "75010",
+        "region": "Ile De France",
+        "street": "53
+Rue Bonsergent",
+        "type": "work fr",
+      },
+      Object {
+        "city": "Paris",
+        "country": "France",
+        "postcode": "75010",
+        "region": "Ile De France",
+        "street": "54
+Rue Bonsergent",
+        "type": "other fr",
+      },
+      Object {
+        "city": "75010",
+        "country": "France",
+        "postcode": "Paris",
+        "region": "Ile De France",
+        "street": "55
+Rue Bonsergent",
+        "type": "home customaddress fr",
+      },
+    ],
+    "birthday": 2015-03-03T00:00:00.000Z,
+    "email": Array [
+      Object {
+        "address": "test@cozy.io",
+        "primary": true,
+        "type": "home",
+      },
+      Object {
+        "address": "test2@cozy.io",
+        "type": "work",
+      },
+      Object {
+        "address": "test3@cozy.io",
+        "type": "icloud",
+      },
+      Object {
+        "address": "test4@cozy.io",
+        "type": "other",
+      },
+      Object {
+        "address": "test5@cozy.io",
+        "type": "customemail",
+      },
+      Object {
+        "address": "gelnior@free.fr",
+        "type": "home",
+      },
+    ],
+    "fullname": "Dr. Full Middle Contact Suffix",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "additionalName": "Middle",
+      "familyName": "Contact",
+      "givenName": "Full",
+      "namePrefix": "Dr.",
+      "nameSuffix": "Suffix",
+    },
+    "note": "My note",
+    "phone": Array [
+      Object {
+        "number": "0102030400",
+        "primary": true,
+        "type": "home voice",
+      },
+      Object {
+        "number": "0102030401",
+        "type": "work voice",
+      },
+      Object {
+        "number": "0102030402",
+        "type": "iphone cell voice",
+      },
+      Object {
+        "number": "0102030403",
+        "type": "cell voice",
+      },
+      Object {
+        "number": "010203040Nickname4",
+        "type": "main",
+      },
+      Object {
+        "number": "0102030405",
+        "type": "home fax",
+      },
+      Object {
+        "number": "0102030406",
+        "type": "work fax",
+      },
+      Object {
+        "number": "0102030407",
+        "type": "pager",
+      },
+      Object {
+        "number": "0102030408",
+        "type": "other voice",
+      },
+      Object {
+        "number": "0102030409",
+        "type": "customphone",
+      },
+      Object {
+        "number": "0867 45346",
+        "type": "home voice",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/multiple-cards.vcf v2 1`] = `
+Array [
+  Object {
+    "bday": "1604-07-30",
+    "datapoints": Array [
+      Object {
+        "name": "tel",
+        "type": "cell voice pref",
+        "value": "0544333834",
+      },
+      Object {
+        "name": "social",
+        "type": "facebook",
+        "value": "dana.zohar.14",
+      },
+      Object {
+        "name": "adr",
+        "type": "home pref",
+        "value": Array [
+          "",
+          "",
+          "",
+          "Tel Aviv",
+          "Tel Aviv",
+          "",
+          "Israel",
+        ],
+      },
+    ],
+    "fn": "Dana Zohar",
+    "n": "Zohar;Dana;;;",
+    "uid": "599",
+  },
+  Object {
+    "datapoints": Array [
+      Object {
+        "name": "email",
+        "pref": true,
+        "type": "בית",
+        "value": "daniel14bm@gmail.com",
+      },
+      Object {
+        "name": "tel",
+        "pref": true,
+        "type": "בית",
+        "value": "0524657162",
+      },
+    ],
+    "fn": "Daniel",
+    "n": ";Daniel;Ben Moshe;;",
+    "uid": "2733",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/multiple-cards.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "city": "Tel Aviv",
+        "country": "Israel",
+        "primary": true,
+        "region": "Tel Aviv",
+        "type": "home",
+      },
+    ],
+    "birthday": 1604-07-30T00:00:00.000Z,
+    "fullname": "Dana Zohar",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "Zohar",
+      "givenName": "Dana",
+    },
+    "phone": Array [
+      Object {
+        "number": "0544333834",
+        "primary": true,
+        "type": "cell voice",
+      },
+    ],
+  },
+  Object {
+    "email": Array [
+      Object {
+        "address": "daniel14bm@gmail.com",
+        "primary": true,
+        "type": "בית",
+      },
+    ],
+    "fullname": "Daniel",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "additionalName": "Ben Moshe",
+      "givenName": "Daniel",
+    },
+    "phone": Array [
+      Object {
+        "number": "0524657162",
+        "primary": true,
+        "type": "בית",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/social.vcf v2 1`] = `
+Array [
+  Object {
+    "datapoints": Array [
+      Object {
+        "name": "social",
+        "type": "facebook",
+        "value": "mizrachiran",
+      },
+      Object {
+        "name": "social",
+        "type": "facebook",
+        "value": "mizrachiran",
+      },
+      Object {
+        "name": "social",
+        "type": "facebook",
+        "value": "mizrachiran",
+      },
+    ],
+    "department": "",
+    "fn": "Testé de Cozy",
+    "n": "de Cozy;Testé;;;",
+    "org": "Société Cozycloud",
+    "uid": "8925F4AF-9773-4030-ACDE-F12D78627DBD",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/cozy-vcard/social.vcf v3 1`] = `
+Array [
+  Object {
+    "fullname": "Testé de Cozy",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "de Cozy",
+      "givenName": "Testé",
+    },
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/empty.vcf v2 1`] = `Array []`;
+
+exports[`importation/vcard src/importation/__fixtures__/empty.vcf v3 1`] = `Array []`;
+
+exports[`importation/vcard src/importation/__fixtures__/google-contacts-2012-11-15.vcf v2 1`] = `
+Array [
+  Object {
+    "datapoints": Array [
+      Object {
+        "name": "email",
+        "type": "home",
+        "value": "me@joebloggs.com",
+      },
+      Object {
+        "name": "tel",
+        "type": "cell",
+        "value": "+44 20 1234 5678",
+      },
+      Object {
+        "name": "adr",
+        "type": "home",
+        "value": Array [
+          "",
+          "",
+          "1 Trafalgar Square",
+          "London",
+          "",
+          "WC2N",
+          "United Kingdom",
+        ],
+      },
+      Object {
+        "name": "chat",
+        "type": "skype",
+        "value": "joe.bloggs",
+      },
+      Object {
+        "name": "url",
+        "type": "homepage",
+        "value": "http://joebloggs.com",
+      },
+      Object {
+        "name": "url",
+        "type": "twitter",
+        "value": "http://twitter.com/test",
+      },
+    ],
+    "fn": "Joe Bloggs",
+    "n": "Bloggs;Joe;;;",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/google-contacts-2012-11-15.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "city": "London",
+        "country": "United Kingdom",
+        "postcode": "WC2N",
+        "street": "1 Trafalgar Square",
+        "type": "home",
+      },
+    ],
+    "email": Array [
+      Object {
+        "address": "me@joebloggs.com",
+        "type": "home",
+      },
+    ],
+    "fullname": "Joe Bloggs",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "Bloggs",
+      "givenName": "Joe",
+    },
+    "phone": Array [
+      Object {
+        "number": "+44 20 1234 5678",
+        "type": "cell",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/john-doe.vcf v2 1`] = `
+Array [
+  Object {
+    "datapoints": Array [
+      Object {
+        "name": "email",
+        "type": "work pref",
+        "value": "johnDoe@example.org",
+      },
+      Object {
+        "name": "tel",
+        "type": "work pref",
+        "value": "+1 617 555 1212",
+      },
+      Object {
+        "name": "tel",
+        "type": "work",
+        "value": "+1 (617) 555-1234",
+      },
+      Object {
+        "name": "tel",
+        "type": "cell",
+        "value": "+1 781 555 1212",
+      },
+      Object {
+        "name": "tel",
+        "type": "home",
+        "value": "+1 202 555 1212",
+      },
+      Object {
+        "name": "adr",
+        "type": "work us",
+        "value": Array [
+          "",
+          "",
+          "2 Enterprise Avenue",
+          "Worktown",
+          "NY",
+          "01111",
+          "USA",
+        ],
+      },
+      Object {
+        "name": "adr",
+        "type": "home pref us",
+        "value": Array [
+          "",
+          "",
+          "3 Acacia Avenue",
+          "Hoemtown",
+          "MA",
+          "02222",
+          "USA",
+        ],
+      },
+      Object {
+        "name": "url",
+        "pref": true,
+        "type": "homepage",
+        "value": "http://www.example/com/doe",
+      },
+      Object {
+        "name": "url",
+        "type": "foaf",
+        "value": "http://www.example.com/Joe/foaf.df",
+      },
+      Object {
+        "name": "relation",
+        "pref": true,
+        "type": "friend",
+        "value": "Jane Doe",
+      },
+    ],
+    "department": "",
+    "fn": "John Doe",
+    "n": "Doe;John;;;",
+    "note": "John Doe has a long and varied history, being documented on more police files that anyone else. Reports of his death are alas numerous.",
+    "org": "Example.com Inc.",
+    "tags": Array [
+      "Work",
+      "Test group",
+    ],
+    "title": "Imaginary test person",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/john-doe.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "city": "Worktown",
+        "country": "USA",
+        "postcode": "01111",
+        "region": "NY",
+        "street": "2 Enterprise Avenue",
+        "type": "work us",
+      },
+      Object {
+        "city": "Hoemtown",
+        "country": "USA",
+        "postcode": "02222",
+        "primary": true,
+        "region": "MA",
+        "street": "3 Acacia Avenue",
+        "type": "home us",
+      },
+    ],
+    "email": Array [
+      Object {
+        "address": "johnDoe@example.org",
+        "primary": true,
+        "type": "work",
+      },
+    ],
+    "fullname": "John Doe",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "Doe",
+      "givenName": "John",
+    },
+    "note": "John Doe has a long and varied history, being documented on more police files that anyone else. Reports of his death are alas numerous.",
+    "phone": Array [
+      Object {
+        "number": "+1 617 555 1212",
+        "primary": true,
+        "type": "work",
+      },
+      Object {
+        "number": "+1 (617) 555-1234",
+        "type": "work",
+      },
+      Object {
+        "number": "+1 781 555 1212",
+        "type": "cell",
+      },
+      Object {
+        "number": "+1 202 555 1212",
+        "type": "home",
+      },
+    ],
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/vcard-4_0.vcf v2 1`] = `
+Array [
+  Object {
+    "datapoints": Array [
+      Object {
+        "name": "email",
+        "pref": "1",
+        "type": "home",
+        "value": "me@joebloggs.com",
+      },
+      Object {
+        "name": "tel",
+        "pref": "1",
+        "type": "\\"cell,home\\"",
+        "value": "tel:+44 20 1234 5678",
+      },
+      Object {
+        "name": "adr",
+        "pref": "1",
+        "type": "home",
+        "value": Array [
+          "",
+          "",
+          "1 Trafalgar Square",
+          "London",
+          "",
+          "WC2N",
+          "United Kingdom",
+        ],
+      },
+      Object {
+        "name": "url",
+        "pref": "1",
+        "type": "home",
+        "value": "http://joebloggs.com",
+      },
+      Object {
+        "name": "social",
+        "type": "home",
+        "value": "twitter:https://twitter.com/joebloggs",
+      },
+    ],
+    "fn": "Joe Bloggs",
+    "n": "Bloggs;Joe;;;",
+  },
+]
+`;
+
+exports[`importation/vcard src/importation/__fixtures__/vcard-4_0.vcf v3 1`] = `
+Array [
+  Object {
+    "address": Array [
+      Object {
+        "city": "London",
+        "country": "United Kingdom",
+        "postcode": "WC2N",
+        "primary": true,
+        "street": "1 Trafalgar Square",
+        "type": "home",
+      },
+    ],
+    "email": Array [
+      Object {
+        "address": "me@joebloggs.com",
+        "primary": true,
+        "type": "home",
+      },
+    ],
+    "fullname": "Joe Bloggs",
+    "metadata": Object {
+      "version": 1,
+    },
+    "name": Object {
+      "familyName": "Bloggs",
+      "givenName": "Joe",
+    },
+    "phone": Array [
+      Object {
+        "number": "tel:+44 20 1234 5678",
+        "primary": true,
+        "type": "\\"cell,home\\"",
+      },
+    ],
+  },
+]
+`;

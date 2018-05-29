@@ -9,10 +9,11 @@
   "contact_info": "Contact informations",
   "me": "me",
   "empty": {
-    "title": "Your contact list is empty!",
+    "title": "Synchronize your contacts",
     "description":
       "Click the \"Create a Contact\" button to start using the app.",
     "google": "Sync your Google contacts",
+    "importation": "Import contacts",
     "after":
       "Importing your contacts might take a few minutes, time to enjoy a well deserved coffee break ☕️"
   },
@@ -28,6 +29,25 @@
     "company": "Company",
     "birthday": "Birthday",
     "note": "Notes"
+  },
+  "importation": {
+    "cancel": "Cancel",
+    "complete_failure": "Import failed.",
+    "complete_success":
+      "Congratulations! %{smart_count} contact was imported into your Cozy. |||| Congratulations! %{smart_count} contacts were imported into your Cozy.",
+    "empty_file": "This file is empty.",
+    "invalid_file_type": "This file type is unsupported.",
+    "no_file": "Select your file here",
+    "partial_success":
+      "%{smart_count} of %{total} contact was imported. |||| %{smart_count} of %{total} contacts were imported.",
+    "ready": "Ready to import",
+    "retry": "Retry",
+    "retry_hint": "Please try again to complete your import.",
+    "retry_or_select_another_hint": "Try again or choose another file.",
+    "run": "Import",
+    "running": "Transfering file…",
+    "title": "Import contacts",
+    "transfer_file": "Transfer a file"
   },
   "placeholder": {
     "givenName": "",

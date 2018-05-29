@@ -11,7 +11,7 @@ ContactHeaderRow.propTypes = {
 
 const ContactsList = props => {
   if (props.contacts.length === 0) {
-    return <ContactsEmptyList />;
+    return <ContactsEmptyList displayImportation={props.displayImportation} />;
   }
   const sortedContacts = [...props.contacts].sort(sortLastNameFirst);
   let lastLetter = null;
@@ -60,7 +60,8 @@ ContactsList.propTypes = {
   contacts: PropTypes.array,
   onClickContact: PropTypes.func,
   onSelect: PropTypes.func,
-  selection: PropTypes.array
+  selection: PropTypes.array,
+  displayImportation: PropTypes.func
 };
 ContactsList.defaultProps = {
   contacts: [],
