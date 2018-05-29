@@ -17,19 +17,22 @@ const ERROR_STATUS_SET = new Set([Status.FILE_ISSUE, Status.COMPLETE_FAILURE]);
 
 class ContactImportationModal extends React.Component {
   state = {
+    importation: Importation.init(),
     progress: null
   };
 
+  updateImportation = importation => {
+    this.setState({ importation });
+  };
+
   selectFile = file => {
-    this.props.updateImportation(
-      Importation.selectFile(file, this.props.importation)
+    this.updateImportation(
+      Importation.selectFile(file, this.state.importation)
     );
   };
 
   unselectFile = () => {
-    this.props.updateImportation(
-      Importation.unselectFile(this.props.importation)
-    );
+    this.updateImportation(Importation.unselectFile(this.state.importation));
   };
 
   onProgress = progress => {
@@ -37,7 +40,8 @@ class ContactImportationModal extends React.Component {
   };
 
   importFile = async () => {
-    const { createContact, importation, updateImportation } = this.props;
+    const { importation } = this.state;
+    const { createContact, closeAction } = this.props;
     const { runningImportation, finishedImportationPromise } = Importation.run(
       importation,
       {
@@ -46,7 +50,7 @@ class ContactImportationModal extends React.Component {
       }
     );
 
-    updateImportation(runningImportation);
+    this.updateImportation(runningImportation);
 
     const finishedImportation = await finishedImportationPromise;
 
@@ -54,27 +58,24 @@ class ContactImportationModal extends React.Component {
       Alerter.success("importation.complete_success", {
         smart_count: _.get(finishedImportation, "report.total", "")
       });
-      this.forgetImportation();
+      closeAction();
     } else {
-      updateImportation(finishedImportation);
+      this.updateImportation(finishedImportation);
     }
   };
 
-  forgetImportation = () => {
-    this.props.updateImportation(null);
-  };
-
   render() {
-    const { importation } = this.props;
+    const { importation } = this.state;
     const { t } = this.context;
     const { status } = importation;
+    const { closeAction } = this.props;
 
     return (
       <Modal
         into="body"
         size="small"
         className={ERROR_STATUS_SET.has(status) && "importation-error"}
-        dismissAction={this.forgetImportation}
+        dismissAction={closeAction}
       >
         <ModalHeader title={t("importation.title")} />
         <ModalContent>
@@ -103,7 +104,7 @@ class ContactImportationModal extends React.Component {
             <Button
               label={t("importation.cancel")}
               theme="secondary"
-              onClick={this.forgetImportation}
+              onClick={closeAction}
             />
             {Importation.canRetry(importation) ? (
               <Button
@@ -126,8 +127,7 @@ class ContactImportationModal extends React.Component {
 }
 ContactImportationModal.propTypes = {
   createContact: PropTypes.func.isRequired,
-  importation: Importation.propType.isRequired,
-  updateImportation: PropTypes.func.isRequired
+  closeAction: PropTypes.func.isRequired
 };
 
 export default withContactsMutations(ContactImportationModal);
