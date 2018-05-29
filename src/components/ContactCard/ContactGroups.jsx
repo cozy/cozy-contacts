@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { fullContactPropTypes } from "../ContactPropTypes";
+import ContactGroupManager from "../ContactGroups/ContactGroupManager";
 import { withGroups } from "../../connections/allGroups";
-import { withUpdate } from "../../connections/allContacts";
+import { withContactsMutations } from "../../connections/allContacts";
 
 export class ContactGroups extends React.Component {
   updateContactGroups = groups => {
@@ -20,6 +21,11 @@ export class ContactGroups extends React.Component {
 
     return (
       <div className="contact-card-identity__groups">
+        <ContactGroupManager
+          contactGroups={fullGroups}
+          allGroups={allGroups}
+          onGroupSelectionChange={this.updateContactGroups}
+        />
         <ol className="contact-groups-list">
           {fullGroups.map(group => (
             <li key={group._id} className="contact-groups-list__tag">
@@ -46,7 +52,7 @@ const ConnectedContactGroups = ({
 }) => {
   if (fetchStatus === "error") {
     return false;
-  } else if (fetchStatus === "loading") {
+  } else if (fetchStatus === "loading" || fetchStatus === "pending") {
     return <div>Loading...</div>;
   } else {
     return (
@@ -60,10 +66,10 @@ const ConnectedContactGroups = ({
 };
 
 ConnectedContactGroups.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.array,
   fetchStatus: PropTypes.string.isRequired,
   contact: fullContactPropTypes.isRequired,
   updateContact: PropTypes.func.isRequired
 };
 
-export default withGroups(withUpdate(ConnectedContactGroups));
+export default withGroups(withContactsMutations(ConnectedContactGroups));

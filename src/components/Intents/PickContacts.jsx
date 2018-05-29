@@ -1,13 +1,27 @@
-/*global cozy*/
 import React from "react";
 import PropTypes from "prop-types";
 import { translate } from "cozy-ui/react/I18n";
 import { Button, IntentHeader } from "cozy-ui/react";
-import ContactsList from "./ContactsList/ContactsList";
-import { withContacts } from "./ContactsList";
-import withSelection from "./HOCs/withSelection";
+import IntentMain from "./IntentMain";
+import ContactsList from "../ContactsList/ContactsList";
+import withSelection from "../HOCs/withSelection";
+import { withContacts } from "../../connections/allContacts";
 
-const ConnectedContactsList = withContacts(ContactsList);
+const ContactAppWithLoading = ({ data, fetchStatus, ...props }) => {
+  if (!data) {
+    return null;
+  }
+  if (fetchStatus === "error") {
+    return <div>Error</div>;
+  }
+  return <ContactsList contacts={data} {...props} />;
+};
+ContactAppWithLoading.propTypes = {
+  data: PropTypes.array.isRequired,
+  fetchStatus: PropTypes.string.isRequired
+};
+
+const ConnectedContactsList = withContacts(ContactAppWithLoading);
 
 const IntentFooter = ({ label, onSubmit, onCancel, t }) => (
   <div className="intent-footer">
@@ -26,52 +40,31 @@ IntentFooter.defaultProps = {
   label: ""
 };
 
-const IntentMain = ({ children }) => (
-  <div className="intent-main">{children}</div>
-);
-IntentMain.propTypes = {
-  children: PropTypes.element.isRequired
-};
-
 class PickContacts extends React.Component {
-  state = {
-    service: null
-  };
-  async componentDidMount() {
-    cozy.client.intents
-      .createService(this.props.intentId, window)
-      .then(service => {
-        this.setState(state => ({ ...state, service }));
+  pickContacts = () => {
+    try {
+      this.props.onTerminate({
+        contacts: this.props.selection.map(contact => contact._id)
       });
-  }
-
-  pickContacts = async () => {
-    if (this.state.service) {
-      try {
-        this.state.service.terminate({
-          contacts: this.props.selection.map(contact => contact._id)
-        });
-      } catch (error) {
-        this.state.service.throw(error);
-      }
+    } catch (error) {
+      this.props.onError(error);
     }
   };
 
   cancel = () => {
-    if (this.state.service) {
-      this.state.service.terminate({ contacts: [] });
-    }
+    this.props.onCancel();
   };
 
   render() {
-    const { t } = this.props;
+    const { t } = this.context;
     return (
       <div className="intent-layout">
         <IntentHeader appEditor="Cozy" appName="Contacts" appIcon="/icon.svg" />
         <IntentMain>
           <ConnectedContactsList
             selection={this.props.selection}
-            onSelect={this.toggleSelection}
+            onSelect={this.props.toggleSelection}
+            onClickContact={this.props.toggleSelection}
           />
         </IntentMain>
         <IntentFooter
@@ -87,11 +80,12 @@ class PickContacts extends React.Component {
   }
 }
 PickContacts.propTypes = {
-  intentId: PropTypes.string.isRequired,
   selection: PropTypes.array.isRequired,
   toggleSelection: PropTypes.func.isRequired,
   clearSelection: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired
+  onTerminate: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  onError: PropTypes.func.isRequired
 };
 
 export default translate()(withSelection(PickContacts));

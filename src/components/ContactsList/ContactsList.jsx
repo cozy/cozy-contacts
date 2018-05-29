@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { sortGivenNameFirst, getDisplayedName } from "./";
+import { sortLastNameFirst, buildLastNameFirst } from "./";
+import ContactsEmptyList from "./ContactsEmptyList";
 import ContactRow from "./ContactRow";
 
 const ContactHeaderRow = props => <div className="divider">{props.header}</div>;
@@ -8,24 +9,14 @@ ContactHeaderRow.propTypes = {
   header: PropTypes.string.isRequired
 };
 
-const ContactsEmptyList = () => (
-  <div>
-    <p>No Contact</p>
-    <p>Try to create one with the big button on the top</p>
-    <p>
-      Or to import your contacts with this <a href="#">link</a>
-    </p>
-  </div>
-);
-
 const ContactsList = props => {
   if (props.contacts.length === 0) {
     return <ContactsEmptyList />;
   }
-  const sortedContacts = [...props.contacts].sort(sortGivenNameFirst);
+  const sortedContacts = [...props.contacts].sort(sortLastNameFirst);
   let lastLetter = null;
   const categorizedContacts = sortedContacts.reduce((acc, contact) => {
-    const name = getDisplayedName(contact);
+    const name = buildLastNameFirst(contact);
     const header = name[0] || "EMPTY";
     if (header !== lastLetter) {
       acc[header] = [];
@@ -66,14 +57,15 @@ const ContactsList = props => {
   );
 };
 ContactsList.propTypes = {
-  contacts: PropTypes.array.isRequired,
+  contacts: PropTypes.array,
   onClickContact: PropTypes.func,
   onSelect: PropTypes.func,
   selection: PropTypes.array
 };
 ContactsList.defaultProps = {
-  onSelect: null,
+  contacts: [],
   onClickContact: null,
+  onSelect: null,
   selection: []
 };
 

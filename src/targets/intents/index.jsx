@@ -3,10 +3,12 @@
 import "babel-polyfill";
 
 import "styles";
+import "styles/intent";
 
 import React from "react";
 import { render } from "react-dom";
 import { I18n } from "cozy-ui/react/I18n";
+import cozyClient, { CozyProvider } from "cozy-client";
 
 if (__DEVELOPMENT__) {
   // Enables React dev tools for Preact
@@ -17,15 +19,21 @@ if (__DEVELOPMENT__) {
   window.React = React;
 }
 
-let appLocale;
-const renderApp = function() {
-  const IntentApp = require("components/IntentApp").default;
+const renderApp = function(client, appLocale, appData) {
+  const IntentHandler = require("components/Intents/IntentHandler").default;
+  const PickContacts = require("components/Intents/PickContacts").default;
+  const CreateContact = require("components/Intents/CreateContact").default;
   render(
     <I18n
       lang={appLocale}
       dictRequire={appLocale => require(`locales/${appLocale}`)}
     >
-      <IntentApp />
+      <CozyProvider client={client}>
+        <IntentHandler appData={appData} intents={cozy.client.intents}>
+          <PickContacts action="PICK" type="io.cozy.contacts" />
+          <CreateContact action="CREATE" type="io.cozy.contacts" />
+        </IntentHandler>
+      </CozyProvider>
     </I18n>,
     document.querySelector("[role=application]")
   );
@@ -47,14 +55,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = document.querySelector("[role=application]");
   const data = root.dataset;
 
-  appLocale = getDataOrDefault(data.cozyLocale, "en");
+  const appLocale = getDataOrDefault(data.cozyLocale, "en");
 
   const protocol = window.location ? window.location.protocol : "https:";
+
+  const client = new cozyClient({
+    uri: `${protocol}//${data.cozyDomain}`,
+    token: data.cozyToken
+  });
 
   cozy.client.init({
     cozyURL: `${protocol}//${data.cozyDomain}`,
     token: data.cozyToken
   });
 
-  renderApp();
+  renderApp(client, appLocale, data);
 });

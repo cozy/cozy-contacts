@@ -72,7 +72,7 @@ exports[`ContactForm should match snapshot 1`] = `
           className="contact-form__label"
         >
           <svg
-            className="icon contact-form__icon"
+            className="contact-form__icon icon"
             height="16"
             style={
               Object {
@@ -118,7 +118,7 @@ exports[`ContactForm should match snapshot 1`] = `
           className="contact-form__label"
         >
           <svg
-            className="icon contact-form__icon"
+            className="contact-form__icon icon"
             height="16"
             style={
               Object {
@@ -164,7 +164,7 @@ exports[`ContactForm should match snapshot 1`] = `
           className="contact-form__label"
         >
           <svg
-            className="icon contact-form__icon"
+            className="contact-form__icon icon"
             height="16"
             style={
               Object {
@@ -210,7 +210,7 @@ exports[`ContactForm should match snapshot 1`] = `
           className="contact-form__label"
         >
           <svg
-            className="icon contact-form__icon"
+            className="contact-form__icon icon"
             height="16"
             style={
               Object {
@@ -252,7 +252,7 @@ exports[`ContactForm should match snapshot 1`] = `
           className="contact-form__label"
         >
           <svg
-            className="icon contact-form__icon"
+            className="contact-form__icon icon"
             height="16"
             style={
               Object {
@@ -294,7 +294,7 @@ exports[`ContactForm should match snapshot 1`] = `
           className="contact-form__label"
         >
           <svg
-            className="icon contact-form__icon"
+            className="contact-form__icon icon"
             height="16"
             style={
               Object {
@@ -336,7 +336,7 @@ exports[`ContactForm should match snapshot 1`] = `
           className="contact-form__label"
         >
           <svg
-            className="icon contact-form__icon"
+            className="contact-form__icon icon"
             height="16"
             style={
               Object {
@@ -377,9 +377,7 @@ exports[`ContactForm should match snapshot 1`] = `
     >
       <div>
         <button
-          aria-busy={false}
           className="c-btn c-btn--secondary"
-          disabled={false}
           onClick={[Function]}
           role="button"
           type="button"
@@ -391,10 +389,7 @@ exports[`ContactForm should match snapshot 1`] = `
           </span>
         </button>
         <button
-          aria-busy={false}
           className="c-btn"
-          disabled={false}
-          onClick={null}
           role="button"
           type="submit"
         >
@@ -438,6 +433,7 @@ Object {
   "fullname": "Jean-Claude Van Cozy",
   "groups": Array [],
   "metadata": Object {
+    "cozy": true,
     "version": 1,
   },
   "name": Object {
@@ -465,6 +461,7 @@ Object {
   "fullname": "",
   "groups": Array [],
   "metadata": Object {
+    "cozy": true,
     "version": 1,
   },
   "name": Object {

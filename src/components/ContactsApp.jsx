@@ -8,8 +8,12 @@ import OpenContactFormButton from "./Buttons/OpenContactFormButton";
 import ContactsIntentButton from "./Buttons/ContactsIntentButton";
 import ContactCardModal from "./Modals/ContactCardModal";
 import ContactFormModal from "./Modals/ContactFormModal";
-import { SelectionBar } from "cozy-ui/react";
-import { withContacts, withDeletion } from "../connections/allContacts";
+import { SelectionBar, Alerter } from "cozy-ui/react";
+import {
+  withContacts,
+  withContactsMutations
+} from "../connections/allContacts";
+import { getFullContactName } from "../helpers/contacts";
 
 const ContactsHeaderWithActions = ({ displayContactForm }, { t }) => (
   <ContactsHeader
@@ -20,7 +24,17 @@ const ContactsHeaderWithActions = ({ displayContactForm }, { t }) => (
       return (
         <div className="actions">
           {fakeintent !== null && (
-            <ContactsIntentButton label={"Select a Contact"} />
+            <ContactsIntentButton
+              label={"Select a Contact (intent)"}
+              action="PICK"
+            />
+          )}
+          {fakeintent !== null && (
+            <ContactsIntentButton
+              label={"Create a Contact (intent)"}
+              action="CREATE"
+              data={{ me: true }}
+            />
           )}
           <OpenContactFormButton
             onClick={displayContactForm}
@@ -65,6 +79,13 @@ class ContactsApp extends React.Component {
   displayContactCard = contact => {
     this.setState({
       displayedContact: contact
+    });
+  };
+
+  onDeleteContact = contact => {
+    this.hideContactCard();
+    Alerter.info("delete-confirmation.deleted", {
+      name: getFullContactName(contact.name)
     });
   };
 
@@ -114,21 +135,33 @@ class ContactsApp extends React.Component {
   render() {
     const { displayedContact, isCreationFormDisplayed } = this.state;
     const { t } = this.context;
-    const { contacts } = this.props;
+    const { contacts, selection, toggleSelection, clearSelection } = this.props;
 
     return (
       <main className="app-content">
+        {selection.length > 0 && (
+          <SelectionBarWithActions
+            selected={selection}
+            hideSelectionBar={clearSelection}
+            trashAction={this.deleteSelectedContacts}
+          />
+        )}
+        <ContactsHeaderWithActions
+          displayContactForm={this.displayContactForm}
+        />
         <div role="contentinfo">
           <ContactsList
             contacts={contacts}
             onClickContact={this.displayContactCard}
+            onSelect={toggleSelection}
+            selection={selection}
           />
         </div>
         {displayedContact && (
           <ContactCardModal
             onClose={this.hideContactCard}
             contact={displayedContact}
-            onDeleteContact={this.hideContactCard}
+            onDeleteContact={this.onDeleteContact}
           />
         )}
         {isCreationFormDisplayed && (
@@ -138,6 +171,7 @@ class ContactsApp extends React.Component {
             onCreateContact={this.onCreateContact}
           />
         )}
+        <Alerter t={t} />
       </main>
     );
   }
@@ -151,6 +185,9 @@ ContactsApp.propTypes = {
 };
 
 const ContactAppWithLoading = ({ data, fetchStatus, ...props }) => {
+  if (!data) {
+    return null;
+  }
   if (fetchStatus === "error") {
     return <div>Error</div>;
   }
@@ -158,10 +195,10 @@ const ContactAppWithLoading = ({ data, fetchStatus, ...props }) => {
 };
 
 ContactAppWithLoading.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.array,
   fetchStatus: PropTypes.string
 };
 
-export default flow([withContacts, withDeletion, withSelection])(
+export default flow([withContacts, withContactsMutations, withSelection])(
   ContactAppWithLoading
 );

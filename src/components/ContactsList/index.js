@@ -1,6 +1,6 @@
 import ContactsList from "./ContactsList";
 
-export function getDisplayedName(contact) {
+export function buildLastNameFirst(contact) {
   const givenNameA =
     contact.name && contact.name.givenName
       ? contact.name.givenName.toUpperCase()
@@ -9,16 +9,13 @@ export function getDisplayedName(contact) {
     contact.name && contact.name.familyName
       ? contact.name.familyName.toUpperCase()
       : "";
-  const nameA = `${givenNameA} ${familyNameA}`.trim();
+  const nameA = `${familyNameA} ${givenNameA}`.trim();
   return nameA;
 }
 
-export const sortGivenNameFirst = (contact, comparedContact) => {
-  const nameA = getDisplayedName(contact);
-  const nameB = getDisplayedName(comparedContact);
-  if (nameA === "") return 1;
-  if (nameB === "") return -1;
-
+export const sortLastNameFirst = (contact, comparedContact) => {
+  const nameA = buildLastNameFirst(contact);
+  const nameB = buildLastNameFirst(comparedContact);
   return nameA.localeCompare(nameB);
 };
 

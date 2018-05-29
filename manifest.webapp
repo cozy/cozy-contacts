@@ -1,11 +1,12 @@
 {
   "name": "Contacts",
   "editor": "Cozy",
+  "name_prefix": "Cozy",
   "slug": "contacts",
   "icon": "icon.svg",
   "description": "Contact manager for Cozy Cloud",
   "category": "cozy",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "licence": "AGPL-3.0",
   "source": "https://github.com/cozy/cozy-contacts.git@build",
   "developer": {
@@ -20,7 +21,7 @@
       "index": "index.html",
       "public": false
     },
-    "/services/pick": {
+    "/services": {
       "folder": "/intents",
       "index": "index.html",
       "public": false
@@ -48,7 +49,12 @@
     {
       "action": "PICK",
       "type": ["io.cozy.contacts"],
-      "href": "/services/pick"
+      "href": "/services"
+    },
+    {
+      "action": "CREATE",
+      "type": ["io.cozy.contacts"],
+      "href": "/services"
     }
   ]
 }
