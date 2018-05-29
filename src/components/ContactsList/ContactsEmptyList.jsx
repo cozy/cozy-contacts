@@ -1,7 +1,12 @@
 /* global cozy */
 import React from "react";
-import { Button, IntentOpener, Empty } from "cozy-ui/react";
+import { Button, Icon, IntentOpener, Empty } from "cozy-ui/react";
 import EmptyIcon from "../../assets/icons/empty-contact-list.svg";
+import IconGoogle from "../../assets/icons/connect-google.svg";
+// FIXME: import IconTeam from "../../assets/icons/team.svg";
+import palette from "cozy-ui/stylus/settings/palette.json";
+
+const IconTeam = "upload";
 
 export default class ContactsEmptyList extends React.Component {
   state = {
@@ -29,19 +34,37 @@ export default class ContactsEmptyList extends React.Component {
 
     return (
       <Empty
+        className="contacts-empty"
         icon={EmptyIcon}
         title={t("empty.title")}
         text={hasConnector ? t("empty.after") : ""}
       >
         {!hasConnector && (
-          <IntentOpener
-            action="CREATE"
-            doctype="io.cozy.accounts"
-            options={{ slug: "google" }}
-            onComplete={this.afterConnection}
-          >
-            <Button label={t("empty.google")} />
-          </IntentOpener>
+          <div className="contacts-empty-actions-wrapper">
+            <span className="contacts-empty-action">
+              <IntentOpener
+                action="CREATE"
+                doctype="io.cozy.accounts"
+                options={{ slug: "google" }}
+                onComplete={this.afterConnection}
+              >
+                <Button
+                  className="contacts-empty-button"
+                  icon={IconGoogle}
+                  label={t("empty.google")}
+                  theme="secondary"
+                />
+              </IntentOpener>
+            </span>
+            <span className="contacts-empty-action">
+              <Button
+                className="contacts-empty-button"
+                icon={<Icon icon={IconTeam} color={palette.coolGrey} />}
+                label={t("empty.importation")}
+                theme="secondary"
+              />
+            </span>
+          </div>
         )}
       </Empty>
     );
