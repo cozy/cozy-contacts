@@ -65,59 +65,33 @@ class ContactImportationModal extends React.Component {
   };
 
   render() {
-    const { importation } = this.state;
+    const { importation, progress } = this.state;
     const { t } = this.context;
-    const { status } = importation;
     const { closeAction } = this.props;
 
     return (
       <Modal
         into="body"
         size="small"
-        className={ERROR_STATUS_SET.has(status) && "importation-error"}
+        className={
+          ERROR_STATUS_SET.has(importation.status) && "importation-error"
+        }
         dismissAction={closeAction}
       >
         <ModalHeader title={t("importation.title")} />
         <ModalContent>
-          <p className="importation-section">
-            {t("importation.export_steps_intro")}
-          </p>
-          <ol className="importation-section importation-step-list">
-            <li className="importation-step">
-              {t("importation.open_contact_manager_step")}
-            </li>
-            <li className="importation-step">
-              {t("importation.export_to_vcard_step")}
-            </li>
-          </ol>
-          <p className="importation-section">
-            <ContactImportationCard
-              importation={importation}
-              progress={this.state.progress}
-              onFileSelected={this.selectFile}
-              onFileUnselected={this.unselectFile}
-            />
-          </p>
-          <p className="importation-actions">
-            <Button
-              label={t("importation.cancel")}
-              theme="secondary"
-              onClick={closeAction}
-            />
-            {Importation.canRetry(importation) ? (
-              <Button
-                label={t("importation.retry")}
-                onClick={this.importFile}
-              />
-            ) : (
-              <Button
-                label={t("importation.run")}
-                disabled={!Importation.canRun(importation)}
-                busy={importation.isRunning}
-                onClick={this.importFile}
-              />
-            )}
-          </p>
+          <ExportStepsExplanation />
+          <ContactImportationCard
+            importation={importation}
+            progress={progress}
+            onFileSelected={this.selectFile}
+            onFileUnselected={this.unselectFile}
+          />
+          <ImportationActions
+            importation={importation}
+            cancelAction={closeAction}
+            importAction={this.importFile}
+          />
         </ModalContent>
       </Modal>
     );
@@ -129,3 +103,51 @@ ContactImportationModal.propTypes = {
 };
 
 export default withContactsMutations(ContactImportationModal);
+
+function ExportStepsExplanation(props, { t }) {
+  return (
+    <div className="importation-export-steps-explanation">
+      <p className="importation-section">
+        {t("importation.export_steps_intro")}
+      </p>
+      <ol className="importation-section importation-step-list">
+        <li className="importation-step">
+          {t("importation.open_contact_manager_step")}
+        </li>
+        <li className="importation-step">
+          {t("importation.export_to_vcard_step")}
+        </li>
+      </ol>
+    </div>
+  );
+}
+
+function ImportationActions(
+  { cancelAction, importAction, importation },
+  { t }
+) {
+  return (
+    <p className="importation-actions">
+      <Button
+        label={t("importation.cancel")}
+        theme="secondary"
+        onClick={cancelAction}
+      />
+      {Importation.canRetry(importation) ? (
+        <Button label={t("importation.retry")} onClick={importAction} />
+      ) : (
+        <Button
+          label={t("importation.run")}
+          disabled={!Importation.canRun(importation)}
+          busy={importation.status === Status.RUNNING}
+          onClick={importAction}
+        />
+      )}
+    </p>
+  );
+}
+ImportationActions.propTypes = {
+  cancelAction: PropTypes.func.isRequired,
+  importAction: PropTypes.func.isRequired,
+  importation: Importation.propType.isRequired
+};
