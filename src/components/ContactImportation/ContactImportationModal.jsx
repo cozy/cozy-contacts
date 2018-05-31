@@ -60,6 +60,7 @@ class ContactImportationModal extends React.Component {
       });
       closeAction();
     } else {
+      this.setState({ progress: null });
       this.updateImportation(finishedImportation);
     }
   };
