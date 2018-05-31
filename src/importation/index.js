@@ -25,6 +25,7 @@ export default {
   VALID_FILE_TYPES,
   canRetry,
   canRun,
+  filename,
   init,
   propType,
   run,
@@ -39,6 +40,10 @@ function init() {
     fileIssue: undefined,
     report: undefined
   };
+}
+
+function filename(importation) {
+  return _.get(importation, "file.name");
 }
 
 function selectFile(file, importation) {

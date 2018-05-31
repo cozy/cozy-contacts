@@ -1,13 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Icon } from "cozy-ui/react";
-import IconCross from "../../assets/icons/small-cross.svg";
-import IconFileFailImport from "../../assets/icons/file-fail-import.svg";
-import IconFilePartialImport from "../../assets/icons/file-partial-import.svg";
-import IconFileVcf from "../../assets/icons/file-vcf.svg";
-import IconFileWrongFormat from "../../assets/icons/file-wrong-format.svg";
+import ContactImportationFile from "./ContactImportationFile";
+import ContactTransferButton from "./ContactTransferButton";
 import Importation from "../../importation";
 import Status from "../../importation/status";
+
+const CLICKABLE_STATUS_SET = new Set([
+  Status.UNCONFIGURED,
+  Status.FILE_ISSUE,
+  Status.PARTIAL_SUCCESS,
+  Status.COMPLETE_FAILURE
+]);
 
 export default class ContactImportationCard extends React.Component {
   render() {
@@ -17,108 +20,22 @@ export default class ContactImportationCard extends React.Component {
       onFileSelected,
       onFileUnselected
     } = this.props;
-    const { report } = importation || {};
+    const { status } = importation;
     const { t } = this.context;
 
-    switch (importation.status) {
-      case Status.UNCONFIGURED:
-        return (
-          <CardWrapper clickable={true}>
-            <ImportationFile icon={IconFileVcf} name={null} />
-            <span className="importation-message">
-              {t("importation.no_file")}
-            </span>
-            <TransferButton fileAction={onFileSelected} />
-          </CardWrapper>
-        );
-
-      case Status.FILE_ISSUE:
-        return (
-          <CardWrapper clickable={true}>
-            <ImportationFile
-              icon={IconFileWrongFormat}
-              name={importation.file.name}
-            />
-            <span className="importation-message">
-              {t(importation.fileIssue)}
-            </span>
-            <TransferButton fileAction={onFileSelected} />
-          </CardWrapper>
-        );
-
-      case Status.READY:
-        return (
-          <CardWrapper clickable={false}>
-            <ImportationFile
-              icon={IconFileVcf}
-              name={importation.file.name}
-              unselectAction={onFileUnselected}
-            />
-            <span className="importation-status">{t("importation.ready")}</span>
-          </CardWrapper>
-        );
-
-      case Status.RUNNING:
-        return (
-          <CardWrapper clickable={false}>
-            <ImportationFile icon={IconFileVcf} name={importation.file.name} />
-            <span className="importation-status">
-              {t("importation.running")}
-            </span>
-            {progress && (
-              <progress value={progress.current} max={progress.total} />
-            )}
-          </CardWrapper>
-        );
-
-      case Status.PARTIAL_SUCCESS:
-        return (
-          <CardWrapper clickable={true}>
-            <ImportationFile
-              icon={IconFilePartialImport}
-              name={importation.file.name}
-              unselectAction={onFileUnselected}
-            />
-            <span className="importation-message">
-              {t("importation.partial_success", {
-                smart_count: report.imported,
-                total: report.total
-              })}
-            </span>
-            {Importation.canRetry(importation) && (
-              <span className="importation-message">
-                {t("importation.retry_hint")}
-              </span>
-            )}
-          </CardWrapper>
-        );
-
-      case Status.COMPLETE_FAILURE:
-        return (
-          <CardWrapper clickable={true}>
-            <ImportationFile
-              icon={IconFileFailImport}
-              name={importation.file.name}
-            />
-            <span className="importation-message">
-              {t("importation.complete_failure")}
-            </span>
-            {Importation.canRetry(importation) && (
-              <span className="importation-message">
-                {t("importation.retry_or_select_another_hint")}
-              </span>
-            )}
-            <TransferButton fileAction={onFileSelected} />
-          </CardWrapper>
-        );
-
-      default:
-        // eslint-disable-next-line
-        console.warn(
-          "ContactImportationCard: unexpected importation status:",
-          importation.status
-        );
-    }
+    return (
+      <CardWrapper clickable={CLICKABLE_STATUS_SET.has(status)}>
+        <ContactImportationFile
+          status={status}
+          name={Importation.filename(importation)}
+          unselectAction={onFileUnselected}
+        />
+        <ImportationMessage text={mainMessageText(importation, t)} />
+        <ImportationMessage text={retryMessageText(importation, t)} />
+        <ContactTransferButton status={status} fileAction={onFileSelected} />
+        {progress && <progress value={progress.current} max={progress.total} />}
+      </CardWrapper>
+    );
   }
 }
 ContactImportationCard.propTypes = {
@@ -131,72 +48,59 @@ ContactImportationCard.defaultProps = {
   progress: undefined
 };
 
+const WRAPPER_CLASS = "importation-card";
+
 function CardWrapper({ clickable, children }) {
-  const wrapperClass = "importation-card";
   if (clickable) {
     return (
-      <label className={`${wrapperClass} ${wrapperClass}-clickable`}>
+      <label className={`${WRAPPER_CLASS} ${WRAPPER_CLASS}-clickable`}>
         {children}
       </label>
     );
   } else {
-    return <div className={wrapperClass}>{children}</div>;
+    return <div className={WRAPPER_CLASS}>{children}</div>;
   }
 }
 CardWrapper.propTypes = {
-  clickable: PropTypes.bool,
+  clickable: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired
 };
-CardWrapper.defaultProps = {
-  clickable: false
+
+function ImportationMessage({ text }) {
+  if (text) {
+    return <span className="importation-message">{text}</span>;
+  }
+}
+ImportationMessage.propTypes = {
+  text: PropTypes.string
+};
+ImportationMessage.defaultProps = {
+  text: undefined
 };
 
-function ImportationFile({ icon, name, unselectAction }) {
-  return (
-    <div className="importation-file">
-      <Icon icon={icon} className="importation-file-icon" />
-      {name && (
-        <span className="importation-file-name">
-          {name}
-          {unselectAction && (
-            <button className="importation-file-oval" onClick={unselectAction}>
-              <Icon className="importation-file-cross" icon={IconCross} />
-            </button>
-          )}
-        </span>
-      )}
-    </div>
-  );
+function mainMessageText(importation, t) {
+  switch (importation.status) {
+    case Status.UNCONFIGURED:
+      return t("importation.no_file");
+    case Status.FILE_ISSUE:
+      return t(importation.fileIssue);
+    case Status.PARTIAL_SUCCESS:
+      return t("importation.partial_success", {
+        smart_count: importation.report.imported,
+        total: importation.report.total
+      });
+    case Status.COMPLETE_FAILURE:
+      return t("importation.complete_failure");
+  }
 }
-ImportationFile.propTypes = {
-  icon: PropTypes.object.isRequired,
-  name: PropTypes.string,
-  unselectAction: PropTypes.func
-};
-ImportationFile.defaultProps = {
-  name: undefined,
-  unselectAction: undefined
-};
 
-function TransferButton({ fileAction }, { t }) {
-  return (
-    <span
-      role="button"
-      className="c-btn c-btn--secondary c-btn--subtle importation-file-selection-button"
-    >
-      <span>
-        <Icon icon="upload" className="importation-file-selection-icon" />
-        {t("importation.transfer_file")}
-        <input
-          className="importation-file-selection-input"
-          type="file"
-          accept={Importation.VALID_FILE_TYPES.join(", ")}
-          onChange={event => fileAction(event.target.files[0])}
-        />
-      </span>
-    </span>
-  );
+function retryMessageText(importation, t) {
+  if (Importation.canRetry(importation)) {
+    switch (importation.status) {
+      case Status.PARTIAL_SUCCESS:
+        return t("importation.retry_hint");
+      case Status.COMPLETE_FAILURE:
+        return t("importation.retry_or_select_another_hint");
+    }
+  }
 }
-TransferButton.propTypes = {
-  fileAction: PropTypes.func.isRequired
-};
