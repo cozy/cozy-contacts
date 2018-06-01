@@ -128,24 +128,24 @@ describe("importation", () => {
       it("is true when importation can be retried – see canRetry() below", async () => {
         const importation = await run(selectFile(validFile(), INIT))
           .finishedImportationPromise;
-        const expectCanRun = (bool, reportFields) => {
+        const expectCanRun = reportFields => {
           const report = {
             ...importation.report,
             ...reportFields
           };
           const status = Status.fromReport(report);
-          expect(canRun({ ...importation, report, status })).toBe(bool);
+          return expect(canRun({ ...importation, report, status }));
         };
-        expectCanRun(false, { total: 0, imported: 0, unsaved: 0 });
-        expectCanRun(false, { total: 1, imported: 0, unsaved: 0 });
-        expectCanRun(true, { total: 1, imported: 0, unsaved: 1 });
-        expectCanRun(false, { total: 1, imported: 1, unsaved: 0 });
-        expectCanRun(false, { total: 2, imported: 0, unsaved: 0 });
-        expectCanRun(true, { total: 2, imported: 0, unsaved: 1 });
-        expectCanRun(true, { total: 2, imported: 0, unsaved: 2 });
-        expectCanRun(false, { total: 2, imported: 1, unsaved: 0 });
-        expectCanRun(true, { total: 2, imported: 1, unsaved: 1 });
-        expectCanRun(false, { total: 2, imported: 2, unsaved: 0 });
+        expectCanRun({ total: 0, imported: 0, unsaved: 0 }).toBe(false);
+        expectCanRun({ total: 1, imported: 0, unsaved: 0 }).toBe(false);
+        expectCanRun({ total: 1, imported: 0, unsaved: 1 }).toBe(true);
+        expectCanRun({ total: 1, imported: 1, unsaved: 0 }).toBe(false);
+        expectCanRun({ total: 2, imported: 0, unsaved: 0 }).toBe(false);
+        expectCanRun({ total: 2, imported: 0, unsaved: 1 }).toBe(true);
+        expectCanRun({ total: 2, imported: 0, unsaved: 2 }).toBe(true);
+        expectCanRun({ total: 2, imported: 1, unsaved: 0 }).toBe(false);
+        expectCanRun({ total: 2, imported: 1, unsaved: 1 }).toBe(true);
+        expectCanRun({ total: 2, imported: 2, unsaved: 0 }).toBe(false);
       });
     });
   });
@@ -159,26 +159,24 @@ describe("importation", () => {
       const importation = await Importation.run(
         Importation.selectFile(fixture.validFile(), Importation.INIT)
       ).finishedImportationPromise;
-      const expectCanRetry = (bool, reportFields) => {
+      const expectCanRetry = reportFields => {
         const report = {
           ...importation.report,
           ...reportFields
         };
         const status = Status.fromReport(report);
-        expect(Importation.canRetry({ ...importation, report, status })).toBe(
-          bool
-        );
+        return expect(Importation.canRetry({ ...importation, report, status }));
       };
-      expectCanRetry(false, { total: 0, imported: 0, unsaved: 0 });
-      expectCanRetry(false, { total: 1, imported: 0, unsaved: 0 });
-      expectCanRetry(true, { total: 1, imported: 0, unsaved: 1 });
-      expectCanRetry(false, { total: 1, imported: 1, unsaved: 0 });
-      expectCanRetry(false, { total: 2, imported: 0, unsaved: 0 });
-      expectCanRetry(true, { total: 2, imported: 0, unsaved: 1 });
-      expectCanRetry(true, { total: 2, imported: 0, unsaved: 2 });
-      expectCanRetry(false, { total: 2, imported: 1, unsaved: 0 });
-      expectCanRetry(true, { total: 2, imported: 1, unsaved: 1 });
-      expectCanRetry(false, { total: 2, imported: 2, unsaved: 0 });
+      expectCanRetry({ total: 0, imported: 0, unsaved: 0 }).toBe(false);
+      expectCanRetry({ total: 1, imported: 0, unsaved: 0 }).toBe(false);
+      expectCanRetry({ total: 1, imported: 0, unsaved: 1 }).toBe(true);
+      expectCanRetry({ total: 1, imported: 1, unsaved: 0 }).toBe(false);
+      expectCanRetry({ total: 2, imported: 0, unsaved: 0 }).toBe(false);
+      expectCanRetry({ total: 2, imported: 0, unsaved: 1 }).toBe(true);
+      expectCanRetry({ total: 2, imported: 0, unsaved: 2 }).toBe(true);
+      expectCanRetry({ total: 2, imported: 1, unsaved: 0 }).toBe(false);
+      expectCanRetry({ total: 2, imported: 1, unsaved: 1 }).toBe(true);
+      expectCanRetry({ total: 2, imported: 2, unsaved: 0 }).toBe(false);
     });
   });
 });
