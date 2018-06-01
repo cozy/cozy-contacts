@@ -18,7 +18,8 @@
     "config:browser:development": "NODE_ENV=browser:development cozy-scripts --show-config",
     "deploy": "git-directory-deploy --username cozy --email contact@cozycloud.cc --directory build/ --repo=https://$GITHUB_TOKEN@github.com/cozy/cozy-contacts.git",
     "test": "jest",
-    "stack:docker": "docker run --rm -it -p 8080:8080 -p 5984:5984 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev"
+    "stack:docker": "docker run --rm -it -p 8080:8080 -p 5984:5984 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev",
+    "version:manifest": "replace '\\d+\\.\\d+\\.\\d+' $npm_package_version ./manifest.webapp"
   },
   "repository": {
     "type": "git",
@@ -52,6 +53,7 @@
     "react": "16.4.0",
     "react-dom": "16.4.0",
     "react-test-renderer": "16.4.0",
+    "replace": "^1.0.0",
     "stylint": "1.5.9"
   },
   "dependencies": {
