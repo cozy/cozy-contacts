@@ -84,18 +84,13 @@ function run(importation, options) {
 
   return {
     runningImportation: { ...importation, status: Status.RUNNING },
-    finishedImportationPromise: new Promise((resolve, reject) => {
-      vcard
-        .importFile(importation.file, options)
-        .then(report => {
-          resolve({
-            ...importation,
-            report,
-            status: Status.fromReport(report)
-          });
-        })
-        .catch(reject);
-    })
+    finishedImportationPromise: vcard
+      .importFile(importation.file, options)
+      .then(report => ({
+        ...importation,
+        report,
+        status: Status.fromReport(report)
+      }))
   };
 }
 
