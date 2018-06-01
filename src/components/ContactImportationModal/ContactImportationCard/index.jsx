@@ -38,7 +38,13 @@ export default class ContactImportationCard extends React.Component {
         />
         {mainMessage && <ContactImportationMessage text={mainMessage} />}
         {retryMessage && <ContactImportationMessage text={retryMessage} />}
-        <ContactTransferButton status={status} fileAction={onFileSelected} />
+        {isTransferButtonDisplayed(status) ? (
+          <ContactTransferButton fileAction={onFileSelected} />
+        ) : (
+          isStatusDisplayed(status) && (
+            <span className="importation-status">{t(statusKey(status))}</span>
+          )
+        )}
         {progress && <progress value={progress.current} max={progress.total} />}
       </ContactImportationCardWrapper>
     );
@@ -53,6 +59,29 @@ ContactImportationCard.propTypes = {
 ContactImportationCard.defaultProps = {
   progress: undefined
 };
+
+const DISPLAYED_TRANSFER_BUTTON_STATUS_SET = new Set([
+  Status.UNCONFIGURED,
+  Status.FILE_ISSUE,
+  Status.COMPLETE_FAILURE
+]);
+
+function isTransferButtonDisplayed(status) {
+  return DISPLAYED_TRANSFER_BUTTON_STATUS_SET.has(status);
+}
+
+const DISPLAYED_STATUS_KEY_MAP = new Map([
+  [Status.READY, "importation.ready"],
+  [Status.RUNNING, "importation.running"]
+]);
+
+function isStatusDisplayed(status) {
+  return DISPLAYED_STATUS_KEY_MAP.has(status);
+}
+
+function statusKey(status) {
+  return DISPLAYED_STATUS_KEY_MAP.get(status);
+}
 
 function mainMessageText(importation, t) {
   switch (importation.status) {

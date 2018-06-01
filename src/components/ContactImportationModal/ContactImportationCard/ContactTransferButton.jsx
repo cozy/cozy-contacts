@@ -1,21 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Icon } from "cozy-ui/react";
-import ContactImportationStatus from "./ContactImportationStatus";
-import Importation from "../../../../importation";
-import Status from "../../../../importation/status";
+import Importation from "../../../importation";
 
-const FILE_SELECTION_NEEDED_STATUSES = new Set([
-  Status.UNCONFIGURED,
-  Status.FILE_ISSUE,
-  Status.COMPLETE_FAILURE
-]);
-
-export default function ContactTransferButton({ status, fileAction }, { t }) {
-  if (!FILE_SELECTION_NEEDED_STATUSES.has(status)) {
-    return <ContactImportationStatus status={status} />;
-  }
-
+export default function ContactTransferButton({ fileAction }, { t }) {
   return (
     <span
       role="button"
@@ -35,6 +23,5 @@ export default function ContactTransferButton({ status, fileAction }, { t }) {
   );
 }
 ContactTransferButton.propTypes = {
-  status: Status.propType.isRequired,
   fileAction: PropTypes.func.isRequired
 };
