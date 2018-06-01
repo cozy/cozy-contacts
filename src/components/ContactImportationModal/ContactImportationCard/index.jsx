@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import ContactImportationCardWrapper from "./ContactImportationCardWrapper";
 import ContactImportationFile from "./ContactImportationFile";
+import ContactImportationMessage from "./ContactImportationMessage";
 import ContactTransferButton from "./ContactTransferButton";
 import Importation from "../../../importation";
 import Status from "../../../importation/status";
@@ -22,19 +24,23 @@ export default class ContactImportationCard extends React.Component {
     } = this.props;
     const { status } = importation;
     const { t } = this.context;
+    const mainMessage = mainMessageText(importation, t);
+    const retryMessage = retryMessageText(importation, t);
 
     return (
-      <CardWrapper clickable={CLICKABLE_STATUS_SET.has(status)}>
+      <ContactImportationCardWrapper
+        clickable={CLICKABLE_STATUS_SET.has(status)}
+      >
         <ContactImportationFile
           status={status}
           name={Importation.filename(importation)}
           unselectAction={onFileUnselected}
         />
-        <ImportationMessage text={mainMessageText(importation, t)} />
-        <ImportationMessage text={retryMessageText(importation, t)} />
+        {mainMessage && <ContactImportationMessage text={mainMessage} />}
+        {retryMessage && <ContactImportationMessage text={retryMessage} />}
         <ContactTransferButton status={status} fileAction={onFileSelected} />
         {progress && <progress value={progress.current} max={progress.total} />}
-      </CardWrapper>
+      </ContactImportationCardWrapper>
     );
   }
 }
@@ -46,36 +52,6 @@ ContactImportationCard.propTypes = {
 };
 ContactImportationCard.defaultProps = {
   progress: undefined
-};
-
-const WRAPPER_CLASS = "importation-card";
-
-function CardWrapper({ clickable, children }) {
-  if (clickable) {
-    return (
-      <label className={`${WRAPPER_CLASS} ${WRAPPER_CLASS}-clickable`}>
-        {children}
-      </label>
-    );
-  } else {
-    return <div className={WRAPPER_CLASS}>{children}</div>;
-  }
-}
-CardWrapper.propTypes = {
-  clickable: PropTypes.bool.isRequired,
-  children: PropTypes.node.isRequired
-};
-
-function ImportationMessage({ text }) {
-  if (text) {
-    return <span className="importation-message">{text}</span>;
-  }
-}
-ImportationMessage.propTypes = {
-  text: PropTypes.string
-};
-ImportationMessage.defaultProps = {
-  text: undefined
 };
 
 function mainMessageText(importation, t) {

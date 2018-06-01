@@ -1,14 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  Alerter,
-  Button,
-  Modal,
-  ModalContent,
-  ModalHeader
-} from "cozy-ui/react";
+import { Alerter, Modal, ModalContent, ModalHeader } from "cozy-ui/react";
 import _ from "lodash";
 import { withContactsMutations } from "../../connections/allContacts";
+import ExportStepsExplanation from "./ExportStepsExplanation";
+import ContactImportationActions from "./ContactImportationActions";
 import ContactImportationCard from "./ContactImportationCard";
 import Importation from "../../importation";
 import Status from "../../importation/status";
@@ -88,7 +84,7 @@ class ContactImportationModal extends React.Component {
             onFileSelected={this.selectFile}
             onFileUnselected={this.unselectFile}
           />
-          <ImportationActions
+          <ContactImportationActions
             importation={importation}
             cancelAction={closeAction}
             importAction={this.importFile}
@@ -104,51 +100,3 @@ ContactImportationModal.propTypes = {
 };
 
 export default withContactsMutations(ContactImportationModal);
-
-function ExportStepsExplanation(props, { t }) {
-  return (
-    <div className="importation-export-steps-explanation">
-      <p className="importation-section">
-        {t("importation.export_steps_intro")}
-      </p>
-      <ol className="importation-section importation-step-list">
-        <li className="importation-step">
-          {t("importation.open_contact_manager_step")}
-        </li>
-        <li className="importation-step">
-          {t("importation.export_to_vcard_step")}
-        </li>
-      </ol>
-    </div>
-  );
-}
-
-function ImportationActions(
-  { cancelAction, importAction, importation },
-  { t }
-) {
-  return (
-    <p className="importation-actions">
-      <Button
-        label={t("importation.cancel")}
-        theme="secondary"
-        onClick={cancelAction}
-      />
-      {Importation.canRetry(importation) ? (
-        <Button label={t("importation.retry")} onClick={importAction} />
-      ) : (
-        <Button
-          label={t("importation.run")}
-          disabled={!Importation.canRun(importation)}
-          busy={importation.status === Status.RUNNING}
-          onClick={importAction}
-        />
-      )}
-    </p>
-  );
-}
-ImportationActions.propTypes = {
-  cancelAction: PropTypes.func.isRequired,
-  importAction: PropTypes.func.isRequired,
-  importation: Importation.propType.isRequired
-};
