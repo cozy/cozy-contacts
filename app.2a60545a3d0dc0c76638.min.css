@@ -1944,6 +1944,35 @@ body {
   height: 100%;
   background-color: rgba(41,126,242,0.05);
 }
+:root {
+  --paleGrey: #f5f6f7;
+  --silver: #d6d8da;
+  --coolGrey: #95999d;
+  --slateGrey: #5d6165;
+  --charcoalGrey: #32363f;
+  --zircon: #f1f7ff;
+  --frenchPass: #c2dcff;
+  --dodgerBlue: #297ef2;
+  --scienceBlue: #0b61d6;
+  --puertoRico: #4dcec5;
+  --emerald: #35ce68;
+  --malachite: #08b442;
+  --texasRose: #ffae5f;
+  --chablis: #fff2f2;
+  --yourPink: #fdcbcb;
+  --pomegranate: #f52d2d;
+  --monza: #dd0505;
+  --portage: #9169f2;
+  --azure: #1fa8f1;
+  --melon: #fd7461;
+  --blazeOrange: #fc6d00;
+  --mango: #ff962f;
+  --pumpkinOrange: #ff7f1b;
+  --darkPeriwinkle: #6984ce;
+  --purpley: #7f6bee;
+  --lightishPurple: #b449e7;
+  --weirdGreen: #40de8e;
+}
 .c-nav-icon {
   fill: currentColor;
 }
@@ -2270,66 +2299,6 @@ body {
 }
 .group-manager__indicator {
   margin-left: 0.5rem;
-}
-.app-wrapper {
-  width: 100%;
-}
-.app-content {
-  height: 100vh;
-}
-.intent-layout {
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-.intent-loader {
-  height: 100%;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.intent-footer {
-  height: 4.5rem;
-  background-color: #f5f6f7;
-  -webkit-box-shadow: inset 0 -1px 0 0 #d6d8da;
-          box-shadow: inset 0 -1px 0 0 #d6d8da;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0.5rem 1rem;
-}
-.intent-footer .intent-footer-label {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-.intent-main {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  overflow-y: scroll;
-  width: 100%;
-}
-.intent-create-form-wrapper {
-  padding: 1rem 2rem;
 }
 .c-spinner--blue--3iyo3:before,
 .c-spinner--grey--1uLdj:before,
