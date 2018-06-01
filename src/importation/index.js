@@ -1,7 +1,6 @@
 // Importation model.
 // "Importation" because "import" is a reserved keyword.
 
-import _ from "lodash";
 import PropTypes from "prop-types";
 import Report from "./report";
 import Status from "./status";
@@ -30,6 +29,7 @@ export default {
   propType,
   run,
   selectFile,
+  total,
   unselectFile
 };
 
@@ -42,8 +42,8 @@ function init() {
   };
 }
 
-function filename(importation) {
-  return _.get(importation, "file.name");
+function filename({ file: { name = undefined } }) {
+  return name;
 }
 
 function selectFile(file, importation) {
@@ -101,10 +101,14 @@ function run(importation, options) {
   };
 }
 
+function total({ report: { total = undefined } }) {
+  return total;
+}
+
 function canRun(importation) {
   return importation.status === Status.READY || canRetry(importation);
 }
 
-function canRetry(importation) {
-  return _.get(importation, "report.unsaved") > 0;
+function canRetry({ report = { unsaved: 0 } }) {
+  return report.unsaved > 0;
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Alerter, Modal, ModalContent, ModalHeader } from "cozy-ui/react";
-import _ from "lodash";
 import { withContactsMutations } from "../../connections/allContacts";
 import ExportStepsExplanation from "./ExportStepsExplanation";
 import ContactImportationActions from "./ContactImportationActions";
@@ -52,7 +51,7 @@ class ContactImportationModal extends React.Component {
 
     if (finishedImportation.status === Status.COMPLETE_SUCCESS) {
       Alerter.success("importation.complete_success", {
-        smart_count: _.get(finishedImportation, "report.total", "")
+        smart_count: Importation.total(finishedImportation)
       });
       closeAction();
     } else {
