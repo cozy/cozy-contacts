@@ -1853,9 +1853,9 @@ cosmiconfig@^2.1.0, cosmiconfig@^2.1.1:
     parse-json "^2.2.0"
     require-from-string "^1.1.0"
 
-cozy-bar@5.0.3:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/cozy-bar/-/cozy-bar-5.0.3.tgz#41682c4db8ab14cc4c784fdddbd3d9e5e7ab04e2"
+cozy-bar@5.0.4:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/cozy-bar/-/cozy-bar-5.0.4.tgz#8ffab585400cd139cf479306e3398cdbbe557eff"
   dependencies:
     babel-preset-cozy-app "^0.3.1"
     core-js "^2.5.3"
@@ -1933,9 +1933,9 @@ cozy-stack-client@^1.0.0-beta.4:
   version "1.0.0-beta.4"
   resolved "https://registry.yarnpkg.com/cozy-stack-client/-/cozy-stack-client-1.0.0-beta.4.tgz#c7bf6523c2e7c1333f1d86088a1b8e75b6abb2ea"
 
-cozy-ui@9.0.1:
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-9.0.1.tgz#b99f4f711ed163ab0ce24312b3721b1724b5e0d2"
+cozy-ui@9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-9.1.0.tgz#479a7fba54614a62d6c2b4a94ae68ebc2b098a17"
   dependencies:
     babel-preset-cozy-app "^0.3.1"
     classnames "^2.2.5"
@@ -6576,9 +6576,9 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prettier@1.13.0:
-  version "1.13.0"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.13.0.tgz#054de8d5fb1a4405c845d16183f58a2c301f6f16"
+prettier@1.13.3:
+  version "1.13.3"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.13.3.tgz#e74c09a7df6519d472ca6febaa37cf7addb48a20"
 
 pretty-error@^2.0.2:
   version "2.1.1"
