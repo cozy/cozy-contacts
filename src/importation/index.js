@@ -40,8 +40,8 @@ export default {
   unselectFile
 };
 
-function filename({ file: { name = undefined } }) {
-  return name;
+function filename({ file = {} }) {
+  return file.name;
 }
 
 function selectFile(file, importation) {
