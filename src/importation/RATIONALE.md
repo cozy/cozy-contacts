@@ -13,19 +13,19 @@ There are quite a lot of other vCard/VCF parsers on npmjs.org.
 
 The following projects were dead (no commit during last year):
 
-* vcard-js
+- vcard-js
   [NPM](https://www.npmjs.com/package/vcard-js) [GitHub](https://github.com/zuojiang/vcard-js)
-* vcfparser
+- vcfparser
   [NPM](https://www.npmjs.com/package/vcfparser) [GitHub](https://github.com/comoyo/vcfparser)
-* vcfparse
+- vcfparse
   [NPM](https://www.npmjs.com/package/vcfparse) [GitHub](https://github.com/sachinb94/vcfParse)
-* vcardparser
+- vcardparser
   [NPM](https://www.npmjs.com/package/vcardparser) [GitHub](https://github.com/woutervroege/node-vcardparser)
-* vdata-parser
+- vdata-parser
   [NPM](https://www.npmjs.com/package/vdata-parser)
-* android-vcf
+- android-vcf
   [NPM](https://www.npmjs.com/package/android-vcf)
-* vcard-export
+- vcard-export
   [NPM](https://www.npmjs.com/package/vcardexport)
   (was supposed to import vcards too)
 
@@ -33,19 +33,19 @@ The following projects were still alive at the time of writing, but didn't seem
 to support more vCard oddities, have more test or be more supported than our own
 implementation:
 
-* vcard
+- vcard
   [NPM](https://www.npmjs.com/package/vcard) [GitHub](https://github.com/jasperla/node-vcard)
   (last commit 2017-11, 6 open issues, a few unit tests, no dependant project
   known)
-* oniyi-vcard-parser
+- oniyi-vcard-parser
   [NPM](https://www.npmjs.com/package/oniyi-vcard-parser) [GitHub](https://github.com/benkroeger/oniyi-vcard-parser)
   (last commit 2018-01-24, 1 closed issue, has some tests with a few
   real-world fixtures)
-* vcf
+- vcf
   [NPM](https://www.npmjs.com/package/vcf) [GitHub](https://github.com/jhermsmeier/node-vcf)
   (no commit since 2017-08-01, a few issues open/closed, has tests,
   2-3 dependant projects)
-* vcard-parser
+- vcard-parser
   [NPM](https://www.npmjs.com/package/vcard-parser) [GitHub](https://github.com/Heymdall/vcard)
   (last commit 2018-02-19, a few unit tests, 2-3 issues)
 
@@ -53,11 +53,11 @@ implementation:
 
 The **most interesting** one is ical.js / jsical [NPM](https://www.npmjs.com/package/ical.js) [GitHub](https://github.com/mozilla-comm/ical.js) :
 
-* last release 2 years ago, but regular & recent commits in master
-* a few forks & wrappers
-* has a low-level layer (AST-like, usable on vCard data) and a high-level one (iCal only
+- last release 2 years ago, but regular & recent commits in master
+- a few forks & wrappers
+- has a low-level layer (AST-like, usable on vCard data) and a high-level one (iCal only
   for now)
-* Many tests & samples on the iCal side, less on the vCard one (possibly because the
+- Many tests & samples on the iCal side, less on the vCard one (possibly because the
   high-level layer is not implemented yet)
 
 While it would make sense to use and contribute to ical.js on the long term,
@@ -72,7 +72,7 @@ is not so significant regarding the remaining work.
 The [parsing implementation](./parser.js) will be using cozy-vcard for now,
 including [conversion of the contact documents from v2 to v3](./v2to3.js).
 
-A [reader](./reader.js) interface was introduced to isolate the FileReader
+A [readFile](./readFile.js) function was introduced to isolate the FileReader
 runtime dependency. No maintained Node.js polyfill could be found, and
 introducing globals (or mocking them) is not so great anyway.
 
@@ -84,6 +84,6 @@ See also [known issues](./KNOWN_ISSUES.md).
 
 ## Useful links
 
-* https://tools.ietf.org/html/rfc6350
-* https://en.wikipedia.org/wiki/VCard
-* https://github.com/cozy/cozy-doctypes/blob/master/docs/io.cozy.contacts.md
+- https://tools.ietf.org/html/rfc6350
+- https://en.wikipedia.org/wiki/VCard
+- https://github.com/cozy/cozy-doctypes/blob/master/docs/io.cozy.contacts.md

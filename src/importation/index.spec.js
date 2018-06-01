@@ -1,4 +1,4 @@
-jest.mock("./reader");
+jest.mock("./readFile");
 
 import Importation from ".";
 import Status from "./status";

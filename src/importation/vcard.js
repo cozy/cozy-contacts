@@ -1,6 +1,6 @@
 import VCardParser from "cozy-vcard";
 import _ from "lodash";
-import reader from "./reader";
+import readFile from "./readFile";
 import v2to3 from "./v2to3";
 
 const encoding = "utf8";
@@ -82,7 +82,7 @@ async function importData(data, options) {
 
 async function importFile(file, options) {
   return new Promise((resolve, reject) => {
-    reader.read(file, {
+    readFile(file, {
       encoding,
       onError: reject,
       onLoad: async event => {

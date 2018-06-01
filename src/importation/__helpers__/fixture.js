@@ -13,7 +13,7 @@ function data(relpath) {
   return fs.readFileSync(file(relpath).path, { encoding: "utf-8" });
 }
 
-// Build a fake File from fixture path to be used by ../__mocks__/reader.js
+// Build a fake File from fixture path to be used by ../__mocks__/readFile.js
 function file(relpath) {
   return {
     name: basename(relpath),

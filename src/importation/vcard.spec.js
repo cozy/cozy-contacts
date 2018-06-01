@@ -1,4 +1,4 @@
-jest.mock("./reader");
+jest.mock("./readFile");
 
 import vcard from "./vcard";
 import fixture from "./__helpers__/fixture";
