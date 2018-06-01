@@ -7,13 +7,6 @@ import ContactTransferButton from "./ContactTransferButton";
 import Importation from "../../../importation";
 import Status from "../../../importation/status";
 
-const CLICKABLE_STATUS_SET = new Set([
-  Status.UNCONFIGURED,
-  Status.FILE_ISSUE,
-  Status.PARTIAL_SUCCESS,
-  Status.COMPLETE_FAILURE
-]);
-
 export default class ContactImportationCard extends React.Component {
   render() {
     const {
@@ -28,9 +21,7 @@ export default class ContactImportationCard extends React.Component {
     const retryMessage = retryMessageText(importation, t);
 
     return (
-      <ContactImportationCardWrapper
-        clickable={CLICKABLE_STATUS_SET.has(status)}
-      >
+      <ContactImportationCardWrapper clickable={isCardClickable(status)}>
         <ContactImportationFile
           status={status}
           name={Importation.filename(importation)}
@@ -59,6 +50,17 @@ ContactImportationCard.propTypes = {
 ContactImportationCard.defaultProps = {
   progress: undefined
 };
+
+const CLICKABLE_STATUS_SET = new Set([
+  Status.UNCONFIGURED,
+  Status.FILE_ISSUE,
+  Status.PARTIAL_SUCCESS,
+  Status.COMPLETE_FAILURE
+]);
+
+function isCardClickable(status) {
+  return CLICKABLE_STATUS_SET.has(status);
+}
 
 const DISPLAYED_TRANSFER_BUTTON_STATUS_SET = new Set([
   Status.UNCONFIGURED,
