@@ -7,39 +7,31 @@ import ContactTransferButton from "./ContactTransferButton";
 import Importation from "../../../importation";
 import Status from "../../../importation/status";
 
-export default class ContactImportationCard extends React.Component {
-  render() {
-    const {
-      importation,
-      progress,
-      onFileSelected,
-      onFileUnselected
-    } = this.props;
-    const { status } = importation;
-    const { t } = this.context;
-    const mainMessage = mainMessageText(importation, t);
-    const retryMessage = retryMessageText(importation, t);
+export default function ContactImportationCard(props, { t }) {
+  const { importation, progress, onFileSelected, onFileUnselected } = props;
+  const { status } = importation;
+  const mainMessage = mainMessageText(importation, t);
+  const retryMessage = retryMessageText(importation, t);
 
-    return (
-      <ContactImportationCardWrapper clickable={isCardClickable(status)}>
-        <ContactImportationFile
-          status={status}
-          name={Importation.filename(importation)}
-          unselectAction={onFileUnselected}
-        />
-        {mainMessage && <ContactImportationMessage text={mainMessage} />}
-        {retryMessage && <ContactImportationMessage text={retryMessage} />}
-        {isTransferButtonDisplayed(status) ? (
-          <ContactTransferButton fileAction={onFileSelected} />
-        ) : (
-          isStatusDisplayed(status) && (
-            <span className="importation-status">{t(statusKey(status))}</span>
-          )
-        )}
-        {progress && <progress value={progress.current} max={progress.total} />}
-      </ContactImportationCardWrapper>
-    );
-  }
+  return (
+    <ContactImportationCardWrapper clickable={isCardClickable(status)}>
+      <ContactImportationFile
+        status={status}
+        name={Importation.filename(importation)}
+        unselectAction={onFileUnselected}
+      />
+      {mainMessage && <ContactImportationMessage text={mainMessage} />}
+      {retryMessage && <ContactImportationMessage text={retryMessage} />}
+      {isTransferButtonDisplayed(status) ? (
+        <ContactTransferButton fileAction={onFileSelected} />
+      ) : (
+        isStatusDisplayed(status) && (
+          <span className="importation-status">{t(statusKey(status))}</span>
+        )
+      )}
+      {progress && <progress value={progress.current} max={progress.total} />}
+    </ContactImportationCardWrapper>
+  );
 }
 ContactImportationCard.propTypes = {
   importation: Importation.propType.isRequired,
