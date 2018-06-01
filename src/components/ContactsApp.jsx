@@ -14,7 +14,7 @@ import {
   withContactsMutations
 } from "../connections/allContacts";
 import { getFullContactName } from "../helpers/contacts";
-import ContactImportationModal from "./ContactImportation/ContactImportationModal";
+import ContactImportationModal from "./ContactImportationModal";
 
 const ContactsHeaderWithActions = ({ displayContactForm }, { t }) => (
   <ContactsHeader

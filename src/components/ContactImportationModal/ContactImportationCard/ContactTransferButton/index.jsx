@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Icon } from "cozy-ui/react";
 import ContactImportationStatus from "./ContactImportationStatus";
-import Importation from "../../importation";
-import Status from "../../importation/status";
+import Importation from "../../../../importation";
+import Status from "../../../../importation/status";
 
 const FILE_SELECTION_NEEDED_STATUSES = new Set([
   Status.UNCONFIGURED,

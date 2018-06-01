@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import ContactImportationFile from "./ContactImportationFile";
 import ContactTransferButton from "./ContactTransferButton";
-import Importation from "../../importation";
-import Status from "../../importation/status";
+import Importation from "../../../importation";
+import Status from "../../../importation/status";
 
 const CLICKABLE_STATUS_SET = new Set([
   Status.UNCONFIGURED,

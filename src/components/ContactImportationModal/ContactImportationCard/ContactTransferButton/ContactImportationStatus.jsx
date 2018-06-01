@@ -1,5 +1,5 @@
 import React from "react";
-import Status from "../../importation/status";
+import Status from "../../../../importation/status";
 
 const DISPLAYABLE_STATUS_TRANSLATION_KEYS = {
   [Status.READY]: "importation.ready",

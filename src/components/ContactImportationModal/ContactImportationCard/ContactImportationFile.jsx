@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Icon } from "cozy-ui/react";
-import IconFileVcf from "../../assets/icons/file-vcf.svg";
-import IconFileWrongFormat from "../../assets/icons/file-wrong-format.svg";
-import IconFilePartialImport from "../../assets/icons/file-partial-import.svg";
-import IconFileFailImport from "../../assets/icons/file-fail-import.svg";
-import IconCross from "../../assets/icons/small-cross.svg";
-import Status from "../../importation/status";
+import IconFileVcf from "../../../assets/icons/file-vcf.svg";
+import IconFileWrongFormat from "../../../assets/icons/file-wrong-format.svg";
+import IconFilePartialImport from "../../../assets/icons/file-partial-import.svg";
+import IconFileFailImport from "../../../assets/icons/file-fail-import.svg";
+import IconCross from "../../../assets/icons/small-cross.svg";
+import Status from "../../../importation/status";
 
 function fileIcon(status) {
   switch (status) {
