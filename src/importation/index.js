@@ -18,29 +18,27 @@ const propType = PropTypes.shape({
 
 const VALID_FILE_TYPES = vcard.FILE_TYPES;
 
+const INIT = {
+  status: Status.UNCONFIGURED,
+  file: undefined,
+  fileIssue: undefined,
+  report: undefined
+};
+
 export default {
   EMPTY_FILE,
+  INIT,
   INVALID_FILE_TYPE,
   VALID_FILE_TYPES,
   canRetry,
   canRun,
   filename,
-  init,
   propType,
   run,
   selectFile,
   total,
   unselectFile
 };
-
-function init() {
-  return {
-    status: Status.UNCONFIGURED,
-    file: undefined,
-    fileIssue: undefined,
-    report: undefined
-  };
-}
 
 function filename({ file: { name = undefined } }) {
   return name;

@@ -12,7 +12,7 @@ const ERROR_STATUS_SET = new Set([Status.FILE_ISSUE, Status.COMPLETE_FAILURE]);
 
 class ContactImportationModal extends React.Component {
   state = {
-    importation: Importation.init(),
+    importation: Importation.INIT,
     progress: null
   };
 

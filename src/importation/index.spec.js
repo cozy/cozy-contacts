@@ -7,14 +7,14 @@ import fixture from "./__helpers__/fixture";
 describe("importation", () => {
   describe("init", () => {
     it("is not configured", () => {
-      expect(Importation.init()).toEqual({
+      expect(Importation.INIT).toEqual({
         status: Status.UNCONFIGURED
       });
     });
   });
 
   describe("selectFile", () => {
-    const importation = Importation.init();
+    const importation = Importation.INIT;
 
     it("associates a file with no issue to the importation", () => {
       const file = fixture.validFile();
@@ -101,24 +101,24 @@ describe("importation", () => {
   });
 
   describe("canRun", () => {
-    const { canRun, init, run, selectFile } = Importation;
+    const { INIT, canRun, run, selectFile } = Importation;
     const { validFile, invalidFile } = fixture;
 
     it("is false initially", () => {
-      expect(canRun(init())).toBe(false);
+      expect(canRun(INIT)).toBe(false);
     });
 
     it("is false when invalid file selected", () => {
-      expect(canRun(selectFile(invalidFile(), init()))).toBe(false);
+      expect(canRun(selectFile(invalidFile(), INIT))).toBe(false);
     });
 
     it("is true when valid file selected", () => {
-      expect(canRun(selectFile(validFile(), init()))).toBe(true);
+      expect(canRun(selectFile(validFile(), INIT))).toBe(true);
     });
 
     it("is false when running", async () => {
       const { runningImportation, finishedImportationPromise } = run(
-        selectFile(validFile(), init())
+        selectFile(validFile(), INIT)
       );
       expect(canRun(runningImportation)).toBe(false);
       await finishedImportationPromise;
@@ -126,7 +126,7 @@ describe("importation", () => {
 
     describe("when already run", () => {
       it("is true when importation can be retried – see canRetry() below", async () => {
-        const importation = await run(selectFile(validFile(), init()))
+        const importation = await run(selectFile(validFile(), INIT))
           .finishedImportationPromise;
         const expectCanRun = (bool, reportFields) => {
           const report = {
@@ -152,12 +152,12 @@ describe("importation", () => {
 
   describe("canRetry", () => {
     it("is false when not run", () => {
-      expect(Importation.canRetry(Importation.init())).toBe(false);
+      expect(Importation.canRetry(Importation.INIT)).toBe(false);
     });
 
     it("is true when already run but some contacts could not be saved", async () => {
       const importation = await Importation.run(
-        Importation.selectFile(fixture.validFile(), Importation.init())
+        Importation.selectFile(fixture.validFile(), Importation.INIT)
       ).finishedImportationPromise;
       const expectCanRetry = (bool, reportFields) => {
         const report = {
