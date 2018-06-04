@@ -1948,7 +1948,7 @@ cozy-ui@9.1.0:
     react-select "2.0.0-alpha.7"
     stylus "^0.54.5"
 
-cozy-vcard@^0.2.18:
+cozy-vcard@0.2.18:
   version "0.2.18"
   resolved "https://registry.yarnpkg.com/cozy-vcard/-/cozy-vcard-0.2.18.tgz#9f4147da175fafca86475ddc7e212b989bdc0542"
   dependencies:
