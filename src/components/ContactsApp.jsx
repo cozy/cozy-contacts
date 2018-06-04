@@ -14,6 +14,7 @@ import {
   withContactsMutations
 } from "../connections/allContacts";
 import { getFullContactName } from "../helpers/contacts";
+import ContactImportationModal from "./ContactImportationModal";
 
 const ContactsHeaderWithActions = ({ displayContactForm }, { t }) => (
   <ContactsHeader
@@ -73,7 +74,20 @@ SelectionBarWithActions.propTypes = {
 class ContactsApp extends React.Component {
   state = {
     displayedContact: null,
+    isImportationDisplayed: false,
     isCreationFormDisplayed: false
+  };
+
+  displayImportation = () => {
+    this.setState({
+      isImportationDisplayed: true
+    });
+  };
+
+  hideImportation = () => {
+    this.setState({
+      isImportationDisplayed: false
+    });
   };
 
   displayContactCard = contact => {
@@ -133,7 +147,11 @@ class ContactsApp extends React.Component {
   }
 
   render() {
-    const { displayedContact, isCreationFormDisplayed } = this.state;
+    const {
+      displayedContact,
+      isImportationDisplayed,
+      isCreationFormDisplayed
+    } = this.state;
     const { t } = this.context;
     const { contacts, selection, toggleSelection, clearSelection } = this.props;
 
@@ -155,8 +173,12 @@ class ContactsApp extends React.Component {
             onClickContact={this.displayContactCard}
             onSelect={toggleSelection}
             selection={selection}
+            displayImportation={this.displayImportation}
           />
         </div>
+        {isImportationDisplayed && (
+          <ContactImportationModal closeAction={this.hideImportation} />
+        )}
         {displayedContact && (
           <ContactCardModal
             onClose={this.hideContactCard}
