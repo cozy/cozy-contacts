@@ -67,6 +67,6 @@
     "preact": "8.2.9",
     "preact-compat": "3.18.0",
     "react-final-form": "3.2.1",
-    "react-final-form-arrays": "1.0.4"
+    "react-final-form-arrays": "1.0.6"
   }
 }
