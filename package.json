@@ -1,6 +1,6 @@
 {
   "name": "cozy-contacts",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "scripts": {
     "precommit": "pretty-quick --staged",
     "clean": "rm -rf build/*",
