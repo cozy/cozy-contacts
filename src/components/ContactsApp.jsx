@@ -9,6 +9,7 @@ import ContactsIntentButton from "./Buttons/ContactsIntentButton";
 import ContactCardModal from "./Modals/ContactCardModal";
 import ContactFormModal from "./Modals/ContactFormModal";
 import { SelectionBar, Alerter } from "cozy-ui/react";
+import { Main, Content } from "cozy-ui/react/Layout";
 import {
   withContacts,
   withContactsMutations
@@ -156,7 +157,7 @@ class ContactsApp extends React.Component {
     const { contacts, selection, toggleSelection, clearSelection } = this.props;
 
     return (
-      <main className="app-content">
+      <Main>
         {selection.length > 0 && (
           <SelectionBarWithActions
             selected={selection}
@@ -167,7 +168,7 @@ class ContactsApp extends React.Component {
         <ContactsHeaderWithActions
           displayContactForm={this.displayContactForm}
         />
-        <div role="contentinfo">
+        <Content>
           <ContactsList
             contacts={contacts}
             onClickContact={this.displayContactCard}
@@ -175,7 +176,7 @@ class ContactsApp extends React.Component {
             selection={selection}
             displayImportation={this.displayImportation}
           />
-        </div>
+        </Content>
         {isImportationDisplayed && (
           <ContactImportationModal closeAction={this.hideImportation} />
         )}
@@ -194,7 +195,7 @@ class ContactsApp extends React.Component {
           />
         )}
         <Alerter t={t} />
-      </main>
+      </Main>
     );
   }
 }

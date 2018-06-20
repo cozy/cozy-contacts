@@ -1,10 +1,11 @@
 import React from "react";
 import ContactsApp from "./ContactsApp";
+import { Layout } from "cozy-ui/react/Layout";
 
 const App = () => (
-  <div className="app-wrapper c-layout">
+  <Layout monocolumn>
     <ContactsApp />
-  </div>
+  </Layout>
 );
 
 export default App;
