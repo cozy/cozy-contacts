@@ -14,6 +14,7 @@
     "url": "https://cozy.io"
   },
   "default_locale": "en",
+  "langs": ["en", "fr"],
   "locales": {
     "en": {
       "short_description": "Cozy Contacts helps you to save and secure your contacts on your Cozy.",
