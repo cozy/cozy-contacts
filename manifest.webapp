@@ -6,7 +6,7 @@
   "icon": "icon.svg",
   "description": "Contact manager for Cozy Cloud",
   "category": "cozy",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "licence": "AGPL-3.0",
   "source": "https://github.com/cozy/cozy-contacts.git@build",
   "developer": {
@@ -18,6 +18,11 @@
     "en": {},
     "fr": {}
   },
+  "screenshots": [
+    "screenshots/fr/screenshot01.png",
+    "screenshots/fr/screenshot02.png",
+    "screenshots/fr/screenshot03.png"
+  ],
   "routes": {
     "/": {
       "folder": "/",
