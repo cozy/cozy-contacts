@@ -33,13 +33,14 @@ exports[`ContactCard should match snapshot 1`] = `
         className="contact-card-identity__groups"
       >
         <div
-          className="react-select__container css-1c6nt7d"
+          className="css-1yebww6"
+          id={undefined}
           onKeyDown={[Function]}
         >
           <span
             aria-atomic="true"
             aria-live="polite"
-            className="css-17l7ekz"
+            className="css-1uvvha"
             role="status"
           >
             0 results available.
@@ -90,39 +91,39 @@ exports[`ContactCard should match snapshot 1`] = `
               className="select-control__input"
             >
               <div
-                className="react-select__value-container react-select__value-container--isMulti css-12sevwg"
+                className="css-nfppcf"
               >
                 <div
-                  className="react-select__placeholder css-16ucli7"
+                  className="css-1492t68"
                 >
                   Select...
                 </div>
                 <input
-                  className="css-hg63qv"
+                  className="css-14uuagi"
+                  id="react-select-2-input"
                   onBlur={[Function]}
                   onChange={[Function]}
                   onFocus={[Function]}
                   readOnly={true}
+                  tabIndex="0"
                   value=""
                 />
               </div>
               <div
-                className="react-select__indicators css-1lfa1d8"
+                className="css-1wy0on6"
               >
                 <span
-                  className="react-select__indicator-separator css-1hq2z0s"
-                  css={undefined}
+                  className="css-1hyfx7x"
                   role="presentation"
                 />
                 <div
-                  className="react-select__indicator react-select__dropdown-indicator css-1k2060c"
-                  css={undefined}
+                  className="css-1j9smtq"
                   onMouseDown={[Function]}
                   onTouchEnd={[Function]}
                   role="button"
                 >
                   <svg
-                    className="react-select__icon react-select__down-icon css-qyb9b"
+                    className="css-19bqh2r"
                     focusable="false"
                     height={20}
                     role="presentation"
