@@ -14,10 +14,6 @@
     "url": "https://cozy.io"
   },
   "default_locale": "en",
-  "locales": {
-    "en": {},
-    "fr": {}
-  },
   "screenshots": [
     "screenshots/fr/screenshot01.png",
     "screenshots/fr/screenshot02.png",
@@ -74,6 +70,18 @@
       "href": "/services"
     }
   ],
+  "locales": {
+    "en": {
+      "name": "Contacts",
+      "short_description": "Cozy Contacts helps you to save and secure your contacts on your Cozy.",
+      "long_description": "With Cozy Contacts you can:\n- Add, modify and sort your contacts.\n- Imports all your contacts from Google, Facebook and more."
+    },
+    "fr": {
+      "name": "Contacts",
+      "short_description": "Cozy Contacts est l’application de sauvegarde et de sécurisation de tous vos contacts sur votre Cozy.",
+      "long_description": "Avec Cozy Contacts vous pourrez :\n- Ajouter, modifier et trier vos contacts,\n- Importer tous vos contacts depuis Google, Facebook et bientôt d'autres sources."
+    }
+  },
   "langs": [
     "en",
     "fr"
