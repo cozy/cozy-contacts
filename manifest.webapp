@@ -10,7 +10,7 @@
   "licence": "AGPL-3.0",
   "source": "https://github.com/cozy/cozy-contacts.git@build",
   "developer": {
-    "name": "cozy",
+    "name": "Cozy Cloud",
     "url": "https://cozy.io"
   },
   "default_locale": "en",
