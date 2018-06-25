@@ -1,6 +1,6 @@
 {
   "name": "cozy-contacts",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "scripts": {
     "precommit": "pretty-quick --staged",
     "clean": "rm -rf build/*",
@@ -44,7 +44,7 @@
     "babel-preset-cozy-app": "0.8.0",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
-    "eslint": "4.19.1",
+    "eslint": "5.0.0",
     "eslint-config-prettier": "2.9.0",
     "eslint-loader": "2.0.0",
     "eslint-plugin-react": "7.7.0",
