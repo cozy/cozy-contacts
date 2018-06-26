@@ -9,6 +9,9 @@ import palette from "cozy-ui/stylus/settings/palette.json";
 
 const IconTeam = "upload";
 
+const vcardEnabled =
+  new URL(window.location).searchParams.get("enablevcardimport") !== null;
+
 export default class ContactsEmptyList extends React.Component {
   state = {
     hasConnector: false
@@ -57,7 +60,7 @@ export default class ContactsEmptyList extends React.Component {
                 />
               </IntentOpener>
             </span>
-            {false && (
+            {vcardEnabled && (
               <span className="contacts-empty-action">
                 <Button
                   className="contacts-empty-button"
