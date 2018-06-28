@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Icon } from "cozy-ui/react";
+import palette from "cozy-ui/stylus/settings/palette.json";
 import IconFileVcf from "../../../assets/icons/file-vcf.svg";
 import IconFileWrongFormat from "../../../assets/icons/file-wrong-format.svg";
 import IconFilePartialImport from "../../../assets/icons/file-partial-import.svg";
@@ -34,8 +35,16 @@ export default function ImportationFile({ status, name, unselectAction }) {
         <span className="importation-file-name">
           {name}
           {UNSELECTABLE_FILE_STATUS_SET.has(status) && (
-            <button className="importation-file-oval" onClick={unselectAction}>
-              <Icon className="importation-file-cross" icon={IconCross} />
+            <button
+              className="importation-file-oval"
+              onClick={e => unselectAction(e)}
+            >
+              <Icon
+                icon={IconCross}
+                color={palette["coolGrey"]}
+                width="10"
+                height="10"
+              />
             </button>
           )}
         </span>
