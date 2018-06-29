@@ -6,7 +6,7 @@ import v2to3 from "./v2to3";
 
 describe("importation/vcard", () => {
   const savedContacts = [];
-  const save = async contact => savedContacts.push(contact);
+  const save = contact => savedContacts.push(contact);
 
   beforeEach(() => {
     savedContacts.length = 0;
