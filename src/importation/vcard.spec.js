@@ -99,5 +99,25 @@ describe("importation/vcard", () => {
         ]
       });
     });
+
+    test("import datapoints label", async () => {
+      const contacts = [];
+      const data = fixture.data("datapoints.vcf");
+      const report = await vcard.importData(data, {
+        save: c => contacts.push(c)
+      });
+      expect(report).toMatchObject({
+        total: 1,
+        imported: 1
+      });
+      expect(contacts[0].email).toContainEqual({
+        address: "jean.neige@cozy.tools",
+        type: "complet"
+      });
+      expect(contacts[0].phone).toContainEqual({
+        number: "9999999999",
+        type: "complet"
+      });
+    });
   });
 });
