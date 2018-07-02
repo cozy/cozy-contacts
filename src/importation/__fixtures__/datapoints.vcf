@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Jean Neige
+N:Neige;Jean;;;
+EMAIL;TYPE=INTERNET;TYPE=WORK:jean@cozy.tools
+EMAIL;TYPE=INTERNET;TYPE=HOME:neige@cozy.tools
+item1.EMAIL;TYPE=INTERNET:jean.neige@cozy.tools
+item1.X-ABLabel:complet
+TEL;TYPE=WORK:0123456789
+TEL;TYPE=CELL:0987654321
+item2.TEL:9999999999
+item2.X-ABLabel:complet
+END:VCARD

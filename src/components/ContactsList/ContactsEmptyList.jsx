@@ -9,6 +9,9 @@ import palette from "cozy-ui/stylus/settings/palette.json";
 
 const IconTeam = "upload";
 
+const vcardEnabled =
+  new URL(window.location).searchParams.get("enablevcardimport") !== null;
+
 export default class ContactsEmptyList extends React.Component {
   state = {
     hasConnector: false
@@ -16,6 +19,7 @@ export default class ContactsEmptyList extends React.Component {
 
   componentWillMount() {
     // cozy-client-js is needed for intents
+    // we should refactor to not duplicate initialization code (see src/targets/browser/index.jsx)
     const root = document.querySelector("[role=application]");
     const data = root.dataset;
     cozy.client.init({
@@ -57,7 +61,7 @@ export default class ContactsEmptyList extends React.Component {
                 />
               </IntentOpener>
             </span>
-            {false && (
+            {vcardEnabled && (
               <span className="contacts-empty-action">
                 <Button
                   className="contacts-empty-button"
