@@ -1,17 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Icon from "cozy-ui/react/Icon";
-import palette from "cozy-ui/stylus/settings/palette.json";
-import { translate } from "cozy-ui/react/I18n";
+import React from 'react'
+import PropTypes from 'prop-types'
+import Icon from 'cozy-ui/react/Icon'
+import palette from 'cozy-ui/stylus/settings/palette.json'
+import { translate } from 'cozy-ui/react/I18n'
 
-import IconBirthday from "../../assets/icons/calendar.svg";
-import IconNote from "../../assets/icons/comment.svg";
-import IconCompany from "../../assets/icons/company.svg";
-import IconCozy from "../../assets/icons/cozy.svg";
-import IconEmail from "../../assets/icons/email.svg";
-import IconFlag from "../../assets/icons/flag.svg";
-import IconAddress from "../../assets/icons/location.svg";
-import IconPhone from "../../assets/icons/phone-number.svg";
+import IconBirthday from '../../assets/icons/calendar.svg'
+import IconNote from '../../assets/icons/comment.svg'
+import IconCompany from '../../assets/icons/company.svg'
+import IconCozy from '../../assets/icons/cozy.svg'
+import IconEmail from '../../assets/icons/email.svg'
+import IconFlag from '../../assets/icons/flag.svg'
+import IconAddress from '../../assets/icons/location.svg'
+import IconPhone from '../../assets/icons/phone-number.svg'
 
 const ContactFields = ({ fields, title }) => (
   <div>
@@ -24,7 +24,7 @@ const ContactFields = ({ fields, title }) => (
       ))}
     </ol>
   </div>
-);
+)
 
 ContactFields.propTypes = {
   fields: PropTypes.arrayOf(
@@ -34,12 +34,12 @@ ContactFields.propTypes = {
     })
   ),
   title: PropTypes.string
-};
+}
 
 const ContactField = ({ type, values }) => (
   <div className="contact-field">
     <div className="contact-field-icon">
-      <Icon icon={getIcon(type)} color={palette["coolGrey"]} />
+      <Icon icon={getIcon(type)} color={palette['coolGrey']} />
     </div>
     <div>
       {values.map((value, index) => (
@@ -47,16 +47,16 @@ const ContactField = ({ type, values }) => (
       ))}
     </div>
   </div>
-);
+)
 
 ContactField.propTypes = {
   type: PropTypes.string.isRequired,
   values: PropTypes.array.isRequired
-};
+}
 
 const FieldValue = ({ type, value, t, f }) => {
-  const renderedValue = renderFieldValue(value, type, t, f);
-  const label = value.type || value.label || null;
+  const renderedValue = renderFieldValue(value, type, t, f)
+  const label = value.type || value.label || null
 
   return (
     <div className="contact-field-value">
@@ -64,8 +64,8 @@ const FieldValue = ({ type, value, t, f }) => {
       {label && <span className="contact-field-separator">·</span>}
       {label && <span className="contact-field-label">{label}</span>}
     </div>
-  );
-};
+  )
+}
 
 FieldValue.propTypes = {
   type: PropTypes.string.isRequired,
@@ -76,9 +76,9 @@ FieldValue.propTypes = {
   ]),
   t: PropTypes.func.isRequired,
   f: PropTypes.func.isRequired
-};
+}
 
-const FieldValueWithI18n = translate()(FieldValue);
+const FieldValueWithI18n = translate()(FieldValue)
 
 const iconsByType = {
   birthday: IconBirthday,
@@ -88,40 +88,40 @@ const iconsByType = {
   email: IconEmail,
   address: IconAddress,
   phone: IconPhone
-};
+}
 
-const getIcon = fieldType => iconsByType[fieldType] || IconFlag;
+const getIcon = fieldType => iconsByType[fieldType] || IconFlag
 
 const emptyAddress = {
-  street: "",
-  pobox: "",
-  city: "",
-  region: "",
-  postcode: "",
-  country: ""
-};
+  street: '',
+  pobox: '',
+  city: '',
+  region: '',
+  postcode: '',
+  country: ''
+}
 
 const renderFieldValue = (value, type, t, f) => {
-  if (!value) return false;
-  if (type === "birthday") return f(new Date(value), "YYYY-M-D");
-  if (typeof value !== "object") return value.toString();
+  if (!value) return false
+  if (type === 'birthday') return f(new Date(value), 'YYYY-M-D')
+  if (typeof value !== 'object') return value.toString()
 
   switch (type) {
-    case "address":
+    case 'address':
       return value.formattedAddress
         ? value.formattedAddress
-        : t("formatted_address", { ...emptyAddress, ...value }).trim();
-    case "email":
-      return <a href={`mailto:${value.address}`}>{value.address}</a>;
-    case "phone":
-      return <a href={`tel:${value.number}`}>{value.number}</a>;
-    case "cozy":
-      return value.url;
+        : t('formatted_address', { ...emptyAddress, ...value }).trim()
+    case 'email':
+      return <a href={`mailto:${value.address}`}>{value.address}</a>
+    case 'phone':
+      return <a href={`tel:${value.number}`}>{value.number}</a>
+    case 'cozy':
+      return value.url
     default:
       return Object.keys(value)
         .map(label => `${label}: ${value[label]}`)
-        .join(", ");
+        .join(', ')
   }
-};
+}
 
-export default ContactFields;
+export default ContactFields

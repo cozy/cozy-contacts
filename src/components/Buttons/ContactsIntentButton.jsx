@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Button, IntentOpener } from "cozy-ui/react";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Button, IntentOpener } from 'cozy-ui/react'
 
 const ContactsIntentButton = ({ label, action, data }) => (
   <div>
     <IntentOpener
       onComplete={res => {
-        alert(`intent has completed: ${JSON.stringify(res)}`);
+        alert(`intent has completed: ${JSON.stringify(res)}`)
       }}
       onDismiss={() => {}}
       action={action}
@@ -17,16 +17,16 @@ const ContactsIntentButton = ({ label, action, data }) => (
       <Button label={label} />
     </IntentOpener>
   </div>
-);
+)
 ContactsIntentButton.propTypes = {
   label: PropTypes.string,
   action: PropTypes.string,
   data: PropTypes.object
-};
+}
 ContactsIntentButton.defaultProps = {
-  label: "Select a Contact",
-  action: "PICK",
+  label: 'Select a Contact',
+  action: 'PICK',
   data: {}
-};
+}
 
-export default ContactsIntentButton;
+export default ContactsIntentButton

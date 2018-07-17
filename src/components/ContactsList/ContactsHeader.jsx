@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const ContactsFilter = () => (
   <div>
@@ -11,16 +11,16 @@ const ContactsFilter = () => (
       <option value="value3">Value 3</option>
     </select>
   </div>
-);
+)
 
 const ContactsHeader = ({ renderActions }) => (
   <div className="topbar">
     <div className="topbar__left">{false && <ContactsFilter />}</div>
     <div className="topbar__right">{renderActions()}</div>
   </div>
-);
+)
 ContactsHeader.propTypes = {
   renderActions: PropTypes.func.isRequired
-};
+}
 
-export default ContactsHeader;
+export default ContactsHeader

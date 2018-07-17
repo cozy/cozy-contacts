@@ -1,81 +1,81 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Form } from "react-final-form";
-import arrayMutators from "final-form-arrays";
-import ContactFormField from "./ContactFormField";
-import ContactFieldInput from "./ContactFieldInput";
-import { Button } from "cozy-ui/react/Button";
-import { translate } from "cozy-ui/react/I18n";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Form } from 'react-final-form'
+import arrayMutators from 'final-form-arrays'
+import ContactFormField from './ContactFormField'
+import ContactFieldInput from './ContactFieldInput'
+import { Button } from 'cozy-ui/react/Button'
+import { translate } from 'cozy-ui/react/I18n'
 
-import IconEmail from "../../assets/icons/email.svg";
-import IconPhone from "../../assets/icons/phone-number.svg";
-import IconAddress from "../../assets/icons/location.svg";
-import IconCozy from "../../assets/icons/cozy.svg";
-import IconCompany from "../../assets/icons/company.svg";
-import IconBirthday from "../../assets/icons/calendar.svg";
-import IconNote from "../../assets/icons/comment.svg";
+import IconEmail from '../../assets/icons/email.svg'
+import IconPhone from '../../assets/icons/phone-number.svg'
+import IconAddress from '../../assets/icons/location.svg'
+import IconCozy from '../../assets/icons/cozy.svg'
+import IconCompany from '../../assets/icons/company.svg'
+import IconBirthday from '../../assets/icons/calendar.svg'
+import IconNote from '../../assets/icons/comment.svg'
 
 const fields = [
   {
-    name: "givenName",
+    name: 'givenName',
     icon: null,
-    type: "text"
+    type: 'text'
   },
   {
-    name: "familyName",
+    name: 'familyName',
     icon: null,
-    type: "text",
+    type: 'text',
     required: true
   },
   {
-    name: "phone",
+    name: 'phone',
     icon: IconPhone,
-    type: "tel",
+    type: 'tel',
     hasLabel: true,
     isArray: true
   },
   {
-    name: "email",
+    name: 'email',
     icon: IconEmail,
-    type: "email",
+    type: 'email',
     hasLabel: true,
     isArray: true
   },
   {
-    name: "address",
+    name: 'address',
     icon: IconAddress,
-    type: "text",
+    type: 'text',
     hasLabel: true,
     isArray: true
   },
   {
-    name: "cozy",
+    name: 'cozy',
     icon: IconCozy,
-    type: "url",
+    type: 'url',
     hasLabel: true
   },
   {
-    name: "company",
+    name: 'company',
     icon: IconCompany,
-    type: "text"
+    type: 'text'
   },
   {
-    name: "birthday",
+    name: 'birthday',
     icon: IconBirthday,
-    type: "date"
+    type: 'date'
   },
   {
-    name: "note",
+    name: 'note',
     icon: IconNote,
-    type: "textarea"
+    type: 'textarea'
   }
-];
+]
 
 // initialize the form values, required so that array fields start with at least one editable field
 const initialFieldValues = fields.reduce((initialValues, { name, isArray }) => {
-  initialValues[name] = isArray ? [undefined] : undefined;
-  return initialValues;
-}, {});
+  initialValues[name] = isArray ? [undefined] : undefined
+  return initialValues
+}, {})
 
 class ContactForm extends React.Component {
   formDataToContact = data => {
@@ -89,9 +89,9 @@ class ContactForm extends React.Component {
       company,
       birthday,
       note
-    } = data;
+    } = data
 
-    const fullName = (givenName || "") + " " + (familyName || "");
+    const fullName = (givenName || '') + ' ' + (familyName || '')
 
     const contact = {
       fullname: fullName.trim(),
@@ -121,7 +121,7 @@ class ContactForm extends React.Component {
         ? [
             {
               url: cozy,
-              label: data["cozyLabel"],
+              label: data['cozyLabel'],
               primary: true
             }
           ]
@@ -133,13 +133,13 @@ class ContactForm extends React.Component {
         version: 1,
         cozy: true
       }
-    };
+    }
 
-    this.props.onSubmit(contact);
-  };
+    this.props.onSubmit(contact)
+  }
 
   render() {
-    const { onCancel, t } = this.props;
+    const { onCancel, t } = this.props
     return (
       <Form
         mutators={{ ...arrayMutators }}
@@ -164,7 +164,7 @@ class ContactForm extends React.Component {
                           placeholder={t(`placeholder.${name}`)}
                           required={required}
                           withLabel={hasLabel}
-                          labelPlaceholder={t("placeholder.label")}
+                          labelPlaceholder={t('placeholder.label')}
                         />
                       )}
                     />
@@ -177,17 +177,17 @@ class ContactForm extends React.Component {
                   <Button
                     type="button"
                     theme="secondary"
-                    label={t("cancel")}
+                    label={t('cancel')}
                     onClick={onCancel}
                   />
-                  <Button type="submit" label={t("save")} />
+                  <Button type="submit" label={t('save')} />
                 </div>
               </div>
             </form>
           </div>
         )}
       />
-    );
+    )
   }
 }
 
@@ -195,6 +195,6 @@ ContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired
-};
+}
 
-export default translate()(ContactForm);
+export default translate()(ContactForm)

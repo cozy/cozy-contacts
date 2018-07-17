@@ -1,30 +1,30 @@
-import VCardParser from "cozy-vcard";
-import _ from "lodash";
-import readFile from "./readFile";
-import v2to3 from "./v2to3";
+import VCardParser from 'cozy-vcard'
+import _ from 'lodash'
+import readFile from './readFile'
+import v2to3 from './v2to3'
 
-const encoding = "utf8";
+const encoding = 'utf8'
 
 const FILE_TYPES = [
-  "text/vcard",
-  "text/x-vcard" // Deprecated as of vCard 4.0
-];
+  'text/vcard',
+  'text/x-vcard' // Deprecated as of vCard 4.0
+]
 
 export default {
   FILE_TYPES,
   importData,
   importFile
-};
+}
 
 const defaults = {
   parse: data => {
-    const parser = new VCardParser(data);
-    return parser.contacts;
+    const parser = new VCardParser(data)
+    return parser.contacts
   },
   transform: contact => v2to3.contact(contact),
   save: async () => {},
   onProgress: () => {}
-};
+}
 
 async function importData(data, options) {
   // 0. Configure
@@ -32,44 +32,44 @@ async function importData(data, options) {
     {},
     options,
     defaults
-  );
+  )
 
   // 1. Parse
-  let contacts;
+  let contacts
   try {
-    contacts = parse(data);
+    contacts = parse(data)
   } catch (parseError) {
-    return { parseError };
+    return { parseError }
   }
 
   // 2. Iterate
-  const total = contacts.length;
-  const skipped = [];
-  let unsaved = 0;
+  const total = contacts.length
+  const skipped = []
+  let unsaved = 0
 
   for (let n = 0; n < total; n++) {
-    onProgress({ current: n, total });
-    const contact = contacts[n];
+    onProgress({ current: n, total })
+    const contact = contacts[n]
 
     // 2.a. Transform
-    let transformedContact;
+    let transformedContact
     try {
-      transformedContact = transform(contact);
+      transformedContact = transform(contact)
     } catch (transformError) {
-      skipped.push({ contact, transformError });
-      continue;
+      skipped.push({ contact, transformError })
+      continue
     }
 
     // 2.b. Save
     try {
-      await save(transformedContact);
+      await save(transformedContact)
     } catch (saveError) {
-      unsaved++;
-      skipped.push({ contact, saveError });
-      continue;
+      unsaved++
+      skipped.push({ contact, saveError })
+      continue
     }
   }
-  onProgress({ current: total, total });
+  onProgress({ current: total, total })
 
   // 3. Report
   return {
@@ -77,7 +77,7 @@ async function importData(data, options) {
     skipped,
     total,
     unsaved
-  };
+  }
 }
 
 async function importFile(file, options) {
@@ -86,8 +86,8 @@ async function importFile(file, options) {
       encoding,
       onError: reject,
       onLoad: async event => {
-        resolve(await importData(event.target.result, options));
+        resolve(await importData(event.target.result, options))
       }
-    });
-  });
+    })
+  })
 }

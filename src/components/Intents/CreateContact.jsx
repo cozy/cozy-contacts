@@ -1,26 +1,26 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { translate } from "cozy-ui/react/I18n";
-import { IntentHeader } from "cozy-ui/react";
-import ContactForm from "../ContactCard/ContactForm";
-import { withContactsMutations } from "../../connections/allContacts";
-import IntentMain from "./IntentMain";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { translate } from 'cozy-ui/react/I18n'
+import { IntentHeader } from 'cozy-ui/react'
+import ContactForm from '../ContactCard/ContactForm'
+import { withContactsMutations } from '../../connections/allContacts'
+import IntentMain from './IntentMain'
 
 class CreateContact extends React.Component {
   createContact = async contact => {
     try {
-      const me = !!this.props.data.me;
-      if (me) contact.metadata.me = true;
-      const resp = await this.props.createContact(contact);
-      this.props.onTerminate(resp.data);
+      const me = !!this.props.data.me
+      if (me) contact.metadata.me = true
+      const resp = await this.props.createContact(contact)
+      this.props.onTerminate(resp.data)
     } catch (e) {
-      this.props.onError("Could not create contact");
+      this.props.onError('Could not create contact')
     }
-  };
+  }
 
   cancel = () => {
-    this.props.onCancel();
-  };
+    this.props.onCancel()
+  }
 
   render() {
     return (
@@ -32,7 +32,7 @@ class CreateContact extends React.Component {
           </div>
         </IntentMain>
       </div>
-    );
+    )
   }
 }
 CreateContact.propTypes = {
@@ -41,9 +41,9 @@ CreateContact.propTypes = {
   onCancel: PropTypes.func.isRequired,
   onError: PropTypes.func.isRequired,
   createContact: PropTypes.func.isRequired
-};
+}
 CreateContact.defaultProps = {
   data: {}
-};
+}
 
-export default translate()(withContactsMutations(CreateContact));
+export default translate()(withContactsMutations(CreateContact))

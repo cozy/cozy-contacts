@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types'
 
 const contactPropTypes = {
   phone: PropTypes.shape({
@@ -44,7 +44,7 @@ const contactPropTypes = {
     cozy: PropTypes.bool,
     me: PropTypes.bool
   })
-};
+}
 
 export const fullContactPropTypes = PropTypes.shape({
   name: contactPropTypes.name,
@@ -54,6 +54,6 @@ export const fullContactPropTypes = PropTypes.shape({
   cozy: PropTypes.arrayOf(contactPropTypes.cozy),
   birthday: contactPropTypes.birthday,
   note: contactPropTypes.note
-});
+})
 
-export default contactPropTypes;
+export default contactPropTypes

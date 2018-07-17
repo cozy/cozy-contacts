@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import contactPropTypes from "../ContactPropTypes";
-import { Avatar } from "cozy-ui/react/Avatar";
-import { getInitials } from "../../helpers/contacts";
+import React from 'react'
+import PropTypes from 'prop-types'
+import contactPropTypes from '../ContactPropTypes'
+import { Avatar } from 'cozy-ui/react/Avatar'
+import { getInitials } from '../../helpers/contacts'
 
 const ContactIdentity = ({ name, myself }) => (
   <div className="contact-identity">
@@ -10,14 +10,14 @@ const ContactIdentity = ({ name, myself }) => (
     <ContactName firstname={name.givenName} lastname={name.familyName} />
     {myself && <MyselfMarker />}
   </div>
-);
+)
 ContactIdentity.propTypes = {
   name: contactPropTypes.name.isRequired,
   myself: PropTypes.bool
-};
+}
 ContactIdentity.defaultProps = {
   myself: false
-};
+}
 
 const ContactName = ({ firstname, lastname }) => (
   <div>
@@ -25,51 +25,46 @@ const ContactName = ({ firstname, lastname }) => (
     &nbsp;
     <span className="contact-lastname">{lastname}</span>
   </div>
-);
+)
 ContactName.propTypes = {
   firstname: PropTypes.string,
   lastname: PropTypes.string,
   me: PropTypes.bool
-};
+}
 ContactName.defaultProps = {
-  firstname: "",
-  lastname: "",
+  firstname: '',
+  lastname: '',
   me: false
-};
+}
 
 const MyselfMarker = (props, { t }) => (
-  <span className="contact-myself">({t("me")})</span>
-);
+  <span className="contact-myself">({t('me')})</span>
+)
 
-const ContactPhone = ({ phone }) => (
-  <div className="contact-phone">{phone}</div>
-);
+const ContactPhone = ({ phone }) => <div className="contact-phone">{phone}</div>
 ContactPhone.propTypes = {
   phone: PropTypes.string
-};
+}
 ContactPhone.defaultProps = {
-  phone: "—"
-};
+  phone: '—'
+}
 
-const getPrimaryOrFirst = (arr = [{}]) =>
-  arr.find(obj => obj.primary) || arr[0];
+const getPrimaryOrFirst = (arr = [{}]) => arr.find(obj => obj.primary) || arr[0]
 
-const ContactEmail = ({ email }) => (
-  <div className="contact-email">{email}</div>
-);
+const ContactEmail = ({ email }) => <div className="contact-email">{email}</div>
 ContactEmail.propTypes = {
   email: PropTypes.string
-};
+}
 ContactEmail.defaultProps = {
-  email: "—"
-};
+  email: '—'
+}
 
 const ContactSelection = props => (
   <div
     className="contact-selection"
     onClick={e => {
-      e.stopPropagation();
-      props.onSelect(e);
+      e.stopPropagation()
+      props.onSelect(e)
     }}
   >
     <span data-input="checkbox">
@@ -77,21 +72,21 @@ const ContactSelection = props => (
       <label />
     </span>
   </div>
-);
+)
 ContactSelection.propTypes = {
   selected: PropTypes.bool.isRequired,
   onSelect: PropTypes.func.isRequired
-};
+}
 
 const ContactRow = props => {
   const { number: phone } = getPrimaryOrFirst(props.contact.phone) || {
     number: undefined
-  };
+  }
   const { address: email } = getPrimaryOrFirst(props.contact.email) || {
     address: undefined
-  };
-  const name = props.contact.name || {};
-  const isMyself = props.contact.metadata ? !!props.contact.metadata.me : false;
+  }
+  const name = props.contact.name || {}
+  const isMyself = props.contact.metadata ? !!props.contact.metadata.me : false
   return (
     <div className="contact" onClick={props.onClick}>
       {props.selection && (
@@ -104,8 +99,8 @@ const ContactRow = props => {
       <ContactPhone phone={phone} />
       <ContactEmail email={email} />
     </div>
-  );
-};
+  )
+}
 ContactRow.propTypes = {
   contact: PropTypes.shape({
     name: contactPropTypes.name,
@@ -118,10 +113,10 @@ ContactRow.propTypes = {
     onSelect: PropTypes.func
   }),
   onClick: PropTypes.func
-};
+}
 ContactRow.defaultProps = {
   selection: null,
   onClick: null
-};
+}
 
-export default ContactRow;
+export default ContactRow
