@@ -1,8 +1,8 @@
-import React from "react";
-import { PropTypes } from "prop-types";
-import { withContactsMutations } from "../../connections/allContacts";
-import Modal, { ModalHeader, ModalDescription } from "cozy-ui/react/Modal";
-import ContactForm from "../ContactCard/ContactForm";
+import React from 'react'
+import { PropTypes } from 'prop-types'
+import { withContactsMutations } from '../../connections/allContacts'
+import Modal, { ModalHeader, ModalDescription } from 'cozy-ui/react/Modal'
+import ContactForm from '../ContactCard/ContactForm'
 
 const ContactFormModal = ({
   onClose,
@@ -26,12 +26,12 @@ const ContactFormModal = ({
       />
     </ModalDescription>
   </Modal>
-);
+)
 ContactFormModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   createContact: PropTypes.func.isRequired,
   onCreateContact: PropTypes.func.isRequired
-};
+}
 
-export default withContactsMutations(ContactFormModal);
+export default withContactsMutations(ContactFormModal)

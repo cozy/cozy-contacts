@@ -8,8 +8,8 @@
 // - When non-array function name inadvertently matches as v3 array property
 //   (e.g. address), prefix function name with `single*`.
 
-import _ from "lodash";
-import { isBlank, trimObject } from "./utils";
+import _ from 'lodash'
+import { isBlank, trimObject } from './utils'
 
 export default {
   addressArray,
@@ -23,7 +23,7 @@ export default {
   singleAddress,
   typeArray,
   typeWithoutPref
-};
+}
 
 function contact(v2) {
   return trimObject({
@@ -39,32 +39,32 @@ function contact(v2) {
     metadata: {
       version: 1
     }
-  });
+  })
 }
 
 const nameAttributes = [
-  "familyName",
-  "givenName",
-  "additionalName",
-  "namePrefix",
-  "nameSuffix"
-];
+  'familyName',
+  'givenName',
+  'additionalName',
+  'namePrefix',
+  'nameSuffix'
+]
 
 function name({ n }) {
-  if (n) return trimObject(_.zipObject(nameAttributes, n.split(";")));
+  if (n) return trimObject(_.zipObject(nameAttributes, n.split(';')))
 }
 
 function birthday({ bday }) {
-  if (typeof bday === "string") {
-    if (bday.match(/^\d{4}-\d{2}-\d{2}$/)) return new Date(bday);
+  if (typeof bday === 'string') {
+    if (bday.match(/^\d{4}-\d{2}-\d{2}$/)) return new Date(bday)
 
-    const thundersyncMatch = bday.match(/^\d{8}$/);
+    const thundersyncMatch = bday.match(/^\d{8}$/)
     if (thundersyncMatch) {
       const isoDateString = bday
         .match(/^(\d{4})(\d{2})(\d{2})$/)
         .slice(1, 4)
-        .join("-");
-      return new Date(isoDateString);
+        .join('-')
+      return new Date(isoDateString)
     }
 
     // TODO: throw new Error(`Invalid birthday: ${JSON.stringify(bday)}`);
@@ -72,20 +72,19 @@ function birthday({ bday }) {
 }
 
 function emailArray(v2) {
-  return datapoints(v2, "email");
+  return datapoints(v2, 'email')
 }
 
 function addressArray(v2) {
-  return datapoints(v2, "adr");
+  return datapoints(v2, 'adr')
 }
 
 function phoneArray(v2) {
-  return datapoints(v2, "tel");
+  return datapoints(v2, 'tel')
 }
 
 function datapoints(v2, name) {
-  return _
-    .chain(v2.datapoints)
+  return _.chain(v2.datapoints)
     .filter({ name })
     .map(datapoint =>
       trimObject(
@@ -95,7 +94,7 @@ function datapoints(v2, name) {
         )
       )
     )
-    .value();
+    .value()
 }
 
 function _datapointCommons({ pref, type }) {
@@ -103,29 +102,29 @@ function _datapointCommons({ pref, type }) {
     label: null, // TODO: Datapoint labels
     primary: primary({ pref, type }),
     type: typeWithoutPref({ pref, type })
-  };
+  }
 }
 
 function _datapointSpecifics({ name, datapoint }) {
-  const { value } = datapoint;
+  const { value } = datapoint
 
   switch (name) {
-    case "email":
-      return { address: value };
+    case 'email':
+      return { address: value }
 
-    case "adr":
-      return singleAddress(value);
+    case 'adr':
+      return singleAddress(value)
 
-    case "tel":
-      return { number: value };
+    case 'tel':
+      return { number: value }
   }
 }
 
 function singleAddress(v2) {
-  const [pobox, extended, street, city, region, postcode, country] = v2;
+  const [pobox, extended, street, city, region, postcode, country] = v2
 
   if (_.every([pobox, extended, city, region, postcode, country], isBlank)) {
-    return { formattedAddress: street };
+    return { formattedAddress: street }
   } else {
     return {
       pobox,
@@ -134,27 +133,26 @@ function singleAddress(v2) {
       region,
       postcode,
       country
-    };
+    }
   }
 }
 
-const prefType = "pref";
+const prefType = 'pref'
 
 function primary({ pref, type }) {
-  const hasPrefType = _.includes(typeArray(type), prefType);
-  if (pref === false && hasPrefType) return false;
-  else if (pref || hasPrefType) return true;
+  const hasPrefType = _.includes(typeArray(type), prefType)
+  if (pref === false && hasPrefType) return false
+  else if (pref || hasPrefType) return true
 }
 
 function typeWithoutPref({ pref, type }) {
-  if (pref === false) return type;
-  return _
-    .chain(typeArray(type))
+  if (pref === false) return type
+  return _.chain(typeArray(type))
     .without(prefType)
-    .join(" ")
-    .value();
+    .join(' ')
+    .value()
 }
 
 function typeArray(type) {
-  return type ? type.trim().split(/\s+/) : [];
+  return type ? type.trim().split(/\s+/) : []
 }

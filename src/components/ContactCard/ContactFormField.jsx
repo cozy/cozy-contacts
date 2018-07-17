@@ -1,21 +1,21 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { FieldArray } from "react-final-form-arrays";
-import Icon from "cozy-ui/react/Icon";
-import palette from "cozy-ui/stylus/settings/palette.json";
-import IconPlus from "../../assets/icons/small-plus.svg";
-import IconCross from "../../assets/icons/small-cross.svg";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { FieldArray } from 'react-final-form-arrays'
+import Icon from 'cozy-ui/react/Icon'
+import palette from 'cozy-ui/stylus/settings/palette.json'
+import IconPlus from '../../assets/icons/small-plus.svg'
+import IconCross from '../../assets/icons/small-cross.svg'
 
 class ContactFormField extends React.Component {
   render() {
-    const { name, icon, label, isArray, renderInput } = this.props;
+    const { name, icon, label, isArray, renderInput } = this.props
     return (
       <div className="contact-form__field">
         <label className="contact-form__label">
           {icon && (
             <Icon
               icon={icon}
-              color={palette["coolGrey"]}
+              color={palette['coolGrey']}
               className="contact-form__icon"
             />
           )}
@@ -43,21 +43,21 @@ class ContactFormField extends React.Component {
           </div>
         )}
       </div>
-    );
+    )
   }
 
-  addField = fields => fields.push(undefined);
+  addField = fields => fields.push(undefined)
 
   removeField = (fields, index) => {
-    const isLastRemainignField = fields.length === 1;
-    fields.remove(index);
-    if (isLastRemainignField) this.addField(fields);
-  };
+    const isLastRemainignField = fields.length === 1
+    fields.remove(index)
+    if (isLastRemainignField) this.addField(fields)
+  }
 
   renderArrayField = (fields, index, nameWithIndex, name, renderInput) => {
-    const isLastField = index === fields.length - 1;
-    const hasValue = fields.value[index] && fields.value[index][name];
-    const canAddField = isLastField && hasValue;
+    const isLastField = index === fields.length - 1
+    const hasValue = fields.value[index] && fields.value[index][name]
+    const canAddField = isLastField && hasValue
 
     return (
       <div className="contact-form__meta-wrapper" key={nameWithIndex}>
@@ -71,7 +71,7 @@ class ContactFormField extends React.Component {
           >
             <Icon
               icon={IconCross}
-              color={palette["coolGrey"]}
+              color={palette['coolGrey']}
               width="10"
               height="10"
             />
@@ -88,8 +88,8 @@ class ContactFormField extends React.Component {
           </button>
         )}
       </div>
-    );
-  };
+    )
+  }
 }
 ContactFormField.propTypes = {
   name: PropTypes.string.isRequired,
@@ -97,10 +97,10 @@ ContactFormField.propTypes = {
   label: PropTypes.string.isRequired,
   isArray: PropTypes.bool,
   renderInput: PropTypes.func.isRequired
-};
+}
 ContactFormField.defaultProps = {
   icon: null,
   isArray: false
-};
+}
 
-export default ContactFormField;
+export default ContactFormField

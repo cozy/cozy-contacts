@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react'
 
 const withSelection = WrappedComponent => {
   return class ComponentWithSelection extends React.Component {
     state = {
       selection: []
-    };
+    }
 
     toggleSelection = data => {
-      const index = this.state.selection.indexOf(data);
+      const index = this.state.selection.indexOf(data)
       this.setState(state => ({
         ...state,
         selection:
@@ -17,14 +17,14 @@ const withSelection = WrappedComponent => {
                 ...state.selection.slice(0, index),
                 ...state.selection.slice(index + 1)
               ]
-      }));
-    };
+      }))
+    }
 
     clearSelection = () =>
       this.setState(state => ({
         ...state,
         selection: []
-      }));
+      }))
 
     render() {
       return (
@@ -34,9 +34,9 @@ const withSelection = WrappedComponent => {
           clearSelection={this.clearSelection}
           {...this.props}
         />
-      );
+      )
     }
-  };
-};
+  }
+}
 
-export default withSelection;
+export default withSelection
