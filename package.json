@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/cozy/cozy-contacts#readme",
   "devDependencies": {
-    "babel-core": "6.26.0",
+    "babel-core": "6.26.3",
     "babel-jest": "22.4.4",
     "babel-polyfill": "6.26.0",
     "babel-preset-cozy-app": "0.10.0",
