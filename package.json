@@ -2,7 +2,7 @@
   "name": "cozy-contacts",
   "version": "0.5.3",
   "scripts": {
-    "precommit": "pretty-quick --staged",
+    "precommit": "npm run lint",
     "clean": "rm -rf build/*",
     "tx": "tx pull --all --no-interactive || true",
     "lint": "npm-run-all --parallel 'lint:*'",
