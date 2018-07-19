@@ -17,7 +17,7 @@ export default class ContactsEmptyList extends React.Component {
     hasConnector: false
   }
 
-  componentWillMount() {
+  componentDidMount() {
     // cozy-client-js is needed for intents
     // we should refactor to not duplicate initialization code (see src/targets/browser/index.jsx)
     const root = document.querySelector('[role=application]')
