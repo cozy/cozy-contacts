@@ -1,11 +1,8 @@
 import React from 'react'
 import flow from 'lodash/flow'
 import ContactsList from './ContactsList'
-import ContactsHeader from './ContactsList/ContactsHeader'
 import withSelection from './HOCs/withSelection'
 import { PropTypes } from 'prop-types'
-import OpenContactFormButton from './Buttons/OpenContactFormButton'
-import ContactsIntentButton from './Buttons/ContactsIntentButton'
 import ContactCardModal from './Modals/ContactCardModal'
 import ContactFormModal from './Modals/ContactFormModal'
 import { SelectionBar, Alerter } from 'cozy-ui/react'
@@ -13,38 +10,7 @@ import { Main, Content, Layout } from 'cozy-ui/react/Layout'
 import { withContacts, withContactsMutations } from '../connections/allContacts'
 import { getFullContactName } from '../helpers/contacts'
 import ContactImportationModal from './ContactImportationModal'
-
-const ContactsHeaderWithActions = ({ displayContactForm }, { t }) => (
-  <ContactsHeader
-    renderActions={() => {
-      const fakeintent = new URL(window.location).searchParams.get('fakeintent')
-      return (
-        <div className="actions">
-          {fakeintent !== null && (
-            <ContactsIntentButton
-              label={'Select a Contact (intent)'}
-              action="PICK"
-            />
-          )}
-          {fakeintent !== null && (
-            <ContactsIntentButton
-              label={'Create a Contact (intent)'}
-              action="CREATE"
-              data={{ me: true }}
-            />
-          )}
-          <OpenContactFormButton
-            onClick={displayContactForm}
-            label={t('create_contact')}
-          />
-        </div>
-      )
-    }}
-  />
-)
-ContactsHeaderWithActions.propTypes = {
-  displayContactForm: PropTypes.func.isRequired
-}
+import Toolbar from 'components/Toolbar'
 
 const SelectionBarWithActions = ({
   selected,
@@ -148,9 +114,7 @@ class ContactsApp extends React.Component {
               trashAction={this.deleteSelectedContacts}
             />
           )}
-          <ContactsHeaderWithActions
-            displayContactForm={this.displayContactForm}
-          />
+          <Toolbar displayContactForm={this.displayContactForm} />
           <Content>
             <ContactsList
               contacts={contacts}
