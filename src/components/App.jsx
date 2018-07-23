@@ -71,7 +71,7 @@ class ContactsApp extends React.Component {
     })
   }
 
-  displayContactForm = () => {
+  openContactForm = () => {
     this.setState({
       isCreationFormDisplayed: true
     })
@@ -114,7 +114,7 @@ class ContactsApp extends React.Component {
               trashAction={this.deleteSelectedContacts}
             />
           )}
-          <Toolbar displayContactForm={this.displayContactForm} />
+          <Toolbar openContactForm={this.openContactForm} />
           <Content>
             <ContactsList
               contacts={contacts}

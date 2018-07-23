@@ -4,7 +4,7 @@ import ContactsHeader from './ContactsList/ContactsHeader'
 import OpenContactFormButton from './Buttons/OpenContactFormButton'
 import ContactsIntentButton from './Buttons/ContactsIntentButton'
 
-const Toolbar = ({ displayContactForm }, { t }) => (
+const Toolbar = ({ openContactForm }, { t }) => (
   <ContactsHeader
     renderActions={() => {
       const fakeintent = new URL(window.location).searchParams.get('fakeintent')
@@ -24,7 +24,7 @@ const Toolbar = ({ displayContactForm }, { t }) => (
             />
           )}
           <OpenContactFormButton
-            onClick={displayContactForm}
+            onClick={openContactForm}
             label={t('create_contact')}
           />
         </div>
@@ -33,7 +33,7 @@ const Toolbar = ({ displayContactForm }, { t }) => (
   />
 )
 Toolbar.propTypes = {
-  displayContactForm: PropTypes.func.isRequired
+  openContactForm: PropTypes.func.isRequired
 }
 
 export default Toolbar
