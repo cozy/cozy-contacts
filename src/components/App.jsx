@@ -5,33 +5,13 @@ import withSelection from './HOCs/withSelection'
 import { PropTypes } from 'prop-types'
 import ContactCardModal from './Modals/ContactCardModal'
 import ContactFormModal from './Modals/ContactFormModal'
-import { SelectionBar, Alerter } from 'cozy-ui/react'
+import { Alerter } from 'cozy-ui/react'
 import { Main, Content, Layout } from 'cozy-ui/react/Layout'
 import { withContacts, withContactsMutations } from '../connections/allContacts'
 import { getFullContactName } from '../helpers/contacts'
 import ContactImportationModal from './ContactImportationModal'
 import Toolbar from 'components/Toolbar'
-
-const SelectionBarWithActions = ({
-  selected,
-  hideSelectionBar,
-  trashAction
-}) => (
-  <SelectionBar
-    selected={selected}
-    hideSelectionBar={hideSelectionBar}
-    actions={{
-      trash: {
-        action: trashAction
-      }
-    }}
-  />
-)
-SelectionBarWithActions.propTypes = {
-  selected: PropTypes.array.isRequired,
-  hideSelectionBar: PropTypes.func.isRequired,
-  trashAction: PropTypes.func.isRequired
-}
+import ContactsSelectionBar from 'components/layout/ContactsSelectionBar'
 
 class ContactsApp extends React.Component {
   state = {
@@ -88,13 +68,6 @@ class ContactsApp extends React.Component {
     this.displayContactCard(contact)
   }
 
-  deleteSelectedContacts = async () => {
-    const { selection } = this.props
-    const promises = selection.map(contact => this.props.deleteContact(contact))
-    await Promise.all(promises)
-    this.props.clearSelection()
-  }
-
   render() {
     const {
       displayedContact,
@@ -102,18 +75,16 @@ class ContactsApp extends React.Component {
       isCreationFormDisplayed
     } = this.state
     const { t } = this.context
-    const { contacts, selection, toggleSelection, clearSelection } = this.props
+    const { contacts, selection, toggleSelection } = this.props
 
     return (
       <Layout monocolumn>
         <Main>
-          {selection.length > 0 && (
-            <SelectionBarWithActions
-              selected={selection}
-              hideSelectionBar={clearSelection}
-              trashAction={this.deleteSelectedContacts}
-            />
-          )}
+          <ContactsSelectionBar
+            selection={this.props.selection}
+            hideSelectionBar={this.props.clearSelection}
+            trashAction={this.props.deleteContact}
+          />
           <Toolbar openContactForm={this.openContactForm} />
           <Content>
             <ContactsList
