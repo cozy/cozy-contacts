@@ -1,5 +1,4 @@
 import React from 'react'
-import flow from 'lodash/flow'
 import ContactsList from './ContactsList'
 import withSelection from './HOCs/withSelection'
 import { PropTypes } from 'prop-types'
@@ -7,7 +6,7 @@ import ContactCardModal from './Modals/ContactCardModal'
 import ContactFormModal from './Modals/ContactFormModal'
 import { Alerter } from 'cozy-ui/react'
 import { Main, Content, Layout } from 'cozy-ui/react/Layout'
-import { withContacts, withContactsMutations } from '../connections/allContacts'
+import connect from '../connections/allContacts'
 import { getFullContactName } from '../helpers/contacts'
 import ContactImportationModal from './ContactImportationModal'
 import Toolbar from 'components/Toolbar'
@@ -75,7 +74,6 @@ class ContactsApp extends React.Component {
       isCreationFormDisplayed
     } = this.state
     const { t } = this.context
-    const { contacts, selection, toggleSelection } = this.props
 
     return (
       <Layout monocolumn>
@@ -88,10 +86,10 @@ class ContactsApp extends React.Component {
           <Toolbar openContactForm={this.openContactForm} />
           <Content>
             <ContactsList
-              contacts={contacts}
+              contacts={this.props.contacts}
               onClickContact={this.displayContactCard}
-              onSelect={toggleSelection}
-              selection={selection}
+              onSelect={this.props.toggleSelection}
+              selection={this.props.selection}
               displayImportation={this.displayImportation}
             />
           </Content>
@@ -126,21 +124,16 @@ ContactsApp.propTypes = {
   contacts: PropTypes.array.isRequired
 }
 
-const ContactAppWithLoading = ({ data, fetchStatus, ...props }) => {
-  if (!data) {
-    return null
+const withContacts = WrappedComponent =>
+  class AppWithContacts extends React.Component {
+    render() {
+      if (this.props.fetchStatus === 'error') {
+        return <div>Global Error</div>
+      }
+      return (
+        <WrappedComponent contacts={this.props.data || []} {...this.props} />
+      )
+    }
   }
-  if (fetchStatus === 'error') {
-    return <div>Error</div>
-  }
-  return <ContactsApp contacts={data} {...props} />
-}
 
-ContactAppWithLoading.propTypes = {
-  data: PropTypes.array,
-  fetchStatus: PropTypes.string
-}
-
-export default flow([withContacts, withContactsMutations, withSelection])(
-  ContactAppWithLoading
-)
+export default connect(withContacts(withSelection(ContactsApp)))
