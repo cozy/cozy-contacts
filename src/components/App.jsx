@@ -9,6 +9,7 @@ import { Main, Content, Layout } from 'cozy-ui/react/Layout'
 import connect from '../connections/allContacts'
 import { getFullContactName } from '../helpers/contacts'
 import ContactImportationModal from './ContactImportationModal'
+import Header from 'components/Header'
 import Toolbar from 'components/Toolbar'
 import ContactsSelectionBar from 'components/layout/ContactsSelectionBar'
 
@@ -83,7 +84,9 @@ class ContactsApp extends React.Component {
             hideSelectionBar={this.props.clearSelection}
             trashAction={this.props.deleteContact}
           />
-          <Toolbar openContactForm={this.openContactForm} />
+          <Header>
+            <Toolbar openContactForm={this.openContactForm} />
+          </Header>
           <Content>
             <ContactsList
               contacts={this.props.contacts}
