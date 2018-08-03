@@ -5,16 +5,18 @@ import ContactsIntentButton from 'components/Buttons/ContactsIntentButton'
 import ImportVcardButton from 'components/Buttons/ImportVcardButton'
 
 const Toolbar = ({ openContactForm, displayVcardImport }) => {
-  const fakeintent = new URL(window.location).searchParams.get('fakeintent')
+  const searchParams = new URL(window.location).searchParams
+  const fakeintentEnabled = searchParams.get('fakeintent') !== null
+  const vcardEnabled = searchParams.get('enablevcardimport') !== null
   return (
     <div className="actions">
-      {fakeintent !== null && (
+      {fakeintentEnabled && (
         <ContactsIntentButton
           label={'Select a Contact (intent)'}
           action="PICK"
         />
       )}
-      {fakeintent !== null && (
+      {fakeintentEnabled && (
         <ContactsIntentButton
           label={'Create a Contact (intent)'}
           action="CREATE"
@@ -22,7 +24,7 @@ const Toolbar = ({ openContactForm, displayVcardImport }) => {
         />
       )}
       <OpenContactFormButton onClick={openContactForm} />
-      <ImportVcardButton onClick={displayVcardImport} />
+      {vcardEnabled && <ImportVcardButton onClick={displayVcardImport} />}
     </div>
   )
 }
