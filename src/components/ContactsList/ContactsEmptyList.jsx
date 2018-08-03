@@ -1,13 +1,10 @@
 /* global cozy */
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import { Button, Icon, IntentOpener, Empty } from 'cozy-ui/react'
+import { Button, IntentOpener, Empty } from 'cozy-ui/react'
+import ImportVcardButton from '../Buttons/ImportVcardButton'
 import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
 import IconGoogle from '../../assets/icons/connect-google.svg'
-// FIXME: import IconTeam from "../../assets/icons/team.svg";
-import palette from 'cozy-ui/stylus/settings/palette.json'
-
-const IconTeam = 'upload'
 
 const vcardEnabled =
   new URL(window.location).searchParams.get('enablevcardimport') !== null
@@ -63,11 +60,8 @@ export default class ContactsEmptyList extends React.Component {
             </span>
             {vcardEnabled && (
               <span className="contacts-empty-action">
-                <Button
+                <ImportVcardButton
                   className="contacts-empty-button"
-                  icon={<Icon icon={IconTeam} color={palette.coolGrey} />}
-                  label={t('empty.importation')}
-                  theme="secondary"
                   onClick={this.props.displayImportation}
                 />
               </span>
