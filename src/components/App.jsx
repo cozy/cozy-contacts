@@ -84,9 +84,7 @@ class ContactsApp extends React.Component {
             hideSelectionBar={this.props.clearSelection}
             trashAction={this.props.deleteContact}
           />
-          <Header>
-            <Toolbar openContactForm={this.openContactForm} />
-          </Header>
+          <Header right={<Toolbar openContactForm={this.openContactForm} />} />
           <Content>
             <ContactsList
               contacts={this.props.contacts}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import OpenContactFormButton from './Buttons/OpenContactFormButton'
-import ContactsIntentButton from './Buttons/ContactsIntentButton'
+import OpenContactFormButton from 'components/Buttons/OpenContactFormButton'
+import ContactsIntentButton from 'components/Buttons/ContactsIntentButton'
 
 const Toolbar = ({ openContactForm }, { t }) => {
   const fakeintent = new URL(window.location).searchParams.get('fakeintent')

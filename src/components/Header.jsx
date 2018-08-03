@@ -1,15 +1,21 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
 
-const Header = props => (
+const Header = ({ left, right }) => (
   <div className="topbar">
-    <div className="topbar__left" />
-    <div className="topbar__right">{props.children}</div>
+    <div className="topbar__left">{left}</div>
+    <div className="topbar__right">{right}</div>
   </div>
 )
 
 Header.propTypes = {
-  children: PropTypes.element.isRequired
+  left: PropTypes.element,
+  right: PropTypes.element
+}
+
+Header.defaultProps = {
+  left: <div />,
+  right: <div />
 }
 
 export default Header
