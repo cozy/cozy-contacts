@@ -1,22 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, Icon } from 'cozy-ui/react'
-import palette from 'cozy-ui/stylus/settings/palette.json'
 import IconTeam from '../../assets/icons/team.svg'
+import SecondaryButton from './SecondaryButton'
 
 const ImportVcardButton = ({ className, onClick }, { t }) => (
-  <Button
+  <SecondaryButton
     className={className}
-    icon={<Icon icon={IconTeam} color={palette.coolGrey} />}
-    label={t('empty.importation')}
+    icon={IconTeam}
     theme="secondary"
     onClick={onClick}
-  />
+  >
+    {t('empty.importation')}
+  </SecondaryButton>
 )
 
 ImportVcardButton.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func.isRequired
+}
+ImportVcardButton.defaultProps = {
+  className: ''
 }
 
 export default ImportVcardButton

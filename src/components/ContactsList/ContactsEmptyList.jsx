@@ -1,10 +1,10 @@
 /* global cozy */
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import { Button, IntentOpener, Empty } from 'cozy-ui/react'
+import { Empty } from 'cozy-ui/react'
 import ImportVcardButton from '../Buttons/ImportVcardButton'
 import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
-import IconGoogle from '../../assets/icons/connect-google.svg'
+import ImportGoogleButton from '../Buttons/ImportGoogleButton'
 
 const vcardEnabled =
   new URL(window.location).searchParams.get('enablevcardimport') !== null
@@ -44,19 +44,7 @@ export default class ContactsEmptyList extends React.Component {
         {!hasConnector && (
           <div className="contacts-empty-actions-wrapper">
             <span className="contacts-empty-action">
-              <IntentOpener
-                action="CREATE"
-                doctype="io.cozy.accounts"
-                options={{ slug: 'google' }}
-                onComplete={this.afterConnection}
-              >
-                <Button
-                  className="contacts-empty-button"
-                  icon={IconGoogle}
-                  label={t('empty.google')}
-                  theme="secondary"
-                />
-              </IntentOpener>
+              <ImportGoogleButton onComplete={this.afterConnection} />
             </span>
             {vcardEnabled && (
               <span className="contacts-empty-action">

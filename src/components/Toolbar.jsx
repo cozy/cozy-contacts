@@ -4,7 +4,7 @@ import OpenContactFormButton from 'components/Buttons/OpenContactFormButton'
 import ContactsIntentButton from 'components/Buttons/ContactsIntentButton'
 import ImportVcardButton from 'components/Buttons/ImportVcardButton'
 
-const Toolbar = ({ openContactForm, displayVcardImport }, { t }) => {
+const Toolbar = ({ openContactForm, displayVcardImport }) => {
   const fakeintent = new URL(window.location).searchParams.get('fakeintent')
   return (
     <div className="actions">
@@ -21,10 +21,7 @@ const Toolbar = ({ openContactForm, displayVcardImport }, { t }) => {
           data={{ me: true }}
         />
       )}
-      <OpenContactFormButton
-        onClick={openContactForm}
-        label={t('create_contact')}
-      />
+      <OpenContactFormButton onClick={openContactForm} />
       <ImportVcardButton onClick={displayVcardImport} />
     </div>
   )

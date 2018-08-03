@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, IntentOpener } from 'cozy-ui/react'
+import { IntentOpener } from 'cozy-ui/react'
+import PrimaryButton from './PrimaryButton'
 
 const ContactsIntentButton = ({ label, action, data }) => (
   <div>
@@ -14,7 +15,7 @@ const ContactsIntentButton = ({ label, action, data }) => (
       options={data}
       size="xlarge"
     >
-      <Button label={label} />
+      <PrimaryButton>{label}</PrimaryButton>
     </IntentOpener>
   </div>
 )
