@@ -68,6 +68,17 @@ class ContactsApp extends React.Component {
     this.displayContactCard(contact)
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.state.displayedContact) {
+      this.setState(state => ({
+        ...state,
+        displayedContact: prevProps.contacts.find(
+          contact => contact._id === state.displayedContact._id
+        )
+      }))
+    }
+  }
+
   render() {
     const {
       displayedContact,
