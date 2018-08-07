@@ -1,10 +1,10 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import OpenContactFormButton from 'components/Buttons/OpenContactFormButton'
 import ContactsIntentButton from 'components/Buttons/ContactsIntentButton'
-import ImportVcardButton from 'components/Buttons/ImportVcardButton'
+import { Button } from 'cozy-ui/react'
+import IconTeam from '../assets/icons/team.svg'
 
-const Toolbar = ({ openContactForm, displayVcardImport }) => {
+const Toolbar = ({ openContactForm, displayVcardImport }, { t }) => {
   const searchParams = new URL(window.location).searchParams
   const fakeintentEnabled = searchParams.get('fakeintent') !== null
   const vcardEnabled = searchParams.get('enablevcardimport') !== null
@@ -23,8 +23,20 @@ const Toolbar = ({ openContactForm, displayVcardImport }) => {
           data={{ me: true }}
         />
       )}
-      <OpenContactFormButton onClick={openContactForm} />
-      {vcardEnabled && <ImportVcardButton onClick={displayVcardImport} />}
+      <Button
+        onClick={openContactForm}
+        icon="plus"
+        label={t('create_contact')}
+      />
+      {vcardEnabled && (
+        <Button
+          className="contacts-empty-button"
+          onClick={displayVcardImport}
+          label={t('empty.importation')}
+          theme="secondary"
+          icon={IconTeam}
+        />
+      )}
     </div>
   )
 }

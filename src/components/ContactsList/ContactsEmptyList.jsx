@@ -1,9 +1,9 @@
 /* global cozy */
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import { Empty } from 'cozy-ui/react'
-import ImportVcardButton from '../Buttons/ImportVcardButton'
+import { Empty, Button } from 'cozy-ui/react'
 import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
+import IconTeam from '../../assets/icons/team.svg'
 import ImportGoogleButton from '../Buttons/ImportGoogleButton'
 
 const vcardEnabled =
@@ -48,9 +48,12 @@ export default class ContactsEmptyList extends React.Component {
             </span>
             {vcardEnabled && (
               <span className="contacts-empty-action">
-                <ImportVcardButton
+                <Button
                   className="contacts-empty-button"
                   onClick={this.props.displayImportation}
+                  label={t('empty.importation')}
+                  theme="secondary"
+                  icon={IconTeam}
                 />
               </span>
             )}

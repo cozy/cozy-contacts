@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { IntentOpener } from 'cozy-ui/react'
-import SecondaryButton from './SecondaryButton'
+import { IntentOpener, Button } from 'cozy-ui/react'
 import IconGoogle from '../../assets/icons/connect-google.svg'
 
 const ImportGoogleButton = (props, { t }) => (
@@ -11,9 +10,12 @@ const ImportGoogleButton = (props, { t }) => (
     options={{ slug: 'google' }}
     onComplete={props.onComplete}
   >
-    <SecondaryButton className="contacts-empty-button" icon={IconGoogle}>
-      {t('empty.google')}
-    </SecondaryButton>
+    <Button
+      theme="secondary"
+      className="contacts-empty-button"
+      icon={IconGoogle}
+      label={t('empty.google')}
+    />
   </IntentOpener>
 )
 ImportGoogleButton.propTypes = {
