@@ -9,9 +9,9 @@ import { Main, Content, Layout } from 'cozy-ui/react/Layout'
 import connect from '../connections/allContacts'
 import { getFullContactName } from '../helpers/contacts'
 import ContactImportationModal from './ContactImportationModal'
-import Header from 'components/Header'
-import Toolbar from 'components/Toolbar'
-import ContactsSelectionBar from 'components/layout/ContactsSelectionBar'
+import Header from './Header'
+import Toolbar from './Toolbar'
+import ContactsSelectionBar from './layout/ContactsSelectionBar'
 
 class ContactsApp extends React.Component {
   state = {
@@ -51,7 +51,7 @@ class ContactsApp extends React.Component {
     })
   }
 
-  openContactForm = () => {
+  displayContactForm = () => {
     this.setState({
       isCreationFormDisplayed: true
     })
@@ -98,7 +98,7 @@ class ContactsApp extends React.Component {
           <Header
             right={
               <Toolbar
-                openContactForm={this.openContactForm}
+                displayContactForm={this.displayContactForm}
                 displayVcardImport={this.displayImportation}
               />
             }

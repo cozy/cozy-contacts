@@ -4,7 +4,7 @@ import ContactsIntentButton from 'components/Buttons/ContactsIntentButton'
 import { Button } from 'cozy-ui/react'
 import IconTeam from '../assets/icons/team.svg'
 
-const Toolbar = ({ openContactForm, displayVcardImport }, { t }) => {
+const Toolbar = ({ displayContactForm, displayVcardImport }, { t }) => {
   const searchParams = new URL(window.location).searchParams
   const fakeintentEnabled = searchParams.get('fakeintent') !== null
   const vcardEnabled = searchParams.get('enablevcardimport') !== null
@@ -24,7 +24,7 @@ const Toolbar = ({ openContactForm, displayVcardImport }, { t }) => {
         />
       )}
       <Button
-        onClick={openContactForm}
+        onClick={displayContactForm}
         icon="plus"
         label={t('create_contact')}
       />
@@ -42,7 +42,7 @@ const Toolbar = ({ openContactForm, displayVcardImport }, { t }) => {
 }
 
 Toolbar.propTypes = {
-  openContactForm: PropTypes.func.isRequired,
+  displayContactForm: PropTypes.func.isRequired,
   displayVcardImport: PropTypes.func.isRequired
 }
 
