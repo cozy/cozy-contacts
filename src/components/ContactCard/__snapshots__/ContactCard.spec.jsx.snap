@@ -34,19 +34,9 @@ exports[`ContactCard should match snapshot 1`] = `
       >
         <div
           className="css-1yebww6"
-          id={undefined}
           onKeyDown={[Function]}
         >
-          <span
-            aria-atomic="true"
-            aria-live="polite"
-            className="css-1uvvha"
-            role="status"
-          >
-            0 results available.
-          </span>
           <div
-            innerRef={[Function]}
             onMouseDown={[Function]}
             onTouchEnd={[Function]}
           >
@@ -114,19 +104,18 @@ exports[`ContactCard should match snapshot 1`] = `
               >
                 <span
                   className="css-1hyfx7x"
-                  role="presentation"
                 />
                 <div
+                  aria-hidden="true"
                   className="css-1j9smtq"
                   onMouseDown={[Function]}
                   onTouchEnd={[Function]}
-                  role="button"
                 >
                   <svg
+                    aria-hidden="true"
                     className="css-19bqh2r"
                     focusable="false"
                     height={20}
-                    role="presentation"
                     viewBox="0 0 20 20"
                     width={20}
                   >

@@ -1,13 +1,10 @@
 /* global cozy */
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import { Button, Icon, IntentOpener, Empty } from 'cozy-ui/react'
+import { Empty, Button } from 'cozy-ui/react'
 import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
-import IconGoogle from '../../assets/icons/connect-google.svg'
-// FIXME: import IconTeam from "../../assets/icons/team.svg";
-import palette from 'cozy-ui/stylus/settings/palette.json'
-
-const IconTeam = 'upload'
+import IconTeam from '../../assets/icons/team.svg'
+import ImportGoogleButton from '../Buttons/ImportGoogleButton'
 
 const vcardEnabled =
   new URL(window.location).searchParams.get('enablevcardimport') !== null
@@ -17,7 +14,7 @@ export default class ContactsEmptyList extends React.Component {
     hasConnector: false
   }
 
-  componentWillMount() {
+  componentDidMount() {
     // cozy-client-js is needed for intents
     // we should refactor to not duplicate initialization code (see src/targets/browser/index.jsx)
     const root = document.querySelector('[role=application]')
@@ -47,28 +44,16 @@ export default class ContactsEmptyList extends React.Component {
         {!hasConnector && (
           <div className="contacts-empty-actions-wrapper">
             <span className="contacts-empty-action">
-              <IntentOpener
-                action="CREATE"
-                doctype="io.cozy.accounts"
-                options={{ slug: 'google' }}
-                onComplete={this.afterConnection}
-              >
-                <Button
-                  className="contacts-empty-button"
-                  icon={IconGoogle}
-                  label={t('empty.google')}
-                  theme="secondary"
-                />
-              </IntentOpener>
+              <ImportGoogleButton onComplete={this.afterConnection} />
             </span>
             {vcardEnabled && (
               <span className="contacts-empty-action">
                 <Button
                   className="contacts-empty-button"
-                  icon={<Icon icon={IconTeam} color={palette.coolGrey} />}
+                  onClick={this.props.displayImportation}
                   label={t('empty.importation')}
                   theme="secondary"
-                  onClick={this.props.displayImportation}
+                  icon={IconTeam}
                 />
               </span>
             )}

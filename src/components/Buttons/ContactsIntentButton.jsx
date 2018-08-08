@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, IntentOpener } from 'cozy-ui/react'
+import { IntentOpener, Button } from 'cozy-ui/react'
 
 const ContactsIntentButton = ({ label, action, data }) => (
   <div>
