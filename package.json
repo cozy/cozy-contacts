@@ -16,7 +16,7 @@
     "standalone": "yarn standalone:browser",
     "standalone:browser": "cozy-scripts standalone --hot --browser",
     "standalone:mobile": "cozy-scripts standalone --hot --mobile",
-    "deploy": "git-directory-deploy --directory build/ --branch ${DEPLOY_BRANCH:-build} --repo=${DEPLOY_REPOSITORY:-https://$GITHUB_TOKEN@github.com/cozy/cozy-contacts.git}",
+    "deploy": "cozy-app-publish --token $REGISTRY_TOKEN --build-dir 'build/' --prepublish downcloud",
     "pretest": "yarn lint",
     "test": "cozy-scripts test --verbose --coverage",
     "stack:docker": "docker run --rm -it -p 8080:8080 -p 5984:5984 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev",
