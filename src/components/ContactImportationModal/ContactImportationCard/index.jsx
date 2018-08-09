@@ -1,17 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
-import ContactImportationCardWrapper from "./ContactImportationCardWrapper";
-import ContactImportationFile from "./ContactImportationFile";
-import ContactImportationMessage from "./ContactImportationMessage";
-import ContactTransferButton from "./ContactTransferButton";
-import Importation from "../../../importation";
-import Status from "../../../importation/status";
+import React from 'react'
+import PropTypes from 'prop-types'
+import ContactImportationCardWrapper from './ContactImportationCardWrapper'
+import ContactImportationFile from './ContactImportationFile'
+import ContactImportationMessage from './ContactImportationMessage'
+import ContactTransferButton from './ContactTransferButton'
+import Importation from '../../../importation'
+import Status from '../../../importation/status'
 
 export default function ContactImportationCard(props, { t }) {
-  const { importation, progress, onFileSelected, onFileUnselected } = props;
-  const { status } = importation;
-  const mainMessage = mainMessageText(importation, t);
-  const retryMessage = retryMessageText(importation, t);
+  const { importation, progress, onFileSelected, onFileUnselected } = props
+  const { status } = importation
+  const mainMessage = mainMessageText(importation, t)
+  const retryMessage = retryMessageText(importation, t)
 
   return (
     <ContactImportationCardWrapper clickable={isCardClickable(status)}>
@@ -31,65 +31,65 @@ export default function ContactImportationCard(props, { t }) {
       )}
       {progress && <progress value={progress.current} max={progress.total} />}
     </ContactImportationCardWrapper>
-  );
+  )
 }
 ContactImportationCard.propTypes = {
   importation: Importation.propType.isRequired,
   progress: PropTypes.object,
   onFileSelected: PropTypes.func.isRequired,
   onFileUnselected: PropTypes.func.isRequired
-};
+}
 ContactImportationCard.defaultProps = {
   progress: undefined
-};
+}
 
 const CLICKABLE_STATUS_SET = new Set([
   Status.UNCONFIGURED,
   Status.FILE_ISSUE,
   Status.PARTIAL_SUCCESS,
   Status.COMPLETE_FAILURE
-]);
+])
 
 function isCardClickable(status) {
-  return CLICKABLE_STATUS_SET.has(status);
+  return CLICKABLE_STATUS_SET.has(status)
 }
 
 const DISPLAYED_TRANSFER_BUTTON_STATUS_SET = new Set([
   Status.UNCONFIGURED,
   Status.FILE_ISSUE,
   Status.COMPLETE_FAILURE
-]);
+])
 
 function isTransferButtonDisplayed(status) {
-  return DISPLAYED_TRANSFER_BUTTON_STATUS_SET.has(status);
+  return DISPLAYED_TRANSFER_BUTTON_STATUS_SET.has(status)
 }
 
 const DISPLAYED_STATUS_KEY_MAP = new Map([
-  [Status.READY, "importation.ready"],
-  [Status.RUNNING, "importation.running"]
-]);
+  [Status.READY, 'importation.ready'],
+  [Status.RUNNING, 'importation.running']
+])
 
 function isStatusDisplayed(status) {
-  return DISPLAYED_STATUS_KEY_MAP.has(status);
+  return DISPLAYED_STATUS_KEY_MAP.has(status)
 }
 
 function statusKey(status) {
-  return DISPLAYED_STATUS_KEY_MAP.get(status);
+  return DISPLAYED_STATUS_KEY_MAP.get(status)
 }
 
 function mainMessageText(importation, t) {
   switch (importation.status) {
     case Status.UNCONFIGURED:
-      return t("importation.no_file");
+      return t('importation.no_file')
     case Status.FILE_ISSUE:
-      return t(importation.fileIssue);
+      return t(importation.fileIssue)
     case Status.PARTIAL_SUCCESS:
-      return t("importation.partial_success", {
+      return t('importation.partial_success', {
         smart_count: importation.report.imported,
         total: importation.report.total
-      });
+      })
     case Status.COMPLETE_FAILURE:
-      return t("importation.complete_failure");
+      return t('importation.complete_failure')
   }
 }
 
@@ -97,9 +97,9 @@ function retryMessageText(importation, t) {
   if (Importation.canRetry(importation)) {
     switch (importation.status) {
       case Status.PARTIAL_SUCCESS:
-        return t("importation.retry_hint");
+        return t('importation.retry_hint')
       case Status.COMPLETE_FAILURE:
-        return t("importation.retry_or_select_another_hint");
+        return t('importation.retry_or_select_another_hint')
     }
   }
 }

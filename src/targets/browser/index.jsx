@@ -1,85 +1,84 @@
-/* global cozy, __DEVELOPMENT__ */
+/* global cozy */
 
-import "babel-polyfill";
+import 'styles'
 
-import "styles";
+import React from 'react'
+import CozyClient, { CozyProvider } from 'cozy-client'
+import { render } from 'react-dom'
+import { I18n } from 'cozy-ui/react/I18n'
+import App from 'components/App'
 
-import React from "react";
-import { render } from "react-dom";
-import CozyClient, { CozyProvider } from "cozy-client";
-import { I18n } from "cozy-ui/react/I18n";
+const RootApp = props => (
+  <I18n lang={props.lang} dictRequire={lang => require(`locales/${lang}`)}>
+    <CozyProvider client={props.client}>
+      <App />
+    </CozyProvider>
+  </I18n>
+)
 
-if (__DEVELOPMENT__) {
-  // Enables React dev tools for Preact
-  // Cannot use import as we are in a condition
-  require("preact/devtools");
-
-  // Export React to window for the devtools
-  window.React = React;
+function getDataOrDefault(data, defaultData) {
+  return /^\{\{\..*\}\}$/.test(data) ? defaultData : data
 }
 
-let appLocale;
-const renderApp = function(client) {
-  const App = require("components/App").default;
-  render(
-    <I18n
-      lang={appLocale}
-      dictRequire={appLocale => require(`locales/${appLocale}`)}
-    >
-      <CozyProvider client={client}>
-        <App />
-      </CozyProvider>
-    </I18n>,
-    document.querySelector("[role=application]")
-  );
-};
+document.addEventListener('DOMContentLoaded', init)
 
-if (module.hot) {
-  module.hot.accept("components/App", function() {
-    renderApp();
-  });
+function init() {
+  const root = document.querySelector('[role=application]')
+  const { appName, appNamePrefix, iconPath, lang } = getValues(root.dataset)
+  const client = initCozyClient(root.dataset.cozyDomain, root.dataset.cozyToken)
+  initCozyBar({ appName, appNamePrefix, iconPath, lang })
+
+  if (module.hot) {
+    module.hot.accept('components/App', () => {
+      return requestAnimationFrame(() => {
+        render(<RootApp client={client} lang={lang} />, root)
+      })
+    })
+  }
+  render(<RootApp client={client} lang={lang} />, root)
 }
 
-// return a defaultData if the template hasn't been replaced by cozy-stack
-const getDataOrDefault = function(toTest, defaultData) {
-  const templateRegex = /^\{\{\.[a-zA-Z]*\}\}$/; // {{.Example}}
-  return templateRegex.test(toTest) ? defaultData : toTest;
-};
+/**
+ * default data will allow to display correctly the cozy-bar
+ * in the standalone (without cozy-stack connexion)
+ */
+function getValues({
+  cozyAppName,
+  cozyAppNamePrefix,
+  cozyIconPath,
+  cozyLocale
+}) {
+  const defaultValues = {
+    appIconDefault: require('../vendor/assets/icon.svg'),
+    appNamePrefixDefault: require('../../../manifest.webapp').name_prefix,
+    appNameDefault: require('../../../manifest.webapp').name,
+    appLocaleDefault: 'en'
+  }
+  return {
+    appName: getDataOrDefault(cozyAppName, defaultValues.appNameDefault),
+    appNamePrefix: getDataOrDefault(
+      cozyAppNamePrefix,
+      defaultValues.appNamePrefixDefault
+    ),
+    iconPath: getDataOrDefault(cozyIconPath, defaultValues.appIconDefault),
+    lang: getDataOrDefault(cozyLocale, defaultValues.appLocaleDefault)
+  }
+}
 
-document.addEventListener("DOMContentLoaded", () => {
-  const root = document.querySelector("[role=application]");
-  const data = root.dataset;
+function initCozyClient(cozyDomain, cozyToken) {
+  const { protocol = 'https' } = window.location
+  return new CozyClient({
+    uri: `${protocol}//${cozyDomain}`,
+    token: cozyToken
+  })
+}
 
-  // default data will allow to display correctly the cozy-bar
-  // in the standalone (without cozy-stack connexion)
-  const appIcon = getDataOrDefault(
-    data.cozyIconPath,
-    require("../vendor/assets/icon.svg")
-  );
-
-  const appEditor = getDataOrDefault(data.cozyAppEditor, "");
-
-  const appName = getDataOrDefault(
-    data.cozyAppName,
-    require("../../../package.json").name
-  );
-
-  appLocale = getDataOrDefault(data.cozyLocale, "en");
-
-  const protocol = window.location ? window.location.protocol : "https:";
-
-  const client = new CozyClient({
-    uri: `${protocol}//${data.cozyDomain}`,
-    token: data.cozyToken
-  });
-
+function initCozyBar({ appName, appNamePrefix, iconPath, lang }) {
   cozy.bar.init({
-    appEditor: appEditor,
-    appName: appName,
-    iconPath: appIcon,
-    lang: appLocale,
+    appName,
+    appNamePrefix,
+    iconPath,
+    lang,
     replaceTitleOnMobile: true
-  });
-
-  renderApp(client);
-});
+  })
+}
