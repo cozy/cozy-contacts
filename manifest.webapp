@@ -4,6 +4,7 @@
   "name_prefix": "Cozy",
   "slug": "contacts",
   "icon": "icon.svg",
+  "type": "webapp",
   "description": "Contact manager for Cozy Cloud",
   "category": "cozy",
   "version": "0.5.4",
