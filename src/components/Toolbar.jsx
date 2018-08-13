@@ -1,6 +1,6 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import ContactsIntentButton from 'components/Buttons/ContactsIntentButton'
+import ContactsIntentButton from './Buttons/ContactsIntentButton'
 import { Button } from 'cozy-ui/react'
 import IconTeam from '../assets/icons/team.svg'
 
@@ -30,7 +30,6 @@ const Toolbar = ({ displayContactForm, displayVcardImport }, { t }) => {
       />
       {vcardEnabled && (
         <Button
-          className="contacts-empty-button"
           onClick={displayVcardImport}
           label={t('empty.importation')}
           theme="secondary"
