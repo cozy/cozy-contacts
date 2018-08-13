@@ -38,7 +38,7 @@
     "enzyme": "3.4.1",
     "enzyme-adapter-react-16": "1.2.0",
     "eslint-config-cozy-app": "1.1.0",
-    "eslint-config-prettier": "2.9.0",
+    "eslint-config-prettier": "3.0.1",
     "git-directory-deploy": "1.5.1",
     "identity-obj-proxy": "3.0.0",
     "pretty-quick": "1.6.0",
