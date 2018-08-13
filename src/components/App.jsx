@@ -67,15 +67,20 @@ class ContactsApp extends React.Component {
     this.hideContactForm()
     this.displayContactCard(contact)
   }
-
   componentDidUpdate(prevProps) {
     if (this.state.displayedContact) {
-      this.setState(state => ({
-        ...state,
-        displayedContact: prevProps.contacts.find(
-          contact => contact._id === state.displayedContact._id
-        )
-      }))
+      const previouslyDisplayedContact = prevProps.contacts.find(
+        contact => contact._id === this.state.displayedContact._id
+      )
+      const displayedContact = this.props.contacts.find(
+        contact => contact._id === this.state.displayedContact._id
+      )
+      if (displayedContact._rev !== previouslyDisplayedContact._rev) {
+        this.setState(state => ({
+          ...state,
+          displayedContact: displayedContact
+        }))
+      }
     }
   }
 
