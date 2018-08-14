@@ -17,7 +17,8 @@ class ContactsApp extends React.Component {
   state = {
     displayedContact: null,
     isImportationDisplayed: false,
-    isCreationFormDisplayed: false
+    isCreationFormDisplayed: false,
+    isDisplayedContactUpdated: false
   }
 
   displayImportation = () => {
@@ -34,7 +35,8 @@ class ContactsApp extends React.Component {
 
   displayContactCard = contact => {
     this.setState({
-      displayedContact: contact
+      displayedContact: contact,
+      isDisplayedContactUpdated: false
     })
   }
 
@@ -47,7 +49,8 @@ class ContactsApp extends React.Component {
 
   hideContactCard = () => {
     this.setState({
-      displayedContact: null
+      displayedContact: null,
+      isDisplayedContactUpdated: false
     })
   }
 
@@ -69,9 +72,10 @@ class ContactsApp extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.state.displayedContact) {
+    if (this.state.displayedContact && !this.state.isDisplayedContactUpdated) {
       this.setState(state => ({
         ...state,
+        isDisplayedContactUpdated: true,
         displayedContact: prevProps.contacts.find(
           contact => contact._id === state.displayedContact._id
         )
