@@ -37,6 +37,8 @@ export default {
   run,
   selectFile,
   total,
+  created,
+  updated,
   unselectFile
 }
 
@@ -96,6 +98,14 @@ function run(importation, options) {
 
 function total({ report: { total = undefined } }) {
   return total
+}
+
+function created({ report: { created = [] } }) {
+  return new Set(created).size
+}
+
+function updated({ report: { updated = [] } }) {
+  return new Set(updated).size
 }
 
 function canRun(importation) {
