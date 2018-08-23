@@ -3,26 +3,28 @@ import flow from 'lodash/flow'
 import array from 'lodash/array'
 import isEqual from 'lodash/isEqual'
 
-function findContacts(keys, attributes) {
-  return client =>
-    Promise.all(
-      keys.map(async ({ attr, prop }) => {
-        const result = await getExistingContactsByProp(
-          attributes[attr],
-          attr,
-          prop,
-          client
-        )
-        return result.data
-      })
-    )
-      .then(results => [].concat(...results))
-      .then(results => array.uniqWith(results, isEqual))
+function flatten(arrayOfArrays) {
+  return [].concat(...arrayOfArrays)
 }
 
-function getExistingContactsByProp(props = [], attr, prop, client) {
-  const values = props.map(item => item[prop])
-  const samePropValueForAttribute = {
+function removeDuplicates(data) {
+  return array.uniqWith(data, isEqual)
+}
+
+function findItems(doctype, selectors) {
+  return client =>
+    Promise.all(
+      selectors.map(selector =>
+        client.query(client.find(doctype).where(selector))
+      )
+    )
+      .then(results => results.map(result => result.data))
+      .then(flatten)
+      .then(removeDuplicates)
+}
+
+function selector(attr, prop) {
+  return values => ({
     [attr]: {
       $elemMatch: {
         [prop]: {
@@ -30,19 +32,30 @@ function getExistingContactsByProp(props = [], attr, prop, client) {
         }
       }
     }
-  }
-  const samePropValueForAttributeQuery = client
-    .find('io.cozy.contacts')
-    .where(samePropValueForAttribute)
-  return client.query(samePropValueForAttributeQuery)
+  })
 }
 
-function findContactsWithSamePhoneOrEmail(attributes) {
-  const keys = [
-    { attr: 'phone', prop: 'number' },
-    { attr: 'email', prop: 'address' }
-  ]
-  return findContacts(keys, attributes)
+function getValues(array = [], property) {
+  return array.map(getValue(property))
+}
+
+function getValue(property) {
+  return obj => obj[property]
+}
+
+function createSelector(object) {
+  return path => {
+    const [arrayName, nestedProperty] = path.split('.')
+    const arrayOfObject = object[arrayName]
+    const values = getValues(arrayOfObject, nestedProperty)
+    return selector(arrayName, nestedProperty)(values)
+  }
+}
+
+function findContactsWithSamePhoneOrEmail(targetContact) {
+  const paths = ['phone.number', 'email.address']
+  const selectors = paths.map(createSelector(targetContact))
+  return findItems('io.cozy.contacts', selectors)
 }
 
 const CONNECTION_NAME = 'allContacts'
