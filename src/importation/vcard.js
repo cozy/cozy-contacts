@@ -52,6 +52,7 @@ async function importData(data, options) {
     try {
       transformedContact = transform(contact)
     } catch (transformError) {
+      console.error(transformError)
       skipped.push({ contact, transformError })
       continue
     }
@@ -65,6 +66,7 @@ async function importData(data, options) {
         updated.push(result.data._id)
       }
     } catch (saveError) {
+      console.error(saveError)
       unsaved++
       skipped.push({ contact, saveError })
       continue
