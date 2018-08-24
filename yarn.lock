@@ -3516,9 +3516,9 @@ final-form-arrays@1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/final-form-arrays/-/final-form-arrays-1.0.4.tgz#74330cb4d64ce07bb1c4a9084d0b65afdac6bf72"
 
-final-form@4.8.1:
-  version "4.8.1"
-  resolved "https://registry.yarnpkg.com/final-form/-/final-form-4.8.1.tgz#5ceeef87d79b143c0854268863e58f44a8b3f570"
+final-form@4.10.0:
+  version "4.10.0"
+  resolved "https://registry.yarnpkg.com/final-form/-/final-form-4.10.0.tgz#6179bca7676925202510e9877eb1ad2ad1cd3460"
 
 finalhandler@1.1.1:
   version "1.1.1"
