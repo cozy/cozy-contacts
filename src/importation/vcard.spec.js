@@ -26,6 +26,8 @@ describe('importation/vcard', () => {
       expect(report).toEqual({
         imported: 0,
         skipped: [],
+        created: [],
+        updated: [],
         total: 0,
         unsaved: 0
       })
@@ -70,7 +72,9 @@ describe('importation/vcard', () => {
             },
             transformError
           }
-        ]
+        ],
+        created: [],
+        updated: []
       })
     })
 
@@ -96,7 +100,9 @@ describe('importation/vcard', () => {
             },
             saveError
           }
-        ]
+        ],
+        created: [],
+        updated: []
       })
     })
 

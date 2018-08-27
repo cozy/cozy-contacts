@@ -4,21 +4,17 @@
   "confirm": "Confirm",
   "save": "Save",
   "delete": "Delete",
-  "selected_contacts":
-    "%{smart_count} selected contact |||| %{smart_count} selected contacts",
+  "selected_contacts": "%{smart_count} selected contact |||| %{smart_count} selected contacts",
   "contact_info": "Contact informations",
   "me": "me",
   "empty": {
     "title": "Synchronize your contacts",
-    "description":
-      "Click the \"Create a Contact\" button to start using the app.",
+    "description": "Click the \"Create a Contact\" button to start using the app.",
     "google": "Sync your Google contacts",
     "importation": "Import contacts",
-    "after":
-      "Importing your contacts might take a few minutes, time to enjoy a well deserved coffee break ☕️"
+    "after": "Importing your contacts might take a few minutes, time to enjoy a well deserved coffee break ☕️"
   },
-  "formatted_address":
-    "%{pobox} %{street} %{postcode} %{city} %{region} %{country}",
+  "formatted_address": "%{pobox} %{street} %{postcode} %{city} %{region} %{country}",
   "field": {
     "givenName": "Firstname",
     "familyName": "Lastname",
@@ -33,18 +29,16 @@
   "importation": {
     "cancel": "Cancel",
     "complete_failure": "Import failed.",
-    "complete_success":
-      "Congratulations! %{smart_count} contact was imported into your Cozy. |||| Congratulations! %{smart_count} contacts were imported into your Cozy.",
+    "complete_success": "Congratulations!",
+    "creation": "a contact has been created |||| %{smart_count} contacts have been created",
+    "update": "a contact has been updated |||| %{smart_count} contacts have been updated",
     "empty_file": "This file is empty.",
-    "export_steps_intro":
-      "To get your contacts from another program, you must first export the whole list:",
-    "export_to_vcard_step":
-      "Export your contacts in a file with vCard (*.vcf) format..",
+    "export_steps_intro": "To get your contacts from another program, you must first export the whole list:",
+    "export_to_vcard_step": "Export your contacts in a file with vCard (*.vcf) format..",
     "invalid_file_type": "This file type is unsupported.",
     "no_file": "Select your file here",
     "open_contact_manager_step": "Open your favorite contacts manager",
-    "partial_success":
-      "%{smart_count} of %{total} contact was imported. |||| %{smart_count} of %{total} contacts were imported.",
+    "partial_success": "%{smart_count} of %{total} contact was imported. |||| %{smart_count} of %{total} contacts were imported.",
     "ready": "Ready to import",
     "retry": "Retry",
     "retry_hint": "Please try again to complete your import.",
@@ -77,18 +71,14 @@
   "delete-confirmation": {
     "deleted": "The contact %{name} has been deleted.",
     "title": "Delete this contact?",
-    "description":
-      "This contact will also be deleted from your Google address book"
+    "description": "This contact will also be deleted from your Google address book"
   },
   "intent": {
-    "creation_error":
-      "An error occured while trying to contact the other app. Please try again later?"
+    "creation_error": "An error occured while trying to contact the other app. Please try again later?"
   },
   "manifest": {
     "name": "Contacts",
-    "short_description":
-      "Cozy Contacts helps you to save and secure your contacts on your Cozy.",
-    "long_description":
-      "With Cozy Contacts you can:\n- Add, modify and sort your contacts.\n- Imports all your contacts from Google, Facebook and more."
+    "short_description": "Cozy Contacts helps you to save and secure your contacts on your Cozy.",
+    "long_description": "With Cozy Contacts you can:\n- Add, modify and sort your contacts.\n- Imports all your contacts from Google, Facebook and more."
   }
 }

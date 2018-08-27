@@ -34,11 +34,11 @@ class ContactImportationModal extends React.Component {
 
   importFile = async () => {
     const { importation } = this.state
-    const { createContact, closeAction } = this.props
+    const { importContact, closeAction } = this.props
     const { runningImportation, finishedImportationPromise } = Importation.run(
       importation,
       {
-        save: createContact,
+        save: importContact,
         onProgress: this.onProgress
       }
     )
@@ -48,9 +48,15 @@ class ContactImportationModal extends React.Component {
     const finishedImportation = await finishedImportationPromise
 
     if (finishedImportation.status === Status.COMPLETE_SUCCESS) {
-      Alerter.success('importation.complete_success', {
-        smart_count: Importation.total(finishedImportation)
-      })
+      const created = Importation.created(finishedImportation)
+      const updated = Importation.updated(finishedImportation)
+      const { t } = this.context
+      Alerter.success(
+        `${t('importation.complete_success')}: ${t(
+          'importation.creation',
+          created
+        )}, ${t('importation.update', updated)}.`
+      )
       closeAction()
     } else {
       this.setState({ progress: null })
@@ -92,7 +98,7 @@ class ContactImportationModal extends React.Component {
   }
 }
 ContactImportationModal.propTypes = {
-  createContact: PropTypes.func.isRequired,
+  importContact: PropTypes.func.isRequired,
   closeAction: PropTypes.func.isRequired
 }
 
