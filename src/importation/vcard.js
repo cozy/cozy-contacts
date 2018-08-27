@@ -60,10 +60,12 @@ async function importData(data, options) {
     // 2.b. Save
     try {
       const result = await save(transformedContact)
-      if (result.data._rev.startsWith('1-')) {
-        created.push(result.data._id)
-      } else {
-        updated.push(result.data._id)
+      if (result && result.data && result.data._rev) {
+        if (result.data._rev.startsWith('1-')) {
+          created.push(result.data._id)
+        } else {
+          updated.push(result.data._id)
+        }
       }
     } catch (saveError) {
       console.error(saveError)
@@ -76,7 +78,7 @@ async function importData(data, options) {
 
   // 3. Report
   return {
-    imported: created.length + updated.length,
+    imported: total - skipped.length,
     created,
     updated,
     skipped,

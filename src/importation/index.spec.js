@@ -61,6 +61,8 @@ describe('importation', () => {
         report: {
           imported: 1,
           skipped: [],
+          created: [],
+          updated: [],
           total: 1,
           unsaved: 0
         },
