@@ -2,10 +2,7 @@ import { connect, withMutations } from 'cozy-client'
 import flow from 'lodash/flow'
 import array from 'lodash/array'
 import isEqual from 'lodash/isEqual'
-
-function flatten(arrayOfArrays) {
-  return [].concat(...arrayOfArrays)
-}
+import flatten from 'lodash/flatten'
 
 function removeDuplicates(data) {
   return array.uniqWith(data, isEqual)
