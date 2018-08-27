@@ -33,25 +33,19 @@ function selector(attr, prop) {
 }
 
 function getValues(array = [], property) {
-  return array.map(getValue(property))
+  return array.map(item => item[property])
 }
 
-function getValue(property) {
-  return obj => obj[property]
-}
-
-function createSelector(object) {
-  return path => {
-    const [arrayName, nestedProperty] = path.split('.')
-    const arrayOfObject = object[arrayName]
-    const values = getValues(arrayOfObject, nestedProperty)
-    return selector(arrayName, nestedProperty)(values)
-  }
+function createSelector(object, path) {
+  const [arrayName, nestedProperty] = path.split('.')
+  const arrayOfObject = object[arrayName]
+  const values = getValues(arrayOfObject, nestedProperty)
+  return selector(arrayName, nestedProperty)(values)
 }
 
 function findContactsWithSamePhoneOrEmail(targetContact) {
   const paths = ['phone.number', 'email.address']
-  const selectors = paths.map(createSelector(targetContact))
+  const selectors = paths.map(path => createSelector(targetContact, path))
   return findItems('io.cozy.contacts', selectors)
 }
 
