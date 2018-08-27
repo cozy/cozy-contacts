@@ -34,11 +34,11 @@ class ContactImportationModal extends React.Component {
 
   importFile = async () => {
     const { importation } = this.state
-    const { createContact, closeAction } = this.props
+    const { importContact, closeAction } = this.props
     const { runningImportation, finishedImportationPromise } = Importation.run(
       importation,
       {
-        save: createContact,
+        save: importContact,
         onProgress: this.onProgress
       }
     )
@@ -98,7 +98,7 @@ class ContactImportationModal extends React.Component {
   }
 }
 ContactImportationModal.propTypes = {
-  createContact: PropTypes.func.isRequired,
+  importContact: PropTypes.func.isRequired,
   closeAction: PropTypes.func.isRequired
 }
 

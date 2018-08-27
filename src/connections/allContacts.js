@@ -59,7 +59,7 @@ export const withContacts = connect(
 )
 
 export const withContactsMutations = withMutations(client => ({
-  createContact: async attributes => {
+  importContact: async attributes => {
     const contacts = await findContactsWithSamePhoneOrEmail(attributes)(client)
     if (contacts.length === 1) {
       // TODO: create a more complex updated contact if we need to merge deep properties together.
@@ -82,6 +82,15 @@ export const withContactsMutations = withMutations(client => ({
       }
     })
   },
+  createContact: attributes =>
+    client.create('io.cozy.contacts', attributes, null, {
+      updateQueries: {
+        [CONNECTION_NAME]: (previousData, result) => [
+          ...previousData,
+          result.data
+        ]
+      }
+    }),
   updateContact: contact => client.save(contact),
   deleteContact: contact =>
     client.destroy(contact, {
