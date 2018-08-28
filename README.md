@@ -39,6 +39,13 @@ $ yarn install
 
 Cozy's apps use a standard set of _npm scripts_ to run common tasks, like watch, lint, test, build…
 
+### Fixtures
+
+A fixture file is available, import its data with :
+
+```
+$ ACH import fixtures/contacts.json
+```
 
 ### Run it inside the VM
 
