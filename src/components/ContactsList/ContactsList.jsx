@@ -15,7 +15,7 @@ const ContactsList = props => {
   }
   const sortedContacts = [...props.contacts].sort(sortLastNameFirst)
   let lastLetter = null
-  const categorizedContacts = sortedContacts.reduce((acc, contact) => {
+  const contactsByLetter = sortedContacts.reduce((acc, contact) => {
     const name = buildLastNameFirst(contact)
     const header = name[0] || 'EMPTY'
     if (header !== lastLetter) {
@@ -28,11 +28,11 @@ const ContactsList = props => {
   return (
     <div className="list-wrapper">
       <ol className="list-contact">
-        {Object.keys(categorizedContacts).map(header => (
-          <li key={`cat-${header}`}>
-            <ContactHeaderRow key={header} header={header} />
+        {Object.keys(contactsByLetter).map(letter => (
+          <li key={`cat-${letter}`}>
+            <ContactHeaderRow key={letter} header={letter} />
             <ol className="sublist-contact">
-              {categorizedContacts[header].map(contact => (
+              {contactsByLetter[letter].map(contact => (
                 <li key={`contact-${contact._id}`}>
                   <ContactRow
                     key={contact._id}
