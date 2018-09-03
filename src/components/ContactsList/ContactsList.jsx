@@ -14,15 +14,11 @@ const ContactsList = props => {
     return <ContactsEmptyList displayImportation={props.displayImportation} />
   }
   const sortedContacts = [...props.contacts].sort(sortLastNameFirst)
-  let lastLetter = null
   const categorizedContacts = sortedContacts.reduce((acc, contact) => {
     const name = buildLastNameFirst(contact)
     const header = name[0] || 'EMPTY'
-    if (header !== lastLetter) {
-      acc[header] = []
-    }
+    acc[header] = acc[header] || []
     acc[header].push(contact)
-    lastLetter = header
     return acc
   }, {})
   return (
