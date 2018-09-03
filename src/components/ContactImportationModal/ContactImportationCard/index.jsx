@@ -4,7 +4,7 @@ import ContactImportationCardWrapper from './ContactImportationCardWrapper'
 import ContactImportationFile from './ContactImportationFile'
 import ContactImportationMessage from './ContactImportationMessage'
 import ImportationInput from './ImportationInput'
-import Importation from '../../../importation'
+import ImportationHelper from '../../../importation'
 import Status from '../../../importation/status'
 
 export default function ContactImportationCard(props, { t }) {
@@ -17,7 +17,7 @@ export default function ContactImportationCard(props, { t }) {
     <ContactImportationCardWrapper clickable={isCardClickable(status)}>
       <ContactImportationFile
         status={status}
-        name={Importation.filename(importation)}
+        name={ImportationHelper.filename(importation)}
         unselectAction={onFileUnselected}
       />
       {mainMessage && <ContactImportationMessage text={mainMessage} />}
@@ -34,7 +34,7 @@ export default function ContactImportationCard(props, { t }) {
   )
 }
 ContactImportationCard.propTypes = {
-  importation: Importation.propType.isRequired,
+  importation: ImportationHelper.propType.isRequired,
   progress: PropTypes.object,
   onFileSelected: PropTypes.func.isRequired,
   onFileUnselected: PropTypes.func.isRequired
@@ -94,7 +94,7 @@ function mainMessageText(importation, t) {
 }
 
 function retryMessageText(importation, t) {
-  if (Importation.canRetry(importation)) {
+  if (ImportationHelper.canRetry(importation)) {
     switch (importation.status) {
       case Status.PARTIAL_SUCCESS:
         return t('importation.retry_hint')
