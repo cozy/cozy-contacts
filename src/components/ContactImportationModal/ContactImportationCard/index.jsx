@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ContactImportationCardWrapper from './ContactImportationCardWrapper'
 import ContactImportationFile from './ContactImportationFile'
 import ContactImportationMessage from './ContactImportationMessage'
-import ContactTransferButton from './ContactTransferButton'
+import ImportationInput from './ImportationInput'
 import Importation from '../../../importation'
 import Status from '../../../importation/status'
 
@@ -23,7 +23,7 @@ export default function ContactImportationCard(props, { t }) {
       {mainMessage && <ContactImportationMessage text={mainMessage} />}
       {retryMessage && <ContactImportationMessage text={retryMessage} />}
       {isTransferButtonDisplayed(status) ? (
-        <ContactTransferButton fileAction={onFileSelected} />
+        <ImportationInput fileAction={onFileSelected} />
       ) : (
         isStatusDisplayed(status) && (
           <span className="importation-status">{t(statusKey(status))}</span>
