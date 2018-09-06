@@ -1,11 +1,16 @@
 import { connect, withMutations } from 'cozy-client'
 import flow from 'lodash/flow'
-import array from 'lodash/array'
+import uniqWith from 'lodash/uniqWith'
 import isEqual from 'lodash/isEqual'
 import flatten from 'lodash/flatten'
+import mergeWith from 'lodash/mergeWith'
+import merge from 'lodash/merge'
+import concat from 'lodash/concat'
+import groupBy from 'lodash/groupBy'
+import map from 'lodash/map'
 
 function removeDuplicates(data) {
-  return array.uniqWith(data, isEqual)
+  return uniqWith(data, isEqual)
 }
 
 function findItems(doctype, selectors) {
@@ -62,11 +67,7 @@ export const withContactsMutations = withMutations(client => ({
   importContact: async attributes => {
     const contacts = await findContactsWithSamePhoneOrEmail(attributes)(client)
     if (contacts.length === 1) {
-      // TODO: create a more complex updated contact if we need to merge deep properties together.
-      const updatedContact = {
-        ...contacts[0],
-        ...attributes
-      }
+      const updatedContact = mergeContact(contacts[0], attributes)
       return client.save(updatedContact)
     } else if (contacts.length > 1) {
       throw new Error(
@@ -104,3 +105,45 @@ export const withContactsMutations = withMutations(client => ({
 }))
 
 export default flow([withContacts, withContactsMutations])
+
+export function mergeContact(contact, attributes) {
+  // TODO: refactor to remove customizer from the mergeContact
+  const propertyName = {
+    email: 'address',
+    phone: 'number'
+  }
+
+  function customizer(objValue, srcValue, key) {
+    if (Array.isArray(objValue) || Array.isArray(srcValue)) {
+      return mergeArrayOnKey(objValue, srcValue, propertyName[key])
+    }
+    if (key === 'fullname' && objValue && srcValue) {
+      return objValue.length > srcValue.length ? objValue : srcValue
+    }
+  }
+  return mergeWith({}, contact, attributes, customizer)
+}
+
+/**
+ *
+ * @param {Array} objValue
+ * @param {Array} srcValue
+ * @param {String} key
+ *
+ * var arr1 = [{ x: 1 }];
+ * var arr2 = [{ x: 2 }];
+ * mergeArrayOnKey(arr1, arr2, 'x')
+ * → [{ x: 1 }, { x: 2 }]
+ *
+ * or
+ *
+ * var arr1 = [{ x: 1, y: 1 }];
+ * var arr2 = [{ x: 1, z: 1 }, { x: 2, z: 2 }];
+ * mergeArrayOnKey(arr1, arr2, 'x')
+ * → [{ x: 1, y: 1, z: 1 }, { x: 2, z: 2 }]
+ */
+function mergeArrayOnKey(objValue = [], srcValue = [], key) {
+  return map(groupBy(concat(objValue, srcValue), key), vals =>
+    merge({}, ...vals)
+  )
+}
