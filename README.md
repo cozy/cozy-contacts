@@ -41,7 +41,7 @@ Cozy's apps use a standard set of _npm scripts_ to run common tasks, like watch,
 
 ### Fixtures
 
-A fixture file is available, import its data with :
+A fixture file is available, import its data with [ACH](https://www.npmjs.com/package/cozy-ach) :
 
 ```
 $ ACH import fixtures/contacts.json
