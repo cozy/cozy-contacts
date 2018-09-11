@@ -8,24 +8,17 @@ export function mergeContact(contact, attributes) {
   return mergeWith({}, contact, attributes, customizer)
 }
 
-function customizer(objValue, srcValue, key) {
-  return getMergeStrategiesFunction(key)(objValue, srcValue, key)
-}
-
-const strategyFunctions = {
+const strategies = {
   email: mergeArrayOfObject('address'),
   phone: mergeArrayOfObject('number'),
   givenName: keepLonger,
   familyName: keepLonger
 }
 
-function getMergeStrategiesFunction(key) {
-  return strategyFunctions[key] || defaultMergeStrategyFunction
-}
+const fromStrategies = strategies => (objValue, srcValue, key) =>
+  strategies[key] ? strategies[key](objValue, srcValue, key) : undefined
 
-function defaultMergeStrategyFunction() {
-  return undefined
-}
+const customizer = fromStrategies(strategies)
 
 function mergeArrayOfObject(key) {
   return (objValue, srcValue) => {
