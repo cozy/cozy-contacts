@@ -1,58 +1,7 @@
 import { connect, withMutations } from 'cozy-client'
 import flow from 'lodash/flow'
-import uniqWith from 'lodash/uniqWith'
-import isEqual from 'lodash/isEqual'
-import flatten from 'lodash/flatten'
-import mergeWith from 'lodash/mergeWith'
-import merge from 'lodash/merge'
-import concat from 'lodash/concat'
-import groupBy from 'lodash/groupBy'
-import map from 'lodash/map'
-
-function removeDuplicates(data) {
-  return uniqWith(data, isEqual)
-}
-
-function findItems(doctype, selectors) {
-  return client =>
-    Promise.all(
-      selectors.map(selector =>
-        client.query(client.find(doctype).where(selector))
-      )
-    )
-      .then(results => results.map(result => result.data))
-      .then(flatten)
-      .then(removeDuplicates)
-}
-
-function selector(attr, prop) {
-  return values => ({
-    [attr]: {
-      $elemMatch: {
-        [prop]: {
-          $in: values
-        }
-      }
-    }
-  })
-}
-
-function getValues(array = [], property) {
-  return array.map(item => item[property])
-}
-
-function createSelector(object, path) {
-  const [arrayName, nestedProperty] = path.split('.')
-  const arrayOfObject = object[arrayName]
-  const values = getValues(arrayOfObject, nestedProperty)
-  return selector(arrayName, nestedProperty)(values)
-}
-
-function findContactsWithSamePhoneOrEmail(targetContact) {
-  const paths = ['phone.number', 'email.address']
-  const selectors = paths.map(path => createSelector(targetContact, path))
-  return findItems('io.cozy.contacts', selectors)
-}
+import { mergeContact } from '../helpers/mergeContact'
+import { findContactsWithSamePhoneOrEmail } from '../helpers/findContact'
 
 const CONNECTION_NAME = 'allContacts'
 
@@ -105,45 +54,3 @@ export const withContactsMutations = withMutations(client => ({
 }))
 
 export default flow([withContacts, withContactsMutations])
-
-export function mergeContact(contact, attributes) {
-  // TODO: refactor to remove customizer from the mergeContact
-  const propertyName = {
-    email: 'address',
-    phone: 'number'
-  }
-
-  function customizer(objValue, srcValue, key) {
-    if (Array.isArray(objValue) || Array.isArray(srcValue)) {
-      return mergeArrayOnKey(objValue, srcValue, propertyName[key])
-    }
-    if (key === 'fullname' && objValue && srcValue) {
-      return objValue.length > srcValue.length ? objValue : srcValue
-    }
-  }
-  return mergeWith({}, contact, attributes, customizer)
-}
-
-/**
- *
- * @param {Array} objValue
- * @param {Array} srcValue
- * @param {String} key
- *
- * var arr1 = [{ x: 1 }];
- * var arr2 = [{ x: 2 }];
- * mergeArrayOnKey(arr1, arr2, 'x')
- * → [{ x: 1 }, { x: 2 }]
- *
- * or
- *
- * var arr1 = [{ x: 1, y: 1 }];
- * var arr2 = [{ x: 1, z: 1 }, { x: 2, z: 2 }];
- * mergeArrayOnKey(arr1, arr2, 'x')
- * → [{ x: 1, y: 1, z: 1 }, { x: 2, z: 2 }]
- */
-function mergeArrayOnKey(objValue = [], srcValue = [], key) {
-  return map(groupBy(concat(objValue, srcValue), key), vals =>
-    merge({}, ...vals)
-  )
-}

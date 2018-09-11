@@ -1,4 +1,4 @@
-import { mergeContact } from './allContacts'
+import { mergeContact } from './mergeContact'
 
 describe('Merge contacts', () => {
   test('should merge properties', () => {
