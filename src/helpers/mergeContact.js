@@ -15,7 +15,8 @@ function customizer(objValue, srcValue, key) {
 const strategyFunctions = {
   email: mergeArrayOfObject('address'),
   phone: mergeArrayOfObject('number'),
-  fullname: keepLonger
+  givenName: keepLonger,
+  familyName: keepLonger
 }
 
 function getMergeStrategiesFunction(key) {
