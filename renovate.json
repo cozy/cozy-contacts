@@ -1,8 +1,7 @@
 {
-  "extends": ["config:base"],
+  "extends": ["cozy-app"],
   "pinVersions": true,
   "schedule": ["after 9pm and before 6am on every weekday", "every weekend"],
-  "timezone": "Europe/Paris",
   "devDependencies": {
     "automerge": true
   }
