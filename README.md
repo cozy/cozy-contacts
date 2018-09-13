@@ -59,12 +59,12 @@ $ yarn watch
 
 ```sh
 # in another terminal, run the docker container
-$ docker run --rm -it -p 8080:8080 -v "$(pwd)/build":/data/cozy-app/cozy-contacts cozy/cozy-app-dev
+$ docker run --rm -it -p 8080:8080 -p 5984:5984 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev
 or
 $ yarn stack:docker
 ```
 
-your app is available at http://cozy-contacts.cozy.tools:8080.
+your app is available at http://app.cozy.tools:8080.
 
 
 ### Living on the edge
