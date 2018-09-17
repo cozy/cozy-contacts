@@ -75,7 +75,11 @@ class ContactsApp extends React.Component {
       const displayedContact = this.props.contacts.find(
         contact => contact._id === this.state.displayedContact._id
       )
-      if (displayedContact._rev !== previouslyDisplayedContact._rev) {
+      if (
+        displayedContact &&
+        previouslyDisplayedContact &&
+        displayedContact._rev !== previouslyDisplayedContact._rev
+      ) {
         this.setState(state => ({
           ...state,
           displayedContact: displayedContact
