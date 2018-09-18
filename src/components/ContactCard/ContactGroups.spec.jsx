@@ -6,7 +6,16 @@ import { I18n } from 'cozy-ui/react/I18n'
 
 describe('ContactGroups', () => {
   it('should display groups', () => {
-    const contactMock = { groups: ['a', 'b'] }
+    const contactMock = {
+      relationships: {
+        groups: {
+          data: [
+            { _id: 'a', _type: 'io.cozy.contacts.groups' },
+            { _id: 'b', _type: 'io.cozy.contacts.groups' }
+          ]
+        }
+      }
+    }
     const groupsMock = [
       { _id: 'a', name: 'The A Team' },
       { _id: 'b', name: 'The B Team' },
