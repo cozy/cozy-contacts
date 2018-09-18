@@ -17,7 +17,7 @@
       "address": [
         { "street": "{{int 1 100}} {{street}}", "city": "{{city}}", "country": "{{country}}", "postcode": "{{zipcode}}", "primary": true }
       ],
-      "groups": ["group_id_work"],
+      "relationships": {"groups": {"data":[{"_id": "group_id_work","_type": "io.cozy.contacts.groups"}]}},
       "metadata": {
         "version": 1
       }
@@ -43,7 +43,7 @@
       "address": [
         { "street": "{{int 1 100}} {{street}}", "city": "{{city}}", "country": "{{country}}", "postcode": "{{zipcode}}", "primary": true }
       ],
-      "groups": ["group_id_family"],
+      "relationships": {"groups": {"data":[{"_id": "group_id_family","_type": "io.cozy.contacts.groups"}]}},
       "metadata": {
         "version": 1
       }
@@ -65,7 +65,7 @@
       "address": [
         { "street": "{{int 1 100}} {{street}}", "city": "{{city}}", "country": "{{country}}", "postcode": "{{zipcode}}", "primary": true }
       ],
-      "groups": ["group_id_work", "group_id_family"],
+      "relationships": {"groups": {"data":[{"_id": "group_id_work","_type": "io.cozy.contacts.groups"}, {"_id": "group_id_family","_type": "io.cozy.contacts.groups"}]}},
       "metadata": {
         "version": 1
       }
@@ -85,7 +85,11 @@
       "address": [
         { "street": "{{int 1 100}} {{street}}", "city": "{{city}}", "country": "{{country}}", "postcode": "{{zipcode}}", "primary": true }
       ],
-      "groups": [],
+      "relationships": {
+        "groups": {
+          "data":[]
+        }
+      },
       "metadata": {
         "version": 1
       }
@@ -103,7 +107,11 @@
       "address": [
         { "street": "{{int 1 100}} {{street}}", "city": "{{city}}", "country": "{{country}}", "postcode": "{{zipcode}}", "primary": true }
       ],
-      "groups": [],
+      "relationships": {
+        "groups": {
+          "data":[]
+        }
+      },
       "metadata": {
         "version": 1
       }
