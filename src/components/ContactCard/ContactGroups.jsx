@@ -8,17 +8,20 @@ import { withContactsMutations } from '../../connections/allContacts'
 export class ContactGroups extends React.Component {
   updateContactGroups = groups => {
     const modifiedContact = { ...this.props.contact }
-    modifiedContact.groups = groups.map(group => group._id)
+    modifiedContact.relationships.groups.data = groups
     this.props.updateContact(modifiedContact)
   }
 
   render() {
     const { allGroups, contact } = this.props
-    const contactGroups = contact.groups || []
+    const contactGroups =
+      (contact.relationships &&
+        contact.relationships.groups &&
+        contact.relationships.groups.data) ||
+      []
     const fullGroups = contactGroups
-      .map(groupId => allGroups.find(group => group._id === groupId))
+      .map(groupUser => allGroups.find(group => group._id === groupUser._id))
       .filter(value => value)
-
     return (
       <div className="contact-card-identity__groups">
         <ContactGroupManager
