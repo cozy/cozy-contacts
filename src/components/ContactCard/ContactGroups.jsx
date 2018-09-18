@@ -4,6 +4,7 @@ import { fullContactPropTypes } from '../ContactPropTypes'
 import ContactGroupManager from '../ContactGroups/ContactGroupManager'
 import { withGroups } from '../../connections/allGroups'
 import { withContactsMutations } from '../../connections/allContacts'
+import get from 'lodash/get'
 
 export class ContactGroups extends React.Component {
   updateContactGroups = groups => {
@@ -14,11 +15,7 @@ export class ContactGroups extends React.Component {
 
   render() {
     const { allGroups, contact } = this.props
-    const contactGroups =
-      (contact.relationships &&
-        contact.relationships.groups &&
-        contact.relationships.groups.data) ||
-      []
+    const contactGroups = get(contact, 'relationships.groups.data', [])
     const fullGroups = contactGroups
       .map(groupUser => allGroups.find(group => group._id === groupUser._id))
       .filter(value => value)
