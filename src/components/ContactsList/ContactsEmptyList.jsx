@@ -6,9 +6,6 @@ import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
 import IconTeam from '../../assets/icons/team.svg'
 import ImportGoogleButton from '../Buttons/ImportGoogleButton'
 
-const vcardEnabled =
-  new URL(window.location).searchParams.get('enablevcardimport') !== null
-
 export default class ContactsEmptyList extends React.Component {
   state = {
     hasConnector: false
@@ -46,17 +43,15 @@ export default class ContactsEmptyList extends React.Component {
             <span className="contacts-empty-action">
               <ImportGoogleButton onComplete={this.afterConnection} />
             </span>
-            {vcardEnabled && (
-              <span className="contacts-empty-action">
-                <Button
-                  className="contacts-empty-button"
-                  onClick={this.props.displayImportation}
-                  label={t('empty.importation')}
-                  theme="secondary"
-                  icon={IconTeam}
-                />
-              </span>
-            )}
+            <span className="contacts-empty-action">
+              <Button
+                className="contacts-empty-button"
+                onClick={this.props.displayImportation}
+                label={t('empty.importation')}
+                theme="secondary"
+                icon={IconTeam}
+              />
+            </span>
           </div>
         )}
       </Empty>
