@@ -7,7 +7,6 @@ import IconTeam from '../assets/icons/team.svg'
 const Toolbar = ({ displayContactForm, displayVcardImport }, { t }) => {
   const searchParams = new URL(window.location).searchParams
   const fakeintentEnabled = searchParams.get('fakeintent') !== null
-  const vcardEnabled = searchParams.get('enablevcardimport') !== null
   return (
     <div className="actions">
       {fakeintentEnabled && (
@@ -28,14 +27,12 @@ const Toolbar = ({ displayContactForm, displayVcardImport }, { t }) => {
         icon="plus"
         label={t('create_contact')}
       />
-      {vcardEnabled && (
-        <Button
-          onClick={displayVcardImport}
-          label={t('empty.importation')}
-          theme="secondary"
-          icon={IconTeam}
-        />
-      )}
+      <Button
+        onClick={displayVcardImport}
+        label={t('empty.importation')}
+        theme="secondary"
+        icon={IconTeam}
+      />
     </div>
   )
 }
