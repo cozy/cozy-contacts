@@ -1990,16 +1990,16 @@ cozy-client-js@^0.3.19:
   version "0.3.21"
   resolved "https://registry.yarnpkg.com/cozy-client-js/-/cozy-client-js-0.3.21.tgz#d27d0288077ce95139333c41dfb537b8584ff254"
 
-cozy-client@1.0.0-beta.4:
-  version "1.0.0-beta.4"
-  resolved "https://registry.yarnpkg.com/cozy-client/-/cozy-client-1.0.0-beta.4.tgz#a3ec42678b5cef6b195d7d0e0f2b059a9ad3ac1d"
+cozy-client@3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/cozy-client/-/cozy-client-3.0.6.tgz#112c101e12cc29dd34e1d6339845bca3f8df50e0"
   dependencies:
-    cozy-stack-client "^1.0.0-beta.4"
-    lodash "^4.17.5"
-    prop-types "^15.6.0"
-    react "^16.2.0"
-    react-redux "^5.0.6"
-    redux "^3.7.2"
+    cozy-stack-client "^3.0.3"
+    lodash "4.17.11"
+    prop-types "15.6.2"
+    react "16.4.2"
+    react-redux "5.0.7"
+    redux "3.7.2"
 
 cozy-scripts@0.10.4:
   version "0.10.4"
@@ -2050,11 +2050,11 @@ cozy-scripts@0.10.4:
     webpack-merge "4.1.4"
     write-file-webpack-plugin "4.3.2"
 
-cozy-stack-client@^1.0.0-beta.4:
-  version "1.0.0-beta.29"
-  resolved "https://registry.yarnpkg.com/cozy-stack-client/-/cozy-stack-client-1.0.0-beta.29.tgz#94c7e274c5c2db6b31734a4cb8f3293fcd103be6"
+cozy-stack-client@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/cozy-stack-client/-/cozy-stack-client-3.0.3.tgz#12f807a76ed710ac3b8c42aea3cb948135ad208f"
   dependencies:
-    mime-types "^2.1.18"
+    mime-types "2.1.20"
 
 cozy-ui@10.0.0:
   version "10.0.0"
@@ -5389,6 +5389,10 @@ lodash@4.17.10, lodash@^4.13.1, lodash@^4.14.2, lodash@^4.15.0, lodash@^4.17.10,
   version "4.17.10"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
 
+lodash@4.17.11:
+  version "4.17.11"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+
 loglevel@^1.4.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.6.1.tgz#e0fc95133b6ef276cdc8887cdaf24aa6f156f8fa"
@@ -5625,7 +5629,17 @@ miller-rabin@^4.0.0:
   version "1.35.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.35.0.tgz#0569d657466491283709663ad379a99b90d9ab47"
 
-mime-types@^2.1.12, mime-types@^2.1.18, mime-types@~2.1.17, mime-types@~2.1.18:
+mime-db@~1.36.0:
+  version "1.36.0"
+  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.36.0.tgz#5020478db3c7fe93aad7bbcc4dcf869c43363397"
+
+mime-types@2.1.20:
+  version "2.1.20"
+  resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.20.tgz#930cb719d571e903738520f8470911548ca2cc19"
+  dependencies:
+    mime-db "~1.36.0"
+
+mime-types@^2.1.12, mime-types@~2.1.17, mime-types@~2.1.18:
   version "2.1.19"
   resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.19.tgz#71e464537a7ef81c15f2db9d97e913fc0ff606f0"
   dependencies:
@@ -6973,7 +6987,7 @@ prompts@^0.1.9:
     kleur "^2.0.1"
     sisteransi "^0.1.1"
 
-prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2:
+prop-types@15.6.2, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   dependencies:
@@ -7203,7 +7217,7 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
-react-redux@^5.0.6:
+react-redux@5.0.7, react-redux@^5.0.6:
   version "5.0.7"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.7.tgz#0dc1076d9afb4670f993ffaef44b8f8c1155a4c8"
   dependencies:
@@ -7250,7 +7264,7 @@ react-transition-group@^2.2.1:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react@^16.2.0:
+react@16.4.2:
   version "16.4.2"
   resolved "https://registry.yarnpkg.com/react/-/react-16.4.2.tgz#2cd90154e3a9d9dd8da2991149fdca3c260e129f"
   dependencies:
@@ -7360,7 +7374,7 @@ redux-thunk@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
 
-redux@^3.7.2:
+redux@3.7.2, redux@^3.7.2:
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/redux/-/redux-3.7.2.tgz#06b73123215901d25d065be342eb026bc1c8537b"
   dependencies:
