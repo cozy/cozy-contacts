@@ -7,6 +7,7 @@ import ContactImportationActions from './ContactImportationActions'
 import ContactImportationCard from './ContactImportationCard'
 import Importation from '../../importation'
 import Status from '../../importation/status'
+import { translate } from 'cozy-ui/react/I18n'
 
 const ERROR_STATUS_SET = new Set([Status.FILE_ISSUE, Status.COMPLETE_FAILURE])
 
@@ -34,7 +35,7 @@ class ContactImportationModal extends React.Component {
 
   importFile = async () => {
     const { importation } = this.state
-    const { importContact, closeAction } = this.props
+    const { importContact, closeAction, t } = this.props
     const { runningImportation, finishedImportationPromise } = Importation.run(
       importation,
       {
@@ -50,7 +51,6 @@ class ContactImportationModal extends React.Component {
     if (finishedImportation.status === Status.COMPLETE_SUCCESS) {
       const created = Importation.created(finishedImportation)
       const updated = Importation.updated(finishedImportation)
-      const { t } = this.context
       Alerter.success(
         `${t('importation.complete_success')}: ${t(
           'importation.creation',
@@ -66,8 +66,7 @@ class ContactImportationModal extends React.Component {
 
   render() {
     const { importation, progress } = this.state
-    const { t } = this.context
-    const { closeAction } = this.props
+    const { closeAction, t } = this.props
 
     return (
       <Modal
@@ -102,4 +101,4 @@ ContactImportationModal.propTypes = {
   closeAction: PropTypes.func.isRequired
 }
 
-export default withContactsMutations(ContactImportationModal)
+export default translate()(withContactsMutations(ContactImportationModal))

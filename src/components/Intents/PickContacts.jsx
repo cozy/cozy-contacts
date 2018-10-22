@@ -56,7 +56,7 @@ class PickContacts extends React.Component {
   }
 
   render() {
-    const { t } = this.context
+    const { t } = this.props
     return (
       <div className="intent-layout">
         <IntentHeader appEditor="Cozy" appName="Contacts" appIcon="/icon.svg" />

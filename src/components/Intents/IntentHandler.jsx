@@ -38,8 +38,7 @@ class IntentHandler extends Component {
   }
 
   render() {
-    const { t } = this.context
-    const { appData, children } = this.props
+    const { appData, children, t } = this.props
     const { error, service, status } = this.state
     const intent = service && service.getIntent()
     const child =
