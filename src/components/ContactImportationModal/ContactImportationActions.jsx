@@ -3,11 +3,8 @@ import PropTypes from 'prop-types'
 import { Button } from 'cozy-ui/react'
 import Importation from '../../importation'
 import Status from '../../importation/status'
-
-export default function ImportationActions(
-  { cancelAction, importAction, importation },
-  { t }
-) {
+import { translate } from 'cozy-ui/react/I18n'
+const ImportationActions = ({ cancelAction, importAction, importation, t }) => {
   return (
     <p className="importation-actions">
       <Button
@@ -33,3 +30,4 @@ ImportationActions.propTypes = {
   importAction: PropTypes.func.isRequired,
   importation: Importation.propType.isRequired
 }
+export default translate()(ImportationActions)

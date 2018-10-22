@@ -114,7 +114,7 @@ class ContactsApp extends React.Component {
           />
           <Content>
             <ContactsList
-              contacts={this.props.contacts}
+              //contacts={this.props.contacts}
               onClickContact={this.displayContactCard}
               onSelect={this.props.toggleSelection}
               selection={this.props.selection}

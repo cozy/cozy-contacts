@@ -1,6 +1,7 @@
 import React from 'react'
+import { translate } from 'cozy-ui/react/I18n'
 
-export default function ExportStepsExplanation(props, { t }) {
+const ExportStepsExplanation = ({ t }) => {
   return (
     <div className="importation-export-steps-explanation">
       <p className="importation-section">
@@ -17,3 +18,5 @@ export default function ExportStepsExplanation(props, { t }) {
     </div>
   )
 }
+
+export default translate()(ExportStepsExplanation)
