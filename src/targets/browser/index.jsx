@@ -77,8 +77,16 @@ function initCozyClient(/* cozyDomain, cozyToken */) {
     uri: getCozyURI(),
     token: getToken(),
     schema: {
-      contacts: { doctype: 'io.cozy.contacts' },
-      groups: { doctype: 'io.cozy.contacts.groups' }
+      contacts: {
+        doctype: 'io.cozy.contacts',
+        relationships: {
+          groups: {
+            type: 'has-many',
+            doctype: 'io.cozy.contacts.groups'
+          }
+        },
+        groups: { doctype: 'io.cozy.contacts.groups' }
+      }
     }
   })
 }
