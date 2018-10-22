@@ -3,17 +3,21 @@
 import 'styles'
 
 import React from 'react'
-import CozyClient, { CozyProvider } from 'cozy-client'
+import CozyClient, { CozyProvider, StackLink } from 'cozy-client'
 import { render } from 'react-dom'
 import { I18n } from 'cozy-ui/react/I18n'
 import App from 'components/App'
+import { Provider } from 'react-redux'
+import configureStore from 'store/configureStore'
 
 const RootApp = props => (
-  <I18n lang={props.lang} dictRequire={lang => require(`locales/${lang}`)}>
-    <CozyProvider client={props.client}>
-      <App />
-    </CozyProvider>
-  </I18n>
+  <Provider store={props.store}>
+    <I18n lang={props.lang} dictRequire={lang => require(`locales/${lang}`)}>
+      <CozyProvider client={props.client}>
+        <App />
+      </CozyProvider>
+    </I18n>
+  </Provider>
 )
 
 function getDataOrDefault(data, defaultData) {
@@ -23,19 +27,18 @@ function getDataOrDefault(data, defaultData) {
 document.addEventListener('DOMContentLoaded', init)
 
 function init() {
+  console.log('init')
   const root = document.querySelector('[role=application]')
   const { appName, appNamePrefix, iconPath, lang } = getValues(root.dataset)
-  const client = initCozyClient(root.dataset.cozyDomain, root.dataset.cozyToken)
+  console.log('data')
+  const client = initCozyClient(/* root.dataset.cozyDomain, root.dataset.cozyToken */)
+  console.log('client', client)
   initCozyBar({ appName, appNamePrefix, iconPath, lang })
+  const persistedState = {}
+  const store = configureStore(client, persistedState)
+  console.log({ store })
 
-  if (module.hot) {
-    module.hot.accept('components/App', () => {
-      return requestAnimationFrame(() => {
-        render(<RootApp client={client} lang={lang} />, root)
-      })
-    })
-  }
-  render(<RootApp client={client} lang={lang} />, root)
+  render(<RootApp client={client} lang={lang} store={store} />, root)
 }
 
 /**
@@ -64,13 +67,33 @@ function getValues({
     lang: getDataOrDefault(cozyLocale, defaultValues.appLocaleDefault)
   }
 }
+const getCozyURI = () => {
+  const root = document.querySelector('[role=application]')
+  const data = root.dataset
+  const protocol = window.location.protocol
 
-function initCozyClient(cozyDomain, cozyToken) {
-  const { protocol = 'https' } = window.location
-  return new CozyClient({
+  return `${protocol}//${data.cozyDomain}`
+}
+function initCozyClient(/* cozyDomain, cozyToken */) {
+  //const { protocol = 'https' } = window.location
+  /* return new CozyClient({
     uri: `${protocol}//${cozyDomain}`,
     token: cozyToken
+  }) */
+
+  return new CozyClient({
+    uri: getCozyURI(),
+    token: getToken(),
+    scope: ['io.cozy.contacts'],
+    links: new StackLink()
   })
+}
+
+const getToken = () => {
+  const root = document.querySelector('[role=application]')
+  const data = root.dataset
+
+  return data.cozyToken
 }
 
 function initCozyBar({ appName, appNamePrefix, iconPath, lang }) {

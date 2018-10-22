@@ -3,8 +3,8 @@ import { PropTypes } from 'prop-types'
 import ContactsIntentButton from './Buttons/ContactsIntentButton'
 import { Button } from 'cozy-ui/react'
 import IconTeam from '../assets/icons/team.svg'
-
-const Toolbar = ({ displayContactForm, displayVcardImport }, { t }) => {
+import { translate } from 'cozy-ui/react/I18n'
+const Toolbar = ({ displayContactForm, displayVcardImport, t }) => {
   const searchParams = new URL(window.location).searchParams
   const fakeintentEnabled = searchParams.get('fakeintent') !== null
   return (
@@ -42,4 +42,4 @@ Toolbar.propTypes = {
   displayVcardImport: PropTypes.func.isRequired
 }
 
-export default Toolbar
+export default translate()(Toolbar)

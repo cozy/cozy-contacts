@@ -12,6 +12,7 @@ import ContactImportationModal from './ContactImportationModal'
 import Header from './Header'
 import Toolbar from './Toolbar'
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
+import { hot } from 'react-hot-loader'
 
 class ContactsApp extends React.Component {
   state = {
@@ -109,6 +110,7 @@ class ContactsApp extends React.Component {
               <Toolbar
                 displayContactForm={this.displayContactForm}
                 displayVcardImport={this.displayImportation}
+                t={t}
               />
             }
           />
@@ -164,4 +166,4 @@ const withContacts = WrappedComponent =>
     }
   }
 
-export default connect(withContacts(withSelection(ContactsApp)))
+export default hot(module)(connect(withContacts(withSelection(ContactsApp))))
