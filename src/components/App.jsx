@@ -12,8 +12,7 @@ import ContactImportationModal from './ContactImportationModal'
 import Header from './Header'
 import Toolbar from './Toolbar'
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
-import { hot } from 'react-hot-loader'
-
+import { translate } from 'cozy-ui/react/I18n'
 class ContactsApp extends React.Component {
   state = {
     displayedContact: null,
@@ -95,7 +94,7 @@ class ContactsApp extends React.Component {
       isImportationDisplayed,
       isCreationFormDisplayed
     } = this.state
-    const { t } = this.context
+    const { t } = this.props
 
     return (
       <Layout monocolumn>
@@ -110,7 +109,6 @@ class ContactsApp extends React.Component {
               <Toolbar
                 displayContactForm={this.displayContactForm}
                 displayVcardImport={this.displayImportation}
-                t={t}
               />
             }
           />
@@ -166,4 +164,4 @@ const withContacts = WrappedComponent =>
     }
   }
 
-export default hot(module)(connect(withContacts(withSelection(ContactsApp))))
+export default translate()(connect(withContacts(withSelection(ContactsApp))))

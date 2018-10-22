@@ -9,17 +9,19 @@ import { I18n } from 'cozy-ui/react/I18n'
 import App from 'components/App'
 import { Provider } from 'react-redux'
 import configureStore from 'store/configureStore'
+import { hot } from 'react-hot-loader'
 
 const RootApp = props => (
   <Provider store={props.store}>
     <I18n lang={props.lang} dictRequire={lang => require(`locales/${lang}`)}>
       <CozyProvider client={props.client}>
-        <App />
+        <HotedApp />
       </CozyProvider>
     </I18n>
   </Provider>
 )
 
+const HotedApp = hot(module)(App)
 function getDataOrDefault(data, defaultData) {
   return /^\{\{\..*\}\}$/.test(data) ? defaultData : data
 }

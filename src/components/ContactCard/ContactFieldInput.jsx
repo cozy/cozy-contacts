@@ -20,11 +20,11 @@ class ContactFieldInput extends React.Component {
   }
 
   onMainInputBlur = e => {
-    this.setState(state => ({
+    /* this.setState(state => ({
       ...state,
       isRenderingLabel: e.target.value && this.props.withLabel,
       hasFocus: false
-    }))
+    })) */
   }
 
   onSecondaryInputBlur = () => {

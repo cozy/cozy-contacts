@@ -5,7 +5,7 @@ import Modal, { ModalHeader, ModalContent } from 'cozy-ui/react/Modal'
 import { Icon, Menu, MenuItem, Button } from 'cozy-ui/react'
 import ContactCard from '../ContactCard/ContactCard'
 import contactPropTypes from '../ContactPropTypes'
-
+import { translate } from 'cozy-ui/react/I18n'
 const ContactCardMenu = ({ deleteAction }) => (
   <Menu
     position="right"
@@ -54,9 +54,8 @@ class ContactCardModal extends React.Component {
   }
 
   render() {
-    const { onClose, contact } = this.props
+    const { onClose, contact, t } = this.props
     const { shouldDisplayConfirmDeleteModal } = this.state
-    const { t } = this.context
 
     return (
       <Modal into="body" dismissAction={onClose} size="xlarge">
@@ -109,4 +108,4 @@ ContactCardModal.propTypes = {
   onDeleteContact: PropTypes.func.isRequired
 }
 
-export default withContactsMutations(ContactCardModal)
+export default translate()(withContactsMutations(ContactCardModal))
