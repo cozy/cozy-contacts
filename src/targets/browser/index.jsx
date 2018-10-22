@@ -84,9 +84,9 @@ function initCozyClient(/* cozyDomain, cozyToken */) {
             type: 'has-many',
             doctype: 'io.cozy.contacts.groups'
           }
-        },
-        groups: { doctype: 'io.cozy.contacts.groups' }
-      }
+        }
+      },
+      groups: { doctype: 'io.cozy.contacts.groups' }
     }
   })
 }
