@@ -2,38 +2,56 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { fullContactPropTypes } from '../ContactPropTypes'
 import ContactGroupManager from '../ContactGroups/ContactGroupManager'
-import { withGroups } from '../../connections/allGroups'
 import { withContactsMutations } from '../../connections/allContacts'
-import get from 'lodash/get'
-
+import { Query } from 'cozy-client'
+const groupsQuery = client => client.all('io.cozy.contacts.groups')
 export class ContactGroups extends React.Component {
   updateContactGroups = groups => {
-    const modifiedContact = { ...this.props.contact }
-    modifiedContact.relationships.groups.data = groups
-    this.props.updateContact(modifiedContact)
+    const newContact = {
+      ...this.props.contact,
+      groups: {
+        ...this.props.contact.groups,
+        data: {
+          ...this.props.contact.data,
+          ...groups
+        }
+      }
+    }
+    this.props.updateContact(newContact)
   }
 
   render() {
-    const { allGroups, contact } = this.props
-    const contactGroups = get(contact, 'relationships.groups.data', [])
-    const fullGroups = contactGroups
-      .map(groupUser => allGroups.find(group => group._id === groupUser._id))
-      .filter(value => value)
     return (
-      <div className="contact-card-identity__groups">
-        <ContactGroupManager
-          contactGroups={fullGroups}
-          allGroups={allGroups}
-          onGroupSelectionChange={this.updateContactGroups}
-        />
-        <ol className="contact-groups-list">
-          {fullGroups.map(group => (
-            <li key={group._id} className="contact-groups-list__tag">
-              {group.name}
-            </li>
-          ))}
-        </ol>
-      </div>
+      <Query query={groupsQuery}>
+        {({ data: allGroups, fetchStatus }) => {
+          if (fetchStatus === 'loaded') {
+            const { contact } = this.props
+            const fullGroups = contact.groups.data
+              .map(groupUser =>
+                allGroups.find(group => group._id === groupUser._id)
+              )
+              .filter(value => value)
+            return (
+              <div className="contact-card-identity__groups">
+                <ContactGroupManager
+                  contactGroups={contact.groups.data}
+                  allGroups={allGroups}
+                  onGroupSelectionChange={this.updateContactGroups}
+                />
+                <ol className="contact-groups-list">
+                  {fullGroups.map(group => (
+                    <li key={group._id} className="contact-groups-list__tag">
+                      {group.name}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )
+          } else {
+            return 'loading...'
+          }
+        }}
+      </Query>
     )
   }
 }
@@ -44,25 +62,8 @@ ContactGroups.propTypes = {
   updateContact: PropTypes.func.isRequired
 }
 
-const ConnectedContactGroups = ({
-  data,
-  fetchStatus,
-  contact,
-  updateContact
-}) => {
-  if (fetchStatus === 'error') {
-    return false
-  } else if (fetchStatus === 'loading' || fetchStatus === 'pending') {
-    return <div>Loading...</div>
-  } else {
-    return (
-      <ContactGroups
-        contact={contact}
-        allGroups={data}
-        updateContact={updateContact}
-      />
-    )
-  }
+const ConnectedContactGroups = ({ contact, updateContact }) => {
+  return <ContactGroups contact={contact} updateContact={updateContact} />
 }
 
 ConnectedContactGroups.propTypes = {
@@ -72,4 +73,4 @@ ConnectedContactGroups.propTypes = {
   updateContact: PropTypes.func.isRequired
 }
 
-export default withGroups(withContactsMutations(ConnectedContactGroups))
+export default withContactsMutations(ConnectedContactGroups)
