@@ -31,13 +31,6 @@ class ContactsApp extends React.Component {
     })
   }
 
-  onDeleteContact = contact => {
-    this.hideContactCard()
-    Alerter.info('delete-confirmation.deleted', {
-      name: getFullContactName(contact.name)
-    })
-  }
-
   displayContactForm = () => {
     this.setState({
       isCreationFormDisplayed: true

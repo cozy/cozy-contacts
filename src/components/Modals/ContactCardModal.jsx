@@ -48,9 +48,10 @@ class ContactCardModal extends React.Component {
   }
 
   deleteContact = async () => {
-    const { contact, deleteContact, onDeleteContact } = this.props
+    const { contact, deleteContact, onDeleteContact, onClose } = this.props
+    onClose && onClose()
     await deleteContact(contact)
-    onDeleteContact(contact)
+    onDeleteContact && onDeleteContact(contact)
   }
 
   render() {

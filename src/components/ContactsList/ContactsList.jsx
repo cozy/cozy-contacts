@@ -14,7 +14,6 @@ class ContactsList extends Component {
     displayedContactId: null
   }
   onClick = (e, contactId) => {
-    console.log('onClick', contactId)
     this.setState({
       displayedContactId: contactId
     })
@@ -25,17 +24,10 @@ class ContactsList extends Component {
     })
   }
   getContactById = (contacts, id) => {
-    console.log('find id', id)
-    console.log('contact', _.find(contacts, c => c._id === id))
     return _.find(contacts, c => c.id === id)
   }
   render() {
-    const {
-      displayImportation,
-      onSelect,
-      selection
-      //onClickContact
-    } = this.props
+    const { displayImportation, onSelect, selection } = this.props
     const { displayedContactId } = this.state
     return (
       <Query query={query}>
@@ -46,7 +38,6 @@ class ContactsList extends Component {
           if (contacts.length === 0) {
             return <ContactsEmptyList displayImportation={displayImportation} />
           } else {
-            console.log({ contacts })
             const sortedContacts = [...contacts].sort(sortLastNameFirst)
             const categorizedContacts = sortedContacts.reduce(
               (acc, contact) => {
@@ -94,7 +85,6 @@ class ContactsList extends Component {
                         contacts,
                         displayedContactId
                       )}
-                      onDeleteContact={this.onDeleteContact}
                     />
                   )}
                 </div>
