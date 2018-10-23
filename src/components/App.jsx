@@ -2,7 +2,6 @@ import React from 'react'
 import ContactsList from './ContactsList'
 import withSelection from './HOCs/withSelection'
 import { PropTypes } from 'prop-types'
-import ContactCardModal from './Modals/ContactCardModal'
 import ContactFormModal from './Modals/ContactFormModal'
 import { Alerter } from 'cozy-ui/react'
 import { Main, Content, Layout } from 'cozy-ui/react/Layout'
@@ -32,22 +31,10 @@ class ContactsApp extends React.Component {
     })
   }
 
-  displayContactCard = contact => {
-    this.setState({
-      displayedContact: contact
-    })
-  }
-
   onDeleteContact = contact => {
     this.hideContactCard()
     Alerter.info('delete-confirmation.deleted', {
       name: getFullContactName(contact.name)
-    })
-  }
-
-  hideContactCard = () => {
-    this.setState({
-      displayedContact: null
     })
   }
 
@@ -115,7 +102,7 @@ class ContactsApp extends React.Component {
           <Content>
             <ContactsList
               //contacts={this.props.contacts}
-              onClickContact={this.displayContactCard}
+              // onClickContact={this.displayContactCard}
               onSelect={this.props.toggleSelection}
               selection={this.props.selection}
               displayImportation={this.displayImportation}
@@ -124,13 +111,7 @@ class ContactsApp extends React.Component {
           {isImportationDisplayed && (
             <ContactImportationModal closeAction={this.hideImportation} />
           )}
-          {displayedContact && (
-            <ContactCardModal
-              onClose={this.hideContactCard}
-              contact={displayedContact}
-              onDeleteContact={this.onDeleteContact}
-            />
-          )}
+
           {isCreationFormDisplayed && (
             <ContactFormModal
               onClose={this.hideContactForm}

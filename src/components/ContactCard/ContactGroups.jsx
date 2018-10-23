@@ -7,17 +7,15 @@ import { Query } from 'cozy-client'
 const groupsQuery = client => client.all('io.cozy.contacts.groups')
 export class ContactGroups extends React.Component {
   updateContactGroups = groups => {
-    const newContact = {
-      ...this.props.contact,
-      groups: {
-        ...this.props.contact.groups,
-        data: {
-          ...this.props.contact.data,
-          ...groups
-        }
-      }
-    }
-    this.props.updateContact(newContact)
+    const { contact } = this.props
+
+    contact.groups.data.map(group => {
+      contact.groups.removeById(group._id)
+    })
+    groups.map(groupToAdd => {
+      contact.groups.addById(groupToAdd._id)
+    })
+    this.props.updateContact(contact)
   }
 
   render() {

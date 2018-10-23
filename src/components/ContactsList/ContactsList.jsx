@@ -5,17 +5,38 @@ import ContactsEmptyList from './ContactsEmptyList'
 import ContactRow from './ContactRow'
 import ContactHeaderRow from './ContactHeaderRow'
 import { Query } from 'cozy-client'
-
+import ContactCardModal from '../Modals/ContactCardModal'
+import _ from 'lodash'
 const query = client => client.find('io.cozy.contacts')
 
 class ContactsList extends Component {
+  state = {
+    displayedContactId: null
+  }
+  onClick = (e, contactId) => {
+    console.log('onClick', contactId)
+    this.setState({
+      displayedContactId: contactId
+    })
+  }
+  hideContactCard = () => {
+    this.setState({
+      displayedContactId: null
+    })
+  }
+  getContactById = (contacts, id) => {
+    console.log('find id', id)
+    console.log('contact', _.find(contacts, c => c._id === id))
+    return _.find(contacts, c => c.id === id)
+  }
   render() {
     const {
       displayImportation,
       onSelect,
-      selection,
-      onClickContact
+      selection
+      //onClickContact
     } = this.props
+    const { displayedContactId } = this.state
     return (
       <Query query={query}>
         {({ data: contacts, fetchStatus }) => {
@@ -57,7 +78,7 @@ class ContactsList extends Component {
                                   selected: selection.includes(contact)
                                 }
                               }
-                              onClick={e => onClickContact(contact, e)}
+                              onClick={e => this.onClick(e, contact._id)}
                             />
                           </li>
                         ))}
@@ -65,6 +86,18 @@ class ContactsList extends Component {
                     </li>
                   ))}
                 </ol>
+                <div>
+                  {displayedContactId && (
+                    <ContactCardModal
+                      onClose={this.hideContactCard}
+                      contact={this.getContactById(
+                        contacts,
+                        displayedContactId
+                      )}
+                      onDeleteContact={this.onDeleteContact}
+                    />
+                  )}
+                </div>
               </div>
             )
           }
