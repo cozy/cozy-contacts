@@ -12,6 +12,10 @@ import Header from './Header'
 import Toolbar from './Toolbar'
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
 import { translate } from 'cozy-ui/react/I18n'
+import ContactCardModal from './Modals/ContactCardModal'
+import { Query } from 'cozy-client'
+import withModal from './HOCs/withModal'
+import { ModalManager } from '../helpers/modalManager'
 class ContactsApp extends React.Component {
   state = {
     displayedContact: null,
@@ -45,7 +49,26 @@ class ContactsApp extends React.Component {
 
   onCreateContact = contact => {
     this.hideContactForm()
-    this.displayContactCard(contact)
+    console.log({ contact })
+    return this.props.displayModal(
+      <Query
+        query={client =>
+          client.find('io.cozy.contacts').where({ _id: contact._id })
+        }
+      >
+        {({ data: contact, fetchStatus }) => {
+          if (fetchStatus === 'loading') {
+            return 'loading'
+          }
+          return (
+            <ContactCardModal
+              onClose={this.hideContactCard}
+              contact={contact[0]}
+            />
+          )
+        }}
+      </Query>
+    )
   }
   componentDidUpdate(prevProps) {
     if (this.state.displayedContact) {
@@ -113,6 +136,7 @@ class ContactsApp extends React.Component {
             />
           )}
           <Alerter t={t} />
+          <ModalManager />
         </Main>
       </Layout>
     )
@@ -138,4 +162,6 @@ const withContacts = WrappedComponent =>
     }
   }
 
-export default translate()(connect(withContacts(withSelection(ContactsApp))))
+export default translate()(
+  connect(withContacts(withSelection(withModal(ContactsApp))))
+)
