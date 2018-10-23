@@ -66,7 +66,11 @@ class ContactsList extends Component {
                                   onSelect: () => {
                                     onSelect(contact)
                                   },
-                                  selected: selection.includes(contact)
+                                  selected:
+                                    _.find(
+                                      selection,
+                                      s => s.id === contact._id
+                                    ) !== undefined
                                 }
                               }
                               onClick={e => this.onClick(e, contact._id)}
