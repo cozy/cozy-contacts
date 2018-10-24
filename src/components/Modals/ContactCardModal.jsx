@@ -57,7 +57,7 @@ class ContactCardModal extends React.Component {
   render() {
     const { onClose, contact, t } = this.props
     const { shouldDisplayConfirmDeleteModal } = this.state
-
+    console.log('props2', this.props)
     return (
       <Modal into="body" dismissAction={onClose} size="xlarge">
         <ContactCard

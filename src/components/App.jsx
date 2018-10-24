@@ -6,7 +6,7 @@ import ContactFormModal from './Modals/ContactFormModal'
 import { Alerter } from 'cozy-ui/react'
 import { Main, Content, Layout } from 'cozy-ui/react/Layout'
 import connect from '../connections/allContacts'
-import { getFullContactName } from '../helpers/contacts'
+//import { getFullContactName } from '../helpers/contacts'
 import ContactImportationModal from './ContactImportationModal'
 import Header from './Header'
 import Toolbar from './Toolbar'
@@ -49,8 +49,7 @@ class ContactsApp extends React.Component {
 
   onCreateContact = contact => {
     this.hideContactForm()
-    console.log({ contact })
-    return this.props.displayModal(
+    return this.props.showModal(
       <Query
         query={client =>
           client.find('io.cozy.contacts').where({ _id: contact._id })
@@ -60,12 +59,7 @@ class ContactsApp extends React.Component {
           if (fetchStatus === 'loading') {
             return 'loading'
           }
-          return (
-            <ContactCardModal
-              onClose={this.hideContactCard}
-              contact={contact[0]}
-            />
-          )
+          return <ContactCardModal contact={contact[0]} />
         }}
       </Query>
     )
@@ -93,7 +87,7 @@ class ContactsApp extends React.Component {
 
   render() {
     const {
-      displayedContact,
+      // displayedContact,
       isImportationDisplayed,
       isCreationFormDisplayed
     } = this.state

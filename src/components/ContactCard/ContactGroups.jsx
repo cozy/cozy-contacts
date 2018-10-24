@@ -8,7 +8,9 @@ const groupsQuery = client => client.all('io.cozy.contacts.groups')
 export class ContactGroups extends React.Component {
   updateContactGroups = groups => {
     const { contact } = this.props
-
+    if (!contact.groups) {
+      contact.groups = {}
+    }
     contact.groups.data.map(group => {
       contact.groups.removeById(group._id)
     })

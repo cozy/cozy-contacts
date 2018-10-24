@@ -19,7 +19,7 @@ class ContactFieldInput extends React.Component {
     })
   }
 
-  onMainInputBlur = e => {
+  onMainInputBlur = () => {
     /* this.setState(state => ({
       ...state,
       isRenderingLabel: e.target.value && this.props.withLabel,

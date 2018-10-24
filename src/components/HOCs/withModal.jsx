@@ -2,7 +2,9 @@ import { connect } from 'react-redux'
 import { showModal } from '../../helpers/modalManager'
 
 const mapDispatchToProps = dispatch => ({
-  displayModal: modal => dispatch(showModal(modal))
+  showModal: modal => {
+    return dispatch(showModal(modal))
+  }
 })
 
 const withModalContainer = component =>
