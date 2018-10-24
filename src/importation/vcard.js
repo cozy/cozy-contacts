@@ -5,7 +5,9 @@ const encoding = 'utf8'
 
 const FILE_TYPES = [
   'text/vcard',
-  'text/x-vcard' // Deprecated as of vCard 4.0
+  'text/x-vcard', // Deprecated as of vCard 4.0
+  'text/directory', // Deprecated as of vCard 4.0
+  'text/directory; type=vcard' // Deprecated as of vCard 4.0
 ]
 
 export default {
