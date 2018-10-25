@@ -3,7 +3,6 @@ import ContactCardModal from './ContactCardModal'
 import withModal from '../HOCs/withModal'
 class ContactCardModalConnected extends Component {
   render() {
-    console.log('modal connected', this.props)
     return <ContactCardModal {...this.props} onClose={this.props.hideModal} />
   }
 }

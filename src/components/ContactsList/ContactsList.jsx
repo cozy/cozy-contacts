@@ -100,13 +100,6 @@ class ContactsList extends Component {
     )
   }
 }
-
-/* console.log({ props })
-  if (props.contacts.length === 0) {
-    return <ContactsEmptyList displayImportation={props.displayImportation} />
-  }
-  
-} */
 ContactsList.propTypes = {
   onClickContact: PropTypes.func,
   onSelect: PropTypes.func,

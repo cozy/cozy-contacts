@@ -25,13 +25,7 @@ export const withContactsMutations = withMutations(client => ({
     }
     return client.create('io.cozy.contacts', attributes, null)
   },
-  createContact: attributes =>
-    client.create(
-      'io.cozy.contacts',
-      attributes /* {
-      groups: { data: [{ _id: 'toto', _type: 'io.cozy.contacts.groups' }] }
-    } */
-    ),
+  createContact: attributes => client.create('io.cozy.contacts', attributes),
   updateContact: contact => client.save(contact),
   deleteContact: contact => client.destroy(contact)
 }))

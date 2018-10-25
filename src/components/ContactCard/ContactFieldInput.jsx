@@ -19,14 +19,6 @@ class ContactFieldInput extends React.Component {
     })
   }
 
-  onMainInputBlur = () => {
-    /* this.setState(state => ({
-      ...state,
-      isRenderingLabel: e.target.value && this.props.withLabel,
-      hasFocus: false
-    })) */
-  }
-
   onSecondaryInputBlur = () => {
     this.setState(state => ({
       ...state,
@@ -57,7 +49,6 @@ class ContactFieldInput extends React.Component {
           placeholder={placeholder}
           required={required}
           onFocus={this.onFocus}
-          onBlur={this.onMainInputBlur}
           component={getInputComponent(type)}
           className="contact-form__input"
         />

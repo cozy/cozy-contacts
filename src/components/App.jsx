@@ -6,7 +6,6 @@ import ContactFormModal from './Modals/ContactFormModal'
 import { Alerter } from 'cozy-ui/react'
 import { Main, Content, Layout } from 'cozy-ui/react/Layout'
 import connect from '../connections/allContacts'
-//import { getFullContactName } from '../helpers/contacts'
 import ContactImportationModal from './ContactImportationModal'
 import Header from './Header'
 import Toolbar from './Toolbar'
@@ -86,11 +85,7 @@ class ContactsApp extends React.Component {
   }
 
   render() {
-    const {
-      // displayedContact,
-      isImportationDisplayed,
-      isCreationFormDisplayed
-    } = this.state
+    const { isImportationDisplayed, isCreationFormDisplayed } = this.state
     const { t } = this.props
 
     return (
@@ -111,8 +106,6 @@ class ContactsApp extends React.Component {
           />
           <Content>
             <ContactsList
-              //contacts={this.props.contacts}
-              // onClickContact={this.displayContactCard}
               onSelect={this.props.toggleSelection}
               selection={this.props.selection}
               displayImportation={this.displayImportation}
