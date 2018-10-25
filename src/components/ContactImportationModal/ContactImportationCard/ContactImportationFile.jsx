@@ -6,7 +6,6 @@ import IconFileVcf from '../../../assets/icons/file-vcf.svg'
 import IconFileWrongFormat from '../../../assets/icons/file-wrong-format.svg'
 import IconFilePartialImport from '../../../assets/icons/file-partial-import.svg'
 import IconFileFailImport from '../../../assets/icons/file-fail-import.svg'
-import IconCross from '../../../assets/icons/small-cross.svg'
 import Status from '../../../importation/status'
 
 function fileIcon(status) {
@@ -40,7 +39,7 @@ export default function ImportationFile({ status, name, unselectAction }) {
               onClick={e => unselectAction(e)}
             >
               <Icon
-                icon={IconCross}
+                icon={'cross'}
                 color={palette['coolGrey']}
                 width="10"
                 height="10"

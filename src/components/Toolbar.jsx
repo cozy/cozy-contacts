@@ -1,6 +1,6 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import { Button } from 'cozy-ui/react'
+import { Button, Icon } from 'cozy-ui/react'
 import IconTeam from '../assets/icons/team.svg'
 import { translate } from 'cozy-ui/react/I18n'
 const Toolbar = ({ displayContactForm, displayVcardImport, t }) => {
@@ -8,14 +8,14 @@ const Toolbar = ({ displayContactForm, displayVcardImport, t }) => {
     <div className="actions">
       <Button
         onClick={displayContactForm}
-        icon="plus"
+        icon={'plus'}
         label={t('create_contact')}
       />
       <Button
         onClick={displayVcardImport}
         label={t('empty.importation')}
         theme="secondary"
-        icon={IconTeam}
+        icon={<Icon icon={IconTeam} />}
       />
     </div>
   )
