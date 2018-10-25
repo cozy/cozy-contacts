@@ -89,7 +89,7 @@ class ContactsApp extends React.Component {
     const { t } = this.props
 
     return (
-      <Layout monocolumn>
+      <Layout monocolumn="true">
         <Main>
           <ContactsSelectionBar
             selection={this.props.selection}
