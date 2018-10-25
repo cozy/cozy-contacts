@@ -38,11 +38,13 @@ function createSelector(object, path) {
   const [arrayName, nestedProperty] = path.split('.')
   const arrayOfObject = object[arrayName]
   const values = getValues(arrayOfObject, nestedProperty)
+  console.log(selector(arrayName, nestedProperty)(values))
   return selector(arrayName, nestedProperty)(values)
 }
 
 export function findContactsWithSamePhoneOrEmail(targetContact) {
   const paths = ['phone.number', 'email.address']
   const selectors = paths.map(path => createSelector(targetContact, path))
+  console.log('finalSelectors', selectors)
   return findItems('io.cozy.contacts', selectors)
 }

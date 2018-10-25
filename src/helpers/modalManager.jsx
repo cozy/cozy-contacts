@@ -25,7 +25,7 @@ export const showModal = component => ({
   }
 })
 
-const hideModal = (meta = {}) => ({
+export const hideModal = (meta = {}) => ({
   type: HIDE_MODAL,
   meta
 })

@@ -12,7 +12,7 @@ import Header from './Header'
 import Toolbar from './Toolbar'
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
 import { translate } from 'cozy-ui/react/I18n'
-import ContactCardModal from './Modals/ContactCardModal'
+import ContactCardModalConnected from './Modals/ContactCardModalConnected'
 import { Query } from 'cozy-client'
 import withModal from './HOCs/withModal'
 import { ModalManager } from '../helpers/modalManager'
@@ -59,7 +59,7 @@ class ContactsApp extends React.Component {
           if (fetchStatus === 'loading') {
             return 'loading'
           }
-          return <ContactCardModal contact={contact[0]} />
+          return <ContactCardModalConnected contact={contact[0]} />
         }}
       </Query>
     )
