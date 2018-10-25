@@ -16,7 +16,8 @@ const ContactCardMenu = ({ deleteAction }) => (
         extension="narrow"
         icon="dots"
         className="fix-c-btn"
-        label={deleteAction.label}
+        iconOnly
+        label={'deleteAction.label'}
       />
     }
   >

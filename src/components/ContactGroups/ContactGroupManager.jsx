@@ -13,9 +13,12 @@ import IconGroups from '../../assets/icons/groups.svg'
 import IconDown from '../../assets/icons/down.svg'
 
 const MainButton = ({ t }) => (
-  <Button theme="secondary" size="small">
-    <Icon icon={IconGroups} color={palette['coolGrey']} />
-    {t('groups.manage')}
+  <Button
+    theme="secondary"
+    size="small"
+    icon={<Icon icon={IconGroups} color={palette['coolGrey']} />}
+    label={t('groups.manage')}
+  >
     <Icon
       icon={IconDown}
       color={palette['coolGrey']}
