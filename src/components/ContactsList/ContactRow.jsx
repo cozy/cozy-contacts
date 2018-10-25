@@ -68,7 +68,7 @@ const ContactSelection = props => (
     }}
   >
     <span data-input="checkbox">
-      <input type="checkbox" checked={props.selected} />
+      <input type="checkbox" checked={props.selected} readOnly />
       <label />
     </span>
   </div>

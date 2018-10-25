@@ -58,7 +58,6 @@ export class ContactGroups extends React.Component {
 
 ContactGroups.propTypes = {
   contact: fullContactPropTypes.isRequired,
-  allGroups: PropTypes.array.isRequired,
   updateContact: PropTypes.func.isRequired
 }
 
@@ -67,8 +66,6 @@ const ConnectedContactGroups = ({ contact, updateContact }) => {
 }
 
 ConnectedContactGroups.propTypes = {
-  data: PropTypes.array,
-  fetchStatus: PropTypes.string.isRequired,
   contact: fullContactPropTypes.isRequired,
   updateContact: PropTypes.func.isRequired
 }

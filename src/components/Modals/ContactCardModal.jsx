@@ -16,6 +16,7 @@ const ContactCardMenu = ({ deleteAction }) => (
         extension="narrow"
         icon="dots"
         className="fix-c-btn"
+        label={deleteAction.label}
       />
     }
   >
@@ -105,7 +106,7 @@ ContactCardModal.propTypes = {
     note: contactPropTypes.note
   }).isRequired,
   deleteContact: PropTypes.func.isRequired,
-  onDeleteContact: PropTypes.func.isRequired
+  onDeleteContact: PropTypes.func
 }
 
 export default translate()(withContactsMutations(ContactCardModal))
