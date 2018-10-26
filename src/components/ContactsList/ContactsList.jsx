@@ -7,6 +7,8 @@ import ContactHeaderRow from './ContactHeaderRow'
 import { Query } from 'cozy-client'
 import ContactCardModal from '../Modals/ContactCardModal'
 import _ from 'lodash'
+import { Spinner } from 'cozy-ui/react'
+
 const query = client => client.find('io.cozy.contacts')
 
 class ContactsList extends Component {
@@ -33,7 +35,7 @@ class ContactsList extends Component {
       <Query query={query}>
         {({ data: contacts, fetchStatus }) => {
           if (fetchStatus === 'loading') {
-            return 'loading...'
+            return <Spinner size="xxlarge" />
           }
           if (contacts.length === 0) {
             return <ContactsEmptyList displayImportation={displayImportation} />

@@ -2,7 +2,7 @@ import React from 'react'
 import { mount } from 'enzyme'
 
 import { ContactGroups } from './ContactGroups'
-import AppLike from '../../tests/AppLike'
+import AppLike from '../../tests/Applike'
 describe('ContactGroups', () => {
   it('should display groups', () => {
     const contactMock = {
