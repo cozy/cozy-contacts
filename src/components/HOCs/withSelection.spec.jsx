@@ -21,22 +21,25 @@ describe('A component with selection', () => {
   it('should toggle the selection', () => {
     expect(testedComponent.prop('selection')).toEqual([])
 
-    testedComponent.prop('toggleSelection')(1)
-    testedComponent.prop('toggleSelection')(2)
+    testedComponent.prop('toggleSelection')({ _id: 1, id: 1 })
+    testedComponent.prop('toggleSelection')({ _id: 2, id: 2 })
     testedComponent.update()
 
-    expect(testedComponent.prop('selection')).toEqual([1, 2])
+    expect(testedComponent.prop('selection')).toEqual([
+      { _id: 1, id: 1 },
+      { _id: 2, id: 2 }
+    ])
 
-    testedComponent.prop('toggleSelection')(2)
+    testedComponent.prop('toggleSelection')({ _id: 2, id: 2 })
     testedComponent.update()
-    expect(testedComponent.prop('selection')).toEqual([1])
+    expect(testedComponent.prop('selection')).toEqual([{ _id: 1, id: 1 }])
   })
 
   it('should clear the selection', () => {
     expect(testedComponent.prop('selection').length).toEqual(0)
 
-    testedComponent.prop('toggleSelection')(1)
-    testedComponent.prop('toggleSelection')(2)
+    testedComponent.prop('toggleSelection')({ _id: 1, id: 1 })
+    testedComponent.prop('toggleSelection')({ _id: 2, id: 2 })
     testedComponent.update()
 
     expect(testedComponent.prop('selection').length).toEqual(2)
