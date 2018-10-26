@@ -5,20 +5,17 @@ import 'styles'
 import React from 'react'
 import CozyClient, { CozyProvider } from 'cozy-client'
 import { render } from 'react-dom'
-import { I18n } from 'cozy-ui/react/I18n'
+import { I18n, initTranslation } from 'cozy-ui/react/I18n'
 import App from 'components/App'
-import { Provider } from 'react-redux'
 import configureStore from 'store/configureStore'
 import { hot } from 'react-hot-loader'
 
 const RootApp = props => (
-  <Provider store={props.store}>
-    <I18n lang={props.lang} dictRequire={lang => require(`locales/${lang}`)}>
-      <CozyProvider client={props.client}>
-        <HotedApp />
-      </CozyProvider>
+  <CozyProvider client={props.client} store={props.store}>
+    <I18n lang={props.lang} polyglot={props.polyglot}>
+      <HotedApp />
     </I18n>
-  </Provider>
+  </CozyProvider>
 )
 
 const HotedApp = hot(module)(App)
@@ -31,12 +28,22 @@ document.addEventListener('DOMContentLoaded', init)
 function init() {
   const root = document.querySelector('[role=application]')
   const { appName, appNamePrefix, iconPath, lang } = getValues(root.dataset)
+  const polyglot = initTranslation(lang, lang => require(`locales/${lang}`))
+
+  //const store = configureStore(client, polyglot.t.bind(polyglot))
   const client = initCozyClient()
   initCozyBar({ appName, appNamePrefix, iconPath, lang })
   const persistedState = {}
-  const store = configureStore(client, persistedState)
+  const store = configureStore(
+    client,
+    polyglot.t.bind(polyglot),
+    persistedState
+  )
 
-  render(<RootApp client={client} lang={lang} store={store} />, root)
+  render(
+    <RootApp client={client} lang={lang} store={store} polyglot={polyglot} />,
+    root
+  )
 }
 
 /**

@@ -1,16 +1,7 @@
-import { connect, withMutations } from 'cozy-client'
+import { withMutations } from 'cozy-client'
 import flow from 'lodash/flow'
 import { mergeContact } from '../helpers/mergeContact'
 import { findContactsWithSamePhoneOrEmail } from '../helpers/findContact'
-
-const CONNECTION_NAME = 'allContacts'
-
-export const withContacts = connect(
-  client => client.all('io.cozy.contacts').UNSAFE_noLimit(),
-  {
-    as: CONNECTION_NAME
-  }
-)
 
 export const withContactsMutations = withMutations(client => ({
   importContact: async attributes => {
@@ -30,4 +21,4 @@ export const withContactsMutations = withMutations(client => ({
   deleteContact: contact => client.destroy(contact)
 }))
 
-export default flow([withContacts, withContactsMutations])
+export default flow(withContactsMutations)

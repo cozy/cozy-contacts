@@ -10,20 +10,21 @@ import ContactImportationModal from './ContactImportationModal'
 import Header from './Header'
 import Toolbar from './Toolbar'
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
-import { translate } from 'cozy-ui/react/I18n'
 import ContactCardModalConnected from './Modals/ContactCardModalConnected'
 import { Query } from 'cozy-client'
 import withModal from './HOCs/withModal'
 import { ModalManager } from '../helpers/modalManager'
 import { Spinner } from 'cozy-ui/react'
-
+import { translate } from 'cozy-ui/react/I18n'
 class ContactsApp extends React.Component {
   state = {
     displayedContact: null,
     isImportationDisplayed: false,
     isCreationFormDisplayed: false
   }
-
+  constructor(props, context) {
+    super(props, context)
+  }
   displayImportation = () => {
     this.setState({
       isImportationDisplayed: true
@@ -51,18 +52,12 @@ class ContactsApp extends React.Component {
   onCreateContact = contact => {
     this.hideContactForm()
     return this.props.showModal(
-      <Query
-        query={client =>
-          client.find('io.cozy.contacts').where({ _id: contact._id })
-        }
-      >
+      <Query query={client => client.get('io.cozy.contacts', contact._id)}>
         {({ data: contact, fetchStatus }) => {
-          if (fetchStatus === 'loading') {
-            return 'loading'
-          }
           return (
             <ContactCardModalConnected
-              contact={contact[0]}
+              contact={contact}
+              isloading={fetchStatus === 'loading'}
               groups={this.props.groups}
             />
           )
@@ -93,7 +88,7 @@ class ContactsApp extends React.Component {
 
   render() {
     const { isImportationDisplayed, isCreationFormDisplayed } = this.state
-    const { t, groups } = this.props
+    const { groups, t } = this.props
     return (
       <Layout monocolumn="true">
         <Main>

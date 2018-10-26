@@ -6,7 +6,8 @@ import { Icon, Menu, MenuItem, Button } from 'cozy-ui/react'
 import ContactCard from '../ContactCard/ContactCard'
 import contactPropTypes from '../ContactPropTypes'
 import { translate } from 'cozy-ui/react/I18n'
-const ContactCardMenu = ({ deleteAction }) => (
+import { Spinner } from 'cozy-ui/react/Spinner'
+const ContactCardMenu = ({ deleteAction, t }) => (
   <Menu
     position="right"
     className="contact-card-modal__menu"
@@ -17,7 +18,7 @@ const ContactCardMenu = ({ deleteAction }) => (
         icon="dots"
         className="fix-c-btn"
         iconOnly
-        label={'deleteAction.label'}
+        label={t('deleteAction.label')}
       />
     }
   >
@@ -57,27 +58,32 @@ class ContactCardModal extends React.Component {
   }
 
   render() {
-    const { onClose, contact, t, groups } = this.props
+    const { onClose, contact, t, groups, isloading } = this.props
     const { shouldDisplayConfirmDeleteModal } = this.state
+
     return (
       <Modal into="body" dismissAction={onClose} size="xlarge">
-        <ContactCard
-          title={t('contact_info')}
-          contact={contact}
-          groups={groups}
-          renderHeader={children => (
-            <ModalHeader className="contact-card-modal__header">
-              {children}
-              <ContactCardMenu
-                deleteAction={{
-                  label: t('delete'),
-                  action: this.toggleConfirmDeleteModal
-                }}
-              />
-            </ModalHeader>
-          )}
-          renderBody={children => <ModalContent>{children}</ModalContent>}
-        />
+        {isloading && <Spinner size="xxlarge" />}
+        {!isloading && (
+          <ContactCard
+            title={t('contact_info')}
+            contact={contact}
+            groups={groups}
+            renderHeader={children => (
+              <ModalHeader className="contact-card-modal__header">
+                {children}
+                <ContactCardMenu
+                  deleteAction={{
+                    label: t('delete'),
+                    action: this.toggleConfirmDeleteModal
+                  }}
+                  t={t}
+                />
+              </ModalHeader>
+            )}
+            renderBody={children => <ModalContent>{children}</ModalContent>}
+          />
+        )}
         {shouldDisplayConfirmDeleteModal && (
           <Modal
             into="body"
@@ -109,7 +115,8 @@ ContactCardModal.propTypes = {
   }).isRequired,
   deleteContact: PropTypes.func.isRequired,
   onDeleteContact: PropTypes.func,
-  groups: PropTypes.array.isRequired
+  groups: PropTypes.array.isRequired,
+  isloading: PropTypes.bool
 }
 
 export default translate()(withContactsMutations(ContactCardModal))

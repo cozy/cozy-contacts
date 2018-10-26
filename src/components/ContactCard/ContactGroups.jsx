@@ -4,13 +4,12 @@ import { fullContactPropTypes } from '../ContactPropTypes'
 import ContactGroupManager from '../ContactGroups/ContactGroupManager'
 import { withContactsMutations } from '../../connections/allContacts'
 import { Query } from 'cozy-client'
+import { Spinner } from 'cozy-ui/react/Spinner'
 const groupsQuery = client => client.all('io.cozy.contacts.groups')
 class ContactGroupsClass extends React.Component {
   updateContactGroups = groups => {
     const { contact } = this.props
-    if (!contact.groups) {
-      contact.groups = {}
-    }
+
     contact.groups.data.map(group => {
       contact.groups.removeById(group._id)
     })
@@ -22,7 +21,7 @@ class ContactGroupsClass extends React.Component {
 
   render() {
     const { contact, allGroups } = this.props
-    const fullGroups = contact.groups.data
+    const userGroups = contact.groups.data
       .map(groupUser => allGroups.find(group => group._id === groupUser._id))
       .filter(value => value)
     return (
@@ -33,7 +32,7 @@ class ContactGroupsClass extends React.Component {
           onGroupSelectionChange={this.updateContactGroups}
         />
         <ol className="contact-groups-list">
-          {fullGroups.map(group => (
+          {userGroups.map(group => (
             <li key={group._id} className="contact-groups-list__tag">
               {group.name}
             </li>
@@ -64,7 +63,7 @@ const ConnectedContactGroups = ({ contact, updateContact }) => {
             />
           )
         } else {
-          return 'loading...'
+          return <Spinner />
         }
       }}
     </Query>

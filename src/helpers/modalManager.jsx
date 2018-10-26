@@ -31,7 +31,7 @@ export const hideModal = (meta = {}) => ({
 })
 
 export const ModalManager = connect(state => ({
-  ...state.ui
+  ...state.appReducers.ui
 }))(({ show, component, dispatch }) => {
   if (!show) return null
   return React.cloneElement(component, {

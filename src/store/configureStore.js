@@ -1,5 +1,5 @@
 /* global __DEVELOPMENT__ */
-import { compose, createStore, applyMiddleware } from 'redux'
+import { compose, createStore, applyMiddleware, combineReducers } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import flag from 'cozy-flags'
@@ -12,16 +12,21 @@ import {
 
 import appReducers from 'reducers'
 
-const configureStore = (cozyClient, persistedState) => {
+const configureStore = (client, t, persistedState) => {
   // Enable Redux dev tools
   const composeEnhancers =
     (__DEVELOPMENT__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
-
+  const cozyReducer = client.reducer()
   // reducers
-  const reducers = [appReducers, persistedState]
-
+  //const reducers = [appReducers, persistedState, cozyReducer]
+  const reducers = combineReducers({
+    appReducers,
+    persistedState,
+    cozy: cozyReducer
+  })
   // middlewares
-  const middlewares = [thunkMiddleware]
+  const middlewares = [thunkMiddleware.withExtraArgument({ client, t })]
+
   if (shouldEnableTracking() && getTracker()) {
     middlewares.push(createTrackerMiddleware())
   }
@@ -36,7 +41,7 @@ const configureStore = (cozyClient, persistedState) => {
   } */
 
   const store = createStore(
-    ...reducers,
+    reducers,
     composeEnhancers(applyMiddleware.apply(null, middlewares))
   )
 
