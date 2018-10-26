@@ -1,4 +1,4 @@
-import React, { Component } from 'React'
+import React, { Component } from 'react'
 import ContactCardModal from './ContactCardModal'
 import withModal from '../HOCs/withModal'
 class ContactCardModalConnected extends Component {
