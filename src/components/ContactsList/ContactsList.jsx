@@ -27,7 +27,7 @@ class ContactsList extends Component {
     return _.find(contacts, c => c.id === id)
   }
   render() {
-    const { displayImportation, onSelect, selection } = this.props
+    const { displayImportation, onSelect, selection, groups } = this.props
     const { displayedContactId } = this.state
     return (
       <Query query={query}>
@@ -61,6 +61,7 @@ class ContactsList extends Component {
                             <ContactRow
                               key={contact._id}
                               contact={contact}
+                              groups={groups}
                               selection={
                                 onSelect && {
                                   onSelect: () => {
@@ -89,6 +90,7 @@ class ContactsList extends Component {
                         contacts,
                         displayedContactId
                       )}
+                      groups={groups}
                     />
                   )}
                 </div>
@@ -104,7 +106,8 @@ ContactsList.propTypes = {
   onClickContact: PropTypes.func,
   onSelect: PropTypes.func,
   selection: PropTypes.array,
-  displayImportation: PropTypes.func.isRequired
+  displayImportation: PropTypes.func.isRequired,
+  groups: PropTypes.array.isRequired
 }
 ContactsList.defaultProps = {
   onClickContact: null,

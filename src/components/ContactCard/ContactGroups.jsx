@@ -5,7 +5,7 @@ import ContactGroupManager from '../ContactGroups/ContactGroupManager'
 import { withContactsMutations } from '../../connections/allContacts'
 import { Query } from 'cozy-client'
 const groupsQuery = client => client.all('io.cozy.contacts.groups')
-export class ContactGroups extends React.Component {
+class ContactGroupsClass extends React.Component {
   updateContactGroups = groups => {
     const { contact } = this.props
     if (!contact.groups) {
@@ -43,10 +43,12 @@ export class ContactGroups extends React.Component {
     )
   }
 }
+export const ContactGroups = withContactsMutations(ContactGroupsClass)
 
-ContactGroups.propTypes = {
-  contact: fullContactPropTypes.isRequired,
-  updateContact: PropTypes.func.isRequired
+ContactGroupsClass.propTypes = {
+  contact: PropTypes.object.isRequired,
+  updateContact: PropTypes.func.isRequired,
+  allGroups: PropTypes.array.isRequired
 }
 
 const ConnectedContactGroups = ({ contact, updateContact }) => {

@@ -58,7 +58,12 @@ class ContactsApp extends React.Component {
           if (fetchStatus === 'loading') {
             return 'loading'
           }
-          return <ContactCardModalConnected contact={contact[0]} />
+          return (
+            <ContactCardModalConnected
+              contact={contact[0]}
+              groups={this.props.groups}
+            />
+          )
         }}
       </Query>
     )
@@ -86,8 +91,7 @@ class ContactsApp extends React.Component {
 
   render() {
     const { isImportationDisplayed, isCreationFormDisplayed } = this.state
-    const { t } = this.props
-
+    const { t, groups } = this.props
     return (
       <Layout monocolumn="true">
         <Main>
@@ -109,6 +113,7 @@ class ContactsApp extends React.Component {
               onSelect={this.props.toggleSelection}
               selection={this.props.selection}
               displayImportation={this.displayImportation}
+              groups={groups}
             />
           </Content>
           {isImportationDisplayed && (
@@ -134,17 +139,23 @@ ContactsApp.propTypes = {
   toggleSelection: PropTypes.func.isRequired,
   clearSelection: PropTypes.func.isRequired,
   deleteContact: PropTypes.func.isRequired,
-  contacts: PropTypes.array.isRequired
+  groups: PropTypes.array.isRequired
 }
 
 const withContacts = WrappedComponent =>
-  class AppWithContacts extends React.Component {
+  class AppWithGroups extends React.Component {
     render() {
-      if (this.props.fetchStatus === 'error') {
-        return <div>Global Error</div>
-      }
       return (
-        <WrappedComponent contacts={this.props.data || []} {...this.props} />
+        <Query query={client => client.find('io.cozy.contacts.groups')}>
+          {({ data: groups, fetchStatus }) => {
+            if (fetchStatus === 'loading') {
+              return 'loading'
+            }
+            if (fetchStatus === 'loaded') {
+              return <WrappedComponent groups={groups} {...this.props} />
+            }
+          }}
+        </Query>
       )
     }
   }

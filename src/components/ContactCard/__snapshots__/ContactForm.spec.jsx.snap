@@ -379,22 +379,26 @@ exports[`ContactForm should match snapshot 1`] = `
         <button
           className="c-btn c-btn--secondary"
           onClick={[Function]}
-          role="button"
+          title={null}
           type="button"
         >
           <span>
-            <span>
+            <span
+              className={null}
+            >
               cancel
             </span>
           </span>
         </button>
         <button
           className="c-btn"
-          role="button"
+          title={null}
           type="submit"
         >
           <span>
-            <span>
+            <span
+              className={null}
+            >
               save
             </span>
           </span>

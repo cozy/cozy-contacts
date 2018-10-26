@@ -57,13 +57,14 @@ class ContactCardModal extends React.Component {
   }
 
   render() {
-    const { onClose, contact, t } = this.props
+    const { onClose, contact, t, groups } = this.props
     const { shouldDisplayConfirmDeleteModal } = this.state
     return (
       <Modal into="body" dismissAction={onClose} size="xlarge">
         <ContactCard
           title={t('contact_info')}
           contact={contact}
+          groups={groups}
           renderHeader={children => (
             <ModalHeader className="contact-card-modal__header">
               {children}
@@ -107,7 +108,8 @@ ContactCardModal.propTypes = {
     note: contactPropTypes.note
   }).isRequired,
   deleteContact: PropTypes.func.isRequired,
-  onDeleteContact: PropTypes.func
+  onDeleteContact: PropTypes.func,
+  groups: PropTypes.array.isRequired
 }
 
 export default translate()(withContactsMutations(ContactCardModal))
