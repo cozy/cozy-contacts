@@ -21,37 +21,25 @@ export class ContactGroups extends React.Component {
   }
 
   render() {
+    const { contact, allGroups } = this.props
+    const fullGroups = contact.groups.data
+      .map(groupUser => allGroups.find(group => group._id === groupUser._id))
+      .filter(value => value)
     return (
-      <Query query={groupsQuery}>
-        {({ data: allGroups, fetchStatus }) => {
-          if (fetchStatus === 'loaded') {
-            const { contact } = this.props
-            const fullGroups = contact.groups.data
-              .map(groupUser =>
-                allGroups.find(group => group._id === groupUser._id)
-              )
-              .filter(value => value)
-            return (
-              <div className="contact-card-identity__groups">
-                <ContactGroupManager
-                  contactGroups={contact.groups.data}
-                  allGroups={allGroups}
-                  onGroupSelectionChange={this.updateContactGroups}
-                />
-                <ol className="contact-groups-list">
-                  {fullGroups.map(group => (
-                    <li key={group._id} className="contact-groups-list__tag">
-                      {group.name}
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            )
-          } else {
-            return 'loading...'
-          }
-        }}
-      </Query>
+      <div className="contact-card-identity__groups">
+        <ContactGroupManager
+          contactGroups={contact.groups.data}
+          allGroups={allGroups}
+          onGroupSelectionChange={this.updateContactGroups}
+        />
+        <ol className="contact-groups-list">
+          {fullGroups.map(group => (
+            <li key={group._id} className="contact-groups-list__tag">
+              {group.name}
+            </li>
+          ))}
+        </ol>
+      </div>
     )
   }
 }
@@ -62,7 +50,23 @@ ContactGroups.propTypes = {
 }
 
 const ConnectedContactGroups = ({ contact, updateContact }) => {
-  return <ContactGroups contact={contact} updateContact={updateContact} />
+  return (
+    <Query query={groupsQuery}>
+      {({ data: allGroups, fetchStatus }) => {
+        if (fetchStatus === 'loaded') {
+          return (
+            <ContactGroups
+              contact={contact}
+              updateContact={updateContact}
+              allGroups={allGroups}
+            />
+          )
+        } else {
+          return 'loading...'
+        }
+      }}
+    </Query>
+  )
 }
 
 ConnectedContactGroups.propTypes = {
