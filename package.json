@@ -6,7 +6,7 @@
     "lint": "yarn lint:js && yarn lint:styles",
     "lint:js": "eslint '{src,test}/**/*.{js,jsx}'",
     "lint:styles": "stylint src/styles --config ./.stylintrc",
-    "prebuild": "yarn lint",
+    "prebuild": "npm-run-all lint tx",
     "build": "yarn build:browser",
     "build:browser": "cozy-scripts build --browser",
     "build:mobile": "cozy-scripts build --mobile",
@@ -59,6 +59,7 @@
     "preact": "8.2.9",
     "preact-compat": "3.18.0",
     "react-final-form": "3.2.1",
-    "react-final-form-arrays": "1.0.6"
+    "react-final-form-arrays": "1.0.6",
+    "yarn-run-all": "^3.1.1"
   }
 }
