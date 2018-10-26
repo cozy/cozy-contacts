@@ -2,18 +2,15 @@ import React from 'react'
 import { mount } from 'enzyme'
 
 import { ContactGroups } from './ContactGroups'
-import { I18n } from 'cozy-ui/react/I18n'
-
+import AppLike from '../../tests/AppLike'
 describe('ContactGroups', () => {
   it('should display groups', () => {
     const contactMock = {
-      relationships: {
-        groups: {
-          data: [
-            { _id: 'a', _type: 'io.cozy.contacts.groups' },
-            { _id: 'b', _type: 'io.cozy.contacts.groups' }
-          ]
-        }
+      groups: {
+        data: [
+          { _id: 'a', _type: 'io.cozy.contacts.groups' },
+          { _id: 'b', _type: 'io.cozy.contacts.groups' }
+        ]
       }
     }
     const groupsMock = [
@@ -23,16 +20,15 @@ describe('ContactGroups', () => {
     ]
     const updateContactMock = jest.fn()
 
-    const appInstance = (
-      <I18n lang="en" dictRequire={() => ''}>
+    const app = mount(
+      <AppLike>
         <ContactGroups
           contact={contactMock}
           allGroups={groupsMock}
           updateContact={updateContactMock}
         />
-      </I18n>
+      </AppLike>
     )
-    const app = mount(appInstance)
 
     const contactGroupTags = app.find('li.contact-groups-list__tag')
 
