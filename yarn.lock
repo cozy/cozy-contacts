@@ -7181,9 +7181,9 @@ react-final-form-arrays@1.0.6:
   dependencies:
     react-lifecycles-compat "^3.0.4"
 
-react-final-form@3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/react-final-form/-/react-final-form-3.2.1.tgz#189e21e58f4381d5ed40817a2ca4167590bb3405"
+react-final-form@3.6.7:
+  version "3.6.7"
+  resolved "https://registry.yarnpkg.com/react-final-form/-/react-final-form-3.6.7.tgz#c4d2e01e04674201b850cdd05ed5b67ff5ea06c5"
 
 react-input-autosize@^2.2.1:
   version "2.2.1"
