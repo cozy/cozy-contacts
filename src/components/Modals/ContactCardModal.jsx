@@ -7,7 +7,7 @@ import ContactCard from '../ContactCard/ContactCard'
 import contactPropTypes from '../ContactPropTypes'
 import { translate } from 'cozy-ui/react/I18n'
 import { Spinner } from 'cozy-ui/react/Spinner'
-const ContactCardMenu = ({ deleteAction, t }) => (
+const ContactCardMenu = ({ deleteAction }) => (
   <Menu
     position="right"
     className="contact-card-modal__menu"
@@ -18,7 +18,7 @@ const ContactCardMenu = ({ deleteAction, t }) => (
         icon="dots"
         className="fix-c-btn"
         iconOnly
-        label={t('deleteAction.label')}
+        label={deleteAction.label}
       />
     }
   >
@@ -77,7 +77,6 @@ class ContactCardModal extends React.Component {
                     label: t('delete'),
                     action: this.toggleConfirmDeleteModal
                   }}
-                  t={t}
                 />
               </ModalHeader>
             )}
