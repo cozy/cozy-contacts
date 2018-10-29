@@ -71,7 +71,7 @@ class ContactsList extends Component {
                                     onSelect(contact)
                                   },
                                   selected:
-                                    _.find(
+                                    find(
                                       selection,
                                       s => s.id === contact._id
                                     ) !== undefined
