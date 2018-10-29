@@ -45,7 +45,6 @@ class ContactCardModal extends React.Component {
 
   toggleConfirmDeleteModal = () => {
     this.setState(state => ({
-      ...state,
       shouldDisplayConfirmDeleteModal: !state.shouldDisplayConfirmDeleteModal
     }))
   }

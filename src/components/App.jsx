@@ -26,27 +26,25 @@ class ContactsApp extends React.Component {
     super(props, context)
   }
   displayImportation = () => {
-    this.setState({
+    this.setState(() => ({
       isImportationDisplayed: true
-    })
+    }))
   }
 
   hideImportation = () => {
-    this.setState({
-      isImportationDisplayed: false
-    })
+    this.setState(() => ({ isImportationDisplayed: false }))
   }
 
   displayContactForm = () => {
-    this.setState({
+    this.setState(() => ({
       isCreationFormDisplayed: true
-    })
+    }))
   }
 
   hideContactForm = () => {
-    this.setState({
+    this.setState(() => ({
       isCreationFormDisplayed: false
-    })
+    }))
   }
 
   onCreateContact = contact => {
@@ -78,10 +76,9 @@ class ContactsApp extends React.Component {
         previouslyDisplayedContact &&
         displayedContact._rev !== previouslyDisplayedContact._rev
       ) {
-        this.setState(state => ({
-          ...state,
-          displayedContact: displayedContact
-        }))
+        this.setState(() => {
+          displayedContact
+        })
       }
     }
   }

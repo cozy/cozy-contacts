@@ -26,7 +26,7 @@ class ContactsEmptyList extends React.Component {
   }
 
   afterConnection = result => {
-    this.setState({ hasConnector: result !== null })
+    this.setState(() => ({ hasConnector: result !== null }))
     setTimeout(() => window.location.reload(), 15000)
   }
 

@@ -10,7 +10,6 @@ const withSelection = WrappedComponent => {
     toggleSelection = data => {
       const index = findIndex(this.state.selection, s => s.id === data._id)
       this.setState(state => ({
-        ...state,
         selection:
           index === -1
             ? [...state.selection, data]
@@ -22,8 +21,7 @@ const withSelection = WrappedComponent => {
     }
 
     clearSelection = () =>
-      this.setState(state => ({
-        ...state,
+      this.setState(() => ({
         selection: []
       }))
 
