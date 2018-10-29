@@ -9,7 +9,7 @@ import ContactCardModal from '../Modals/ContactCardModal'
 import _ from 'lodash'
 import { Spinner } from 'cozy-ui/react'
 
-const query = client => client.find('io.cozy.contacts')
+const query = client => client.find('io.cozy.contacts').include(['groups'])
 
 class ContactsList extends Component {
   state = {
