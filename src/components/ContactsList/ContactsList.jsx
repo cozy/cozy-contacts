@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Query } from 'cozy-client'
+import find from 'lodash/find'
+import { Spinner } from 'cozy-ui/react'
+
 import { sortLastNameFirst, buildLastNameFirst } from './'
 import ContactsEmptyList from './ContactsEmptyList'
 import ContactRow from './ContactRow'
 import ContactHeaderRow from './ContactHeaderRow'
-import { Query } from 'cozy-client'
 import ContactCardModal from '../Modals/ContactCardModal'
-import _ from 'lodash'
-import { Spinner } from 'cozy-ui/react'
 
 const query = client => client.find('io.cozy.contacts').include(['groups'])
 
@@ -26,7 +27,7 @@ class ContactsList extends Component {
     })
   }
   getContactById = (contacts, id) => {
-    return _.find(contacts, c => c.id === id)
+    return find(contacts, c => c.id === id)
   }
   render() {
     const { displayImportation, onSelect, selection, groups } = this.props
