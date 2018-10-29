@@ -17,14 +17,14 @@ class ContactsList extends Component {
     displayedContactId: null
   }
   onClick = (e, contactId) => {
-    this.setState({
+    this.setState(() => ({
       displayedContactId: contactId
-    })
+    }))
   }
   hideContactCard = () => {
-    this.setState({
+    this.setState(() => ({
       displayedContactId: null
-    })
+    }))
   }
   getContactById = (contacts, id) => {
     return find(contacts, c => c.id === id)

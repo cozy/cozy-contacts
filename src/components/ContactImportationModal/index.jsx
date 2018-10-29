@@ -18,7 +18,7 @@ class ContactImportationModal extends React.Component {
   }
 
   updateImportation = importation => {
-    this.setState({ importation })
+    this.setState(() => ({ importation }))
   }
 
   selectFile = file => {
@@ -30,7 +30,7 @@ class ContactImportationModal extends React.Component {
   }
 
   onProgress = progress => {
-    this.setState({ progress })
+    this.setState(() => ({ progress }))
   }
 
   importFile = async () => {
@@ -59,7 +59,7 @@ class ContactImportationModal extends React.Component {
       )
       closeAction()
     } else {
-      this.setState({ progress: null })
+      this.setState(() => ({ progress: null }))
       this.updateImportation(finishedImportation)
     }
   }

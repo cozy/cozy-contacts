@@ -24,16 +24,16 @@ class IntentHandler extends Component {
       //   terminate: (doc) => { alert(`Installed ${doc.name}`) }
       // })
       .then(service =>
-        this.setState({
+        this.setState(() => ({
           status: 'created',
           service: service
-        })
+        }))
       )
       .catch(error =>
-        this.setState({
+        this.setState(() => ({
           error: error,
           status: 'errored'
-        })
+        }))
       )
   }
 
