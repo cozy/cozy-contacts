@@ -2000,7 +2000,7 @@ babel-polyfill@6.26.0:
     core-js "^2.5.0"
     regenerator-runtime "^0.10.5"
 
-babel-preset-cozy-app@1.2:
+babel-preset-cozy-app@1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/babel-preset-cozy-app/-/babel-preset-cozy-app-1.2.1.tgz#74c631a065dca803e602190194a091b648cc41ff"
   integrity sha512-psTt++cwUeoqa0SXcJHSX5DEFkXY3oMOgpqAVZ+HUCq++Lnexedq0FwbE9dE5iO3T0DtkOzcJME0HxWDHbBCQw==
@@ -3024,12 +3024,12 @@ cozy-client@3.6.1:
     redux "3.7.2"
     sift "^7.0.1"
 
-cozy-flags@^1.2.10:
+cozy-flags@1.2.10:
   version "1.2.10"
   resolved "https://registry.yarnpkg.com/cozy-flags/-/cozy-flags-1.2.10.tgz#fbc00d26dc6b3723e2e5a7a5210cec958a981afb"
   integrity sha512-mNwnyF8xQNMyM4QIn0qfGRwGHmM9MQsrsvGPgatTJvrmwpVl+/YJQW3xrV9HBhvtGJRkc9qKCdqKLiiAy6/ZTg==
 
-cozy-scripts@^1.1.0:
+cozy-scripts@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/cozy-scripts/-/cozy-scripts-1.1.0.tgz#4cf68c130179dde7c0293df997fcee0fbc6fcaa1"
   integrity sha512-r05TyvTAAV0uYw0X7InG/D9ml1lnlHcRhbBqCa+BW1Za1U3Kthzv8l2Oc+3OGeF9khAxuzpGGFn5EbKcq9jA5w==
@@ -8576,7 +8576,7 @@ react-final-form@3.2.1:
   resolved "https://registry.yarnpkg.com/react-final-form/-/react-final-form-3.2.1.tgz#189e21e58f4381d5ed40817a2ca4167590bb3405"
   integrity sha512-+lNIVlGihIPH5SEW8a2JGCCZhJW/UMxK1rttOkAZGDg+wXFSrj03Zq/686i78tMgANiO4MWj6YfsdYmRJrNhKw==
 
-react-hot-loader@^4.3.11:
+react-hot-loader@4.3.11:
   version "4.3.11"
   resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.3.11.tgz#fe5cf7be7700c249b58293f977c1e6e0900f0d87"
   integrity sha512-T0G5jURyTsFLoiW6MTr5Q35UHC/B2pmYJ7+VBjk8yMDCEABRmCGy4g6QwxoB4pWg4/xYvVTa/Pbqnsgx/+NLuA==
@@ -8617,7 +8617,7 @@ react-redux@5.0.7:
     loose-envify "^1.1.0"
     prop-types "^15.6.0"
 
-react-redux@^5.0.6, react-redux@^5.0.7:
+react-redux@5.1.0, react-redux@^5.0.6:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.1.0.tgz#948b1e2686473d1999092bcfb32d0dc43d33f667"
   integrity sha512-CRMpEx8+ccpoVxQrQDkG1obExNYpj6dZ1Ni7lUNFB9wcxOhy02tIqpFo4IUXc0kYvCGMu6ABj9A4imEX2VGZJQ==
@@ -8680,7 +8680,7 @@ react@16.4.2:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react@^16.5.2:
+react@16.6.0:
   version "16.6.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.6.0.tgz#b34761cfaf3e30f5508bc732fb4736730b7da246"
   integrity sha512-zJPnx/jKtuOEXCbQ9BKaxDMxR0001/hzxXwYxG8septeyYGfsgAei6NgfbVgOhbY1WOP2o3VPs/E9HaN+9hV3Q==
@@ -8762,7 +8762,7 @@ realpath-native@^1.0.0:
   dependencies:
     util.promisify "^1.0.0"
 
-redux-logger@^3.0.6:
+redux-logger@3.0.6:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/redux-logger/-/redux-logger-3.0.6.tgz#f7555966f3098f3c88604c449cf0baf5778274bf"
   integrity sha1-91VZZvMJjzyIYExEnPC69XeCdL8=
@@ -8774,7 +8774,7 @@ redux-persist@^5.4.0:
   resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-5.10.0.tgz#5d8d802c5571e55924efc1c3a9b23575283be62b"
   integrity sha512-sSJAzNq7zka3qVHKce1hbvqf0Vf5DuTVm7dr4GtsqQVOexnrvbV47RWFiPxQ8fscnyiuWyD2O92DOxPl0tGCRg==
 
-redux-thunk@^2.2.0, redux-thunk@^2.3.0:
+redux-thunk@2.3.0, redux-thunk@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
   integrity sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==
@@ -8789,7 +8789,7 @@ redux@3.7.2, redux@^3.7.2:
     loose-envify "^1.1.0"
     symbol-observable "^1.0.3"
 
-redux@^4.0.1:
+redux@4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.1.tgz#436cae6cc40fbe4727689d7c8fae44808f1bfef5"
   integrity sha512-R7bAtSkk7nY6O/OYMVR9RiBI+XghjF9rlbl5806HJbQph0LJVHZrU5oaO4q70eUKiqMRqm4y07KLTlMZ2BlVmg==
