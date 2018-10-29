@@ -5,17 +5,20 @@ import 'styles'
 import React from 'react'
 import CozyClient, { CozyProvider } from 'cozy-client'
 import { render } from 'react-dom'
-import { I18n } from 'cozy-ui/react/I18n'
+import { I18n, initTranslation } from 'cozy-ui/react/I18n'
 import App from 'components/App'
+import configureStore from 'store/configureStore'
+import { hot } from 'react-hot-loader'
 
 const RootApp = props => (
-  <I18n lang={props.lang} dictRequire={lang => require(`locales/${lang}`)}>
-    <CozyProvider client={props.client}>
-      <App />
-    </CozyProvider>
-  </I18n>
+  <CozyProvider client={props.client} store={props.store}>
+    <I18n lang={props.lang} polyglot={props.polyglot}>
+      <HotedApp />
+    </I18n>
+  </CozyProvider>
 )
 
+const HotedApp = hot(module)(App)
 function getDataOrDefault(data, defaultData) {
   return /^\{\{\..*\}\}$/.test(data) ? defaultData : data
 }
@@ -25,17 +28,22 @@ document.addEventListener('DOMContentLoaded', init)
 function init() {
   const root = document.querySelector('[role=application]')
   const { appName, appNamePrefix, iconPath, lang } = getValues(root.dataset)
-  const client = initCozyClient(root.dataset.cozyDomain, root.dataset.cozyToken)
-  initCozyBar({ appName, appNamePrefix, iconPath, lang })
+  const polyglot = initTranslation(lang, lang => require(`locales/${lang}`))
 
-  if (module.hot) {
-    module.hot.accept('components/App', () => {
-      return requestAnimationFrame(() => {
-        render(<RootApp client={client} lang={lang} />, root)
-      })
-    })
-  }
-  render(<RootApp client={client} lang={lang} />, root)
+  //const store = configureStore(client, polyglot.t.bind(polyglot))
+  const client = initCozyClient()
+  initCozyBar({ appName, appNamePrefix, iconPath, lang })
+  const persistedState = {}
+  const store = configureStore(
+    client,
+    polyglot.t.bind(polyglot),
+    persistedState
+  )
+
+  render(
+    <RootApp client={client} lang={lang} store={store} polyglot={polyglot} />,
+    root
+  )
 }
 
 /**
@@ -64,13 +72,37 @@ function getValues({
     lang: getDataOrDefault(cozyLocale, defaultValues.appLocaleDefault)
   }
 }
+const getCozyURI = () => {
+  const root = document.querySelector('[role=application]')
+  const data = root.dataset
+  const protocol = window.location.protocol
 
-function initCozyClient(cozyDomain, cozyToken) {
-  const { protocol = 'https' } = window.location
+  return `${protocol}//${data.cozyDomain}`
+}
+function initCozyClient(/* cozyDomain, cozyToken */) {
   return new CozyClient({
-    uri: `${protocol}//${cozyDomain}`,
-    token: cozyToken
+    uri: getCozyURI(),
+    token: getToken(),
+    schema: {
+      contacts: {
+        doctype: 'io.cozy.contacts',
+        relationships: {
+          groups: {
+            type: 'has-many',
+            doctype: 'io.cozy.contacts.groups'
+          }
+        }
+      },
+      groups: { doctype: 'io.cozy.contacts.groups' }
+    }
   })
+}
+
+const getToken = () => {
+  const root = document.querySelector('[role=application]')
+  const data = root.dataset
+
+  return data.cozyToken
 }
 
 function initCozyBar({ appName, appNamePrefix, iconPath, lang }) {

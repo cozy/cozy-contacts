@@ -23,6 +23,26 @@
       }
     }
     {{/repeat}}
+    ,
+    {{#repeat 20}}
+    {
+      "_id": "{{guid}}",
+      "name": {
+        "givenName": "{{firstName}}",
+        "familyName": "{{lastName}}"
+      },
+      "phone": [
+        { "number": "{{phone '+33 (x)x xx xx xx xx'}}", "primary": true }
+      ],
+      "email": [
+        { "address": "{{email}}", "primary": true }
+      ],
+      "birthday": "{{date '1950' '2000' 'YYYY-MM-DD'}}",
+      "address": [
+        { "street": "{{int 1 100}} {{street}}", "city": "{{city}}", "country": "{{country}}", "postcode": "{{zipcode}}", "primary": true }
+      ]
+    }
+    {{/repeat}}
      ,
     {{#repeat 10}}
     {

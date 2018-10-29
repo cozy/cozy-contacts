@@ -5,7 +5,6 @@ import { Button, IntentHeader } from 'cozy-ui/react'
 import IntentMain from './IntentMain'
 import ContactsList from '../ContactsList/ContactsList'
 import withSelection from '../HOCs/withSelection'
-import { withContacts } from '../../connections/allContacts'
 
 const ContactAppWithLoading = ({ data, fetchStatus, ...props }) => {
   if (!data) {
@@ -21,7 +20,7 @@ ContactAppWithLoading.propTypes = {
   fetchStatus: PropTypes.string.isRequired
 }
 
-const ConnectedContactsList = withContacts(ContactAppWithLoading)
+const ConnectedContactsList = ContactAppWithLoading
 
 const IntentFooter = ({ label, onSubmit, onCancel, t }) => (
   <div className="intent-footer">
@@ -56,7 +55,7 @@ class PickContacts extends React.Component {
   }
 
   render() {
-    const { t } = this.context
+    const { t } = this.props
     return (
       <div className="intent-layout">
         <IntentHeader appEditor="Cozy" appName="Contacts" appIcon="/icon.svg" />

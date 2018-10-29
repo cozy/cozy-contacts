@@ -1,8 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import ContactCard from './ContactCard'
-import { I18n } from 'cozy-ui/react/I18n'
-
+import AppLike from '../../tests/Applike'
 describe('ContactCard', () => {
   test('should match snapshot', () => {
     const contact = {
@@ -27,14 +26,24 @@ describe('ContactCard', () => {
         { number: '+33 (1)9 14 02 28 31', primary: true },
         { number: '+33 (2)3 99 53 65 21', primary: false }
       ],
-      groups: [],
+      groups: {
+        doctype: 'io.cozy.contacts.groups',
+        data: []
+      },
       unsupportedField: 'unsupportedField'
     }
+
+    const groups = [
+      {
+        _id: 'test',
+        name: 'toto'
+      }
+    ]
     const tree = renderer
       .create(
-        <I18n lang="en" dictRequire={() => ''}>
-          <ContactCard contact={contact} title="title" />
-        </I18n>
+        <AppLike>
+          <ContactCard contact={contact} title="title" groups={groups} />
+        </AppLike>
       )
       .toJSON()
     expect(tree).toMatchSnapshot()

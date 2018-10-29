@@ -5,8 +5,11 @@ import { Empty, Button } from 'cozy-ui/react'
 import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
 import IconTeam from '../../assets/icons/team.svg'
 import ImportGoogleButton from '../Buttons/ImportGoogleButton'
+import { translate } from 'cozy-ui/react/I18n'
 
-export default class ContactsEmptyList extends React.Component {
+const style = { pointerEvents: 'all' }
+
+class ContactsEmptyList extends React.Component {
   state = {
     hasConnector: false
   }
@@ -29,7 +32,7 @@ export default class ContactsEmptyList extends React.Component {
 
   render() {
     const { hasConnector } = this.state
-    const { t } = this.context
+    const { t } = this.props
 
     return (
       <Empty
@@ -50,6 +53,7 @@ export default class ContactsEmptyList extends React.Component {
                 label={t('empty.importation')}
                 theme="secondary"
                 icon={IconTeam}
+                style={style}
               />
             </span>
           </div>
@@ -61,3 +65,4 @@ export default class ContactsEmptyList extends React.Component {
 ContactsEmptyList.propTypes = {
   displayImportation: PropTypes.func.isRequired
 }
+export default translate()(ContactsEmptyList)

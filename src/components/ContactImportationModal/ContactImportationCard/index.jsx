@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { translate } from 'cozy-ui/react/I18n'
 import ContactImportationCardWrapper from './ContactImportationCardWrapper'
 import ContactImportationFile from './ContactImportationFile'
 import ContactImportationMessage from './ContactImportationMessage'
@@ -7,8 +8,8 @@ import ImportationInput from './ImportationInput'
 import ImportationHelper from '../../../importation'
 import Status from '../../../importation/status'
 
-export default function ContactImportationCard(props, { t }) {
-  const { importation, progress, onFileSelected, onFileUnselected } = props
+const ContactImportationCard = props => {
+  const { importation, progress, onFileSelected, onFileUnselected, t } = props
   const { status } = importation
   const mainMessage = mainMessageText(importation, t)
   const retryMessage = retryMessageText(importation, t)
@@ -42,7 +43,7 @@ ContactImportationCard.propTypes = {
 ContactImportationCard.defaultProps = {
   progress: undefined
 }
-
+export default translate()(ContactImportationCard)
 const CLICKABLE_STATUS_SET = new Set([
   Status.UNCONFIGURED,
   Status.FILE_ISSUE,

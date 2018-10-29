@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Icon } from 'cozy-ui/react'
 import Importation from '../../../importation'
+import { translate } from 'cozy-ui/react/I18n'
 
 class ImportationInput extends React.Component {
   state = {
@@ -15,7 +16,7 @@ class ImportationInput extends React.Component {
   }
 
   render() {
-    const { t } = this.context
+    const { t } = this.props
     return (
       <span
         role="button"
@@ -40,4 +41,4 @@ ImportationInput.propTypes = {
   fileAction: PropTypes.func.isRequired
 }
 
-export default ImportationInput
+export default translate()(ImportationInput)

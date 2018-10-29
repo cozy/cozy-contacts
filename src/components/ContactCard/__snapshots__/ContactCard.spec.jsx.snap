@@ -42,7 +42,7 @@ exports[`ContactCard should match snapshot 1`] = `
           >
             <button
               className="c-btn c-btn--secondary c-btn--small"
-              role="button"
+              title={null}
               type="submit"
             >
               <span>
@@ -60,7 +60,11 @@ exports[`ContactCard should match snapshot 1`] = `
                     xlinkHref="#icon-0"
                   />
                 </svg>
-                groups.manage
+                <span
+                  className={null}
+                >
+                  Manage groups
+                </span>
                 <svg
                   className="group-manager__indicator icon"
                   height="16"
@@ -81,7 +85,7 @@ exports[`ContactCard should match snapshot 1`] = `
               className="select-control__input"
             >
               <div
-                className="css-nfppcf"
+                className="css-1phseng"
               >
                 <div
                   className="css-1492t68"
@@ -257,7 +261,7 @@ exports[`ContactCard should match snapshot 1`] = `
             <div
               className="contact-field-value"
             >
-              formatted_address
+              48 Fuller Road 06635 Stafford  Solomon Islands
             </div>
           </div>
         </div>

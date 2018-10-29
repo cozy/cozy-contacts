@@ -68,7 +68,7 @@ const ContactSelection = props => (
     }}
   >
     <span data-input="checkbox">
-      <input type="checkbox" checked={props.selected} />
+      <input type="checkbox" checked={props.selected} readOnly />
       <label />
     </span>
   </div>
@@ -82,6 +82,7 @@ const ContactRow = props => {
   const { number: phone } = getPrimaryOrFirst(props.contact.phone) || {
     number: undefined
   }
+
   const { address: email } = getPrimaryOrFirst(props.contact.email) || {
     address: undefined
   }
@@ -95,7 +96,7 @@ const ContactRow = props => {
           onSelect={props.selection.onSelect}
         />
       )}
-      <ContactIdentity name={name} myself={isMyself} />
+      <ContactIdentity name={name} myself={isMyself} groups={props.groups} />
       <ContactPhone phone={phone} />
       <ContactEmail email={email} />
     </div>
@@ -112,7 +113,8 @@ ContactRow.propTypes = {
     selected: PropTypes.bool,
     onSelect: PropTypes.func
   }),
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  groups: PropTypes.array.isRequired
 }
 ContactRow.defaultProps = {
   selection: null,

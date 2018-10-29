@@ -12,7 +12,7 @@ import {
   makeValuesArray
 } from '../../helpers/contacts'
 
-const ContactCard = ({ title, contact, renderHeader, renderBody }) => {
+const ContactCard = ({ title, contact, renderHeader, renderBody, groups }) => {
   const fields = getFieldListFrom(contact)
   const filteredFields = filterFieldList(fields)
   const groupedFields = groupUnsupportedFields(
@@ -24,7 +24,7 @@ const ContactCard = ({ title, contact, renderHeader, renderBody }) => {
 
   return (
     <div>
-      {renderHeader(<ContactIdentity contact={contact} />)}
+      {renderHeader(<ContactIdentity contact={contact} groups={groups} />)}
       {renderBody(<ContactFields fields={normalizedFields} title={title} />)}
     </div>
   )

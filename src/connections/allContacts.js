@@ -1,16 +1,7 @@
-import { connect, withMutations } from 'cozy-client'
+import { withMutations } from 'cozy-client'
 import flow from 'lodash/flow'
 import { mergeContact } from '../helpers/mergeContact'
 import { findContactsWithSamePhoneOrEmail } from '../helpers/findContact'
-
-const CONNECTION_NAME = 'allContacts'
-
-export const withContacts = connect(
-  client => client.all('io.cozy.contacts').UNSAFE_noLimit(),
-  {
-    as: CONNECTION_NAME
-  }
-)
 
 export const withContactsMutations = withMutations(client => ({
   importContact: async attributes => {
@@ -23,34 +14,11 @@ export const withContactsMutations = withMutations(client => ({
         'Too many contacts found with same email or phone number.'
       )
     }
-    return client.create('io.cozy.contacts', attributes, null, {
-      updateQueries: {
-        [CONNECTION_NAME]: (previousData, result) => [
-          ...previousData,
-          result.data
-        ]
-      }
-    })
+    return client.create('io.cozy.contacts', attributes, null)
   },
-  createContact: attributes =>
-    client.create('io.cozy.contacts', attributes, null, {
-      updateQueries: {
-        [CONNECTION_NAME]: (previousData, result) => [
-          ...previousData,
-          result.data
-        ]
-      }
-    }),
+  createContact: attributes => client.create('io.cozy.contacts', attributes),
   updateContact: contact => client.save(contact),
-  deleteContact: contact =>
-    client.destroy(contact, {
-      updateQueries: {
-        [CONNECTION_NAME]: (previousData, result) => {
-          const idx = previousData.findIndex(c => c.id === result.data.id)
-          return [...previousData.slice(0, idx), ...previousData.slice(idx + 1)]
-        }
-      }
-    })
+  deleteContact: contact => client.destroy(contact)
 }))
 
-export default flow([withContacts, withContactsMutations])
+export default flow(withContactsMutations)

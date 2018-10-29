@@ -2,8 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { IntentOpener, Button } from 'cozy-ui/react'
 import IconGoogle from '../../assets/icons/connect-google.svg'
+import { translate } from 'cozy-ui/react/I18n'
 
-const ImportGoogleButton = (props, { t }) => (
+const style = { pointerEvents: 'all' }
+const ImportGoogleButton = props => (
   <IntentOpener
     action="CREATE"
     doctype="io.cozy.accounts"
@@ -14,7 +16,8 @@ const ImportGoogleButton = (props, { t }) => (
       theme="secondary"
       className="contacts-empty-button"
       icon={IconGoogle}
-      label={t('empty.google')}
+      label={props.t('empty.google')}
+      style={style}
     />
   </IntentOpener>
 )
@@ -25,4 +28,4 @@ ImportGoogleButton.defaultProps = {
   onComplete: () => {}
 }
 
-export default ImportGoogleButton
+export default translate()(ImportGoogleButton)

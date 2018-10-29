@@ -1,4 +1,5 @@
 import React from 'react'
+import findIndex from 'lodash/findIndex'
 
 const withSelection = WrappedComponent => {
   return class ComponentWithSelection extends React.Component {
@@ -7,7 +8,7 @@ const withSelection = WrappedComponent => {
     }
 
     toggleSelection = data => {
-      const index = this.state.selection.indexOf(data)
+      const index = findIndex(this.state.selection, s => s.id === data._id)
       this.setState(state => ({
         ...state,
         selection:
