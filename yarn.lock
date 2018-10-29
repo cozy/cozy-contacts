@@ -4610,15 +4610,15 @@ fill-range@^4.0.0:
     repeat-string "^1.6.1"
     to-regex-range "^2.1.0"
 
-final-form-arrays@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/final-form-arrays/-/final-form-arrays-1.0.4.tgz#74330cb4d64ce07bb1c4a9084d0b65afdac6bf72"
-  integrity sha512-xFzOQ21zQV4oezdX35WKfDPVW0OzgX9GpBk+obAsb+BnR1CVQp8qOoVyNt7u/ddUUzzgq1F6uNnHF6i1azHeBQ==
+final-form-arrays@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/final-form-arrays/-/final-form-arrays-1.1.0.tgz#006cfb6be9a5b0b264ac044fbdad3381ede81b66"
+  integrity sha512-iIrM1uotREIJaVctjM9zwcprpJNjH6RBxtOYBE1GxD5XV1UUMvka1LhUtkxB56ZJvgZe13v/+T/MpMxk6Kg/lw==
 
-final-form@4.8.1:
-  version "4.8.1"
-  resolved "https://registry.yarnpkg.com/final-form/-/final-form-4.8.1.tgz#5ceeef87d79b143c0854268863e58f44a8b3f570"
-  integrity sha512-Y5mCRP65DQXPQx4RXSGhvFdEG6cdKmtXoh2FEsdOs5+YWi1KR53RKYMb/3PI9cnrhT7XGqZMAZnkPfSUdERUng==
+final-form@4.10.0:
+  version "4.10.0"
+  resolved "https://registry.yarnpkg.com/final-form/-/final-form-4.10.0.tgz#6179bca7676925202510e9877eb1ad2ad1cd3460"
+  integrity sha512-pq/LKcynfI7CWJUX/YlMKwL6Xf5s6SxfjwFT6Saz4Qnwce5flShPQW7IOpxauy/PzD9LMwH/0qI5fXnNaBlOJg==
 
 finalhandler@1.1.1:
   version "1.1.1"
@@ -8564,17 +8564,17 @@ react-dom@16.6.0:
     prop-types "^15.6.2"
     scheduler "^0.10.0"
 
-react-final-form-arrays@1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/react-final-form-arrays/-/react-final-form-arrays-1.0.6.tgz#cf845f99965cbf8200f28ccb4cba471f25655691"
-  integrity sha512-0FdV8t4NTC6cKuxfSatOy9++HfpKeMNX07SZD5ih+/JJa/8pHMZFbjDJipTjxDlnFrpDR0oNJJrM4T9F8LzQXA==
+react-final-form-arrays@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-final-form-arrays/-/react-final-form-arrays-1.1.0.tgz#ac1232d26483b996a5f57395aab4886a1b01d9a0"
+  integrity sha512-DcNUoWxY7Ty7QeO/F/WVmX3BCssGUF6P+UCRjiVbX4halM1h/24BHxcWIEI7zr+pIfCY9YNsXWmcKgo0XrMerQ==
   dependencies:
     react-lifecycles-compat "^3.0.4"
 
-react-final-form@3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/react-final-form/-/react-final-form-3.2.1.tgz#189e21e58f4381d5ed40817a2ca4167590bb3405"
-  integrity sha512-+lNIVlGihIPH5SEW8a2JGCCZhJW/UMxK1rttOkAZGDg+wXFSrj03Zq/686i78tMgANiO4MWj6YfsdYmRJrNhKw==
+react-final-form@3.6.7:
+  version "3.6.7"
+  resolved "https://registry.yarnpkg.com/react-final-form/-/react-final-form-3.6.7.tgz#c4d2e01e04674201b850cdd05ed5b67ff5ea06c5"
+  integrity sha512-/m7JBwA5FaGlSo2ZSFhzQYfPKfT18uirIbJrojWgb9GLoYU2wEOq9yM+vlugqTPD4Ozq+TFJDxWr1jzgASN0fA==
 
 react-hot-loader@4.3.11:
   version "4.3.11"
