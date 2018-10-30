@@ -2,14 +2,13 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Query } from 'cozy-client'
 import find from 'lodash/find'
-import { Spinner } from 'cozy-ui/react'
 
 import { sortLastNameFirst, buildLastNameFirst } from './'
 import ContactsEmptyList from './ContactsEmptyList'
 import ContactRow from './ContactRow'
 import ContactHeaderRow from './ContactHeaderRow'
 import ContactCardModal from '../Modals/ContactCardModal'
-
+import SpinnerContact from '../Components/Spinner'
 const query = client => client.find('io.cozy.contacts').include(['groups'])
 
 class ContactsList extends Component {
@@ -36,7 +35,9 @@ class ContactsList extends Component {
       <Query query={query}>
         {({ data: contacts, fetchStatus }) => {
           if (fetchStatus === 'loading') {
-            return <Spinner size="xxlarge" />
+            return (
+              <SpinnerContact size="xxlarge" loadingType="fetching_contacts" />
+            )
           }
           if (contacts.length === 0) {
             return <ContactsEmptyList displayImportation={displayImportation} />
