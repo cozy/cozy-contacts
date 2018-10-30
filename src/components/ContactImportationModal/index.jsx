@@ -47,15 +47,19 @@ class ContactImportationModal extends React.Component {
     this.updateImportation(runningImportation)
 
     const finishedImportation = await finishedImportationPromise
-
     if (finishedImportation.status === Status.COMPLETE_SUCCESS) {
       const created = Importation.created(finishedImportation)
       const updated = Importation.updated(finishedImportation)
+      const stringCreated =
+        created > 0 ? t('importation.creation', created) : ''
+      const stringUpdated =
+        updated > 0
+          ? created > 0
+            ? `, ${t('importation.update', updated)}`
+            : `${t('importation.update', updated)}`
+          : ''
       Alerter.success(
-        `${t('importation.complete_success')}: ${t(
-          'importation.creation',
-          created
-        )}, ${t('importation.update', updated)}.`
+        `${t('importation.complete_success')}: ${stringCreated}${stringUpdated}`
       )
       closeAction()
     } else {
