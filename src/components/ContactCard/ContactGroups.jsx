@@ -1,10 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Query } from 'cozy-client'
+
 import { fullContactPropTypes } from '../ContactPropTypes'
 import ContactGroupManager from '../ContactGroups/ContactGroupManager'
 import { withContactsMutations } from '../../connections/allContacts'
-import { Query } from 'cozy-client'
-import { Spinner } from 'cozy-ui/react/Spinner'
+import SpinnerContact from '../Components/Spinner'
+
 const groupsQuery = client => client.all('io.cozy.contacts.groups')
 class ContactGroupsClass extends React.Component {
   updateContactGroups = groups => {
@@ -63,7 +65,7 @@ const ConnectedContactGroups = ({ contact, updateContact }) => {
             />
           )
         } else {
-          return <Spinner />
+          return <SpinnerContact />
         }
       }}
     </Query>

@@ -1,12 +1,14 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import { withContactsMutations } from '../../connections/allContacts'
+import { translate } from 'cozy-ui/react/I18n'
 import Modal, { ModalHeader, ModalContent } from 'cozy-ui/react/Modal'
 import { Icon, Menu, MenuItem, Button } from 'cozy-ui/react'
+
+import { withContactsMutations } from '../../connections/allContacts'
 import ContactCard from '../ContactCard/ContactCard'
 import contactPropTypes from '../ContactPropTypes'
-import { translate } from 'cozy-ui/react/I18n'
-import { Spinner } from 'cozy-ui/react/Spinner'
+import SpinnerContact from '../Components/Spinner'
+
 const ContactCardMenu = ({ deleteAction }) => (
   <Menu
     position="right"
@@ -62,7 +64,7 @@ class ContactCardModal extends React.Component {
 
     return (
       <Modal into="body" dismissAction={onClose} size="xlarge">
-        {isloading && <Spinner size="xxlarge" />}
+        {isloading && <SpinnerContact size="xxlarge" />}
         {!isloading && (
           <ContactCard
             title={t('contact_info')}
