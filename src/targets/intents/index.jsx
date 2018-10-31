@@ -7,7 +7,7 @@ import 'styles/intent'
 
 import React from 'react'
 import { render } from 'react-dom'
-import { I18n } from 'cozy-ui/react/I18n'
+import { I18n } from 'cozy-ui/transpiled/react/I18n'
 import cozyClient, { CozyProvider } from 'cozy-client'
 
 if (__DEVELOPMENT__) {

@@ -2,7 +2,7 @@ import React from 'react'
 import { mount } from 'enzyme'
 
 import ContactFields from './ContactFields'
-import { I18n } from 'cozy-ui/react/I18n'
+import { I18n } from 'cozy-ui/transpiled/react/I18n'
 
 describe('ContactFields', () => {
   it('should accept the strict minimum', () => {

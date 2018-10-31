@@ -1,7 +1,10 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
 import { withContactsMutations } from '../../connections/allContacts'
-import Modal, { ModalHeader, ModalDescription } from 'cozy-ui/react/Modal'
+import Modal, {
+  ModalHeader,
+  ModalDescription
+} from 'cozy-ui/transpiled/react/Modal'
 import ContactForm from '../ContactCard/ContactForm'
 
 const ContactFormModal = ({

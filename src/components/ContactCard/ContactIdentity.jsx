@@ -1,5 +1,5 @@
 import React from 'react'
-import { Avatar } from 'cozy-ui/react'
+import { Avatar } from 'cozy-ui/transpiled/react'
 import { fullContactPropTypes } from '../ContactPropTypes'
 import { PropTypes } from 'prop-types'
 import { ContactGroups } from './ContactGroups'

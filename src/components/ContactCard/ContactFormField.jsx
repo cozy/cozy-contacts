@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FieldArray } from 'react-final-form-arrays'
-import Icon from 'cozy-ui/react/Icon'
-import palette from 'cozy-ui/stylus/settings/palette.json'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import palette from 'cozy-ui/transpiled/react/palette'
 
 class ContactFormField extends React.Component {
   render() {

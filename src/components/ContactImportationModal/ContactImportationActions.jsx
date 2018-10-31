@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button } from 'cozy-ui/react'
+import { Button } from 'cozy-ui/transpiled/react'
 import Importation from '../../importation'
 import Status from '../../importation/status'
-import { translate } from 'cozy-ui/react/I18n'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 const ImportationActions = ({ cancelAction, importAction, importation, t }) => {
   return (
     <p className="importation-actions">

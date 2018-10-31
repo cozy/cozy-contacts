@@ -7,7 +7,7 @@ import {
   shouldEnableTracking,
   getTracker,
   createTrackerMiddleware
-} from 'cozy-ui/react/helpers/tracker'
+} from 'cozy-ui/transpiled/react/helpers/tracker'
 //import { isReporterEnabled, getReporterMiddleware } from 'lib/sentry'
 
 import appReducers from '../reducers'
