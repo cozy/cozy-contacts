@@ -59,7 +59,7 @@ class ContactImportationModal extends React.Component {
             : `${t('importation.update', updated)}`
           : ''
       Alerter.success(
-        `${t('importation.complete_success')}: ${stringCreated}${stringUpdated}`
+        `${t('importation.complete_success')} ${stringCreated}${stringUpdated}`
       )
       closeAction()
     } else {
