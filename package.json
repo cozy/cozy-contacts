@@ -49,7 +49,7 @@
   },
   "dependencies": {
     "classnames": "2.2.6",
-    "cozy-bar": "5.0.4",
+    "cozy-bar": "5.0.9",
     "cozy-client": "3.6.4",
     "cozy-flags": "1.2.10",
     "cozy-ui": "13.2.1",
