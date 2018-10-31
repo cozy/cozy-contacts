@@ -14,7 +14,7 @@ import ContactCardModalConnected from './Modals/ContactCardModalConnected'
 import { Query } from 'cozy-client'
 import withModal from './HOCs/withModal'
 import { ModalManager } from '../helpers/modalManager'
-import { Spinner } from 'cozy-ui/react'
+import SpinnerContact from './Components/Spinner'
 import { translate } from 'cozy-ui/react/I18n'
 class ContactsApp extends React.Component {
   state = {
@@ -143,7 +143,12 @@ const withContacts = WrappedComponent =>
         <Query query={client => client.find('io.cozy.contacts.groups')}>
           {({ data: groups, fetchStatus }) => {
             if (fetchStatus === 'loading') {
-              return <Spinner size="xxlarge" />
+              return (
+                <SpinnerContact
+                  size="xxlarge"
+                  loadingType="fetching_contacts"
+                />
+              )
             }
             if (fetchStatus === 'loaded') {
               return <WrappedComponent groups={groups} {...this.props} />
