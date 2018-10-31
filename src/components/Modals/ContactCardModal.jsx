@@ -1,8 +1,11 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import { translate } from 'cozy-ui/react/I18n'
-import Modal, { ModalHeader, ModalContent } from 'cozy-ui/react/Modal'
-import { Icon, Menu, MenuItem, Button } from 'cozy-ui/react'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
+import Modal, {
+  ModalHeader,
+  ModalContent
+} from 'cozy-ui/transpiled/react/Modal'
+import { Icon, Menu, MenuItem, Button } from 'cozy-ui/transpiled/react'
 
 import { withContactsMutations } from '../../connections/allContacts'
 import ContactCard from '../ContactCard/ContactCard'

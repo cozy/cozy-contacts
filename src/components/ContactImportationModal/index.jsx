@@ -1,13 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Alerter, Modal, ModalContent, ModalHeader } from 'cozy-ui/react'
+import {
+  Alerter,
+  Modal,
+  ModalContent,
+  ModalHeader
+} from 'cozy-ui/transpiled/react'
 import { withContactsMutations } from '../../connections/allContacts'
 import ExportStepsExplanation from './ExportStepsExplanation'
 import ContactImportationActions from './ContactImportationActions'
 import ContactImportationCard from './ContactImportationCard'
 import Importation from '../../importation'
 import Status from '../../importation/status'
-import { translate } from 'cozy-ui/react/I18n'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 const ERROR_STATUS_SET = new Set([Status.FILE_ISSUE, Status.COMPLETE_FAILURE])
 

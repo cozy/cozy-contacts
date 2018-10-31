@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Avatar } from 'cozy-ui/react/Avatar'
+import { Avatar } from 'cozy-ui/transpiled/react/Avatar'
 import { getInitials } from '../../helpers/contacts'
 import withModalContainer from '../HOCs/withModal'
 import contactPropTypes from '../ContactPropTypes'

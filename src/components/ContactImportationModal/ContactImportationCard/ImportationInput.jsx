@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Icon } from 'cozy-ui/react'
+import { Icon } from 'cozy-ui/transpiled/react'
 import Importation from '../../../importation'
-import { translate } from 'cozy-ui/react/I18n'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 class ImportationInput extends React.Component {
   state = {

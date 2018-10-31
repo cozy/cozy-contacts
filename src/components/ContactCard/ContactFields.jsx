@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Icon from 'cozy-ui/react/Icon'
-import palette from 'cozy-ui/stylus/settings/palette.json'
-import { translate } from 'cozy-ui/react/I18n'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import palette from 'cozy-ui/transpiled/react/palette'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import IconBirthday from '../../assets/icons/calendar.svg'
 import IconNote from '../../assets/icons/comment.svg'

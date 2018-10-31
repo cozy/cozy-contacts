@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Button, Overlay } from 'cozy-ui/react'
-import { translate } from 'cozy-ui/react/I18n'
-
 import classNames from 'classnames'
 
-import SelectBox, { CheckboxOption, components } from 'cozy-ui/react/SelectBox'
-import Icon from 'cozy-ui/react/Icon'
-import palette from 'cozy-ui/stylus/settings/palette.json'
+import { Button } from 'cozy-ui/transpiled/react'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
+import SelectBox, { CheckboxOption } from 'cozy-ui/transpiled/react/SelectBox'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import palette from 'cozy-ui/transpiled/react/palette'
 
 import IconGroups from '../../assets/icons/groups.svg'
 import IconDown from '../../assets/icons/down.svg'

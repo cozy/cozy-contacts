@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { IntentOpener, Button } from 'cozy-ui/react'
+import { IntentOpener, Button } from 'cozy-ui/transpiled/react'
 import IconGoogle from '../../assets/icons/connect-google.svg'
-import { translate } from 'cozy-ui/react/I18n'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 const style = { pointerEvents: 'all' }
 const ImportGoogleButton = props => (
