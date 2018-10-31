@@ -3030,10 +3030,10 @@ cozy-client@3.6.4:
     redux "3.7.2"
     sift "7.0.1"
 
-cozy-flags@1.2.10:
-  version "1.2.10"
-  resolved "https://registry.yarnpkg.com/cozy-flags/-/cozy-flags-1.2.10.tgz#fbc00d26dc6b3723e2e5a7a5210cec958a981afb"
-  integrity sha512-mNwnyF8xQNMyM4QIn0qfGRwGHmM9MQsrsvGPgatTJvrmwpVl+/YJQW3xrV9HBhvtGJRkc9qKCdqKLiiAy6/ZTg==
+cozy-flags@1.2.11:
+  version "1.2.11"
+  resolved "https://registry.yarnpkg.com/cozy-flags/-/cozy-flags-1.2.11.tgz#6d4ca1540bed28ea0ff617e6adcf82ffa2b510fb"
+  integrity sha512-wCsWO4h6H2bKX5hCPID5PX9ghMzTTx7e8K9RXl6qbBKb6AvFtKeO8gakQrHUdZu67Dy2L9/GO7Rx2WrKiN/oQQ==
 
 cozy-scripts@1.1.1:
   version "1.1.1"
