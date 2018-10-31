@@ -29,7 +29,7 @@
   "importation": {
     "cancel": "Cancel",
     "complete_failure": "Import failed.",
-    "complete_success": "Congratulations",
+    "complete_success": "Congratulations!",
     "creation": "a contact has been created |||| %{smart_count} contacts have been created",
     "update": "a contact has been updated |||| %{smart_count} contacts have been updated",
     "empty_file": "This file is empty.",
