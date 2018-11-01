@@ -57,9 +57,12 @@ class ContactGroupCreation extends Component {
           )}
         >
           {!isInputDisplayed && (
-            <div onClick={this.handleClick}>
+            <div
+              onClick={this.handleClick}
+              className={classNames('contact-group-create-div-icon')}
+            >
               <Icon icon="plus" />
-              {t('groups.create')}
+              <span className="u-pl-half">{t('groups.create')}</span>
             </div>
           )}
           {isInputDisplayed && (

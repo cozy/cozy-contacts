@@ -72,7 +72,7 @@ exports[`ContactForm should match snapshot 1`] = `
           className="contact-form__label"
         >
           <svg
-            className="contact-form__icon icon"
+            className="contact-form__icon styles__icon___23x3R"
             height="16"
             style={
               Object {
@@ -118,7 +118,7 @@ exports[`ContactForm should match snapshot 1`] = `
           className="contact-form__label"
         >
           <svg
-            className="contact-form__icon icon"
+            className="contact-form__icon styles__icon___23x3R"
             height="16"
             style={
               Object {
@@ -164,7 +164,7 @@ exports[`ContactForm should match snapshot 1`] = `
           className="contact-form__label"
         >
           <svg
-            className="contact-form__icon icon"
+            className="contact-form__icon styles__icon___23x3R"
             height="16"
             style={
               Object {
@@ -210,7 +210,7 @@ exports[`ContactForm should match snapshot 1`] = `
           className="contact-form__label"
         >
           <svg
-            className="contact-form__icon icon"
+            className="contact-form__icon styles__icon___23x3R"
             height="16"
             style={
               Object {
@@ -252,7 +252,7 @@ exports[`ContactForm should match snapshot 1`] = `
           className="contact-form__label"
         >
           <svg
-            className="contact-form__icon icon"
+            className="contact-form__icon styles__icon___23x3R"
             height="16"
             style={
               Object {
@@ -294,7 +294,7 @@ exports[`ContactForm should match snapshot 1`] = `
           className="contact-form__label"
         >
           <svg
-            className="contact-form__icon icon"
+            className="contact-form__icon styles__icon___23x3R"
             height="16"
             style={
               Object {
@@ -336,7 +336,7 @@ exports[`ContactForm should match snapshot 1`] = `
           className="contact-form__label"
         >
           <svg
-            className="contact-form__icon icon"
+            className="contact-form__icon styles__icon___23x3R"
             height="16"
             style={
               Object {
@@ -377,7 +377,7 @@ exports[`ContactForm should match snapshot 1`] = `
     >
       <div>
         <button
-          className="c-btn c-btn--secondary"
+          className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N"
           onClick={[Function]}
           title={null}
           type="button"
@@ -391,7 +391,7 @@ exports[`ContactForm should match snapshot 1`] = `
           </span>
         </button>
         <button
-          className="c-btn"
+          className="styles__c-btn___-2Vnj"
           title={null}
           type="submit"
         >
