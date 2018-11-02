@@ -7,7 +7,6 @@ import { sortLastNameFirst, buildLastNameFirst } from './'
 import ContactsEmptyList from './ContactsEmptyList'
 import ContactRow from './ContactRow'
 import ContactHeaderRow from './ContactHeaderRow'
-import ContactCardModal from '../Modals/ContactCardModal'
 import SpinnerContact from '../Components/Spinner'
 const query = client => client.find('io.cozy.contacts').include(['groups'])
 
@@ -25,12 +24,9 @@ class ContactsList extends Component {
       displayedContactId: null
     }))
   }
-  getContactById = (contacts, id) => {
-    return find(contacts, c => c.id === id)
-  }
+
   render() {
     const { displayImportation, onSelect, selection, groups } = this.props
-    const { displayedContactId } = this.state
     return (
       <Query query={query}>
         {({ data: contacts, fetchStatus }) => {
@@ -63,6 +59,7 @@ class ContactsList extends Component {
                         {categorizedContacts[header].map(contact => (
                           <li key={`contact-${contact._id}`}>
                             <ContactRow
+                              id={contact._id}
                               key={contact._id}
                               contact={contact}
                               groups={groups}
@@ -78,7 +75,6 @@ class ContactsList extends Component {
                                     ) !== undefined
                                 }
                               }
-                              onClick={e => this.onClick(e, contact._id)}
                             />
                           </li>
                         ))}
@@ -86,18 +82,7 @@ class ContactsList extends Component {
                     </li>
                   ))}
                 </ol>
-                <div>
-                  {displayedContactId && (
-                    <ContactCardModal
-                      onClose={this.hideContactCard}
-                      contact={this.getContactById(
-                        contacts,
-                        displayedContactId
-                      )}
-                      groups={groups}
-                    />
-                  )}
-                </div>
+                <div />
               </div>
             )
           }
