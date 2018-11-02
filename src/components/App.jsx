@@ -6,7 +6,6 @@ import { translate } from 'cozy-ui/react/I18n'
 import { Query } from 'cozy-client'
 
 import ContactsList from './ContactsList'
-import withSelection from './HOCs/withSelection'
 import connect from '../connections/allContacts'
 import Header from './Header'
 import Toolbar from './Toolbar'
@@ -21,19 +20,10 @@ class ContactsApp extends React.Component {
     return (
       <Layout monocolumn="true">
         <Main>
-          <ContactsSelectionBar
-            selection={this.props.selection}
-            hideSelectionBar={this.props.clearSelection}
-            trashAction={this.props.deleteContact}
-          />
+          <ContactsSelectionBar trashAction={this.props.deleteContact} />
           <Header right={<Toolbar groups={this.props.groups} />} />
           <Content>
-            <ContactsList
-              onSelect={this.props.toggleSelection}
-              selection={this.props.selection}
-              displayImportation={this.displayImportation}
-              groups={groups}
-            />
+            <ContactsList groups={groups} />
           </Content>
           <Alerter t={t} />
           <ModalManager />
@@ -73,6 +63,4 @@ const withContacts = WrappedComponent =>
     }
   }
 
-export default translate()(
-  connect(withContacts(withSelection(withModal(ContactsApp))))
-)
+export default translate()(connect(withContacts(withModal(ContactsApp))))

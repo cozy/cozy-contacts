@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Query } from 'cozy-client'
-import find from 'lodash/find'
 
 import { sortLastNameFirst, buildLastNameFirst } from './'
 import ContactsEmptyList from './ContactsEmptyList'
@@ -26,7 +25,7 @@ class ContactsList extends Component {
   }
 
   render() {
-    const { displayImportation, onSelect, selection, groups } = this.props
+    const { displayImportation, groups } = this.props
     return (
       <Query query={query}>
         {({ data: contacts, fetchStatus }) => {
@@ -63,18 +62,6 @@ class ContactsList extends Component {
                               key={contact._id}
                               contact={contact}
                               groups={groups}
-                              selection={
-                                onSelect && {
-                                  onSelect: () => {
-                                    onSelect(contact)
-                                  },
-                                  selected:
-                                    find(
-                                      selection,
-                                      s => s.id === contact._id
-                                    ) !== undefined
-                                }
-                              }
                             />
                           </li>
                         ))}
