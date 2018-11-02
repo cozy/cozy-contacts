@@ -1,90 +1,22 @@
 import React from 'react'
-import ContactsList from './ContactsList'
-import withSelection from './HOCs/withSelection'
 import { PropTypes } from 'prop-types'
-import ContactFormModal from './Modals/ContactFormModal'
 import { Alerter } from 'cozy-ui/react'
 import { Main, Content, Layout } from 'cozy-ui/react/Layout'
+import { translate } from 'cozy-ui/react/I18n'
+import { Query } from 'cozy-client'
+
+import ContactsList from './ContactsList'
+import withSelection from './HOCs/withSelection'
 import connect from '../connections/allContacts'
-import ContactImportationModal from './ContactImportationModal'
 import Header from './Header'
 import Toolbar from './Toolbar'
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
-import ContactCardModalConnected from './Modals/ContactCardModalConnected'
-import { Query } from 'cozy-client'
 import withModal from './HOCs/withModal'
 import { ModalManager } from '../helpers/modalManager'
 import SpinnerContact from './Components/Spinner'
-import { translate } from 'cozy-ui/react/I18n'
+
 class ContactsApp extends React.Component {
-  state = {
-    displayedContact: null,
-    isImportationDisplayed: false,
-    isCreationFormDisplayed: false
-  }
-  constructor(props, context) {
-    super(props, context)
-  }
-  displayImportation = () => {
-    this.setState(() => ({
-      isImportationDisplayed: true
-    }))
-  }
-
-  hideImportation = () => {
-    this.setState(() => ({ isImportationDisplayed: false }))
-  }
-
-  displayContactForm = () => {
-    this.setState(() => ({
-      isCreationFormDisplayed: true
-    }))
-  }
-
-  hideContactForm = () => {
-    this.setState(() => ({
-      isCreationFormDisplayed: false
-    }))
-  }
-
-  onCreateContact = contact => {
-    this.hideContactForm()
-    return this.props.showModal(
-      <Query query={client => client.get('io.cozy.contacts', contact._id)}>
-        {({ data: contact, fetchStatus }) => {
-          return (
-            <ContactCardModalConnected
-              contact={contact}
-              isloading={fetchStatus === 'loading'}
-              groups={this.props.groups}
-            />
-          )
-        }}
-      </Query>
-    )
-  }
-  componentDidUpdate(prevProps) {
-    if (this.state.displayedContact) {
-      const previouslyDisplayedContact = prevProps.contacts.find(
-        contact => contact._id === this.state.displayedContact._id
-      )
-      const displayedContact = this.props.contacts.find(
-        contact => contact._id === this.state.displayedContact._id
-      )
-      if (
-        displayedContact &&
-        previouslyDisplayedContact &&
-        displayedContact._rev !== previouslyDisplayedContact._rev
-      ) {
-        this.setState(() => {
-          displayedContact
-        })
-      }
-    }
-  }
-
   render() {
-    const { isImportationDisplayed, isCreationFormDisplayed } = this.state
     const { groups, t } = this.props
     return (
       <Layout monocolumn="true">
@@ -94,14 +26,7 @@ class ContactsApp extends React.Component {
             hideSelectionBar={this.props.clearSelection}
             trashAction={this.props.deleteContact}
           />
-          <Header
-            right={
-              <Toolbar
-                displayContactForm={this.displayContactForm}
-                displayVcardImport={this.displayImportation}
-              />
-            }
-          />
+          <Header right={<Toolbar groups={this.props.groups} />} />
           <Content>
             <ContactsList
               onSelect={this.props.toggleSelection}
@@ -110,17 +35,6 @@ class ContactsApp extends React.Component {
               groups={groups}
             />
           </Content>
-          {isImportationDisplayed && (
-            <ContactImportationModal closeAction={this.hideImportation} />
-          )}
-
-          {isCreationFormDisplayed && (
-            <ContactFormModal
-              onClose={this.hideContactForm}
-              title={t('create_contact')}
-              onCreateContact={this.onCreateContact}
-            />
-          )}
           <Alerter t={t} />
           <ModalManager />
         </Main>
