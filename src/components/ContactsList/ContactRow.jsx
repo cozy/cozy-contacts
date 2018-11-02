@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import contactPropTypes from '../ContactPropTypes'
 import { Avatar } from 'cozy-ui/react/Avatar'
-import { getInitials } from '../../helpers/contacts'
 
+import { getInitials } from '../../helpers/contacts'
+import ContactCardModal from '../Modals/ContactCardModal'
+import withModalContainer from '../HOCs/withModal'
 const ContactIdentity = ({ name, myself }) => (
   <div className="contact-identity">
     <Avatar text={getInitials(name).toUpperCase()} size="small" />
@@ -78,29 +80,49 @@ ContactSelection.propTypes = {
   onSelect: PropTypes.func.isRequired
 }
 
-const ContactRow = props => {
-  const { number: phone } = getPrimaryOrFirst(props.contact.phone) || {
-    number: undefined
-  }
+class ContactRow extends Component {
+  render() {
+    const { id, contact } = this.props
+    const { number: phone } = getPrimaryOrFirst(contact.phone) || {
+      number: undefined
+    }
 
-  const { address: email } = getPrimaryOrFirst(props.contact.email) || {
-    address: undefined
-  }
-  const name = props.contact.name || {}
-  const isMyself = props.contact.metadata ? !!props.contact.metadata.me : false
-  return (
-    <div className="contact" onClick={props.onClick}>
-      {props.selection && (
-        <ContactSelection
-          selected={props.selection.selected}
-          onSelect={props.selection.onSelect}
+    const { address: email } = getPrimaryOrFirst(contact.email) || {
+      address: undefined
+    }
+    const name = contact.name || {}
+    const isMyself = contact.metadata ? !!contact.metadata.me : false
+
+    const { showModal, groups } = this.props
+    return (
+      <div
+        className="contact"
+        onClick={() =>
+          showModal(
+            <ContactCardModal
+              onClose={this.hideContactCard}
+              id={id}
+              groups={groups}
+            />
+          )
+        }
+      >
+        {this.props.selection && (
+          <ContactSelection
+            selected={this.props.selection.selected}
+            onSelect={this.props.selection.onSelect}
+          />
+        )}
+        <ContactIdentity
+          name={name}
+          myself={isMyself}
+          groups={this.props.groups}
         />
-      )}
-      <ContactIdentity name={name} myself={isMyself} groups={props.groups} />
-      <ContactPhone phone={phone} />
-      <ContactEmail email={email} />
-    </div>
-  )
+        <ContactPhone phone={phone} />
+        <ContactEmail email={email} />
+      </div>
+    )
+  }
 }
 ContactRow.propTypes = {
   contact: PropTypes.shape({
@@ -121,4 +143,4 @@ ContactRow.defaultProps = {
   onClick: null
 }
 
-export default ContactRow
+export default withModalContainer(ContactRow)

@@ -6,8 +6,8 @@ import { Icon, Menu, MenuItem, Button } from 'cozy-ui/react'
 
 import { withContactsMutations } from '../../connections/allContacts'
 import ContactCard from '../ContactCard/ContactCard'
-import contactPropTypes from '../ContactPropTypes'
 import SpinnerContact from '../Components/Spinner'
+import { Query } from 'cozy-client'
 
 const ContactCardMenu = ({ deleteAction }) => (
   <Menu
@@ -51,68 +51,68 @@ class ContactCardModal extends React.Component {
     }))
   }
 
-  deleteContact = async () => {
+  deleteContact = async (contactParam = null) => {
     const { contact, deleteContact, onDeleteContact, onClose } = this.props
     onClose && onClose()
-    await deleteContact(contact)
-    onDeleteContact && onDeleteContact(contact)
+    await deleteContact(contactParam ? contactParam : contact)
+    onDeleteContact && onDeleteContact(contactParam ? contactParam : contact)
   }
 
   render() {
-    const { onClose, contact, t, groups, isloading } = this.props
+    const { onClose, t, groups, id } = this.props
     const { shouldDisplayConfirmDeleteModal } = this.state
-
     return (
-      <Modal into="body" dismissAction={onClose} size="xlarge">
-        {isloading && <SpinnerContact size="xxlarge" />}
-        {!isloading && (
-          <ContactCard
-            title={t('contact_info')}
-            contact={contact}
-            groups={groups}
-            renderHeader={children => (
-              <ModalHeader className="contact-card-modal__header">
-                {children}
-                <ContactCardMenu
-                  deleteAction={{
-                    label: t('delete'),
-                    action: this.toggleConfirmDeleteModal
-                  }}
+      <Query query={client => client.get('io.cozy.contacts', id)}>
+        {({ data: contact, fetchStatus }) => {
+          return (
+            <Modal into="body" dismissAction={onClose} size="xlarge">
+              {fetchStatus !== 'loaded' && <SpinnerContact size="xxlarge" />}
+              {fetchStatus === 'loaded' && (
+                <ContactCard
+                  title={t('contact_info')}
+                  contact={contact}
+                  groups={groups}
+                  renderHeader={children => (
+                    <ModalHeader className="contact-card-modal__header">
+                      {children}
+                      <ContactCardMenu
+                        deleteAction={{
+                          label: t('delete'),
+                          action: this.toggleConfirmDeleteModal
+                        }}
+                      />
+                    </ModalHeader>
+                  )}
+                  renderBody={children => (
+                    <ModalContent>{children}</ModalContent>
+                  )}
                 />
-              </ModalHeader>
-            )}
-            renderBody={children => <ModalContent>{children}</ModalContent>}
-          />
-        )}
-        {shouldDisplayConfirmDeleteModal && (
-          <Modal
-            into="body"
-            title={t('delete-confirmation.title')}
-            description={t('delete-confirmation.description')}
-            primaryText={t('delete')}
-            primaryType="danger"
-            primaryAction={this.deleteContact}
-            secondaryText={t('cancel')}
-            secondaryAction={this.toggleConfirmDeleteModal}
-            dismissAction={this.toggleConfirmDeleteModal}
-          />
-        )}
-      </Modal>
+              )}
+
+              {shouldDisplayConfirmDeleteModal && (
+                <Modal
+                  into="body"
+                  title={t('delete-confirmation.title')}
+                  description={t('delete-confirmation.description')}
+                  primaryText={t('delete')}
+                  primaryType="danger"
+                  primaryAction={() => this.deleteContact(contact)}
+                  secondaryText={t('cancel')}
+                  secondaryAction={this.toggleConfirmDeleteModal}
+                  dismissAction={this.toggleConfirmDeleteModal}
+                />
+              )}
+            </Modal>
+          )
+        }}
+      </Query>
     )
   }
 }
 
 ContactCardModal.propTypes = {
   onClose: PropTypes.func.isRequired,
-  contact: PropTypes.shape({
-    name: contactPropTypes.name,
-    phone: PropTypes.arrayOf(contactPropTypes.phone),
-    email: PropTypes.arrayOf(contactPropTypes.email),
-    address: PropTypes.arrayOf(contactPropTypes.address),
-    cozy: PropTypes.arrayOf(contactPropTypes.cozy),
-    birthday: contactPropTypes.birthday,
-    note: contactPropTypes.note
-  }).isRequired,
+  id: PropTypes.string.isRequired,
   deleteContact: PropTypes.func.isRequired,
   onDeleteContact: PropTypes.func,
   groups: PropTypes.array.isRequired,

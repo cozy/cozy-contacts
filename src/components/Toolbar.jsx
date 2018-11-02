@@ -3,30 +3,20 @@ import { PropTypes } from 'prop-types'
 import { Button, Icon } from 'cozy-ui/react'
 
 import { translate } from 'cozy-ui/react/I18n'
-import { Query } from 'cozy-client'
 
 import ContactFormModal from './Modals/ContactFormModal'
 import withModal from './HOCs/withModal'
-import ContactCardModalConnected from './Modals/ContactCardModalConnected'
+import ContactCardModal from './Modals/ContactCardModal'
 import ContactImportationModal from './ContactImportationModal/'
-const style = { pointerEvents: 'all' }
 import IconTeam from '../assets/icons/team.svg'
+
+const style = { pointerEvents: 'all' }
 
 class Toolbar extends Component {
   onCreateContact = contact => {
     this.props.hideModal()
     return this.props.showModal(
-      <Query query={client => client.get('io.cozy.contacts', contact._id)}>
-        {({ data: contact, fetchStatus }) => {
-          return (
-            <ContactCardModalConnected
-              contact={contact}
-              isloading={fetchStatus === 'loading'}
-              groups={this.props.groups}
-            />
-          )
-        }}
-      </Query>
+      <ContactCardModal id={contact.id} groups={this.props.groups} />
     )
   }
 
