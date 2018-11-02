@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import contactPropTypes from '../ContactPropTypes'
 import { Avatar } from 'cozy-ui/react/Avatar'
-
+import find from 'lodash/find'
 import { getInitials } from '../../helpers/contacts'
 import ContactCardModal from '../Modals/ContactCardModal'
 import withModalContainer from '../HOCs/withModal'
+import contactPropTypes from '../ContactPropTypes'
+import withSelection from '../Selection/selectionContainer'
+
 const ContactIdentity = ({ name, myself }) => (
   <div className="contact-identity">
     <Avatar text={getInitials(name).toUpperCase()} size="small" />
@@ -61,23 +63,38 @@ ContactEmail.defaultProps = {
   email: '—'
 }
 
-const ContactSelection = props => (
-  <div
-    className="contact-selection"
-    onClick={e => {
-      e.stopPropagation()
-      props.onSelect(e)
-    }}
-  >
-    <span data-input="checkbox">
-      <input type="checkbox" checked={props.selected} readOnly />
-      <label />
-    </span>
-  </div>
-)
+class ContactSelection extends Component {
+  render() {
+    return (
+      <div
+        className="contact-selection"
+        onClick={e => {
+          e.stopPropagation()
+          this.props.toggleSelection(this.props.contact)
+        }}
+      >
+        <span data-input="checkbox">
+          <input
+            type="checkbox"
+            checked={
+              find(
+                this.props.selection,
+                s => s.id === this.props.contact._id
+              ) !== undefined
+            }
+            readOnly
+          />
+          <label />
+        </span>
+      </div>
+    )
+  }
+}
+const ContactWithSelection = withSelection(ContactSelection)
 ContactSelection.propTypes = {
-  selected: PropTypes.bool.isRequired,
-  onSelect: PropTypes.func.isRequired
+  contact: PropTypes.object.isRequired,
+  toggleSelection: PropTypes.func.isRequired,
+  selection: PropTypes.array.isRequired
 }
 
 class ContactRow extends Component {
@@ -107,12 +124,7 @@ class ContactRow extends Component {
           )
         }
       >
-        {this.props.selection && (
-          <ContactSelection
-            selected={this.props.selection.selected}
-            onSelect={this.props.selection.onSelect}
-          />
-        )}
+        <ContactWithSelection contact={contact} />
         <ContactIdentity
           name={name}
           myself={isMyself}
@@ -131,10 +143,7 @@ ContactRow.propTypes = {
     phone: PropTypes.arrayOf(contactPropTypes.phone),
     metadata: contactPropTypes.metadata
   }).isRequired,
-  selection: PropTypes.shape({
-    selected: PropTypes.bool,
-    onSelect: PropTypes.func
-  }),
+
   onClick: PropTypes.func,
   groups: PropTypes.array.isRequired
 }
