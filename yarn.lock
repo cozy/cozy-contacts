@@ -3017,10 +3017,10 @@ cozy-client-js@^0.3.19:
   resolved "https://registry.yarnpkg.com/cozy-client-js/-/cozy-client-js-0.3.21.tgz#d27d0288077ce95139333c41dfb537b8584ff254"
   integrity sha1-0n0CiAd86VE5MzxB37U3uFhP8lQ=
 
-cozy-client@3.6.4:
-  version "3.6.4"
-  resolved "https://registry.yarnpkg.com/cozy-client/-/cozy-client-3.6.4.tgz#6d77045d4af51336ec968a2c886123ae251a7b16"
-  integrity sha512-Gu8liXK7JbHTlx9VRyt9pHdv7JsTZ0pn56rzn2sm2zkzQvfnR3565DIlyJouMDqLGyTT8Bfd+ngS5SwNmDW1IQ==
+cozy-client@3.7.5:
+  version "3.7.5"
+  resolved "https://registry.yarnpkg.com/cozy-client/-/cozy-client-3.7.5.tgz#c72f9830ad6ee13fcc58f1bee660deb5f19ca805"
+  integrity sha512-gtzZNUk3MDvmoED7si/T/j648AE8sCg5VPCaUxDS4R3qiwX1CMTe9G0OPyh3f2L0HaVjuECSuLVTtMNCuG9tvg==
   dependencies:
     cozy-stack-client "^3.4.0"
     lodash "4.17.11"
