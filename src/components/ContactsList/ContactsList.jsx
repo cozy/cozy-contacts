@@ -10,20 +10,6 @@ import SpinnerContact from '../Components/Spinner'
 const query = client => client.find('io.cozy.contacts').include(['groups'])
 
 class ContactsList extends Component {
-  state = {
-    displayedContactId: null
-  }
-  onClick = (e, contactId) => {
-    this.setState(() => ({
-      displayedContactId: contactId
-    }))
-  }
-  hideContactCard = () => {
-    this.setState(() => ({
-      displayedContactId: null
-    }))
-  }
-
   render() {
     const { displayImportation, groups } = this.props
     return (
@@ -79,16 +65,9 @@ class ContactsList extends Component {
   }
 }
 ContactsList.propTypes = {
-  onClickContact: PropTypes.func,
-  onSelect: PropTypes.func,
-  selection: PropTypes.array,
   displayImportation: PropTypes.func.isRequired,
   groups: PropTypes.array.isRequired
 }
-ContactsList.defaultProps = {
-  onClickContact: null,
-  onSelect: null,
-  selection: []
-}
+ContactsList.defaultProps = {}
 
 export default ContactsList

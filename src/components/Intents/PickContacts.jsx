@@ -4,7 +4,6 @@ import { translate } from 'cozy-ui/react/I18n'
 import { Button, IntentHeader } from 'cozy-ui/react'
 import IntentMain from './IntentMain'
 import ContactsList from '../ContactsList/ContactsList'
-import withSelection from '../HOCs/withSelection'
 
 const ContactAppWithLoading = ({ data, fetchStatus, ...props }) => {
   if (!data) {
@@ -87,4 +86,4 @@ PickContacts.propTypes = {
   onError: PropTypes.func.isRequired
 }
 
-export default translate()(withSelection(PickContacts))
+export default translate()(PickContacts)

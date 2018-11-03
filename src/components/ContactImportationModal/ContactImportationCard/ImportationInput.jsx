@@ -12,7 +12,7 @@ class ImportationInput extends React.Component {
   handleOnChange = event => {
     const file = event.target.files[0]
     this.props.fileAction(file)
-    this.setState(() => ({ value: '' })) // change of the input value allowing to trigger several times the onChange event with a file with the same name
+    this.setState({ value: '' }) // change of the input value allowing to trigger several times the onChange event with a file with the same name
   }
 
   render() {
