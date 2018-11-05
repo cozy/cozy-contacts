@@ -77,7 +77,6 @@
     "creation_error": "An error occured while trying to contact the other app. Please try again later?"
   },
   "manifest": {
-    "name": "Contacts",
     "short_description": "Cozy Contacts helps you to save and secure your contacts on your Cozy.",
     "long_description": "With Cozy Contacts you can:\n- Add, modify and sort your contacts.\n- Imports all your contacts from Google, Facebook and more."
   },
