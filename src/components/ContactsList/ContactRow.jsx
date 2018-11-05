@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Avatar } from 'cozy-ui/react/Avatar'
-import find from 'lodash/find'
 import { getInitials } from '../../helpers/contacts'
-import ContactCardModal from '../Modals/ContactCardModal'
 import withModalContainer from '../HOCs/withModal'
 import contactPropTypes from '../ContactPropTypes'
-import withSelection from '../Selection/selectionContainer'
-
+import ContactWithSelection from './ContactSelection'
 const ContactIdentity = ({ name, myself }) => (
   <div className="contact-identity">
     <Avatar text={getInitials(name).toUpperCase()} size="small" />
@@ -63,43 +60,9 @@ ContactEmail.defaultProps = {
   email: '—'
 }
 
-class ContactSelection extends Component {
-  render() {
-    return (
-      <div
-        className="contact-selection"
-        onClick={e => {
-          e.stopPropagation()
-          this.props.toggleSelection(this.props.contact)
-        }}
-      >
-        <span data-input="checkbox">
-          <input
-            type="checkbox"
-            checked={
-              find(
-                this.props.selection,
-                s => s.id === this.props.contact._id
-              ) !== undefined
-            }
-            readOnly
-          />
-          <label />
-        </span>
-      </div>
-    )
-  }
-}
-const ContactWithSelection = withSelection(ContactSelection)
-ContactSelection.propTypes = {
-  contact: PropTypes.object.isRequired,
-  toggleSelection: PropTypes.func.isRequired,
-  selection: PropTypes.array.isRequired
-}
-
 class ContactRow extends Component {
   render() {
-    const { id, contact } = this.props
+    const { contact, groups, onClick } = this.props
     const { number: phone } = getPrimaryOrFirst(contact.phone) || {
       number: undefined
     }
@@ -110,20 +73,8 @@ class ContactRow extends Component {
     const name = contact.name || {}
     const isMyself = contact.metadata ? !!contact.metadata.me : false
 
-    const { showModal, groups } = this.props
     return (
-      <div
-        className="contact"
-        onClick={() =>
-          showModal(
-            <ContactCardModal
-              onClose={this.hideContactCard}
-              id={id}
-              groups={groups}
-            />
-          )
-        }
-      >
+      <div className="contact" onClick={onClick}>
         <ContactWithSelection contact={contact} />
         <ContactIdentity name={name} myself={isMyself} groups={groups} />
         <ContactPhone phone={phone} />

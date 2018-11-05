@@ -7,11 +7,13 @@ import ContactsEmptyList from './ContactsEmptyList'
 import ContactRow from './ContactRow'
 import ContactHeaderRow from './ContactHeaderRow'
 import SpinnerContact from '../Components/Spinner'
+import withModal from '../HOCs/withModal'
+import ContactCardModal from '../Modals/ContactCardModal'
 const query = client => client.find('io.cozy.contacts').include(['groups'])
 
 class ContactsList extends Component {
   render() {
-    const { displayImportation, groups } = this.props
+    const { displayImportation, groups, showModal } = this.props
     return (
       <Query query={query}>
         {({ data: contacts, fetchStatus }) => {
@@ -48,6 +50,15 @@ class ContactsList extends Component {
                               key={contact._id}
                               contact={contact}
                               groups={groups}
+                              onClick={() =>
+                                showModal(
+                                  <ContactCardModal
+                                    onClose={this.hideContactCard}
+                                    id={contact._id}
+                                    groups={groups}
+                                  />
+                                )
+                              }
                             />
                           </li>
                         ))}
@@ -70,4 +81,4 @@ ContactsList.propTypes = {
 }
 ContactsList.defaultProps = {}
 
-export default ContactsList
+export default withModal(ContactsList)
