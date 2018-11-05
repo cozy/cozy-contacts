@@ -15,7 +15,7 @@ DummyComponent.propTypes = {
 describe('A component with selection', () => {
   let testedComponent
   let wrapper = ''
-  let toto
+  let noConnectedComponent
   let realConnectedComponent
   beforeEach(() => {
     const store = configureStore(getCozyClient(), null, {})
@@ -27,8 +27,8 @@ describe('A component with selection', () => {
     )
     wrapper = shallow(root)
     testedComponent = wrapper.dive()
-    toto = testedComponent.find('Connect(DummyComponent)')
-    realConnectedComponent = toto.dive()
+    noConnectedComponent = testedComponent.find('Connect(DummyComponent)')
+    realConnectedComponent = noConnectedComponent.dive()
   })
 
   it('should toggle the selection', () => {
@@ -70,8 +70,8 @@ describe('A component with selection', () => {
       </AppLike>
     )
     testedComponent = shallow(root)
-    toto = testedComponent.find('Connect(DummyComponent)')
+    noConnectedComponent = testedComponent.find('Connect(DummyComponent)')
 
-    expect(toto.prop('title')).toEqual('with prop')
+    expect(noConnectedComponent.prop('title')).toEqual('with prop')
   })
 })
