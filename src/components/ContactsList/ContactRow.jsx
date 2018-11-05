@@ -125,11 +125,7 @@ class ContactRow extends Component {
         }
       >
         <ContactWithSelection contact={contact} />
-        <ContactIdentity
-          name={name}
-          myself={isMyself}
-          groups={this.props.groups}
-        />
+        <ContactIdentity name={name} myself={isMyself} groups={groups} />
         <ContactPhone phone={phone} />
         <ContactEmail email={email} />
       </div>
@@ -149,7 +145,8 @@ ContactRow.propTypes = {
 }
 ContactRow.defaultProps = {
   selection: null,
-  onClick: null
+  onClick: null,
+  groups: []
 }
 
 export default withModalContainer(ContactRow)

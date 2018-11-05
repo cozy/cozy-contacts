@@ -7,5 +7,8 @@ module.exports = {
     '.svg$': '<rootDir>/jestHelpers/mocks/iconMock.js',
     '.styl$': 'identity-obj-proxy'
   },
-  testURL: 'http://localhost'
+  testURL: 'http://localhost',
+  globals: {
+    __DEVELOPMENT__: false
+  }
 }

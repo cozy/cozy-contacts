@@ -3,8 +3,10 @@ import { I18n } from 'cozy-ui/react'
 import { CozyProvider } from 'cozy-client'
 import { Provider } from 'react-redux'
 import langEn from '../locales/en.json'
-import store from './store'
+import configureStore from '../store/configureStore'
 import getCozyClient from './client'
+
+const store = configureStore(getCozyClient(), null, {})
 
 const AppLike = ({ children, client }) => (
   <Provider store={store}>

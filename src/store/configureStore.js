@@ -10,7 +10,7 @@ import {
 } from 'cozy-ui/react/helpers/tracker'
 //import { isReporterEnabled, getReporterMiddleware } from 'lib/sentry'
 
-import appReducers from 'reducers'
+import appReducers from '../reducers'
 
 const configureStore = (client, t, persistedState) => {
   // Enable Redux dev tools

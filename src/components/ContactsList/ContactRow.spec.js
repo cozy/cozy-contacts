@@ -1,12 +1,18 @@
 import React from 'react'
 import { mount } from 'enzyme'
 
+import AppLike from '../../tests/Applike'
+
 import ContactRow from './ContactRow'
 
 describe('ContactRow', () => {
   test('should accept the strict minimum', () => {
     const contact = { email: [{ address: 'johndoe@localhost' }] }
-    const contactRowInstance = <ContactRow contact={contact} />
+    const contactRowInstance = (
+      <AppLike>
+        <ContactRow contact={contact} />
+      </AppLike>
+    )
     const contactrow = mount(contactRowInstance)
     const contactrowemail = contactrow.find('ContactEmail')
     expect(contactrowemail).toBeDefined()
@@ -18,7 +24,11 @@ describe('ContactRow', () => {
       phone: [{ number: '0123456789' }],
       email: [{ address: 'johndoe@localhost' }]
     }
-    const contactRowInstance = <ContactRow contact={contact} />
+    const contactRowInstance = (
+      <AppLike>
+        <ContactRow contact={contact} />
+      </AppLike>
+    )
     const contactrow = mount(contactRowInstance)
     const contactrowname = contactrow.find('ContactName')
     expect(contactrowname).toBeDefined()
@@ -34,7 +44,11 @@ describe('ContactRow', () => {
   })
   test('should display empty string for missing information', () => {
     const contact = { email: [{ address: 'johndoe@localhost' }] }
-    const contactRowInstance = <ContactRow contact={contact} />
+    const contactRowInstance = (
+      <AppLike>
+        <ContactRow contact={contact} />
+      </AppLike>
+    )
     const contactrow = mount(contactRowInstance)
     const contactrowname = contactrow.find('ContactName')
     expect(contactrowname).toBeDefined()
@@ -45,7 +59,11 @@ describe('ContactRow', () => {
   })
   test('should accept empty array', () => {
     const contact = { email: [] }
-    const contactRowInstance = <ContactRow contact={contact} />
+    const contactRowInstance = (
+      <AppLike>
+        <ContactRow contact={contact} />
+      </AppLike>
+    )
     const contactrow = mount(contactRowInstance)
     const contactrowemail = contactrow.find('ContactEmail')
     expect(contactrowemail).toBeDefined()
