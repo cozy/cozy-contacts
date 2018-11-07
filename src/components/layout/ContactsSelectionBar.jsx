@@ -23,7 +23,7 @@ class ContactsSelectionBar extends Component {
 }
 ContactsSelectionBar.propTypes = {
   selection: PropTypes.array.isRequired,
-  hideSelectionBar: PropTypes.func.isRequired,
+  clearSelection: PropTypes.func.isRequired,
   trashAction: PropTypes.func.isRequired
 }
 

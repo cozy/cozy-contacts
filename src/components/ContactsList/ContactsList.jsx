@@ -13,7 +13,7 @@ const query = client => client.find('io.cozy.contacts')
 
 class ContactsList extends Component {
   render() {
-    const { displayImportation, groups, showModal } = this.props
+    const { groups, showModal } = this.props
     return (
       <Query query={query}>
         {({ data: contacts, fetchStatus }) => {
@@ -23,7 +23,7 @@ class ContactsList extends Component {
             )
           }
           if (contacts.length === 0) {
-            return <ContactsEmptyList displayImportation={displayImportation} />
+            return <ContactsEmptyList />
           } else {
             const sortedContacts = [...contacts].sort(sortLastNameFirst)
             const categorizedContacts = sortedContacts.reduce(
@@ -76,7 +76,6 @@ class ContactsList extends Component {
   }
 }
 ContactsList.propTypes = {
-  displayImportation: PropTypes.func.isRequired,
   groups: PropTypes.array.isRequired
 }
 ContactsList.defaultProps = {}
