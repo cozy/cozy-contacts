@@ -33,104 +33,52 @@ exports[`ContactCard should match snapshot 1`] = `
         className="contact-card-identity__groups"
       >
         <div
-          className="css-1yebww6"
+          className="css-1irp0at"
           onKeyDown={[Function]}
         >
-          <div
-            onMouseDown={[Function]}
-            onTouchEnd={[Function]}
+          <button
+            className="c-btn c-btn--secondary c-btn--small"
+            onClick={[Function]}
+            tabIndex={1}
+            title={null}
+            type="submit"
           >
-            <button
-              className="c-btn c-btn--secondary c-btn--small"
-              title={null}
-              type="submit"
-            >
-              <span>
-                <svg
-                  className="icon"
-                  height="16"
-                  style={
-                    Object {
-                      "fill": "#95999D",
-                    }
+            <span>
+              <svg
+                className="icon"
+                height="16"
+                style={
+                  Object {
+                    "fill": "#95999D",
                   }
-                  width="16"
-                >
-                  <use
-                    xlinkHref="#icon-0"
-                  />
-                </svg>
-                <span
-                  className={null}
-                >
-                  Manage groups
-                </span>
-                <svg
-                  className="group-manager__indicator icon"
-                  height="16"
-                  style={
-                    Object {
-                      "fill": "#95999D",
-                    }
-                  }
-                  width="12"
-                >
-                  <use
-                    xlinkHref="#icon-0"
-                  />
-                </svg>
+                }
+                width="16"
+              >
+                <use
+                  xlinkHref="#icon-0"
+                />
+              </svg>
+              <span
+                className={null}
+              >
+                Manage groups
               </span>
-            </button>
-            <div
-              className="select-control__input"
-            >
-              <div
-                className="css-1phseng"
+              <svg
+                className="group-manager__indicator icon"
+                height="16"
+                style={
+                  Object {
+                    "fill": "#95999D",
+                  }
+                }
+                width="12"
               >
-                <div
-                  className="css-1492t68"
-                >
-                  Select...
-                </div>
-                <input
-                  className="css-14uuagi"
-                  id="react-select-2-input"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  readOnly={true}
-                  tabIndex="0"
-                  value=""
+                <use
+                  xlinkHref="#icon-0"
                 />
-              </div>
-              <div
-                className="css-1wy0on6"
-              >
-                <span
-                  className="css-1hyfx7x"
-                />
-                <div
-                  aria-hidden="true"
-                  className="css-1j9smtq"
-                  onMouseDown={[Function]}
-                  onTouchEnd={[Function]}
-                >
-                  <svg
-                    aria-hidden="true"
-                    className="css-19bqh2r"
-                    focusable="false"
-                    height={20}
-                    viewBox="0 0 20 20"
-                    width={20}
-                  >
-                    <path
-                      d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
+              </svg>
+            </span>
+          </button>
         </div>
         <ol
           className="contact-groups-list"

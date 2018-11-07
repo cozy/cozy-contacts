@@ -10,7 +10,6 @@ import connect from '../connections/allContacts'
 import Header from './Header'
 import Toolbar from './Toolbar'
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
-import withModal from './HOCs/withModal'
 import { ModalManager } from '../helpers/modalManager'
 import SpinnerContact from './Components/Spinner'
 
@@ -33,9 +32,6 @@ class ContactsApp extends React.Component {
   }
 }
 ContactsApp.propTypes = {
-  selection: PropTypes.array.isRequired,
-  toggleSelection: PropTypes.func.isRequired,
-  clearSelection: PropTypes.func.isRequired,
   deleteContact: PropTypes.func.isRequired,
   groups: PropTypes.array.isRequired
 }
@@ -63,4 +59,4 @@ const withContacts = WrappedComponent =>
     }
   }
 
-export default translate()(connect(withContacts(withModal(ContactsApp))))
+export default translate()(connect(withContacts(ContactsApp)))
