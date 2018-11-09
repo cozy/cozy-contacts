@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Icon, Input, translate } from 'cozy-ui/react'
 import classNames from 'classnames'
-import './index.styl'
 
 const normalizeGroupData = name => {
   return {
@@ -13,16 +12,15 @@ const normalizeGroupData = name => {
 }
 class ContactGroupCreation extends Component {
   state = {
-    isInput: false,
-    groupName: '',
-    focused: false
+    isInputDisplayed: false,
+    groupName: ''
   }
   constructor(props) {
     super(props)
     this.textInput = React.createRef()
   }
   handleClick = () => {
-    this.setState({ isInput: !this.state.isInput })
+    this.setState({ isInputDisplayed: !this.state.isInputDisplayed })
   }
   onFocus = e => {
     e.stopPropagation()
@@ -33,16 +31,8 @@ class ContactGroupCreation extends Component {
   }
   keyPress = async e => {
     if (e.keyCode == 13) {
-      e.stopPropagation()
       this.props.createGroup(normalizeGroupData(e.target.value))
       this.textInput.current.value = ''
-    }
-    if (e.keyCode === 8) {
-      e.stopPropagation()
-    }
-    //space key is used to validate an option
-    if (e.keyCode === 32) {
-      e.stopPropagation()
     }
     e.stopPropagation()
   }
@@ -52,7 +42,7 @@ class ContactGroupCreation extends Component {
   }
 
   render() {
-    const { isInput } = this.state
+    const { isInputDisplayed } = this.state
     const { t } = this.props
     return (
       <div>
@@ -66,13 +56,13 @@ class ContactGroupCreation extends Component {
             'container'
           )}
         >
-          {!isInput && (
+          {!isInputDisplayed && (
             <div onClick={this.handleClick}>
               <Icon icon="plus" />
               {t('groups.create')}
             </div>
           )}
-          {isInput && (
+          {isInputDisplayed && (
             <Input
               id={'createGroupInput'}
               inputRef={this.textInput}

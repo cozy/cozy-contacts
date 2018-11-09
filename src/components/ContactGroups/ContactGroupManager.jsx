@@ -20,7 +20,6 @@ const MainButton = ({ t, selectProps: { toggleMenuIsOpen } }) => {
       size="small"
       icon={<Icon icon={IconGroups} color={palette['coolGrey']} />}
       label={t('groups.manage')}
-      tabIndex={1}
       onClick={() => {
         toggleMenuIsOpen()
       }}
@@ -85,6 +84,12 @@ class ContactGroupManager extends Component {
   state = {
     menuIsOpen: false
   }
+  componentDidUpdate(prevProps) {
+    if (prevProps.allGroups.length !== this.props.allGroups.length) {
+      document.getElementsByClassName('react-select__menu-list')[0].scrollTop =
+        '9999'
+    }
+  }
   toggleMenuIsOpen = () => {
     this.setState(state => ({ menuIsOpen: !state.menuIsOpen }))
   }
@@ -105,7 +110,7 @@ class ContactGroupManager extends Component {
         {this.state.menuIsOpen && (
           <Overlay
             className={classNames('overlay-creation-group')}
-            onClick={() => this.toggleMenuIsOpen()}
+            onClick={this.toggleMenuIsOpen}
           />
         )}
         <SelectBox
