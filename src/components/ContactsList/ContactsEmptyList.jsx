@@ -1,12 +1,12 @@
 /* global cozy */
 import React from 'react'
-import { PropTypes } from 'prop-types'
 import { Empty, Button } from 'cozy-ui/react'
 import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
 import IconTeam from '../../assets/icons/team.svg'
 import ImportGoogleButton from '../Buttons/ImportGoogleButton'
 import { translate } from 'cozy-ui/react/I18n'
-
+import withModalContainer from '../HOCs/withModal'
+import ContactImportationModal from '../ContactImportationModal/'
 const style = { pointerEvents: 'all' }
 
 class ContactsEmptyList extends React.Component {
@@ -32,7 +32,7 @@ class ContactsEmptyList extends React.Component {
 
   render() {
     const { hasConnector } = this.state
-    const { t } = this.props
+    const { t, showModal } = this.props
 
     return (
       <Empty
@@ -49,7 +49,13 @@ class ContactsEmptyList extends React.Component {
             <span className="contacts-empty-action">
               <Button
                 className="contacts-empty-button"
-                onClick={this.props.displayImportation}
+                onClick={() => {
+                  showModal(
+                    <ContactImportationModal
+                      closeAction={this.props.hideModal}
+                    />
+                  )
+                }}
                 label={t('empty.importation')}
                 theme="secondary"
                 icon={IconTeam}
@@ -62,7 +68,5 @@ class ContactsEmptyList extends React.Component {
     )
   }
 }
-ContactsEmptyList.propTypes = {
-  displayImportation: PropTypes.func.isRequired
-}
-export default translate()(ContactsEmptyList)
+
+export default translate()(withModalContainer(ContactsEmptyList))
