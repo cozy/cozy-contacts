@@ -11,7 +11,7 @@ import SpinnerContact from '../Components/Spinner'
 const groupsQuery = client => client.all('io.cozy.contacts.groups')
 class ContactGroupsClass extends React.Component {
   state = {
-    createdGroup: []
+    createdGroups: []
   }
   updateContactGroups = groups => {
     const { contact } = this.props
@@ -24,31 +24,23 @@ class ContactGroupsClass extends React.Component {
     })
     this.props.updateContact(contact)
   }
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.createdGroup.length !== this.state.createdGroup.length) {
-      document.getElementsByClassName('react-select__menu-list')[0].scrollTop =
-        '9999'
-    }
-  }
+
   createGroup = async group => {
     const createdGroup = await this.props.createGroup(group)
     const { contact } = this.props
 
     contact.groups.addById(createdGroup.data._id)
     await this.props.updateContact(contact)
-    const test = [...this.state.createdGroup, createdGroup.data]
     this.setState({
-      createdGroup: test
+      createdGroups: [...this.state.createdGroups, createdGroup.data]
     })
   }
   render() {
     const { contact, allGroups } = this.props
-    //! TODO NOT HAPPY WITH THIS CODE and createGroup
-    const { createdGroup } = this.state
-    let allGroupsAndCreated = [...allGroups]
-    if (createdGroup.length > 0) {
-      allGroupsAndCreated = [...allGroupsAndCreated, ...createdGroup]
-    }
+    //! We shoudn't do all this stuff. We should have something like an obersable Query
+    // doing all this stuff. Next time
+    const { createdGroups } = this.state
+    const allGroupsAndCreated = [...allGroups, ...createdGroups]
     const userGroups = contact.groups.data
       .map(groupUser =>
         allGroupsAndCreated.find(group => group._id === groupUser._id)
