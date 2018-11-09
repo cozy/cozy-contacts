@@ -3106,12 +3106,12 @@ cozy-client-js@^0.3.19:
   resolved "https://registry.yarnpkg.com/cozy-client-js/-/cozy-client-js-0.3.21.tgz#d27d0288077ce95139333c41dfb537b8584ff254"
   integrity sha1-0n0CiAd86VE5MzxB37U3uFhP8lQ=
 
-cozy-client@4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/cozy-client/-/cozy-client-4.2.1.tgz#fcafb6aa4877e28498bad6cd93838ef1a2e2c7a0"
-  integrity sha512-W4xEle2sLE1DeB3uy8n/zqAYvk8Gx3j46Yf6/ZS6o5jEad1JnKl9QngNKOMJ0szkmgLDbQz2iZjSNjNEUsPw4w==
+cozy-client@4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/cozy-client/-/cozy-client-4.4.0.tgz#9037caac714dba189915668bfe3463267b8cbfa0"
+  integrity sha512-t5GZbm1zh7k61v5rEsGNyKs8i2ho+r49BfrcAwzEwUxSZ0kEuhGAGtYZG6Xd0S8vyonvzvk57/S1UM3CWlis5g==
   dependencies:
-    cozy-stack-client "^4.2.1"
+    cozy-stack-client "^4.3.0"
     lodash "4.17.11"
     prop-types "15.6.2"
     react "16.4.2"
@@ -3178,10 +3178,10 @@ cozy-scripts@1.1.2:
     webpack-dev-server "3.1.10"
     webpack-merge "4.1.4"
 
-cozy-stack-client@^4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/cozy-stack-client/-/cozy-stack-client-4.2.1.tgz#7c6a67848647c887759817f95c2b7b5643b2af3a"
-  integrity sha512-omOmQUgeRAracVwWD3TnypvWLqEEF+HNTkwD7ssPKNoNFp8qutoFuAGcf090mgGPmYx2vv01wO8cpeNwjyRgbA==
+cozy-stack-client@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/cozy-stack-client/-/cozy-stack-client-4.3.0.tgz#4a4ed9fcc3ff7e6a15e2b7d43fa54fd384ab912d"
+  integrity sha512-t61mpGbBND3+S2BLAVYFp+6v/0NfOUzqlrVTjC8biY1OMFwZYr9JXUvLGpuUZQGZRrCh5b5UDB8tCoqpy2jaWg==
   dependencies:
     mime-types "2.1.20"
 
