@@ -35,7 +35,7 @@
   "homepage": "https://github.com/cozy/cozy-contacts#readme",
   "devDependencies": {
     "babel-preset-cozy-app": "1.2.1",
-    "cozy-scripts": "1.1.1",
+    "cozy-scripts": "1.1.2",
     "enzyme": "3.7.0",
     "enzyme-adapter-react-16": "1.7.0",
     "eslint-config-cozy-app": "1.1.4",
