@@ -13,13 +13,20 @@ import Toolbar from './Toolbar'
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
 import { ModalManager } from '../helpers/modalManager'
 import SpinnerContact from './Components/Spinner'
+import flag, { FlagSwitcher } from 'cozy-flags'
+import initFlags from '../helpers/flags'
 
 class ContactsApp extends React.Component {
+  componentWillMount() {
+    initFlags()
+  }
+
   render() {
     const { groups, t } = this.props
     return (
       <Layout monocolumn="true">
         <Main>
+          {flag('switcher') && <FlagSwitcher />}
           <ContactsSelectionBar trashAction={this.props.deleteContact} />
           <Header right={<Toolbar groups={this.props.groups} />} />
           <Content>
