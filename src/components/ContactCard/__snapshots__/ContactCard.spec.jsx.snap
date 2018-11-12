@@ -39,7 +39,6 @@ exports[`ContactCard should match snapshot 1`] = `
           <button
             className="c-btn c-btn--secondary c-btn--small"
             onClick={[Function]}
-            tabIndex={1}
             title={null}
             type="submit"
           >
