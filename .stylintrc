@@ -67,7 +67,7 @@
   },
   "noImportant": {
     "expect": true,
-    "error": true
+    "error": false
   },
   "parenSpace": {
     "expect": "never",
