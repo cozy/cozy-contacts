@@ -14,7 +14,7 @@ import ContactsSelectionBar from './layout/ContactsSelectionBar'
 import { ModalManager } from '../helpers/modalManager'
 import SpinnerContact from './Components/Spinner'
 import flag, { FlagSwitcher } from 'cozy-flags'
-import initFlags from '../helpers/flags'
+import { initFlags } from '../helpers/flags'
 
 class ContactsApp extends React.Component {
   componentWillMount() {
