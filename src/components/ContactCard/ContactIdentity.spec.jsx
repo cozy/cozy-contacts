@@ -26,7 +26,6 @@ describe('ContactIdentity', () => {
         <ContactIdentity contact={contactWithoutName} groups={groupsMock} />
       </AppLike>
     )
-    //console.log('test', app.debug())
     const avatar = app.find('Avatar')
     expect(avatar.prop('text')).toEqual('SF')
   })
@@ -52,7 +51,6 @@ describe('ContactIdentity', () => {
         <ContactIdentity contact={contactWithoutName} groups={groupsMock} />
       </AppLike>
     )
-    //console.log('test', app.debug())
     const avatar = app.find('Avatar')
     expect(avatar.prop('text')).toEqual('')
   })

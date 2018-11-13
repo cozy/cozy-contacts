@@ -50,7 +50,6 @@ class ContactGroupCreation extends Component {
         <div
           className={classNames(
             'u-ml-half',
-            'u-mb-half',
             'u-mr-half',
             'u-c-pointer',
             'container'

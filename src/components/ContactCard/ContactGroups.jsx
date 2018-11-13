@@ -7,7 +7,7 @@ import ContactGroupManager from '../ContactGroups/ContactGroupManager'
 import { withContactsMutations } from '../../connections/allContacts'
 import { withGroupsMutations } from '../../connections/allGroups'
 import SpinnerContact from '../Components/Spinner'
-
+import { checkIfGroupAlreadyExists } from '../ContactGroups/helpers/groups'
 const groupsQuery = client => client.all('io.cozy.contacts.groups')
 class ContactGroupsClass extends React.Component {
   state = {
@@ -24,10 +24,19 @@ class ContactGroupsClass extends React.Component {
     })
     this.props.updateContact(contact)
   }
-
+  getAllGroups = () => {
+    const { allGroups } = this.props
+    const { createdGroups } = this.state
+    return [...allGroups, ...createdGroups]
+  }
   createGroup = async group => {
-    const createdGroup = await this.props.createGroup(group)
     const { contact } = this.props
+
+    const allGroupsAndCreated = this.getAllGroups()
+    if (checkIfGroupAlreadyExists(allGroupsAndCreated, group)) {
+      return
+    }
+    const createdGroup = await this.props.createGroup(group)
 
     contact.groups.addById(createdGroup.data._id)
     await this.props.updateContact(contact)
@@ -36,11 +45,10 @@ class ContactGroupsClass extends React.Component {
     })
   }
   render() {
-    const { contact, allGroups } = this.props
+    const { contact } = this.props
     //! We shoudn't do all this stuff. We should have something like an obersable Query
     // doing all this stuff. Next time
-    const { createdGroups } = this.state
-    const allGroupsAndCreated = [...allGroups, ...createdGroups]
+    const allGroupsAndCreated = this.getAllGroups()
     const userGroups = contact.groups.data
       .map(groupUser =>
         allGroupsAndCreated.find(group => group._id === groupUser._id)
