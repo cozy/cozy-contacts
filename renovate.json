@@ -1,5 +1,8 @@
 {
   "extends": [
     "cozy"
-  ]
+  ],
+  "devDependencies": {	
+    "automerge": true	
+  }
 }
