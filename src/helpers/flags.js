@@ -1,5 +1,5 @@
 import flag from 'cozy-flags'
-export const initFlags = () => {
+const initFlags = () => {
   let activateFlags = flag('switcher') === true ? true : false
   if (process.env.NODE_ENV !== 'production' && flag('switcher') === null) {
     activateFlags = true
@@ -18,3 +18,5 @@ const flagsList = () => {
   flag('groupscreation')
   flag('logs')
 }
+
+export default initFlags
