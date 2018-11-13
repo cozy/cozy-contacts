@@ -8,7 +8,7 @@ const style = { pointerEvents: 'all' }
 const ImportGoogleButton = props => (
   <IntentOpener
     action="CREATE"
-    doctype="io.cozy.accounts"
+    doctype="io.cozy.apps"
     options={{ slug: 'google' }}
     onComplete={props.onComplete}
   >
