@@ -68,7 +68,12 @@ class ContactCardModal extends React.Component {
       <Query query={client => client.get('io.cozy.contacts', id)}>
         {({ data: contact, fetchStatus }) => {
           return (
-            <Modal into="body" dismissAction={onClose} size="xlarge">
+            <Modal
+              into="body"
+              dismissAction={onClose}
+              size="xlarge"
+              mobileFullscreen
+            >
               {fetchStatus !== 'loaded' && <SpinnerContact size="xxlarge" />}
               {fetchStatus === 'loaded' && (
                 <ContactCard

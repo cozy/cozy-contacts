@@ -65,7 +65,7 @@
     "trash": "delete"
   },
   "groups": {
-    "none": "There are no existing groups yet.",
+    "none": "There is no existing group.",
     "manage": "Manage groups",
     "create": "Create a group",
     "name": "Name of the group"
