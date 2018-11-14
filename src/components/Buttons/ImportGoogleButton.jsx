@@ -7,7 +7,7 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 const style = { pointerEvents: 'all' }
 const ImportGoogleButton = props => (
   <IntentOpener
-    action="CREATE"
+    action="INSTALL"
     doctype="io.cozy.apps"
     options={{ slug: 'google' }}
     onComplete={props.onComplete}
