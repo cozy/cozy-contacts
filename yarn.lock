@@ -3253,10 +3253,10 @@ cozy-stack-client@^4.3.0:
   dependencies:
     mime-types "2.1.20"
 
-cozy-ui@15.3.1:
-  version "15.3.1"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-15.3.1.tgz#09a7e18531c29d9f2f971625d7840e625c6307c3"
-  integrity sha512-KQoBp6zPstIR0Q7akAVXPsz3Obp8biUrrMcgj+o8D1PTra4Bi2+K7vhpiNXeEipUvpmGEqcpcsgrHkW87iYUkA==
+cozy-ui@15.5.0:
+  version "15.5.0"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-15.5.0.tgz#786092c1c65b2e8d875ec475c634d3de899c9dd4"
+  integrity sha512-xkTtXVLHF9k41VzUjDH8pKmcrh8sx0blToxMdtG87iqbh/EinDXeeHdfQdV3EgC2BvCgxnaw+foJLkAZu6ko7Q==
   dependencies:
     babel-cli "^6.26.0"
     babel-plugin-css-modules-transform "^1.5.0"
