@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Query } from 'cozy-client'
+import { Alerter } from 'cozy-ui/transpiled/react'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import { fullContactPropTypes } from '../ContactPropTypes'
 import ContactGroupManager from '../ContactGroups/ContactGroupManager'
@@ -8,7 +10,14 @@ import withContactsMutations from '../../connections/allContacts'
 import withGroupsMutations from '../../connections/allGroups'
 import SpinnerContact from '../Components/Spinner'
 import { checkIfGroupAlreadyExists } from '../ContactGroups/helpers/groups'
-const groupsQuery = client => client.all('io.cozy.contacts.groups')
+const groupsQuery = client =>
+  client
+    .find('io.cozy.contacts.groups')
+    .where({
+      trashed: { $exists: false }
+    })
+    .indexFields(['_id'])
+
 class ContactGroupsClass extends React.Component {
   updateContactGroups = groups => {
     const { contact } = this.props
@@ -31,11 +40,35 @@ class ContactGroupsClass extends React.Component {
 
     contact.groups.addById(createdGroup.data._id)
     await this.props.updateContact(contact)
+  }
+  deleteGroup = async group => {
+    const { data: flaggedGroup } = await this.props.updateGroup({
+      ...group,
+      trashed: true
     })
+    const alertDuration = 3 * 1000
+
+    const alertTimeout = setTimeout(() => {
+    }, alertDuration)
+
+    Alerter.info(this.props.t('groups.removed', { name: flaggedGroup.name }), {
+      buttonText: this.props.t('cancel'),
+      buttonAction: () => {
+        clearTimeout(alertTimeout)
+        this.cancelGroupDelete(flaggedGroup)
+      },
+      duration: alertDuration
+    })
+  }
+  cancelGroupDelete = async group => {
+    delete group.trashed
+    await this.props.updateGroup(group)
+    Alerter.info(this.props.t('groups.remove_canceled', { name: group.name }))
   }
   render() {
     const { contact, allGroups } = this.props
     const userGroups = contact.groups.data
+      .filter(contactGroup => contactGroup)
       .map(userGroup => allGroups.find(group => group._id === userGroup._id))
       .filter(value => value)
 
@@ -46,6 +79,7 @@ class ContactGroupsClass extends React.Component {
           allGroups={allGroups}
           onGroupSelectionChange={this.updateContactGroups}
           createGroup={this.createGroup}
+          deleteGroup={this.deleteGroup}
         />
         <ol className="contact-groups-list">
           {userGroups.map(group => (
@@ -66,6 +100,7 @@ ContactGroupsClass.propTypes = {
   contact: PropTypes.object.isRequired,
   updateContact: PropTypes.func.isRequired,
   allGroups: PropTypes.array.isRequired
+  t: PropTypes.func.isRequired
 }
 
 const ConnectedContactGroups = ({ contact }) => {
