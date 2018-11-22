@@ -7,7 +7,7 @@ import Modal, {
 } from 'cozy-ui/transpiled/react/Modal'
 import { Icon, Menu, MenuItem, Button } from 'cozy-ui/transpiled/react'
 
-import { withContactsMutations } from '../../connections/allContacts'
+import withContactsMutations from '../../connections/allContacts'
 import ContactCard from '../ContactCard/ContactCard'
 import SpinnerContact from '../Components/Spinner'
 import { Query } from 'cozy-client'

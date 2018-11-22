@@ -4,8 +4,8 @@ import { Query } from 'cozy-client'
 
 import { fullContactPropTypes } from '../ContactPropTypes'
 import ContactGroupManager from '../ContactGroups/ContactGroupManager'
-import { withContactsMutations } from '../../connections/allContacts'
-import { withGroupsMutations } from '../../connections/allGroups'
+import withContactsMutations from '../../connections/allContacts'
+import withGroupsMutations from '../../connections/allGroups'
 import SpinnerContact from '../Components/Spinner'
 import { checkIfGroupAlreadyExists } from '../ContactGroups/helpers/groups'
 const groupsQuery = client => client.all('io.cozy.contacts.groups')

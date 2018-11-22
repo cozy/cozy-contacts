@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { IntentHeader } from 'cozy-ui/transpiled/react'
 import ContactForm from '../ContactCard/ContactForm'
-import { withContactsMutations } from '../../connections/allContacts'
+import withContactsMutations from '../../connections/allContacts'
 import IntentMain from './IntentMain'
 
 class CreateContact extends React.Component {

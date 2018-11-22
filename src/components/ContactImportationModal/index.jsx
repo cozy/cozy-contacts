@@ -6,7 +6,7 @@ import {
   ModalContent,
   ModalHeader
 } from 'cozy-ui/transpiled/react'
-import { withContactsMutations } from '../../connections/allContacts'
+import withContactsMutations from '../../connections/allContacts'
 import ExportStepsExplanation from './ExportStepsExplanation'
 import ContactImportationActions from './ContactImportationActions'
 import ContactImportationCard from './ContactImportationCard'
