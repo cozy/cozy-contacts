@@ -62,7 +62,7 @@ class ContactCardModal extends React.Component {
   }
 
   render() {
-    const { onClose, t, groups, id } = this.props
+    const { onClose, t, id } = this.props
     const { shouldDisplayConfirmDeleteModal } = this.state
     return (
       <Query query={client => client.get('io.cozy.contacts', id)}>
@@ -79,7 +79,6 @@ class ContactCardModal extends React.Component {
                 <ContactCard
                   title={t('contact_info')}
                   contact={contact}
-                  groups={groups}
                   renderHeader={children => (
                     <ModalHeader className="contact-card-modal__header">
                       {children}
@@ -123,7 +122,6 @@ ContactCardModal.propTypes = {
   id: PropTypes.string.isRequired,
   deleteContact: PropTypes.func.isRequired,
   onDeleteContact: PropTypes.func,
-  groups: PropTypes.array.isRequired,
   isloading: PropTypes.bool
 }
 

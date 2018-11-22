@@ -62,7 +62,7 @@ ContactEmail.defaultProps = {
 
 class ContactRow extends Component {
   render() {
-    const { contact, groups, onClick } = this.props
+    const { contact, onClick } = this.props
     const { number: phone } = getPrimaryOrFirst(contact.phone) || {
       number: undefined
     }
@@ -76,7 +76,7 @@ class ContactRow extends Component {
     return (
       <div className="contact" onClick={onClick}>
         <ContactWithSelection contact={contact} />
-        <ContactIdentity name={name} myself={isMyself} groups={groups} />
+        <ContactIdentity name={name} myself={isMyself} />
         <ContactPhone phone={phone} />
         <ContactEmail email={email} />
       </div>
@@ -91,13 +91,11 @@ ContactRow.propTypes = {
     metadata: contactPropTypes.metadata
   }).isRequired,
 
-  onClick: PropTypes.func,
-  groups: PropTypes.array.isRequired
+  onClick: PropTypes.func
 }
 ContactRow.defaultProps = {
   selection: null,
-  onClick: null,
-  groups: []
+  onClick: null
 }
 
 export default withModalContainer(ContactRow)

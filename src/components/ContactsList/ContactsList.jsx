@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { Query } from 'cozy-client'
 
 import { sortLastNameFirst, buildLastNameFirst } from './'
@@ -13,7 +12,7 @@ const query = client => client.find('io.cozy.contacts')
 
 class ContactsList extends Component {
   render() {
-    const { groups, showModal } = this.props
+    const { showModal } = this.props
     return (
       <Query query={query}>
         {({ data: contacts, fetchStatus }) => {
@@ -49,13 +48,11 @@ class ContactsList extends Component {
                               id={contact._id}
                               key={contact._id}
                               contact={contact}
-                              groups={groups}
                               onClick={() =>
                                 showModal(
                                   <ContactCardModal
                                     onClose={this.hideContactCard}
                                     id={contact._id}
-                                    groups={groups}
                                   />
                                 )
                               }
@@ -75,9 +72,7 @@ class ContactsList extends Component {
     )
   }
 }
-ContactsList.propTypes = {
-  groups: PropTypes.array.isRequired
-}
+ContactsList.propTypes = {}
 ContactsList.defaultProps = {}
 
 export default withModal(ContactsList)
