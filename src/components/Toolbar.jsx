@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { PropTypes } from 'prop-types'
 import { Button, Icon } from 'cozy-ui/transpiled/react'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
@@ -14,9 +13,7 @@ const style = { pointerEvents: 'all' }
 class Toolbar extends Component {
   onCreateContact = contact => {
     this.props.hideModal()
-    return this.props.showModal(
-      <ContactCardModal id={contact.id} groups={this.props.groups} />
-    )
+    return this.props.showModal(<ContactCardModal id={contact.id} />)
   }
 
   render() {
@@ -53,8 +50,6 @@ class Toolbar extends Component {
   }
 }
 
-Toolbar.propTypes = {
-  groups: PropTypes.array.isRequired
-}
+Toolbar.propTypes = {}
 
 export default translate()(withModal(Toolbar))

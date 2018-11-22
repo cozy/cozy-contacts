@@ -1,25 +1,23 @@
 import React from 'react'
 import { Avatar } from 'cozy-ui/transpiled/react'
 import { fullContactPropTypes } from '../ContactPropTypes'
-import { PropTypes } from 'prop-types'
-import { ContactGroups } from './ContactGroups'
+import ContactGroups from './ContactGroups'
 import { getFullContactName, getInitials } from '../../helpers/contacts'
 
-const ContactIdentity = ({ contact, groups }) => (
+const ContactIdentity = ({ contact }) => (
   <div className="contact-card-identity">
     <Avatar text={getInitials(contact.name).toUpperCase()} size="medium" />
     <div className="contact-card-identity__infos">
       <h1 className="contact-card-identity__title">
         {getFullContactName(contact.name)}
       </h1>
-      <ContactGroups contact={contact} allGroups={groups} />
+      <ContactGroups contact={contact} />
     </div>
   </div>
 )
 
 ContactIdentity.propTypes = {
-  contact: fullContactPropTypes.isRequired,
-  groups: PropTypes.array.isRequired
+  contact: fullContactPropTypes.isRequired
 }
 
 export default ContactIdentity

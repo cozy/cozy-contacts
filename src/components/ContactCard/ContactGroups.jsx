@@ -10,9 +10,6 @@ import SpinnerContact from '../Components/Spinner'
 import { checkIfGroupAlreadyExists } from '../ContactGroups/helpers/groups'
 const groupsQuery = client => client.all('io.cozy.contacts.groups')
 class ContactGroupsClass extends React.Component {
-  state = {
-    createdGroups: []
-  }
   updateContactGroups = groups => {
     const { contact } = this.props
 
@@ -24,42 +21,29 @@ class ContactGroupsClass extends React.Component {
     })
     this.props.updateContact(contact)
   }
-  getAllGroups = () => {
-    const { allGroups } = this.props
-    const { createdGroups } = this.state
-    return [...allGroups, ...createdGroups]
-  }
   createGroup = async group => {
-    const { contact } = this.props
+    const { contact, allGroups } = this.props
 
-    const allGroupsAndCreated = this.getAllGroups()
-    if (checkIfGroupAlreadyExists(allGroupsAndCreated, group)) {
+    if (checkIfGroupAlreadyExists(allGroups, group)) {
       return
     }
     const createdGroup = await this.props.createGroup(group)
 
     contact.groups.addById(createdGroup.data._id)
     await this.props.updateContact(contact)
-    this.setState({
-      createdGroups: [...this.state.createdGroups, createdGroup.data]
     })
   }
   render() {
-    const { contact } = this.props
-    //! We shoudn't do all this stuff. We should have something like an obersable Query
-    // doing all this stuff. Next time
-    const allGroupsAndCreated = this.getAllGroups()
+    const { contact, allGroups } = this.props
     const userGroups = contact.groups.data
-      .map(groupUser =>
-        allGroupsAndCreated.find(group => group._id === groupUser._id)
-      )
+      .map(userGroup => allGroups.find(group => group._id === userGroup._id))
       .filter(value => value)
 
     return (
       <div className="contact-card-identity__groups">
         <ContactGroupManager
           contactGroups={userGroups}
-          allGroups={allGroupsAndCreated}
+          allGroups={allGroups}
           onGroupSelectionChange={this.updateContactGroups}
           createGroup={this.createGroup}
         />
@@ -84,18 +68,12 @@ ContactGroupsClass.propTypes = {
   allGroups: PropTypes.array.isRequired
 }
 
-const ConnectedContactGroups = ({ contact, updateContact }) => {
+const ConnectedContactGroups = ({ contact }) => {
   return (
     <Query query={groupsQuery}>
       {({ data: allGroups, fetchStatus }) => {
         if (fetchStatus === 'loaded') {
-          return (
-            <ContactGroups
-              contact={contact}
-              updateContact={updateContact}
-              allGroups={allGroups}
-            />
-          )
+          return <ContactGroups contact={contact} allGroups={allGroups} />
         } else {
           return <SpinnerContact />
         }
@@ -105,8 +83,7 @@ const ConnectedContactGroups = ({ contact, updateContact }) => {
 }
 
 ConnectedContactGroups.propTypes = {
-  contact: fullContactPropTypes.isRequired,
-  updateContact: PropTypes.func.isRequired
+  contact: fullContactPropTypes.isRequired
 }
 
-export default withContactsMutations(ConnectedContactGroups)
+export default ConnectedContactGroups
