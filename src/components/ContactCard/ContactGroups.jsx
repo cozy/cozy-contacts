@@ -10,6 +10,10 @@ import withContactsMutations from '../../connections/allContacts'
 import withGroupsMutations from '../../connections/allGroups'
 import SpinnerContact from '../Components/Spinner'
 import { checkIfGroupAlreadyExists } from '../ContactGroups/helpers/groups'
+import cleanTrashedGroups from '../../helpers/cleanTrashedGroups'
+import { connect } from 'react-redux'
+import flow from 'lodash/flow'
+
 const groupsQuery = client =>
   client
     .find('io.cozy.contacts.groups')
@@ -49,6 +53,7 @@ class ContactGroupsClass extends React.Component {
     const alertDuration = 3 * 1000
 
     const alertTimeout = setTimeout(() => {
+      this.props.cleanTrashedGroups()
     }, alertDuration)
 
     Alerter.info(this.props.t('groups.removed', { name: flaggedGroup.name }), {
@@ -92,14 +97,26 @@ class ContactGroupsClass extends React.Component {
     )
   }
 }
-export const ContactGroups = withGroupsMutations(
-  withContactsMutations(ContactGroupsClass)
-)
+
+const mapDispatchToProps = dispatch => ({
+  cleanTrashedGroups: () => dispatch(cleanTrashedGroups())
+})
+
+const ContactGroups = flow(
+  withGroupsMutations,
+  withContactsMutations,
+  translate(),
+  connect(
+    null,
+    mapDispatchToProps
+  )
+)(ContactGroupsClass)
 
 ContactGroupsClass.propTypes = {
   contact: PropTypes.object.isRequired,
   updateContact: PropTypes.func.isRequired,
-  allGroups: PropTypes.array.isRequired
+  cleanTrashedGroups: PropTypes.func.isRequired,
+  allGroups: PropTypes.array.isRequired,
   t: PropTypes.func.isRequired
 }
 

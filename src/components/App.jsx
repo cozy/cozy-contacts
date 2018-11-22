@@ -6,17 +6,20 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 import ContactsList from './ContactsList'
 import { IconSprite } from 'cozy-ui/transpiled/react'
 import 'cozy-ui/transpiled/stylesheet.css'
-import connect from '../connections/allContacts'
+import withContactsMutations from '../connections/allContacts'
 import Header from './Header'
 import Toolbar from './Toolbar'
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
 import { ModalManager } from '../helpers/modalManager'
 import flag, { FlagSwitcher } from 'cozy-flags'
 import { initFlags } from '../helpers/flags'
+import cleanTrashedGroups from '../helpers/cleanTrashedGroups'
+import { connect } from 'react-redux'
 
 class ContactsApp extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     initFlags()
+    this.props.cleanTrashedGroups()
   }
 
   render() {
@@ -42,5 +45,15 @@ ContactsApp.propTypes = {
   deleteContact: PropTypes.func.isRequired
 }
 
+const mapDispatchToProps = dispatch => ({
+  cleanTrashedGroups: () => dispatch(cleanTrashedGroups())
+})
 
-export default translate()(connect(ContactsApp))
+export default translate()(
+  withContactsMutations(
+    connect(
+      null,
+      mapDispatchToProps
+    )(ContactsApp)
+  )
+)
