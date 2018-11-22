@@ -1,6 +1,6 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import { withContactsMutations } from '../../connections/allContacts'
+import withContactsMutations from '../../connections/allContacts'
 import Modal, {
   ModalHeader,
   ModalDescription
