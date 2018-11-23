@@ -30,58 +30,13 @@ exports[`ContactCard should match snapshot 1`] = `
         Rikki  White
       </h1>
       <div
-        className="contact-card-identity__groups"
+        className="spinner"
       >
         <div
-          className="css-1irp0at"
-          onKeyDown={[Function]}
+          className="styles__c-spinner___1snK7 styles__c-spinner--middle___RwyII styles__c-spinner--blue___1BMPR styles__c-spinner--medium___1_GL8"
         >
-          <button
-            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--small___3ArkI"
-            onClick={[Function]}
-            title={null}
-            type="submit"
-          >
-            <span>
-              <svg
-                className="styles__icon___23x3R"
-                height="16"
-                style={
-                  Object {
-                    "fill": "#95999D",
-                  }
-                }
-                width="16"
-              >
-                <use
-                  xlinkHref="#icon-0"
-                />
-              </svg>
-              <span
-                className={null}
-              >
-                Manage groups
-              </span>
-              <svg
-                className="group-manager__indicator styles__icon___23x3R"
-                height="16"
-                style={
-                  Object {
-                    "fill": "#95999D",
-                  }
-                }
-                width="12"
-              >
-                <use
-                  xlinkHref="#icon-0"
-                />
-              </svg>
-            </span>
-          </button>
+          
         </div>
-        <ol
-          className="contact-groups-list"
-        />
       </div>
     </div>
   </div>
