@@ -5,10 +5,7 @@ import flag from 'cozy-flags'
 
 import { Button } from 'cozy-ui/transpiled/react'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
-import SelectBox, {
-  CheckboxOption,
-  components
-} from 'cozy-ui/transpiled/react/SelectBox'
+import SelectBox, { ActionsOption, components } from 'cozy-ui/react/SelectBox'
 import Overlay from 'cozy-ui/transpiled/react/Overlay'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import palette from 'cozy-ui/transpiled/react/palette'
@@ -73,9 +70,9 @@ const captureEscapeEvent = e => {
 
 const MenuWithFixedComponent = props => {
   const { children } = props
-  const { createGroup, toggleMenuIsOpen } = props.selectProps
+  const { createGroup, toggleMenuIsOpen, ...selectProps } = props.selectProps
   return (
-    <components.Menu {...props}>
+    <components.Menu {...props} selectProps={selectProps}>
       {children}
       {flag('groupscreation') && (
         <ContactGroupCreation
@@ -86,6 +83,20 @@ const MenuWithFixedComponent = props => {
     </components.Menu>
   )
 }
+
+const CustomOption = props => (
+  <ActionsOption
+    {...props}
+    withCheckbox
+    actions={[
+      {
+        icon: 'delete',
+        onClick: ({ data }) => props.selectProps.deleteGroup(data)
+      }
+    ]}
+  />
+)
+
 class ContactGroupManager extends Component {
   state = {
     menuIsOpen: false
@@ -108,6 +119,7 @@ class ContactGroupManager extends Component {
       allGroups,
       onGroupSelectionChange,
       createGroup,
+      deleteGroup,
       t
     } = this.props
 
@@ -136,11 +148,12 @@ class ContactGroupManager extends Component {
           getOptionLabel={group => group.name}
           getOptionValue={group => group._id}
           components={{
-            Option: CheckboxOption,
+            Option: CustomOption,
             Control: MainButtonControl,
             Menu: MenuWithFixedComponent
           }}
           createGroup={createGroup}
+          deleteGroup={deleteGroup}
           styles={customStyles}
           toggleMenuIsOpen={this.toggleMenuIsOpen}
         />
