@@ -18,15 +18,10 @@ describe('ContactGroups', () => {
       { _id: 'b', name: 'The B Team' },
       { _id: 'c', name: 'The C Team' }
     ]
-    const updateContactMock = jest.fn()
 
     const app = mount(
       <AppLike>
-        <ContactGroups
-          contact={contactMock}
-          allGroups={groupsMock}
-          updateContact={updateContactMock}
-        />
+        <ContactGroups contact={contactMock} allGroups={groupsMock} />
       </AppLike>
     )
 
