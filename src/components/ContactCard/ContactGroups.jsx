@@ -103,7 +103,7 @@ const mapDispatchToProps = dispatch => ({
   cleanTrashedGroups: () => dispatch(cleanTrashedGroups())
 })
 
-const ContactGroups = flow(
+export const ContactGroups = flow(
   withGroupsMutations,
   withContactsMutations,
   translate(),
