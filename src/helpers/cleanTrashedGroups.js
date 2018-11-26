@@ -32,7 +32,7 @@ const removeGroupFromAllContacts = async (client, groupId) => {
 
   await Promise.all(groupRemovals)
 
-  if (hasMore) return removeGroupFromAllContacts(groupId)
+  if (hasMore) return removeGroupFromAllContacts(client, groupId)
 }
 
 const removeGroupFromContact = (contact, groupId) => ({
