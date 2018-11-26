@@ -20,7 +20,8 @@ const groupsQuery = client =>
     .where({
       trashed: { $exists: false }
     })
-    .indexFields(['_id'])
+    .sortBy([{ name: 'asc' }])
+    .indexFields(['name'])
 
 class ContactGroupsClass extends React.Component {
   updateContactGroups = groups => {
