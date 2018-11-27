@@ -1,6 +1,7 @@
 import uniqWith from 'lodash/uniqWith'
 import isEqual from 'lodash/isEqual'
 import flatten from 'lodash/flatten'
+import { DOCTYPE_CONTACTS } from './doctypes'
 
 function removeDuplicates(data) {
   return uniqWith(data, isEqual)
@@ -44,5 +45,5 @@ function createSelector(object, path) {
 export function findContactsWithSamePhoneOrEmail(targetContact) {
   const paths = ['phone.number', 'email.address']
   const selectors = paths.map(path => createSelector(targetContact, path))
-  return findItems('io.cozy.contacts', selectors)
+  return findItems(DOCTYPE_CONTACTS, selectors)
 }

@@ -1,6 +1,8 @@
+import { DOCTYPE_CONTACT_GROUPS, DOCTYPE_CONTACTS } from './doctypes'
+
 const cleanTrashedGroups = () => async (dispatch, getState, { client }) => {
   const { data: trashedGroups } = await client.query(
-    client.find('io.cozy.contacts.groups').where({ trashed: true })
+    client.find(DOCTYPE_CONTACT_GROUPS).where({ trashed: true })
   )
   for (const trashedGroup of trashedGroups) {
     await removeGroupFromAllContacts(client, trashedGroup._id)
@@ -15,11 +17,11 @@ const cleanTrashedGroups = () => async (dispatch, getState, { client }) => {
 
 const removeGroupFromAllContacts = async (client, groupId) => {
   const { data: contacts, next: hasMore } = await client.query(
-    client.find('io.cozy.contacts').where({
+    client.find(DOCTYPE_CONTACTS).where({
       groups: {
         $elemMatch: {
           _id: groupId,
-          _type: 'io.cozy.contacts.groups'
+          _type: DOCTYPE_CONTACT_GROUPS
         }
       }
     })

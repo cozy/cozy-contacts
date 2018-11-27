@@ -2,6 +2,8 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import ContactCard from './ContactCard'
 import AppLike from '../../tests/Applike'
+import { DOCTYPE_CONTACT_GROUPS } from '../../helpers/doctypes'
+
 describe('ContactCard', () => {
   test('should match snapshot', () => {
     const contact = {
@@ -27,7 +29,7 @@ describe('ContactCard', () => {
         { number: '+33 (2)3 99 53 65 21', primary: false }
       ],
       groups: {
-        doctype: 'io.cozy.contacts.groups',
+        doctype: DOCTYPE_CONTACT_GROUPS,
         data: []
       },
       unsupportedField: 'unsupportedField'

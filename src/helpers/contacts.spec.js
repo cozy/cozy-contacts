@@ -6,6 +6,7 @@ import {
   orderFieldList,
   makeValuesArray
 } from './contacts'
+import { DOCTYPE_CONTACTS } from './doctypes'
 
 describe('Manage Contacts fields', () => {
   test('full transformation', () => {
@@ -13,7 +14,7 @@ describe('Manage Contacts fields', () => {
       _id: 'c6899688-6cc6-4ffb-82d4-ab9f9b82c582',
       id: 'c6899688-6cc6-4ffb-82d4-ab9f9b82c582',
       _rev: '1-9368a4f2e467c449f4a1f5171a784aa8',
-      _type: 'io.cozy.contacts',
+      _type: DOCTYPE_CONTACTS,
       metadata: {
         version: 1
       },

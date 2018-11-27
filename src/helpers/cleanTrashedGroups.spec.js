@@ -1,4 +1,5 @@
 import generateCleanTrashedGroupsFn from './cleanTrashedGroups'
+import { DOCTYPE_CONTACT_GROUPS, DOCTYPE_CONTACTS } from './doctypes'
 
 const mockFindResponses = callback => doctype => {
   return {
@@ -39,9 +40,8 @@ describe('cleaning trashed groups', () => {
 
     mockClient.find.mockImplementation(
       mockFindResponses(doctype => {
-        if (doctype === 'io.cozy.contacts.groups')
-          return { data: groupsToTrash }
-        else if (doctype === 'io.cozy.contacts') return { data: [] }
+        if (doctype === DOCTYPE_CONTACT_GROUPS) return { data: groupsToTrash }
+        else if (doctype === DOCTYPE_CONTACTS) return { data: [] }
       })
     )
     await cleanTrashedGroups(mockDispatch, mockGetState, { client: mockClient })
@@ -64,10 +64,8 @@ describe('cleaning trashed groups', () => {
 
     mockClient.find.mockImplementation(
       mockFindResponses(doctype => {
-        if (doctype === 'io.cozy.contacts.groups')
-          return { data: [groupToTrash] }
-        else if (doctype === 'io.cozy.contacts')
-          return { data: [contactToTrash] }
+        if (doctype === DOCTYPE_CONTACT_GROUPS) return { data: [groupToTrash] }
+        else if (doctype === DOCTYPE_CONTACTS) return { data: [contactToTrash] }
       })
     )
     await cleanTrashedGroups(mockDispatch, mockGetState, { client: mockClient })
@@ -92,9 +90,8 @@ describe('cleaning trashed groups', () => {
     let isFirstContactPage = true
     mockClient.find.mockImplementation(
       mockFindResponses(doctype => {
-        if (doctype === 'io.cozy.contacts.groups')
-          return { data: [groupToTrash] }
-        else if (doctype === 'io.cozy.contacts') {
+        if (doctype === DOCTYPE_CONTACT_GROUPS) return { data: [groupToTrash] }
+        else if (doctype === DOCTYPE_CONTACTS) {
           const response = {
             data: [isFirstContactPage ? contactToTrash1 : contactToTrash2],
             next: isFirstContactPage

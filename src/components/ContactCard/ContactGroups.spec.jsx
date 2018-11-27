@@ -1,5 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
+import { DOCTYPE_CONTACT_GROUPS } from '../../helpers/doctypes'
 
 import { ContactGroups } from './ContactGroups'
 import AppLike from '../../tests/Applike'
@@ -8,8 +9,8 @@ describe('ContactGroups', () => {
     const contactMock = {
       groups: {
         data: [
-          { _id: 'a', _type: 'io.cozy.contacts.groups' },
-          { _id: 'b', _type: 'io.cozy.contacts.groups' }
+          { _id: 'a', _type: DOCTYPE_CONTACT_GROUPS },
+          { _id: 'b', _type: DOCTYPE_CONTACT_GROUPS }
         ]
       }
     }

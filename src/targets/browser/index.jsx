@@ -9,6 +9,10 @@ import { I18n, initTranslation } from 'cozy-ui/transpiled/react/I18n'
 import App from 'components/App'
 import configureStore from 'store/configureStore'
 import { hot } from 'react-hot-loader'
+import {
+  DOCTYPE_CONTACTS,
+  DOCTYPE_CONTACT_GROUPS
+} from '../../helpers/doctypes'
 
 const RootApp = props => (
   <CozyProvider client={props.client} store={props.store}>
@@ -80,20 +84,21 @@ const getCozyURI = () => {
   return `${protocol}//${data.cozyDomain}`
 }
 function initCozyClient(/* cozyDomain, cozyToken */) {
+  console.log({ DOCTYPE_CONTACTS, DOCTYPE_CONTACT_GROUPS })
   return new CozyClient({
     uri: getCozyURI(),
     token: getToken(),
     schema: {
       contacts: {
-        doctype: 'io.cozy.contacts',
+        doctype: DOCTYPE_CONTACTS,
         relationships: {
           groups: {
             type: 'has-many',
-            doctype: 'io.cozy.contacts.groups'
+            doctype: DOCTYPE_CONTACT_GROUPS
           }
         }
       },
-      groups: { doctype: 'io.cozy.contacts.groups' }
+      groups: { doctype: DOCTYPE_CONTACT_GROUPS }
     }
   })
 }
