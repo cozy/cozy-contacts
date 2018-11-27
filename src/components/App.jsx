@@ -13,8 +13,8 @@ import ContactsSelectionBar from './layout/ContactsSelectionBar'
 import { ModalManager } from '../helpers/modalManager'
 import flag, { FlagSwitcher } from 'cozy-flags'
 import { initFlags } from '../helpers/flags'
-import cleanTrashedGroups from '../helpers/cleanTrashedGroups'
-import { connect } from 'react-redux'
+import container from './AppContainer'
+import flow from 'lodash/flow'
 
 class ContactsApp extends React.Component {
   componentDidMount() {
@@ -45,15 +45,8 @@ ContactsApp.propTypes = {
   deleteContact: PropTypes.func.isRequired
 }
 
-const mapDispatchToProps = dispatch => ({
-  cleanTrashedGroups: () => dispatch(cleanTrashedGroups())
-})
-
-export default translate()(
-  withContactsMutations(
-    connect(
-      null,
-      mapDispatchToProps
-    )(ContactsApp)
-  )
-)
+export default flow(
+  translate(),
+  withContactsMutations,
+  container
+)(ContactsApp)
