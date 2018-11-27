@@ -8,7 +8,7 @@ import ContactHeaderRow from './ContactHeaderRow'
 import SpinnerContact from '../Components/Spinner'
 import withModal from '../HOCs/withModal'
 import ContactCardModal from '../Modals/ContactCardModal'
-const query = client => client.find('io.cozy.contacts')
+const query = client => client.all('io.cozy.contacts').limitBy(50)
 
 class ContactsList extends Component {
   render() {
