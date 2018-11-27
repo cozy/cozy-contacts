@@ -97,6 +97,12 @@ const CustomOption = props => (
   />
 )
 
+CustomOption.propTypes = {
+  selectProps: PropTypes.shape({
+    deleteGroup: PropTypes.func.isRequired
+  })
+}
+
 class ContactGroupManager extends Component {
   state = {
     menuIsOpen: false
