@@ -1,6 +1,7 @@
 import { withMutations } from 'cozy-client'
 import { mergeContact } from '../helpers/mergeContact'
 import { findContactsWithSamePhoneOrEmail } from '../helpers/findContact'
+import { DOCTYPE_CONTACTS } from '../helpers/doctypes'
 
 const withContactsMutations = withMutations(client => ({
   importContact: async attributes => {
@@ -13,9 +14,9 @@ const withContactsMutations = withMutations(client => ({
         'Too many contacts found with same email or phone number.'
       )
     }
-    return client.create('io.cozy.contacts', attributes, null)
+    return client.create(DOCTYPE_CONTACTS, attributes, null)
   },
-  createContact: attributes => client.create('io.cozy.contacts', attributes),
+  createContact: attributes => client.create(DOCTYPE_CONTACTS, attributes),
   updateContact: contact => client.save(contact),
   deleteContact: contact => client.destroy(contact)
 }))

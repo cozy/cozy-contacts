@@ -1,5 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
+import { DOCTYPE_CONTACT_GROUPS } from '../../helpers/doctypes'
 
 import ContactIdentity from './ContactIdentity'
 import AppLike from '../../tests/Applike'
@@ -10,8 +11,8 @@ describe('ContactIdentity', () => {
       name: { familyName: 'Flinn', givenName: 'Stephen' },
       groups: {
         data: [
-          { _id: 'a', _type: 'io.cozy.contacts.groups' },
-          { _id: 'b', _type: 'io.cozy.contacts.groups' }
+          { _id: 'a', _type: DOCTYPE_CONTACT_GROUPS },
+          { _id: 'b', _type: DOCTYPE_CONTACT_GROUPS }
         ]
       }
     }
@@ -35,8 +36,8 @@ describe('ContactIdentity', () => {
       email: [{ address: 'stephen.flinn@cirpria.me', primary: true }],
       groups: {
         data: [
-          { _id: 'a', _type: 'io.cozy.contacts.groups' },
-          { _id: 'b', _type: 'io.cozy.contacts.groups' }
+          { _id: 'a', _type: DOCTYPE_CONTACT_GROUPS },
+          { _id: 'b', _type: DOCTYPE_CONTACT_GROUPS }
         ]
       }
     }

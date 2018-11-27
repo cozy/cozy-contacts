@@ -6,6 +6,7 @@ import Modal, {
   ModalContent
 } from 'cozy-ui/transpiled/react/Modal'
 import { Icon, Menu, MenuItem, Button } from 'cozy-ui/transpiled/react'
+import { DOCTYPE_CONTACTS } from '../../helpers/doctypes'
 
 import withContactsMutations from '../../connections/allContacts'
 import ContactCard from '../ContactCard/ContactCard'
@@ -65,7 +66,7 @@ class ContactCardModal extends React.Component {
     const { onClose, t, id } = this.props
     const { shouldDisplayConfirmDeleteModal } = this.state
     return (
-      <Query query={client => client.get('io.cozy.contacts', id)}>
+      <Query query={client => client.get(DOCTYPE_CONTACTS, id)}>
         {({ data: contact, fetchStatus }) => {
           return (
             <Modal

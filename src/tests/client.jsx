@@ -1,4 +1,5 @@
 import CozyClient from 'cozy-client'
+import { DOCTYPE_CONTACTS, DOCTYPE_CONTACT_GROUPS } from '../helpers/doctypes'
 
 const defaultOptions = {
   uri: 'http://cozy.works:8080',
@@ -9,15 +10,15 @@ export const getCozyClient = ({ uri, token } = defaultOptions) => {
   const clientTest = new CozyClient({
     schema: {
       contacts: {
-        doctype: 'io.cozy.contacts',
+        doctype: DOCTYPE_CONTACTS,
         relationships: {
           groups: {
             type: 'has-many',
-            doctype: 'io.cozy.contacts.groups'
+            doctype: DOCTYPE_CONTACT_GROUPS
           }
         }
       },
-      groups: { doctype: 'io.cozy.contacts.groups' }
+      groups: { doctype: DOCTYPE_CONTACT_GROUPS }
     },
     uri,
     token

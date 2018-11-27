@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Query } from 'cozy-client'
+import { DOCTYPE_CONTACTS } from '../../helpers/doctypes'
 
 import { sortLastNameFirst, buildLastNameFirst } from './'
 import ContactsEmptyList from './ContactsEmptyList'
@@ -8,7 +9,7 @@ import ContactHeaderRow from './ContactHeaderRow'
 import SpinnerContact from '../Components/Spinner'
 import withModal from '../HOCs/withModal'
 import ContactCardModal from '../Modals/ContactCardModal'
-const query = client => client.all('io.cozy.contacts').limitBy(50)
+const query = client => client.all(DOCTYPE_CONTACTS).limitBy(50)
 
 class ContactsList extends Component {
   render() {
