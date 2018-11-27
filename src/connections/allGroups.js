@@ -8,3 +8,12 @@ const withGroupsMutations = withMutations(client => ({
 }))
 
 export default withGroupsMutations
+
+export const allGroupsQuery = client =>
+  client
+    .find('io.cozy.contacts.groups')
+    .where({
+      trashed: { $exists: false }
+    })
+    .sortBy([{ name: 'asc' }])
+    .indexFields(['name'])

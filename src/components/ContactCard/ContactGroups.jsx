@@ -7,20 +7,13 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { fullContactPropTypes } from '../ContactPropTypes'
 import ContactGroupManager from '../ContactGroups/ContactGroupManager'
 import withContactsMutations from '../../connections/allContacts'
-import withGroupsMutations from '../../connections/allGroups'
+import withGroupsMutations, {
+  allGroupsQuery
+} from '../../connections/allGroups'
 import SpinnerContact from '../Components/Spinner'
 import { checkIfGroupAlreadyExists } from '../ContactGroups/helpers/groups'
 import container from './ContactGroupsContainer'
 import flow from 'lodash/flow'
-
-const groupsQuery = client =>
-  client
-    .find('io.cozy.contacts.groups')
-    .where({
-      trashed: { $exists: false }
-    })
-    .sortBy([{ name: 'asc' }])
-    .indexFields(['name'])
 
 class ContactGroupsClass extends React.Component {
   updateContactGroups = groups => {
@@ -115,7 +108,7 @@ ContactGroupsClass.propTypes = {
 
 const ConnectedContactGroups = ({ contact }) => {
   return (
-    <Query query={groupsQuery}>
+    <Query query={allGroupsQuery}>
       {({ data: allGroups, fetchStatus }) => {
         if (fetchStatus === 'loaded') {
           return <ContactGroups contact={contact} allGroups={allGroups} />
