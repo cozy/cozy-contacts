@@ -10,8 +10,7 @@ import withContactsMutations from '../../connections/allContacts'
 import withGroupsMutations from '../../connections/allGroups'
 import SpinnerContact from '../Components/Spinner'
 import { checkIfGroupAlreadyExists } from '../ContactGroups/helpers/groups'
-import cleanTrashedGroups from '../../helpers/cleanTrashedGroups'
-import { connect } from 'react-redux'
+import container from './ContactGroupsContainer'
 import flow from 'lodash/flow'
 
 const groupsQuery = client =>
@@ -99,18 +98,11 @@ class ContactGroupsClass extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  cleanTrashedGroups: () => dispatch(cleanTrashedGroups())
-})
-
 export const ContactGroups = flow(
   withGroupsMutations,
   withContactsMutations,
   translate(),
-  connect(
-    null,
-    mapDispatchToProps
-  )
+  container
 )(ContactGroupsClass)
 
 ContactGroupsClass.propTypes = {
