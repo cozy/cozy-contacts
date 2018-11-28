@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Query } from 'cozy-client'
+import PropTypes from 'prop-types'
 import { DOCTYPE_CONTACTS } from '../../helpers/doctypes'
 
 import { sortLastNameFirst, buildLastNameFirst } from './'
@@ -73,7 +74,9 @@ class ContactsList extends Component {
     )
   }
 }
-ContactsList.propTypes = {}
+ContactsList.propTypes = {
+  showModal: PropTypes.func.isRequired
+}
 ContactsList.defaultProps = {}
 
 export default withModal(ContactsList)
