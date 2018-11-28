@@ -16,5 +16,6 @@ export const initFlags = () => {
 const flagsList = () => {
   flag('switcher', true)
   flag('groupscreation')
+  flag('groupsdelete')
   flag('logs')
 }
