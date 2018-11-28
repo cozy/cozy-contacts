@@ -9,7 +9,7 @@ import ContactHeaderRow from './ContactHeaderRow'
 import SpinnerContact from '../Components/Spinner'
 import withModal from '../HOCs/withModal'
 import ContactCardModal from '../Modals/ContactCardModal'
-const query = client => client.all(DOCTYPE_CONTACTS).limitBy(50)
+const query = client => client.all(DOCTYPE_CONTACTS)
 
 class ContactsList extends Component {
   render() {

@@ -84,7 +84,6 @@ const getCozyURI = () => {
   return `${protocol}//${data.cozyDomain}`
 }
 function initCozyClient(/* cozyDomain, cozyToken */) {
-  console.log({ DOCTYPE_CONTACTS, DOCTYPE_CONTACT_GROUPS })
   return new CozyClient({
     uri: getCozyURI(),
     token: getToken(),
