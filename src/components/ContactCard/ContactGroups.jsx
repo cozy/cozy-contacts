@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import flow from 'lodash/flow'
 import { Query } from 'cozy-client'
 import { Alerter } from 'cozy-ui/transpiled/react'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
@@ -13,7 +14,6 @@ import withGroupsMutations, {
 import SpinnerContact from '../Components/Spinner'
 import { checkIfGroupAlreadyExists } from '../ContactGroups/helpers/groups'
 import container from './ContactGroupsContainer'
-import flow from 'lodash/flow'
 
 class ContactGroupsClass extends React.Component {
   updateContactGroups = groups => {
