@@ -1,4 +1,4 @@
-import { DOCTYPE_CONTACT_GROUPS, DOCTYPE_CONTACTS } from './doctypes'
+import { DOCTYPE_CONTACT_GROUPS, DOCTYPE_CONTACTS } from '../helpers/doctypes'
 
 const cleanTrashedGroups = () => async (dispatch, getState, { client }) => {
   const { data: trashedGroups } = await client.query(
