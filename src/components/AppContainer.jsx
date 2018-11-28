@@ -1,4 +1,4 @@
-import cleanTrashedGroups from '../helpers/cleanTrashedGroups'
+import cleanTrashedGroups from '../thunks/cleanTrashedGroups'
 import { connect } from 'react-redux'
 
 const mapDispatchToProps = dispatch => ({

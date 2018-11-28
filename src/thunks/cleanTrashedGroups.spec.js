@@ -1,5 +1,5 @@
 import generateCleanTrashedGroupsFn from './cleanTrashedGroups'
-import { DOCTYPE_CONTACT_GROUPS, DOCTYPE_CONTACTS } from './doctypes'
+import { DOCTYPE_CONTACT_GROUPS, DOCTYPE_CONTACTS } from '../helpers/doctypes'
 
 const mockFindResponses = callback => doctype => {
   return {
