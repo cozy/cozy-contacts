@@ -18,7 +18,7 @@
     "start:mobile": "cozy-scripts start --hot --mobile",
     "deploy": "cozy-app-publish --token $REGISTRY_TOKEN --build-dir 'build/' --prepublish downcloud",
     "pretest": "yarn lint",
-    "test": "cozy-scripts test --verbose --coverage",
+    "test": "env USE_REACT=true cozy-scripts test --verbose --coverage",
     "stack:docker": "docker run --rm -it -p 8080:8080 -p 5984:5984 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev",
     "cozyPublish": "git fetch origin ${DEPLOY_BRANCH:-build}:${DEPLOY_BRANCH:-build} && cozy-scripts publish --token $REGISTRY_TOKEN --build-commit $(git rev-parse ${DEPLOY_BRANCH:-build})"
   },
