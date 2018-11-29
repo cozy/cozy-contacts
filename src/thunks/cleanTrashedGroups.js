@@ -16,30 +16,34 @@ const cleanTrashedGroups = () => async (dispatch, getState, { client }) => {
 }
 
 const removeGroupFromAllContacts = async (client, groupId) => {
-  const { data: contacts, next: hasMore } = await client.query(
-    client.find(DOCTYPE_CONTACTS).where({
-      groups: {
-        $elemMatch: {
-          _id: groupId,
-          _type: DOCTYPE_CONTACT_GROUPS
+  const { data, next: hasMore } = await client.query(
+    client
+      .find(DOCTYPE_CONTACTS)
+      .indexFields(['relationships.groups.data'])
+      .where({
+        relationships: {
+          groups: {
+            data: {
+              $elemMatch: {
+                _id: groupId,
+                _type: DOCTYPE_CONTACT_GROUPS
+              }
+            }
+          }
         }
-      }
-    })
+      })
   )
 
+  const contacts = client.hydrateDocuments(DOCTYPE_CONTACTS, data)
+
   const groupRemovals = contacts.map(contact => {
-    const contactWithoutGroup = removeGroupFromContact(contact, groupId)
-    return client.save(contactWithoutGroup)
+    contact.groups.removeById(groupId)
+    return client.save(contact)
   })
 
   await Promise.all(groupRemovals)
 
   if (hasMore) return removeGroupFromAllContacts(client, groupId)
 }
-
-const removeGroupFromContact = (contact, groupId) => ({
-  ...contact,
-  groups: contact.groups.filter(group => group._id !== groupId)
-})
 
 export default cleanTrashedGroups
