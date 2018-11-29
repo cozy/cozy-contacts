@@ -3,19 +3,33 @@ import { DOCTYPE_CONTACT_GROUPS, DOCTYPE_CONTACTS } from '../helpers/doctypes'
 
 const mockFindResponses = callback => doctype => {
   return {
+    indexFields: jest.fn().mockReturnThis(),
     where: jest.fn().mockReturnValue(callback(doctype))
   }
 }
 
 describe('cleaning trashed groups', () => {
-  let mockClient, mockDispatch, mockGetState, cleanTrashedGroups
+  let mockClient,
+    mockDispatch,
+    mockGetState,
+    cleanTrashedGroups,
+    mockRemoveGroupById
 
   beforeEach(() => {
     cleanTrashedGroups = generateCleanTrashedGroupsFn()
+    mockRemoveGroupById = jest.fn()
 
     mockClient = {
       query: jest.fn().mockImplementation(value => value),
       find: jest.fn(),
+      hydrateDocuments: jest.fn().mockImplementation((doctype, contacts) =>
+        contacts.map(contact => ({
+          ...contact,
+          groups: {
+            removeById: mockRemoveGroupById
+          }
+        }))
+      ),
       destroy: jest.fn().mockReturnValue(Promise.resolve),
       save: jest.fn().mockReturnValue(Promise.resolve)
     }
@@ -59,7 +73,11 @@ describe('cleaning trashed groups', () => {
     const groupToTrash = { _id: '123' }
     const contactToTrash = {
       _id: 'abc',
-      groups: [{ _id: groupToTrash._id }, { _id: 'dont remove me' }]
+      relationships: {
+        groups: {
+          data: [{ _id: groupToTrash._id }, { _id: 'dont remove me' }]
+        }
+      }
     }
 
     mockClient.find.mockImplementation(
@@ -70,21 +88,27 @@ describe('cleaning trashed groups', () => {
     )
     await cleanTrashedGroups(mockDispatch, mockGetState, { client: mockClient })
 
-    expect(mockClient.save).toHaveBeenCalledWith({
-      _id: contactToTrash._id,
-      groups: [{ _id: 'dont remove me' }]
-    })
+    expect(mockRemoveGroupById).toHaveBeenCalledWith(groupToTrash._id)
+    expect(mockClient.save).toHaveBeenCalled()
   })
 
   it('should remove multiple pages of contacts', async () => {
     const groupToTrash = { _id: '123' }
     const contactToTrash1 = {
       _id: 'abc',
-      groups: [{ _id: groupToTrash._id }, { _id: 'dont remove me' }]
+      relationships: {
+        groups: {
+          data: [{ _id: groupToTrash._id }, { _id: 'dont remove me' }]
+        }
+      }
     }
     const contactToTrash2 = {
       _id: 'def',
-      groups: [{ _id: groupToTrash._id }, { _id: 'dont remove me' }]
+      relationships: {
+        groups: {
+          data: [{ _id: groupToTrash._id }, { _id: 'dont remove me' }]
+        }
+      }
     }
 
     let isFirstContactPage = true
@@ -104,14 +128,8 @@ describe('cleaning trashed groups', () => {
 
     await cleanTrashedGroups(mockDispatch, mockGetState, { client: mockClient })
 
+    expect(mockRemoveGroupById).toHaveBeenCalledTimes(2)
+    expect(mockRemoveGroupById).toHaveBeenCalledWith(groupToTrash._id)
     expect(mockClient.save).toHaveBeenCalledTimes(2)
-    expect(mockClient.save).toHaveBeenCalledWith({
-      _id: contactToTrash1._id,
-      groups: [{ _id: 'dont remove me' }]
-    })
-    expect(mockClient.save).toHaveBeenCalledWith({
-      _id: contactToTrash2._id,
-      groups: [{ _id: 'dont remove me' }]
-    })
   })
 })
