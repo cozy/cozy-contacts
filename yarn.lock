@@ -3131,10 +3131,10 @@ cozy-stack-client@^4.5.0:
   dependencies:
     mime-types "2.1.20"
 
-cozy-ui@17.4.0:
-  version "17.4.0"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-17.4.0.tgz#b9c5c16443638efd247471ad92c4bf42572a668d"
-  integrity sha512-G7r/L+WBSo3B6tBK4jTRbcxGjQPIBBNRoKhHaLRnZsO+e4TLGUJP3LscEgogmg7Vndzlwaw7NkxvLvRczwmzLQ==
+cozy-ui@17.4.3:
+  version "17.4.3"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-17.4.3.tgz#f0f773228900af096c391eb6f9a7c6514a2da13a"
+  integrity sha512-l51kbKrWmOXB5Z9/5R9sRlQeThNpuwPaqhtknUwPltwYYLKGayWO/ccyyYl1FcvMUBtw7VZCt2G0ZV9tno1m/A==
   dependencies:
     body-scroll-lock "^2.5.8"
     classnames "^2.2.5"
