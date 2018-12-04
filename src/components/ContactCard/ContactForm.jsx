@@ -128,6 +128,7 @@ class ContactForm extends React.Component {
       company,
       birthday,
       note,
+      // If we don't create the relationships field manually, cozy-client doesn't create it automatically when needed
       relationships: {
         groups: {
           data: []
