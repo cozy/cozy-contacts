@@ -116,7 +116,6 @@ class ContactForm extends React.Component {
         type: phoneLabel,
         primary: index === 0
       })),
-      groups: [],
       cozy: cozy
         ? [
             {
@@ -129,6 +128,11 @@ class ContactForm extends React.Component {
       company,
       birthday,
       note,
+      relationships: {
+        groups: {
+          data: []
+        }
+      },
       metadata: {
         version: 1,
         cozy: true
