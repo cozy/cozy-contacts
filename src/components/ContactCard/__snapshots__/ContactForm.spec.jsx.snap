@@ -435,7 +435,6 @@ Object {
     },
   ],
   "fullname": "Jean-Claude Van Cozy",
-  "groups": Array [],
   "metadata": Object {
     "cozy": true,
     "version": 1,
@@ -452,6 +451,11 @@ Object {
       "type": undefined,
     },
   ],
+  "relationships": Object {
+    "groups": Object {
+      "data": Array [],
+    },
+  },
 }
 `;
 
@@ -463,7 +467,6 @@ Object {
   "cozy": undefined,
   "email": Array [],
   "fullname": "",
-  "groups": Array [],
   "metadata": Object {
     "cozy": true,
     "version": 1,
@@ -474,5 +477,10 @@ Object {
   },
   "note": undefined,
   "phone": Array [],
+  "relationships": Object {
+    "groups": Object {
+      "data": Array [],
+    },
+  },
 }
 `;

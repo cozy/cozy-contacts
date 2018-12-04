@@ -66,6 +66,7 @@ class ContactGroupsClass extends React.Component {
   render() {
     const { contact, allGroups } = this.props
     const userGroups = contact.groups.data
+      .filter(group => group)
       .map(userGroup => allGroups.find(group => group._id === userGroup._id))
       .filter(value => value)
 
