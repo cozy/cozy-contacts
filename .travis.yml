@@ -9,6 +9,7 @@ branches:
 env:
   global:
     - CXX=g++-4.8
+    - MATTERMOST_CHANNEL=appvengers
     # To generate a new key: travis encrypt GITHUB_TOKEN=<token> -r cozy/cozy-contacts
     - secure:
         OnT+4EKE7IHu+1C/KTFpbsNJiD2fTM9bEfLxytIjSH35n8iWZyGdHLBlVrUulKLw47ir+g8T/FmEVJ9u+JSfYaq25oSoPUrcdW8Qs7RA+lg4W7LWGFXQeDaDC7KS1dRxQDc4eaRxfmbyDNEQG3HwsVbcaZXCrZQmwLGj5NWAseblvshLkhpYrdeMYIt+JUod63VUskdq8FVzm9AuFxBA1Ut4rwyX3wou5TDZMAgYwf1rlveAxkmZhYQQlt4j7Hyb5zT/K1S+zXKm4H+pqA/tvSbSRIw5JKFRf2tywom2Tn87BJ8mxYuMA2ANnsQ4c3jeJgQCNOk4oG5gUbPOa+JCN6RehHrsiGROExK0UY/e1uxFJfgyLmONBppJMFWO8Cn6Qxz5WQnrm/a5sE2RbZg+UuLi3WJIK6+yb/8P9XBPmZauBDLE6EOtUtx15Ti8WPZfuAbEBnJ7Q9gJv/5fpiMrgaYniohgU8cNs5qN6BsA/8JiY/f3lcVjLsPP4x+j0NzqKcUEXbMjXMGHWaQK/fizlcTH6moL8unlLNKkEmLEtg4w1x4cj3jvBMOiZsOfsGugqu0ZS2YRJqjpImVUThuPRoQkASR8mpq33PGXjBcKMPBol4K7c8DNrWKmwI1wgq/dl82wBDGIA3kAL6lrh4fBqzck2yqLrCdgH1MmolF14dI=
@@ -18,6 +19,9 @@ env:
     # To generate a new key: travis encrypt REGISTRY_TOKEN=<token> -r cozy/cozy-contacts
     - secure:
         twmw7b05n3pvAYJr5V5PxQHdNY+4SP8W1WA9IWnUJmEuY8mi6L2Cxn08B8hrWEw6cPYg/fCkSWFkS1JZ+lmervSEipR7dPPP3aRMzDFe1p/9YcxNb9LdoRRAlxYRwreSvB7puVpr/kvXyWW2NzK1/OvU5o+HXJT5z3NJV0Zjw8v2IZ16vs1CyhbrmephAa2gEblzI1djRXDVK/9hGmT5shy7GVEmDgiufn13Dya1MiyPXLVvHoS6AzHFXCQKA6W6DsVjnYz5eQQAPd1dbT4hRlWrbtXDAY8ztFN15MeudFJn0/g7ZfH3iKs7+Wcr+5dwD5SxG3aFhgwQM0YE0ETVK5GQB+oyloGBHu3uuu0cPiIOfc+xbcHNT6a5igyfsfmiOtq+N5JeREp6codQDzByiFm0CxYNh2FUB4rU98kjkrT/F4UxbbnrHHPChqtGTvJ6RjfVuma3g2XioDnBsj0umNDCnHoa3GEGTq/wIAdhd6/B3i8MCNIq2eoLiJkVl83ITCjt7UdFZv6WHpVOvOL3iRsCS7gX7uresO0HXf6ws9FgRZm7P11jzsJIcHKBq4kXMS7XGIVLPMmB0R6OIh+kMXvtcQvSGXm0g+3hdCaF/hOHSmIUcrPFexvXoR5BH0kQvHMzijoY0552ySq5R3fY70a33S24aRA8QcuPMo7XXSo=
+    # To generate a new key: travis encrypt MATERMOST_HOOK_URL=<token> -r cozy/cozy-contacts
+    - secure:
+        "Zhy+ZhD/o215eysFlPiBBnL1uqTu4xy/WKWYuAuL3zUAWvx3S73pKkqkTIjL1AMn5L/lp4TQxKNjmZguKgSXLuHfk+icCx8XLZQz419HXvnxVYYVs33JWyYIffHJfL6+EYJ64f3mpxoNm+JDkkxiGUIkVtKLSHDkXtzTGHNCrsQkMFApfMFBFy9MTEloVuzQZs8B4/jyf1ITXz57eaazhYIdiz5nhMrvIVun+XDHpaooN9m+F+gk+SgpH0Aqoaofz8VRNFJpgqzz0zgBKC8Nj0uNH0TeCrwdZVdOfKdDvOdu4ZstkNmfTQ5jx6cisb1GeqTPlcUAJdyj2hQd99DOL7yg2reYa9bqpWd57fbL+lLed5RYycHKn1N6HzTe8gN0mcsEigIsBihKghYCIO++9ToObbdeg+qV6Q7vddNJF+AqfIXMGj4ogfirCFKtiovcCaiP7JgS5yF38p1meBDR/PkXA1VnZkGKEoThOBDBVzZay+JaTx3ggDbyvvza4bQIZ/1ZgkiCRJVwwC2/kH2NdePVxeuRQ/aB0V/wMiH5BdWV0uOMx9CFVBRsiOg3K1QHs17i2lu5F1i3ynqsJWsUlYTtzkdk7tfh6WW5I3Dyrxn+A0/h0IBgV3Psge8zFgkzDxCIrk3e9EcRmlcsEuk2M+6JSkRphwCJrarKICH4Ai8="
 addons:
   apt:
     sources:
