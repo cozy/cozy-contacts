@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import flag from 'cozy-flags'
 
 import { Button } from 'cozy-ui/transpiled/react'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
@@ -74,12 +73,10 @@ const MenuWithFixedComponent = props => {
   return (
     <components.Menu {...props} selectProps={selectProps}>
       {children}
-      {flag('groupscreation') && (
-        <ContactGroupCreation
-          createGroup={createGroup}
-          toggleMenuIsOpen={toggleMenuIsOpen}
-        />
-      )}
+      <ContactGroupCreation
+        createGroup={createGroup}
+        toggleMenuIsOpen={toggleMenuIsOpen}
+      />
     </components.Menu>
   )
 }
@@ -88,16 +85,12 @@ const CustomOption = props => (
   <ActionsOption
     {...props}
     withCheckbox
-    actions={
-      flag('groupsdelete')
-        ? [
-            {
-              icon: 'delete',
-              onClick: ({ data }) => props.selectProps.deleteGroup(data)
-            }
-          ]
-        : []
-    }
+    actions={[
+      {
+        icon: 'delete',
+        onClick: ({ data }) => props.selectProps.deleteGroup(data)
+      }
+    ]}
   />
 )
 
