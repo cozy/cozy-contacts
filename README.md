@@ -75,6 +75,7 @@ your app is available at http://app.cozy.tools:8080.
 git clone https://github.com/cozy/cozy-ui.git
 cd cozy-ui
 yarn install
+yarn transpile
 yarn link
 ```
 
