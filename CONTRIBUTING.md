@@ -67,7 +67,7 @@ Don't forget to add tests and be sure they are green:
 
 ```
 $ cd cozy-contacts
-$ npm run test
+$ yarn run test
 ```
 
 #### Step 5: Commit
