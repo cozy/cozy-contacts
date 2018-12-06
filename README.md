@@ -82,7 +82,7 @@ yarn link
 then go back to your app project and replace the distributed cozy-ui module with the linked one:
 
 ```sh
-cd cozy-drive
+cd cozy-contacts
 yarn link cozy-ui
 ```
 
