@@ -108,7 +108,7 @@ const renderFieldValue = (value, type, t, f) => {
 
   switch (type) {
     case 'address':
-      return <LocationValue value={value} t={t} />
+      return <LocationLink value={value} t={t} />
     case 'email':
       return <EmailLink address={value.address} />
     case 'phone':
@@ -120,10 +120,20 @@ const renderFieldValue = (value, type, t, f) => {
   }
 }
 
-const LocationValue = ({ value, t }) => {
-  return value.formattedAddress
-    ? value.formattedAddress
-    : t('formatted_address', { ...emptyAddress, ...value }).trim()
+const LocationLink = ({ value, t }) => {
+  let location = value.formattedAddress
+
+  if (location) {
+    const osmUrl = 'https://nominatim.openstreetmap.org/search?format=html&q='
+    let url = `${osmUrl}${encodeURI(location)}`
+    return (
+      <a href={url} target="_blank" rel="noopener noreferrer">
+        {location}
+      </a>
+    )
+  } else {
+    return t('formatted_address', { ...emptyAddress, ...value }).trim()
+  }
 }
 
 const EmailLink = ({ address }) => {
