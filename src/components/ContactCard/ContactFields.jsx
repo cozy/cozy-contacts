@@ -108,20 +108,38 @@ const renderFieldValue = (value, type, t, f) => {
 
   switch (type) {
     case 'address':
-      return value.formattedAddress
-        ? value.formattedAddress
-        : t('formatted_address', { ...emptyAddress, ...value }).trim()
+      return <LocationValue value={value} t={t} />
     case 'email':
-      return <a href={`mailto:${value.address}`}>{value.address}</a>
+      return <EmailLink address={value.address} />
     case 'phone':
-      return <a href={`tel:${value.number}`}>{value.number}</a>
+      return <PhoneLink number={value.number} />
     case 'cozy':
-      return value.url
+      return <CozyValue url={value.url} />
     default:
-      return Object.keys(value)
-        .map(label => `${label}: ${value[label]}`)
-        .join(', ')
+      return <DefaultValue value={value} />
   }
+}
+
+const LocationValue = ({ value, t }) => {
+  return value.formattedAddress
+    ? value.formattedAddress
+    : t('formatted_address', { ...emptyAddress, ...value }).trim()
+}
+
+const EmailLink = ({ address }) => {
+  return <a href={`mailto:${address}`}>{address}</a>
+}
+
+const PhoneLink = ({ number }) => {
+  return <a href={`tel:${number}`}>{number}</a>
+}
+
+const CozyValue = ({ url }) => url
+
+const DefaultValue = ({ value }) => {
+  return Object.keys(value)
+    .map(label => `${label}: ${value[label]}`)
+    .join(', ')
 }
 
 export default ContactFields
