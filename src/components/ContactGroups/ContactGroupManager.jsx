@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -81,6 +82,12 @@ const MenuWithFixedComponent = props => {
   )
 }
 
+const CustomMenuList = props => {
+  const { menuRef, ...selectProps } = props.selectProps
+
+  return <components.MenuList ref={menuRef} {...props} {...selectProps} />
+}
+
 const CustomOption = props => (
   <ActionsOption
     {...props}
@@ -104,10 +111,15 @@ class ContactGroupManager extends Component {
   state = {
     menuIsOpen: false
   }
+  componentDidMount() {
+    this.menuRef = React.createRef()
+  }
   componentDidUpdate(prevProps) {
-    if (prevProps.allGroups.length !== this.props.allGroups.length) {
-      document.getElementsByClassName('react-select__menu-list')[0].scrollTop =
-        '9999'
+    if (
+      prevProps.allGroups.length !== this.props.allGroups.length &&
+      this.menuRef.current
+    ) {
+      ReactDOM.findDOMNode(this.menuRef.current).scrollTop = '9999' // eslint-disable-line react/no-find-dom-node
     }
   }
   toggleMenuIsOpen = () => {
@@ -150,10 +162,12 @@ class ContactGroupManager extends Component {
           onChange={onGroupSelectionChange}
           getOptionLabel={group => group.name}
           getOptionValue={group => group._id}
+          menuRef={this.menuRef}
           components={{
             Option: CustomOption,
             Control: MainButtonControl,
-            Menu: MenuWithFixedComponent
+            Menu: MenuWithFixedComponent,
+            MenuList: CustomMenuList
           }}
           createGroup={createGroup}
           deleteGroup={deleteGroup}
