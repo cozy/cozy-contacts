@@ -144,7 +144,9 @@ const PhoneLink = ({ number }) => {
   return <a href={`tel:${number}`}>{number}</a>
 }
 
-const CozyValue = ({ url }) => url
+const CozyValue = ({ url }) => {
+  return <a href={url}>{url}</a>
+}
 
 const DefaultValue = ({ value }) => {
   return Object.keys(value)
