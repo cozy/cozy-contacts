@@ -81,7 +81,7 @@ class ContactGroupsClass extends React.Component {
         />
         <ol className="contact-groups-list">
           {userGroups.map(group => (
-            <li key={group._id} className="contact-groups-list__tag">
+            <li key={group._id} className="contact-groups-list__tag u-ellipsis">
               {group.name}
             </li>
           ))}
