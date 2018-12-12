@@ -100,8 +100,10 @@ class ContactCardModal extends React.Component {
               {shouldDisplayConfirmDeleteModal && (
                 <Modal
                   into="body"
-                  title={t('delete-confirmation.title')}
-                  description={t('delete-confirmation.description')}
+                  title={t('delete-confirmation.title', { smart_count: 1 })}
+                  description={t('delete-confirmation.description', {
+                    smart_count: 1
+                  })}
                   primaryText={t('delete')}
                   primaryType="danger"
                   primaryAction={() => this.deleteContact(contact)}

@@ -24,6 +24,7 @@ class ContactsApp extends React.Component {
 
   render() {
     const { t } = this.props
+
     return (
       <Layout monocolumn="true">
         <Main>

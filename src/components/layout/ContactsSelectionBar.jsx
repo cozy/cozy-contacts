@@ -1,11 +1,20 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
-import { SelectionBar } from 'cozy-ui/react'
+import { SelectionBar, Modal } from 'cozy-ui/react'
 import withSelection from '../Selection/selectionContainer'
+import withModalContainer from '../HOCs/withModal'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 class ContactsSelectionBar extends Component {
   render() {
-    const { selection, clearSelection, trashAction } = this.props
+    const {
+      selection,
+      clearSelection,
+      trashAction,
+      showModal,
+      t,
+      hideModal
+    } = this.props
     return selection.length > 0 ? (
       <SelectionBar
         selected={selection}
@@ -13,7 +22,27 @@ class ContactsSelectionBar extends Component {
         actions={{
           trash: {
             action: () => {
-              Promise.all(selection.map(trashAction)).then(clearSelection)
+              showModal(
+                <Modal
+                  into="body"
+                  title={t('delete-confirmation.title', {
+                    smart_count: selection.length
+                  })}
+                  description={t('delete-confirmation.description', {
+                    smart_count: selection.length
+                  })}
+                  primaryText={t('delete')}
+                  primaryType="danger"
+                  primaryAction={async () => {
+                    await Promise.all(selection.map(trashAction))
+                    clearSelection()
+                    hideModal()
+                  }}
+                  secondaryText={t('cancel')}
+                  secondaryAction={() => hideModal()}
+                  dismissAction={hideModal}
+                />
+              )
             }
           }
         }}
@@ -27,4 +56,6 @@ ContactsSelectionBar.propTypes = {
   trashAction: PropTypes.func.isRequired
 }
 
-export default withSelection(ContactsSelectionBar)
+export default translate()(
+  withModalContainer(withSelection(ContactsSelectionBar))
+)
