@@ -73,9 +73,8 @@
     "remove_canceled": "The group %{name} has been restored. Contacts are still linked."
   },
   "delete-confirmation": {
-    "deleted": "The contact %{name} has been deleted.",
-    "title": "Delete this contact?",
-    "description": "This contact will also be deleted from your Google address book"
+    "title": "Delete this contact? |||| Delete these contacts?",
+    "description": "This contact will be removed permanently from your Cozy. |||| These contacts will be removed permanently from your Cozy."
   },
   "intent": {
     "creation_error": "An error occured while trying to contact the other app. Please try again later?"
