@@ -43,7 +43,7 @@
     "identity-obj-proxy": "3.0.0",
     "pretty-quick": "1.8.0",
     "react-dom": "16.6.3",
-    "replace": "1.0.0",
+    "replace": "1.0.1",
     "stylint": "1.5.9"
   },
   "dependencies": {
