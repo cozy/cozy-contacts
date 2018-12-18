@@ -49,23 +49,15 @@ $ ACH import fixtures/contacts.json
 
 ### Run it inside the VM
 
-You can easily view your current running app, you can use the [cozy-stack docker image][cozy-stack-docker]:
+You can easily run the app:
 
 ```sh
-# in a terminal, run your app in watch mode
-$ cd cozy-contacts
-$ yarn watch
+$ yarn start
 ```
 
-```sh
-# in another terminal, run the docker container
-$ docker run --rm -it -p 8080:8080 -p 5984:5984 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev
-or
-$ yarn stack:docker
-```
+Your app is now available at http://app.cozy.tools:8080.
 
-your app is available at http://app.cozy.tools:8080.
-
+This command uses the [cozy-stack docker image][cozy-stack-docker].
 
 ### Living on the edge
 
