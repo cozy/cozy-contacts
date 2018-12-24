@@ -17,7 +17,7 @@ exports[`ContactGroupManager should display the group select 1`] = `
         height="16"
         style={
           Object {
-            "fill": "#95999D",
+            "fill": "var(--coolGrey)",
           }
         }
         width="16"
@@ -36,7 +36,7 @@ exports[`ContactGroupManager should display the group select 1`] = `
         height="16"
         style={
           Object {
-            "fill": "#95999D",
+            "fill": "var(--coolGrey)",
           }
         }
         width="12"

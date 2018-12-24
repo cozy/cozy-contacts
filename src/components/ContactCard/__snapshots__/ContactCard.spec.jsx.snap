@@ -9,7 +9,7 @@ exports[`ContactCard should match snapshot 1`] = `
       className="styles__c-avatar___PpDI- styles__c-avatar--medium___hjYh_"
       style={
         Object {
-          "backgroundColor": "#FD7461",
+          "backgroundColor": "var(--melon)",
           "color": "white",
         }
       }
@@ -61,7 +61,7 @@ exports[`ContactCard should match snapshot 1`] = `
               height="16"
               style={
                 Object {
-                  "fill": "#95999D",
+                  "fill": "var(--coolGrey)",
                 }
               }
               width="16"
@@ -105,7 +105,7 @@ exports[`ContactCard should match snapshot 1`] = `
               height="16"
               style={
                 Object {
-                  "fill": "#95999D",
+                  "fill": "var(--coolGrey)",
                 }
               }
               width="16"
@@ -149,7 +149,7 @@ exports[`ContactCard should match snapshot 1`] = `
               height="16"
               style={
                 Object {
-                  "fill": "#95999D",
+                  "fill": "var(--coolGrey)",
                 }
               }
               width="16"
@@ -180,7 +180,7 @@ exports[`ContactCard should match snapshot 1`] = `
               height="16"
               style={
                 Object {
-                  "fill": "#95999D",
+                  "fill": "var(--coolGrey)",
                 }
               }
               width="16"
@@ -211,7 +211,7 @@ exports[`ContactCard should match snapshot 1`] = `
               height="16"
               style={
                 Object {
-                  "fill": "#95999D",
+                  "fill": "var(--coolGrey)",
                 }
               }
               width="16"
