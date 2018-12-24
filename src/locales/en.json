@@ -10,8 +10,8 @@
   "empty": {
     "title": "Synchronize your contacts",
     "description": "Click the \"Create a Contact\" button to start using the app.",
-    "google": "Sync your Google contacts",
-    "importation": "Import contacts",
+    "google": "Connect Google Contacts",
+    "importation": "Import contacts (vCard)",
     "after": "Importing your contacts might take a few minutes, time to enjoy a well deserved coffee break ☕️"
   },
   "formatted_address": "%{pobox} %{street} %{postcode} %{city} %{region} %{country}",
