@@ -15,6 +15,11 @@ import flag, { FlagSwitcher } from 'cozy-flags'
 import { initFlags } from '../helpers/flags'
 import container from './AppContainer'
 import flow from 'lodash/flow'
+import { DOCTYPE_CONTACTS } from '../helpers/doctypes'
+import { Query } from 'cozy-client'
+import SpinnerContact from './Components/Spinner'
+
+const query = client => client.all(DOCTYPE_CONTACTS)
 
 class ContactsApp extends React.Component {
   componentDidMount() {
@@ -30,10 +35,32 @@ class ContactsApp extends React.Component {
         <Main>
           {flag('switcher') && <FlagSwitcher />}
           <ContactsSelectionBar trashAction={this.props.deleteContact} />
-          <Header right={<Toolbar />} />
-          <Content>
-            <ContactsList />
-          </Content>
+          <Query query={query}>
+            {({ data: contacts, fetchStatus }) => {
+              if (fetchStatus === 'loading') {
+                return (
+                  <>
+                    <Header />
+                    <Content>
+                      <SpinnerContact
+                        size="xxlarge"
+                        loadingType="fetching_contacts"
+                      />
+                    </Content>
+                  </>
+                )
+              } else {
+                return (
+                  <>
+                    <Header right={<Toolbar nbContacts={contacts.length} />} />
+                    <Content>
+                      <ContactsList contacts={contacts} />
+                    </Content>
+                  </>
+                )
+              }
+            }}
+          </Query>
           <Alerter t={t} />
           <ModalManager />
         </Main>
