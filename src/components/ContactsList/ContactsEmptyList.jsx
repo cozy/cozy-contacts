@@ -7,6 +7,8 @@ import ImportGoogleButton from '../Buttons/ImportGoogleButton'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import withModalContainer from '../HOCs/withModal'
 import ContactImportationModal from '../ContactImportationModal/'
+import ContactFormModal from '../Modals/ContactFormModal'
+import ContactCardModal from '../Modals/ContactCardModal'
 const style = { pointerEvents: 'all' }
 
 class ContactsEmptyList extends React.Component {
@@ -30,6 +32,10 @@ class ContactsEmptyList extends React.Component {
     setTimeout(() => window.location.reload(), 15000)
   }
 
+  onCreateContact = contact => {
+    this.props.hideModal()
+    return this.props.showModal(<ContactCardModal id={contact.id} />)
+  }
   render() {
     const { hasConnector } = this.state
     const { t, showModal } = this.props
@@ -44,9 +50,6 @@ class ContactsEmptyList extends React.Component {
         {!hasConnector && (
           <div className="contacts-empty-actions-wrapper">
             <span className="contacts-empty-action">
-              <ImportGoogleButton onComplete={this.afterConnection} />
-            </span>
-            <span className="contacts-empty-action">
               <Button
                 className="contacts-empty-button"
                 onClick={() => {
@@ -59,6 +62,27 @@ class ContactsEmptyList extends React.Component {
                 label={t('empty.importation')}
                 theme="secondary"
                 icon={IconTeam}
+                style={style}
+              />
+            </span>
+            <span className="contacts-empty-action">
+              <ImportGoogleButton onComplete={this.afterConnection} />
+            </span>
+            <span>
+              <Button
+                subtle
+                theme="secondary"
+                onClick={() => {
+                  showModal(
+                    <ContactFormModal
+                      onClose={() => {}}
+                      title={t('create_contact')}
+                      onCreateContact={this.onCreateContact}
+                    />
+                  )
+                }}
+                icon={'plus'}
+                label={t('create_contact')}
                 style={style}
               />
             </span>
