@@ -40,7 +40,6 @@ class ContactsApp extends React.Component {
               if (fetchStatus === 'loading') {
                 return (
                   <>
-                    <Header />
                     <Content>
                       <SpinnerContact
                         size="xxlarge"
@@ -52,7 +51,7 @@ class ContactsApp extends React.Component {
               } else {
                 return (
                   <>
-                    <Header right={<Toolbar nbContacts={contacts.length} />} />
+                    {contacts.length >= 1 && <Header right={<Toolbar />} />}
                     <Content>
                       <ContactsList contacts={contacts} />
                     </Content>
