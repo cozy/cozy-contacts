@@ -17,7 +17,8 @@ class Toolbar extends Component {
   }
 
   render() {
-    const { showModal, t } = this.props
+    const { showModal, t, nbContacts } = this.props
+    if (nbContacts < 1) return null
     return (
       <div className="actions">
         <Button
