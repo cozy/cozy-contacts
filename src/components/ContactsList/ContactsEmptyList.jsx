@@ -1,6 +1,6 @@
 /* global cozy */
 import React from 'react'
-import { Empty, Button } from 'cozy-ui/transpiled/react'
+import { Empty, Button, Infos } from 'cozy-ui/transpiled/react'
 import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
 import IconTeam from '../../assets/icons/team.svg'
 import ImportGoogleButton from '../Buttons/ImportGoogleButton'
@@ -9,6 +9,7 @@ import withModalContainer from '../HOCs/withModal'
 import ContactImportationModal from '../ContactImportationModal/'
 import ContactFormModal from '../Modals/ContactFormModal'
 import ContactCardModal from '../Modals/ContactCardModal'
+
 const style = { pointerEvents: 'all' }
 
 class ContactsEmptyList extends React.Component {
@@ -86,6 +87,7 @@ class ContactsEmptyList extends React.Component {
                 style={style}
               />
             </span>
+            <Infos text={t('importation.available_soon')} />
           </div>
         )}
       </Empty>

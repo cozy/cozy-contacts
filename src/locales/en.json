@@ -46,7 +46,8 @@
     "run": "Import",
     "running": "Transfering file…",
     "title": "Import contacts",
-    "transfer_file": "Transfer a file"
+    "transfer_file": "Transfer a file",
+    "available_soon": "You will soon be able to import your contacts from other services (iCloud, Facebook...)."
   },
   "placeholder": {
     "givenName": "",
