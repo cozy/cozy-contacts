@@ -8,7 +8,7 @@
   "contact_info": "Contact informations",
   "me": "me",
   "empty": {
-    "title": "Synchronize your contacts",
+    "title": "Import your contacts",
     "description": "Click the \"Create a Contact\" button to start using the app.",
     "google": "Connect Google Contacts",
     "importation": "Import contacts (vCard)",
