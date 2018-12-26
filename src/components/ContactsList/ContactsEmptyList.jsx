@@ -87,7 +87,7 @@ class ContactsEmptyList extends React.Component {
                 style={style}
               />
             </span>
-            <Infos text={t('importation.available_soon')} />
+            <Infos text={t('importation.available_soon')} icon="info" />
           </div>
         )}
       </Empty>
