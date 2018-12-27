@@ -5,6 +5,8 @@ import { getInitials } from '../../helpers/contacts'
 import withModalContainer from '../HOCs/withModal'
 import contactPropTypes from '../ContactPropTypes'
 import ContactWithSelection from './ContactSelection'
+import withBreakpoints from 'cozy-ui/react/helpers/withBreakpoints'
+
 const ContactIdentity = ({ name, myself }) => (
   <div className="contact-identity">
     <Avatar text={getInitials(name).toUpperCase()} size="small" />
@@ -62,7 +64,11 @@ ContactEmail.defaultProps = {
 
 class ContactRow extends Component {
   render() {
-    const { contact, onClick } = this.props
+    const {
+      contact,
+      onClick,
+      breakpoints: { isMobile }
+    } = this.props
     const { number: phone } = getPrimaryOrFirst(contact.phone) || {
       number: undefined
     }
@@ -77,8 +83,8 @@ class ContactRow extends Component {
       <div className="contact" onClick={onClick}>
         <ContactWithSelection contact={contact} />
         <ContactIdentity name={name} myself={isMyself} />
-        <ContactPhone phone={phone} />
-        <ContactEmail email={email} />
+        {!isMobile && <ContactPhone phone={phone} />}
+        {!isMobile && <ContactEmail email={email} />}
       </div>
     )
   }
@@ -98,4 +104,4 @@ ContactRow.defaultProps = {
   onClick: null
 }
 
-export default withModalContainer(ContactRow)
+export default withBreakpoints()(withModalContainer(ContactRow))
