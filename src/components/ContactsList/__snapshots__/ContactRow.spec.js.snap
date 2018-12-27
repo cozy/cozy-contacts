@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactRow should match the contact snapshot 1`] = `
+<div
+  className="contact"
+  onClick={null}
+>
+  <div
+    className="contact-selection"
+    onClick={[Function]}
+  >
+    <span
+      data-input="checkbox"
+    >
+      <input
+        checked={false}
+        readOnly={true}
+        type="checkbox"
+      />
+      <label />
+    </span>
+  </div>
+  <div
+    className="contact-identity"
+  >
+    <div
+      className="styles__c-avatar___PpDI- styles__c-avatar--small___1Y_Pv"
+      style={
+        Object {
+          "backgroundColor": "var(--puertoRico)",
+          "color": "white",
+        }
+      }
+    >
+      
+      <span
+        className="styles__c-avatar-initials___310qC"
+      >
+        JD
+      </span>
+    </div>
+    <div>
+      <span
+        className="contact-firstname"
+      >
+        John
+      </span>
+       
+      <span
+        className="contact-lastname"
+      >
+        Doe
+      </span>
+    </div>
+  </div>
+  <div
+    className="contact-phone"
+  >
+    0123456789
+  </div>
+  <div
+    className="contact-email"
+  >
+    johndoe@localhost
+  </div>
+</div>
+`;

@@ -4,7 +4,7 @@ import { mount } from 'enzyme'
 import AppLike from '../../tests/Applike'
 
 import ContactRow from './ContactRow'
-
+import renderer from 'react-test-renderer'
 describe('ContactRow', () => {
   test('should accept the strict minimum', () => {
     const contact = { email: [{ address: 'johndoe@localhost' }] }
@@ -68,5 +68,21 @@ describe('ContactRow', () => {
     const contactrowemail = contactrow.find('ContactEmail')
     expect(contactrowemail).toBeDefined()
     expect(contactrowemail.text()).toBe('—')
+  })
+
+  test('should match the contact snapshot', () => {
+    const contact = {
+      name: { familyName: 'Doe', givenName: 'John' },
+      phone: [{ number: '0123456789' }],
+      email: [{ address: 'johndoe@localhost' }]
+    }
+    const tree = renderer
+      .create(
+        <AppLike>
+          <ContactRow contact={contact} />
+        </AppLike>
+      )
+      .toJSON()
+    expect(tree).toMatchSnapshot()
   })
 })
