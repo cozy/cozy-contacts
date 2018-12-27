@@ -47,13 +47,14 @@ $reset-list
     cursor pointer
 
     +small-screen()
-        flex-direction column
-        align-items flex-start
         height auto
 
 .contact-selection
     position absolute
     left .5rem
+
+    +small-screen()
+        position relative        
 
 .contact-identity
     @extend $table-cell
