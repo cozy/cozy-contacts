@@ -42,55 +42,59 @@ class ContactsEmptyList extends React.Component {
     const { t, showModal } = this.props
 
     return (
-      <Empty
-        className="contacts-empty"
-        icon={EmptyIcon}
-        title={t('empty.title')}
-        text={hasConnector ? t('empty.after') : ''}
-      >
-        {!hasConnector && (
-          <div className="contacts-empty-actions-wrapper">
-            <span className="contacts-empty-action">
-              <Button
-                className="contacts-empty-button"
-                onClick={() => {
-                  showModal(
-                    <ContactImportationModal
-                      closeAction={this.props.hideModal}
-                    />
-                  )
-                }}
-                label={t('empty.importation')}
-                theme="secondary"
-                icon={IconTeam}
-                style={style}
-              />
-            </span>
-            <span className="contacts-empty-action">
-              <ImportGoogleButton onComplete={this.afterConnection} />
-            </span>
-            <span>
-              <Button
-                subtle
-                theme="secondary"
-                onClick={() => {
-                  showModal(
-                    <ContactFormModal
-                      onClose={() => {}}
-                      title={t('create_contact')}
-                      onCreateContact={this.onCreateContact}
-                    />
-                  )
-                }}
-                icon={'plus'}
-                label={t('create_contact')}
-                style={style}
-              />
-            </span>
-            <Infos text={t('importation.available_soon')} icon="info" />
-          </div>
-        )}
-      </Empty>
+      <div className="contacts-empty-container">
+        <Empty
+          className="contacts-empty"
+          icon={EmptyIcon}
+          title={t('empty.title')}
+          text={hasConnector ? t('empty.after') : ''}
+        >
+          {!hasConnector && (
+            <div className="contacts-empty-actions-wrapper">
+              <span className="contacts-empty-action">
+                <Button
+                  className="contacts-empty-button"
+                  onClick={() => {
+                    showModal(
+                      <ContactImportationModal
+                        closeAction={this.props.hideModal}
+                      />
+                    )
+                  }}
+                  label={t('empty.importation')}
+                  theme="secondary"
+                  icon={IconTeam}
+                  style={style}
+                />
+              </span>
+              <span className="contacts-empty-action">
+                <ImportGoogleButton onComplete={this.afterConnection} />
+              </span>
+              <span>
+                <Button
+                  subtle
+                  theme="secondary"
+                  onClick={() => {
+                    showModal(
+                      <ContactFormModal
+                        onClose={() => {}}
+                        title={t('create_contact')}
+                        onCreateContact={this.onCreateContact}
+                      />
+                    )
+                  }}
+                  icon={'plus'}
+                  label={t('create_contact')}
+                  style={style}
+                />
+              </span>
+            </div>
+          )}
+        </Empty>
+        <div className="u-pt-1">
+          <Infos text={t('importation.available_soon')} icon="info" />
+        </div>
+      </div>
     )
   }
 }
