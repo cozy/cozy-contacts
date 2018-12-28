@@ -1,14 +1,18 @@
 /* global cozy */
 import React from 'react'
-import { Empty, Button, Infos } from 'cozy-ui/transpiled/react'
-import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
-import IconTeam from '../../assets/icons/team.svg'
-import ImportGoogleButton from '../Buttons/ImportGoogleButton'
+
 import { translate } from 'cozy-ui/transpiled/react/I18n'
+import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
+import { Empty, Button, Infos } from 'cozy-ui/transpiled/react'
+import className from 'classnames'
 import withModalContainer from '../HOCs/withModal'
 import ContactImportationModal from '../ContactImportationModal/'
 import ContactFormModal from '../Modals/ContactFormModal'
 import ContactCardModal from '../Modals/ContactCardModal'
+import ImportGoogleButton from '../Buttons/ImportGoogleButton'
+
+import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
+import IconTeam from '../../assets/icons/team.svg'
 
 const style = { pointerEvents: 'all' }
 
@@ -39,8 +43,20 @@ class ContactsEmptyList extends React.Component {
   }
   render() {
     const { hasConnector } = this.state
-    const { t, showModal } = this.props
-
+    const {
+      t,
+      showModal,
+      breakpoints: { isDesktop }
+    } = this.props
+    const SoonComponent = (
+      <div
+        className={className('u-pt-1', {
+          'contacts-empty-soon': !isDesktop
+        })}
+      >
+        <Infos text={t('importation.available_soon')} icon="info" />
+      </div>
+    )
     return (
       <div className="contacts-empty-container">
         <Empty
@@ -90,13 +106,14 @@ class ContactsEmptyList extends React.Component {
               </span>
             </div>
           )}
+          {!isDesktop && SoonComponent}
         </Empty>
-        <div className="u-pt-1">
-          <Infos text={t('importation.available_soon')} icon="info" />
-        </div>
+        {isDesktop && SoonComponent}
       </div>
     )
   }
 }
 
-export default translate()(withModalContainer(ContactsEmptyList))
+export default withBreakpoints()(
+  translate()(withModalContainer(ContactsEmptyList))
+)
