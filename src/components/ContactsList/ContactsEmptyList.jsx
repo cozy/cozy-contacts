@@ -50,7 +50,7 @@ class ContactsEmptyList extends React.Component {
     } = this.props
     const SoonComponent = (
       <div
-        className={className('u-pt-1', {
+        className={className('u-pt-1 u-pb-2', {
           'contacts-empty-soon': !isDesktop
         })}
       >
