@@ -3197,10 +3197,10 @@ cozy-stack-client@^4.5.0:
   dependencies:
     mime-types "2.1.20"
 
-cozy-ui@17.14.0:
-  version "17.14.0"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-17.14.0.tgz#5b8b8ed9e8cfbc88a8c96cb4a0fa7f2dc59f2534"
-  integrity sha512-sYhSWPuvbuvemsJPQbg8AHhLopsrkXbTH4+NbX5IjbBSId50KnLQ4wCof5pVoRBog0W8TfQP5oyQX2rcWKd5uQ==
+cozy-ui@17.15.0:
+  version "17.15.0"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-17.15.0.tgz#ba4df9b9a0b972d5474b067660529ed14c2a5701"
+  integrity sha512-MbggxG4KykG75dFDghBSzv4C9I3dzw/s1klHcEaJbnIv0BfX64YoXKWp+gROGhdQ+Rxm4kQzs+fiWGBLwS+VQg==
   dependencies:
     body-scroll-lock "^2.5.8"
     classnames "^2.2.5"
@@ -8688,16 +8688,6 @@ react-autowhatever@^10.1.2:
     react-themeable "^1.1.0"
     section-iterator "^2.0.0"
 
-react-dom@16.6.3:
-  version "16.6.3"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.6.3.tgz#8fa7ba6883c85211b8da2d0efeffc9d3825cccc0"
-  integrity sha512-8ugJWRCWLGXy+7PmNh8WJz3g1TaTUt1XyoIcFN+x0Zbkoz+KKdUyx1AQLYJdbFXjuF41Nmjn5+j//rxvhFjgSQ==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "^0.11.2"
-
 react-dom@16.7.0:
   version "16.7.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.7.0.tgz#a17b2a7ca89ee7390bc1ed5eb81783c7461748b8"
@@ -8838,16 +8828,6 @@ react@16.4.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.0"
-
-react@16.6.3:
-  version "16.6.3"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.6.3.tgz#25d77c91911d6bbdd23db41e70fb094cc1e0871c"
-  integrity sha512-zCvmH2vbEolgKxtqXL2wmGCUxUyNheYn/C+PD1YAjfxHC54+MhdruyhO7QieQrYsYeTxrn93PM2y0jRH1zEExw==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "^0.11.2"
 
 react@16.7.0:
   version "16.7.0"
