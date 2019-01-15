@@ -15,7 +15,7 @@ exports[`ContactForm should match snapshot 1`] = `
         <label
           className="contact-form__label"
         >
-          field.givenName
+          Firstname
         </label>
         <div
           className="contact-form__inputs-wrapper"
@@ -29,7 +29,7 @@ exports[`ContactForm should match snapshot 1`] = `
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="placeholder.givenName"
+              placeholder=""
               required={false}
               type="text"
               value=""
@@ -43,7 +43,7 @@ exports[`ContactForm should match snapshot 1`] = `
         <label
           className="contact-form__label"
         >
-          field.familyName
+          Lastname
         </label>
         <div
           className="contact-form__inputs-wrapper"
@@ -57,7 +57,7 @@ exports[`ContactForm should match snapshot 1`] = `
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="placeholder.familyName"
+              placeholder=""
               required={true}
               type="text"
               value=""
@@ -85,7 +85,7 @@ exports[`ContactForm should match snapshot 1`] = `
               xlinkHref="#icon-0"
             />
           </svg>
-          field.phone
+          Phone
         </label>
         <div
           className="contact-form__inputs-wrapper"
@@ -102,7 +102,7 @@ exports[`ContactForm should match snapshot 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="placeholder.phone"
+                placeholder=""
                 required={false}
                 type="tel"
                 value=""
@@ -131,7 +131,7 @@ exports[`ContactForm should match snapshot 1`] = `
               xlinkHref="#icon-0"
             />
           </svg>
-          field.email
+          Email
         </label>
         <div
           className="contact-form__inputs-wrapper"
@@ -148,7 +148,7 @@ exports[`ContactForm should match snapshot 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="placeholder.email"
+                placeholder=""
                 required={false}
                 type="email"
                 value=""
@@ -177,7 +177,7 @@ exports[`ContactForm should match snapshot 1`] = `
               xlinkHref="#icon-0"
             />
           </svg>
-          field.address
+          Address
         </label>
         <div
           className="contact-form__inputs-wrapper"
@@ -194,7 +194,7 @@ exports[`ContactForm should match snapshot 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="placeholder.address"
+                placeholder=""
                 required={false}
                 type="text"
                 value=""
@@ -223,7 +223,7 @@ exports[`ContactForm should match snapshot 1`] = `
               xlinkHref="#icon-0"
             />
           </svg>
-          field.cozy
+          Cozy URL
         </label>
         <div
           className="contact-form__inputs-wrapper"
@@ -237,7 +237,7 @@ exports[`ContactForm should match snapshot 1`] = `
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="placeholder.cozy"
+              placeholder=""
               required={false}
               type="url"
               value=""
@@ -265,7 +265,7 @@ exports[`ContactForm should match snapshot 1`] = `
               xlinkHref="#icon-0"
             />
           </svg>
-          field.company
+          Company
         </label>
         <div
           className="contact-form__inputs-wrapper"
@@ -279,7 +279,7 @@ exports[`ContactForm should match snapshot 1`] = `
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="placeholder.company"
+              placeholder=""
               required={false}
               type="text"
               value=""
@@ -307,7 +307,7 @@ exports[`ContactForm should match snapshot 1`] = `
               xlinkHref="#icon-0"
             />
           </svg>
-          field.birthday
+          Birthday
         </label>
         <div
           className="contact-form__inputs-wrapper"
@@ -321,7 +321,7 @@ exports[`ContactForm should match snapshot 1`] = `
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="placeholder.birthday"
+              placeholder=""
               required={false}
               type="date"
               value=""
@@ -349,7 +349,7 @@ exports[`ContactForm should match snapshot 1`] = `
               xlinkHref="#icon-0"
             />
           </svg>
-          field.note
+          Notes
         </label>
         <div
           className="contact-form__inputs-wrapper"
@@ -363,7 +363,7 @@ exports[`ContactForm should match snapshot 1`] = `
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="placeholder.note"
+              placeholder=""
               required={false}
               type="textarea"
               value=""
@@ -386,7 +386,7 @@ exports[`ContactForm should match snapshot 1`] = `
             <span
               className={null}
             >
-              cancel
+              Cancel
             </span>
           </span>
         </button>
@@ -399,7 +399,7 @@ exports[`ContactForm should match snapshot 1`] = `
             <span
               className={null}
             >
-              save
+              Save
             </span>
           </span>
         </button>

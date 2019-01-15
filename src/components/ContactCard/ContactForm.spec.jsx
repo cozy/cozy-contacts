@@ -4,11 +4,15 @@ import { mount } from 'enzyme'
 import ContactForm from './ContactForm'
 import { I18n } from 'cozy-ui/transpiled/react/I18n'
 
+import langEn from '../../locales/en.json'
+
+const dictRequire = () => langEn
+
 describe('ContactForm', () => {
   it('should match snapshot', () => {
     const tree = renderer
       .create(
-        <I18n lang="en" dictRequire={() => ''}>
+        <I18n lang="en" dictRequire={dictRequire}>
           <ContactForm onSubmit={() => {}} onCancel={() => {}} />
         </I18n>
       )
@@ -22,7 +26,7 @@ describe('ContactForm', () => {
     }
 
     const form = mount(
-      <I18n lang="en" dictRequire={() => ''}>
+      <I18n lang="en" dictRequire={dictRequire}>
         <ContactForm onSubmit={onSubmit} onCancel={() => {}} />
       </I18n>
     )
@@ -54,7 +58,7 @@ describe('ContactForm', () => {
     }
 
     const form = mount(
-      <I18n lang="en" dictRequire={() => ''}>
+      <I18n lang="en" dictRequire={dictRequire}>
         <ContactForm onSubmit={onSubmit} onCancel={() => {}} />
       </I18n>
     )
