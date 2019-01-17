@@ -6,10 +6,10 @@ exports[`ContactCard should match snapshot 1`] = `
     className="contact-card-identity"
   >
     <div
-      className="styles__c-avatar___PpDI- styles__c-avatar--medium___hjYh_"
+      className="styles__c-avatar___PpDI-"
       style={
         Object {
-          "backgroundColor": "var(--melon)",
+          "backgroundColor": "var(--weirdGreen)",
           "color": "white",
         }
       }
