@@ -41,7 +41,7 @@
     "eslint-config-prettier": "3.5.0",
     "git-directory-deploy": "1.5.1",
     "identity-obj-proxy": "3.0.0",
-    "pretty-quick": "1.8.1",
+    "pretty-quick": "1.10.0",
     "react-dom": "16.7.0",
     "replace": "1.0.1",
     "stylint": "1.5.9"
