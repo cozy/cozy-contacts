@@ -101,6 +101,14 @@ const emptyAddress = {
   country: ''
 }
 
+export const getFormattedAddress = (address, t) => {
+  if (address.formattedAddress) {
+    return address.formattedAddress
+  } else {
+    return t('formatted_address', { ...emptyAddress, ...address }).trim()
+  }
+}
+
 const renderFieldValue = (value, type, t, f) => {
   if (!value) return false
   if (type === 'birthday') return f(new Date(value), 'YYYY-M-D')
@@ -121,19 +129,14 @@ const renderFieldValue = (value, type, t, f) => {
 }
 
 const LocationLink = ({ value, t }) => {
-  let location = value.formattedAddress
-
-  if (location) {
-    const osmUrl = 'https://nominatim.openstreetmap.org/search?format=html&q='
-    let url = `${osmUrl}${encodeURI(location)}`
-    return (
-      <a href={url} target="_blank" rel="noopener noreferrer">
-        {location}
-      </a>
-    )
-  } else {
-    return t('formatted_address', { ...emptyAddress, ...value }).trim()
-  }
+  let location = getFormattedAddress(value, t)
+  const osmUrl = 'https://nominatim.openstreetmap.org/search?format=html&q='
+  let url = `${osmUrl}${encodeURI(location)}`
+  return (
+    <a href={url} target="_blank" rel="noopener noreferrer">
+      {location}
+    </a>
+  )
 }
 
 const EmailLink = ({ address }) => {

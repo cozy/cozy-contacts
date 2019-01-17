@@ -163,7 +163,13 @@ exports[`ContactCard should match snapshot 1`] = `
             <div
               className="contact-field-value"
             >
-              48 Fuller Road 06635 Stafford  Solomon Islands
+              <a
+                href="https://nominatim.openstreetmap.org/search?format=html&q=48%20Fuller%20Road%2006635%20Stafford%20%20Solomon%20Islands"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                48 Fuller Road 06635 Stafford  Solomon Islands
+              </a>
             </div>
           </div>
         </div>

@@ -1,0 +1,1132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactForm should fill form with contact data 1`] = `
+<div>
+  <form
+    className="contact-form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="contact-form__fields"
+    >
+      <div
+        className="contact-form__field"
+      >
+        <label
+          className="contact-form__label"
+        >
+          Firstname
+        </label>
+        <div
+          className="contact-form__inputs-wrapper"
+        >
+          <div
+            className="contact-form__input-wrapper"
+          >
+            <input
+              className="contact-form__input"
+              name="givenName"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder=""
+              required={false}
+              type="text"
+              value="John"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="contact-form__field"
+      >
+        <label
+          className="contact-form__label"
+        >
+          Lastname
+        </label>
+        <div
+          className="contact-form__inputs-wrapper"
+        >
+          <div
+            className="contact-form__input-wrapper"
+          >
+            <input
+              className="contact-form__input"
+              name="familyName"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder=""
+              required={true}
+              type="text"
+              value="Doe"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="contact-form__field"
+      >
+        <label
+          className="contact-form__label"
+        >
+          <svg
+            className="contact-form__icon styles__icon___23x3R"
+            height="16"
+            style={
+              Object {
+                "fill": "var(--coolGrey)",
+              }
+            }
+            width="16"
+          >
+            <use
+              xlinkHref="#icon-0"
+            />
+          </svg>
+          Phone
+        </label>
+        <div
+          className="contact-form__inputs-wrapper"
+        >
+          <div
+            className="contact-form__meta-wrapper"
+          >
+            <div
+              className="contact-form__input-wrapper"
+            >
+              <input
+                className="contact-form__input"
+                name="phone[0].phone"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder=""
+                required={false}
+                type="tel"
+                value="+33 (2)0 90 00 54 04"
+              />
+            </div>
+            <button
+              className="contact-form__meta-button contact-form__meta-button--remove"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                className="styles__icon___23x3R"
+                height="10"
+                style={
+                  Object {
+                    "fill": "var(--coolGrey)",
+                  }
+                }
+                width="10"
+              >
+                <use
+                  xlinkHref="#cross"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            className="contact-form__meta-wrapper"
+          >
+            <div
+              className="contact-form__input-wrapper"
+            >
+              <input
+                className="contact-form__input"
+                name="phone[1].phone"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder=""
+                required={false}
+                type="tel"
+                value="+33 6 77 11 22 33"
+              />
+            </div>
+            <button
+              className="contact-form__meta-button contact-form__meta-button--remove"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                className="styles__icon___23x3R"
+                height="10"
+                style={
+                  Object {
+                    "fill": "var(--coolGrey)",
+                  }
+                }
+                width="10"
+              >
+                <use
+                  xlinkHref="#cross"
+                />
+              </svg>
+            </button>
+            <button
+              className="contact-form__meta-button contact-form__meta-button--add"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                className="styles__icon___23x3R"
+                height="10"
+                style={
+                  Object {
+                    "fill": "white",
+                  }
+                }
+                width="10"
+              >
+                <use
+                  xlinkHref="#plus"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="contact-form__field"
+      >
+        <label
+          className="contact-form__label"
+        >
+          <svg
+            className="contact-form__icon styles__icon___23x3R"
+            height="16"
+            style={
+              Object {
+                "fill": "var(--coolGrey)",
+              }
+            }
+            width="16"
+          >
+            <use
+              xlinkHref="#icon-0"
+            />
+          </svg>
+          Email
+        </label>
+        <div
+          className="contact-form__inputs-wrapper"
+        >
+          <div
+            className="contact-form__meta-wrapper"
+          >
+            <div
+              className="contact-form__input-wrapper"
+            >
+              <input
+                className="contact-form__input"
+                name="email[0].email"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder=""
+                required={false}
+                type="email"
+                value="john.doe@cozycloud.cc"
+              />
+            </div>
+            <button
+              className="contact-form__meta-button contact-form__meta-button--remove"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                className="styles__icon___23x3R"
+                height="10"
+                style={
+                  Object {
+                    "fill": "var(--coolGrey)",
+                  }
+                }
+                width="10"
+              >
+                <use
+                  xlinkHref="#cross"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            className="contact-form__meta-wrapper"
+          >
+            <div
+              className="contact-form__input-wrapper"
+            >
+              <input
+                className="contact-form__input"
+                name="email[1].email"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder=""
+                required={false}
+                type="email"
+                value="john.doe@posteo.net"
+              />
+            </div>
+            <button
+              className="contact-form__meta-button contact-form__meta-button--remove"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                className="styles__icon___23x3R"
+                height="10"
+                style={
+                  Object {
+                    "fill": "var(--coolGrey)",
+                  }
+                }
+                width="10"
+              >
+                <use
+                  xlinkHref="#cross"
+                />
+              </svg>
+            </button>
+            <button
+              className="contact-form__meta-button contact-form__meta-button--add"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                className="styles__icon___23x3R"
+                height="10"
+                style={
+                  Object {
+                    "fill": "white",
+                  }
+                }
+                width="10"
+              >
+                <use
+                  xlinkHref="#plus"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="contact-form__field"
+      >
+        <label
+          className="contact-form__label"
+        >
+          <svg
+            className="contact-form__icon styles__icon___23x3R"
+            height="16"
+            style={
+              Object {
+                "fill": "var(--coolGrey)",
+              }
+            }
+            width="16"
+          >
+            <use
+              xlinkHref="#icon-0"
+            />
+          </svg>
+          Address
+        </label>
+        <div
+          className="contact-form__inputs-wrapper"
+        >
+          <div
+            className="contact-form__meta-wrapper"
+          >
+            <div
+              className="contact-form__input-wrapper"
+            >
+              <input
+                className="contact-form__input"
+                name="address[0].address"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder=""
+                required={false}
+                type="text"
+                value="94 Hinton Road 05034 Fresno, Singapore"
+              />
+            </div>
+            <button
+              className="contact-form__meta-button contact-form__meta-button--remove"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                className="styles__icon___23x3R"
+                height="10"
+                style={
+                  Object {
+                    "fill": "var(--coolGrey)",
+                  }
+                }
+                width="10"
+              >
+                <use
+                  xlinkHref="#cross"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            className="contact-form__meta-wrapper"
+          >
+            <div
+              className="contact-form__input-wrapper"
+            >
+              <input
+                className="contact-form__input"
+                name="address[1].address"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder=""
+                required={false}
+                type="text"
+                value="426 Runolfsson Knolls 84573 Port Easter  Cocos (Keeling) Islands"
+              />
+            </div>
+            <button
+              className="contact-form__meta-button contact-form__meta-button--remove"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                className="styles__icon___23x3R"
+                height="10"
+                style={
+                  Object {
+                    "fill": "var(--coolGrey)",
+                  }
+                }
+                width="10"
+              >
+                <use
+                  xlinkHref="#cross"
+                />
+              </svg>
+            </button>
+            <button
+              className="contact-form__meta-button contact-form__meta-button--add"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                className="styles__icon___23x3R"
+                height="10"
+                style={
+                  Object {
+                    "fill": "white",
+                  }
+                }
+                width="10"
+              >
+                <use
+                  xlinkHref="#plus"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="contact-form__field"
+      >
+        <label
+          className="contact-form__label"
+        >
+          <svg
+            className="contact-form__icon styles__icon___23x3R"
+            height="16"
+            style={
+              Object {
+                "fill": "var(--coolGrey)",
+              }
+            }
+            width="16"
+          >
+            <use
+              xlinkHref="#icon-0"
+            />
+          </svg>
+          Cozy URL
+        </label>
+        <div
+          className="contact-form__inputs-wrapper"
+        >
+          <div
+            className="contact-form__input-wrapper"
+          >
+            <input
+              className="contact-form__input"
+              name="cozy"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder=""
+              required={false}
+              type="url"
+              value="https://johndoe.mycozy.cloud"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="contact-form__field"
+      >
+        <label
+          className="contact-form__label"
+        >
+          <svg
+            className="contact-form__icon styles__icon___23x3R"
+            height="16"
+            style={
+              Object {
+                "fill": "var(--coolGrey)",
+              }
+            }
+            width="16"
+          >
+            <use
+              xlinkHref="#icon-0"
+            />
+          </svg>
+          Company
+        </label>
+        <div
+          className="contact-form__inputs-wrapper"
+        >
+          <div
+            className="contact-form__input-wrapper"
+          >
+            <input
+              className="contact-form__input"
+              name="company"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder=""
+              required={false}
+              type="text"
+              value="Cozy cloud"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="contact-form__field"
+      >
+        <label
+          className="contact-form__label"
+        >
+          <svg
+            className="contact-form__icon styles__icon___23x3R"
+            height="16"
+            style={
+              Object {
+                "fill": "var(--coolGrey)",
+              }
+            }
+            width="16"
+          >
+            <use
+              xlinkHref="#icon-0"
+            />
+          </svg>
+          Birthday
+        </label>
+        <div
+          className="contact-form__inputs-wrapper"
+        >
+          <div
+            className="contact-form__input-wrapper"
+          >
+            <input
+              className="contact-form__input"
+              name="birthday"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder=""
+              required={false}
+              type="date"
+              value="1999-5-1"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="contact-form__field"
+      >
+        <label
+          className="contact-form__label"
+        >
+          <svg
+            className="contact-form__icon styles__icon___23x3R"
+            height="16"
+            style={
+              Object {
+                "fill": "var(--coolGrey)",
+              }
+            }
+            width="16"
+          >
+            <use
+              xlinkHref="#icon-0"
+            />
+          </svg>
+          Notes
+        </label>
+        <div
+          className="contact-form__inputs-wrapper"
+        >
+          <div
+            className="contact-form__input-wrapper"
+          >
+            <textarea
+              className="contact-form__input"
+              name="note"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder=""
+              required={false}
+              type="textarea"
+              value="Atque cupiditate saepe omnis quos ut molestiae labore voluptates omnis."
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="contact-form__footer"
+    >
+      <div>
+        <button
+          className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N"
+          onClick={[Function]}
+          title={null}
+          type="button"
+        >
+          <span>
+            <span
+              className={null}
+            >
+              Cancel
+            </span>
+          </span>
+        </button>
+        <button
+          className="styles__c-btn___-2Vnj"
+          title={null}
+          type="submit"
+        >
+          <span>
+            <span
+              className={null}
+            >
+              Save
+            </span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`ContactForm should match snapshot 1`] = `
+<div>
+  <form
+    className="contact-form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="contact-form__fields"
+    >
+      <div
+        className="contact-form__field"
+      >
+        <label
+          className="contact-form__label"
+        >
+          Firstname
+        </label>
+        <div
+          className="contact-form__inputs-wrapper"
+        >
+          <div
+            className="contact-form__input-wrapper"
+          >
+            <input
+              className="contact-form__input"
+              name="givenName"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder=""
+              required={false}
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="contact-form__field"
+      >
+        <label
+          className="contact-form__label"
+        >
+          Lastname
+        </label>
+        <div
+          className="contact-form__inputs-wrapper"
+        >
+          <div
+            className="contact-form__input-wrapper"
+          >
+            <input
+              className="contact-form__input"
+              name="familyName"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder=""
+              required={true}
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="contact-form__field"
+      >
+        <label
+          className="contact-form__label"
+        >
+          <svg
+            className="contact-form__icon styles__icon___23x3R"
+            height="16"
+            style={
+              Object {
+                "fill": "var(--coolGrey)",
+              }
+            }
+            width="16"
+          >
+            <use
+              xlinkHref="#icon-0"
+            />
+          </svg>
+          Phone
+        </label>
+        <div
+          className="contact-form__inputs-wrapper"
+        >
+          <div
+            className="contact-form__meta-wrapper"
+          >
+            <div
+              className="contact-form__input-wrapper"
+            >
+              <input
+                className="contact-form__input"
+                name="phone[0].phone"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder=""
+                required={false}
+                type="tel"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="contact-form__field"
+      >
+        <label
+          className="contact-form__label"
+        >
+          <svg
+            className="contact-form__icon styles__icon___23x3R"
+            height="16"
+            style={
+              Object {
+                "fill": "var(--coolGrey)",
+              }
+            }
+            width="16"
+          >
+            <use
+              xlinkHref="#icon-0"
+            />
+          </svg>
+          Email
+        </label>
+        <div
+          className="contact-form__inputs-wrapper"
+        >
+          <div
+            className="contact-form__meta-wrapper"
+          >
+            <div
+              className="contact-form__input-wrapper"
+            >
+              <input
+                className="contact-form__input"
+                name="email[0].email"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder=""
+                required={false}
+                type="email"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="contact-form__field"
+      >
+        <label
+          className="contact-form__label"
+        >
+          <svg
+            className="contact-form__icon styles__icon___23x3R"
+            height="16"
+            style={
+              Object {
+                "fill": "var(--coolGrey)",
+              }
+            }
+            width="16"
+          >
+            <use
+              xlinkHref="#icon-0"
+            />
+          </svg>
+          Address
+        </label>
+        <div
+          className="contact-form__inputs-wrapper"
+        >
+          <div
+            className="contact-form__meta-wrapper"
+          >
+            <div
+              className="contact-form__input-wrapper"
+            >
+              <input
+                className="contact-form__input"
+                name="address[0].address"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder=""
+                required={false}
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="contact-form__field"
+      >
+        <label
+          className="contact-form__label"
+        >
+          <svg
+            className="contact-form__icon styles__icon___23x3R"
+            height="16"
+            style={
+              Object {
+                "fill": "var(--coolGrey)",
+              }
+            }
+            width="16"
+          >
+            <use
+              xlinkHref="#icon-0"
+            />
+          </svg>
+          Cozy URL
+        </label>
+        <div
+          className="contact-form__inputs-wrapper"
+        >
+          <div
+            className="contact-form__input-wrapper"
+          >
+            <input
+              className="contact-form__input"
+              name="cozy"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder=""
+              required={false}
+              type="url"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="contact-form__field"
+      >
+        <label
+          className="contact-form__label"
+        >
+          <svg
+            className="contact-form__icon styles__icon___23x3R"
+            height="16"
+            style={
+              Object {
+                "fill": "var(--coolGrey)",
+              }
+            }
+            width="16"
+          >
+            <use
+              xlinkHref="#icon-0"
+            />
+          </svg>
+          Company
+        </label>
+        <div
+          className="contact-form__inputs-wrapper"
+        >
+          <div
+            className="contact-form__input-wrapper"
+          >
+            <input
+              className="contact-form__input"
+              name="company"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder=""
+              required={false}
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="contact-form__field"
+      >
+        <label
+          className="contact-form__label"
+        >
+          <svg
+            className="contact-form__icon styles__icon___23x3R"
+            height="16"
+            style={
+              Object {
+                "fill": "var(--coolGrey)",
+              }
+            }
+            width="16"
+          >
+            <use
+              xlinkHref="#icon-0"
+            />
+          </svg>
+          Birthday
+        </label>
+        <div
+          className="contact-form__inputs-wrapper"
+        >
+          <div
+            className="contact-form__input-wrapper"
+          >
+            <input
+              className="contact-form__input"
+              name="birthday"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder=""
+              required={false}
+              type="date"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="contact-form__field"
+      >
+        <label
+          className="contact-form__label"
+        >
+          <svg
+            className="contact-form__icon styles__icon___23x3R"
+            height="16"
+            style={
+              Object {
+                "fill": "var(--coolGrey)",
+              }
+            }
+            width="16"
+          >
+            <use
+              xlinkHref="#icon-0"
+            />
+          </svg>
+          Notes
+        </label>
+        <div
+          className="contact-form__inputs-wrapper"
+        >
+          <div
+            className="contact-form__input-wrapper"
+          >
+            <textarea
+              className="contact-form__input"
+              name="note"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder=""
+              required={false}
+              type="textarea"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="contact-form__footer"
+    >
+      <div>
+        <button
+          className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N"
+          onClick={[Function]}
+          title={null}
+          type="button"
+        >
+          <span>
+            <span
+              className={null}
+            >
+              Cancel
+            </span>
+          </span>
+        </button>
+        <button
+          className="styles__c-btn___-2Vnj"
+          title={null}
+          type="submit"
+        >
+          <span>
+            <span
+              className={null}
+            >
+              Save
+            </span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`ContactForm should submit a well formatted contact 1`] = `
+Object {
+  "address": Array [
+    Object {
+      "formattedAddress": "18 rue des fleurs, Pecado",
+      "primary": true,
+      "type": undefined,
+    },
+  ],
+  "birthday": "31/12/2015",
+  "company": "Cozy CLoud",
+  "cozy": Array [
+    Object {
+      "label": undefined,
+      "primary": true,
+      "url": "https://jcvd.cozy.cloud",
+    },
+  ],
+  "email": Array [
+    Object {
+      "address": "jcvc@cozy.cloud",
+      "primary": true,
+      "type": undefined,
+    },
+  ],
+  "fullname": "Jean-Claude Van Cozy",
+  "metadata": Object {
+    "cozy": true,
+    "version": 1,
+  },
+  "name": Object {
+    "familyName": "Van Cozy",
+    "givenName": "Jean-Claude",
+  },
+  "note": "Whatever.",
+  "phone": Array [
+    Object {
+      "number": "+33678987654",
+      "primary": true,
+      "type": undefined,
+    },
+  ],
+  "relationships": Object {
+    "groups": Object {
+      "data": Array [],
+    },
+  },
+}
+`;
+
+exports[`ContactForm should submit empty fields 1`] = `
+Object {
+  "address": Array [],
+  "birthday": undefined,
+  "company": undefined,
+  "cozy": undefined,
+  "email": Array [],
+  "fullname": "",
+  "metadata": Object {
+    "cozy": true,
+    "version": 1,
+  },
+  "name": Object {
+    "familyName": undefined,
+    "givenName": undefined,
+  },
+  "note": undefined,
+  "phone": Array [],
+  "relationships": Object {
+    "groups": Object {
+      "data": Array [],
+    },
+  },
+}
+`;

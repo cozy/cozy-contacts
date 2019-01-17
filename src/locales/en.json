@@ -2,6 +2,8 @@
   "create_contact": "Create a Contact",
   "cancel": "Cancel",
   "confirm": "Confirm",
+  "edit": "Edit",
+  "edit-contact": "Edit Contact",
   "save": "Save",
   "delete": "Delete",
   "selected_contacts": "%{smart_count} selected contact |||| %{smart_count} selected contacts",
