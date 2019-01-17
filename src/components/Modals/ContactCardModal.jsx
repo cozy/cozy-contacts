@@ -5,47 +5,19 @@ import Modal, {
   ModalHeader,
   ModalContent
 } from 'cozy-ui/transpiled/react/Modal'
-import { Icon, Menu, MenuItem, Button } from 'cozy-ui/transpiled/react'
+import { Button } from 'cozy-ui/transpiled/react'
 import { DOCTYPE_CONTACTS } from '../../helpers/doctypes'
 
 import withContactsMutations from '../../connections/allContacts'
 import ContactCard from '../ContactCard/ContactCard'
 import SpinnerContact from '../Components/Spinner'
+import ContactCardMenu from './ContactCardMenu'
+import ContactFormModal from './ContactFormModal'
 import { Query } from 'cozy-client'
-
-const ContactCardMenu = ({ deleteAction }) => (
-  <Menu
-    position="right"
-    className="contact-card-modal__menu"
-    component={
-      <Button
-        theme="secondary"
-        extension="narrow"
-        icon="dots"
-        className="fix-c-btn"
-        iconOnly
-        label={deleteAction.label}
-      />
-    }
-  >
-    <MenuItem
-      className="menu__item--danger"
-      icon={<Icon icon="delete" />}
-      onSelect={deleteAction.action}
-    >
-      {deleteAction.label}
-    </MenuItem>
-  </Menu>
-)
-ContactCardMenu.propTypes = {
-  deleteAction: PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    action: PropTypes.func.isRequired
-  }).isRequired
-}
 
 class ContactCardModal extends React.Component {
   state = {
+    editMode: false,
     shouldDisplayConfirmDeleteModal: false
   }
 
@@ -62,9 +34,15 @@ class ContactCardModal extends React.Component {
     onDeleteContact && onDeleteContact(contactParam ? contactParam : contact)
   }
 
+  toggleEditMode = () => {
+    this.setState(state => ({
+      editMode: !state.editMode
+    }))
+  }
+
   render() {
     const { onClose, t, id } = this.props
-    const { shouldDisplayConfirmDeleteModal } = this.state
+    const { editMode, shouldDisplayConfirmDeleteModal } = this.state
     return (
       <Query query={client => client.get(DOCTYPE_CONTACTS, id)}>
         {({ data: contact, fetchStatus }) => {
@@ -76,26 +54,46 @@ class ContactCardModal extends React.Component {
               mobileFullscreen
             >
               {fetchStatus !== 'loaded' && <SpinnerContact size="xxlarge" />}
-              {fetchStatus === 'loaded' && (
-                <ContactCard
-                  title={t('contact_info')}
-                  contact={contact}
-                  renderHeader={children => (
-                    <ModalHeader className="contact-card-modal__header">
-                      {children}
-                      <ContactCardMenu
-                        deleteAction={{
-                          label: t('delete'),
-                          action: this.toggleConfirmDeleteModal
-                        }}
-                      />
-                    </ModalHeader>
-                  )}
-                  renderBody={children => (
-                    <ModalContent>{children}</ModalContent>
-                  )}
-                />
-              )}
+              {!editMode &&
+                fetchStatus === 'loaded' && (
+                  <ContactCard
+                    title={t('contact_info')}
+                    contact={contact}
+                    renderHeader={children => (
+                      <ModalHeader className="contact-card-modal__header">
+                        {children}
+                        <div>
+                          <Button
+                            type="button"
+                            theme="secondary"
+                            icon="pen"
+                            label={t('edit')}
+                            onClick={this.toggleEditMode}
+                          />
+                        </div>
+                        <ContactCardMenu
+                          deleteAction={{
+                            label: t('delete'),
+                            action: this.toggleConfirmDeleteModal
+                          }}
+                        />
+                      </ModalHeader>
+                    )}
+                    renderBody={children => (
+                      <ModalContent>{children}</ModalContent>
+                    )}
+                  />
+                )}
+
+              {editMode &&
+                fetchStatus === 'loaded' && (
+                  <ContactFormModal
+                    contact={contact}
+                    onClose={this.toggleEditMode}
+                    title={t('edit-contact')}
+                    afterMutation={this.toggleEditMode}
+                  />
+                )}
 
               {shouldDisplayConfirmDeleteModal && (
                 <Modal

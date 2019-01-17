@@ -24,9 +24,9 @@ class Toolbar extends Component {
           onClick={() => {
             showModal(
               <ContactFormModal
+                afterMutation={this.onCreateContact}
                 onClose={() => {}}
                 title={t('create_contact')}
-                onCreateContact={this.onCreateContact}
               />
             )
           }}

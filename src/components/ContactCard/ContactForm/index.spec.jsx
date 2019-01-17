@@ -1,10 +1,11 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { mount } from 'enzyme'
-import ContactForm from './ContactForm'
+import ContactForm from './index'
 import { I18n } from 'cozy-ui/transpiled/react/I18n'
 
-import langEn from '../../locales/en.json'
+import langEn from '../../../locales/en.json'
+import { johnDoeContact as contact } from '../../../helpers/testData'
 
 const dictRequire = () => langEn
 
@@ -14,6 +15,21 @@ describe('ContactForm', () => {
       .create(
         <I18n lang="en" dictRequire={dictRequire}>
           <ContactForm onSubmit={() => {}} onCancel={() => {}} />
+        </I18n>
+      )
+      .toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+
+  it('should fill form with contact data', () => {
+    const tree = renderer
+      .create(
+        <I18n lang="en" dictRequire={dictRequire}>
+          <ContactForm
+            contact={contact}
+            onSubmit={() => {}}
+            onCancel={() => {}}
+          />
         </I18n>
       )
       .toJSON()

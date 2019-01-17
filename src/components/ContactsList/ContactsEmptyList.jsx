@@ -93,9 +93,9 @@ class ContactsEmptyList extends React.Component {
                   onClick={() => {
                     showModal(
                       <ContactFormModal
+                        afterMutation={this.onCreateContact}
                         onClose={() => {}}
                         title={t('create_contact')}
-                        onCreateContact={this.onCreateContact}
                       />
                     )
                   }}

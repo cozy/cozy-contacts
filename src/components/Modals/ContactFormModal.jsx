@@ -6,12 +6,15 @@ import Modal, {
   ModalDescription
 } from 'cozy-ui/transpiled/react/Modal'
 import ContactForm from '../ContactCard/ContactForm'
+import { fullContactPropTypes } from '../ContactPropTypes'
 
 const ContactFormModal = ({
+  contact,
   onClose,
   title,
   createContact,
-  onCreateContact
+  afterMutation,
+  updateContact
 }) => (
   <Modal
     overflowHidden={true}
@@ -22,19 +25,39 @@ const ContactFormModal = ({
     <ModalHeader>{title}</ModalHeader>
     <ModalDescription className="u-mt-half">
       <ContactForm
-        onSubmit={contact =>
-          createContact(contact).then(resp => onCreateContact(resp.data))
-        }
+        contact={contact}
+        onSubmit={async newContact => {
+          let resp
+          if (contact) {
+            const payload = {
+              _type: contact._type,
+              _id: contact._id,
+              _rev: contact._rev,
+              ...newContact
+            }
+            resp = await updateContact(payload)
+          } else {
+            resp = await createContact(newContact)
+          }
+          afterMutation(resp.data)
+        }}
         onCancel={onClose}
       />
     </ModalDescription>
   </Modal>
 )
+
 ContactFormModal.propTypes = {
+  afterMutation: PropTypes.func.isRequired,
+  contact: fullContactPropTypes,
   onClose: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   createContact: PropTypes.func.isRequired,
-  onCreateContact: PropTypes.func.isRequired
+  updateContact: PropTypes.func.isRequired
+}
+
+ContactFormModal.defaultProps = {
+  contact: null
 }
 
 export default withContactsMutations(ContactFormModal)
