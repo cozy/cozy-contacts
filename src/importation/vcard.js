@@ -54,7 +54,7 @@ async function importData(data, options) {
     try {
       transformedContact = transform(contact)
     } catch (transformError) {
-      console.error(transformError)
+      console.error(transformError) // eslint-disable-line no-console
       skipped.push({ contact, transformError })
       continue
     }
@@ -70,7 +70,7 @@ async function importData(data, options) {
         }
       }
     } catch (saveError) {
-      console.error(saveError)
+      console.error(saveError) // eslint-disable-line no-console
       unsaved++
       skipped.push({ contact, saveError })
       continue
