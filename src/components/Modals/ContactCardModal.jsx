@@ -1,5 +1,6 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
+import flag from 'cozy-flags'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import Modal, {
   ModalHeader,
@@ -62,15 +63,17 @@ class ContactCardModal extends React.Component {
                     renderHeader={children => (
                       <ModalHeader className="contact-card-modal__header">
                         {children}
-                        <div>
-                          <Button
-                            type="button"
-                            theme="secondary"
-                            icon="pen"
-                            label={t('edit')}
-                            onClick={this.toggleEditMode}
-                          />
-                        </div>
+                        {flag('edit-contact') && (
+                          <div>
+                            <Button
+                              type="button"
+                              theme="secondary"
+                              icon="pen"
+                              label={t('edit')}
+                              onClick={this.toggleEditMode}
+                            />
+                          </div>
+                        )}
                         <ContactCardMenu
                           deleteAction={{
                             label: t('delete'),
