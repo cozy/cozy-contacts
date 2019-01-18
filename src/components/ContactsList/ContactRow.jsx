@@ -92,7 +92,7 @@ class ContactRow extends Component {
 ContactRow.propTypes = {
   contact: PropTypes.shape({
     name: contactPropTypes.name,
-    email: PropTypes.arrayOf(contactPropTypes.email.isRequired).isRequired,
+    email: PropTypes.arrayOf(contactPropTypes.email),
     phone: PropTypes.arrayOf(contactPropTypes.phone),
     metadata: contactPropTypes.metadata
   }).isRequired,
