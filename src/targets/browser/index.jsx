@@ -115,6 +115,6 @@ function initCozyBar({ appName, appNamePrefix, iconPath, lang }) {
     appNamePrefix,
     iconPath,
     lang,
-    replaceTitleOnMobile: true
+    replaceTitleOnMobile: false
   })
 }
