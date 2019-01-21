@@ -37,7 +37,7 @@
     "cozy-scripts": "1.11.0",
     "enzyme": "3.8.0",
     "enzyme-adapter-react-16": "1.7.1",
-    "eslint-config-cozy-app": "1.1.7",
+    "eslint-config-cozy-app": "1.1.8",
     "eslint-config-prettier": "3.6.0",
     "git-directory-deploy": "1.5.1",
     "identity-obj-proxy": "3.0.0",
