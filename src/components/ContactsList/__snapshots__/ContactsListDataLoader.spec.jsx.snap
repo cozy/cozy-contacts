@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactsListOrSpinner should display the contact List 1`] = `
+<div
+  className="list-wrapper"
+>
+  <ol
+    className="list-contact"
+  >
+    <li>
+      <div
+        className="divider"
+      >
+        EMPTY
+      </div>
+      <ol
+        className="sublist-contact"
+      >
+        <li>
+          <div
+            className="contact"
+            onClick={[Function]}
+          >
+            <div
+              className="contact-selection"
+              onClick={[Function]}
+            >
+              <span
+                data-input="checkbox"
+              >
+                <input
+                  checked={false}
+                  readOnly={true}
+                  type="checkbox"
+                />
+                <label />
+              </span>
+            </div>
+            <div
+              className="contact-identity"
+            >
+              <div
+                className="styles__c-avatar___PpDI- styles__c-avatar--small___1Y_Pv"
+              >
+                
+                
+                <svg
+                  className="styles__icon___23x3R"
+                  height="16"
+                  style={Object {}}
+                  width="16"
+                >
+                  <use
+                    xlinkHref="#people"
+                  />
+                </svg>
+              </div>
+              <div>
+                <span
+                  className="contact-firstname"
+                >
+                  
+                </span>
+                 
+                <span
+                  className="contact-lastname"
+                >
+                  
+                </span>
+              </div>
+            </div>
+            <div
+              className="contact-phone"
+            >
+              —
+            </div>
+            <div
+              className="contact-email"
+            >
+              johndoe@localhost
+            </div>
+          </div>
+        </li>
+      </ol>
+    </li>
+  </ol>
+  <div />
+</div>
+`;
+
+exports[`ContactsListOrSpinner should display the loader 1`] = `
+<div
+  className="spinner"
+>
+  <div
+    className="styles__c-spinner___1snK7 styles__c-spinner--middle___RwyII styles__c-spinner--blue___1BMPR styles__c-spinner--xxlarge___23prK"
+  >
+    <p>
+      Loading of your contacts, please wait.
+    </p>
+  </div>
+</div>
+`;
