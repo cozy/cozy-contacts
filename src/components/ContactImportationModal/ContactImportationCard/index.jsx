@@ -30,7 +30,13 @@ const ContactImportationCard = props => {
           <span className="importation-status">{t(statusKey(status))}</span>
         )
       )}
-      {progress && <progress value={progress.current} max={progress.total} />}
+      {progress && (
+        <progress
+          value={progress.current}
+          max={progress.total}
+          className={'u-m-auto u-mv-0'}
+        />
+      )}
     </ContactImportationCardWrapper>
   )
 }
