@@ -1,4 +1,4 @@
-/* global cozy, __DEVELOPMENT__ */
+/* global cozy */
 
 import 'babel-polyfill'
 
@@ -9,15 +9,6 @@ import React from 'react'
 import { render } from 'react-dom'
 import { I18n } from 'cozy-ui/transpiled/react/I18n'
 import cozyClient, { CozyProvider } from 'cozy-client'
-
-if (__DEVELOPMENT__) {
-  // Enables React dev tools for Preact
-  // Cannot use import as we are in a condition
-  require('preact/devtools')
-
-  // Export React to window for the devtools
-  window.React = React
-}
 
 const renderApp = function(client, appLocale, appData) {
   const IntentHandler = require('components/Intents/IntentHandler').default
