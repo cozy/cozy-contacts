@@ -43,7 +43,6 @@ class ContactsApp extends React.Component {
       <Layout monocolumn="true">
         {isMobile && (
           <BarCenter>
-            {' '}
             <Title>
               <span className={'fil-path-title'}>Contacts</span>
             </Title>
