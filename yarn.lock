@@ -3177,10 +3177,10 @@ cozy-stack-client@^4.5.0:
   dependencies:
     mime-types "2.1.20"
 
-cozy-ui@18.4.1:
-  version "18.4.1"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-18.4.1.tgz#a5cc38dc6c76d9fd41b7e93ee7e8dc0acdc6d3b7"
-  integrity sha512-DedxZ3Jdafps18p9PkDpIGqb1GFDVsHlNo/C2987fq30BJcaxkENEIpfCS10lWk8fjqFuy7nuI8aV/CQu09LRA==
+cozy-ui@18.9.1:
+  version "18.9.1"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-18.9.1.tgz#858493411af4ae2a6a6f86674a66b8ef8a643fa7"
+  integrity sha512-aNOsQRIFVb7hmOCuC9vICBIVnGU1eBaJn4w5TZaPKF4xsFG0SElc/dJC2AfyFNoovGRoBjS+tfbOKAUvruLhwg==
   dependencies:
     body-scroll-lock "^2.5.8"
     classnames "^2.2.5"
@@ -4040,19 +4040,6 @@ escodegen@^1.9.1:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-cozy-app@1.1.7:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/eslint-config-cozy-app/-/eslint-config-cozy-app-1.1.7.tgz#db4870039b5d2c77a91d8db5121a0163944296e4"
-  integrity sha512-shzhb8zgpzVOLdPcdrxpo3DCfzjEM4b8C5+2DRIk/3x4/uvGd6N50yvske8hNEMmXLW724h5LH23WGUXOuSmcA==
-  dependencies:
-    babel-eslint "8.2.6"
-    eslint "5.3.0"
-    eslint-config-prettier "2.9.0"
-    eslint-plugin-prettier "3.0.1"
-    eslint-plugin-react "7.10.0"
-    eslint-plugin-vue "5.1.0"
-    prettier "1.14.2"
-
 eslint-config-cozy-app@1.1.8:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/eslint-config-cozy-app/-/eslint-config-cozy-app-1.1.8.tgz#be380221791635b82fb417e2e753f5c696198154"
@@ -4065,13 +4052,6 @@ eslint-config-cozy-app@1.1.8:
     eslint-plugin-react "7.12.4"
     eslint-plugin-vue "5.1.0"
     prettier "1.14.2"
-
-eslint-config-prettier@2.9.0:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-2.9.0.tgz#5ecd65174d486c22dff389fe036febf502d468a3"
-  integrity sha512-ag8YEyBXsm3nmOv1Hz991VtNNDMRa+MNy8cY47Pl4bw6iuzqKbJajXdqUpiw13STdLLrznxgm1hj9NhxeOYq0A==
-  dependencies:
-    get-stdin "^5.0.1"
 
 eslint-config-prettier@3.6.0:
   version "3.6.0"
@@ -4097,16 +4077,6 @@ eslint-plugin-prettier@3.0.1:
   integrity sha512-/PMttrarPAY78PLvV3xfWibMOdMDl57hmlQ2XqFeA37wd+CJ7WSxV7txqjVPHi/AAFKd2lX0ZqfsOc/i5yFCSQ==
   dependencies:
     prettier-linter-helpers "^1.0.0"
-
-eslint-plugin-react@7.10.0:
-  version "7.10.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.10.0.tgz#af5c1fef31c4704db02098f9be18202993828b50"
-  integrity sha512-18rzWn4AtbSUxFKKM7aCVcj5LXOhOKdwBino3KKWy4psxfPW0YtIbE8WNRDUdyHFL50BeLb6qFd4vpvNYyp7hw==
-  dependencies:
-    doctrine "^2.1.0"
-    has "^1.0.3"
-    jsx-ast-utils "^2.0.1"
-    prop-types "^15.6.2"
 
 eslint-plugin-react@7.12.4:
   version "7.12.4"
@@ -4941,11 +4911,6 @@ get-caller-file@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.3.tgz#f978fa4c90d1dfe7ff2d6beda2a515e713bdcf4a"
   integrity sha512-3t6rVToeoZfYSGd8YoLFR2DJkiQrIiUrGcjvFX2mDw3bn6k2OtwHN0TNCLbBO+w8qTvimhDkv+LSscbJY1vE6w==
-
-get-stdin@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-5.0.1.tgz#122e161591e21ff4c52530305693f20e6393a398"
-  integrity sha1-Ei4WFZHiH/TFJTAwVpPyDmOTo5g=
 
 get-stdin@^6.0.0:
   version "6.0.0"
