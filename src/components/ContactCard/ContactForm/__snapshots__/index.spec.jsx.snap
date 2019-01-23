@@ -115,16 +115,16 @@ exports[`ContactForm should fill form with contact data 1`] = `
             >
               <svg
                 className="styles__icon___23x3R"
-                height="10"
+                height="12"
                 style={
                   Object {
                     "fill": "var(--coolGrey)",
                   }
                 }
-                width="10"
+                width="12"
               >
                 <use
-                  xlinkHref="#cross"
+                  xlinkHref="#cross-small"
                 />
               </svg>
             </button>
@@ -154,16 +154,16 @@ exports[`ContactForm should fill form with contact data 1`] = `
             >
               <svg
                 className="styles__icon___23x3R"
-                height="10"
+                height="12"
                 style={
                   Object {
                     "fill": "var(--coolGrey)",
                   }
                 }
-                width="10"
+                width="12"
               >
                 <use
-                  xlinkHref="#cross"
+                  xlinkHref="#cross-small"
                 />
               </svg>
             </button>
@@ -183,7 +183,7 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 width="10"
               >
                 <use
-                  xlinkHref="#plus"
+                  xlinkHref="#plus-small"
                 />
               </svg>
             </button>
@@ -240,16 +240,16 @@ exports[`ContactForm should fill form with contact data 1`] = `
             >
               <svg
                 className="styles__icon___23x3R"
-                height="10"
+                height="12"
                 style={
                   Object {
                     "fill": "var(--coolGrey)",
                   }
                 }
-                width="10"
+                width="12"
               >
                 <use
-                  xlinkHref="#cross"
+                  xlinkHref="#cross-small"
                 />
               </svg>
             </button>
@@ -279,16 +279,16 @@ exports[`ContactForm should fill form with contact data 1`] = `
             >
               <svg
                 className="styles__icon___23x3R"
-                height="10"
+                height="12"
                 style={
                   Object {
                     "fill": "var(--coolGrey)",
                   }
                 }
-                width="10"
+                width="12"
               >
                 <use
-                  xlinkHref="#cross"
+                  xlinkHref="#cross-small"
                 />
               </svg>
             </button>
@@ -308,7 +308,7 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 width="10"
               >
                 <use
-                  xlinkHref="#plus"
+                  xlinkHref="#plus-small"
                 />
               </svg>
             </button>
@@ -365,16 +365,16 @@ exports[`ContactForm should fill form with contact data 1`] = `
             >
               <svg
                 className="styles__icon___23x3R"
-                height="10"
+                height="12"
                 style={
                   Object {
                     "fill": "var(--coolGrey)",
                   }
                 }
-                width="10"
+                width="12"
               >
                 <use
-                  xlinkHref="#cross"
+                  xlinkHref="#cross-small"
                 />
               </svg>
             </button>
@@ -404,16 +404,16 @@ exports[`ContactForm should fill form with contact data 1`] = `
             >
               <svg
                 className="styles__icon___23x3R"
-                height="10"
+                height="12"
                 style={
                   Object {
                     "fill": "var(--coolGrey)",
                   }
                 }
-                width="10"
+                width="12"
               >
                 <use
-                  xlinkHref="#cross"
+                  xlinkHref="#cross-small"
                 />
               </svg>
             </button>
@@ -433,7 +433,7 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 width="10"
               >
                 <use
-                  xlinkHref="#plus"
+                  xlinkHref="#plus-small"
                 />
               </svg>
             </button>
