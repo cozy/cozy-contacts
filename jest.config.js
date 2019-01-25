@@ -7,6 +7,9 @@ module.exports = {
     '.svg$': '<rootDir>/jestHelpers/mocks/iconMock.js',
     '.styl$': 'identity-obj-proxy'
   },
+  transform: {
+    '^.+\\.(js|jsx)?$': '<rootDir>/babel-transformer.js'
+  },
   testURL: 'http://localhost',
   globals: {
     __DEVELOPMENT__: false
