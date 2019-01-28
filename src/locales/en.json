@@ -7,6 +7,8 @@
   "save": "Save",
   "delete": "Delete",
   "selected_contacts": "%{smart_count} selected contact |||| %{smart_count} selected contacts",
+  "select-all": "Select all",
+  "unselect-all": "Unselect all",
   "contact_info": "Contact informations",
   "me": "me",
   "empty": {

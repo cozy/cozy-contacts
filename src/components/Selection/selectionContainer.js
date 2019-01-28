@@ -12,6 +12,13 @@ const mapDispatchToProps = dispatch => ({
     dispatch({
       type: 'SELECTION_CLEAR'
     }),
+
+  selectAll: contacts =>
+    dispatch({
+      contacts,
+      type: 'SELECT_ALL_CONTACTS'
+    }),
+
   toggleSelection: contact =>
     dispatch({
       type: 'SELECTION_TOGGLE',

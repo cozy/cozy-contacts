@@ -17,4 +17,5 @@ const flagsList = () => {
   flag('switcher', true)
   flag('logs')
   flag('edit-contact')
+  flag('select-all-contacts')
 }
