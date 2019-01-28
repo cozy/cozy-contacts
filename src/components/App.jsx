@@ -22,7 +22,6 @@ import { DOCTYPE_CONTACTS } from '../helpers/doctypes'
 import ContactsListDataLoader from './ContactsList/ContactsListDataLoader'
 import Header from './Header'
 import Toolbar from './Toolbar'
-const { BarCenter } = cozy.bar
 
 const query = client => client.all(DOCTYPE_CONTACTS)
 
@@ -33,6 +32,7 @@ class ContactsApp extends React.Component {
   }
 
   render() {
+    const { BarCenter } = cozy.bar
     const {
       t,
       breakpoints: { isMobile },
