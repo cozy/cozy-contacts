@@ -3,8 +3,12 @@ const initialState = {
 }
 import findIndex from 'lodash/findIndex'
 
-const selection = (state = initialState, { type, payload }) => {
+const selection = (state = initialState, { contacts, type, payload }) => {
   switch (type) {
+    case 'SELECT_ALL_CONTACTS':
+      return {
+        selection: contacts
+      }
     case 'SELECTION_CLEAR':
       return { ...initialState }
     case 'SELECTION_TOGGLE':
