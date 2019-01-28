@@ -19,6 +19,7 @@ export const filterFieldList = fields =>
         '_id',
         '_rev',
         '_type',
+        'cozyMetadata',
         'id',
         'metadata',
         'relationships',
