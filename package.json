@@ -61,7 +61,7 @@
     "react": "16.7.0",
     "react-final-form": "3.6.7",
     "react-final-form-arrays": "1.1.0",
-    "react-hot-loader": "4.6.3",
+    "react-hot-loader": "4.6.5",
     "react-redux": "5.1.1",
     "redux": "4.0.1",
     "redux-logger": "3.0.6",
