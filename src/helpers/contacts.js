@@ -1,3 +1,8 @@
+import union from 'lodash/union'
+
+import manifest from '../../manifest.webapp'
+import { ADD_COZY_METADATA } from '../constants'
+
 export const supportedFieldsInOrder = [
   'phone',
   'email',
@@ -76,4 +81,43 @@ export const getFullContactName = name => {
     .map(part => name[part])
     .join(' ')
     .trim()
+}
+
+export function getUpdatedContact(oldContact, newContact) {
+  const now = new Date().toISOString()
+  if (oldContact) {
+    const cozyMetadata = ADD_COZY_METADATA
+      ? {
+          cozyMetadata: {
+            ...oldContact.cozyMetadata,
+            updatedAt: now,
+            updatedByApps: union(
+              [manifest.name],
+              oldContact.cozyMetadata.updatedByApps
+            )
+          }
+        }
+      : {}
+    return {
+      _type: oldContact._type,
+      _id: oldContact._id,
+      _rev: oldContact._rev,
+      ...cozyMetadata,
+      ...newContact
+    }
+  } else {
+    const cozyMetadata = ADD_COZY_METADATA
+      ? {
+          cozyMetadata: {
+            createdAt: now,
+            updatedAt: now,
+            updatedByApps: [manifest.name]
+          }
+        }
+      : {}
+    return {
+      ...cozyMetadata,
+      ...newContact
+    }
+  }
 }
