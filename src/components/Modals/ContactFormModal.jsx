@@ -1,12 +1,14 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import withContactsMutations from '../../connections/allContacts'
 import Modal, {
   ModalHeader,
   ModalDescription
 } from 'cozy-ui/transpiled/react/Modal'
+
 import ContactForm from '../ContactCard/ContactForm'
 import { fullContactPropTypes } from '../ContactPropTypes'
+import withContactsMutations from '../../connections/allContacts'
+import { getUpdatedContact } from '../../helpers/contacts'
 
 const ContactFormModal = ({
   contact,
@@ -27,18 +29,9 @@ const ContactFormModal = ({
       <ContactForm
         contact={contact}
         onSubmit={async newContact => {
-          let resp
-          if (contact) {
-            const payload = {
-              _type: contact._type,
-              _id: contact._id,
-              _rev: contact._rev,
-              ...newContact
-            }
-            resp = await updateContact(payload)
-          } else {
-            resp = await createContact(newContact)
-          }
+          const createOrUpdate = contact ? updateContact : createContact
+          const updatedContact = getUpdatedContact(contact, newContact)
+          const resp = await createOrUpdate(updatedContact)
           afterMutation(resp.data)
         }}
         onCancel={onClose}
@@ -59,5 +52,7 @@ ContactFormModal.propTypes = {
 ContactFormModal.defaultProps = {
   contact: null
 }
+
+export { ContactFormModal as DumbContactFormModal }
 
 export default withContactsMutations(ContactFormModal)

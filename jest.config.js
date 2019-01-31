@@ -9,7 +9,8 @@ module.exports = {
     '.styl$': 'identity-obj-proxy'
   },
   transform: {
-    '^.+\\.(js|jsx)?$': '<rootDir>/babel-transformer.js'
+    '^.+\\.(js|jsx)?$': '<rootDir>/babel-transformer.js',
+    '^.+\\.webapp$': '<rootDir>/json-transformer.js'
   },
   testURL: 'http://localhost',
   globals: {
