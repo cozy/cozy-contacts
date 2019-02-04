@@ -18,6 +18,9 @@
     "importation": "Import contacts (vCard)",
     "after": "Importing your contacts might take a few minutes, time to enjoy a well deserved coffee break ☕️"
   },
+  "error": {
+    "save": "An error occurred while saving the contact, please try again"
+  },
   "formatted_address": "%{pobox} %{street} %{postcode} %{city} %{region} %{country}",
   "field": {
     "givenName": "Firstname",
