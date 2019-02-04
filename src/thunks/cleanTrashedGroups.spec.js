@@ -89,7 +89,6 @@ describe('cleaning trashed groups', () => {
     await cleanTrashedGroups(mockDispatch, mockGetState, { client: mockClient })
 
     expect(mockRemoveGroupById).toHaveBeenCalledWith(groupToTrash._id)
-    expect(mockClient.save).toHaveBeenCalled()
   })
 
   it('should remove multiple pages of contacts', async () => {
@@ -130,6 +129,5 @@ describe('cleaning trashed groups', () => {
 
     expect(mockRemoveGroupById).toHaveBeenCalledTimes(2)
     expect(mockRemoveGroupById).toHaveBeenCalledWith(groupToTrash._id)
-    expect(mockClient.save).toHaveBeenCalledTimes(2)
   })
 })

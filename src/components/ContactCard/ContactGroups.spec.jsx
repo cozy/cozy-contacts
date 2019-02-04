@@ -2,7 +2,7 @@ import React from 'react'
 import { mount } from 'enzyme'
 import { DOCTYPE_CONTACT_GROUPS } from '../../helpers/doctypes'
 
-import { ContactGroups } from './ContactGroups'
+import { ContactGroups, ContactGroupsClass } from './ContactGroups'
 import AppLike from '../../tests/Applike'
 describe('ContactGroups', () => {
   it('should display groups', () => {
@@ -31,5 +31,37 @@ describe('ContactGroups', () => {
     expect(contactGroupTags.length).toEqual(2)
     expect(contactGroupTags.at(0).text()).toEqual(groupsMock[0].name)
     expect(contactGroupTags.at(1).text()).toEqual(groupsMock[1].name)
+  })
+
+  describe('Updating groups', () => {
+    let mockContact, component
+    beforeEach(() => {
+      mockContact = {
+        groups: {
+          data: [{ _id: 1 }],
+          addById: jest.fn(),
+          removeById: jest.fn()
+        }
+      }
+
+      component = new ContactGroupsClass({
+        contact: mockContact
+      })
+    })
+
+    it('should add groups', () => {
+      const component = new ContactGroupsClass({
+        contact: mockContact
+      })
+      component.updateContactGroups([{ _id: 1 }, { _id: 2 }])
+      expect(mockContact.groups.addById).toHaveBeenCalledWith([2])
+      component.updateContactGroups([{ _id: 3 }, { _id: 4 }])
+      expect(mockContact.groups.addById).toHaveBeenCalledWith([3, 4])
+    })
+
+    it('should remove groups', () => {
+      component.updateContactGroups([])
+      expect(mockContact.groups.removeById).toHaveBeenCalledWith([1])
+    })
   })
 })

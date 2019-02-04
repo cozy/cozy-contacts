@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import flow from 'lodash/flow'
+import differenceBy from 'lodash/differenceBy'
 import { Query } from 'cozy-client'
 import { Alerter } from 'cozy-ui/transpiled/react'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
@@ -15,17 +16,18 @@ import SpinnerContact from '../Components/Spinner'
 import { checkIfGroupAlreadyExists } from '../ContactGroups/helpers/groups'
 import container from './ContactGroupsContainer'
 
-class ContactGroupsClass extends React.Component {
-  updateContactGroups = groups => {
+export class ContactGroupsClass extends React.Component {
+  updateContactGroups = nextGroups => {
     const { contact } = this.props
 
-    contact.groups.data.map(group => {
-      contact.groups.removeById(group._id)
-    })
-    groups.map(groupToAdd => {
-      contact.groups.addById(groupToAdd._id)
-    })
-    this.props.updateContact(contact)
+    const currentGroups = contact.groups.data
+    const toAdd = differenceBy(nextGroups, currentGroups, '_id')
+    const toRemove = differenceBy(currentGroups, nextGroups, '_id')
+
+    if (toAdd.length > 0) contact.groups.addById(toAdd.map(({ _id }) => _id))
+    else if (toRemove.length > 0)
+      contact.groups.removeById(toRemove.map(({ _id }) => _id))
+    // we can't do both at the same time right now, see https://github.com/cozy/cozy-client/issues/358
   }
   createGroup = async group => {
     const { contact, allGroups } = this.props
@@ -35,8 +37,7 @@ class ContactGroupsClass extends React.Component {
     }
     const createdGroup = await this.props.createGroup(group)
 
-    contact.groups.addById(createdGroup.data._id)
-    await this.props.updateContact(contact)
+    await contact.groups.addById(createdGroup.data._id)
   }
   deleteGroup = async group => {
     const { data: flaggedGroup } = await this.props.updateGroup({

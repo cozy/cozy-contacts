@@ -37,8 +37,7 @@ const removeGroupFromAllContacts = async (client, groupId) => {
   const contacts = client.hydrateDocuments(DOCTYPE_CONTACTS, data)
 
   const groupRemovals = contacts.map(contact => {
-    contact.groups.removeById(groupId)
-    return client.save(contact)
+    return contact.groups.removeById(groupId)
   })
 
   await Promise.all(groupRemovals)
