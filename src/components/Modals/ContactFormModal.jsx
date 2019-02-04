@@ -4,6 +4,7 @@ import Modal, {
   ModalHeader,
   ModalDescription
 } from 'cozy-ui/transpiled/react/Modal'
+import Alerter from 'cozy-ui/transpiled/react/Alerter'
 
 import ContactForm from '../ContactCard/ContactForm'
 import { fullContactPropTypes } from '../ContactPropTypes'
@@ -31,8 +32,12 @@ const ContactFormModal = ({
         onSubmit={async newContact => {
           const createOrUpdate = contact ? updateContact : createContact
           const updatedContact = getUpdatedContact(contact, newContact)
-          const resp = await createOrUpdate(updatedContact)
-          afterMutation(resp.data)
+          try {
+            const resp = await createOrUpdate(updatedContact)
+            afterMutation(resp.data)
+          } catch (err) {
+            Alerter.error('error.save')
+          }
         }}
         onCancel={onClose}
       />
