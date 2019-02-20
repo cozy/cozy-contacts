@@ -44,6 +44,11 @@
       "description": "Required to manage groups of contacts",
       "type": "io.cozy.contacts.groups",
       "methods": ["ALL"]
+    },
+    "contactsAccounts": {
+      "description": "Required to manage sources of contacts",
+      "type": "io.cozy.contacts.accounts",
+      "methods": ["ALL"]
     }
   },
   "intents": [
