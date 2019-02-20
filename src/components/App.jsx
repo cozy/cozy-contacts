@@ -26,6 +26,7 @@ import Toolbar from './Toolbar'
 const query = client =>
   client
     .all(DOCTYPE_CONTACTS)
+    .include(['accounts'])
     .where({
       trashed: {
         $exists: false

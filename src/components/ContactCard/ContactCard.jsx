@@ -11,6 +11,7 @@ import {
   orderFieldList,
   makeValuesArray
 } from '../../helpers/contacts'
+import ContactAccounts from './ContactAccounts'
 
 const ContactCard = ({ title, contact, renderHeader, renderBody }) => {
   const fields = getFieldListFrom(contact)
@@ -25,7 +26,14 @@ const ContactCard = ({ title, contact, renderHeader, renderBody }) => {
   return (
     <div>
       {renderHeader(<ContactIdentity contact={contact} />)}
-      {renderBody(<ContactFields fields={normalizedFields} title={title} />)}
+      {renderBody(
+        <>
+          <ContactFields fields={normalizedFields} title={title} />
+          {contact.accounts.data.length > 0 ? (
+            <ContactAccounts accounts={contact.accounts.data} />
+          ) : null}
+        </>
+      )}
     </div>
   )
 }

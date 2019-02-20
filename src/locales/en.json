@@ -1,4 +1,5 @@
 {
+  "associated_accounts": "Account linked to this contact |||| Accounts linked to this contact",
   "create_contact": "Create a contact",
   "cancel": "Cancel",
   "confirm": "Confirm",

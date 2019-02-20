@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactAccounts component should render a list of contact accounts 1`] = `
+<div
+  className="contact-accounts"
+>
+  <h3
+    className="contact-fields-title"
+  >
+    Account linked to this contact
+  </h3>
+  <ol
+    className="contact-field-list"
+  >
+    <li>
+      <div
+        className="contact-field"
+      >
+        <div
+          className="contact-field-icon"
+        >
+          <svg
+            className="styles__icon___23x3R"
+            height="16"
+            style={Object {}}
+            width="16"
+          >
+            <use
+              xlinkHref="#icon-0"
+            />
+          </svg>
+        </div>
+        <div>
+          <div
+            className="contact-field-value"
+          >
+            <div
+              className="styles__u-text___2UfQa"
+            >
+              Google
+            </div>
+            <div
+              className="styles__u-caption___1VRxy"
+            >
+              john.doe@gmail.com
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ol>
+</div>
+`;
