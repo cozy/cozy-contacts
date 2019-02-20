@@ -2,6 +2,7 @@ import { withMutations } from 'cozy-client'
 import { mergeContact } from '../helpers/mergeContact'
 import { findContactsWithSamePhoneOrEmail } from '../helpers/findContact'
 import { DOCTYPE_CONTACTS } from '../helpers/doctypes'
+import get from 'lodash/get'
 
 const withContactsMutations = withMutations(client => ({
   importContact: async attributes => {
@@ -18,7 +19,18 @@ const withContactsMutations = withMutations(client => ({
   },
   createContact: attributes => client.create(DOCTYPE_CONTACTS, attributes),
   updateContact: contact => client.save(contact),
-  deleteContact: contact => client.destroy(contact)
+  deleteContact: contact => {
+    const syncData = get(contact, 'cozyMetadata.sync', {})
+    const isLinkedToAccounts = Object.keys(syncData).length > 0
+    if (isLinkedToAccounts) {
+      return client.save({
+        ...contact,
+        trashed: true
+      })
+    } else {
+      return client.destroy(contact)
+    }
+  }
 }))
 
 export default withContactsMutations

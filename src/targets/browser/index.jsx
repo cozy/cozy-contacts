@@ -11,7 +11,8 @@ import configureStore from 'store/configureStore'
 import { hot } from 'react-hot-loader'
 import {
   DOCTYPE_CONTACTS,
-  DOCTYPE_CONTACT_GROUPS
+  DOCTYPE_CONTACT_GROUPS,
+  DOCTYPE_CONTACT_ACCOUNTS
 } from '../../helpers/doctypes'
 
 const RootApp = props => (
@@ -94,6 +95,10 @@ function initCozyClient(/* cozyDomain, cozyToken */) {
           groups: {
             type: 'has-many',
             doctype: DOCTYPE_CONTACT_GROUPS
+          },
+          accounts: {
+            type: 'has-many',
+            doctype: DOCTYPE_CONTACT_ACCOUNTS
           }
         }
       },

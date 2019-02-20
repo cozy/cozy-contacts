@@ -23,7 +23,18 @@ import ContactsListDataLoader from './ContactsList/ContactsListDataLoader'
 import Header from './Header'
 import Toolbar from './Toolbar'
 
-const query = client => client.all(DOCTYPE_CONTACTS)
+const query = client =>
+  client
+    .all(DOCTYPE_CONTACTS)
+    .where({
+      trashed: {
+        $exists: false
+      },
+      _id: {
+        $gt: null
+      }
+    })
+    .indexFields(['_id'])
 
 class ContactsApp extends React.Component {
   componentDidMount() {
