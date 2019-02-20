@@ -2,7 +2,10 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import ContactCard from './ContactCard'
 import AppLike from '../../tests/Applike'
-import { DOCTYPE_CONTACT_GROUPS } from '../../helpers/doctypes'
+import {
+  DOCTYPE_CONTACT_GROUPS,
+  DOCTYPE_CONTACT_ACCOUNTS
+} from '../../helpers/doctypes'
 
 describe('ContactCard', () => {
   test('should match snapshot', () => {
@@ -28,6 +31,10 @@ describe('ContactCard', () => {
         { number: '+33 (1)9 14 02 28 31', primary: true },
         { number: '+33 (2)3 99 53 65 21', primary: false }
       ],
+      accounts: {
+        doctype: DOCTYPE_CONTACT_ACCOUNTS,
+        data: []
+      },
       groups: {
         doctype: DOCTYPE_CONTACT_GROUPS,
         data: []
