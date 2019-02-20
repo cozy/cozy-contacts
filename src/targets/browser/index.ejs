@@ -19,13 +19,6 @@
     />
     <link rel="manifest" href="/manifest.json" crossOrigin="use-credentials" />
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#297EF2" />
-    <% if (__TARGET__ !== 'mobile') { %>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="//{{.Domain}}/assets/fonts/fonts.css"
-    />
-    <% } %>
     <meta name="theme-color" content="#ffffff" />
     <meta
       name="viewport"
@@ -39,6 +32,12 @@
     <% } else if (__STACK_ASSETS__) { %>
     {{.CozyClientJS}}
     {{.CozyBar}}
+    <% } else { %>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//{{.Domain}}/assets/fonts/fonts.css"
+    />
     <% } %>
   </head>
   <div
