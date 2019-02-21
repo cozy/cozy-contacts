@@ -28,7 +28,8 @@ export const filterFieldList = fields =>
         'id',
         'metadata',
         'relationships',
-        'groups'
+        'groups',
+        'accounts'
       ].includes(field.type) === false && field.values
   )
 export const groupUnsupportedFields = (fields, supportedFieldTypes) => {
