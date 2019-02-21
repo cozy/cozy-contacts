@@ -36,6 +36,7 @@ const ContactFormModal = ({
             const resp = await createOrUpdate(updatedContact)
             afterMutation(resp.data)
           } catch (err) {
+            console.warn(err)
             Alerter.error('error.save')
           }
         }}
