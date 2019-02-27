@@ -14,6 +14,7 @@ import {
   DOCTYPE_CONTACT_GROUPS,
   DOCTYPE_CONTACT_ACCOUNTS
 } from '../../helpers/doctypes'
+import manifest from '../../../manifest.webapp'
 
 const RootApp = props => (
   <CozyProvider client={props.client} store={props.store}>
@@ -63,8 +64,8 @@ function getValues({
 }) {
   const defaultValues = {
     appIconDefault: require('../vendor/assets/icon.svg'),
-    appNamePrefixDefault: require('../../../manifest.webapp').name_prefix,
-    appNameDefault: require('../../../manifest.webapp').name,
+    appNamePrefixDefault: manifest.name_prefix,
+    appNameDefault: manifest.name,
     appLocaleDefault: 'en'
   }
   return {
@@ -91,6 +92,32 @@ function initCozyClient(/* cozyDomain, cozyToken */) {
     schema: {
       contacts: {
         doctype: DOCTYPE_CONTACTS,
+        cozyMetadata: {
+          createdByApp: {
+            trigger: 'creation',
+            value: manifest.name
+          },
+          updatedByApps: {
+            trigger: 'update',
+            value: [manifest.name]
+          },
+          createdAt: {
+            trigger: 'creation',
+            useCurrentDate: true
+          },
+          updatedAt: {
+            trigger: 'update',
+            useCurrentDate: true
+          },
+          doctypeVersion: {
+            trigger: 'update',
+            value: 2
+          },
+          createdByAppVersion: {
+            trigger: 'update',
+            value: manifest.version
+          }
+        },
         relationships: {
           groups: {
             type: 'has-many',

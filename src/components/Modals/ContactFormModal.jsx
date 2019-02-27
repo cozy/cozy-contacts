@@ -9,7 +9,6 @@ import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import ContactForm from '../ContactCard/ContactForm'
 import { fullContactPropTypes } from '../ContactPropTypes'
 import withContactsMutations from '../../connections/allContacts'
-import { getUpdatedContact } from '../../helpers/contacts'
 
 const ContactFormModal = ({
   contact,
@@ -29,9 +28,12 @@ const ContactFormModal = ({
     <ModalDescription className="u-mt-half">
       <ContactForm
         contact={contact}
-        onSubmit={async newContact => {
+        onSubmit={async formData => {
           const createOrUpdate = contact ? updateContact : createContact
-          const updatedContact = getUpdatedContact(contact, newContact)
+          const updatedContact = {
+            ...contact,
+            ...formData
+          }
           try {
             const resp = await createOrUpdate(updatedContact)
             afterMutation(resp.data)
