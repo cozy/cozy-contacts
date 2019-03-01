@@ -54,8 +54,8 @@ const contactToFormValues = (contact, t) => {
         : [undefined]
 
     return {
-      givenName: name.givenName,
-      familyName: name.familyName,
+      givenName: name ? name.givenName : undefined,
+      familyName: name ? name.familyName : undefined,
       phone: phoneValue,
       email: emailValue,
       address: addressValue,

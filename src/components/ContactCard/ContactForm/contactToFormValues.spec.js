@@ -74,6 +74,38 @@ describe('contactToFormValues function', () => {
     const result = contactToFormValues(contact, tSpy)
     expect(result).toEqual(expected)
   })
+
+  it('should not crash if name is undefined (contacts created via sharing)', () => {
+    const contact = {
+      id: '9ecfbf4b-20e7-4bac-87f1-eea53350857d',
+      _id: '9ecfbf4b-20e7-4bac-87f1-eea53350857d',
+      _type: 'io.cozy.contacts',
+      _rev: '1-19c313536e8b27473aa26bf105b03269',
+      address: [],
+      birthday: undefined,
+      company: undefined,
+      cozy: undefined,
+      email: undefined,
+      name: undefined,
+      note: 'Eligendi velit eos ab libero molestiae consequatur autem sed.',
+      phone: []
+    }
+    const expected = {
+      address: [undefined],
+      birthday: undefined,
+      company: undefined,
+      cozy: undefined,
+      cozyLabel: undefined,
+      email: [undefined],
+      givenName: undefined,
+      familyName: undefined,
+      note: 'Eligendi velit eos ab libero molestiae consequatur autem sed.',
+      phone: [undefined]
+    }
+
+    const result = contactToFormValues(contact, tSpy)
+    expect(result).toEqual(expected)
+  })
 })
 
 describe('moveToHead function', () => {
