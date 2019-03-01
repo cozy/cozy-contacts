@@ -70,4 +70,52 @@ describe('formValuesToContact', () => {
     const result = formValuesToContact(johnDoeFormValues)
     expect(result).toEqual(expected)
   })
+
+  it('should convert form values that have been cleared to contact', () => {
+    const formValues = {
+      address: [
+        {
+          formattedAddress: undefined,
+          primary: true,
+          type: undefined
+        }
+      ],
+      birthday: null,
+      company: undefined,
+      cozy: undefined,
+      cozyLabel: undefined,
+      email: [
+        {
+          email: undefined,
+          emailLabel: undefined
+        }
+      ],
+      familyName: 'Jane',
+      givenName: 'Doe',
+      note: undefined,
+      phone: [
+        {
+          number: undefined,
+          primary: true,
+          type: undefined
+        }
+      ]
+    }
+    const expected = {
+      fullname: 'Doe Jane',
+      name: { givenName: 'Doe', familyName: 'Jane' },
+      email: [],
+      address: [],
+      phone: [],
+      cozy: '',
+      company: '',
+      birthday: null,
+      note: '',
+      relationships: { groups: { data: [] } },
+      metadata: { version: 1, cozy: true }
+    }
+
+    const result = formValuesToContact(formValues)
+    expect(result).toEqual(expected)
+  })
 })
