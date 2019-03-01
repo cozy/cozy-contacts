@@ -1109,8 +1109,8 @@ exports[`ContactForm should submit empty fields 1`] = `
 Object {
   "address": Array [],
   "birthday": undefined,
-  "company": undefined,
-  "cozy": undefined,
+  "company": "",
+  "cozy": "",
   "email": Array [],
   "fullname": "",
   "metadata": Object {
@@ -1121,7 +1121,7 @@ Object {
     "familyName": undefined,
     "givenName": undefined,
   },
-  "note": undefined,
+  "note": "",
   "phone": Array [],
   "relationships": Object {
     "groups": Object {
