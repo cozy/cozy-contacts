@@ -1,3 +1,5 @@
+import MockDate from 'mockdate'
+
 import {
   getFieldListFrom,
   filterFieldList,
@@ -8,25 +10,15 @@ import {
 } from './contacts'
 import { DOCTYPE_CONTACTS } from './doctypes'
 
-const _Date = Date
+const MOCKED_DATE = '2018-01-01T12:00:00.210Z'
 
 beforeAll(() => {
-  const DATE_TO_USE = new Date('2018-01-01T12:00:00.210Z')
-  const MockDate = (...args) => {
-    if (args.length === 0) {
-      return DATE_TO_USE
-    } else {
-      return new _Date(...args)
-    }
-  }
-  MockDate.toISOString = _Date.toISOString
-  MockDate.prototype = _Date.prototype
-  global.Date = MockDate
+  MockDate.set(MOCKED_DATE)
 })
 
 afterAll(() => {
   jest.restoreAllMocks()
-  global.Date = _Date
+  MockDate.reset()
 })
 
 describe('Manage Contacts fields', () => {
