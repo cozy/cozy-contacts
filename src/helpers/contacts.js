@@ -78,3 +78,6 @@ export const getFullContactName = name => {
     .join(' ')
     .trim()
 }
+
+export const getConnectedAccounts = contact =>
+  contact.accounts.data.filter(account => account.sourceAccount !== null)

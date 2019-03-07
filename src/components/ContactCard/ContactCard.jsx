@@ -9,7 +9,8 @@ import {
   groupUnsupportedFields,
   supportedFieldsInOrder,
   orderFieldList,
-  makeValuesArray
+  makeValuesArray,
+  getConnectedAccounts
 } from '../../helpers/contacts'
 import ContactAccounts from './ContactAccounts'
 
@@ -23,9 +24,7 @@ const ContactCard = ({ title, contact, renderHeader, renderBody }) => {
   const orderedFields = orderFieldList(groupedFields, supportedFieldsInOrder)
   const normalizedFields = makeValuesArray(orderedFields)
 
-  const activeContactAccounts = contact.accounts.data.filter(
-    account => account.sourceAccount !== null
-  )
+  const activeContactAccounts = getConnectedAccounts(contact)
 
   return (
     <div>

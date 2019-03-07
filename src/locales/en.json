@@ -83,7 +83,9 @@
   },
   "delete-confirmation": {
     "title": "Delete this contact? |||| Delete these contacts?",
-    "description": "This contact will be removed permanently from your Cozy. |||| These contacts will be removed permanently from your Cozy."
+    "description-simple": "This contact will be removed permanently from your Cozy. |||| These contacts will be removed permanently from your Cozy.",
+    "description-google": "This contact will also be deleted from your Google address book. |||| These contacts will also be deleted from your Google address book.",
+    "description-mixed": "These contacts will be removed permanently from your Cozy, the contacts linked to your Google account will also be deleted from your Google address book."
   },
   "intent": {
     "creation_error": "An error occured while trying to contact the other app. Please try again later?"

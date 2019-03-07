@@ -7,6 +7,7 @@ import Modal, {
 } from 'cozy-ui/transpiled/react/Modal'
 import { Button } from 'cozy-ui/transpiled/react'
 import { DOCTYPE_CONTACTS } from '../../helpers/doctypes'
+import { getConnectedAccounts } from '../../helpers/contacts'
 
 import withContactsMutations from '../../connections/allContacts'
 import ContactCard from '../ContactCard/ContactCard'
@@ -99,9 +100,14 @@ class ContactCardModal extends React.Component {
                 <Modal
                   into="body"
                   title={t('delete-confirmation.title', { smart_count: 1 })}
-                  description={t('delete-confirmation.description', {
-                    smart_count: 1
-                  })}
+                  description={t(
+                    getConnectedAccounts(contact).length > 0
+                      ? 'delete-confirmation.description-google'
+                      : 'delete-confirmation.description-simple',
+                    {
+                      smart_count: 1
+                    }
+                  )}
                   primaryText={t('delete')}
                   primaryType="danger"
                   primaryAction={() => this.deleteContact(contact)}
