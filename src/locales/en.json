@@ -89,8 +89,22 @@
     "creation_error": "An error occured while trying to contact the other app. Please try again later?"
   },
   "manifest": {
-    "short_description": "Cozy Contacts helps you to save and secure your contacts on your Cozy.",
-    "long_description": "With Cozy Contacts you can:\n- Add, modify and sort your contacts.\n- Imports all your contacts from Google, Facebook and more."
+    "short_description": "Cozy Contacts helps you to save, secure and manage all your contacts from your Cozy.",
+    "long_description": "With Cozy Contacts you can:\n\n* Add, edit and sort your contacts,\n* Manage your groups of contacts,\n* Make your sharing easier from Cozy Drive with your contacts,\n* Synchronise your contacts from Google,\n* And soon, synchronise your contacts from your mobile and other online services (iCloud, Facebook...)",
+    "permissions": {
+      "apps": {
+        "description": "Required by the main menu to display the icons of the apps"
+      },
+      "contacts": {
+        "description": "Required to manage your contacts"
+      },
+      "contactsgroups": {
+        "description": "Required to manage groups of contacts"
+      },
+      "contactsAccounts": {
+        "description": "Required to link your contacts with your remote accounts"
+      }
+    }
   },
   "loading": {
     "fetching_contacts": "Loading of your contacts, please wait."
