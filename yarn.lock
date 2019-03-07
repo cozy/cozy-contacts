@@ -729,6 +729,13 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
+"@babel/runtime@^7.3.4":
+  version "7.3.4"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.3.4.tgz#73d12ba819e365fcf7fd152aed56d6df97d21c83"
+  integrity sha512-IvfvnMdSaLBateu0jfsYIpZTxAc2cKEXEMiezGGN75QcBcecDUKd3PgLAncT0oOgxKy8dd8hrJKj9MfzgfZd6g==
+  dependencies:
+    regenerator-runtime "^0.12.0"
+
 "@babel/template@7.0.0-beta.44":
   version "7.0.0-beta.44"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.0.0-beta.44.tgz#f8832f4fdcee5d59bf515e595fc5106c529b394f"
@@ -2756,11 +2763,12 @@ cozy-stack-client@^6.7.0:
     mime-types "2.1.20"
     qs "6.6.0"
 
-cozy-ui@18.12.0:
-  version "18.12.0"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-18.12.0.tgz#19e84aa49282e00b6ed987694ebfd0ea31cd9e9a"
-  integrity sha512-cg6tkrKCVreqrahvKLB4GpM9+A7/NE+XSK7vIY563Usk8qTZuWjKpM5BWG+IZ7ZkDxm/WKeFYHScCeTOvRLdeg==
+cozy-ui@19.12.0:
+  version "19.12.0"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-19.12.0.tgz#92eb292747c33a4d00778f46324eb90a06f97f17"
+  integrity sha512-1IEsEofga/LC4qWDKASyvRufnaZ+UjzkaG1rvI4BAo35E1NoNVm4C12Fbn0FBH4tP6vhFK0ccve/5ZpQe2UZIQ==
   dependencies:
+    "@babel/runtime" "^7.3.4"
     body-scroll-lock "^2.5.8"
     classnames "^2.2.5"
     date-fns "^1.28.5"
