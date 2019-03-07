@@ -6,7 +6,8 @@ import {
   groupUnsupportedFields,
   supportedFieldsInOrder,
   orderFieldList,
-  makeValuesArray
+  makeValuesArray,
+  getConnectedAccounts
 } from './contacts'
 import { DOCTYPE_CONTACTS } from './doctypes'
 
@@ -99,5 +100,60 @@ describe('Manage Contacts fields', () => {
 
     expect(contact).toEqual(immutableContact)
     expect(normalizedFields).toEqual(expectedContact)
+  })
+})
+
+describe('getConnectedAccounts', () => {
+  it('should work for a contact with at least one account', () => {
+    const contact = {
+      _id: '123',
+      accounts: {
+        data: [
+          {
+            _type: 'io.cozy.contacts.accounts',
+            _id: 'abc',
+            sourceAccount: '3290840'
+          },
+          {
+            _type: 'io.cozy.contacts.accounts',
+            _id: 'def',
+            sourceAccount: null
+          }
+        ]
+      }
+    }
+    expect(getConnectedAccounts(contact)).toEqual([
+      {
+        _type: 'io.cozy.contacts.accounts',
+        _id: 'abc',
+        sourceAccount: '3290840'
+      }
+    ])
+  })
+
+  it('should work for a contact with disconnected accounts', () => {
+    const contact = {
+      _id: '123',
+      accounts: {
+        data: [
+          {
+            _type: 'io.cozy.contacts.accounts',
+            _id: 'abc',
+            sourceAccount: null
+          }
+        ]
+      }
+    }
+    expect(getConnectedAccounts(contact).length).toBe(0)
+  })
+
+  it('should work for a contact without accounts', () => {
+    const contact = {
+      _id: '123',
+      accounts: {
+        data: []
+      }
+    }
+    expect(getConnectedAccounts(contact).length).toBe(0)
   })
 })

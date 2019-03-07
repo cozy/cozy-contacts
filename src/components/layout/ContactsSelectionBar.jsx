@@ -4,6 +4,7 @@ import { SelectionBar, Modal } from 'cozy-ui/react'
 import withSelection from '../Selection/selectionContainer'
 import withModalContainer from '../HOCs/withModal'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { getConnectedAccounts } from '../../helpers/contacts'
 
 class ContactsSelectionBar extends Component {
   render() {
@@ -22,13 +23,26 @@ class ContactsSelectionBar extends Component {
         actions={{
           trash: {
             action: () => {
+              const hasConnectedAccounts = contact =>
+                getConnectedAccounts(contact).length > 0
+
+              const allContactsConnected = selection.every(hasConnectedAccounts)
+              const someContactsConnected = selection.some(hasConnectedAccounts)
+
+              let description = 'delete-confirmation.description-simple'
+
+              if (allContactsConnected)
+                description = 'delete-confirmation.description-google'
+              else if (someContactsConnected)
+                description = 'delete-confirmation.description-mixed'
+
               showModal(
                 <Modal
                   into="body"
                   title={t('delete-confirmation.title', {
                     smart_count: selection.length
                   })}
-                  description={t('delete-confirmation.description', {
+                  description={t(description, {
                     smart_count: selection.length
                   })}
                   primaryText={t('delete')}
