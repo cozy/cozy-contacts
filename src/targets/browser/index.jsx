@@ -11,6 +11,7 @@ import configureStore from 'store/configureStore'
 import { hot } from 'react-hot-loader'
 import {
   DOCTYPE_CONTACTS,
+  DOCTYPE_CONTACTS_VERSION,
   DOCTYPE_CONTACT_GROUPS,
   DOCTYPE_CONTACT_ACCOUNTS
 } from '../../helpers/doctypes'
@@ -89,35 +90,14 @@ function initCozyClient(/* cozyDomain, cozyToken */) {
   return new CozyClient({
     uri: getCozyURI(),
     token: getToken(),
+    appMetadata: {
+      slug: manifest.name,
+      version: manifest.version
+    },
     schema: {
       contacts: {
         doctype: DOCTYPE_CONTACTS,
-        cozyMetadata: {
-          createdByApp: {
-            trigger: 'creation',
-            value: manifest.name
-          },
-          updatedByApps: {
-            trigger: 'update',
-            value: [manifest.name]
-          },
-          createdAt: {
-            trigger: 'creation',
-            useCurrentDate: true
-          },
-          updatedAt: {
-            trigger: 'update',
-            useCurrentDate: true
-          },
-          doctypeVersion: {
-            trigger: 'update',
-            value: 2
-          },
-          createdByAppVersion: {
-            trigger: 'update',
-            value: manifest.version
-          }
-        },
+        doctypeVersion: DOCTYPE_CONTACTS_VERSION,
         relationships: {
           groups: {
             type: 'has-many',
