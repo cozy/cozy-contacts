@@ -23,14 +23,18 @@ const ContactCard = ({ title, contact, renderHeader, renderBody }) => {
   const orderedFields = orderFieldList(groupedFields, supportedFieldsInOrder)
   const normalizedFields = makeValuesArray(orderedFields)
 
+  const activeContactAccounts = contact.accounts.data.filter(
+    account => account.sourceAccount !== null
+  )
+
   return (
     <div>
       {renderHeader(<ContactIdentity contact={contact} />)}
       {renderBody(
         <>
           <ContactFields fields={normalizedFields} title={title} />
-          {contact.accounts.data.length > 0 ? (
-            <ContactAccounts accounts={contact.accounts.data} />
+          {activeContactAccounts.length > 0 ? (
+            <ContactAccounts accounts={activeContactAccounts} />
           ) : null}
         </>
       )}
