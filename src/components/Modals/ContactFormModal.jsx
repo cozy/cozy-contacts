@@ -38,6 +38,7 @@ const ContactFormModal = ({
             const resp = await createOrUpdate(updatedContact)
             afterMutation(resp.data)
           } catch (err) {
+            // eslint-disable-next-line no-console
             console.warn(err)
             Alerter.error('error.save')
           }
