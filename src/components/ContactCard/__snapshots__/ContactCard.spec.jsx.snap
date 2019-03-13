@@ -240,3 +240,203 @@ exports[`ContactCard should match snapshot 1`] = `
   </div>
 </div>
 `;
+
+exports[`ContactCard should match snapshot with accounts 1`] = `
+<div>
+  <div
+    className="contact-card-identity"
+  >
+    <div
+      className="styles__c-avatar___PpDI-"
+      style={
+        Object {
+          "backgroundColor": "var(--weirdGreen)",
+          "color": "white",
+        }
+      }
+    >
+      
+      <span
+        className="styles__c-avatar-initials___310qC"
+      >
+        RW
+      </span>
+    </div>
+    <div
+      className="contact-card-identity__infos"
+    >
+      <h1
+        className="contact-card-identity__title"
+      >
+        Rikki  White
+      </h1>
+      <div
+        className="spinner"
+      >
+        <div
+          className="styles__c-spinner___1snK7 styles__c-spinner--middle___RwyII styles__c-spinner--blue___1BMPR styles__c-spinner--medium___1_GL8"
+        >
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h3
+      className="contact-fields-title"
+    >
+      title
+    </h3>
+    <ol
+      className="contact-field-list"
+    >
+      <li>
+        <div
+          className="contact-field"
+        >
+          <div
+            className="contact-field-icon"
+          >
+            <svg
+              className="styles__icon___23x3R"
+              height="16"
+              style={
+                Object {
+                  "fill": "var(--coolGrey)",
+                }
+              }
+              width="16"
+            >
+              <use
+                xlinkHref="#icon-0"
+              />
+            </svg>
+          </div>
+          <div>
+            <div
+              className="contact-field-value"
+            >
+              <a
+                href="mailto:rikki.white@celmax.name"
+              >
+                rikki.white@celmax.name
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div
+          className="contact-field"
+        >
+          <div
+            className="contact-field-icon"
+          >
+            <svg
+              className="styles__icon___23x3R"
+              height="16"
+              style={
+                Object {
+                  "fill": "var(--coolGrey)",
+                }
+              }
+              width="16"
+            >
+              <use
+                xlinkHref="#icon-0"
+              />
+            </svg>
+          </div>
+          <div>
+            <div
+              className="contact-field-value"
+            >
+              1998-6-3
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div
+          className="contact-field"
+        >
+          <div
+            className="contact-field-icon"
+          >
+            <svg
+              className="styles__icon___23x3R"
+              height="16"
+              style={
+                Object {
+                  "fill": "var(--coolGrey)",
+                }
+              }
+              width="16"
+            >
+              <use
+                xlinkHref="#icon-0"
+              />
+            </svg>
+          </div>
+          <div>
+            <div
+              className="contact-field-value"
+            >
+              unsupportedField
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+  <div
+    className="contact-accounts"
+  >
+    <h3
+      className="contact-fields-title"
+    >
+      Account linked to this contact
+    </h3>
+    <ol
+      className="contact-field-list"
+    >
+      <li>
+        <div
+          className="contact-field"
+        >
+          <div
+            className="contact-field-icon"
+          >
+            <svg
+              className="styles__icon___23x3R"
+              height="16"
+              style={Object {}}
+              width="16"
+            >
+              <use
+                xlinkHref="#icon-0"
+              />
+            </svg>
+          </div>
+          <div>
+            <div
+              className="contact-field-value"
+            >
+              <div
+                className="styles__u-text___2UfQa"
+              >
+                Google
+              </div>
+              <div
+                className="styles__u-caption___1VRxy"
+              >
+                john.doe@gmail.com
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</div>
+`;
