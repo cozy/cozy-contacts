@@ -107,6 +107,16 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 type="tel"
                 value="+33 (2)0 90 00 54 04"
               />
+              <input
+                className="contact-form__label-input"
+                name="phone[0].phoneLabel"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="Label"
+                type="text"
+                value=""
+              />
             </div>
             <button
               className="contact-form__meta-button contact-form__meta-button--remove"
@@ -146,6 +156,16 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 type="tel"
                 value="+33 6 77 11 22 33"
               />
+              <input
+                className="contact-form__label-input"
+                name="phone[1].phoneLabel"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="Label"
+                type="text"
+                value=""
+              />
             </div>
             <button
               className="contact-form__meta-button contact-form__meta-button--remove"
@@ -167,27 +187,33 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 />
               </svg>
             </button>
-            <button
-              className="contact-form__meta-button contact-form__meta-button--add"
-              onClick={[Function]}
-              type="button"
-            >
+          </div>
+          <button
+            className="styles__c-btn___-2Vnj styles__c-btn--text___2Vp-2"
+            onClick={[Function]}
+            title={null}
+            type="button"
+          >
+            <span>
               <svg
+                aria-hidden={true}
                 className="styles__icon___23x3R"
-                height="10"
-                style={
-                  Object {
-                    "fill": "white",
-                  }
-                }
-                width="10"
+                focusable="false"
+                height="16"
+                style={Object {}}
+                width="16"
               >
                 <use
-                  xlinkHref="#plus-small"
+                  xlinkHref="#plus"
                 />
               </svg>
-            </button>
-          </div>
+              <span
+                className={null}
+              >
+                Add a phone
+              </span>
+            </span>
+          </button>
         </div>
       </div>
       <div
@@ -232,6 +258,16 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 type="email"
                 value="john.doe@cozycloud.cc"
               />
+              <input
+                className="contact-form__label-input"
+                name="email[0].emailLabel"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="Label"
+                type="text"
+                value=""
+              />
             </div>
             <button
               className="contact-form__meta-button contact-form__meta-button--remove"
@@ -271,6 +307,16 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 type="email"
                 value="john.doe@posteo.net"
               />
+              <input
+                className="contact-form__label-input"
+                name="email[1].emailLabel"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="Label"
+                type="text"
+                value="personal"
+              />
             </div>
             <button
               className="contact-form__meta-button contact-form__meta-button--remove"
@@ -292,27 +338,33 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 />
               </svg>
             </button>
-            <button
-              className="contact-form__meta-button contact-form__meta-button--add"
-              onClick={[Function]}
-              type="button"
-            >
+          </div>
+          <button
+            className="styles__c-btn___-2Vnj styles__c-btn--text___2Vp-2"
+            onClick={[Function]}
+            title={null}
+            type="button"
+          >
+            <span>
               <svg
+                aria-hidden={true}
                 className="styles__icon___23x3R"
-                height="10"
-                style={
-                  Object {
-                    "fill": "white",
-                  }
-                }
-                width="10"
+                focusable="false"
+                height="16"
+                style={Object {}}
+                width="16"
               >
                 <use
-                  xlinkHref="#plus-small"
+                  xlinkHref="#plus"
                 />
               </svg>
-            </button>
-          </div>
+              <span
+                className={null}
+              >
+                Add an email
+              </span>
+            </span>
+          </button>
         </div>
       </div>
       <div
@@ -357,6 +409,16 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 type="text"
                 value="94 Hinton Road 05034 Fresno, Singapore"
               />
+              <input
+                className="contact-form__label-input"
+                name="address[0].addressLabel"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="Label"
+                type="text"
+                value="Home"
+              />
             </div>
             <button
               className="contact-form__meta-button contact-form__meta-button--remove"
@@ -396,6 +458,16 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 type="text"
                 value="426 Runolfsson Knolls 84573 Port Easter  Cocos (Keeling) Islands"
               />
+              <input
+                className="contact-form__label-input"
+                name="address[1].addressLabel"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="Label"
+                type="text"
+                value="Work"
+              />
             </div>
             <button
               className="contact-form__meta-button contact-form__meta-button--remove"
@@ -417,27 +489,33 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 />
               </svg>
             </button>
-            <button
-              className="contact-form__meta-button contact-form__meta-button--add"
-              onClick={[Function]}
-              type="button"
-            >
+          </div>
+          <button
+            className="styles__c-btn___-2Vnj styles__c-btn--text___2Vp-2"
+            onClick={[Function]}
+            title={null}
+            type="button"
+          >
+            <span>
               <svg
+                aria-hidden={true}
                 className="styles__icon___23x3R"
-                height="10"
-                style={
-                  Object {
-                    "fill": "white",
-                  }
-                }
-                width="10"
+                focusable="false"
+                height="16"
+                style={Object {}}
+                width="16"
               >
                 <use
-                  xlinkHref="#plus-small"
+                  xlinkHref="#plus"
                 />
               </svg>
-            </button>
-          </div>
+              <span
+                className={null}
+              >
+                Add an address
+              </span>
+            </span>
+          </button>
         </div>
       </div>
       <div
@@ -478,6 +556,16 @@ exports[`ContactForm should fill form with contact data 1`] = `
               required={false}
               type="url"
               value="https://johndoe.mycozy.cloud"
+            />
+            <input
+              className="contact-form__label-input"
+              name="cozyLabel"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Label"
+              type="text"
+              value="MyCozy"
             />
           </div>
         </div>
@@ -755,6 +843,32 @@ exports[`ContactForm should match snapshot 1`] = `
               />
             </div>
           </div>
+          <button
+            className="styles__c-btn___-2Vnj styles__c-btn--text___2Vp-2"
+            onClick={[Function]}
+            title={null}
+            type="button"
+          >
+            <span>
+              <svg
+                aria-hidden={true}
+                className="styles__icon___23x3R"
+                focusable="false"
+                height="16"
+                style={Object {}}
+                width="16"
+              >
+                <use
+                  xlinkHref="#plus"
+                />
+              </svg>
+              <span
+                className={null}
+              >
+                Add a phone
+              </span>
+            </span>
+          </button>
         </div>
       </div>
       <div
@@ -801,6 +915,32 @@ exports[`ContactForm should match snapshot 1`] = `
               />
             </div>
           </div>
+          <button
+            className="styles__c-btn___-2Vnj styles__c-btn--text___2Vp-2"
+            onClick={[Function]}
+            title={null}
+            type="button"
+          >
+            <span>
+              <svg
+                aria-hidden={true}
+                className="styles__icon___23x3R"
+                focusable="false"
+                height="16"
+                style={Object {}}
+                width="16"
+              >
+                <use
+                  xlinkHref="#plus"
+                />
+              </svg>
+              <span
+                className={null}
+              >
+                Add an email
+              </span>
+            </span>
+          </button>
         </div>
       </div>
       <div
@@ -847,6 +987,32 @@ exports[`ContactForm should match snapshot 1`] = `
               />
             </div>
           </div>
+          <button
+            className="styles__c-btn___-2Vnj styles__c-btn--text___2Vp-2"
+            onClick={[Function]}
+            title={null}
+            type="button"
+          >
+            <span>
+              <svg
+                aria-hidden={true}
+                className="styles__icon___23x3R"
+                focusable="false"
+                height="16"
+                style={Object {}}
+                width="16"
+              >
+                <use
+                  xlinkHref="#plus"
+                />
+              </svg>
+              <span
+                className={null}
+              >
+                Add an address
+              </span>
+            </span>
+          </button>
         </div>
       </div>
       <div

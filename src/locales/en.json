@@ -69,6 +69,11 @@
     "note": "",
     "label": "Label"
   },
+  "addLabel": {
+    "address": "Add an address",
+    "email": "Add an email",
+    "phone": "Add a phone"
+  },
   "SelectionBar": {
     "selected_count": "contact selected |||| contacts selected",
     "trash": "delete"
