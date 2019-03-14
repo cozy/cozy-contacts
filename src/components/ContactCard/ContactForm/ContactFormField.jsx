@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FieldArray } from 'react-final-form-arrays'
+import Button from 'cozy-ui/transpiled/react/Button'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import palette from 'cozy-ui/transpiled/react/palette'
 
 class ContactFormField extends React.Component {
   render() {
-    const { name, icon, label, isArray, renderInput } = this.props
+    const { name, icon, label, isArray, renderInput, t } = this.props
     return (
       <div className="contact-form__field">
         <label className="contact-form__label">
@@ -32,6 +33,13 @@ class ContactFormField extends React.Component {
                     renderInput
                   )
                 )}
+                <Button
+                  icon="plus"
+                  theme="text"
+                  type="button"
+                  onClick={() => this.addField(fields)}
+                  label={t(`addLabel.${name}`)}
+                />
               </div>
             )}
           </FieldArray>
@@ -53,10 +61,7 @@ class ContactFormField extends React.Component {
   }
 
   renderArrayField = (fields, index, nameWithIndex, name, renderInput) => {
-    const isLastField = index === fields.length - 1
     const hasValue = fields.value[index] && fields.value[index][name]
-    const canAddField = isLastField && hasValue
-
     return (
       <div className="contact-form__meta-wrapper" key={nameWithIndex}>
         {renderInput(`${nameWithIndex}.${name}`)}
@@ -73,16 +78,6 @@ class ContactFormField extends React.Component {
               width="12"
               height="12"
             />
-          </button>
-        )}
-
-        {canAddField && (
-          <button
-            type="button"
-            onClick={() => this.addField(fields)}
-            className="contact-form__meta-button contact-form__meta-button--add"
-          >
-            <Icon icon={'plus-small'} color="white" width="10" height="10" />
           </button>
         )}
       </div>

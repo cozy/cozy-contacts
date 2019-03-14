@@ -36,21 +36,24 @@ const fields = [
     icon: IconPhone,
     type: 'tel',
     hasLabel: true,
-    isArray: true
+    isArray: true,
+    addLabel: 'add-phone'
   },
   {
     name: 'email',
     icon: IconEmail,
     type: 'email',
     hasLabel: true,
-    isArray: true
+    isArray: true,
+    addLabel: 'add-email'
   },
   {
     name: 'address',
     icon: IconAddress,
     type: 'text',
     hasLabel: true,
-    isArray: true
+    isArray: true,
+    addLabel: 'add-address'
   },
   {
     name: 'cozy',
@@ -90,6 +93,7 @@ const ContactForm = ({ contact, onCancel, onSubmit, t }) => (
                 name={name}
                 icon={icon}
                 label={t(`field.${name}`)}
+                t={t}
                 isArray={isArray}
                 renderInput={inputName => (
                   <ContactFieldInput
