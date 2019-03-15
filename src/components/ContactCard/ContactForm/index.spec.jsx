@@ -60,9 +60,9 @@ describe('ContactForm', () => {
     }
 
     Object.keys(fields).forEach(fieldName => {
-      form
-        .find(`Field[name='${fieldName}']`)
-        .simulate('change', { target: { value: fields[fieldName] } })
+      const candidates = form.find(`Field[name='${fieldName}']`)
+      const field = candidates.length === 1 ? candidates : candidates.first()
+      field.simulate('change', { target: { value: fields[fieldName] } })
     })
 
     form.find('form').simulate('submit')
