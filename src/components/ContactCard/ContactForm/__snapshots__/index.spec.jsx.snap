@@ -24,7 +24,8 @@ exports[`ContactForm should fill form with contact data 1`] = `
             className="contact-form__input-wrapper"
           >
             <input
-              className="contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              data-valid={true}
               name="givenName"
               onBlur={[Function]}
               onChange={[Function]}
@@ -52,7 +53,8 @@ exports[`ContactForm should fill form with contact data 1`] = `
             className="contact-form__input-wrapper"
           >
             <input
-              className="contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              data-valid={true}
               name="familyName"
               onBlur={[Function]}
               onChange={[Function]}
@@ -97,7 +99,8 @@ exports[`ContactForm should fill form with contact data 1`] = `
               className="contact-form__input-wrapper"
             >
               <input
-                className="contact-form__input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+                data-valid={true}
                 name="phone[0].phone"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -108,7 +111,8 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 value="+33 (2)0 90 00 54 04"
               />
               <input
-                className="contact-form__label-input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__label-input"
+                data-valid={true}
                 name="phone[0].phoneLabel"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -146,7 +150,8 @@ exports[`ContactForm should fill form with contact data 1`] = `
               className="contact-form__input-wrapper"
             >
               <input
-                className="contact-form__input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+                data-valid={true}
                 name="phone[1].phone"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -157,7 +162,8 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 value="+33 6 77 11 22 33"
               />
               <input
-                className="contact-form__label-input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__label-input"
+                data-valid={true}
                 name="phone[1].phoneLabel"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -248,7 +254,8 @@ exports[`ContactForm should fill form with contact data 1`] = `
               className="contact-form__input-wrapper"
             >
               <input
-                className="contact-form__input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+                data-valid={true}
                 name="email[0].email"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -259,7 +266,8 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 value="john.doe@cozycloud.cc"
               />
               <input
-                className="contact-form__label-input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__label-input"
+                data-valid={true}
                 name="email[0].emailLabel"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -297,7 +305,8 @@ exports[`ContactForm should fill form with contact data 1`] = `
               className="contact-form__input-wrapper"
             >
               <input
-                className="contact-form__input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+                data-valid={true}
                 name="email[1].email"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -308,7 +317,8 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 value="john.doe@posteo.net"
               />
               <input
-                className="contact-form__label-input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__label-input"
+                data-valid={true}
                 name="email[1].emailLabel"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -399,7 +409,8 @@ exports[`ContactForm should fill form with contact data 1`] = `
               className="contact-form__input-wrapper"
             >
               <input
-                className="contact-form__input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+                data-valid={true}
                 name="address[0].address"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -410,7 +421,8 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 value="94 Hinton Road 05034 Fresno, Singapore"
               />
               <input
-                className="contact-form__label-input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__label-input"
+                data-valid={true}
                 name="address[0].addressLabel"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -448,7 +460,8 @@ exports[`ContactForm should fill form with contact data 1`] = `
               className="contact-form__input-wrapper"
             >
               <input
-                className="contact-form__input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+                data-valid={true}
                 name="address[1].address"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -459,7 +472,8 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 value="426 Runolfsson Knolls 84573 Port Easter  Cocos (Keeling) Islands"
               />
               <input
-                className="contact-form__label-input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__label-input"
+                data-valid={true}
                 name="address[1].addressLabel"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -547,7 +561,8 @@ exports[`ContactForm should fill form with contact data 1`] = `
             className="contact-form__input-wrapper"
           >
             <input
-              className="contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              data-valid={true}
               name="cozy"
               onBlur={[Function]}
               onChange={[Function]}
@@ -558,7 +573,8 @@ exports[`ContactForm should fill form with contact data 1`] = `
               value="https://johndoe.mycozy.cloud"
             />
             <input
-              className="contact-form__label-input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__label-input"
+              data-valid={true}
               name="cozyLabel"
               onBlur={[Function]}
               onChange={[Function]}
@@ -599,7 +615,8 @@ exports[`ContactForm should fill form with contact data 1`] = `
             className="contact-form__input-wrapper"
           >
             <input
-              className="contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              data-valid={true}
               name="company"
               onBlur={[Function]}
               onChange={[Function]}
@@ -641,7 +658,8 @@ exports[`ContactForm should fill form with contact data 1`] = `
             className="contact-form__input-wrapper"
           >
             <input
-              className="contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              data-valid={true}
               name="birthday"
               onBlur={[Function]}
               onChange={[Function]}
@@ -683,7 +701,8 @@ exports[`ContactForm should fill form with contact data 1`] = `
             className="contact-form__input-wrapper"
           >
             <textarea
-              className="contact-form__input"
+              className="styles__c-textarea___D7EEH contact-form__input"
+              data-valid={true}
               name="note"
               onBlur={[Function]}
               onChange={[Function]}
@@ -758,7 +777,8 @@ exports[`ContactForm should match snapshot 1`] = `
             className="contact-form__input-wrapper"
           >
             <input
-              className="contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              data-valid={true}
               name="givenName"
               onBlur={[Function]}
               onChange={[Function]}
@@ -786,7 +806,8 @@ exports[`ContactForm should match snapshot 1`] = `
             className="contact-form__input-wrapper"
           >
             <input
-              className="contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              data-valid={true}
               name="familyName"
               onBlur={[Function]}
               onChange={[Function]}
@@ -831,7 +852,8 @@ exports[`ContactForm should match snapshot 1`] = `
               className="contact-form__input-wrapper"
             >
               <input
-                className="contact-form__input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+                data-valid={true}
                 name="phone[0].phone"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -903,7 +925,8 @@ exports[`ContactForm should match snapshot 1`] = `
               className="contact-form__input-wrapper"
             >
               <input
-                className="contact-form__input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+                data-valid={true}
                 name="email[0].email"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -975,7 +998,8 @@ exports[`ContactForm should match snapshot 1`] = `
               className="contact-form__input-wrapper"
             >
               <input
-                className="contact-form__input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+                data-valid={true}
                 name="address[0].address"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -1044,7 +1068,8 @@ exports[`ContactForm should match snapshot 1`] = `
             className="contact-form__input-wrapper"
           >
             <input
-              className="contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              data-valid={true}
               name="cozy"
               onBlur={[Function]}
               onChange={[Function]}
@@ -1086,7 +1111,8 @@ exports[`ContactForm should match snapshot 1`] = `
             className="contact-form__input-wrapper"
           >
             <input
-              className="contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              data-valid={true}
               name="company"
               onBlur={[Function]}
               onChange={[Function]}
@@ -1128,7 +1154,8 @@ exports[`ContactForm should match snapshot 1`] = `
             className="contact-form__input-wrapper"
           >
             <input
-              className="contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              data-valid={true}
               name="birthday"
               onBlur={[Function]}
               onChange={[Function]}
@@ -1170,7 +1197,8 @@ exports[`ContactForm should match snapshot 1`] = `
             className="contact-form__input-wrapper"
           >
             <textarea
-              className="contact-form__input"
+              className="styles__c-textarea___D7EEH contact-form__input"
+              data-valid={true}
               name="note"
               onBlur={[Function]}
               onChange={[Function]}

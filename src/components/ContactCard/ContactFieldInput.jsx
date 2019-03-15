@@ -4,9 +4,10 @@ import { Field } from 'react-final-form'
 import classnames from 'classnames'
 
 import HasValueCondition from '../Form/HasValueCondition'
+import { AdaptedInput, AdaptedTextarea } from '../Form/fields'
 
 const getInputComponent = inputType =>
-  inputType === 'textarea' ? 'textarea' : 'input'
+  inputType === 'textarea' ? AdaptedTextarea : AdaptedInput
 
 class ContactFieldInput extends React.Component {
   state = {
@@ -65,7 +66,7 @@ class ContactFieldInput extends React.Component {
             <Field
               name={`${name}Label`}
               type="text"
-              component="input"
+              component={AdaptedInput}
               className="contact-form__label-input"
               placeholder={labelPlaceholder}
               onFocus={this.onFocus}
