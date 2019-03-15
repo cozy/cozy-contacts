@@ -3,18 +3,20 @@ import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
 import classnames from 'classnames'
 
+import HasValueCondition from '../Form/HasValueCondition'
+
 const getInputComponent = inputType =>
   inputType === 'textarea' ? 'textarea' : 'input'
 
 class ContactFieldInput extends React.Component {
   state = {
-    isRenderingLabel: false,
+    hasBeenFocused: false,
     hasFocus: false
   }
 
   onFocus = () => {
     this.setState({
-      isRenderingLabel: this.props.withLabel,
+      hasBeenFocused: true,
       hasFocus: true
     })
   }
@@ -24,9 +26,9 @@ class ContactFieldInput extends React.Component {
       hasFocus: false
     })
   }
-  onMainInputBlur = e => {
+
+  onMainInputBlur = () => {
     this.setState({
-      isRenderingLabel: e.target.value && this.props.withLabel,
       hasFocus: false
     })
   }
@@ -40,7 +42,7 @@ class ContactFieldInput extends React.Component {
       withLabel,
       labelPlaceholder
     } = this.props
-    const { isRenderingLabel, hasFocus } = this.state
+    const { hasBeenFocused, hasFocus } = this.state
 
     return (
       <div
@@ -58,8 +60,8 @@ class ContactFieldInput extends React.Component {
           component={getInputComponent(type)}
           className="contact-form__input"
         />
-        {withLabel &&
-          isRenderingLabel && (
+        {withLabel && (
+          <HasValueCondition name={name} otherCondition={hasBeenFocused}>
             <Field
               name={`${name}Label`}
               type="text"
@@ -69,7 +71,8 @@ class ContactFieldInput extends React.Component {
               onFocus={this.onFocus}
               onBlur={this.onSecondaryInputBlur}
             />
-          )}
+          </HasValueCondition>
+        )}
       </div>
     )
   }
@@ -82,6 +85,7 @@ ContactFieldInput.propTypes = {
   labelPlaceholder: PropTypes.string,
   required: PropTypes.bool
 }
+
 ContactFieldInput.defaultProps = {
   withLabel: false,
   required: false,
