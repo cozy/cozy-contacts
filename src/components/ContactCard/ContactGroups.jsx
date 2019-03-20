@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import flow from 'lodash/flow'
 import differenceBy from 'lodash/differenceBy'
 import { Query } from 'cozy-client'
-import { Alerter } from 'cozy-ui/transpiled/react'
+import { Alerter, Spinner } from 'cozy-ui/transpiled/react'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import { fullContactPropTypes } from '../ContactPropTypes'
@@ -12,7 +12,6 @@ import withContactsMutations from '../../connections/allContacts'
 import withGroupsMutations, {
   allGroupsQuery
 } from '../../connections/allGroups'
-import SpinnerContact from '../Components/Spinner'
 import { checkIfGroupAlreadyExists } from '../ContactGroups/helpers/groups'
 import container from './ContactGroupsContainer'
 
@@ -72,7 +71,7 @@ export class ContactGroupsClass extends React.Component {
       .filter(value => value)
 
     return (
-      <div className="contact-card-identity__groups">
+      <div className="u-flex-shrink-0 u-m-0">
         <ContactGroupManager
           contactGroups={userGroups}
           allGroups={allGroups}
@@ -80,13 +79,6 @@ export class ContactGroupsClass extends React.Component {
           createGroup={this.createGroup}
           deleteGroup={this.deleteGroup}
         />
-        <ol className="contact-groups-list">
-          {userGroups.map(group => (
-            <li key={group._id} className="contact-groups-list__tag u-ellipsis">
-              {group.name}
-            </li>
-          ))}
-        </ol>
       </div>
     )
   }
@@ -114,7 +106,7 @@ const ConnectedContactGroups = ({ contact }) => {
         if (fetchStatus === 'loaded') {
           return <ContactGroups contact={contact} allGroups={allGroups} />
         } else {
-          return <SpinnerContact />
+          return <Spinner />
         }
       }}
     </Query>

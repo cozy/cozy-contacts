@@ -11,7 +11,7 @@ import { Query } from 'cozy-client'
 import flag, { FlagSwitcher } from 'cozy-flags'
 
 import { IconSprite } from 'cozy-ui/transpiled/react'
-import 'cozy-ui/transpiled/stylesheet.css'
+import 'cozy-ui/transpiled/react/stylesheet.css'
 
 import withContactsMutations from '../connections/allContacts'
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
