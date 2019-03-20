@@ -1,23 +1,26 @@
 import React from 'react'
 import { Avatar } from 'cozy-ui/transpiled/react'
+import withBreakpoints from 'cozy-ui/react/helpers/withBreakpoints'
 import { fullContactPropTypes } from '../ContactPropTypes'
-import ContactGroups from './ContactGroups'
 import { getFullContactName, getInitials } from '../../helpers/contacts'
 
-const ContactIdentity = ({ contact }) => (
-  <div className="contact-card-identity">
-    <Avatar text={getInitials(contact.name).toUpperCase()} size="medium" />
-    <div className="contact-card-identity__infos">
-      <h1 className="contact-card-identity__title">
+const ContactIdentity = ({ contact, breakpoints: { isMobile } }) => {
+  return (
+    <div className="u-flex u-flex-items-center u-flex-column-s u-flex-justify-start-s">
+      <Avatar
+        text={getInitials(contact.name).toUpperCase()}
+        size={isMobile ? 'small' : 'medium'}
+        className="u-mb-half-s u-flex-shrink-0"
+      />
+      <h1 className="u-title-h1 u-mv-0 u-mh-1 u-mb-half-s">
         {getFullContactName(contact.name)}
       </h1>
-      <ContactGroups contact={contact} />
     </div>
-  </div>
-)
+  )
+}
 
 ContactIdentity.propTypes = {
   contact: fullContactPropTypes.isRequired
 }
 
-export default ContactIdentity
+export default withBreakpoints()(ContactIdentity)

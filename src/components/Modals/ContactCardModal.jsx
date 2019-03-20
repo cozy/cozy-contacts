@@ -14,6 +14,7 @@ import ContactCard from '../ContactCard/ContactCard'
 import SpinnerContact from '../Components/Spinner'
 import ContactCardMenu from './ContactCardMenu'
 import ContactFormModal from './ContactFormModal'
+import ContactGroups from '../ContactCard/ContactGroups'
 import { Query } from 'cozy-client'
 
 class ContactCardModal extends React.Component {
@@ -58,10 +59,9 @@ class ContactCardModal extends React.Component {
               {!editMode &&
                 fetchStatus === 'loaded' && (
                   <ContactCard
-                    title={t('contact_info')}
                     contact={contact}
                     renderHeader={children => (
-                      <ModalHeader className="contact-card-modal__header">
+                      <ModalHeader className="u-flex u-flex-items-center u-flex-column-s u-pr-1-half-s">
                         {children}
                         <div>
                           <Button
@@ -72,12 +72,15 @@ class ContactCardModal extends React.Component {
                             onClick={this.toggleEditMode}
                           />
                         </div>
-                        <ContactCardMenu
-                          deleteAction={{
-                            label: t('delete'),
-                            action: this.toggleConfirmDeleteModal
-                          }}
-                        />
+                        <div className="u-flex u-flex-row u-ml-auto u-ml-0-s">
+                          <ContactGroups contact={contact} />
+                          <ContactCardMenu
+                            deleteAction={{
+                              label: t('delete'),
+                              action: this.toggleConfirmDeleteModal
+                            }}
+                          />
+                        </div>
                       </ModalHeader>
                     )}
                     renderBody={children => (

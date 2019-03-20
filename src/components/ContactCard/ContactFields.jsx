@@ -15,8 +15,8 @@ import IconPhone from '../../assets/icons/phone-number.svg'
 
 const ContactFields = ({ fields, title }) => (
   <div>
-    {title && <h3 className="contact-fields-title">{title}</h3>}
-    <ol className="contact-field-list">
+    {title && <h3 className="u-title-h2 u-mt-1-half u-mb-1">{title}</h3>}
+    <ol className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s">
       {fields.filter(field => field.values.length > 0).map((field, index) => (
         <li key={index}>
           <ContactField type={field.type} values={field.values} />
@@ -37,8 +37,8 @@ ContactFields.propTypes = {
 }
 
 const ContactField = ({ type, values }) => (
-  <div className="contact-field">
-    <div className="contact-field-icon">
+  <div className="u-flex u-mt-half">
+    <div className="u-mr-1 u-fz-large">
       <Icon icon={getIcon(type)} color={palette['coolGrey']} />
     </div>
     <div>
@@ -59,10 +59,10 @@ const FieldValue = ({ type, value, t, f }) => {
   const label = value.type || value.label || null
 
   return (
-    <div className="contact-field-value">
+    <div className="u-mb-half u-breakword u-fz-medium">
       {renderedValue}
-      {label && <span className="contact-field-separator">·</span>}
-      {label && <span className="contact-field-label">{label}</span>}
+      {label && <span className="u-ph-half u-dn-s">·</span>}
+      {label && <span className="u-fz-small u-coolgrey u-db-s">{label}</span>}
     </div>
   )
 }
@@ -133,22 +133,34 @@ const LocationLink = ({ value, t }) => {
   const osmUrl = 'https://nominatim.openstreetmap.org/search?format=html&q='
   let url = `${osmUrl}${encodeURI(location)}`
   return (
-    <a href={url} target="_blank" rel="noopener noreferrer">
+    <a href={url} className="u-link" target="_blank" rel="noopener noreferrer">
       {location}
     </a>
   )
 }
 
 const EmailLink = ({ address }) => {
-  return <a href={`mailto:${address}`}>{address}</a>
+  return (
+    <a href={`mailto:${address}`} className="u-link">
+      {address}
+    </a>
+  )
 }
 
 const PhoneLink = ({ number }) => {
-  return <a href={`tel:${number}`}>{number}</a>
+  return (
+    <a href={`tel:${number}`} className="u-link">
+      {number}
+    </a>
+  )
 }
 
 const CozyValue = ({ url }) => {
-  return <a href={url}>{url}</a>
+  return (
+    <a href={url} className="u-link">
+      {url}
+    </a>
+  )
 }
 
 const DefaultValue = ({ value }) => {

@@ -14,23 +14,23 @@ const ACCOUNTS_MAPPING = {
 }
 
 const ContactAccounts = ({ accounts, t }) => (
-  <div className="contact-accounts">
-    <h3 className="contact-fields-title">
+  <div>
+    <h3 className="u-title-h2 u-mt-1-half u-mb-1">
       {t('associated_accounts', {
         smart_count: accounts.length
       })}
     </h3>
-    <ol className="contact-field-list">
+    <ol className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s">
       {accounts.map(account => {
         const { icon, label } = ACCOUNTS_MAPPING[account.type]
         return (
           <li key={account.id}>
-            <div className="contact-field">
-              <div className="contact-field-icon">
+            <div className="u-flex u-mt-1 u-mb-half">
+              <div className="u-mr-1">
                 <Icon icon={icon} />
               </div>
               <div>
-                <div className="contact-field-value">
+                <div className="u-mb-half u-breakword">
                   <Text>{label}</Text>
                   <Caption>{account.name}</Caption>
                 </div>

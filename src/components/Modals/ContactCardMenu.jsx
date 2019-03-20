@@ -6,7 +6,7 @@ import { Icon, Menu, MenuItem, Button } from 'cozy-ui/transpiled/react'
 const ContactCardMenu = ({ deleteAction }) => (
   <Menu
     position="right"
-    className="contact-card-modal__menu"
+    className="u-mr-half"
     component={
       <Button
         theme="secondary"
@@ -15,6 +15,7 @@ const ContactCardMenu = ({ deleteAction }) => (
         className="fix-c-btn"
         iconOnly
         label={deleteAction.label}
+        size="small"
       />
     }
   >
