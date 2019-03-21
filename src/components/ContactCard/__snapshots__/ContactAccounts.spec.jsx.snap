@@ -1,23 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContactAccounts component should render a list of contact accounts 1`] = `
-<div
-  className="contact-accounts"
->
+<div>
   <h3
-    className="contact-fields-title"
+    className="u-title-h2 u-mt-1-half u-mb-1"
   >
     Account linked to this contact
   </h3>
   <ol
-    className="contact-field-list"
+    className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s"
   >
     <li>
       <div
-        className="contact-field"
+        className="u-flex u-mt-1 u-mb-half"
       >
         <div
-          className="contact-field-icon"
+          className="u-mr-1"
         >
           <svg
             className="styles__icon___23x3R"
@@ -32,7 +30,7 @@ exports[`ContactAccounts component should render a list of contact accounts 1`] 
         </div>
         <div>
           <div
-            className="contact-field-value"
+            className="u-mb-half u-breakword"
           >
             <div
               className="styles__u-text___2UfQa"

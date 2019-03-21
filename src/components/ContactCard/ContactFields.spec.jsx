@@ -22,7 +22,7 @@ describe('ContactFields', () => {
       <ContactFields fields={fields} title={title} />
     )
     const contactFields = mount(contactFieldsInstance)
-    const titleNode = contactFields.find('h3.contact-fields-title')
+    const titleNode = contactFields.find('h3')
     expect(titleNode.length).toEqual(1)
     expect(titleNode.text()).toEqual(title)
   })
