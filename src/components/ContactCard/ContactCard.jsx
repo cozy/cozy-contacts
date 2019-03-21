@@ -32,7 +32,7 @@ const ContactCard = ({ t, contact, renderHeader, renderBody }) => {
   const activeContactAccounts = getConnectedAccounts(contact)
 
   return (
-    <div>
+    <>
       {renderHeader(<ContactIdentity contact={contact} />)}
       {renderBody(
         <>
@@ -57,7 +57,7 @@ const ContactCard = ({ t, contact, renderHeader, renderBody }) => {
           ) : null}
         </>
       )}
-    </div>
+    </>
   )
 }
 
