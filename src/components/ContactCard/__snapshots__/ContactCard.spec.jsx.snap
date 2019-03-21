@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContactCard should match snapshot 1`] = `
-<div>
+Array [
   <div
-    className="contact-card-identity"
+    className="u-flex u-flex-items-center u-flex-column-s u-flex-justify-start-s"
   >
     <div
-      className="styles__c-avatar___PpDI-"
+      className="styles__c-avatar___PpDI- u-mb-half-s u-flex-shrink-0"
       style={
         Object {
           "backgroundColor": "var(--weirdGreen)",
@@ -21,40 +21,32 @@ exports[`ContactCard should match snapshot 1`] = `
         RW
       </span>
     </div>
-    <div
-      className="contact-card-identity__infos"
+    <h1
+      className="u-title-h1 u-mv-0 u-mh-1 u-mb-half-s"
     >
-      <h1
-        className="contact-card-identity__title"
-      >
-        Rikki  White
-      </h1>
-      <div
-        className="spinner"
-      >
-        <div
-          className="styles__c-spinner___1snK7 styles__c-spinner--middle___RwyII styles__c-spinner--blue___1BMPR styles__c-spinner--medium___1_GL8"
-        >
-          
-        </div>
-      </div>
-    </div>
-  </div>
+      Rikki  White
+    </h1>
+  </div>,
+  <div
+    className="styles__c-spinner___1snK7 styles__c-spinner--blue___1BMPR styles__c-spinner--medium___1_GL8"
+  >
+    
+  </div>,
   <div>
     <h3
-      className="contact-fields-title"
+      className="u-title-h2 u-mt-1-half u-mb-1"
     >
-      title
+      Contact informations
     </h3>
     <ol
-      className="contact-field-list"
+      className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s"
     >
       <li>
         <div
-          className="contact-field"
+          className="u-flex u-mt-half"
         >
           <div
-            className="contact-field-icon"
+            className="u-mr-1 u-fz-large"
           >
             <svg
               className="styles__icon___23x3R"
@@ -73,18 +65,20 @@ exports[`ContactCard should match snapshot 1`] = `
           </div>
           <div>
             <div
-              className="contact-field-value"
+              className="u-mb-half u-breakword u-fz-medium"
             >
               <a
+                className="u-link"
                 href="tel:+33 (1)9 14 02 28 31"
               >
                 +33 (1)9 14 02 28 31
               </a>
             </div>
             <div
-              className="contact-field-value"
+              className="u-mb-half u-breakword u-fz-medium"
             >
               <a
+                className="u-link"
                 href="tel:+33 (2)3 99 53 65 21"
               >
                 +33 (2)3 99 53 65 21
@@ -95,10 +89,10 @@ exports[`ContactCard should match snapshot 1`] = `
       </li>
       <li>
         <div
-          className="contact-field"
+          className="u-flex u-mt-half"
         >
           <div
-            className="contact-field-icon"
+            className="u-mr-1 u-fz-large"
           >
             <svg
               className="styles__icon___23x3R"
@@ -117,18 +111,20 @@ exports[`ContactCard should match snapshot 1`] = `
           </div>
           <div>
             <div
-              className="contact-field-value"
+              className="u-mb-half u-breakword u-fz-medium"
             >
               <a
+                className="u-link"
                 href="mailto:rikki.white@celmax.name"
               >
                 rikki.white@celmax.name
               </a>
             </div>
             <div
-              className="contact-field-value"
+              className="u-mb-half u-breakword u-fz-medium"
             >
               <a
+                className="u-link"
                 href="mailto:eleanore.fennell@thermolock.name"
               >
                 eleanore.fennell@thermolock.name
@@ -139,10 +135,10 @@ exports[`ContactCard should match snapshot 1`] = `
       </li>
       <li>
         <div
-          className="contact-field"
+          className="u-flex u-mt-half"
         >
           <div
-            className="contact-field-icon"
+            className="u-mr-1 u-fz-large"
           >
             <svg
               className="styles__icon___23x3R"
@@ -161,9 +157,10 @@ exports[`ContactCard should match snapshot 1`] = `
           </div>
           <div>
             <div
-              className="contact-field-value"
+              className="u-mb-half u-breakword u-fz-medium"
             >
               <a
+                className="u-link"
                 href="https://nominatim.openstreetmap.org/search?format=html&q=48%20Fuller%20Road%2006635%20Stafford%20%20Solomon%20Islands"
                 rel="noopener noreferrer"
                 target="_blank"
@@ -176,10 +173,10 @@ exports[`ContactCard should match snapshot 1`] = `
       </li>
       <li>
         <div
-          className="contact-field"
+          className="u-flex u-mt-half"
         >
           <div
-            className="contact-field-icon"
+            className="u-mr-1 u-fz-large"
           >
             <svg
               className="styles__icon___23x3R"
@@ -198,7 +195,7 @@ exports[`ContactCard should match snapshot 1`] = `
           </div>
           <div>
             <div
-              className="contact-field-value"
+              className="u-mb-half u-breakword u-fz-medium"
             >
               1998-6-3
             </div>
@@ -207,10 +204,10 @@ exports[`ContactCard should match snapshot 1`] = `
       </li>
       <li>
         <div
-          className="contact-field"
+          className="u-flex u-mt-half"
         >
           <div
-            className="contact-field-icon"
+            className="u-mr-1 u-fz-large"
           >
             <svg
               className="styles__icon___23x3R"
@@ -229,7 +226,7 @@ exports[`ContactCard should match snapshot 1`] = `
           </div>
           <div>
             <div
-              className="contact-field-value"
+              className="u-mb-half u-breakword u-fz-medium"
             >
               unsupportedField
             </div>
@@ -237,8 +234,8 @@ exports[`ContactCard should match snapshot 1`] = `
         </div>
       </li>
     </ol>
-  </div>
-</div>
+  </div>,
+]
 `;
 
 exports[`ContactCard should match snapshot with accounts 1`] = `

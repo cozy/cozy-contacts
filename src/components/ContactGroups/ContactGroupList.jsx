@@ -31,7 +31,8 @@ export class ContactGroupsList extends React.Component {
 
 ContactGroupsList.propTypes = {
   contact: PropTypes.object.isRequired,
-  allGroups: PropTypes.array.isRequired
+  allGroups: PropTypes.array.isRequired,
+  title: PropTypes.string
 }
 
 export default ContactGroupsList
