@@ -4,6 +4,8 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Text, Caption } from 'cozy-ui/transpiled/react/Text'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 
+import FieldsTitle from '../Components/FieldsTitle'
+import FieldsList from '../Components/FieldsList'
 import IconGoogle from '../../assets/icons/connect-google.svg'
 
 const ACCOUNTS_MAPPING = {
@@ -15,12 +17,10 @@ const ACCOUNTS_MAPPING = {
 
 const ContactAccounts = ({ accounts, t }) => (
   <div>
-    <h3 className="u-title-h2 u-mt-1-half u-mb-1">
-      {t('associated_accounts', {
-        smart_count: accounts.length
-      })}
-    </h3>
-    <ol className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s">
+    <FieldsTitle
+      title={t('associated_accounts', { smart_count: accounts.length })}
+    />
+    <FieldsList>
       {accounts.map(account => {
         const { icon, label } = ACCOUNTS_MAPPING[account.type]
         return (
@@ -39,7 +39,7 @@ const ContactAccounts = ({ accounts, t }) => (
           </li>
         )
       })}
-    </ol>
+    </FieldsList>
   </div>
 )
 

@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import FieldsTitle from '../Components/FieldsTitle'
+
 export class ContactGroupsList extends React.Component {
   render() {
     const { contact, allGroups, title } = this.props
@@ -11,7 +13,7 @@ export class ContactGroupsList extends React.Component {
 
     return (
       <div className="u-mb-2">
-        {title && <h3 className="u-title-h2 u-mt-1-half u-mb-1">{title}</h3>}
+        {title && <FieldsTitle title={title} />}
         <ol className="u-nolist u-m-0 u-p-0">
           {userGroups.map(group => (
             <li

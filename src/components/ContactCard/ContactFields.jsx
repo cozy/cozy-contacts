@@ -4,6 +4,8 @@ import Icon from 'cozy-ui/transpiled/react/Icon'
 import palette from 'cozy-ui/transpiled/react/palette'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
+import FieldsTitle from '../Components/FieldsTitle'
+import FieldsList from '../Components/FieldsList'
 import IconBirthday from '../../assets/icons/calendar.svg'
 import IconNote from '../../assets/icons/comment.svg'
 import IconCompany from '../../assets/icons/company.svg'
@@ -15,14 +17,14 @@ import IconPhone from '../../assets/icons/phone-number.svg'
 
 const ContactFields = ({ fields, title }) => (
   <div>
-    {title && <h3 className="u-title-h2 u-mt-1-half u-mb-1">{title}</h3>}
-    <ol className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s">
+    {title && <FieldsTitle title={title} />}
+    <FieldsList>
       {fields.filter(field => field.values.length > 0).map((field, index) => (
         <li key={index}>
           <ContactField type={field.type} values={field.values} />
         </li>
       ))}
-    </ol>
+    </FieldsList>
   </div>
 )
 
