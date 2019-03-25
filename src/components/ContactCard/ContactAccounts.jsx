@@ -4,8 +4,8 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Text, Caption } from 'cozy-ui/transpiled/react/Text'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 
-import FieldsTitle from '../Components/FieldsTitle'
-import FieldsList from '../Components/FieldsList'
+import FieldsetTitle from '../Components/FieldsetTitle'
+import Fieldset from '../Components/Fieldset'
 import IconGoogle from '../../assets/icons/connect-google.svg'
 
 const ACCOUNTS_MAPPING = {
@@ -16,11 +16,11 @@ const ACCOUNTS_MAPPING = {
 }
 
 const ContactAccounts = ({ accounts, t }) => (
-  <div>
-    <FieldsTitle
+  <>
+    <FieldsetTitle
       title={t('associated_accounts', { smart_count: accounts.length })}
     />
-    <FieldsList>
+    <Fieldset>
       {accounts.map(account => {
         const { icon, label } = ACCOUNTS_MAPPING[account.type]
         return (
@@ -39,8 +39,8 @@ const ContactAccounts = ({ accounts, t }) => (
           </li>
         )
       })}
-    </FieldsList>
-  </div>
+    </Fieldset>
+  </>
 )
 
 ContactAccounts.propTypes = {

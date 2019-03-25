@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import FieldsTitle from '../Components/FieldsTitle'
+import FieldsetTitle from '../Components/FieldsetTitle'
+import GroupItem from '../Components/GroupItem'
 
 export class ContactGroupsList extends React.Component {
   render() {
@@ -13,15 +14,10 @@ export class ContactGroupsList extends React.Component {
 
     return (
       <div className="u-mb-2">
-        {title && <FieldsTitle title={title} />}
+        {title && <FieldsetTitle title={title} />}
         <ol className="u-nolist u-m-0 u-p-0">
           {userGroups.map(group => (
-            <li
-              key={group._id}
-              className="u-dib u-slateGrey u-fz-small u-p-half u-mr-half u-w-auto u-maw-4 u-bg-paleGrey u-ellipsis"
-            >
-              {group.name}
-            </li>
+            <GroupItem key={group._id}>{group.name}</GroupItem>
           ))}
         </ol>
       </div>
