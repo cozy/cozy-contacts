@@ -1,6 +1,6 @@
 import React from 'react'
 import { Avatar } from 'cozy-ui/transpiled/react'
-import withBreakpoints from 'cozy-ui/react/helpers/withBreakpoints'
+import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
 import { fullContactPropTypes } from '../ContactPropTypes'
 import { getFullContactName, getInitials } from '../../helpers/contacts'
 
