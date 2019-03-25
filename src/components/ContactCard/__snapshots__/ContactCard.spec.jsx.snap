@@ -28,9 +28,16 @@ Array [
     </h1>
   </div>,
   <div
-    className="styles__c-spinner___1snK7 styles__c-spinner--blue___1BMPR styles__c-spinner--medium___1_GL8"
+    className="u-mb-2"
   >
-    
+    <h3
+      className="u-title-h2 u-mt-1-half u-mb-1"
+    >
+      Groups
+    </h3>
+    <ol
+      className="u-nolist u-m-0 u-p-0"
+    />
   </div>,
   <div>
     <h3
@@ -266,9 +273,16 @@ Array [
     </h1>
   </div>,
   <div
-    className="styles__c-spinner___1snK7 styles__c-spinner--blue___1BMPR styles__c-spinner--medium___1_GL8"
+    className="u-mb-2"
   >
-    
+    <h3
+      className="u-title-h2 u-mt-1-half u-mb-1"
+    >
+      Groups
+    </h3>
+    <ol
+      className="u-nolist u-m-0 u-p-0"
+    />
   </div>,
   <div>
     <h3

@@ -2,16 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import flow from 'lodash/flow'
 import differenceBy from 'lodash/differenceBy'
-import { Query } from 'cozy-client'
-import { Alerter, Spinner } from 'cozy-ui/transpiled/react'
+import { Alerter } from 'cozy-ui/transpiled/react'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import { fullContactPropTypes } from '../ContactPropTypes'
 import ContactGroupManager from '../ContactGroups/ContactGroupManager'
 import withContactsMutations from '../../connections/allContacts'
-import withGroupsMutations, {
-  allGroupsQuery
-} from '../../connections/allGroups'
+import withGroupsMutations from '../../connections/allGroups'
 import { checkIfGroupAlreadyExists } from '../ContactGroups/helpers/groups'
 import container from './ContactGroupsContainer'
 
@@ -99,22 +96,9 @@ ContactGroupsClass.propTypes = {
   t: PropTypes.func.isRequired
 }
 
-const ConnectedContactGroups = ({ contact }) => {
-  return (
-    <Query query={allGroupsQuery}>
-      {({ data: allGroups, fetchStatus }) => {
-        if (fetchStatus === 'loaded') {
-          return <ContactGroups contact={contact} allGroups={allGroups} />
-        } else {
-          return <Spinner />
-        }
-      }}
-    </Query>
-  )
-}
-
-ConnectedContactGroups.propTypes = {
+ContactGroups.propTypes = {
   contact: fullContactPropTypes.isRequired
+  /* allGroups: */
 }
 
-export default ConnectedContactGroups
+export default ContactGroups
