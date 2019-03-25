@@ -379,52 +379,50 @@ Array [
       </li>
     </ol>
   </div>,
-  <div>
-    <h3
-      className="u-title-h2 u-mt-1-half u-mb-1"
-    >
-      Account linked to this contact
-    </h3>
-    <ol
-      className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s"
-    >
-      <li>
+  <h3
+    className="u-title-h2 u-mt-1-half u-mb-1"
+  >
+    Account linked to this contact
+  </h3>,
+  <ol
+    className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s"
+  >
+    <li>
+      <div
+        className="u-flex u-mt-1 u-mb-half"
+      >
         <div
-          className="u-flex u-mt-1 u-mb-half"
+          className="u-mr-1"
         >
-          <div
-            className="u-mr-1"
+          <svg
+            className="styles__icon___23x3R"
+            height="16"
+            style={Object {}}
+            width="16"
           >
-            <svg
-              className="styles__icon___23x3R"
-              height="16"
-              style={Object {}}
-              width="16"
-            >
-              <use
-                xlinkHref="#icon-0"
-              />
-            </svg>
-          </div>
-          <div>
+            <use
+              xlinkHref="#icon-0"
+            />
+          </svg>
+        </div>
+        <div>
+          <div
+            className="u-mb-half u-breakword"
+          >
             <div
-              className="u-mb-half u-breakword"
+              className="styles__u-text___2UfQa"
             >
-              <div
-                className="styles__u-text___2UfQa"
-              >
-                Google
-              </div>
-              <div
-                className="styles__u-caption___1VRxy"
-              >
-                john.doe@gmail.com
-              </div>
+              Google
+            </div>
+            <div
+              className="styles__u-caption___1VRxy"
+            >
+              john.doe@gmail.com
             </div>
           </div>
         </div>
-      </li>
-    </ol>
-  </div>,
+      </div>
+    </li>
+  </ol>,
 ]
 `;
