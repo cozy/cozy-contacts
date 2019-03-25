@@ -1,9 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Query } from 'cozy-client'
-import { allGroupsQuery } from '../../connections/allGroups'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
-import { Spinner } from 'cozy-ui/transpiled/react'
 import ContactIdentity from './ContactIdentity'
 import ContactGroupsList from '../ContactGroups/ContactGroupList'
 import ContactFields from './ContactFields'
@@ -19,7 +16,8 @@ import {
 } from '../../helpers/contacts'
 import ContactAccounts from './ContactAccounts'
 
-const ContactCard = ({ t, contact, renderHeader, renderBody }) => {
+const ContactCard = props => {
+  const { t, contact, renderHeader, renderBody, allGroups } = props
   const fields = getFieldListFrom(contact)
   const filteredFields = filterFieldList(fields)
   const groupedFields = groupUnsupportedFields(
@@ -33,24 +31,17 @@ const ContactCard = ({ t, contact, renderHeader, renderBody }) => {
 
   return (
     <>
-      {renderHeader(<ContactIdentity contact={contact} />)}
+      {renderHeader(
+        <ContactIdentity contact={contact} allGroups={allGroups} />
+      )}
       {renderBody(
         <>
-          <Query query={allGroupsQuery}>
-            {({ data: allGroups, fetchStatus }) => {
-              if (fetchStatus === 'loaded') {
-                return (
-                  <ContactGroupsList
-                    contact={contact}
-                    allGroups={allGroups}
-                    title={t('contact_group')}
-                  />
-                )
-              } else {
-                return <Spinner />
-              }
-            }}
-          </Query>
+          <ContactGroupsList
+            contact={contact}
+            allGroups={allGroups}
+            title={t('contact_group')}
+          />
+
           <ContactFields fields={normalizedFields} title={t('contact_info')} />
           {activeContactAccounts.length > 0 ? (
             <ContactAccounts accounts={activeContactAccounts} />
