@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ContactCard should match snapshot 1`] = `
+exports[`ContactCard should match snapshot when groups are available but no one is linked to the specified contact 1`] = `
 Array [
   <div
     className="u-flex u-flex-items-center u-flex-column-s u-flex-justify-start-s"
@@ -26,18 +26,6 @@ Array [
     >
       Rikki  White
     </h1>
-  </div>,
-  <div
-    className="u-mb-2"
-  >
-    <h3
-      className="u-title-h2 u-mt-1-half u-mb-1"
-    >
-      Groups
-    </h3>
-    <ol
-      className="u-nolist u-m-0 u-p-0"
-    />
   </div>,
   <div>
     <h3
@@ -245,7 +233,7 @@ Array [
 ]
 `;
 
-exports[`ContactCard should match snapshot with accounts 1`] = `
+exports[`ContactCard should match snapshot with accounts and groups 1`] = `
 Array [
   <div
     className="u-flex u-flex-items-center u-flex-column-s u-flex-justify-start-s"
@@ -282,7 +270,197 @@ Array [
     </h3>
     <ol
       className="u-nolist u-m-0 u-p-0"
-    />
+    >
+      <li
+        className="u-dib u-slateGrey u-fz-small u-p-half u-mr-half u-w-auto u-maw-4 u-bg-paleGrey u-ellipsis"
+      >
+        toto
+      </li>
+    </ol>
+  </div>,
+  <div>
+    <h3
+      className="u-title-h2 u-mt-1-half u-mb-1"
+    >
+      Contact informations
+    </h3>
+    <ol
+      className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s"
+    >
+      <li>
+        <div
+          className="u-flex u-mt-half"
+        >
+          <div
+            className="u-mr-1 u-fz-large"
+          >
+            <svg
+              className="styles__icon___23x3R"
+              height="16"
+              style={
+                Object {
+                  "fill": "var(--coolGrey)",
+                }
+              }
+              width="16"
+            >
+              <use
+                xlinkHref="#icon-0"
+              />
+            </svg>
+          </div>
+          <div>
+            <div
+              className="u-mb-half u-breakword u-fz-medium"
+            >
+              <a
+                className="u-link"
+                href="mailto:rikki.white@celmax.name"
+              >
+                rikki.white@celmax.name
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div
+          className="u-flex u-mt-half"
+        >
+          <div
+            className="u-mr-1 u-fz-large"
+          >
+            <svg
+              className="styles__icon___23x3R"
+              height="16"
+              style={
+                Object {
+                  "fill": "var(--coolGrey)",
+                }
+              }
+              width="16"
+            >
+              <use
+                xlinkHref="#icon-0"
+              />
+            </svg>
+          </div>
+          <div>
+            <div
+              className="u-mb-half u-breakword u-fz-medium"
+            >
+              1998-6-3
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div
+          className="u-flex u-mt-half"
+        >
+          <div
+            className="u-mr-1 u-fz-large"
+          >
+            <svg
+              className="styles__icon___23x3R"
+              height="16"
+              style={
+                Object {
+                  "fill": "var(--coolGrey)",
+                }
+              }
+              width="16"
+            >
+              <use
+                xlinkHref="#icon-0"
+              />
+            </svg>
+          </div>
+          <div>
+            <div
+              className="u-mb-half u-breakword u-fz-medium"
+            >
+              unsupportedField
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>,
+  <h3
+    className="u-title-h2 u-mt-1-half u-mb-1"
+  >
+    Account linked to this contact
+  </h3>,
+  <ol
+    className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s"
+  >
+    <li>
+      <div
+        className="u-flex u-mt-1 u-mb-half"
+      >
+        <div
+          className="u-mr-1"
+        >
+          <svg
+            className="styles__icon___23x3R"
+            height="16"
+            style={Object {}}
+            width="16"
+          >
+            <use
+              xlinkHref="#icon-0"
+            />
+          </svg>
+        </div>
+        <div>
+          <div
+            className="u-mb-half u-breakword"
+          >
+            <div
+              className="styles__u-text___2UfQa"
+            >
+              Google
+            </div>
+            <div
+              className="styles__u-caption___1VRxy"
+            >
+              john.doe@gmail.com
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ol>,
+]
+`;
+
+exports[`ContactCard should match snapshot with accounts without groups 1`] = `
+Array [
+  <div
+    className="u-flex u-flex-items-center u-flex-column-s u-flex-justify-start-s"
+  >
+    <div
+      className="styles__c-avatar___PpDI- u-mb-half-s u-flex-shrink-0"
+      style={
+        Object {
+          "backgroundColor": "var(--weirdGreen)",
+          "color": "white",
+        }
+      }
+    >
+      
+      <span
+        className="styles__c-avatar-initials___310qC"
+      >
+        RW
+      </span>
+    </div>
+    <h1
+      className="u-title-h1 u-mv-0 u-mh-1 u-mb-half-s"
+    >
+      Rikki  White
+    </h1>
   </div>,
   <div>
     <h3
