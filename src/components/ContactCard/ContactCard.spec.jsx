@@ -51,7 +51,7 @@ describe('ContactCard', () => {
     const tree = renderer
       .create(
         <AppLike>
-          <ContactCard contact={contact} title="title" groups={groups} />
+          <ContactCard contact={contact} groups={groups} />
         </AppLike>
       )
       .toJSON()
@@ -95,7 +95,7 @@ describe('ContactCard', () => {
     const tree = renderer
       .create(
         <AppLike>
-          <ContactCard contact={contact} title="title" groups={groups} />
+          <ContactCard contact={contact} groups={groups} />
         </AppLike>
       )
       .toJSON()

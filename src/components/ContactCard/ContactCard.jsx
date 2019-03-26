@@ -28,7 +28,6 @@ const ContactCard = props => {
   const normalizedFields = makeValuesArray(orderedFields)
 
   const activeContactAccounts = getConnectedAccounts(contact)
-
   return (
     <>
       {renderHeader(
@@ -41,7 +40,6 @@ const ContactCard = props => {
             allGroups={allGroups}
             title={t('contact_group')}
           />
-
           <ContactFields fields={normalizedFields} title={t('contact_info')} />
           {activeContactAccounts.length > 0 ? (
             <ContactAccounts accounts={activeContactAccounts} />
@@ -54,9 +52,9 @@ const ContactCard = props => {
 
 ContactCard.propTypes = {
   contact: fullContactPropTypes.isRequired,
-  title: PropTypes.string.isRequired,
   renderHeader: PropTypes.func,
-  renderBody: PropTypes.func
+  renderBody: PropTypes.func,
+  allGroups: PropTypes.array.isRequired
 }
 
 ContactCard.defaultProps = {
