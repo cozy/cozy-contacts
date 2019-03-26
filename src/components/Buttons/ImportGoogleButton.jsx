@@ -11,6 +11,7 @@ const ImportGoogleButton = props => (
     doctype="io.cozy.apps"
     options={{ slug: 'google' }}
     onComplete={props.onComplete}
+    onDismiss={() => {}}
   >
     <Button
       theme="secondary"
