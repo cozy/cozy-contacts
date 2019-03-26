@@ -97,8 +97,8 @@ ContactGroupsClass.propTypes = {
 }
 
 ContactGroups.propTypes = {
-  contact: fullContactPropTypes.isRequired
-  /* allGroups: */
+  contact: fullContactPropTypes.isRequired,
+  allGroups: PropTypes.array.isRequired
 }
 
 export default ContactGroups
