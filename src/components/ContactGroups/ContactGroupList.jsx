@@ -9,7 +9,7 @@ export const ContactGroupsList = ({ contact, allGroups, title }) => {
     .filter(group => group)
     .map(userGroup => allGroups.find(group => group._id === userGroup._id))
     .filter(value => value)
-
+  if (userGroups.length === 0) return null
   return (
     <div className="u-mb-2">
       {title && <FieldsetTitle title={title} />}
