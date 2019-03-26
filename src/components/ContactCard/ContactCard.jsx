@@ -16,8 +16,7 @@ import {
 } from '../../helpers/contacts'
 import ContactAccounts from './ContactAccounts'
 
-const ContactCard = props => {
-  const { t, contact, renderHeader, renderBody, allGroups } = props
+const ContactCard = ({ t, contact, renderHeader, renderBody, allGroups }) => {
   const fields = getFieldListFrom(contact)
   const filteredFields = filterFieldList(fields)
   const groupedFields = groupUnsupportedFields(
