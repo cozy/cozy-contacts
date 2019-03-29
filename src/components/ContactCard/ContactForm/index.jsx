@@ -81,7 +81,7 @@ const fields = [
 const ContactForm = ({ contact, onCancel, onSubmit, t }) => (
   <Form
     mutators={{ ...arrayMutators }}
-    onSubmit={data => onSubmit(formValuesToContact(data))}
+    onSubmit={data => onSubmit(formValuesToContact(data, contact))}
     initialValues={contactToFormValues(contact, t)}
     render={({ handleSubmit }) => (
       <div>

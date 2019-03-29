@@ -1,4 +1,6 @@
-const formValuesToContact = data => {
+import get from 'lodash/get'
+
+const formValuesToContact = (data, oldContact) => {
   const {
     givenName,
     familyName,
@@ -63,6 +65,7 @@ const formValuesToContact = data => {
       }
     },
     metadata: {
+      ...get(oldContact, 'metadata', {}),
       version: 1,
       cozy: true
     }
