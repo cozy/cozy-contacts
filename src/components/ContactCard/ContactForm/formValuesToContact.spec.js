@@ -67,7 +67,7 @@ describe('formValuesToContact', () => {
         }
       }
     }
-    const result = formValuesToContact(johnDoeFormValues)
+    const result = formValuesToContact(johnDoeFormValues, null)
     expect(result).toEqual(expected)
   })
 
@@ -115,7 +115,38 @@ describe('formValuesToContact', () => {
       metadata: { version: 1, cozy: true }
     }
 
-    const result = formValuesToContact(formValues)
+    const result = formValuesToContact(formValues, null)
     expect(result).toEqual(expected)
+  })
+
+  it('should not erase metadata.google if it was present in the contact', () => {
+    const oldContact = {
+      metadata: {
+        google: {
+          metadata: {
+            sources: [
+              {
+                etag: 'bb0d4f0c-ac79-4519-8873-e0445b378fd7'
+              }
+            ]
+          }
+        }
+      }
+    }
+    const expectedMetadata = {
+      cozy: true,
+      google: {
+        metadata: {
+          sources: [
+            {
+              etag: 'bb0d4f0c-ac79-4519-8873-e0445b378fd7'
+            }
+          ]
+        }
+      },
+      version: 1
+    }
+    const result = formValuesToContact(johnDoeFormValues, oldContact)
+    expect(result.metadata).toEqual(expectedMetadata)
   })
 })
