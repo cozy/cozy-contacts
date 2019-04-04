@@ -35,15 +35,15 @@
     },
     "contacts": {
       "type": "io.cozy.contacts",
-      "methods": ["ALL"]
+      "verbs": ["ALL"]
     },
     "contactsgroups": {
       "type": "io.cozy.contacts.groups",
-      "methods": ["ALL"]
+      "verbs": ["ALL"]
     },
     "contactsAccounts": {
       "type": "io.cozy.contacts.accounts",
-      "methods": ["ALL"]
+      "verbs": ["ALL"]
     }
   },
   "intents": [
