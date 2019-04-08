@@ -15,7 +15,7 @@ import SpinnerContact from '../Components/Spinner'
 import ContactCardMenu from './ContactCardMenu'
 import ContactFormModal from './ContactFormModal'
 import ContactGroups from '../ContactCard/ContactGroups'
-import { queryConnect } from 'cozy-client'
+import { Query } from 'cozy-client'
 import { flow } from 'lodash'
 class ContactCardModal extends React.Component {
   state = {
@@ -43,81 +43,114 @@ class ContactCardModal extends React.Component {
   }
 
   render() {
-    const { onClose, t, contactQuery, allGroupsQuery } = this.props
+    const { onClose, t, id } = this.props
     const { editMode, shouldDisplayConfirmDeleteModal } = this.state
 
     return (
       <Modal into="body" dismissAction={onClose} size="xlarge" mobileFullscreen>
-        {contactQuery.fetchStatus !== 'loaded' &&
-          allGroupsQuery.fetchStatus !== 'loaded' && (
-            <SpinnerContact size="xxlarge" />
-          )}
-        {!editMode &&
-          contactQuery.fetchStatus === 'loaded' &&
-          allGroupsQuery.fetchStatus === 'loaded' && (
-            <ContactCard
-              contact={contactQuery.data}
-              allGroups={allGroupsQuery.data}
-              renderHeader={children => (
-                <ModalHeader className="u-flex u-flex-items-center u-flex-column-s u-pr-1-half-s">
-                  {children}
-                  <div>
-                    <Button
-                      type="button"
-                      theme="secondary"
-                      icon="pen"
-                      label={t('edit')}
-                      onClick={this.toggleEditMode}
-                    />
-                  </div>
-                  <div className="u-flex u-flex-row u-ml-auto u-ml-0-s">
-                    <ContactGroups
-                      contact={contactQuery.data}
-                      allGroups={allGroupsQuery.data}
-                    />
-                    <ContactCardMenu
-                      deleteAction={{
-                        label: t('delete'),
-                        action: this.toggleConfirmDeleteModal
-                      }}
-                    />
-                  </div>
-                </ModalHeader>
-              )}
-              renderBody={children => <ModalContent>{children}</ModalContent>}
-            />
-          )}
+        <Query query={client => client.get(DOCTYPE_CONTACTS, id)}>
+          {({ data: contact, fetchStatus: fetchStatusContact }) => {
+            return (
+              <Query
+                query={client =>
+                  client
+                    .find('io.cozy.contacts.groups')
+                    .where({
+                      trashed: { $exists: false }
+                    })
+                    .sortBy([{ name: 'asc' }])
+                    .indexFields(['name'])
+                }
+              >
+                {({ data: allGroups, fetchStatus: allGroupsContactStatus }) => {
+                  if (
+                    fetchStatusContact !== 'loaded' ||
+                    allGroupsContactStatus !== 'loaded'
+                  ) {
+                    return <SpinnerContact size="xxlarge" />
+                  }
+                  if (
+                    !editMode &&
+                    fetchStatusContact === 'loaded' &&
+                    allGroupsContactStatus === 'loaded'
+                  ) {
+                    return (
+                      <ContactCard
+                        contact={contact}
+                        allGroups={allGroups}
+                        renderHeader={children => (
+                          <ModalHeader className="u-flex u-flex-items-center u-flex-column-s u-pr-1-half-s">
+                            {children}
+                            <div>
+                              <Button
+                                type="button"
+                                theme="secondary"
+                                icon="pen"
+                                label={t('edit')}
+                                onClick={this.toggleEditMode}
+                              />
+                            </div>
+                            <div className="u-flex u-flex-row u-ml-auto u-ml-0-s">
+                              <ContactGroups
+                                contact={contact}
+                                allGroups={allGroups}
+                              />
+                              <ContactCardMenu
+                                deleteAction={{
+                                  label: t('delete'),
+                                  action: this.toggleConfirmDeleteModal
+                                }}
+                              />
+                            </div>
+                          </ModalHeader>
+                        )}
+                        renderBody={children => (
+                          <ModalContent>{children}</ModalContent>
+                        )}
+                      />
+                    )
+                  }
 
-        {editMode &&
-          contactQuery.fetchStatus === 'loaded' && (
-            <ContactFormModal
-              contact={contactQuery.data}
-              onClose={this.toggleEditMode}
-              title={t('edit-contact')}
-              afterMutation={this.toggleEditMode}
-            />
-          )}
+                  if (editMode && fetchStatusContact === 'loaded') {
+                    return (
+                      <ContactFormModal
+                        contact={contact}
+                        onClose={this.toggleEditMode}
+                        title={t('edit-contact')}
+                        afterMutation={this.toggleEditMode}
+                      />
+                    )
+                  }
 
-        {shouldDisplayConfirmDeleteModal && (
-          <Modal
-            into="body"
-            title={t('delete-confirmation.title', { smart_count: 1 })}
-            description={t(
-              getConnectedAccounts(contactQuery.data).length > 0
-                ? 'delete-confirmation.description-google'
-                : 'delete-confirmation.description-simple',
-              {
-                smart_count: 1
-              }
-            )}
-            primaryText={t('delete')}
-            primaryType="danger"
-            primaryAction={() => this.deleteContact(contactQuery.data)}
-            secondaryText={t('cancel')}
-            secondaryAction={this.toggleConfirmDeleteModal}
-            dismissAction={this.toggleConfirmDeleteModal}
-          />
-        )}
+                  if (shouldDisplayConfirmDeleteModal) {
+                    return (
+                      <Modal
+                        into="body"
+                        title={t('delete-confirmation.title', {
+                          smart_count: 1
+                        })}
+                        description={t(
+                          getConnectedAccounts(contact).length > 0
+                            ? 'delete-confirmation.description-google'
+                            : 'delete-confirmation.description-simple',
+                          {
+                            smart_count: 1
+                          }
+                        )}
+                        primaryText={t('delete')}
+                        primaryType="danger"
+                        primaryAction={() => this.deleteContact(contact)}
+                        secondaryText={t('cancel')}
+                        secondaryAction={this.toggleConfirmDeleteModal}
+                        dismissAction={this.toggleConfirmDeleteModal}
+                      />
+                    )
+                  }
+                }}
+              </Query>
+            )
+          }}
+        </Query>
       </Modal>
     )
   }
@@ -133,21 +166,5 @@ ContactCardModal.propTypes = {
 
 export default flow(
   withContactsMutations,
-  queryConnect({
-    contactQuery: props => ({
-      query: client => client.get(DOCTYPE_CONTACTS, props.id)
-    }),
-    allGroupsQuery: {
-      query: client =>
-        client
-          .find('io.cozy.contacts.groups')
-          .where({
-            trashed: { $exists: false }
-          })
-          .sortBy([{ name: 'asc' }])
-          .indexFields(['name'])
-    }
-  }),
-
   translate()
 )(ContactCardModal)
