@@ -12,7 +12,7 @@ const ContactIdentity = ({ contact, breakpoints: { isMobile } }) => {
         size={isMobile ? 'small' : 'medium'}
         className="u-mb-half-s u-flex-shrink-0"
       />
-      <h1 className="u-title-h1 u-mv-0 u-mh-1 u-mb-half-s">
+      <h1 className="u-title-h1 u-mv-0 u-mh-1 u-mb-half-s u-ta-center">
         {getFullContactName(contact.name)}
       </h1>
     </div>
