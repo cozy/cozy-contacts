@@ -54,7 +54,7 @@ const formValuesToContact = (data, oldContact) => {
             primary: true
           }
         ]
-      : '',
+      : [],
     company: company || '',
     birthday,
     note: note || '',

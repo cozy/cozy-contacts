@@ -1304,7 +1304,7 @@ Object {
   "address": Array [],
   "birthday": undefined,
   "company": "",
-  "cozy": "",
+  "cozy": Array [],
   "email": Array [],
   "fullname": "",
   "metadata": Object {

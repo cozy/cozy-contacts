@@ -107,7 +107,7 @@ describe('formValuesToContact', () => {
       email: [],
       address: [],
       phone: [],
-      cozy: '',
+      cozy: [],
       company: '',
       birthday: null,
       note: '',
