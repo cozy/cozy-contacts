@@ -9,7 +9,6 @@ import SelectBox, { ActionsOption, components } from 'cozy-ui/react/SelectBox'
 import Overlay from 'cozy-ui/transpiled/react/Overlay'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import palette from 'cozy-ui/transpiled/react/palette'
-
 import IconGroups from '../../assets/icons/groups.svg'
 import IconDown from '../../assets/icons/down.svg'
 import ContactGroupCreation from './ContactGroupCreation'
@@ -107,6 +106,15 @@ CustomOption.propTypes = {
   })
 }
 
+const SelectContainerComponent = props => {
+  return (
+    <components.SelectContainer
+      {...props}
+      className={classNames(props.className, 'react-select__custom__container')}
+    />
+  )
+}
+
 class ContactGroupManager extends Component {
   state = {
     menuIsOpen: false
@@ -167,7 +175,8 @@ class ContactGroupManager extends Component {
             Option: CustomOption,
             Control: MainButtonControl,
             Menu: MenuWithFixedComponent,
-            MenuList: CustomMenuList
+            MenuList: CustomMenuList,
+            SelectContainer: SelectContainerComponent
           }}
           createGroup={createGroup}
           deleteGroup={deleteGroup}
