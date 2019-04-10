@@ -15,7 +15,11 @@
     "url": "https://cozy.io"
   },
   "default_locale": "en",
-  "screenshots": ["screenshots/fr/screenshot01.png", "screenshots/fr/screenshot02.png", "screenshots/fr/screenshot03.png"],
+  "screenshots": [
+    "screenshots/fr/screenshot01.png",
+    "screenshots/fr/screenshot02.png",
+    "screenshots/fr/screenshot03.png"
+  ],
   "routes": {
     "/": {
       "folder": "/",
@@ -31,7 +35,9 @@
   "permissions": {
     "apps": {
       "type": "io.cozy.apps",
-      "verbs": ["GET"]
+      "verbs": [
+        "GET"
+      ]
     },
     "contacts": {
       "type": "io.cozy.contacts",
@@ -49,12 +55,16 @@
   "intents": [
     {
       "action": "PICK",
-      "type": ["io.cozy.contacts"],
+      "type": [
+        "io.cozy.contacts"
+      ],
       "href": "/services"
     },
     {
       "action": "CREATE",
-      "type": ["io.cozy.contacts"],
+      "type": [
+        "io.cozy.contacts"
+      ],
       "href": "/services"
     }
   ]
