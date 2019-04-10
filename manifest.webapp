@@ -7,7 +7,7 @@
   "type": "webapp",
   "description": "Contact manager for Cozy Cloud",
   "category": "cozy",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "licence": "AGPL-3.0",
   "source": "https://github.com/cozy/cozy-contacts.git@build",
   "developer": {
@@ -41,15 +41,21 @@
     },
     "contacts": {
       "type": "io.cozy.contacts",
-      "verbs": ["ALL"]
+      "verbs": [
+        "ALL"
+      ]
     },
     "contactsgroups": {
       "type": "io.cozy.contacts.groups",
-      "verbs": ["ALL"]
+      "verbs": [
+        "ALL"
+      ]
     },
     "contactsAccounts": {
       "type": "io.cozy.contacts.accounts",
-      "verbs": ["ALL"]
+      "verbs": [
+        "ALL"
+      ]
     }
   },
   "intents": [
