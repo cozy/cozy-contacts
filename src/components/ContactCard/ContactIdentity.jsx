@@ -1,4 +1,5 @@
 import React from 'react'
+import cx from 'classnames'
 import { Avatar } from 'cozy-ui/transpiled/react'
 import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
 import { fullContactPropTypes } from '../ContactPropTypes'
@@ -12,7 +13,11 @@ const ContactIdentity = ({ contact, breakpoints: { isMobile } }) => {
         size={isMobile ? 'small' : 'medium'}
         className="u-mb-half-s u-flex-shrink-0"
       />
-      <h1 className="u-title-h1 u-mv-0 u-mh-1 u-mb-half-s u-ta-center">
+      <h1
+        className={cx('u-title-h1 u-mv-0 u-mh-1 u-mb-half-s', {
+          'u-ta-center': isMobile
+        })}
+      >
         {getFullContactName(contact.name)}
       </h1>
     </div>
