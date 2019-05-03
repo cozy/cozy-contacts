@@ -92,12 +92,12 @@ function shouldDeleteContact(contact, contactsAccounts) {
 
 async function doMigrations(dryRun, api, logWithInstance) {
   const contacts = await api.fetchAll(DOCTYPE_CONTACTS)
-  const contactsAccounts = await api.fetchAll(DOCTYPE_CONTACTS_ACCOUNT)
   if (contacts.length === 0) {
     logWithInstance('No contacts, nothing to migrate')
     return
   }
 
+  const contactsAccounts = await api.fetchAll(DOCTYPE_CONTACTS_ACCOUNT)
   const result = {
     cozy: 0,
     cozyEmpty: 0,
