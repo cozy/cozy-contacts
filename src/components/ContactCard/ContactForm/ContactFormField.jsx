@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classnames from 'classnames'
 import { FieldArray } from 'react-final-form-arrays'
+import Label from 'cozy-ui/transpiled/react/Label'
 import Button from 'cozy-ui/transpiled/react/Button'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import palette from 'cozy-ui/transpiled/react/palette'
@@ -9,17 +11,22 @@ class ContactFormField extends React.Component {
   render() {
     const { name, icon, label, isArray, renderInput, t } = this.props
     return (
-      <div className="contact-form__field">
-        <label className="contact-form__label">
-          {icon && (
-            <Icon
-              icon={icon}
-              color={palette['coolGrey']}
-              className="contact-form__icon"
-            />
+      <div className="contact-form-field">
+        <Label
+          block={false}
+          className={classnames(
+            'contact-form__label',
+            'u-inline-flex',
+            'u-flex-items-center',
+            'u-mr-half',
+            { 'u-pl-0-s u-pl-2': !icon }
           )}
-          {label}
-        </label>
+        >
+          {icon && (
+            <Icon icon={icon} color={palette['coolGrey']} className="u-mr-1" />
+          )}
+          <span className="u-w-4">{label}</span>
+        </Label>
         {isArray ? (
           <FieldArray name={name}>
             {({ fields }) => (
@@ -35,7 +42,7 @@ class ContactFormField extends React.Component {
                 )}
                 <Button
                   icon="plus"
-                  theme="text"
+                  subtle
                   type="button"
                   onClick={() => this.addField(fields)}
                   label={t(`addLabel.${name}`)}
@@ -63,22 +70,20 @@ class ContactFormField extends React.Component {
   renderArrayField = (fields, index, nameWithIndex, name, renderInput) => {
     const hasValue = fields.value[index] && fields.value[index][name]
     return (
-      <div className="contact-form__meta-wrapper" key={nameWithIndex}>
+      <div key={nameWithIndex}>
         {renderInput(`${nameWithIndex}.${name}`)}
 
         {hasValue && (
-          <button
+          <Button
             type="button"
+            theme="secondary"
+            label="delete"
+            iconOnly
+            round
+            icon={'cross-small'}
             onClick={() => this.removeField(fields, index)}
-            className="contact-form__meta-button contact-form__meta-button--remove"
-          >
-            <Icon
-              icon={'cross-small'}
-              color={palette['coolGrey']}
-              width="12"
-              height="12"
-            />
-          </button>
+            className="contact-form__meta-button u-ml-1"
+          />
         )}
       </div>
     )

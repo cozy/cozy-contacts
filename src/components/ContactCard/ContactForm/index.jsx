@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-final-form'
 import arrayMutators from 'final-form-arrays'
-import { Button } from 'cozy-ui/transpiled/react/Button'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import IconEmail from '../../../assets/icons/email.svg'
@@ -13,6 +12,7 @@ import IconCompany from '../../../assets/icons/company.svg'
 import IconBirthday from '../../../assets/icons/calendar.svg'
 import IconNote from '../../../assets/icons/comment.svg'
 
+import FieldsetTitle from '../../Components/FieldsetTitle'
 import ContactFormField from './ContactFormField'
 import ContactFieldInput from '../ContactFieldInput'
 import { fullContactPropTypes } from '../../ContactPropTypes'
@@ -22,7 +22,7 @@ import formValuesToContact from './formValuesToContact'
 const fields = [
   {
     name: 'givenName',
-    icon: null,
+    icon: 'people',
     type: 'text'
   },
   {
@@ -78,48 +78,38 @@ const fields = [
   }
 ]
 
-const ContactForm = ({ contact, onCancel, onSubmit, t }) => (
+const ContactForm = ({ contact, onSubmit, t }) => (
   <Form
     mutators={{ ...arrayMutators }}
     onSubmit={data => onSubmit(formValuesToContact(data, contact))}
     initialValues={contactToFormValues(contact, t)}
     render={({ handleSubmit }) => (
       <div>
-        <form onSubmit={handleSubmit} className="contact-form">
-          <div className="contact-form__fields">
-            {fields.map(({ name, icon, type, required, hasLabel, isArray }) => (
-              <ContactFormField
-                key={name}
-                name={name}
-                icon={icon}
-                label={t(`field.${name}`)}
-                t={t}
-                isArray={isArray}
-                renderInput={inputName => (
-                  <ContactFieldInput
-                    name={inputName}
-                    type={type}
-                    placeholder={t(`placeholder.${name}`)}
-                    required={required}
-                    withLabel={hasLabel}
-                    labelPlaceholder={t('placeholder.label')}
-                  />
-                )}
-              />
-            ))}
-          </div>
-
-          <div className="contact-form__footer">
-            <div>
-              <Button
-                type="button"
-                theme="secondary"
-                label={t('cancel')}
-                onClick={onCancel}
-              />
-              <Button type="submit" label={t('save')} />
-            </div>
-          </div>
+        <form
+          onSubmit={handleSubmit}
+          className="u-flex u-flex-column u-flex-items-stretch u-flex-justify-start"
+        >
+          <FieldsetTitle title={t('contact_info')} />
+          {fields.map(({ name, icon, type, required, hasLabel, isArray }) => (
+            <ContactFormField
+              key={name}
+              name={name}
+              icon={icon}
+              label={t(`field.${name}`)}
+              t={t}
+              isArray={isArray}
+              renderInput={inputName => (
+                <ContactFieldInput
+                  name={inputName}
+                  type={type}
+                  placeholder={t(`placeholder.${name}`)}
+                  required={required}
+                  withLabel={hasLabel}
+                  labelPlaceholder={t('placeholder.label')}
+                />
+              )}
+            />
+          ))}
         </form>
       </div>
     )}
@@ -129,7 +119,6 @@ const ContactForm = ({ contact, onCancel, onSubmit, t }) => (
 ContactForm.propTypes = {
   contact: fullContactPropTypes,
   onSubmit: PropTypes.func.isRequired,
-  onCancel: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired
 }
 

@@ -2,9 +2,11 @@ import React from 'react'
 import { PropTypes } from 'prop-types'
 import Modal, {
   ModalHeader,
-  ModalDescription
+  ModalDescription,
+  ModalFooter
 } from 'cozy-ui/transpiled/react/Modal'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
+import Button from 'cozy-ui/transpiled/react/Button'
 
 import ContactForm from '../ContactCard/ContactForm'
 import { fullContactPropTypes } from '../ContactPropTypes'
@@ -25,7 +27,7 @@ const ContactFormModal = ({
     size="xlarge"
   >
     <ModalHeader>{title}</ModalHeader>
-    <ModalDescription className="u-mt-half">
+    <ModalDescription>
       <ContactForm
         contact={contact}
         onSubmit={async formData => {
@@ -46,6 +48,10 @@ const ContactFormModal = ({
         onCancel={onClose}
       />
     </ModalDescription>
+    <ModalFooter className="u-ta-right">
+      <Button type="button" theme="secondary" label="cancel" />
+      <Button type="submit" label="save" />
+    </ModalFooter>
   </Modal>
 )
 
