@@ -3,31 +3,56 @@
 exports[`ContactForm should fill form with contact data 1`] = `
 <div>
   <form
-    className="contact-form"
+    className="u-flex u-flex-column u-flex-items-stretch u-flex-justify-start"
+    id="contact-form"
     onSubmit={[Function]}
   >
-    <div
-      className="contact-form__fields"
+    <h3
+      className="u-title-h2 u-mt-1-half u-mb-1"
     >
-      <div
-        className="contact-form__field"
+      Contact informations
+    </h3>
+    <div
+      className="contact-form-field"
+    >
+      <label
+        className="styles__c-label___o4ozG contact-form__label u-inline-flex u-flex-items-center u-mr-half"
+        htmlFor="field_10"
       >
-        <label
-          className="contact-form__label"
+        <svg
+          className="u-mr-1 styles__icon___23x3R"
+          height="16"
+          style={
+            Object {
+              "fill": "var(--coolGrey)",
+            }
+          }
+          width="16"
+        >
+          <use
+            xlinkHref="#people"
+          />
+        </svg>
+        <span
+          className="u-w-4"
         >
           Firstname
-        </label>
+        </span>
+      </label>
+      <div
+        className="contact-form__inputs-wrapper"
+      >
         <div
-          className="contact-form__inputs-wrapper"
+          className="contact-form__input-wrapper"
         >
           <div
-            className="contact-form__input-wrapper"
+            className="contact-form__input-container"
           >
             <input
-              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
               data-valid={true}
+              id="field_10"
               name="givenName"
-              onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               placeholder=""
@@ -38,25 +63,34 @@ exports[`ContactForm should fill form with contact data 1`] = `
           </div>
         </div>
       </div>
-      <div
-        className="contact-form__field"
+    </div>
+    <div
+      className="contact-form-field"
+    >
+      <label
+        className="styles__c-label___o4ozG contact-form__label u-inline-flex u-flex-items-center u-mr-half u-pl-0-s u-pl-2"
+        htmlFor="field_11"
       >
-        <label
-          className="contact-form__label"
+        <span
+          className="u-w-4"
         >
           Lastname
-        </label>
+        </span>
+      </label>
+      <div
+        className="contact-form__inputs-wrapper"
+      >
         <div
-          className="contact-form__inputs-wrapper"
+          className="contact-form__input-wrapper"
         >
           <div
-            className="contact-form__input-wrapper"
+            className="contact-form__input-container"
           >
             <input
-              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
               data-valid={true}
+              id="field_11"
               name="familyName"
-              onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               placeholder=""
@@ -67,42 +101,49 @@ exports[`ContactForm should fill form with contact data 1`] = `
           </div>
         </div>
       </div>
-      <div
-        className="contact-form__field"
+    </div>
+    <div
+      className="contact-form-field"
+    >
+      <label
+        className="styles__c-label___o4ozG contact-form__label u-inline-flex u-flex-items-center u-mr-half"
+        htmlFor="field_12"
       >
-        <label
-          className="contact-form__label"
-        >
-          <svg
-            className="contact-form__icon styles__icon___23x3R"
-            height="16"
-            style={
-              Object {
-                "fill": "var(--coolGrey)",
-              }
+        <svg
+          className="u-mr-1 styles__icon___23x3R"
+          height="16"
+          style={
+            Object {
+              "fill": "var(--coolGrey)",
             }
-            width="16"
-          >
-            <use
-              xlinkHref="#icon-0"
-            />
-          </svg>
-          Phone
-        </label>
-        <div
-          className="contact-form__inputs-wrapper"
+          }
+          width="16"
         >
+          <use
+            xlinkHref="#icon-0"
+          />
+        </svg>
+        <span
+          className="u-w-4"
+        >
+          Phone
+        </span>
+      </label>
+      <div
+        className="contact-form__inputs-wrapper"
+      >
+        <div>
           <div
-            className="contact-form__meta-wrapper"
+            className="contact-form__input-wrapper"
           >
             <div
-              className="contact-form__input-wrapper"
+              className="contact-form__input-container"
             >
               <input
-                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
                 data-valid={true}
+                id="field_12"
                 name="phone[0].phone"
-                onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
                 placeholder=""
@@ -110,11 +151,14 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 type="tel"
                 value="+33 (2)0 90 00 54 04"
               />
+            </div>
+            <div
+              className="contact-form__input-container u-mt-half-s u-pl-half u-pl-0-s"
+            >
               <input
-                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__label-input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
                 data-valid={true}
                 name="phone[0].phoneLabel"
-                onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
                 placeholder="Label"
@@ -122,38 +166,46 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 value=""
               />
             </div>
-            <button
-              className="contact-form__meta-button contact-form__meta-button--remove"
-              onClick={[Function]}
-              type="button"
-            >
+          </div>
+          <button
+            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button u-ml-1"
+            onClick={[Function]}
+            title="delete"
+            type="button"
+          >
+            <span>
               <svg
+                aria-hidden={true}
                 className="styles__icon___23x3R"
-                height="12"
-                style={
-                  Object {
-                    "fill": "var(--coolGrey)",
-                  }
-                }
-                width="12"
+                focusable="false"
+                height="16"
+                style={Object {}}
+                width="16"
               >
                 <use
                   xlinkHref="#cross-small"
                 />
               </svg>
-            </button>
-          </div>
+              <span
+                className="u-visuallyhidden"
+              >
+                delete
+              </span>
+            </span>
+          </button>
+        </div>
+        <div>
           <div
-            className="contact-form__meta-wrapper"
+            className="contact-form__input-wrapper"
           >
             <div
-              className="contact-form__input-wrapper"
+              className="contact-form__input-container"
             >
               <input
-                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
                 data-valid={true}
+                id="field_12"
                 name="phone[1].phone"
-                onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
                 placeholder=""
@@ -161,11 +213,14 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 type="tel"
                 value="+33 6 77 11 22 33"
               />
+            </div>
+            <div
+              className="contact-form__input-container u-mt-half-s u-pl-half u-pl-0-s"
+            >
               <input
-                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__label-input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
                 data-valid={true}
                 name="phone[1].phoneLabel"
-                onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
                 placeholder="Label"
@@ -173,31 +228,11 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 value=""
               />
             </div>
-            <button
-              className="contact-form__meta-button contact-form__meta-button--remove"
-              onClick={[Function]}
-              type="button"
-            >
-              <svg
-                className="styles__icon___23x3R"
-                height="12"
-                style={
-                  Object {
-                    "fill": "var(--coolGrey)",
-                  }
-                }
-                width="12"
-              >
-                <use
-                  xlinkHref="#cross-small"
-                />
-              </svg>
-            </button>
           </div>
           <button
-            className="styles__c-btn___-2Vnj styles__c-btn--text___2Vp-2"
+            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button u-ml-1"
             onClick={[Function]}
-            title={null}
+            title="delete"
             type="button"
           >
             <span>
@@ -210,54 +245,87 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 width="16"
               >
                 <use
-                  xlinkHref="#plus"
+                  xlinkHref="#cross-small"
                 />
               </svg>
               <span
-                className={null}
+                className="u-visuallyhidden"
               >
-                Add a phone
+                delete
               </span>
             </span>
           </button>
         </div>
+        <button
+          className="styles__c-btn___-2Vnj styles__c-btn--subtle___OknKf"
+          onClick={[Function]}
+          title={null}
+          type="button"
+        >
+          <span>
+            <svg
+              aria-hidden={true}
+              className="styles__icon___23x3R"
+              focusable="false"
+              height="16"
+              style={Object {}}
+              width="16"
+            >
+              <use
+                xlinkHref="#plus"
+              />
+            </svg>
+            <span
+              className={null}
+            >
+              Add a phone
+            </span>
+          </span>
+        </button>
       </div>
-      <div
-        className="contact-form__field"
+    </div>
+    <div
+      className="contact-form-field"
+    >
+      <label
+        className="styles__c-label___o4ozG contact-form__label u-inline-flex u-flex-items-center u-mr-half"
+        htmlFor="field_13"
       >
-        <label
-          className="contact-form__label"
-        >
-          <svg
-            className="contact-form__icon styles__icon___23x3R"
-            height="16"
-            style={
-              Object {
-                "fill": "var(--coolGrey)",
-              }
+        <svg
+          className="u-mr-1 styles__icon___23x3R"
+          height="16"
+          style={
+            Object {
+              "fill": "var(--coolGrey)",
             }
-            width="16"
-          >
-            <use
-              xlinkHref="#icon-0"
-            />
-          </svg>
-          Email
-        </label>
-        <div
-          className="contact-form__inputs-wrapper"
+          }
+          width="16"
         >
+          <use
+            xlinkHref="#icon-0"
+          />
+        </svg>
+        <span
+          className="u-w-4"
+        >
+          Email
+        </span>
+      </label>
+      <div
+        className="contact-form__inputs-wrapper"
+      >
+        <div>
           <div
-            className="contact-form__meta-wrapper"
+            className="contact-form__input-wrapper"
           >
             <div
-              className="contact-form__input-wrapper"
+              className="contact-form__input-container"
             >
               <input
-                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
                 data-valid={true}
+                id="field_13"
                 name="email[0].email"
-                onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
                 placeholder=""
@@ -265,11 +333,14 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 type="email"
                 value="john.doe@cozycloud.cc"
               />
+            </div>
+            <div
+              className="contact-form__input-container u-mt-half-s u-pl-half u-pl-0-s"
+            >
               <input
-                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__label-input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
                 data-valid={true}
                 name="email[0].emailLabel"
-                onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
                 placeholder="Label"
@@ -277,38 +348,46 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 value=""
               />
             </div>
-            <button
-              className="contact-form__meta-button contact-form__meta-button--remove"
-              onClick={[Function]}
-              type="button"
-            >
+          </div>
+          <button
+            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button u-ml-1"
+            onClick={[Function]}
+            title="delete"
+            type="button"
+          >
+            <span>
               <svg
+                aria-hidden={true}
                 className="styles__icon___23x3R"
-                height="12"
-                style={
-                  Object {
-                    "fill": "var(--coolGrey)",
-                  }
-                }
-                width="12"
+                focusable="false"
+                height="16"
+                style={Object {}}
+                width="16"
               >
                 <use
                   xlinkHref="#cross-small"
                 />
               </svg>
-            </button>
-          </div>
+              <span
+                className="u-visuallyhidden"
+              >
+                delete
+              </span>
+            </span>
+          </button>
+        </div>
+        <div>
           <div
-            className="contact-form__meta-wrapper"
+            className="contact-form__input-wrapper"
           >
             <div
-              className="contact-form__input-wrapper"
+              className="contact-form__input-container"
             >
               <input
-                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
                 data-valid={true}
+                id="field_13"
                 name="email[1].email"
-                onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
                 placeholder=""
@@ -316,11 +395,14 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 type="email"
                 value="john.doe@posteo.net"
               />
+            </div>
+            <div
+              className="contact-form__input-container u-mt-half-s u-pl-half u-pl-0-s"
+            >
               <input
-                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__label-input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
                 data-valid={true}
                 name="email[1].emailLabel"
-                onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
                 placeholder="Label"
@@ -328,31 +410,11 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 value="personal"
               />
             </div>
-            <button
-              className="contact-form__meta-button contact-form__meta-button--remove"
-              onClick={[Function]}
-              type="button"
-            >
-              <svg
-                className="styles__icon___23x3R"
-                height="12"
-                style={
-                  Object {
-                    "fill": "var(--coolGrey)",
-                  }
-                }
-                width="12"
-              >
-                <use
-                  xlinkHref="#cross-small"
-                />
-              </svg>
-            </button>
           </div>
           <button
-            className="styles__c-btn___-2Vnj styles__c-btn--text___2Vp-2"
+            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button u-ml-1"
             onClick={[Function]}
-            title={null}
+            title="delete"
             type="button"
           >
             <span>
@@ -365,54 +427,87 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 width="16"
               >
                 <use
-                  xlinkHref="#plus"
+                  xlinkHref="#cross-small"
                 />
               </svg>
               <span
-                className={null}
+                className="u-visuallyhidden"
               >
-                Add an email
+                delete
               </span>
             </span>
           </button>
         </div>
+        <button
+          className="styles__c-btn___-2Vnj styles__c-btn--subtle___OknKf"
+          onClick={[Function]}
+          title={null}
+          type="button"
+        >
+          <span>
+            <svg
+              aria-hidden={true}
+              className="styles__icon___23x3R"
+              focusable="false"
+              height="16"
+              style={Object {}}
+              width="16"
+            >
+              <use
+                xlinkHref="#plus"
+              />
+            </svg>
+            <span
+              className={null}
+            >
+              Add an email
+            </span>
+          </span>
+        </button>
       </div>
-      <div
-        className="contact-form__field"
+    </div>
+    <div
+      className="contact-form-field"
+    >
+      <label
+        className="styles__c-label___o4ozG contact-form__label u-inline-flex u-flex-items-center u-mr-half"
+        htmlFor="field_14"
       >
-        <label
-          className="contact-form__label"
-        >
-          <svg
-            className="contact-form__icon styles__icon___23x3R"
-            height="16"
-            style={
-              Object {
-                "fill": "var(--coolGrey)",
-              }
+        <svg
+          className="u-mr-1 styles__icon___23x3R"
+          height="16"
+          style={
+            Object {
+              "fill": "var(--coolGrey)",
             }
-            width="16"
-          >
-            <use
-              xlinkHref="#icon-0"
-            />
-          </svg>
-          Address
-        </label>
-        <div
-          className="contact-form__inputs-wrapper"
+          }
+          width="16"
         >
+          <use
+            xlinkHref="#icon-0"
+          />
+        </svg>
+        <span
+          className="u-w-4"
+        >
+          Address
+        </span>
+      </label>
+      <div
+        className="contact-form__inputs-wrapper"
+      >
+        <div>
           <div
-            className="contact-form__meta-wrapper"
+            className="contact-form__input-wrapper"
           >
             <div
-              className="contact-form__input-wrapper"
+              className="contact-form__input-container"
             >
               <input
-                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
                 data-valid={true}
+                id="field_14"
                 name="address[0].address"
-                onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
                 placeholder=""
@@ -420,11 +515,14 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 type="text"
                 value="94 Hinton Road 05034 Fresno, Singapore"
               />
+            </div>
+            <div
+              className="contact-form__input-container u-mt-half-s u-pl-half u-pl-0-s"
+            >
               <input
-                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__label-input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
                 data-valid={true}
                 name="address[0].addressLabel"
-                onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
                 placeholder="Label"
@@ -432,82 +530,11 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 value="Home"
               />
             </div>
-            <button
-              className="contact-form__meta-button contact-form__meta-button--remove"
-              onClick={[Function]}
-              type="button"
-            >
-              <svg
-                className="styles__icon___23x3R"
-                height="12"
-                style={
-                  Object {
-                    "fill": "var(--coolGrey)",
-                  }
-                }
-                width="12"
-              >
-                <use
-                  xlinkHref="#cross-small"
-                />
-              </svg>
-            </button>
-          </div>
-          <div
-            className="contact-form__meta-wrapper"
-          >
-            <div
-              className="contact-form__input-wrapper"
-            >
-              <input
-                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
-                data-valid={true}
-                name="address[1].address"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                placeholder=""
-                required={false}
-                type="text"
-                value="426 Runolfsson Knolls 84573 Port Easter  Cocos (Keeling) Islands"
-              />
-              <input
-                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__label-input"
-                data-valid={true}
-                name="address[1].addressLabel"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                placeholder="Label"
-                type="text"
-                value="Work"
-              />
-            </div>
-            <button
-              className="contact-form__meta-button contact-form__meta-button--remove"
-              onClick={[Function]}
-              type="button"
-            >
-              <svg
-                className="styles__icon___23x3R"
-                height="12"
-                style={
-                  Object {
-                    "fill": "var(--coolGrey)",
-                  }
-                }
-                width="12"
-              >
-                <use
-                  xlinkHref="#cross-small"
-                />
-              </svg>
-            </button>
           </div>
           <button
-            className="styles__c-btn___-2Vnj styles__c-btn--text___2Vp-2"
+            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button u-ml-1"
             onClick={[Function]}
-            title={null}
+            title="delete"
             type="button"
           >
             <span>
@@ -520,51 +547,148 @@ exports[`ContactForm should fill form with contact data 1`] = `
                 width="16"
               >
                 <use
-                  xlinkHref="#plus"
+                  xlinkHref="#cross-small"
                 />
               </svg>
               <span
-                className={null}
+                className="u-visuallyhidden"
               >
-                Add an address
+                delete
               </span>
             </span>
           </button>
         </div>
-      </div>
-      <div
-        className="contact-form__field"
-      >
-        <label
-          className="contact-form__label"
-        >
-          <svg
-            className="contact-form__icon styles__icon___23x3R"
-            height="16"
-            style={
-              Object {
-                "fill": "var(--coolGrey)",
-              }
-            }
-            width="16"
-          >
-            <use
-              xlinkHref="#icon-0"
-            />
-          </svg>
-          Cozy URL
-        </label>
-        <div
-          className="contact-form__inputs-wrapper"
-        >
+        <div>
           <div
             className="contact-form__input-wrapper"
           >
+            <div
+              className="contact-form__input-container"
+            >
+              <input
+                className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
+                data-valid={true}
+                id="field_14"
+                name="address[1].address"
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder=""
+                required={false}
+                type="text"
+                value="426 Runolfsson Knolls 84573 Port Easter  Cocos (Keeling) Islands"
+              />
+            </div>
+            <div
+              className="contact-form__input-container u-mt-half-s u-pl-half u-pl-0-s"
+            >
+              <input
+                className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
+                data-valid={true}
+                name="address[1].addressLabel"
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="Label"
+                type="text"
+                value="Work"
+              />
+            </div>
+          </div>
+          <button
+            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button u-ml-1"
+            onClick={[Function]}
+            title="delete"
+            type="button"
+          >
+            <span>
+              <svg
+                aria-hidden={true}
+                className="styles__icon___23x3R"
+                focusable="false"
+                height="16"
+                style={Object {}}
+                width="16"
+              >
+                <use
+                  xlinkHref="#cross-small"
+                />
+              </svg>
+              <span
+                className="u-visuallyhidden"
+              >
+                delete
+              </span>
+            </span>
+          </button>
+        </div>
+        <button
+          className="styles__c-btn___-2Vnj styles__c-btn--subtle___OknKf"
+          onClick={[Function]}
+          title={null}
+          type="button"
+        >
+          <span>
+            <svg
+              aria-hidden={true}
+              className="styles__icon___23x3R"
+              focusable="false"
+              height="16"
+              style={Object {}}
+              width="16"
+            >
+              <use
+                xlinkHref="#plus"
+              />
+            </svg>
+            <span
+              className={null}
+            >
+              Add an address
+            </span>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="contact-form-field"
+    >
+      <label
+        className="styles__c-label___o4ozG contact-form__label u-inline-flex u-flex-items-center u-mr-half"
+        htmlFor="field_15"
+      >
+        <svg
+          className="u-mr-1 styles__icon___23x3R"
+          height="16"
+          style={
+            Object {
+              "fill": "var(--coolGrey)",
+            }
+          }
+          width="16"
+        >
+          <use
+            xlinkHref="#icon-0"
+          />
+        </svg>
+        <span
+          className="u-w-4"
+        >
+          Cozy URL
+        </span>
+      </label>
+      <div
+        className="contact-form__inputs-wrapper"
+      >
+        <div
+          className="contact-form__input-wrapper"
+        >
+          <div
+            className="contact-form__input-container"
+          >
             <input
-              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
               data-valid={true}
+              id="field_15"
               name="cozy"
-              onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               placeholder=""
@@ -572,11 +696,14 @@ exports[`ContactForm should fill form with contact data 1`] = `
               type="url"
               value="https://johndoe.mycozy.cloud"
             />
+          </div>
+          <div
+            className="contact-form__input-container u-mt-half-s u-pl-half u-pl-0-s"
+          >
             <input
-              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__label-input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
               data-valid={true}
               name="cozyLabel"
-              onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               placeholder="Label"
@@ -586,39 +713,48 @@ exports[`ContactForm should fill form with contact data 1`] = `
           </div>
         </div>
       </div>
-      <div
-        className="contact-form__field"
+    </div>
+    <div
+      className="contact-form-field"
+    >
+      <label
+        className="styles__c-label___o4ozG contact-form__label u-inline-flex u-flex-items-center u-mr-half"
+        htmlFor="field_16"
       >
-        <label
-          className="contact-form__label"
-        >
-          <svg
-            className="contact-form__icon styles__icon___23x3R"
-            height="16"
-            style={
-              Object {
-                "fill": "var(--coolGrey)",
-              }
+        <svg
+          className="u-mr-1 styles__icon___23x3R"
+          height="16"
+          style={
+            Object {
+              "fill": "var(--coolGrey)",
             }
-            width="16"
-          >
-            <use
-              xlinkHref="#icon-0"
-            />
-          </svg>
+          }
+          width="16"
+        >
+          <use
+            xlinkHref="#icon-0"
+          />
+        </svg>
+        <span
+          className="u-w-4"
+        >
           Company
-        </label>
+        </span>
+      </label>
+      <div
+        className="contact-form__inputs-wrapper"
+      >
         <div
-          className="contact-form__inputs-wrapper"
+          className="contact-form__input-wrapper"
         >
           <div
-            className="contact-form__input-wrapper"
+            className="contact-form__input-container"
           >
             <input
-              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
               data-valid={true}
+              id="field_16"
               name="company"
-              onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               placeholder=""
@@ -629,39 +765,48 @@ exports[`ContactForm should fill form with contact data 1`] = `
           </div>
         </div>
       </div>
-      <div
-        className="contact-form__field"
+    </div>
+    <div
+      className="contact-form-field"
+    >
+      <label
+        className="styles__c-label___o4ozG contact-form__label u-inline-flex u-flex-items-center u-mr-half"
+        htmlFor="field_17"
       >
-        <label
-          className="contact-form__label"
-        >
-          <svg
-            className="contact-form__icon styles__icon___23x3R"
-            height="16"
-            style={
-              Object {
-                "fill": "var(--coolGrey)",
-              }
+        <svg
+          className="u-mr-1 styles__icon___23x3R"
+          height="16"
+          style={
+            Object {
+              "fill": "var(--coolGrey)",
             }
-            width="16"
-          >
-            <use
-              xlinkHref="#icon-0"
-            />
-          </svg>
+          }
+          width="16"
+        >
+          <use
+            xlinkHref="#icon-0"
+          />
+        </svg>
+        <span
+          className="u-w-4"
+        >
           Birthday
-        </label>
+        </span>
+      </label>
+      <div
+        className="contact-form__inputs-wrapper"
+      >
         <div
-          className="contact-form__inputs-wrapper"
+          className="contact-form__input-wrapper"
         >
           <div
-            className="contact-form__input-wrapper"
+            className="contact-form__input-container"
           >
             <input
-              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
               data-valid={true}
+              id="field_17"
               name="birthday"
-              onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               placeholder=""
@@ -672,39 +817,48 @@ exports[`ContactForm should fill form with contact data 1`] = `
           </div>
         </div>
       </div>
-      <div
-        className="contact-form__field"
+    </div>
+    <div
+      className="contact-form-field"
+    >
+      <label
+        className="styles__c-label___o4ozG contact-form__label u-inline-flex u-flex-items-center u-mr-half"
+        htmlFor="field_18"
       >
-        <label
-          className="contact-form__label"
-        >
-          <svg
-            className="contact-form__icon styles__icon___23x3R"
-            height="16"
-            style={
-              Object {
-                "fill": "var(--coolGrey)",
-              }
+        <svg
+          className="u-mr-1 styles__icon___23x3R"
+          height="16"
+          style={
+            Object {
+              "fill": "var(--coolGrey)",
             }
-            width="16"
-          >
-            <use
-              xlinkHref="#icon-0"
-            />
-          </svg>
+          }
+          width="16"
+        >
+          <use
+            xlinkHref="#icon-0"
+          />
+        </svg>
+        <span
+          className="u-w-4"
+        >
           Notes
-        </label>
+        </span>
+      </label>
+      <div
+        className="contact-form__inputs-wrapper"
+      >
         <div
-          className="contact-form__inputs-wrapper"
+          className="contact-form__input-wrapper"
         >
           <div
-            className="contact-form__input-wrapper"
+            className="contact-form__input-container"
           >
             <textarea
-              className="styles__c-textarea___D7EEH contact-form__input"
+              className="styles__c-textarea___D7EEH styles__c-textarea--medium___T8f3b styles__c-textarea--fullwidth___Ih_mg contact-form__input"
               data-valid={true}
+              id="field_18"
               name="note"
-              onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               placeholder=""
@@ -716,39 +870,6 @@ exports[`ContactForm should fill form with contact data 1`] = `
         </div>
       </div>
     </div>
-    <div
-      className="contact-form__footer"
-    >
-      <div>
-        <button
-          className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N"
-          onClick={[Function]}
-          title={null}
-          type="button"
-        >
-          <span>
-            <span
-              className={null}
-            >
-              Cancel
-            </span>
-          </span>
-        </button>
-        <button
-          className="styles__c-btn___-2Vnj"
-          title={null}
-          type="submit"
-        >
-          <span>
-            <span
-              className={null}
-            >
-              Save
-            </span>
-          </span>
-        </button>
-      </div>
-    </div>
   </form>
 </div>
 `;
@@ -756,31 +877,56 @@ exports[`ContactForm should fill form with contact data 1`] = `
 exports[`ContactForm should match snapshot 1`] = `
 <div>
   <form
-    className="contact-form"
+    className="u-flex u-flex-column u-flex-items-stretch u-flex-justify-start"
+    id="contact-form"
     onSubmit={[Function]}
   >
-    <div
-      className="contact-form__fields"
+    <h3
+      className="u-title-h2 u-mt-1-half u-mb-1"
     >
-      <div
-        className="contact-form__field"
+      Contact informations
+    </h3>
+    <div
+      className="contact-form-field"
+    >
+      <label
+        className="styles__c-label___o4ozG contact-form__label u-inline-flex u-flex-items-center u-mr-half"
+        htmlFor="field_1"
       >
-        <label
-          className="contact-form__label"
+        <svg
+          className="u-mr-1 styles__icon___23x3R"
+          height="16"
+          style={
+            Object {
+              "fill": "var(--coolGrey)",
+            }
+          }
+          width="16"
+        >
+          <use
+            xlinkHref="#people"
+          />
+        </svg>
+        <span
+          className="u-w-4"
         >
           Firstname
-        </label>
+        </span>
+      </label>
+      <div
+        className="contact-form__inputs-wrapper"
+      >
         <div
-          className="contact-form__inputs-wrapper"
+          className="contact-form__input-wrapper"
         >
           <div
-            className="contact-form__input-wrapper"
+            className="contact-form__input-container"
           >
             <input
-              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
               data-valid={true}
+              id="field_1"
               name="givenName"
-              onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               placeholder=""
@@ -791,25 +937,34 @@ exports[`ContactForm should match snapshot 1`] = `
           </div>
         </div>
       </div>
-      <div
-        className="contact-form__field"
+    </div>
+    <div
+      className="contact-form-field"
+    >
+      <label
+        className="styles__c-label___o4ozG contact-form__label u-inline-flex u-flex-items-center u-mr-half u-pl-0-s u-pl-2"
+        htmlFor="field_2"
       >
-        <label
-          className="contact-form__label"
+        <span
+          className="u-w-4"
         >
           Lastname
-        </label>
+        </span>
+      </label>
+      <div
+        className="contact-form__inputs-wrapper"
+      >
         <div
-          className="contact-form__inputs-wrapper"
+          className="contact-form__input-wrapper"
         >
           <div
-            className="contact-form__input-wrapper"
+            className="contact-form__input-container"
           >
             <input
-              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
               data-valid={true}
+              id="field_2"
               name="familyName"
-              onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               placeholder=""
@@ -820,42 +975,49 @@ exports[`ContactForm should match snapshot 1`] = `
           </div>
         </div>
       </div>
-      <div
-        className="contact-form__field"
+    </div>
+    <div
+      className="contact-form-field"
+    >
+      <label
+        className="styles__c-label___o4ozG contact-form__label u-inline-flex u-flex-items-center u-mr-half"
+        htmlFor="field_3"
       >
-        <label
-          className="contact-form__label"
-        >
-          <svg
-            className="contact-form__icon styles__icon___23x3R"
-            height="16"
-            style={
-              Object {
-                "fill": "var(--coolGrey)",
-              }
+        <svg
+          className="u-mr-1 styles__icon___23x3R"
+          height="16"
+          style={
+            Object {
+              "fill": "var(--coolGrey)",
             }
-            width="16"
-          >
-            <use
-              xlinkHref="#icon-0"
-            />
-          </svg>
-          Phone
-        </label>
-        <div
-          className="contact-form__inputs-wrapper"
+          }
+          width="16"
         >
+          <use
+            xlinkHref="#icon-0"
+          />
+        </svg>
+        <span
+          className="u-w-4"
+        >
+          Phone
+        </span>
+      </label>
+      <div
+        className="contact-form__inputs-wrapper"
+      >
+        <div>
           <div
-            className="contact-form__meta-wrapper"
+            className="contact-form__input-wrapper"
           >
             <div
-              className="contact-form__input-wrapper"
+              className="contact-form__input-container"
             >
               <input
-                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
                 data-valid={true}
+                id="field_3"
                 name="phone[0].phone"
-                onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
                 placeholder=""
@@ -865,70 +1027,77 @@ exports[`ContactForm should match snapshot 1`] = `
               />
             </div>
           </div>
-          <button
-            className="styles__c-btn___-2Vnj styles__c-btn--text___2Vp-2"
-            onClick={[Function]}
-            title={null}
-            type="button"
-          >
-            <span>
-              <svg
-                aria-hidden={true}
-                className="styles__icon___23x3R"
-                focusable="false"
-                height="16"
-                style={Object {}}
-                width="16"
-              >
-                <use
-                  xlinkHref="#plus"
-                />
-              </svg>
-              <span
-                className={null}
-              >
-                Add a phone
-              </span>
-            </span>
-          </button>
         </div>
+        <button
+          className="styles__c-btn___-2Vnj styles__c-btn--subtle___OknKf"
+          onClick={[Function]}
+          title={null}
+          type="button"
+        >
+          <span>
+            <svg
+              aria-hidden={true}
+              className="styles__icon___23x3R"
+              focusable="false"
+              height="16"
+              style={Object {}}
+              width="16"
+            >
+              <use
+                xlinkHref="#plus"
+              />
+            </svg>
+            <span
+              className={null}
+            >
+              Add a phone
+            </span>
+          </span>
+        </button>
       </div>
-      <div
-        className="contact-form__field"
+    </div>
+    <div
+      className="contact-form-field"
+    >
+      <label
+        className="styles__c-label___o4ozG contact-form__label u-inline-flex u-flex-items-center u-mr-half"
+        htmlFor="field_4"
       >
-        <label
-          className="contact-form__label"
-        >
-          <svg
-            className="contact-form__icon styles__icon___23x3R"
-            height="16"
-            style={
-              Object {
-                "fill": "var(--coolGrey)",
-              }
+        <svg
+          className="u-mr-1 styles__icon___23x3R"
+          height="16"
+          style={
+            Object {
+              "fill": "var(--coolGrey)",
             }
-            width="16"
-          >
-            <use
-              xlinkHref="#icon-0"
-            />
-          </svg>
-          Email
-        </label>
-        <div
-          className="contact-form__inputs-wrapper"
+          }
+          width="16"
         >
+          <use
+            xlinkHref="#icon-0"
+          />
+        </svg>
+        <span
+          className="u-w-4"
+        >
+          Email
+        </span>
+      </label>
+      <div
+        className="contact-form__inputs-wrapper"
+      >
+        <div>
           <div
-            className="contact-form__meta-wrapper"
+            className="contact-form__input-wrapper"
           >
             <div
-              className="contact-form__input-wrapper"
+              className="contact-form__input-container"
             >
               <input
-                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
                 data-valid={true}
+                id="field_4"
                 name="email[0].email"
-                onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
                 placeholder=""
@@ -938,70 +1107,77 @@ exports[`ContactForm should match snapshot 1`] = `
               />
             </div>
           </div>
-          <button
-            className="styles__c-btn___-2Vnj styles__c-btn--text___2Vp-2"
-            onClick={[Function]}
-            title={null}
-            type="button"
-          >
-            <span>
-              <svg
-                aria-hidden={true}
-                className="styles__icon___23x3R"
-                focusable="false"
-                height="16"
-                style={Object {}}
-                width="16"
-              >
-                <use
-                  xlinkHref="#plus"
-                />
-              </svg>
-              <span
-                className={null}
-              >
-                Add an email
-              </span>
-            </span>
-          </button>
         </div>
+        <button
+          className="styles__c-btn___-2Vnj styles__c-btn--subtle___OknKf"
+          onClick={[Function]}
+          title={null}
+          type="button"
+        >
+          <span>
+            <svg
+              aria-hidden={true}
+              className="styles__icon___23x3R"
+              focusable="false"
+              height="16"
+              style={Object {}}
+              width="16"
+            >
+              <use
+                xlinkHref="#plus"
+              />
+            </svg>
+            <span
+              className={null}
+            >
+              Add an email
+            </span>
+          </span>
+        </button>
       </div>
-      <div
-        className="contact-form__field"
+    </div>
+    <div
+      className="contact-form-field"
+    >
+      <label
+        className="styles__c-label___o4ozG contact-form__label u-inline-flex u-flex-items-center u-mr-half"
+        htmlFor="field_5"
       >
-        <label
-          className="contact-form__label"
-        >
-          <svg
-            className="contact-form__icon styles__icon___23x3R"
-            height="16"
-            style={
-              Object {
-                "fill": "var(--coolGrey)",
-              }
+        <svg
+          className="u-mr-1 styles__icon___23x3R"
+          height="16"
+          style={
+            Object {
+              "fill": "var(--coolGrey)",
             }
-            width="16"
-          >
-            <use
-              xlinkHref="#icon-0"
-            />
-          </svg>
-          Address
-        </label>
-        <div
-          className="contact-form__inputs-wrapper"
+          }
+          width="16"
         >
+          <use
+            xlinkHref="#icon-0"
+          />
+        </svg>
+        <span
+          className="u-w-4"
+        >
+          Address
+        </span>
+      </label>
+      <div
+        className="contact-form__inputs-wrapper"
+      >
+        <div>
           <div
-            className="contact-form__meta-wrapper"
+            className="contact-form__input-wrapper"
           >
             <div
-              className="contact-form__input-wrapper"
+              className="contact-form__input-container"
             >
               <input
-                className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+                className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
                 data-valid={true}
+                id="field_5"
                 name="address[0].address"
-                onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
                 placeholder=""
@@ -1011,67 +1187,76 @@ exports[`ContactForm should match snapshot 1`] = `
               />
             </div>
           </div>
-          <button
-            className="styles__c-btn___-2Vnj styles__c-btn--text___2Vp-2"
-            onClick={[Function]}
-            title={null}
-            type="button"
-          >
-            <span>
-              <svg
-                aria-hidden={true}
-                className="styles__icon___23x3R"
-                focusable="false"
-                height="16"
-                style={Object {}}
-                width="16"
-              >
-                <use
-                  xlinkHref="#plus"
-                />
-              </svg>
-              <span
-                className={null}
-              >
-                Add an address
-              </span>
-            </span>
-          </button>
         </div>
-      </div>
-      <div
-        className="contact-form__field"
-      >
-        <label
-          className="contact-form__label"
+        <button
+          className="styles__c-btn___-2Vnj styles__c-btn--subtle___OknKf"
+          onClick={[Function]}
+          title={null}
+          type="button"
         >
-          <svg
-            className="contact-form__icon styles__icon___23x3R"
-            height="16"
-            style={
-              Object {
-                "fill": "var(--coolGrey)",
-              }
+          <span>
+            <svg
+              aria-hidden={true}
+              className="styles__icon___23x3R"
+              focusable="false"
+              height="16"
+              style={Object {}}
+              width="16"
+            >
+              <use
+                xlinkHref="#plus"
+              />
+            </svg>
+            <span
+              className={null}
+            >
+              Add an address
+            </span>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="contact-form-field"
+    >
+      <label
+        className="styles__c-label___o4ozG contact-form__label u-inline-flex u-flex-items-center u-mr-half"
+        htmlFor="field_6"
+      >
+        <svg
+          className="u-mr-1 styles__icon___23x3R"
+          height="16"
+          style={
+            Object {
+              "fill": "var(--coolGrey)",
             }
-            width="16"
-          >
-            <use
-              xlinkHref="#icon-0"
-            />
-          </svg>
+          }
+          width="16"
+        >
+          <use
+            xlinkHref="#icon-0"
+          />
+        </svg>
+        <span
+          className="u-w-4"
+        >
           Cozy URL
-        </label>
+        </span>
+      </label>
+      <div
+        className="contact-form__inputs-wrapper"
+      >
         <div
-          className="contact-form__inputs-wrapper"
+          className="contact-form__input-wrapper"
         >
           <div
-            className="contact-form__input-wrapper"
+            className="contact-form__input-container"
           >
             <input
-              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
               data-valid={true}
+              id="field_6"
               name="cozy"
-              onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               placeholder=""
@@ -1082,39 +1267,48 @@ exports[`ContactForm should match snapshot 1`] = `
           </div>
         </div>
       </div>
-      <div
-        className="contact-form__field"
+    </div>
+    <div
+      className="contact-form-field"
+    >
+      <label
+        className="styles__c-label___o4ozG contact-form__label u-inline-flex u-flex-items-center u-mr-half"
+        htmlFor="field_7"
       >
-        <label
-          className="contact-form__label"
-        >
-          <svg
-            className="contact-form__icon styles__icon___23x3R"
-            height="16"
-            style={
-              Object {
-                "fill": "var(--coolGrey)",
-              }
+        <svg
+          className="u-mr-1 styles__icon___23x3R"
+          height="16"
+          style={
+            Object {
+              "fill": "var(--coolGrey)",
             }
-            width="16"
-          >
-            <use
-              xlinkHref="#icon-0"
-            />
-          </svg>
+          }
+          width="16"
+        >
+          <use
+            xlinkHref="#icon-0"
+          />
+        </svg>
+        <span
+          className="u-w-4"
+        >
           Company
-        </label>
+        </span>
+      </label>
+      <div
+        className="contact-form__inputs-wrapper"
+      >
         <div
-          className="contact-form__inputs-wrapper"
+          className="contact-form__input-wrapper"
         >
           <div
-            className="contact-form__input-wrapper"
+            className="contact-form__input-container"
           >
             <input
-              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
               data-valid={true}
+              id="field_7"
               name="company"
-              onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               placeholder=""
@@ -1125,39 +1319,48 @@ exports[`ContactForm should match snapshot 1`] = `
           </div>
         </div>
       </div>
-      <div
-        className="contact-form__field"
+    </div>
+    <div
+      className="contact-form-field"
+    >
+      <label
+        className="styles__c-label___o4ozG contact-form__label u-inline-flex u-flex-items-center u-mr-half"
+        htmlFor="field_8"
       >
-        <label
-          className="contact-form__label"
-        >
-          <svg
-            className="contact-form__icon styles__icon___23x3R"
-            height="16"
-            style={
-              Object {
-                "fill": "var(--coolGrey)",
-              }
+        <svg
+          className="u-mr-1 styles__icon___23x3R"
+          height="16"
+          style={
+            Object {
+              "fill": "var(--coolGrey)",
             }
-            width="16"
-          >
-            <use
-              xlinkHref="#icon-0"
-            />
-          </svg>
+          }
+          width="16"
+        >
+          <use
+            xlinkHref="#icon-0"
+          />
+        </svg>
+        <span
+          className="u-w-4"
+        >
           Birthday
-        </label>
+        </span>
+      </label>
+      <div
+        className="contact-form__inputs-wrapper"
+      >
         <div
-          className="contact-form__inputs-wrapper"
+          className="contact-form__input-wrapper"
         >
           <div
-            className="contact-form__input-wrapper"
+            className="contact-form__input-container"
           >
             <input
-              className="styles__c-input-text___3TAv1 styles__c-input-text--large___28EaR contact-form__input"
+              className="styles__c-input-text___3TAv1 styles__c-input-text--medium___28jPV styles__c-input-text--fullwidth___33o_f contact-form__input"
               data-valid={true}
+              id="field_8"
               name="birthday"
-              onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               placeholder=""
@@ -1168,39 +1371,48 @@ exports[`ContactForm should match snapshot 1`] = `
           </div>
         </div>
       </div>
-      <div
-        className="contact-form__field"
+    </div>
+    <div
+      className="contact-form-field"
+    >
+      <label
+        className="styles__c-label___o4ozG contact-form__label u-inline-flex u-flex-items-center u-mr-half"
+        htmlFor="field_9"
       >
-        <label
-          className="contact-form__label"
-        >
-          <svg
-            className="contact-form__icon styles__icon___23x3R"
-            height="16"
-            style={
-              Object {
-                "fill": "var(--coolGrey)",
-              }
+        <svg
+          className="u-mr-1 styles__icon___23x3R"
+          height="16"
+          style={
+            Object {
+              "fill": "var(--coolGrey)",
             }
-            width="16"
-          >
-            <use
-              xlinkHref="#icon-0"
-            />
-          </svg>
+          }
+          width="16"
+        >
+          <use
+            xlinkHref="#icon-0"
+          />
+        </svg>
+        <span
+          className="u-w-4"
+        >
           Notes
-        </label>
+        </span>
+      </label>
+      <div
+        className="contact-form__inputs-wrapper"
+      >
         <div
-          className="contact-form__inputs-wrapper"
+          className="contact-form__input-wrapper"
         >
           <div
-            className="contact-form__input-wrapper"
+            className="contact-form__input-container"
           >
             <textarea
-              className="styles__c-textarea___D7EEH contact-form__input"
+              className="styles__c-textarea___D7EEH styles__c-textarea--medium___T8f3b styles__c-textarea--fullwidth___Ih_mg contact-form__input"
               data-valid={true}
+              id="field_9"
               name="note"
-              onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               placeholder=""
@@ -1210,39 +1422,6 @@ exports[`ContactForm should match snapshot 1`] = `
             />
           </div>
         </div>
-      </div>
-    </div>
-    <div
-      className="contact-form__footer"
-    >
-      <div>
-        <button
-          className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N"
-          onClick={[Function]}
-          title={null}
-          type="button"
-        >
-          <span>
-            <span
-              className={null}
-            >
-              Cancel
-            </span>
-          </span>
-        </button>
-        <button
-          className="styles__c-btn___-2Vnj"
-          title={null}
-          type="submit"
-        >
-          <span>
-            <span
-              className={null}
-            >
-              Save
-            </span>
-          </span>
-        </button>
       </div>
     </div>
   </form>

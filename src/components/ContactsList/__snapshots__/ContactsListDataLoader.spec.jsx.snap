@@ -93,8 +93,22 @@ exports[`ContactsListOrSpinner should display the loader 1`] = `
   className="spinner"
 >
   <div
-    className="styles__c-spinner___1snK7 styles__c-spinner--middle___RwyII styles__c-spinner--blue___1BMPR styles__c-spinner--xxlarge___23prK"
+    className="styles__c-spinner___1snK7 styles__c-spinner--middle___RwyII"
   >
+    <svg
+      className="styles__icon___23x3R styles__icon--spin___ybfC1"
+      height={80}
+      style={
+        Object {
+          "fill": "var(--primaryColor)",
+        }
+      }
+      width={80}
+    >
+      <use
+        xlinkHref="#spinner"
+      />
+    </svg>
     <p>
       Loading of your contacts, please wait.
     </p>
