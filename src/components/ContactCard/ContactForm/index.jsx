@@ -78,6 +78,8 @@ const fields = [
   }
 ]
 
+export const CONTACT_FORM_ID = 'contact-form'
+
 const ContactForm = ({ contact, onSubmit, t }) => (
   <Form
     mutators={{ ...arrayMutators }}
@@ -86,6 +88,7 @@ const ContactForm = ({ contact, onSubmit, t }) => (
     render={({ handleSubmit }) => (
       <div>
         <form
+          id={CONTACT_FORM_ID}
           onSubmit={handleSubmit}
           className="u-flex u-flex-column u-flex-items-stretch u-flex-justify-start"
         >

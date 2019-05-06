@@ -8,7 +8,7 @@ import Modal, {
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import Button from 'cozy-ui/transpiled/react/Button'
 
-import ContactForm from '../ContactCard/ContactForm'
+import ContactForm, { CONTACT_FORM_ID } from '../ContactCard/ContactForm'
 import { fullContactPropTypes } from '../ContactPropTypes'
 import withContactsMutations from '../../connections/allContacts'
 
@@ -45,12 +45,24 @@ const ContactFormModal = ({
             Alerter.error('error.save')
           }
         }}
-        onCancel={onClose}
       />
     </ModalDescription>
     <ModalFooter className="u-ta-right">
-      <Button type="button" theme="secondary" label="cancel" />
-      <Button type="submit" label="save" />
+      <Button
+        type="button"
+        theme="secondary"
+        label="cancel"
+        onClick={onClose}
+      />
+      <Button
+        type="cancel"
+        label="save"
+        onClick={() =>
+          document
+            .getElementById(CONTACT_FORM_ID)
+            .dispatchEvent(new Event('submit', { cancelable: true }))
+        }
+      />
     </ModalFooter>
   </Modal>
 )
