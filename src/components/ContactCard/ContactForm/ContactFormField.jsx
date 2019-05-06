@@ -6,13 +6,20 @@ import Label from 'cozy-ui/transpiled/react/Label'
 import Button from 'cozy-ui/transpiled/react/Button'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import palette from 'cozy-ui/transpiled/react/palette'
+import uniqueId from 'lodash/uniqueId'
 
 class ContactFormField extends React.Component {
+  constructor(props) {
+    super(props)
+    this.fieldID = uniqueId('field_')
+  }
+
   render() {
     const { name, icon, label, isArray, renderInput, t } = this.props
     return (
       <div className="contact-form-field">
         <Label
+          htmlFor={this.fieldID}
           block={false}
           className={classnames(
             'contact-form__label',
@@ -52,7 +59,7 @@ class ContactFormField extends React.Component {
           </FieldArray>
         ) : (
           <div className="contact-form__inputs-wrapper">
-            {renderInput(name)}
+            {renderInput(name, this.fieldID)}
           </div>
         )}
       </div>
@@ -71,7 +78,7 @@ class ContactFormField extends React.Component {
     const hasValue = fields.value[index] && fields.value[index][name]
     return (
       <div key={nameWithIndex}>
-        {renderInput(`${nameWithIndex}.${name}`)}
+        {renderInput(`${nameWithIndex}.${name}`, this.fieldID)}
 
         {hasValue && (
           <Button

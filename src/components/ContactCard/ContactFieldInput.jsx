@@ -21,6 +21,7 @@ class ContactFieldInput extends React.Component {
 
   render() {
     const {
+      id,
       name,
       type,
       placeholder,
@@ -34,6 +35,7 @@ class ContactFieldInput extends React.Component {
       <div className={'contact-form__input-wrapper'}>
         <div className="contact-form__input-container">
           <Field
+            id={id}
             name={name}
             type={type}
             size="medium"

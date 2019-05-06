@@ -101,8 +101,9 @@ const ContactForm = ({ contact, onSubmit, t }) => (
               label={t(`field.${name}`)}
               t={t}
               isArray={isArray}
-              renderInput={inputName => (
+              renderInput={(inputName, id) => (
                 <ContactFieldInput
+                  id={id}
                   name={inputName}
                   type={type}
                   placeholder={t(`placeholder.${name}`)}
