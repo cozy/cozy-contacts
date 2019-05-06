@@ -55,7 +55,7 @@ const ContactFormModal = ({
         onClick={onClose}
       />
       <Button
-        type="cancel"
+        type="submit"
         label="save"
         onClick={() =>
           document
