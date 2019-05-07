@@ -35,7 +35,7 @@
   "devDependencies": {
     "babel-core": "7.0.0-bridge.0",
     "babel-preset-cozy-app": "1.5.1",
-    "cozy-ach": "1.19.0",
+    "cozy-ach": "1.20.0",
     "cozy-scripts": "1.13.0",
     "enzyme": "3.9.0",
     "enzyme-adapter-react-16": "1.12.1",
