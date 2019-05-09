@@ -78,45 +78,51 @@ const fields = [
   }
 ]
 
-export const CONTACT_FORM_ID = 'contact-form'
+// this variable will be set in the form's render prop
+// and used by the submit button in ContactFormModal
+// to be able to trigger the submit from outside the form
+// See react-final-form examples here: https://www.npmjs.com/package/react-final-form#external-submit
+export let submitContactForm
 
 const ContactForm = ({ contact, onSubmit, t }) => (
   <Form
     mutators={{ ...arrayMutators }}
     onSubmit={data => onSubmit(formValuesToContact(data, contact))}
     initialValues={contactToFormValues(contact, t)}
-    render={({ handleSubmit }) => (
-      <div>
-        <form
-          id={CONTACT_FORM_ID}
-          onSubmit={handleSubmit}
-          className="u-flex u-flex-column u-flex-items-stretch u-flex-justify-start"
-        >
-          <FieldsetTitle title={t('contact_info')} />
-          {fields.map(({ name, icon, type, required, hasLabel, isArray }) => (
-            <ContactFormField
-              key={name}
-              name={name}
-              icon={icon}
-              label={t(`field.${name}`)}
-              t={t}
-              isArray={isArray}
-              renderInput={(inputName, id) => (
-                <ContactFieldInput
-                  id={id}
-                  name={inputName}
-                  type={type}
-                  placeholder={t(`placeholder.${name}`)}
-                  required={required}
-                  withLabel={hasLabel}
-                  labelPlaceholder={t('placeholder.label')}
-                />
-              )}
-            />
-          ))}
-        </form>
-      </div>
-    )}
+    render={({ handleSubmit }) => {
+      submitContactForm = handleSubmit
+      return (
+        <div>
+          <form
+            onSubmit={handleSubmit}
+            className="u-flex u-flex-column u-flex-items-stretch u-flex-justify-start"
+          >
+            <FieldsetTitle title={t('contact_info')} />
+            {fields.map(({ name, icon, type, required, hasLabel, isArray }) => (
+              <ContactFormField
+                key={name}
+                name={name}
+                icon={icon}
+                label={t(`field.${name}`)}
+                t={t}
+                isArray={isArray}
+                renderInput={(inputName, id) => (
+                  <ContactFieldInput
+                    id={id}
+                    name={inputName}
+                    type={type}
+                    placeholder={t(`placeholder.${name}`)}
+                    required={required}
+                    withLabel={hasLabel}
+                    labelPlaceholder={t('placeholder.label')}
+                  />
+                )}
+              />
+            ))}
+          </form>
+        </div>
+      )
+    }}
   />
 )
 
