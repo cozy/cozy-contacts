@@ -82,7 +82,15 @@ const fields = [
 // and used by the submit button in ContactFormModal
 // to be able to trigger the submit from outside the form
 // See react-final-form examples here: https://www.npmjs.com/package/react-final-form#external-submit
-export let submitContactForm
+let _submitContactForm
+
+function setSubmitContactForm(handleSubmit) {
+  _submitContactForm = handleSubmit
+}
+
+export function getSubmitContactForm() {
+  return _submitContactForm
+}
 
 const ContactForm = ({ contact, onSubmit, t }) => (
   <Form
@@ -90,7 +98,7 @@ const ContactForm = ({ contact, onSubmit, t }) => (
     onSubmit={data => onSubmit(formValuesToContact(data, contact))}
     initialValues={contactToFormValues(contact, t)}
     render={({ handleSubmit }) => {
-      submitContactForm = handleSubmit
+      setSubmitContactForm(handleSubmit)
       return (
         <div>
           <form
