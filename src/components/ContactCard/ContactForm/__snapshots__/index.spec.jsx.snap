@@ -4,7 +4,6 @@ exports[`ContactForm should fill form with contact data 1`] = `
 <div>
   <form
     className="u-flex u-flex-column u-flex-items-stretch u-flex-justify-start"
-    id="contact-form"
     onSubmit={[Function]}
   >
     <h3
@@ -878,7 +877,6 @@ exports[`ContactForm should match snapshot 1`] = `
 <div>
   <form
     className="u-flex u-flex-column u-flex-items-stretch u-flex-justify-start"
-    id="contact-form"
     onSubmit={[Function]}
   >
     <h3
