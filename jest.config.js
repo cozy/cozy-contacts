@@ -6,7 +6,8 @@ module.exports = {
   moduleNameMapper: {
     '.(png|gif|jpe?g)$': '<rootDir>/jestHelpers/mocks/fileMock.js',
     '.svg$': '<rootDir>/jestHelpers/mocks/iconMock.js',
-    '.styl$': 'identity-obj-proxy'
+    '.styl$': 'identity-obj-proxy',
+    '\\.worker.entry.js': '<rootDir>/jestHelpers/mocks/workerMock.js'
   },
   transform: {
     '^.+\\.(js|jsx)?$': '<rootDir>/babel-transformer.js',
