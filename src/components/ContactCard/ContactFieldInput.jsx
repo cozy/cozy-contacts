@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
-import classnames from 'classnames'
 
 import HasValueCondition from '../Form/HasValueCondition'
 import { AdaptedInput, AdaptedTextarea } from '../Form/fields'
@@ -11,31 +10,18 @@ const getInputComponent = inputType =>
 
 class ContactFieldInput extends React.Component {
   state = {
-    hasBeenFocused: false,
-    hasFocus: false
+    hasBeenFocused: false
   }
 
   onFocus = () => {
     this.setState({
-      hasBeenFocused: true,
-      hasFocus: true
-    })
-  }
-
-  onSecondaryInputBlur = () => {
-    this.setState({
-      hasFocus: false
-    })
-  }
-
-  onMainInputBlur = () => {
-    this.setState({
-      hasFocus: false
+      hasBeenFocused: true
     })
   }
 
   render() {
     const {
+      id,
       name,
       type,
       placeholder,
@@ -43,35 +29,40 @@ class ContactFieldInput extends React.Component {
       withLabel,
       labelPlaceholder
     } = this.props
-    const { hasBeenFocused, hasFocus } = this.state
+    const { hasBeenFocused } = this.state
 
     return (
-      <div
-        className={classnames('contact-form__input-wrapper', {
-          'contact-form__input-wrapper--focused': hasFocus
-        })}
-      >
-        <Field
-          name={name}
-          type={type}
-          placeholder={placeholder}
-          required={required}
-          onFocus={this.onFocus}
-          onBlur={this.onMainInputBlur}
-          component={getInputComponent(type)}
-          className="contact-form__input"
-        />
+      <div className={'contact-form__input-wrapper'}>
+        <div className="contact-form__input-container">
+          <Field
+            id={id}
+            name={name}
+            type={type}
+            size="medium"
+            fullwidth
+            placeholder={placeholder}
+            required={required}
+            onFocus={this.onFocus}
+            onBlur={this.onMainInputBlur}
+            component={getInputComponent(type)}
+            className="contact-form__input"
+          />
+        </div>
         {withLabel && (
           <HasValueCondition name={name} otherCondition={hasBeenFocused}>
-            <Field
-              name={`${name}Label`}
-              type="text"
-              component={AdaptedInput}
-              className="contact-form__label-input"
-              placeholder={labelPlaceholder}
-              onFocus={this.onFocus}
-              onBlur={this.onSecondaryInputBlur}
-            />
+            <div className="contact-form__input-container u-mt-half-s u-pl-half u-pl-0-s">
+              <Field
+                name={`${name}Label`}
+                type="text"
+                size="medium"
+                fullwidth
+                component={AdaptedInput}
+                className="contact-form__input"
+                placeholder={labelPlaceholder}
+                onFocus={this.onFocus}
+                onBlur={this.onSecondaryInputBlur}
+              />
+            </div>
           </HasValueCondition>
         )}
       </div>

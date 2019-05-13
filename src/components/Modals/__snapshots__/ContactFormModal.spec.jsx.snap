@@ -14,9 +14,7 @@ exports[`ContactFormModal component should render a contact form in a modal 1`] 
   <ModalHeader>
     Edit contact
   </ModalHeader>
-  <ModalContent
-    className="u-mt-half"
-  >
+  <ModalContent>
     <Wrapper
       contact={
         Object {
@@ -27,9 +25,23 @@ exports[`ContactFormModal component should render a contact form in a modal 1`] 
           },
         }
       }
-      onCancel={[MockFunction]}
       onSubmit={[Function]}
     />
   </ModalContent>
+  <ModalFooter
+    className="u-ta-right"
+  >
+    <DefaultButton
+      label="cancel"
+      onClick={[MockFunction]}
+      theme="secondary"
+      type="button"
+    />
+    <DefaultButton
+      label="save"
+      onClick={[Function]}
+      type="submit"
+    />
+  </ModalFooter>
 </Component>
 `;

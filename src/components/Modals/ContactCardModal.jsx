@@ -5,7 +5,6 @@ import Modal, {
   ModalHeader,
   ModalContent
 } from 'cozy-ui/transpiled/react/Modal'
-import { Button } from 'cozy-ui/transpiled/react'
 import { DOCTYPE_CONTACTS } from '../../helpers/doctypes'
 import { getConnectedAccounts } from '../../helpers/contacts'
 
@@ -81,15 +80,6 @@ class ContactCardModal extends React.Component {
                         renderHeader={children => (
                           <ModalHeader className="u-flex u-flex-items-center u-flex-column-s u-pr-1-half-s">
                             {children}
-                            <div>
-                              <Button
-                                type="button"
-                                theme="secondary"
-                                icon="pen"
-                                label={t('edit')}
-                                onClick={this.toggleEditMode}
-                              />
-                            </div>
                             <div className="u-flex u-flex-row u-ml-auto u-ml-0-s">
                               <ContactGroups
                                 contact={contact}
@@ -99,6 +89,10 @@ class ContactCardModal extends React.Component {
                                 deleteAction={{
                                   label: t('delete'),
                                   action: this.toggleConfirmDeleteModal
+                                }}
+                                editAction={{
+                                  label: t('edit'),
+                                  action: this.toggleEditMode
                                 }}
                               />
                             </div>
