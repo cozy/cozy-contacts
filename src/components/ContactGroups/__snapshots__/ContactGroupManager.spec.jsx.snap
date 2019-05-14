@@ -2,7 +2,7 @@
 
 exports[`ContactGroupManager should display the group select 1`] = `
 <div
-  className="css-1irp0at select--autowidth react-select__custom__container"
+  className="css-1irp0at u-bg-white select--autowidth react-select__custom__container"
   onKeyDown={[Function]}
 >
   <button

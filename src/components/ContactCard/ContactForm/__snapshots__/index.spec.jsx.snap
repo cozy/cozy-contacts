@@ -131,7 +131,9 @@ exports[`ContactForm should fill form with contact data 1`] = `
       <div
         className="contact-form__inputs-wrapper"
       >
-        <div>
+        <div
+          className="contact-form__inputs-line"
+        >
           <div
             className="contact-form__input-wrapper"
           >
@@ -167,7 +169,7 @@ exports[`ContactForm should fill form with contact data 1`] = `
             </div>
           </div>
           <button
-            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button u-ml-1"
+            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button"
             onClick={[Function]}
             title="delete"
             type="button"
@@ -193,7 +195,9 @@ exports[`ContactForm should fill form with contact data 1`] = `
             </span>
           </button>
         </div>
-        <div>
+        <div
+          className="contact-form__inputs-line"
+        >
           <div
             className="contact-form__input-wrapper"
           >
@@ -229,7 +233,7 @@ exports[`ContactForm should fill form with contact data 1`] = `
             </div>
           </div>
           <button
-            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button u-ml-1"
+            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button"
             onClick={[Function]}
             title="delete"
             type="button"
@@ -313,7 +317,9 @@ exports[`ContactForm should fill form with contact data 1`] = `
       <div
         className="contact-form__inputs-wrapper"
       >
-        <div>
+        <div
+          className="contact-form__inputs-line"
+        >
           <div
             className="contact-form__input-wrapper"
           >
@@ -349,7 +355,7 @@ exports[`ContactForm should fill form with contact data 1`] = `
             </div>
           </div>
           <button
-            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button u-ml-1"
+            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button"
             onClick={[Function]}
             title="delete"
             type="button"
@@ -375,7 +381,9 @@ exports[`ContactForm should fill form with contact data 1`] = `
             </span>
           </button>
         </div>
-        <div>
+        <div
+          className="contact-form__inputs-line"
+        >
           <div
             className="contact-form__input-wrapper"
           >
@@ -411,7 +419,7 @@ exports[`ContactForm should fill form with contact data 1`] = `
             </div>
           </div>
           <button
-            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button u-ml-1"
+            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button"
             onClick={[Function]}
             title="delete"
             type="button"
@@ -495,7 +503,9 @@ exports[`ContactForm should fill form with contact data 1`] = `
       <div
         className="contact-form__inputs-wrapper"
       >
-        <div>
+        <div
+          className="contact-form__inputs-line"
+        >
           <div
             className="contact-form__input-wrapper"
           >
@@ -531,7 +541,7 @@ exports[`ContactForm should fill form with contact data 1`] = `
             </div>
           </div>
           <button
-            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button u-ml-1"
+            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button"
             onClick={[Function]}
             title="delete"
             type="button"
@@ -557,7 +567,9 @@ exports[`ContactForm should fill form with contact data 1`] = `
             </span>
           </button>
         </div>
-        <div>
+        <div
+          className="contact-form__inputs-line"
+        >
           <div
             className="contact-form__input-wrapper"
           >
@@ -593,7 +605,7 @@ exports[`ContactForm should fill form with contact data 1`] = `
             </div>
           </div>
           <button
-            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button u-ml-1"
+            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button"
             onClick={[Function]}
             title="delete"
             type="button"
@@ -1004,7 +1016,9 @@ exports[`ContactForm should match snapshot 1`] = `
       <div
         className="contact-form__inputs-wrapper"
       >
-        <div>
+        <div
+          className="contact-form__inputs-line"
+        >
           <div
             className="contact-form__input-wrapper"
           >
@@ -1084,7 +1098,9 @@ exports[`ContactForm should match snapshot 1`] = `
       <div
         className="contact-form__inputs-wrapper"
       >
-        <div>
+        <div
+          className="contact-form__inputs-line"
+        >
           <div
             className="contact-form__input-wrapper"
           >
@@ -1164,7 +1180,9 @@ exports[`ContactForm should match snapshot 1`] = `
       <div
         className="contact-form__inputs-wrapper"
       >
-        <div>
+        <div
+          className="contact-form__inputs-line"
+        >
           <div
             className="contact-form__input-wrapper"
           >
