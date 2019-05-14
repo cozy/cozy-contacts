@@ -7,6 +7,7 @@ import Modal, {
 } from 'cozy-ui/transpiled/react/Modal'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import Button from 'cozy-ui/transpiled/react/Button'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import ContactForm, { getSubmitContactForm } from '../ContactCard/ContactForm'
 import { fullContactPropTypes } from '../ContactPropTypes'
@@ -18,7 +19,8 @@ const ContactFormModal = ({
   title,
   createContact,
   afterMutation,
-  updateContact
+  updateContact,
+  t
 }) => (
   <Modal
     overflowHidden={true}
@@ -51,12 +53,12 @@ const ContactFormModal = ({
       <Button
         type="button"
         theme="secondary"
-        label="cancel"
+        label={t('cancel')}
         onClick={onClose}
       />
       <Button
         type="submit"
-        label="save"
+        label={t('save')}
         onClick={event => {
           const submitContactForm = getSubmitContactForm()
           submitContactForm(event)
@@ -72,7 +74,8 @@ ContactFormModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   createContact: PropTypes.func.isRequired,
-  updateContact: PropTypes.func.isRequired
+  updateContact: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired
 }
 
 ContactFormModal.defaultProps = {
@@ -81,4 +84,4 @@ ContactFormModal.defaultProps = {
 
 export { ContactFormModal as DumbContactFormModal }
 
-export default withContactsMutations(ContactFormModal)
+export default withContactsMutations(translate()(ContactFormModal))
