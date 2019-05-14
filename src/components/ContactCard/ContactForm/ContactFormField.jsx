@@ -77,7 +77,7 @@ class ContactFormField extends React.Component {
   renderArrayField = (fields, index, nameWithIndex, name, renderInput) => {
     const hasValue = fields.value[index] && fields.value[index][name]
     return (
-      <div key={nameWithIndex}>
+      <div key={nameWithIndex} className="contact-form__inputs-line">
         {renderInput(`${nameWithIndex}.${name}`, this.fieldID)}
 
         {hasValue && (
@@ -89,7 +89,7 @@ class ContactFormField extends React.Component {
             round
             icon={'cross-small'}
             onClick={() => this.removeField(fields, index)}
-            className="contact-form__meta-button u-ml-1"
+            className="contact-form__meta-button"
           />
         )}
       </div>
