@@ -13,7 +13,8 @@ describe('ContactFormModal component', () => {
       createContact: jest.fn().mockResolvedValue({ data: 'created' }),
       onClose: jest.fn(),
       title: 'Edit contact',
-      updateContact: jest.fn().mockResolvedValue({ data: 'updated' })
+      updateContact: jest.fn().mockResolvedValue({ data: 'updated' }),
+      t: jest.fn(x => x)
     }
   })
 
