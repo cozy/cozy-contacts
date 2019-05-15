@@ -49,10 +49,11 @@ class ContactFormField extends React.Component {
                 )}
                 <Button
                   icon="plus"
-                  subtle
+                  theme="text"
                   type="button"
                   onClick={() => this.addField(fields)}
                   label={t(`addLabel.${name}`)}
+                  className="u-ph-0 u-mh-0"
                 />
               </div>
             )}
