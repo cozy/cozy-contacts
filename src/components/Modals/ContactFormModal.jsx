@@ -25,6 +25,7 @@ const ContactFormModal = ({
   <Modal
     overflowHidden={true}
     dismissAction={onClose}
+    mobileFullscreen={true}
     into="body"
     size="xlarge"
   >

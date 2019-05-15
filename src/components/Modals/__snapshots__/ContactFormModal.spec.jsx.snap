@@ -5,7 +5,7 @@ exports[`ContactFormModal component should render a contact form in a modal 1`] 
   closable={true}
   dismissAction={[MockFunction]}
   into="body"
-  mobileFullscreen={false}
+  mobileFullscreen={true}
   overflowHidden={true}
   primaryType="regular"
   secondaryType="secondary"

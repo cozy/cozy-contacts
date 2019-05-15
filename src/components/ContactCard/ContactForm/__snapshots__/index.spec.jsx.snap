@@ -169,7 +169,7 @@ exports[`ContactForm should fill form with contact data 1`] = `
             </div>
           </div>
           <button
-            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button"
+            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button u-m-0"
             onClick={[Function]}
             title="delete"
             type="button"
@@ -233,7 +233,7 @@ exports[`ContactForm should fill form with contact data 1`] = `
             </div>
           </div>
           <button
-            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button"
+            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button u-m-0"
             onClick={[Function]}
             title="delete"
             type="button"
@@ -260,7 +260,7 @@ exports[`ContactForm should fill form with contact data 1`] = `
           </button>
         </div>
         <button
-          className="styles__c-btn___-2Vnj styles__c-btn--subtle___OknKf"
+          className="styles__c-btn___-2Vnj styles__c-btn--text___2Vp-2 u-ph-0 u-mh-0"
           onClick={[Function]}
           title={null}
           type="button"
@@ -355,7 +355,7 @@ exports[`ContactForm should fill form with contact data 1`] = `
             </div>
           </div>
           <button
-            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button"
+            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button u-m-0"
             onClick={[Function]}
             title="delete"
             type="button"
@@ -419,7 +419,7 @@ exports[`ContactForm should fill form with contact data 1`] = `
             </div>
           </div>
           <button
-            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button"
+            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button u-m-0"
             onClick={[Function]}
             title="delete"
             type="button"
@@ -446,7 +446,7 @@ exports[`ContactForm should fill form with contact data 1`] = `
           </button>
         </div>
         <button
-          className="styles__c-btn___-2Vnj styles__c-btn--subtle___OknKf"
+          className="styles__c-btn___-2Vnj styles__c-btn--text___2Vp-2 u-ph-0 u-mh-0"
           onClick={[Function]}
           title={null}
           type="button"
@@ -541,7 +541,7 @@ exports[`ContactForm should fill form with contact data 1`] = `
             </div>
           </div>
           <button
-            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button"
+            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button u-m-0"
             onClick={[Function]}
             title="delete"
             type="button"
@@ -605,7 +605,7 @@ exports[`ContactForm should fill form with contact data 1`] = `
             </div>
           </div>
           <button
-            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button"
+            className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl contact-form__meta-button u-m-0"
             onClick={[Function]}
             title="delete"
             type="button"
@@ -632,7 +632,7 @@ exports[`ContactForm should fill form with contact data 1`] = `
           </button>
         </div>
         <button
-          className="styles__c-btn___-2Vnj styles__c-btn--subtle___OknKf"
+          className="styles__c-btn___-2Vnj styles__c-btn--text___2Vp-2 u-ph-0 u-mh-0"
           onClick={[Function]}
           title={null}
           type="button"
@@ -1041,7 +1041,7 @@ exports[`ContactForm should match snapshot 1`] = `
           </div>
         </div>
         <button
-          className="styles__c-btn___-2Vnj styles__c-btn--subtle___OknKf"
+          className="styles__c-btn___-2Vnj styles__c-btn--text___2Vp-2 u-ph-0 u-mh-0"
           onClick={[Function]}
           title={null}
           type="button"
@@ -1123,7 +1123,7 @@ exports[`ContactForm should match snapshot 1`] = `
           </div>
         </div>
         <button
-          className="styles__c-btn___-2Vnj styles__c-btn--subtle___OknKf"
+          className="styles__c-btn___-2Vnj styles__c-btn--text___2Vp-2 u-ph-0 u-mh-0"
           onClick={[Function]}
           title={null}
           type="button"
@@ -1205,7 +1205,7 @@ exports[`ContactForm should match snapshot 1`] = `
           </div>
         </div>
         <button
-          className="styles__c-btn___-2Vnj styles__c-btn--subtle___OknKf"
+          className="styles__c-btn___-2Vnj styles__c-btn--text___2Vp-2 u-ph-0 u-mh-0"
           onClick={[Function]}
           title={null}
           type="button"
