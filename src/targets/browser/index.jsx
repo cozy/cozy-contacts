@@ -39,7 +39,7 @@ function init() {
 
   //const store = configureStore(client, polyglot.t.bind(polyglot))
   const client = initCozyClient()
-  initCozyBar({ appName, appNamePrefix, iconPath, lang })
+  initCozyBar({ appName, appNamePrefix, client, iconPath, lang })
   const persistedState = {}
   const store = configureStore(
     client,
@@ -121,10 +121,11 @@ const getToken = () => {
   return data.cozyToken
 }
 
-function initCozyBar({ appName, appNamePrefix, iconPath, lang }) {
+function initCozyBar({ appName, appNamePrefix, client, iconPath, lang }) {
   cozy.bar.init({
     appName,
     appNamePrefix,
+    cozyClient: client,
     iconPath,
     lang,
     replaceTitleOnMobile: false
