@@ -90,7 +90,7 @@ class ContactFormField extends React.Component {
             round
             icon={'cross-small'}
             onClick={() => this.removeField(fields, index)}
-            className="contact-form__meta-button"
+            className="contact-form__meta-button u-m-0"
           />
         )}
       </div>
