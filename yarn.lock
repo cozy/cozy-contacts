@@ -2906,10 +2906,10 @@ cozy-stack-client@^6.7.0:
     mime-types "2.1.20"
     qs "6.6.0"
 
-cozy-ui@19.35.1:
-  version "19.35.1"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-19.35.1.tgz#7ac41938684782b4430a98311e9823f03cc42e72"
-  integrity sha512-rB7GmE4h8m08vxhiFe+IrdO2M3aCdqsJRySZ3bGzQFL3c1StwceJ/9UdU8pcSiErXg2p8qsf5LOx6rt+B3ah8A==
+cozy-ui@19.34.1:
+  version "19.34.1"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-19.34.1.tgz#fbe0125ae0af747b0232b723d83f3bc8bb58963a"
+  integrity sha512-VtCU0FJcFAuymuN1rtc66kSJnlUqdOxAeUHzYIUjJ6w3p4vMyZijmPoKUtaAzfKF574uR/a13syro3eXh41EPA==
   dependencies:
     "@babel/runtime" "^7.3.4"
     body-scroll-lock "^2.5.8"
@@ -2924,10 +2924,10 @@ cozy-ui@19.35.1:
     react-pdf "^4.0.5"
     react-select "2.2.0"
 
-cozy-ui@19.34.1:
-  version "19.34.1"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-19.34.1.tgz#fbe0125ae0af747b0232b723d83f3bc8bb58963a"
-  integrity sha512-VtCU0FJcFAuymuN1rtc66kSJnlUqdOxAeUHzYIUjJ6w3p4vMyZijmPoKUtaAzfKF574uR/a13syro3eXh41EPA==
+cozy-ui@19.35.1:
+  version "19.35.1"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-19.35.1.tgz#7ac41938684782b4430a98311e9823f03cc42e72"
+  integrity sha512-rB7GmE4h8m08vxhiFe+IrdO2M3aCdqsJRySZ3bGzQFL3c1StwceJ/9UdU8pcSiErXg2p8qsf5LOx6rt+B3ah8A==
   dependencies:
     "@babel/runtime" "^7.3.4"
     body-scroll-lock "^2.5.8"
@@ -3845,10 +3845,10 @@ eslint-config-prettier@3.6.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-prettier@4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-4.2.0.tgz#70b946b629cd0e3e98233fd9ecde4cb9778de96c"
-  integrity sha512-y0uWc/FRfrHhpPZCYflWC8aE0KRJRY04rdZVfl8cL3sEZmOYyaBdhdlQPjKZBnuRMyLVK+JUZr7HaZFClQiH4w==
+eslint-config-prettier@4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-4.3.0.tgz#c55c1fcac8ce4518aeb77906984e134d9eb5a4f0"
+  integrity sha512-sZwhSTHVVz78+kYD3t5pCWSYEdVSBR0PXnwjDRsUs8ytIrK8PLXw+6FKp8r3Z7rx4ZszdetWlXYKOHoUrrwPlA==
   dependencies:
     get-stdin "^6.0.0"
 
