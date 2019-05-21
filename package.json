@@ -1,6 +1,6 @@
 {
   "name": "cozy-contacts",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "scripts": {
     "tx": "tx pull --all || true",
     "lint": "yarn lint:js && yarn lint:styles",
