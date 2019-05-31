@@ -43,6 +43,10 @@ class ContactsEmptyList extends React.Component {
   }
   render() {
     const { hasConnector } = this.state
+    const host = window.location.host
+    const isToutaticeInstance =
+      /\.mytoutatice\.cloud$/.test(host) ||
+      /\.testcloud\.toutatice\.fr$/.test(host) //@TODO Some contexts don't have the google connector available. A better way to do this would be to query the list of available connectors.
     const {
       t,
       showModal,
@@ -84,7 +88,9 @@ class ContactsEmptyList extends React.Component {
                 />
               </span>
               <span className="contacts-empty-action">
-                <ImportGoogleButton onComplete={this.afterConnection} />
+                {!isToutaticeInstance && (
+                  <ImportGoogleButton onComplete={this.afterConnection} />
+                )}
               </span>
               <span>
                 <Button
