@@ -45,7 +45,7 @@
     "git-directory-deploy": "1.5.1",
     "identity-obj-proxy": "3.0.0",
     "mockdate": "2.0.3",
-    "pretty-quick": "1.11.0",
+    "pretty-quick": "1.11.1",
     "react-dom": "16.7.0",
     "replace": "1.1.0",
     "stylint": "1.5.9"
