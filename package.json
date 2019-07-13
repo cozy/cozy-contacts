@@ -48,7 +48,7 @@
     "pretty-quick": "1.11.1",
     "react-dom": "16.7.0",
     "replace": "1.1.0",
-    "stylint": "1.5.9"
+    "stylint": "2.0.0"
   },
   "dependencies": {
     "classnames": "2.2.6",
