@@ -76,7 +76,7 @@
   "bundlesize": [
     {
       "path": "./build/app/contacts.*.js",
-      "maxSize": "520 kB"
+      "maxSize": "286 kB"
     }
   ]
 }
