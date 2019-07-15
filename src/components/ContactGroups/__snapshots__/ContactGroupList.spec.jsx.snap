@@ -13,12 +13,12 @@ exports[`ContactGroupList should match the contact snapshot 1`] = `
     className="u-nolist u-m-0 u-p-0"
   >
     <li
-      className="u-dib u-slateGrey u-fz-small u-p-half u-mr-half u-w-auto u-maw-4 u-bg-paleGrey u-ellipsis"
+      className="u-dib u-slateGrey u-fz-small u-p-half u-mr-half u-w-auto u-maw-6 u-bg-paleGrey u-ellipsis"
     >
       The A Team
     </li>
     <li
-      className="u-dib u-slateGrey u-fz-small u-p-half u-mr-half u-w-auto u-maw-4 u-bg-paleGrey u-ellipsis"
+      className="u-dib u-slateGrey u-fz-small u-p-half u-mr-half u-w-auto u-maw-6 u-bg-paleGrey u-ellipsis"
     >
       The B Team
     </li>
