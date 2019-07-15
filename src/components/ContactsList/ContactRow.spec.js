@@ -22,7 +22,8 @@ describe('ContactRow', () => {
     const contact = {
       name: { familyName: 'Doe', givenName: 'John' },
       phone: [{ number: '0123456789' }],
-      email: [{ address: 'johndoe@localhost' }]
+      email: [{ address: 'johndoe@localhost' }],
+      cozy: [{ url: 'http://johndoe.mycozy.cloud' }]
     }
     const contactRowInstance = (
       <AppLike>
@@ -41,6 +42,10 @@ describe('ContactRow', () => {
     const contactrowphone = contactrow.find('ContactPhone')
     expect(contactrowphone).toBeDefined()
     expect(contactrowphone.text()).toBe(contact.phone[0].number)
+
+    const contactrowcozyurl = contactrow.find('ContactCozy')
+    expect(contactrowcozyurl).toBeDefined()
+    expect(contactrowcozyurl.text()).toBe(contact.cozy[0].url)
   })
   test('should display empty string for missing information', () => {
     const contact = { email: [{ address: 'johndoe@localhost' }] }
@@ -56,6 +61,9 @@ describe('ContactRow', () => {
     const contactrowphone = contactrow.find('ContactPhone')
     expect(contactrowphone).toBeDefined()
     expect(contactrowphone.text().trim()).toBe('—')
+    const contactrowcozyurl = contactrow.find('ContactCozy')
+    expect(contactrowcozyurl).toBeDefined()
+    expect(contactrowcozyurl.text().trim()).toBe('—')
   })
   test('should accept empty array', () => {
     const contact = { email: [] }
@@ -74,7 +82,8 @@ describe('ContactRow', () => {
     const contact = {
       name: { familyName: 'Doe', givenName: 'John' },
       phone: [{ number: '0123456789' }],
-      email: [{ address: 'johndoe@localhost' }]
+      email: [{ address: 'johndoe@localhost' }],
+      cozy: [{ url: 'http://johndoe.mycozy.cloud' }]
     }
     const tree = renderer
       .create(

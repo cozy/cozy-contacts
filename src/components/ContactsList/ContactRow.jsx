@@ -1,66 +1,17 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Avatar } from 'cozy-ui/transpiled/react/Avatar'
-import { getInitials } from '../../helpers/contacts'
+import withBreakpoints from 'cozy-ui/react/helpers/withBreakpoints'
+
 import withModalContainer from '../HOCs/withModal'
 import contactPropTypes from '../ContactPropTypes'
 import ContactWithSelection from './ContactSelection'
-import withBreakpoints from 'cozy-ui/react/helpers/withBreakpoints'
 
-const ContactIdentity = ({ name, myself }) => (
-  <div className="contact-identity">
-    <Avatar text={getInitials(name).toUpperCase()} size="small" />
-    <ContactName firstname={name.givenName} lastname={name.familyName} />
-    {myself && <MyselfMarker />}
-  </div>
-)
-ContactIdentity.propTypes = {
-  name: contactPropTypes.name.isRequired,
-  myself: PropTypes.bool
-}
-ContactIdentity.defaultProps = {
-  myself: false
-}
-
-const ContactName = ({ firstname, lastname }) => (
-  <div>
-    <span className="contact-firstname">{firstname}</span>
-    &nbsp;
-    <span className="contact-lastname">{lastname}</span>
-  </div>
-)
-ContactName.propTypes = {
-  firstname: PropTypes.string,
-  lastname: PropTypes.string,
-  me: PropTypes.bool
-}
-ContactName.defaultProps = {
-  firstname: '',
-  lastname: '',
-  me: false
-}
-
-const MyselfMarker = (props, { t }) => (
-  <span className="contact-myself">({t('me')})</span>
-)
-
-const ContactPhone = ({ phone }) => <div className="contact-phone">{phone}</div>
-ContactPhone.propTypes = {
-  phone: PropTypes.string
-}
-ContactPhone.defaultProps = {
-  phone: '—'
-}
+import ContactPhone from './Contacts/ContactPhone'
+import ContactIdentity from './Contacts/ContactIdentity'
+import ContactCozy from './Contacts/ContactCozy'
+import ContactEmail from './Contacts/ContactEmail'
 
 const getPrimaryOrFirst = (arr = [{}]) => arr.find(obj => obj.primary) || arr[0]
-
-const ContactEmail = ({ email }) => <div className="contact-email">{email}</div>
-ContactEmail.propTypes = {
-  email: PropTypes.string
-}
-ContactEmail.defaultProps = {
-  email: '—'
-}
 
 class ContactRow extends Component {
   render() {
@@ -78,13 +29,14 @@ class ContactRow extends Component {
     }
     const name = contact.name || {}
     const isMyself = contact.metadata ? !!contact.metadata.me : false
-
+    const cozyUrl = getPrimaryOrFirst(contact.cozy) || { url: undefined }
     return (
       <div className="contact" onClick={onClick}>
         <ContactWithSelection contact={contact} />
         <ContactIdentity name={name} myself={isMyself} />
-        {!isMobile && <ContactPhone phone={phone} />}
         {!isMobile && <ContactEmail email={email} />}
+        {!isMobile && <ContactPhone phone={phone} />}
+        {!isMobile && <ContactCozy cozyUrl={cozyUrl.url} />}
       </div>
     )
   }
