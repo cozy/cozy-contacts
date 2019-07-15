@@ -54,14 +54,19 @@ exports[`ContactRow should match the contact snapshot 1`] = `
     </div>
   </div>
   <div
+    className="contact-email"
+  >
+    johndoe@localhost
+  </div>
+  <div
     className="contact-phone"
   >
     0123456789
   </div>
   <div
-    className="contact-email"
+    className="contact-cozyurl"
   >
-    johndoe@localhost
+    http://johndoe.mycozy.cloud
   </div>
 </div>
 `;

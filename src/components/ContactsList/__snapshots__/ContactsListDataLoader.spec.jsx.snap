@@ -70,14 +70,19 @@ exports[`ContactsListOrSpinner should display the contact List 1`] = `
               </div>
             </div>
             <div
+              className="contact-email"
+            >
+              johndoe@localhost
+            </div>
+            <div
               className="contact-phone"
             >
               —
             </div>
             <div
-              className="contact-email"
+              className="contact-cozyurl"
             >
-              johndoe@localhost
+              —
             </div>
           </div>
         </li>
