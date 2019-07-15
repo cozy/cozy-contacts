@@ -19,7 +19,8 @@
     "deploy": "cozy-app-publish --token $REGISTRY_TOKEN --build-dir 'build/' --prepublish downcloud --postpublish mattermost",
     "test": "env USE_REACT=true cozy-scripts test --verbose --coverage",
     "stack:docker": "docker run --rm -it -p 8080:8080 -p 5984:5984 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev",
-    "cozyPublish": "git fetch origin ${DEPLOY_BRANCH:-build}:${DEPLOY_BRANCH:-build} && cozy-scripts publish --token $REGISTRY_TOKEN --build-commit $(git rev-parse ${DEPLOY_BRANCH:-build})"
+    "cozyPublish": "git fetch origin ${DEPLOY_BRANCH:-build}:${DEPLOY_BRANCH:-build} && cozy-scripts publish --token $REGISTRY_TOKEN --build-commit $(git rev-parse ${DEPLOY_BRANCH:-build})",
+    "postbuild": "bundlesize"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
   "devDependencies": {
     "babel-core": "7.0.0-bridge.0",
     "babel-preset-cozy-app": "1.5.2",
+    "bundlesize": "^0.18.0",
     "cozy-ach": "1.21.0",
     "cozy-scripts": "1.13.2",
     "enzyme": "3.10.0",
@@ -70,5 +72,11 @@
     "redux-logger": "3.0.6",
     "redux-thunk": "2.3.0",
     "yarn-run-all": "3.1.1"
-  }
+  },
+  "bundlesize": [
+    {
+      "path": "./build/app/contacts.*.js",
+      "maxSize": "520 kB"
+    }
+  ]
 }
