@@ -3107,13 +3107,13 @@ cozy-client-js@^0.15.0:
     pouchdb-browser "7.0.0"
     pouchdb-find "7.0.0"
 
-cozy-client@6.49.3:
-  version "6.49.3"
-  resolved "https://registry.yarnpkg.com/cozy-client/-/cozy-client-6.49.3.tgz#c3a239472f3ef2f55005de355aae7addc5a39d80"
-  integrity sha512-X1XXwMiBlnIDo+Bw5w3xCIs8NpIW+o7AFSrFMRLKZ3eD7DCagu8hn7puH7/hcN75M+71D26nlGO4RmSOK2HnAw==
+cozy-client@6.53.0:
+  version "6.53.0"
+  resolved "https://registry.yarnpkg.com/cozy-client/-/cozy-client-6.53.0.tgz#e066d42d8c3172ce573ab9b9fe913d214abe6daa"
+  integrity sha512-BAvh+2X94Q0IdnXnzjR57iVeMQir9fltE0D+9spzzEjfn+hA2o989WqTXZ7vtB1ssHF2LWYtneMK//8pJTrjAg==
   dependencies:
     cozy-device-helper "1.7.3"
-    cozy-stack-client "^6.49.0"
+    cozy-stack-client "^6.53.0"
     lodash "4.17.14"
     microee "0.0.6"
     prop-types "15.6.2"
@@ -3224,13 +3224,13 @@ cozy-scripts@1.13.2:
     webpack-dev-server "3.1.10"
     webpack-merge "4.2.1"
 
-cozy-stack-client@^6.49.0:
-  version "6.49.0"
-  resolved "https://registry.yarnpkg.com/cozy-stack-client/-/cozy-stack-client-6.49.0.tgz#9d20bbac48f19244a1d1259aafb03696305434c4"
-  integrity sha512-GLbcd0lRzBhpYKFEfCgv042D7k35eQiMYJtBcHi7Kuqmw6Iu8XIWI+stcFbtUgDabpQvcQglBX8Qxbm3RTDVyA==
+cozy-stack-client@^6.53.0:
+  version "6.53.0"
+  resolved "https://registry.yarnpkg.com/cozy-stack-client/-/cozy-stack-client-6.53.0.tgz#875016620cbf35303e289a802410f57974093843"
+  integrity sha512-b4l3x5HsNbYFz0N90OMmEv0fnoWU6TGHVX7Ynvfdezq9hI2iu/CMdiqeAOnVMDvy/iaMaGi/JkoK3d+oOLlpRQ==
   dependencies:
     detect-node "2.0.4"
-    mime-types "2.1.24"
+    mime "2.4.0"
     qs "6.7.0"
 
 cozy-ui@21.4.1:
@@ -7759,7 +7759,7 @@ mime-db@1.40.0, "mime-db@>= 1.40.0 < 2":
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.40.0.tgz#a65057e998db090f732a68f6c276d387d4126c32"
   integrity sha512-jYdeOMPy9vnxEqFRRo6ZvTZ8d9oPb+k18PKoYNYUe2stVEBPPwsln/qWzdbmaIvnhZ9v2P+CuecK+fpUfsV2mA==
 
-mime-types@2.1.24, mime-types@^2.1.12, mime-types@~2.1.17, mime-types@~2.1.19, mime-types@~2.1.24:
+mime-types@^2.1.12, mime-types@~2.1.17, mime-types@~2.1.19, mime-types@~2.1.24:
   version "2.1.24"
   resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.24.tgz#b6f8d0b3e951efb77dedeca194cff6d16f676f81"
   integrity sha512-WaFHS3MCl5fapm3oLxU4eYDw77IQM2ACcxQ9RIxfaC3ooc6PFuBMGZZsYpvoXS5D5QTWPieo1jjLdAm3TBP3cQ==
@@ -7770,6 +7770,11 @@ mime@1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.6.0.tgz#32cd9e5c64553bd58d19a568af452acff04981b1"
   integrity sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==
+
+mime@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/mime/-/mime-2.4.0.tgz#e051fd881358585f3279df333fe694da0bcffdd6"
+  integrity sha512-ikBcWwyqXQSHKtciCcctu9YfPbFYZ4+gbHEmE0Q8jzcTYQg5dHCr3g2wwAZjPoJfQVXZq6KXAjpXOTf5/cjT7w==
 
 mime@^2.3.1:
   version "2.4.4"
