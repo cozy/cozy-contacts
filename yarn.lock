@@ -10074,10 +10074,10 @@ react-final-form@3.6.7:
   resolved "https://registry.yarnpkg.com/react-final-form/-/react-final-form-3.6.7.tgz#c4d2e01e04674201b850cdd05ed5b67ff5ea06c5"
   integrity sha512-/m7JBwA5FaGlSo2ZSFhzQYfPKfT18uirIbJrojWgb9GLoYU2wEOq9yM+vlugqTPD4Ozq+TFJDxWr1jzgASN0fA==
 
-react-hot-loader@4.12.7:
-  version "4.12.7"
-  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.12.7.tgz#51ed57ee46c5d4d3906e58e8cdcd3f6ceeb1c0ec"
-  integrity sha512-ejnGcNttqIsgaLEpCl3KHLzFfKiEKHz/VTLYv57/xKQoryDMXQ/w31+jicrOAiCStYsY+KvrulVqkOqqkRaifg==
+react-hot-loader@4.12.8:
+  version "4.12.8"
+  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.12.8.tgz#90ecf2ef7d4005e110292760f135c95177e804c7"
+  integrity sha512-/Df2J3znMHzRzI6CW0dTOIWD2sjkVHxv56XCqujAo9mR+k2PVTiGjUgYBiGPGsix9zQzgCRfOKca93o9Zdj2vQ==
   dependencies:
     fast-levenshtein "^2.0.6"
     global "^4.3.0"
