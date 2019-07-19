@@ -1925,6 +1925,22 @@ babel-preset-cozy-app@1.5.2:
     browserslist-config-cozy "0.2.0"
     lodash "4.17.13"
 
+babel-preset-cozy-app@1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/babel-preset-cozy-app/-/babel-preset-cozy-app-1.6.0.tgz#588362c0e8aac5f3468ff07a96312e9bfc8f8319"
+  integrity sha512-aWCopE9ilqgt25hsPdsAq8flUxWNU2Pk0L49Jm50ec17T4DmZSdH4NobmfK6VmA6f2huacA95D5XVqObPmr98A==
+  dependencies:
+    "@babel/core" "7.2.2"
+    "@babel/helper-plugin-utils" "7.0.0"
+    "@babel/plugin-proposal-class-properties" "7.3.0"
+    "@babel/plugin-proposal-object-rest-spread" "7.3.2"
+    "@babel/plugin-transform-runtime" "7.2.0"
+    "@babel/preset-env" "7.3.1"
+    "@babel/preset-react" "7.0.0"
+    "@babel/runtime" "7.2.0"
+    browserslist-config-cozy "0.2.0"
+    lodash "4.17.15"
+
 babel-preset-jest@^23.2.0:
   version "23.2.0"
   resolved "https://registry.yarnpkg.com/babel-preset-jest/-/babel-preset-jest-23.2.0.tgz#8ec7a03a138f001a1a8fb1e8113652bf1a55da46"
