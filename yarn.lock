@@ -3145,10 +3145,12 @@ cozy-doctypes@1.39.0:
     es6-promise-pool "2.5.0"
     lodash "4.17.11"
 
-cozy-flags@1.2.11:
-  version "1.2.11"
-  resolved "https://registry.yarnpkg.com/cozy-flags/-/cozy-flags-1.2.11.tgz#6d4ca1540bed28ea0ff617e6adcf82ffa2b510fb"
-  integrity sha512-wCsWO4h6H2bKX5hCPID5PX9ghMzTTx7e8K9RXl6qbBKb6AvFtKeO8gakQrHUdZu67Dy2L9/GO7Rx2WrKiN/oQQ==
+cozy-flags@1.9.3:
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/cozy-flags/-/cozy-flags-1.9.3.tgz#654569eb1db6454417725d8509ad3d14d3b5c2e4"
+  integrity sha512-3FaqsfvaVRZjIvra3TgS6s/nR2ylXxUl3VabquguaZD3uVcnj3znlm6B7nRPG9KP7bzzgZTdw7tqF8MX88hbMg==
+  dependencies:
+    microee "^0.0.6"
 
 cozy-interapp@0.4.5:
   version "0.4.5"
@@ -7681,7 +7683,7 @@ methods@~1.1.2:
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
   integrity sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=
 
-microee@0.0.6:
+microee@0.0.6, microee@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/microee/-/microee-0.0.6.tgz#a12bdb0103681e8b126a9b071eba4c467c78fffe"
   integrity sha1-oSvbAQNoHosSapsHHrpMRnx4//4=
