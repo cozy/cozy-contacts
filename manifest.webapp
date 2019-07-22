@@ -7,7 +7,7 @@
   "type": "webapp",
   "description": "Contact manager for Cozy Cloud",
   "category": "cozy",
-  "version": "0.8.5",
+  "version": "0.8.6",
   "licence": "AGPL-3.0",
   "source": "https://github.com/cozy/cozy-contacts.git@build",
   "developer": {
