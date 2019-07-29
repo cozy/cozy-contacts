@@ -3089,10 +3089,10 @@ cozy-ach@1.21.0:
     server-destroy "^1.0.1"
     timezone "^1.0.22"
 
-cozy-bar@7.5.4:
-  version "7.5.4"
-  resolved "https://registry.yarnpkg.com/cozy-bar/-/cozy-bar-7.5.4.tgz#74be98be9d3b993a867b7374cd05b66f5adbca1e"
-  integrity sha512-CeXFbbVCJpJ3EIujTH1VcbRuGiI3fveWmy6egqdUYn2UfH6LTGf8UzPqE5KQlXziFep9pjMRN5IPpu3vcUp5CQ==
+cozy-bar@7.6.0:
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/cozy-bar/-/cozy-bar-7.6.0.tgz#cfcd39229a62bbb8df9fbb6a751231620e139738"
+  integrity sha512-QqqgQmK5I6/HKWAgE60tw5LhP86vc2afRwHlGcruwhW6BA8ZU+529+7VI0pT2gMosc6iVJrfkJC4pZ8oGKxmVw==
   dependencies:
     "@babel/core" "7.5.4"
     babel-core "7.0.0-bridge.0"
