@@ -46,7 +46,7 @@
     "eslint-config-prettier": "6.0.0",
     "git-directory-deploy": "1.5.1",
     "identity-obj-proxy": "3.0.0",
-    "mockdate": "2.0.4",
+    "mockdate": "2.0.5",
     "pretty-quick": "1.11.1",
     "react-dom": "16.8.6",
     "replace": "1.1.0",
