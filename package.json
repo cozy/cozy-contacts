@@ -49,7 +49,7 @@
     "mockdate": "2.0.5",
     "pretty-quick": "1.11.1",
     "react-dom": "16.8.6",
-    "replace": "1.1.0",
+    "replace": "1.1.1",
     "stylint": "2.0.0"
   },
   "dependencies": {
