@@ -35,7 +35,7 @@
   "homepage": "https://github.com/cozy/cozy-contacts#readme",
   "devDependencies": {
     "babel-core": "7.0.0-bridge.0",
-    "babel-preset-cozy-app": "1.6.0",
+    "babel-preset-cozy-app": "1.7.0",
     "bundlesize": "0.18.0",
     "cozy-ach": "1.21.0",
     "cozy-scripts": "1.13.2",
