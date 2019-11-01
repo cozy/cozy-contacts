@@ -4275,12 +4275,12 @@ enzyme-to-json@3.3.5:
   dependencies:
     lodash "^4.17.4"
 
-enzyme-to-json@3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/enzyme-to-json/-/enzyme-to-json-3.4.0.tgz#2b6330a784a57ba68298e3c0d6cef17ee4fedc0e"
-  integrity sha512-gbu8P8PMAtb+qtKuGVRdZIYxWHC03q1dGS3EKRmUzmTDIracu3o6cQ0d4xI2YWojbelbxjYOsmqM5EgAL0WgIA==
+enzyme-to-json@3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/enzyme-to-json/-/enzyme-to-json-3.4.3.tgz#ed4386f48768ed29e2d1a2910893542c34e7e0af"
+  integrity sha512-jqNEZlHqLdz7OTpXSzzghArSS3vigj67IU/fWkPyl1c0TCj9P5s6Ze0kRkYZWNEoCqCR79xlQbigYlMx5erh8A==
   dependencies:
-    lodash "^4.17.12"
+    lodash "^4.17.15"
 
 enzyme@3.10.0:
   version "3.10.0"
@@ -7560,7 +7560,7 @@ lodash@4.17.14, lodash@4.x, lodash@^4.14.2, lodash@^4.15.0, lodash@^4.17.10, lod
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.14.tgz#9ce487ae66c96254fe20b599f21b6816028078ba"
   integrity sha512-mmKYbW3GLuJeX+iGP+Y7Gp1AiGHGbXHCOh/jZmrawMmsE7MS4znI3RL2FsjbqOyMayHInjOeykW7PEajUk1/xw==
 
-lodash@4.17.15, lodash@^4.17.13:
+lodash@4.17.15, lodash@^4.17.13, lodash@^4.17.15:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
