@@ -93,7 +93,7 @@ const CustomOption = props => (
     withCheckbox
     actions={[
       {
-        icon: 'delete',
+        icon: 'trash',
         onClick: ({ data }) => props.selectProps.deleteGroup(data)
       }
     ]}
