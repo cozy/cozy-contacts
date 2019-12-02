@@ -37,15 +37,20 @@ function init() {
   const { appName, appNamePrefix, iconPath, lang } = getValues(root.dataset)
   const polyglot = initTranslation(lang, lang => require(`locales/${lang}`))
 
-  //const store = configureStore(client, polyglot.t.bind(polyglot))
   const client = initCozyClient()
-  initCozyBar({ appName, appNamePrefix, client, iconPath, lang })
   const persistedState = {}
   const store = configureStore(
     client,
     polyglot.t.bind(polyglot),
     persistedState
   )
+  /** I don't know why I need to for this... But if I don't it seems that
+   * we have a race between configureStore and initCozyBar resulting in
+   * an error from cozy-client "store is already defined"
+   */
+  setTimeout(() => {
+    initCozyBar({ appName, appNamePrefix, client, iconPath, lang })
+  }, 0)
 
   render(
     <RootApp client={client} lang={lang} store={store} polyglot={polyglot} />,
