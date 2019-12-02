@@ -74,6 +74,9 @@
     "redux-thunk": "2.3.0",
     "yarn-run-all": "3.1.1"
   },
+  "resolutions": {
+    "scheduler": "0.18.0"
+  },
   "bundlesize": [
     {
       "path": "./build/app/contacts.*.js",
