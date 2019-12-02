@@ -13,6 +13,7 @@ module.exports = {
     '^.+\\.(js|jsx)?$': '<rootDir>/babel-transformer.js',
     '^.+\\.webapp$': '<rootDir>/json-transformer.js'
   },
+  browser: true,
   testURL: 'http://localhost',
   globals: {
     __DEVELOPMENT__: false
