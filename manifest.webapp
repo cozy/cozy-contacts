@@ -48,6 +48,11 @@
     "contactsAccounts": {
       "type": "io.cozy.contacts.accounts",
       "verbs": ["ALL"]
+    },
+    "settings": {
+      "description": "Required by the cozy-bar to display Claudy and know which applications are coming soon",
+      "type": "io.cozy.settings",
+      "verbs": ["GET"]
     }
   },
   "intents": [
