@@ -39,7 +39,7 @@
     "babel-preset-cozy-app": "1.7.0",
     "bundlesize": "0.18.0",
     "cozy-ach": "1.26.0",
-    "cozy-scripts": "1.13.2",
+    "cozy-scripts": "2.0.2",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.15.2",
     "enzyme-to-json": "3.4.3",
