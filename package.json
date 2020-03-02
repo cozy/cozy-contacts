@@ -21,7 +21,7 @@
     "stack:docker": "docker run --rm -it -p 8080:8080 -p 5984:5984 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev",
     "cozyPublish": "git fetch origin ${DEPLOY_BRANCH:-build}:${DEPLOY_BRANCH:-build} && cozy-scripts publish --token $REGISTRY_TOKEN --build-commit $(git rev-parse ${DEPLOY_BRANCH:-build})",
     "postbuild": "bundlesize",
-    "fixtures": "ach import fixtures/contacts.json"
+    "fixtures": "ACH import fixtures/contacts.json"
   },
   "repository": {
     "type": "git",
