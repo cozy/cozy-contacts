@@ -11,8 +11,21 @@ import ContactHeaderRow from './ContactHeaderRow'
 import withModal from '../HOCs/withModal'
 import ContactCardModal from '../Modals/ContactCardModal'
 import withSelection from '../Selection/selectionContainer'
+import Alphabets from '../Components/Alphabets'
 
 class ContactsList extends Component {
+  constructor(props) {
+    super(props)
+    this.contactHeaderRowRef = []
+    this.contactListRef = React.createRef()
+  }
+
+  scrollTo = target => {
+    const header = this.contactHeaderRowRef[target]
+    const contactList = this.contactListRef.current
+    contactList.scrollTop = header.offsetTop
+  }
+
   render() {
     const {
       clearSelection,
@@ -36,48 +49,51 @@ class ContactsList extends Component {
         return acc
       }, {})
       return (
-        <div className="list-wrapper">
-          {flag('select-all-contacts') && (
-            <div>
-              <Button
-                label={
-                  allContactsSelected ? t('unselect-all') : t('select-all')
-                }
-                theme="secondary"
-                onClick={() =>
-                  allContactsSelected ? clearSelection() : selectAll(contacts)
-                }
-              />
-            </div>
-          )}
-          <ol className="list-contact">
-            {Object.keys(categorizedContacts).map(header => (
-              <li key={`cat-${header}`}>
-                <ContactHeaderRow key={header} header={header} />
-                <ol className="sublist-contact">
-                  {categorizedContacts[header].map(contact => (
-                    <li key={`contact-${contact._id}`}>
-                      <ContactRow
-                        id={contact._id}
-                        key={contact._id}
-                        contact={contact}
-                        onClick={() =>
-                          showModal(
-                            <ContactCardModal
-                              onClose={this.hideContactCard}
-                              id={contact._id}
-                            />
-                          )
-                        }
-                      />
-                    </li>
-                  ))}
-                </ol>
-              </li>
-            ))}
-          </ol>
-          <div />
-        </div>
+        <>
+          <Alphabets scrollTo={this.scrollTo} />
+          <div className="list-wrapper" ref={this.contactListRef}>
+            {flag('select-all-contacts') && (
+              <div>
+                <Button
+                  label={
+                    allContactsSelected ? t('unselect-all') : t('select-all')
+                  }
+                  theme="secondary"
+                  onClick={() =>
+                    allContactsSelected ? clearSelection() : selectAll(contacts)
+                  }
+                />
+              </div>
+            )}
+            <ol className="list-contact">
+              {Object.keys(categorizedContacts).map(header => (
+                <li key={`cat-${header}`}>
+                  <ContactHeaderRow key={header} header={header} ref={c => this.contactHeaderRowRef[header] = c} />
+                  <ol className="sublist-contact">
+                    {categorizedContacts[header].map(contact => (
+                      <li key={`contact-${contact._id}`}>
+                        <ContactRow
+                          id={contact._id}
+                          key={contact._id}
+                          contact={contact}
+                          onClick={() =>
+                            showModal(
+                              <ContactCardModal
+                                onClose={this.hideContactCard}
+                                id={contact._id}
+                              />
+                            )
+                          }
+                        />
+                      </li>
+                    ))}
+                  </ol>
+                </li>
+              ))}
+            </ol>
+            <div />
+          </div>
+        </>
       )
     }
   }

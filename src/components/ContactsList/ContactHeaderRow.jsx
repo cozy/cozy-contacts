@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const ContactHeaderRow = props => <div className="divider">{props.header}</div>
+const ContactHeaderRow = React.forwardRef((props, ref) => (<div ref={ref} className="divider">{props.header}</div>))
 
 ContactHeaderRow.propTypes = {
   header: PropTypes.string.isRequired
