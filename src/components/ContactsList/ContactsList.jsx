@@ -11,6 +11,7 @@ import ContactHeaderRow from './ContactHeaderRow'
 import withModal from '../HOCs/withModal'
 import ContactCardModal from '../Modals/ContactCardModal'
 import withSelection from '../Selection/selectionContainer'
+import ContactLetterNav from './ContactLetterNav'
 
 class ContactsList extends Component {
   render() {
@@ -35,8 +36,21 @@ class ContactsList extends Component {
         acc[header].push(contact)
         return acc
       }, {})
+
+      const refs = Object.keys(categorizedContacts).reduce((acc, value) => {
+        acc[value] = React.createRef()
+        return acc
+      }, {})
+
+      const executeScroll = item => {
+        refs[item].current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        })
+      }
+
       return (
-        <div className="list-wrapper">
+        <div id="list-wrapper" className="list-wrapper">
           {flag('select-all-contacts') && (
             <div>
               <Button
@@ -50,9 +64,13 @@ class ContactsList extends Component {
               />
             </div>
           )}
+          <ContactLetterNav
+            letters={Object.keys(categorizedContacts)}
+            executeScroll={item => executeScroll(item)}
+          />
           <ol className="list-contact">
             {Object.keys(categorizedContacts).map(header => (
-              <li key={`cat-${header}`}>
+              <li key={`cat-${header}`} ref={refs[header]}>
                 <ContactHeaderRow key={header} header={header} />
                 <ol className="sublist-contact">
                   {categorizedContacts[header].map(contact => (

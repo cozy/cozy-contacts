@@ -3,7 +3,11 @@
 exports[`ContactsListOrSpinner should display the contact List 1`] = `
 <div
   className="list-wrapper"
+  id="list-wrapper"
 >
+  <ul
+    className="ContactLetterNav"
+  />
   <ol
     className="list-contact"
   >
