@@ -11,10 +11,10 @@ class ContactsListDataLoader extends Component {
     }
   }
   render() {
-    const { fetchStatus, hasMore, contacts } = this.props
+    const { fetchStatus, hasMore, contacts, allGroups } = this.props
 
     if (fetchStatus === 'loaded' && hasMore === false) {
-      return <ContactsList contacts={contacts} />
+      return <ContactsList contacts={contacts} allGroups={allGroups} />
     } else {
       return <SpinnerContact size="xxlarge" loadingType="fetching_contacts" />
     }
@@ -24,6 +24,7 @@ ContactsListDataLoader.propTypes = {
   fetchStatus: PropTypes.string.isRequired,
   hasMore: PropTypes.bool.isRequired,
   contacts: PropTypes.array.isRequired,
-  fetchMore: PropTypes.func.isRequired
+  fetchMore: PropTypes.func.isRequired,
+  allGroups: PropTypes.array.isRequired,
 }
 export default ContactsListDataLoader

@@ -64,19 +64,50 @@ class ContactsApp extends React.Component {
           {flag('switcher') && <FlagSwitcher />}
           <ContactsSelectionBar trashAction={deleteContact} />
           <Query query={query}>
-            {({ data: contacts, fetchStatus, hasMore, fetchMore }) => {
+            {({
+              data: contacts,
+              fetchStatus: fetchStatusContact,
+              hasMore,
+              fetchMore
+            }) => {
               return (
-                <>
-                  {contacts.length >= 1 && <Header right={<Toolbar />} />}
-                  <Content>
-                    <ContactsListDataLoader
-                      contacts={contacts}
-                      fetchStatus={fetchStatus}
-                      hasMore={hasMore}
-                      fetchMore={fetchMore}
-                    />
-                  </Content>
-                </>
+                <Query
+                  query={client =>
+                    client
+                      .find('io.cozy.contacts.groups')
+                      .where({
+                        trashed: { $exists: false }
+                      })
+                      .sortBy([{ name: 'asc' }])
+                      .indexFields(['name'])
+                  }
+                >
+                  {({
+                    data: allGroups,
+                    fetchStatus: allGroupsContactStatus
+                  }) => {
+                    const fetchStatus =
+                      fetchStatusContact !== 'loaded' ||
+                      allGroupsContactStatus !== 'loaded'
+                        ? 'loading'
+                        : 'loaded'
+
+                    return (
+                      <>
+                        {contacts.length >= 1 && <Header right={<Toolbar />} />}
+                        <Content>
+                          <ContactsListDataLoader
+                            contacts={contacts}
+                            allGroups={allGroups}
+                            fetchStatus={fetchStatus}
+                            hasMore={hasMore}
+                            fetchMore={fetchMore}
+                          />
+                        </Content>
+                      </>
+                    )
+                  }}
+                </Query>
               )
             }}
           </Query>
