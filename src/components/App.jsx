@@ -68,7 +68,7 @@ class ContactsApp extends React.Component {
               return (
                 <>
                   {contacts.length >= 1 && <Header right={<Toolbar />} />}
-                  <Content>
+                  <Content id="content">
                     <ContactsListDataLoader
                       contacts={contacts}
                       fetchStatus={fetchStatus}

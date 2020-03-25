@@ -3,10 +3,12 @@ import PropTypes from 'prop-types'
 import flag from 'cozy-flags'
 import { Button } from 'cozy-ui/react'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
+import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
 
-import { sortLastNameFirst, buildLastNameFirst } from './'
+import { sortLastNameFirst, getLastNameFirstLetterWithoutAccent } from './'
 import ContactsEmptyList from './ContactsEmptyList'
 import ContactRow from './ContactRow'
+import ContactAlphabetJump from './ContactAlphabetJump'
 import ContactHeaderRow from './ContactHeaderRow'
 import withModal from '../HOCs/withModal'
 import ContactCardModal from '../Modals/ContactCardModal'
@@ -20,7 +22,8 @@ class ContactsList extends Component {
       selection,
       showModal,
       selectAll,
-      t
+      t,
+      breakpoints: { isMobile, isTablet }
     } = this.props
 
     if (contacts.length === 0) {
@@ -29,12 +32,35 @@ class ContactsList extends Component {
       const allContactsSelected = contacts.length === selection.length
       const sortedContacts = [...contacts].sort(sortLastNameFirst)
       const categorizedContacts = sortedContacts.reduce((acc, contact) => {
-        const name = buildLastNameFirst(contact)
-        const header = name[0] || 'EMPTY'
+        const header = getLastNameFirstLetterWithoutAccent(contact) || 'EMPTY'
         acc[header] = acc[header] || []
         acc[header].push(contact)
         return acc
       }, {})
+      const headers = Object.keys(categorizedContacts)
+
+      const refs = headers.reduce((acc, value) => {
+        acc[value] = React.createRef()
+        return acc
+      }, {})
+
+      const scrollTo = item => {
+        if (isMobile || isTablet) {
+          const offset = isMobile ? 66 : 64
+          window.scrollTo({
+            top: refs[item].current.offsetTop + offset,
+            behavior: 'smooth'
+          })
+        } else {
+          const element = document.getElementById('content')
+
+          element.scrollTo({
+            top: refs[item].current.offsetTop,
+            behavior: 'smooth'
+          })
+        }
+      }
+
       return (
         <div className="list-wrapper">
           {flag('select-all-contacts') && (
@@ -50,9 +76,13 @@ class ContactsList extends Component {
               />
             </div>
           )}
+          <ContactAlphabetJump
+            headers={headers}
+            scrollTo={item => scrollTo(item)}
+          />
           <ol className="list-contact">
-            {Object.keys(categorizedContacts).map(header => (
-              <li key={`cat-${header}`}>
+            {headers.map(header => (
+              <li key={`cat-${header}`} ref={refs[header]}>
                 <ContactHeaderRow key={header} header={header} />
                 <ol className="sublist-contact">
                   {categorizedContacts[header].map(contact => (
@@ -76,7 +106,6 @@ class ContactsList extends Component {
               </li>
             ))}
           </ol>
-          <div />
         </div>
       )
     }
@@ -88,4 +117,6 @@ ContactsList.propTypes = {
 }
 ContactsList.defaultProps = {}
 
-export default translate()(withModal(withSelection(ContactsList)))
+export default withBreakpoints()(
+  translate()(withModal(withSelection(ContactsList)))
+)

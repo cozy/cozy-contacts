@@ -11,7 +11,11 @@ const MyselfMarker = (props, { t }) => (
 )
 const ContactIdentity = ({ name, myself }) => (
   <div className="contact-identity">
-    <Avatar text={getInitials(name).toUpperCase()} size="small" />
+    <Avatar
+      className="contact-avatar"
+      text={getInitials(name).toUpperCase()}
+      size="small"
+    />
     <ContactName firstname={name.givenName} lastname={name.familyName} />
     {myself && <MyselfMarker />}
   </div>

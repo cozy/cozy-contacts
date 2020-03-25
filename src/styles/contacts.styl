@@ -6,6 +6,43 @@
     margin-right 0 !important // hack https://github.com/cozy/cozy-ui/issues/338
 // @stylint on
 
+
+.contact-alphabet-wrapper
+    @extend $table-row
+    justify-content center
+    position sticky
+    top 0
+    z-index 2
+    background paleGrey
+    border-top none
+
+    +medium-screen()
+        top 3rem
+
+    &:hover
+        background paleGrey
+
+.contact-alphabet-slider
+    list-style none
+    display flex
+    overflow auto
+    -webkit-overflow-scrolling touch
+    -ms-overflow-style -ms-autohiding-scrollbar
+    padding 0
+
+.contact-alphabet-letter
+    display flex
+    flex-shrink 0
+    justify-content center
+    align-items center
+    cursor pointer
+    width 2rem
+    height 2rem
+    border-radius 50%
+
+    &:hover
+        background silver
+
 .list-wrapper
     width 100%
     max-width 80rem
@@ -64,11 +101,21 @@ $reset-list
     flex-basis 30%
     padding-left 2rem
 
+.contact-avatar
+    flex-shrink 0
+
+.contact-name
+    white-space nowrap
+    overflow hidden
+    text-overflow ellipsis
+    display inline-block
+
 .contact-firstname
     margin-left 1rem
 
 .contact-lastname
     font-weight bold
+
 
 .contact-myself
     color coolGrey
@@ -96,6 +143,10 @@ $reset-list
 
 .divider
     @extend $table-divider
+    top 3rem
+
+    +medium-screen()
+        top 6rem
 
 .menu__item--danger
     color pomegranate
@@ -134,4 +185,3 @@ $reset-list
     display flex
     align-items center
     padding 0 .25rem
-    

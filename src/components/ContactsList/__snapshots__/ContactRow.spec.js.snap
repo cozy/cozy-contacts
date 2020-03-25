@@ -24,7 +24,7 @@ exports[`ContactRow should match the contact snapshot 1`] = `
     className="contact-identity"
   >
     <div
-      className="styles__c-avatar___PpDI- styles__c-avatar--small___1Y_Pv"
+      className="styles__c-avatar___PpDI- styles__c-avatar--small___1Y_Pv contact-avatar"
       style={
         Object {
           "backgroundColor": "var(--brightSun)",
@@ -39,7 +39,9 @@ exports[`ContactRow should match the contact snapshot 1`] = `
         JD
       </span>
     </div>
-    <div>
+    <div
+      className="contact-name"
+    >
       <span
         className="contact-firstname"
       >

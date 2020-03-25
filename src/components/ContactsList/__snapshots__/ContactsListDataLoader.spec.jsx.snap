@@ -4,6 +4,13 @@ exports[`ContactsListOrSpinner should display the contact List 1`] = `
 <div
   className="list-wrapper"
 >
+  <div
+    className="contact-alphabet-wrapper"
+  >
+    <ol
+      className="contact-alphabet-slider"
+    />
+  </div>
   <ol
     className="list-contact"
   >
@@ -40,7 +47,7 @@ exports[`ContactsListOrSpinner should display the contact List 1`] = `
               className="contact-identity"
             >
               <div
-                className="styles__c-avatar___PpDI- styles__c-avatar--small___1Y_Pv"
+                className="styles__c-avatar___PpDI- styles__c-avatar--small___1Y_Pv contact-avatar"
               >
                 
                 
@@ -55,7 +62,9 @@ exports[`ContactsListOrSpinner should display the contact List 1`] = `
                   />
                 </svg>
               </div>
-              <div>
+              <div
+                className="contact-name"
+              >
                 <span
                   className="contact-firstname"
                 >
@@ -89,7 +98,6 @@ exports[`ContactsListOrSpinner should display the contact List 1`] = `
       </ol>
     </li>
   </ol>
-  <div />
 </div>
 `;
 
