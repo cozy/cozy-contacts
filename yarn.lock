@@ -912,6 +912,13 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
+"@babel/runtime@7.5.5":
+  version "7.5.5"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.5.5.tgz#74fba56d35efbeca444091c7850ccd494fd2f132"
+  integrity sha512-28QvEGyQyNkB0/m2B4FU7IEZGK2NUrcMtT6BZEFALTguLk+AUT6ofsHtPk5QyjAdUkpMJ+/Em+quwz4HOt30AQ==
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
 "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.4":
   version "7.5.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.5.4.tgz#cb7d1ad7c6d65676e66b47186577930465b5271b"
@@ -3385,6 +3392,18 @@ cozy-doctypes@1.39.0:
     es6-promise-pool "2.5.0"
     lodash "4.17.11"
 
+cozy-doctypes@1.72.2:
+  version "1.72.2"
+  resolved "https://registry.yarnpkg.com/cozy-doctypes/-/cozy-doctypes-1.72.2.tgz#ac3d6813780008e5a4115a70679a0f25cf7efd81"
+  integrity sha512-ITrfljuDBsRQ4AaDUup+0Weh7K+QlZfX38R1YFw9nsLWZMy8GCvUvaJ6vLk7UWj9SmoO/+A2Dwz2T/p9je+DZA==
+  dependencies:
+    "@babel/runtime" "7.5.5"
+    cozy-logger "^1.6.0"
+    date-fns "1.30.1"
+    es6-promise-pool "2.5.0"
+    lodash "4.17.15"
+    prop-types "^15.7.2"
+
 cozy-flags@1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/cozy-flags/-/cozy-flags-1.10.0.tgz#5aa41684eade9c445a4807608ec3152e0e198f16"
@@ -3909,7 +3928,7 @@ data-urls@^1.0.0, data-urls@^1.1.0:
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
 
-date-fns@^1.28.5:
+date-fns@1.30.1, date-fns@^1.28.5:
   version "1.30.1"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
   integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
