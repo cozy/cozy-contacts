@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Button, Icon } from 'cozy-ui/transpiled/react'
+import Button from 'cozy-ui/transpiled/react/Button'
+import Icon from 'cozy-ui/transpiled/react/Icon'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import ContactFormModal from './Modals/ContactFormModal'

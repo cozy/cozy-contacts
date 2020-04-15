@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import flag from 'cozy-flags'
-import { Button } from 'cozy-ui/react'
+import Button from 'cozy-ui/transpiled/react/Button'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import { sortLastNameFirst, buildLastNameFirst } from './'

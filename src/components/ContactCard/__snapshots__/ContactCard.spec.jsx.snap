@@ -418,12 +418,12 @@ Array [
             className="u-mb-half u-breakword"
           >
             <div
-              className="styles__u-text___2UfQa"
+              className="u-text"
             >
               Google
             </div>
             <div
-              className="styles__u-caption___1VRxy"
+              className="u-caption"
             >
               john.doe@gmail.com
             </div>
@@ -602,12 +602,12 @@ Array [
             className="u-mb-half u-breakword"
           >
             <div
-              className="styles__u-text___2UfQa"
+              className="u-text"
             >
               Google
             </div>
             <div
-              className="styles__u-caption___1VRxy"
+              className="u-caption"
             >
               john.doe@gmail.com
             </div>

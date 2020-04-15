@@ -3,14 +3,15 @@ import React from 'react'
 import { PropTypes } from 'prop-types'
 import flow from 'lodash/flow'
 import { Main, Layout, Content } from 'cozy-ui/transpiled/react/Layout'
-import { Alerter, Title } from 'cozy-ui/transpiled/react'
+import Alerter from 'cozy-ui/transpiled/react/Alerter'
+import { Title } from 'cozy-ui/transpiled/react/Text'
 import withBreakpoints from 'cozy-ui/react/helpers/withBreakpoints'
 
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Query } from 'cozy-client'
 import flag, { FlagSwitcher } from 'cozy-flags'
 
-import { IconSprite } from 'cozy-ui/transpiled/react'
+import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
 import 'cozy-ui/transpiled/react/stylesheet.css'
 
 import withContactsMutations from '../connections/allContacts'

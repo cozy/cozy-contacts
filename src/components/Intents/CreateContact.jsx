@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
-import { IntentHeader } from 'cozy-ui/transpiled/react'
+import IntentHeader from 'cozy-ui/transpiled/react/IntentHeader'
 import ContactForm from '../ContactCard/ContactForm'
 import withContactsMutations from '../../connections/allContacts'
 import IntentMain from './IntentMain'

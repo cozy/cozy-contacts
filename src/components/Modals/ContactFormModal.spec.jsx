@@ -41,7 +41,7 @@ describe('ContactFormModal component', () => {
     }
     const jsx = <DumbContactFormModal {...props} />
     const wrapper = shallow(jsx)
-    const form = wrapper.find('Wrapper')
+    const form = wrapper.find('withI18n(ContactForm)')
     form.prop('onSubmit')(formData)
     expect(props.createContact).toHaveBeenCalledWith({
       company: 'Cozy Cloud'
@@ -66,7 +66,7 @@ describe('ContactFormModal component', () => {
     }
     const jsx = <DumbContactFormModal {...propsWithContact} />
     const wrapper = shallow(jsx)
-    const form = wrapper.find('Wrapper')
+    const form = wrapper.find('withI18n(ContactForm)')
 
     const formData = {
       company: 'Cozy Cloud'

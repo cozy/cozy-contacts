@@ -54,11 +54,12 @@
     "stylint": "2.0.0"
   },
   "dependencies": {
+    "@material-ui/core": "3.9.4",
     "classnames": "2.2.6",
     "cozy-bar": "7.9.0",
-    "cozy-client": "8.4.0",
+    "cozy-client": "13.4.2",
     "cozy-flags": "1.10.0",
-    "cozy-ui": "22.3.0",
+    "cozy-ui": "35.1.0",
     "cozy-vcard": "0.2.18",
     "final-form": "4.10.0",
     "final-form-arrays": "1.1.0",

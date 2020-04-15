@@ -2,7 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { translate } from 'cozy-ui/transpiled/react/I18n'
-import { Icon, Menu, MenuItem, Button } from 'cozy-ui/transpiled/react'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import Menu, { MenuItem } from 'cozy-ui/transpiled/react/Menu'
+import Button from 'cozy-ui/transpiled/react/Button'
 
 const ContactCardMenu = ({ editAction, deleteAction, t }) => (
   <Menu
