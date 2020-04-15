@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Icon } from 'cozy-ui/transpiled/react'
+import Icon from 'cozy-ui/transpiled/react/Icon'
 import Importation from '../../../importation'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 

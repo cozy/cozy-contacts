@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import flow from 'lodash/flow'
 import differenceBy from 'lodash/differenceBy'
-import { Alerter } from 'cozy-ui/transpiled/react'
+import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import { fullContactPropTypes } from '../ContactPropTypes'

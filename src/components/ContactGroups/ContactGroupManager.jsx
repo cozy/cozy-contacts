@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Button } from 'cozy-ui/transpiled/react'
+import Button from 'cozy-ui/transpiled/react/Button'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import SelectBox, { ActionsOption, components } from 'cozy-ui/react/SelectBox'
 import Overlay from 'cozy-ui/transpiled/react/Overlay'

@@ -1,11 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {
-  Alerter,
-  Modal,
+import Alerter from 'cozy-ui/transpiled/react/Alerter'
+import Modal, {
   ModalContent,
   ModalHeader
-} from 'cozy-ui/transpiled/react'
+} from 'cozy-ui/transpiled/react/Modal'
 import withContactsMutations from '../../connections/allContacts'
 import ExportStepsExplanation from './ExportStepsExplanation'
 import ContactImportationActions from './ContactImportationActions'

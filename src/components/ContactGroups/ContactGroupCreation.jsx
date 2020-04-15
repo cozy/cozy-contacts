@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { Icon, Input, translate } from 'cozy-ui/react'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import Input from 'cozy-ui/transpiled/react/Input'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 import classNames from 'classnames'
 
 const normalizeGroupData = name => {

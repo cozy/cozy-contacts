@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
-import { SelectionBar, Modal } from 'cozy-ui/react'
+import SelectionBar from 'cozy-ui/transpiled/react/SelectionBar'
+import Modal from 'cozy-ui/transpiled/react/Modal'
 import withSelection from '../Selection/selectionContainer'
 import withModalContainer from '../HOCs/withModal'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
