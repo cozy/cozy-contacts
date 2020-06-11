@@ -106,7 +106,8 @@ export const DumpContactCardModal = ({
   if (
     !editMode &&
     fetchStatusContact === 'loaded' &&
-    allGroupsContactStatus === 'loaded'
+    allGroupsContactStatus === 'loaded' &&
+    !shouldDisplayConfirmDeleteModal
   ) {
     return (
       <ContactCard
