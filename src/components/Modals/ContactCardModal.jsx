@@ -16,7 +16,7 @@ import ContactFormModal from './ContactFormModal'
 import ContactGroups from '../ContactCard/ContactGroups'
 import { Query } from 'cozy-client'
 import { flow } from 'lodash'
-class ContactCardModal extends React.Component {
+export class ContactCardModal extends React.Component {
   state = {
     editMode: false,
     shouldDisplayConfirmDeleteModal: false
@@ -62,84 +62,22 @@ class ContactCardModal extends React.Component {
                 }
               >
                 {({ data: allGroups, fetchStatus: allGroupsContactStatus }) => {
-                  if (
-                    fetchStatusContact !== 'loaded' ||
-                    allGroupsContactStatus !== 'loaded'
-                  ) {
-                    return <SpinnerContact size="xxlarge" />
-                  }
-                  if (
-                    !editMode &&
-                    fetchStatusContact === 'loaded' &&
-                    allGroupsContactStatus === 'loaded'
-                  ) {
-                    return (
-                      <ContactCard
-                        contact={contact}
-                        allGroups={allGroups}
-                        renderHeader={children => (
-                          <ModalHeader className="u-flex u-flex-items-center u-flex-column-s u-pr-1-half-s">
-                            {children}
-                            <div className="u-flex u-flex-row u-ml-auto u-ml-0-s">
-                              <ContactGroups
-                                contact={contact}
-                                allGroups={allGroups}
-                              />
-                              <ContactCardMenu
-                                deleteAction={{
-                                  label: t('delete'),
-                                  action: this.toggleConfirmDeleteModal
-                                }}
-                                editAction={{
-                                  label: t('edit'),
-                                  action: this.toggleEditMode
-                                }}
-                              />
-                            </div>
-                          </ModalHeader>
-                        )}
-                        renderBody={children => (
-                          <ModalContent>{children}</ModalContent>
-                        )}
-                      />
-                    )
-                  }
-
-                  if (editMode && fetchStatusContact === 'loaded') {
-                    return (
-                      <ContactFormModal
-                        contact={contact}
-                        onClose={this.toggleEditMode}
-                        title={t('edit-contact')}
-                        afterMutation={this.toggleEditMode}
-                      />
-                    )
-                  }
-
-                  if (shouldDisplayConfirmDeleteModal) {
-                    return (
-                      <Modal
-                        into="body"
-                        title={t('delete-confirmation.title', {
-                          smart_count: 1
-                        })}
-                        description={t(
-                          getConnectedAccounts(contact).length > 0
-                            ? 'delete-confirmation.description-google'
-                            : 'delete-confirmation.description-simple',
-                          {
-                            smart_count: 1
-                          }
-                        )}
-                        primaryText={t('delete')}
-                        primaryType="danger"
-                        primaryAction={() => this.deleteContact(contact)}
-                        secondaryText={t('cancel')}
-                        secondaryAction={this.toggleConfirmDeleteModal}
-                        dismissAction={this.toggleConfirmDeleteModal}
-                      />
-                    )
-                  }
+                  return (
+                    <DumpContactCardModal
+                      fetchStatusContact={fetchStatusContact}
+                      allGroupsContactStatus={allGroupsContactStatus}
+                      editMode={editMode}
+                      shouldDisplayConfirmDeleteModal={
+                        shouldDisplayConfirmDeleteModal
+                      }
+                      contact={contact}
+                      allGroups={allGroups}
+                      t={t}
+                      toggleConfirmDeleteModal={this.toggleConfirmDeleteModal}
+                      toggleEditMode={this.toggleEditMode}
+                      deleteContact={this.deleteContact}
+                    />
+                  )
                 }}
               </Query>
             )
@@ -150,6 +88,89 @@ class ContactCardModal extends React.Component {
   }
 }
 
+export const DumpContactCardModal = ({
+  fetchStatusContact,
+  allGroupsContactStatus,
+  editMode,
+  shouldDisplayConfirmDeleteModal,
+  contact,
+  allGroups,
+  t,
+  toggleConfirmDeleteModal,
+  toggleEditMode,
+  deleteContact
+}) => {
+  if (fetchStatusContact !== 'loaded' || allGroupsContactStatus !== 'loaded') {
+    return <SpinnerContact size="xxlarge" />
+  }
+  if (
+    !editMode &&
+    fetchStatusContact === 'loaded' &&
+    allGroupsContactStatus === 'loaded'
+  ) {
+    return (
+      <ContactCard
+        contact={contact}
+        allGroups={allGroups}
+        renderHeader={children => (
+          <ModalHeader className="u-flex u-flex-items-center u-flex-column-s u-pr-1-half-s">
+            {children}
+            <div className="u-flex u-flex-row u-ml-auto u-ml-0-s">
+              <ContactGroups contact={contact} allGroups={allGroups} />
+              <ContactCardMenu
+                deleteAction={{
+                  label: t('delete'),
+                  action: toggleConfirmDeleteModal
+                }}
+                editAction={{
+                  label: t('edit'),
+                  action: toggleEditMode
+                }}
+              />
+            </div>
+          </ModalHeader>
+        )}
+        renderBody={children => <ModalContent>{children}</ModalContent>}
+      />
+    )
+  }
+
+  if (editMode && fetchStatusContact === 'loaded') {
+    return (
+      <ContactFormModal
+        contact={contact}
+        onClose={toggleEditMode}
+        title={t('edit-contact')}
+        afterMutation={toggleEditMode}
+      />
+    )
+  }
+
+  if (shouldDisplayConfirmDeleteModal) {
+    return (
+      <Modal
+        into="body"
+        title={t('delete-confirmation.title', {
+          smart_count: 1
+        })}
+        description={t(
+          getConnectedAccounts(contact).length > 0
+            ? 'delete-confirmation.description-google'
+            : 'delete-confirmation.description-simple',
+          {
+            smart_count: 1
+          }
+        )}
+        primaryText={t('delete')}
+        primaryType="danger"
+        primaryAction={() => deleteContact(contact)}
+        secondaryText={t('cancel')}
+        secondaryAction={toggleConfirmDeleteModal}
+        dismissAction={toggleConfirmDeleteModal}
+      />
+    )
+  }
+}
 ContactCardModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
