@@ -48,7 +48,7 @@ export class ContactCardModal extends React.Component {
     return (
       <Modal into="body" dismissAction={onClose} size="xlarge" mobileFullscreen>
         <Query query={client => client.get(DOCTYPE_CONTACTS, id)}>
-          {({ data: contact, fetchStatus: fetchStatusContact }) => {
+          {({ data: contact, fetchStatus: fetchContactStatus }) => {
             return (
               <Query
                 query={client =>
@@ -63,7 +63,7 @@ export class ContactCardModal extends React.Component {
               >
                 {({ data: allGroups, fetchStatus: allGroupsContactStatus }) => {
                   if (
-                    fetchStatusContact !== 'loaded' ||
+                    fetchContactStatus !== 'loaded' ||
                     allGroupsContactStatus !== 'loaded'
                   ) {
                     return <SpinnerContact size="xxlarge" />
