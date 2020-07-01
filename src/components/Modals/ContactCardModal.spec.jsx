@@ -1,5 +1,5 @@
 import React from 'react'
-import { DumpContactCardModal } from './ContactCardModal'
+import { DumbContactCardModal } from './ContactCardModal'
 import { shallow, mount } from 'enzyme'
 import AppLike from '../../tests/Applike'
 
@@ -151,7 +151,7 @@ describe('ContactCardModal', () => {
       contact: null,
       allGroups: null
     })
-    const jsx = <DumpContactCardModal {...props} />
+    const jsx = <DumbContactCardModal {...props} />
     const wrapper = shallow(jsx)
     expect(wrapper).toMatchSnapshot()
   })
@@ -167,7 +167,7 @@ describe('ContactCardModal', () => {
     })
     const jsx = (
       <AppLike>
-        <DumpContactCardModal {...props} />
+        <DumbContactCardModal {...props} />
       </AppLike>
     )
     const wrapper = mount(jsx)
@@ -185,7 +185,7 @@ describe('ContactCardModal', () => {
     })
     const jsx = (
       <AppLike>
-        <DumpContactCardModal {...props} />
+        <DumbContactCardModal {...props} />
       </AppLike>
     )
     const wrapper = mount(jsx)
@@ -203,7 +203,7 @@ describe('ContactCardModal', () => {
     })
     const jsx = (
       <AppLike>
-        <DumpContactCardModal {...props} />
+        <DumbContactCardModal {...props} />
       </AppLike>
     )
     const wrapper = mount(jsx)
