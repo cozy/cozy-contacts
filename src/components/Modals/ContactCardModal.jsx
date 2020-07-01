@@ -71,14 +71,14 @@ export class ContactCardModal extends React.Component {
                   return (
                     <DumbContactCardModal
                       editMode={editMode}
-                      shouldDisplayConfirmDeleteModal={
-                        shouldDisplayConfirmDeleteModal
-                      }
                       contact={contact}
                       allGroups={allGroups}
                       t={t}
                       toggleConfirmDeleteModal={this.toggleConfirmDeleteModal}
                       toggleEditMode={this.toggleEditMode}
+                      shouldDisplayConfirmDeleteModal={
+                        shouldDisplayConfirmDeleteModal
+                      }
                       deleteContact={this.deleteContact}
                     />
                   )
@@ -94,78 +94,76 @@ export class ContactCardModal extends React.Component {
 
 export const DumbContactCardModal = ({
   editMode,
-  shouldDisplayConfirmDeleteModal,
   contact,
   allGroups,
   t,
   toggleConfirmDeleteModal,
   toggleEditMode,
+  shouldDisplayConfirmDeleteModal,
   deleteContact
 }) => {
-  if (!editMode && !shouldDisplayConfirmDeleteModal) {
-    return (
-      <ContactCard
-        contact={contact}
-        allGroups={allGroups}
-        renderHeader={children => (
-          <ModalHeader className="u-flex u-flex-items-center u-flex-column-s u-pr-1-half-s">
-            {children}
-            <div className="u-flex u-flex-row u-ml-auto u-ml-0-s">
-              <ContactGroups contact={contact} allGroups={allGroups} />
-              <ContactCardMenu
-                deleteAction={{
-                  label: t('delete'),
-                  action: toggleConfirmDeleteModal
-                }}
-                editAction={{
-                  label: t('edit'),
-                  action: toggleEditMode
-                }}
-              />
-            </div>
-          </ModalHeader>
-        )}
-        renderBody={children => <ModalContent>{children}</ModalContent>}
-      />
-    )
-  }
+  return (
+    <>
+      {!editMode && (
+        <ContactCard
+          contact={contact}
+          allGroups={allGroups}
+          renderHeader={children => (
+            <ModalHeader className="u-flex u-flex-items-center u-flex-column-s u-pr-1-half-s">
+              {children}
+              <div className="u-flex u-flex-row u-ml-auto u-ml-0-s">
+                <ContactGroups contact={contact} allGroups={allGroups} />
+                <ContactCardMenu
+                  deleteAction={{
+                    label: t('delete'),
+                    action: toggleConfirmDeleteModal
+                  }}
+                  editAction={{
+                    label: t('edit'),
+                    action: toggleEditMode
+                  }}
+                />
+              </div>
+            </ModalHeader>
+          )}
+          renderBody={children => <ModalContent>{children}</ModalContent>}
+        />
+      )}
+      {editMode && (
+        <ContactFormModal
+          contact={contact}
+          onClose={toggleEditMode}
+          title={t('edit-contact')}
+          afterMutation={toggleEditMode}
+        />
+      )}
 
-  if (editMode) {
-    return (
-      <ContactFormModal
-        contact={contact}
-        onClose={toggleEditMode}
-        title={t('edit-contact')}
-        afterMutation={toggleEditMode}
-      />
-    )
-  }
-
-  if (shouldDisplayConfirmDeleteModal) {
-    return (
-      <Modal
-        into="body"
-        title={t('delete-confirmation.title', {
-          smart_count: 1
-        })}
-        description={t(
-          getConnectedAccounts(contact).length > 0
-            ? 'delete-confirmation.description-google'
-            : 'delete-confirmation.description-simple',
-          {
+      {shouldDisplayConfirmDeleteModal && (
+        <Modal
+          into="body"
+          title={t('delete-confirmation.title', {
             smart_count: 1
-          }
-        )}
-        primaryText={t('delete')}
-        primaryType="danger"
-        primaryAction={() => deleteContact(contact)}
-        secondaryText={t('cancel')}
-        secondaryAction={toggleConfirmDeleteModal}
-        dismissAction={toggleConfirmDeleteModal}
-      />
-    )
-  }
+          })}
+          description={t(
+            getConnectedAccounts(contact).length > 0
+              ? 'delete-confirmation.description-google'
+              : 'delete-confirmation.description-simple',
+            {
+              smart_count: 1
+            }
+          )}
+          primaryText={t('delete')}
+          primaryType="danger"
+          primaryAction={() => deleteContact(contact)}
+          secondaryText={t('cancel')}
+          secondaryAction={toggleConfirmDeleteModal}
+          dismissAction={toggleConfirmDeleteModal}
+        />
+      )}
+    </>
+  )
 }
+
 ContactCardModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
