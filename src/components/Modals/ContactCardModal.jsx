@@ -63,7 +63,7 @@ export class ContactCardModal extends React.Component {
               >
                 {({ data: allGroups, fetchStatus: allGroupsContactStatus }) => {
                   return (
-                    <DumpContactCardModal
+                    <DumbContactCardModal
                       fetchStatusContact={fetchStatusContact}
                       allGroupsContactStatus={allGroupsContactStatus}
                       editMode={editMode}
@@ -88,7 +88,7 @@ export class ContactCardModal extends React.Component {
   }
 }
 
-export const DumpContactCardModal = ({
+export const DumbContactCardModal = ({
   fetchStatusContact,
   allGroupsContactStatus,
   editMode,
