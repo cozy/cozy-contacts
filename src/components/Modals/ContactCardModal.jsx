@@ -62,10 +62,14 @@ export class ContactCardModal extends React.Component {
                 }
               >
                 {({ data: allGroups, fetchStatus: allGroupsContactStatus }) => {
+                  if (
+                    fetchStatusContact !== 'loaded' ||
+                    allGroupsContactStatus !== 'loaded'
+                  ) {
+                    return <SpinnerContact size="xxlarge" />
+                  }
                   return (
                     <DumbContactCardModal
-                      fetchStatusContact={fetchStatusContact}
-                      allGroupsContactStatus={allGroupsContactStatus}
                       editMode={editMode}
                       shouldDisplayConfirmDeleteModal={
                         shouldDisplayConfirmDeleteModal
@@ -89,8 +93,6 @@ export class ContactCardModal extends React.Component {
 }
 
 export const DumbContactCardModal = ({
-  fetchStatusContact,
-  allGroupsContactStatus,
   editMode,
   shouldDisplayConfirmDeleteModal,
   contact,
@@ -100,15 +102,7 @@ export const DumbContactCardModal = ({
   toggleEditMode,
   deleteContact
 }) => {
-  if (fetchStatusContact !== 'loaded' || allGroupsContactStatus !== 'loaded') {
-    return <SpinnerContact size="xxlarge" />
-  }
-  if (
-    !editMode &&
-    fetchStatusContact === 'loaded' &&
-    allGroupsContactStatus === 'loaded' &&
-    !shouldDisplayConfirmDeleteModal
-  ) {
+  if (!editMode && !shouldDisplayConfirmDeleteModal) {
     return (
       <ContactCard
         contact={contact}
@@ -136,7 +130,7 @@ export const DumbContactCardModal = ({
     )
   }
 
-  if (editMode && fetchStatusContact === 'loaded') {
+  if (editMode) {
     return (
       <ContactFormModal
         contact={contact}
