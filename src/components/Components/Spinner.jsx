@@ -5,7 +5,7 @@ class SpinnerContact extends PureComponent {
   render() {
     const { size, loadingType } = this.props
     return (
-      <div className="spinner">
+      <div className="spinner" data-testid="contactSpinner">
         <Spinner size={size} loadingType={loadingType} middle={true} />
       </div>
     )
