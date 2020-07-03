@@ -96,6 +96,7 @@ exports[`ContactsListOrSpinner should display the contact List 1`] = `
 exports[`ContactsListOrSpinner should display the loader 1`] = `
 <div
   className="spinner"
+  data-testid="contactSpinner"
 >
   <div
     className="styles__c-spinner___1snK7 styles__c-spinner--middle___RwyII"
