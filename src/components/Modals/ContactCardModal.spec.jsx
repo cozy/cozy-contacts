@@ -74,6 +74,7 @@ describe('ContactCardModal', () => {
     )
 
     const { getByText } = render(jsx)
+    expect(getByText(fakedContact.fullname))
     expect(getByText('delete-confirmation.title'))
   })
 
