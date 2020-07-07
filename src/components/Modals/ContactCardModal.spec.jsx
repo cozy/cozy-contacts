@@ -3,8 +3,7 @@ import { ContactCardModal, DumbContactCardModal } from './ContactCardModal'
 import { render } from '@testing-library/react'
 import { createMockClient } from 'cozy-client'
 import AppLike from '../../tests/Applike'
-import { fakedContact } from '../../../fixtures/contacts'
-import { fakedAllGroups } from '../../../fixtures/groups'
+import { contactWithGroup as contact, groups } from '../../helpers/testData'
 
 const client = createMockClient({})
 const setup = ({
@@ -45,8 +44,8 @@ describe('ContactCardModal', () => {
   it('should display the contact card', () => {
     const props = setup({
       editMode: false,
-      contact: fakedContact,
-      allGroups: fakedAllGroups,
+      contact: contact,
+      allGroups: groups,
       shouldDisplayConfirmDeleteModal: false
     })
 
@@ -56,14 +55,14 @@ describe('ContactCardModal', () => {
       </AppLike>
     )
     const { getByText } = render(jsx)
-    expect(getByText(fakedContact.fullname))
+    expect(getByText(contact.fullname))
   })
 
   it('should display the delete confirmation modal', () => {
     const props = setup({
       editMode: false,
-      contact: fakedContact,
-      allGroups: fakedAllGroups,
+      contact: contact,
+      allGroups: groups,
       shouldDisplayConfirmDeleteModal: true
     })
 
@@ -74,15 +73,15 @@ describe('ContactCardModal', () => {
     )
 
     const { getByText } = render(jsx)
-    expect(getByText(fakedContact.fullname))
+    expect(getByText(contact.fullname))
     expect(getByText('delete-confirmation.title'))
   })
 
   it('should display the edit form modal', () => {
     const props = setup({
       editMode: true,
-      contact: fakedContact,
-      allGroups: fakedAllGroups,
+      contact: contact,
+      allGroups: groups,
       shouldDisplayConfirmDeleteModal: false
     })
 
