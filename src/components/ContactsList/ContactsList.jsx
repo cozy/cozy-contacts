@@ -30,7 +30,7 @@ class ContactsList extends Component {
       const sortedContacts = [...contacts].sort(sortLastNameFirst)
       const categorizedContacts = sortedContacts.reduce((acc, contact) => {
         const name = buildLastNameFirst(contact)
-        const header = name[0] || 'EMPTY'
+        const header = name[0] || t('empty-list')
         acc[header] = acc[header] || []
         acc[header].push(contact)
         return acc
