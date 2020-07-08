@@ -28,8 +28,7 @@ const fields = [
   {
     name: 'familyName',
     icon: null,
-    type: 'text',
-    required: true
+    type: 'text'
   },
   {
     name: 'phone',
