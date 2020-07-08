@@ -20,6 +20,7 @@ class ContactFormField extends React.Component {
       <div className="contact-form-field">
         <Label
           htmlFor={this.fieldID}
+          role="label"
           block={false}
           className={classnames(
             'contact-form__label',
