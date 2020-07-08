@@ -1,0 +1,113 @@
+{
+  "associated_accounts": "Cuenta enlazada a este contacto |||| Cuentas enlazadas a este contacto",
+  "menu": "Menú",
+  "create_contact": "Crear un contacto",
+  "cancel": "Anular",
+  "confirm": "Confirmar",
+  "edit": "Editar",
+  "edit-contact": "Editar un contacto",
+  "save": "Guardar",
+  "delete": "Borrar",
+  "selected_contacts": "%{smart_count} contacto seleccionado |||| %{smart_count} contactos seleccionados",
+  "select-all": "Seleccionarlos todos",
+  "unselect-all": "Desmarcar",
+  "contact_info": "Informaciones del contacto",
+  "contact_group": "Grupos",
+  "me": "yo",
+  "empty-list": "VACIO",
+  "empty": {
+    "title": "Importar sus contactos",
+    "description": "Hacer click en el botón \"Crear un contacti\" para comenzar a usar la aplicación.",
+    "google": "Conectarse con Google Contacts",
+    "importation": "Importar contacts (vCard)",
+    "after": "Importar sus contactos puede tomar algunos minutos, tómese el tiempo para disfrutar de un merecido descanso y tomarse un café ☕️"
+  },
+  "error": {
+    "save": "Se ha producido un error al guardar el contacto, inténtelo de nuevo."
+  },
+  "formatted_address": "%{pobox} %{street} %{postcode} %{city} %{region} %{country}",
+  "field": {
+    "givenName": "Nombre",
+    "familyName": "Apellido",
+    "phone": "Teléfono",
+    "email": "Email",
+    "address": "Dirección",
+    "cozy": "Cozy URL",
+    "company": "Empresa",
+    "birthday": "Cumpleaños",
+    "note": "Notas"
+  },
+  "importation": {
+    "cancel": "Anular",
+    "complete_failure": "Importación fallida",
+    "complete_success": "¡Congratulaciones!",
+    "creation": "se ha creado un contacto |||||| %{smart_count} contactos se han creado ",
+    "update": "se ha actualizado un contacto |||||| %{smart_count} contactos se han actualizado ",
+    "empty_file": "Este archivo está vacío",
+    "export_steps_intro": "Para obtener sus contactos de otro programa, primero debe exportar la lista completa:",
+    "export_to_vcard_step": "Exportar sus contactos a un archivo con el formato vCard (*.vcf).",
+    "invalid_file_type": "Este tipo de archivo no es compatible",
+    "no_file": "Seleccionar su archivo aquí",
+    "open_contact_manager_step": "Abrir su gestor de contactos favorito",
+    "partial_success": "%{smart_count} de %{total} contacto se importó. |||| %{smart_count} de %{total} contactos se importaron.",
+    "ready": "Listo para importar",
+    "retry": "Reintentar",
+    "retry_hint": "Por favor, inténtelo de nuevo para completar su importación.",
+    "retry_or_select_another_hint": "Inténtelo de nuevo o escoja otro archivo.",
+    "run": "Importar",
+    "running": "Estamos transfiriendo un archivo...",
+    "title": "Importar contactos",
+    "transfer_file": "Transferir un archivo",
+    "available_soon": "Pronto podrá importar sus contactos desde otros servicios (iCloud, Facebook...)."
+  },
+  "placeholder": {
+    "label": "Etiqueta"
+  },
+  "addLabel": {
+    "address": "Añadir una dirección",
+    "email": "Añadir un correo electrónico",
+    "phone": "Añadir un teléfono"
+  },
+  "SelectionBar": {
+    "selected_count": "contacto seleccionado |||| contactos seleccionados",
+    "trash": "borrar"
+  },
+  "groups": {
+    "none": "No existe un grupo.",
+    "manage": "Administrar grupos",
+    "create": "Crear un grupo",
+    "name": "Nombre del grupo",
+    "removed": "El grupo %{name} ha sido borrado.",
+    "remove_canceled": "El grupo %{name} ha sido restaurado. Los contactos permanecen con sus enlaces."
+  },
+  "delete-confirmation": {
+    "title": "¿Borrar este contacto? |||| ¿Borrar estos contactos?",
+    "description-simple": "Este contacto será removido permanentemente de su Cozy. |||| Estos contactos serán removidos permanentemente de su Cozy.",
+    "description-google": "Este contacto también se eliminará del directorio de Google. |||| Estos contactos también se eliminarán del directorio de Google.",
+    "description-mixed": "Estos contactos se eliminarán permanentemente de su Cozy, y los contactos vinculados a su cuenta de Google también se eliminarán de su directorio de Google."
+  },
+  "intent": {
+    "creation_error": "Se ha producido un error al intentar contactar con la otra aplicación. Por favor, inténtelo de nuevo más tarde."
+  },
+  "manifest": {
+    "short_description": "Cozy Contacts le ayuda a guardar, proteger y administrar todos sus contactos desde su Cozy",
+    "long_description": "Con Cozy Contacts usted puede:\n\n* Añadir, editar y ordenar sus contactos,\n* Administrar sus grupos de contactos,\n* Compartir con sus contactos desde Cozy Drive,\n* Sincronizar sus contactos desde Google,\n* Y pronto, sincronizar sus contactos desde su móvil y otros servicios online (iCloud, Facebook...)",
+    "permissions": {
+      "apps": {
+        "description": "Requerido por el menú principal para mostrar los iconos de las aplicaciones"
+      },
+      "contacts": {
+        "description": "Necesario para administrar sus contactos"
+      },
+      "contactsgroups": {
+        "description": "Necesario para administrar grupo de contactos"
+      },
+      "contactsAccounts": {
+        "description": "Necesario para vincular sus contactos con sus cuentas remotas"
+      }
+    }
+  },
+  "loading": {
+    "fetching_contacts": "Estamos cargando sus contactos, por favor espere."
+  }
+}
