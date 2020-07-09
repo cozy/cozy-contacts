@@ -32,6 +32,7 @@ Please keep in mind that:
 - You may add documentation in the `/docs` directory to explain your choices if needed
 - We recommend to use [task lists][checkbox] to explain steps / features in your Pull-Request description
 - you do _not_ need to build app to submit a PR
+- you should update the Transifex source locale file if you modify it for your feature needs (see [Localization section in README][localization])
 
 
 ### Workflow
@@ -106,7 +107,7 @@ Documentation improvements are very welcome. We try to keep a good documentation
 
 ## Translations
 
-The cozy-contacts is translated by json located in `/src/locales`
+The cozy-contacts is translated on a platform called [Transifex][tx]. [This tutorial][tx-start] can help you to learn how to make your first steps here. If you have any question, don't hesitate to ask us!
 
 
 ## Community
@@ -122,4 +123,6 @@ You can help us by making our community even more vibrant. For example, you can 
 [commitmsg]: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 [localization]: https://github.com/cozy/cozy-contacts/blob/master/README.md#localization
 [hub]: https://hub.github.com/
+[tx]: https://www.transifex.com/cozy/
+[tx-start]: http://docs.transifex.com/getting-started/translators/
 [forum]: https://forum.cozy.io/
