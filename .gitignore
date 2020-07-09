@@ -16,10 +16,6 @@ src/locales/*
 !src/locales/en.json
 
 
-# transifex
-+.transifexrc
-
-
 # Coverage
 coverage/
 
