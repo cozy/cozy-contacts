@@ -113,11 +113,7 @@ If you want to work on cozy-contacts and submit code modifications, feel free to
 
 ### Localization
 
-Localization and translations are handled by [Transifex][tx], which is used by all Cozy's apps.
-
-As a _translator_, you can login to [Transifex][tx-signin] (using your Github account) and claim an access to the [app repository][tx-app]. Locales are pulled when app is build before publishing.
-
-As a _developer_, you must [configure the transifex client][tx-client], and claim an access as _maintainer_ to the [app repository][tx-app]. Then please **only update** the source locale file (usually `en.json` in client and/or server parts), and push it to Transifex repository using the `tx push -s` command.
+Localization and translations are handled by json files located in `/src/locales`
 
 
 ### Maintainer
@@ -154,10 +150,6 @@ cozy-contacts is developed by cozy and distributed under the [AGPL v3 license][a
 [konnectors]: https://github.com/cozy/cozy-konnector-libs
 [agpl-3.0]: https://www.gnu.org/licenses/agpl-3.0.html
 [contribute]: CONTRIBUTING.md
-[tx]: https://www.transifex.com/cozy/
-[tx-signin]: https://www.transifex.com/signin/
-[tx-app]: https://www.transifex.com/cozy/<SLUG_TX>/dashboard/
-[tx-client]: http://docs.transifex.com/client/
 [freenode]: http://webchat.freenode.net/?randomnick=1&channels=%23cozycloud&uio=d4
 [forum]: https://forum.cozy.io/
 [github]: https://github.com/cozy/
