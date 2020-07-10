@@ -109,9 +109,9 @@ export const DumbContactCardModal = ({
           contact={contact}
           allGroups={allGroups}
           renderHeader={children => (
-            <ModalHeader className="u-flex u-flex-items-center u-flex-column-s u-pr-1-half-s">
+            <ModalHeader className="u-flex u-flex-items-center u-flex-column-s u-pr-1-half-s u-flex-justify-between">
               {children}
-              <div className="u-flex u-flex-row u-ml-auto u-ml-0-s">
+              <div className="u-flex u-flex-row u-ml-0-s u-mr-3 u-mr-0-s">
                 <ContactGroups contact={contact} allGroups={allGroups} />
                 <ContactCardMenu
                   deleteAction={{
