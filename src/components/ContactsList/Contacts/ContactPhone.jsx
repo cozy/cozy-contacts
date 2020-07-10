@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const ContactPhone = ({ phone }) => <div className="contact-phone">{phone}</div>
+const ContactPhone = ({ phone }) => (
+  <div className="contact-phone u-ellipsis">{phone}</div>
+)
 ContactPhone.propTypes = {
   phone: PropTypes.string
 }
