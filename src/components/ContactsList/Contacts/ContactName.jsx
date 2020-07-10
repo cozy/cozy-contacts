@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const ContactName = ({ firstname, lastname }) => (
-  <div>
+  <div className="u-ellipsis">
     <span className="contact-firstname">{firstname}</span>
     &nbsp;
     <span className="contact-lastname">{lastname}</span>
