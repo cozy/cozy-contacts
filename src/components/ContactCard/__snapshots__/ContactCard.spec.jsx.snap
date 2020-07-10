@@ -3,7 +3,7 @@
 exports[`ContactCard should match snapshot when groups are available but no one is linked to the specified contact 1`] = `
 Array [
   <div
-    className="u-flex u-flex-items-center u-flex-column-s u-flex-justify-start-s"
+    className="u-flex u-flex-items-center u-flex-column-s u-flex-justify-start-s u-ov-hidden u-maw-100 u-mr-1 u-mr-0-s"
   >
     <div
       className="styles__c-avatar___PpDI- u-mb-half-s u-flex-shrink-0"
@@ -22,7 +22,7 @@ Array [
       </span>
     </div>
     <h1
-      className="u-title-h1 u-mv-0 u-mh-1 u-mb-half-s"
+      className="u-title-h1 u-mv-0 u-mh-1 u-mb-half-s u-ellipsis u-spacellipsis-s u-maw-100 u-ta-center-s"
     >
       Rikki  White
     </h1>
@@ -236,7 +236,7 @@ Array [
 exports[`ContactCard should match snapshot with accounts and groups 1`] = `
 Array [
   <div
-    className="u-flex u-flex-items-center u-flex-column-s u-flex-justify-start-s"
+    className="u-flex u-flex-items-center u-flex-column-s u-flex-justify-start-s u-ov-hidden u-maw-100 u-mr-1 u-mr-0-s"
   >
     <div
       className="styles__c-avatar___PpDI- u-mb-half-s u-flex-shrink-0"
@@ -255,7 +255,7 @@ Array [
       </span>
     </div>
     <h1
-      className="u-title-h1 u-mv-0 u-mh-1 u-mb-half-s"
+      className="u-title-h1 u-mv-0 u-mh-1 u-mb-half-s u-ellipsis u-spacellipsis-s u-maw-100 u-ta-center-s"
     >
       Rikki  White
     </h1>
@@ -438,7 +438,7 @@ Array [
 exports[`ContactCard should match snapshot with accounts without groups 1`] = `
 Array [
   <div
-    className="u-flex u-flex-items-center u-flex-column-s u-flex-justify-start-s"
+    className="u-flex u-flex-items-center u-flex-column-s u-flex-justify-start-s u-ov-hidden u-maw-100 u-mr-1 u-mr-0-s"
   >
     <div
       className="styles__c-avatar___PpDI- u-mb-half-s u-flex-shrink-0"
@@ -457,7 +457,7 @@ Array [
       </span>
     </div>
     <h1
-      className="u-title-h1 u-mv-0 u-mh-1 u-mb-half-s"
+      className="u-title-h1 u-mv-0 u-mh-1 u-mb-half-s u-ellipsis u-spacellipsis-s u-maw-100 u-ta-center-s"
     >
       Rikki  White
     </h1>

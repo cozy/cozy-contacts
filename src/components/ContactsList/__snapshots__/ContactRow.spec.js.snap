@@ -39,7 +39,9 @@ exports[`ContactRow should match the contact snapshot 1`] = `
         JD
       </span>
     </div>
-    <div>
+    <div
+      className="u-ellipsis"
+    >
       <span
         className="contact-firstname"
       >
@@ -54,17 +56,17 @@ exports[`ContactRow should match the contact snapshot 1`] = `
     </div>
   </div>
   <div
-    className="contact-email"
+    className="contact-email u-ellipsis"
   >
     johndoe@localhost
   </div>
   <div
-    className="contact-phone"
+    className="contact-phone u-ellipsis"
   >
     0123456789
   </div>
   <div
-    className="contact-cozyurl"
+    className="contact-cozyurl u-ellipsis"
   >
     http://johndoe.mycozy.cloud
   </div>
