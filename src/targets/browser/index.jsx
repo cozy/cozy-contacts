@@ -16,11 +16,14 @@ import {
   DOCTYPE_CONTACT_ACCOUNTS
 } from '../../helpers/doctypes'
 import manifest from '../../../manifest.webapp'
+import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
 
 const RootApp = props => (
   <CozyProvider client={props.client} store={props.store}>
     <I18n lang={props.lang} polyglot={props.polyglot}>
-      <HotedApp />
+      <MuiCozyTheme>
+        <HotedApp />
+      </MuiCozyTheme>
     </I18n>
   </CozyProvider>
 )
