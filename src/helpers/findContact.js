@@ -44,6 +44,11 @@ function createSelector(object, path) {
 
 export function findContactsWithSamePhoneOrEmail(targetContact) {
   const paths = ['phone.number', 'email.address']
-  const selectors = paths.map(path => createSelector(targetContact, path))
+  const selectors = paths.map(path =>
+    createSelector(
+      targetContact,
+      path
+    )
+  )
   return findItems(DOCTYPE_CONTACTS, selectors)
 }
