@@ -55,7 +55,7 @@
     "@material-ui/core": "3.9.4",
     "@testing-library/react": "10.4.9",
     "classnames": "2.2.6",
-    "cozy-bar": "7.9.0",
+    "cozy-bar": "7.13.3",
     "cozy-client": "13.21.0",
     "cozy-doctypes": "1.72.2",
     "cozy-flags": "1.10.0",
