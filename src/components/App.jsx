@@ -39,9 +39,21 @@ const query = client =>
     .indexFields(['_id'])
 
 class ContactsApp extends React.Component {
+  // HACK to avoid CozyBar error :
+  // you tried to use the CozyBar API (BarCenter) but the CozyBar is not initialised yet via cozy.bar.init
+  // TODO : TO BE REMOVED
+  state = {
+    cozyBarHack: false
+  }
+
   componentDidMount() {
     initFlags()
     this.props.cleanTrashedGroups()
+
+    // HACK to be removed
+    setTimeout(() => {
+      this.setState({ cozyBarHack: true })
+    }, 0)
   }
 
   render() {
@@ -51,16 +63,18 @@ class ContactsApp extends React.Component {
       breakpoints: { isMobile },
       deleteContact
     } = this.props
+    const { cozyBarHack } = this.state // HACK to be removed
 
     return (
       <Layout monocolumn="true">
-        {isMobile && (
-          <BarCenter>
-            <Title>
-              <span className={'fil-path-title'}>Contacts</span>
-            </Title>
-          </BarCenter>
-        )}
+        {isMobile &&
+          cozyBarHack && (
+            <BarCenter>
+              <Title>
+                <span className={'fil-path-title'}>Contacts</span>
+              </Title>
+            </BarCenter>
+          )}
         <Main>
           {flag('switcher') && <FlagSwitcher />}
           <ContactsSelectionBar trashAction={deleteContact} />
