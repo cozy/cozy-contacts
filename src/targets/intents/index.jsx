@@ -1,5 +1,3 @@
-/* global cozy */
-
 import 'babel-polyfill'
 
 import 'styles'
@@ -9,18 +7,20 @@ import React from 'react'
 import { render } from 'react-dom'
 import { I18n } from 'cozy-ui/transpiled/react/I18n'
 import cozyClient, { CozyProvider } from 'cozy-client'
+import { Intents } from 'cozy-interapp'
 
 const renderApp = function(client, appLocale, appData) {
   const IntentHandler = require('components/Intents/IntentHandler').default
   const PickContacts = require('components/Intents/PickContacts').default
   const CreateContact = require('components/Intents/CreateContact').default
+  const intents = new Intents({ client: client })
   render(
     <I18n
       lang={appLocale}
       dictRequire={appLocale => require(`locales/${appLocale}`)}
     >
       <CozyProvider client={client}>
-        <IntentHandler appData={appData} intents={cozy.client.intents}>
+        <IntentHandler appData={appData} intents={intents}>
           <PickContacts action="PICK" type="io.cozy.contacts" />
           <CreateContact action="CREATE" type="io.cozy.contacts" />
         </IntentHandler>
@@ -52,11 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const client = new cozyClient({
     uri: `${protocol}//${data.cozyDomain}`,
-    token: data.cozyToken
-  })
-
-  cozy.client.init({
-    cozyURL: `${protocol}//${data.cozyDomain}`,
     token: data.cozyToken
   })
 
