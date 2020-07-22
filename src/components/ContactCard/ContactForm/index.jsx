@@ -68,12 +68,14 @@ const fields = [
   {
     name: 'birthday',
     icon: IconBirthday,
-    type: 'date'
+    type: 'date',
+    labelProps: { shrink: true }
   },
   {
     name: 'note',
     icon: IconNote,
-    type: 'textarea'
+    type: 'text',
+    isMultiline: true
   }
 ]
 
@@ -105,27 +107,41 @@ const ContactForm = ({ contact, onSubmit, t }) => (
             className="u-flex u-flex-column u-flex-items-stretch u-flex-justify-start"
           >
             <FieldsetTitle title={t('contact_info')} />
-            {fields.map(({ name, icon, type, required, hasLabel, isArray }) => (
-              <ContactFormField
-                key={name}
-                name={name}
-                icon={icon}
-                label={t(`field.${name}`)}
-                t={t}
-                isArray={isArray}
-                renderInput={(inputName, id) => (
-                  <ContactFieldInput
-                    id={id}
-                    name={inputName}
-                    type={type}
-                    placeholder={t(`placeholder.${name}`)}
-                    required={required}
-                    withLabel={hasLabel}
-                    labelPlaceholder={t('placeholder.label')}
-                  />
-                )}
-              />
-            ))}
+            {fields.map(
+              ({
+                name,
+                icon,
+                type,
+                required,
+                hasLabel,
+                isArray,
+                labelProps,
+                isMultiline
+              }) => (
+                <ContactFormField
+                  key={name}
+                  name={name}
+                  icon={icon}
+                  label={t(`field.${name}`)}
+                  t={t}
+                  isArray={isArray}
+                  renderInput={(inputName, id) => (
+                    <ContactFieldInput
+                      id={id}
+                      name={inputName}
+                      type={type}
+                      label={t(`field.${name}`)}
+                      placeholder={t(`placeholder.${name}`)}
+                      required={required}
+                      withLabel={hasLabel}
+                      labelPlaceholder={t('placeholder.label')}
+                      labelProps={labelProps}
+                      isMultiline={isMultiline}
+                    />
+                  )}
+                />
+              )
+            )}
           </form>
         </div>
       )
