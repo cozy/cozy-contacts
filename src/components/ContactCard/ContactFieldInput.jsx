@@ -3,11 +3,7 @@ import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
 
 import HasValueCondition from '../Form/HasValueCondition'
-import { AdaptedInput, AdaptedTextarea } from '../Form/fields'
-
-const getInputComponent = inputType =>
-  inputType === 'textarea' ? AdaptedTextarea : AdaptedInput
-
+import { DumbField } from '../Form/fields'
 class ContactFieldInput extends React.Component {
   state = {
     hasBeenFocused: false
@@ -24,10 +20,13 @@ class ContactFieldInput extends React.Component {
       id,
       name,
       type,
+      label,
       placeholder,
       required,
       withLabel,
-      labelPlaceholder
+      labelPlaceholder,
+      labelProps,
+      isMultiline
     } = this.props
     const { hasBeenFocused } = this.state
 
@@ -38,13 +37,16 @@ class ContactFieldInput extends React.Component {
             id={id}
             name={name}
             type={type}
+            label={label}
+            labelProps={labelProps}
+            isMultiline={isMultiline}
             size="medium"
             fullwidth
             placeholder={placeholder}
             required={required}
             onFocus={this.onFocus}
             onBlur={this.onMainInputBlur}
-            component={getInputComponent(type)}
+            component={DumbField}
             className="contact-form__input"
           />
         </div>
@@ -54,11 +56,11 @@ class ContactFieldInput extends React.Component {
               <Field
                 name={`${name}Label`}
                 type="text"
+                label={labelPlaceholder}
                 size="medium"
                 fullwidth
-                component={AdaptedInput}
+                component={DumbField}
                 className="contact-form__input"
-                placeholder={labelPlaceholder}
                 onFocus={this.onFocus}
                 onBlur={this.onSecondaryInputBlur}
               />
@@ -72,9 +74,12 @@ class ContactFieldInput extends React.Component {
 ContactFieldInput.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   withLabel: PropTypes.bool,
   labelPlaceholder: PropTypes.string,
+  labelProps: PropTypes.object,
+  isMultiline: PropTypes.bool,
   required: PropTypes.bool
 }
 
