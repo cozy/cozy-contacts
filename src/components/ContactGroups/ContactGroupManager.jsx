@@ -9,8 +9,6 @@ import SelectBox, { ActionsOption, components } from 'cozy-ui/react/SelectBox'
 import Overlay from 'cozy-ui/transpiled/react/Overlay'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import palette from 'cozy-ui/transpiled/react/palette'
-import IconGroups from '../../assets/icons/groups.svg'
-import IconDown from '../../assets/icons/down.svg'
 import ContactGroupCreation from './ContactGroupCreation'
 
 const MainButton = ({ t, selectProps: { toggleMenuIsOpen } }) => {
@@ -18,14 +16,13 @@ const MainButton = ({ t, selectProps: { toggleMenuIsOpen } }) => {
     <Button
       theme="secondary"
       size="small"
-      icon={<Icon icon={IconGroups} color={palette['coolGrey']} />}
       label={t('groups.manage')}
       onClick={() => {
         toggleMenuIsOpen()
       }}
     >
       <Icon
-        icon={IconDown}
+        icon="bottom-select"
         color={palette['coolGrey']}
         width="12"
         className="group-manager__indicator"
