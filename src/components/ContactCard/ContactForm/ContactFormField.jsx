@@ -15,7 +15,7 @@ class ContactFormField extends React.Component {
   }
 
   render() {
-    const { name, icon, label, isArray, renderInput, t } = this.props
+    const { name, icon, isArray, renderInput, t } = this.props
     return (
       <div className="contact-form-field">
         <Label
@@ -33,7 +33,6 @@ class ContactFormField extends React.Component {
           {icon && (
             <Icon icon={icon} color={palette['coolGrey']} className="u-mr-1" />
           )}
-          <span className="u-w-4">{label}</span>
         </Label>
         {isArray ? (
           <FieldArray name={name}>
@@ -101,7 +100,6 @@ class ContactFormField extends React.Component {
 ContactFormField.propTypes = {
   name: PropTypes.string.isRequired,
   icon: PropTypes.any, // shall be a SVG prop type
-  label: PropTypes.string.isRequired,
   isArray: PropTypes.bool,
   renderInput: PropTypes.func.isRequired
 }
