@@ -12,20 +12,6 @@ exports[`ContactGroupManager should display the group select 1`] = `
     type="submit"
   >
     <span>
-      <svg
-        className="styles__icon___23x3R"
-        height="16"
-        style={
-          Object {
-            "fill": "var(--coolGrey)",
-          }
-        }
-        width="16"
-      >
-        <use
-          xlinkHref="#icon-0"
-        />
-      </svg>
       <span
         className={null}
       >
@@ -42,7 +28,7 @@ exports[`ContactGroupManager should display the group select 1`] = `
         width="12"
       >
         <use
-          xlinkHref="#icon-0"
+          xlinkHref="#bottom-select"
         />
       </svg>
     </span>
