@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
 
 import HasValueCondition from '../Form/HasValueCondition'
-import { DumbField } from '../Form/fields'
+import FieldInput from '../Form/FieldInput'
+
 class ContactFieldInput extends React.Component {
   state = {
     hasBeenFocused: false
@@ -31,38 +32,30 @@ class ContactFieldInput extends React.Component {
     const { hasBeenFocused } = this.state
 
     return (
-      <div className={'contact-form__input-wrapper'}>
-        <div className="contact-form__input-container">
-          <Field
-            id={id}
-            name={name}
-            type={type}
-            label={label}
-            labelProps={labelProps}
-            isMultiline={isMultiline}
-            size="medium"
-            fullwidth
-            placeholder={placeholder}
-            required={required}
-            onFocus={this.onFocus}
-            onBlur={this.onMainInputBlur}
-            component={DumbField}
-            className="contact-form__input"
-          />
-        </div>
+      <div className="u-flex u-flex-column-s u-flex-grow-1 u-pr-3">
+        <Field
+          id={id}
+          name={name}
+          type={type}
+          label={label}
+          labelProps={labelProps}
+          isMultiline={isMultiline}
+          placeholder={placeholder}
+          required={required}
+          onFocus={this.onFocus}
+          onBlur={this.onMainInputBlur}
+          component={FieldInput}
+        />
         {withLabel && (
           <HasValueCondition name={name} otherCondition={hasBeenFocused}>
-            <div className="contact-form__input-container u-mt-half-s u-pl-half u-pl-0-s">
+            <div className="u-mt-half-s u-ml-half u-ml-0-s u-flex-shrink-0 u-w-auto">
               <Field
                 name={`${name}Label`}
                 type="text"
                 label={labelPlaceholder}
-                size="medium"
-                fullwidth
-                component={DumbField}
-                className="contact-form__input"
                 onFocus={this.onFocus}
                 onBlur={this.onSecondaryInputBlur}
+                component={FieldInput}
               />
             </div>
           </HasValueCondition>

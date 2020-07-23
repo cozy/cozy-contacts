@@ -1,12 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 import { FieldArray } from 'react-final-form-arrays'
-import Label from 'cozy-ui/transpiled/react/Label'
 import Button from 'cozy-ui/transpiled/react/Button'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import palette from 'cozy-ui/transpiled/react/palette'
 import uniqueId from 'lodash/uniqueId'
+import { Media, Img, Bd } from 'cozy-ui/transpiled/react/Media'
 
 class ContactFormField extends React.Component {
   constructor(props) {
@@ -17,53 +16,48 @@ class ContactFormField extends React.Component {
   render() {
     const { name, icon, isArray, renderInput, t } = this.props
     return (
-      <div className="contact-form-field">
-        <Label
-          htmlFor={this.fieldID}
-          role="label"
-          block={false}
-          className={classnames(
-            'contact-form__label',
-            'u-inline-flex',
-            'u-flex-items-center',
-            'u-mr-half',
-            { 'u-pl-0-s u-pl-2': !icon }
+      <Media align="top" className="contact-form-field">
+        <Img>
+          {icon ? (
+            <Icon
+              icon={icon}
+              color={palette['coolGrey']}
+              className="contact-form-field__icon u-mr-2"
+            />
+          ) : (
+            <div className="u-w-1 u-mr-2" />
           )}
-        >
-          {icon && (
-            <Icon icon={icon} color={palette['coolGrey']} className="u-mr-1" />
+        </Img>
+        <Bd>
+          {isArray ? (
+            <FieldArray name={name}>
+              {({ fields }) => (
+                <div className="u-mt-1 u-mb-half">
+                  {fields.map((nameWithIndex, index) =>
+                    this.renderArrayField(
+                      fields,
+                      index,
+                      nameWithIndex,
+                      name,
+                      renderInput
+                    )
+                  )}
+                  <Button
+                    icon="plus"
+                    theme="text"
+                    type="button"
+                    onClick={() => this.addField(fields)}
+                    label={t(`addLabel.${name}`)}
+                    className="u-ph-0 u-mh-0"
+                  />
+                </div>
+              )}
+            </FieldArray>
+          ) : (
+            <div className="u-mt-1">{renderInput(name, this.fieldID)}</div>
           )}
-        </Label>
-        {isArray ? (
-          <FieldArray name={name}>
-            {({ fields }) => (
-              <div className="contact-form__inputs-wrapper">
-                {fields.map((nameWithIndex, index) =>
-                  this.renderArrayField(
-                    fields,
-                    index,
-                    nameWithIndex,
-                    name,
-                    renderInput
-                  )
-                )}
-                <Button
-                  icon="plus"
-                  theme="text"
-                  type="button"
-                  onClick={() => this.addField(fields)}
-                  label={t(`addLabel.${name}`)}
-                  className="u-ph-0 u-mh-0"
-                />
-              </div>
-            )}
-          </FieldArray>
-        ) : (
-          <div className="contact-form__inputs-wrapper">
-            {renderInput(name, this.fieldID)}
-          </div>
-        )}
-      </div>
+        </Bd>
+      </Media>
     )
   }
 
@@ -78,7 +72,7 @@ class ContactFormField extends React.Component {
   renderArrayField = (fields, index, nameWithIndex, name, renderInput) => {
     const hasValue = fields.value[index] && fields.value[index][name]
     return (
-      <div key={nameWithIndex} className="contact-form__inputs-line">
+      <div key={nameWithIndex} className="u-mt-1 u-flex u-pos-relative">
         {renderInput(`${nameWithIndex}.${name}`, this.fieldID)}
 
         {hasValue && (
@@ -90,7 +84,7 @@ class ContactFormField extends React.Component {
             round
             icon={'cross-small'}
             onClick={() => this.removeField(fields, index)}
-            className="contact-form__meta-button u-m-0"
+            className="u-pos-absolute u-top-0 u-right-0 u-mt-1"
           />
         )}
       </div>
