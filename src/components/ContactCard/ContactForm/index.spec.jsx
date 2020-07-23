@@ -41,8 +41,7 @@ describe('ContactForm', () => {
         <ContactForm {...props} />
       </AppLike>
     )
-    const { getByLabelText, getAllByRole } = render(jsx)
-    expect(getAllByRole('label')).toHaveLength(labels.length)
+    const { getByLabelText } = render(jsx)
     labels.map(label => {
       expect(getByLabelText(label)).toBeTruthy()
     })
@@ -90,9 +89,9 @@ describe('ContactForm', () => {
     }
 
     Object.keys(fields).forEach(fieldName => {
-      const candidates = form.find(`Field[name='${fieldName}']`)
+      const candidates = form.find(`TextField[name='${fieldName}']`)
       const field = candidates.length === 1 ? candidates : candidates.first()
-      field.simulate('change', { target: { value: fields[fieldName] } })
+      field.props().onChange({ target: { value: fields[fieldName] } })
     })
 
     form.find('form').simulate('submit')
