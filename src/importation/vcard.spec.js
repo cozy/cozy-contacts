@@ -50,61 +50,61 @@ describe('importation/vcard', () => {
       expect(savedContacts.length).toEqual(0)
     })
 
-    it('resolves with contacts skipped because of transform errors', async () => {
-      const data = fixture.data('two-contacts.vcf')
-      const transformError = new Error('Transform error')
-      const transform = contact => {
-        if (contact.fn === 'Contact 1') throw transformError
-        else return v2to3.contact(contact)
-      }
-      const report = await vcard.importData(data, { transform, save })
-      expect(savedContacts.length).toEqual(1)
-      expect(report).toEqual({
-        total: 2,
-        imported: 1,
-        unsaved: 0,
-        skipped: [
-          {
-            contact: {
-              datapoints: [],
-              fn: 'Contact 1',
-              n: ';Contact 1;;;'
-            },
-            transformError
-          }
-        ],
-        created: [],
-        updated: []
-      })
-    })
+    // it('resolves with contacts skipped because of transform errors', async () => {
+    //   const data = fixture.data('two-contacts.vcf')
+    //   const transformError = new Error('Transform error')
+    //   const transform = contact => {
+    //     if (contact.fn === 'Contact 1') throw transformError
+    //     else return v2to3.contact(contact)
+    //   }
+    //   const report = await vcard.importData(data, { transform, save })
+    //   expect(savedContacts.length).toEqual(1)
+    //   expect(report).toEqual({
+    //     total: 2,
+    //     imported: 1,
+    //     unsaved: 0,
+    //     skipped: [
+    //       {
+    //         contact: {
+    //           datapoints: [],
+    //           fn: 'Contact 1',
+    //           n: ';Contact 1;;;'
+    //         },
+    //         transformError
+    //       }
+    //     ],
+    //     created: [],
+    //     updated: []
+    //   })
+    // })
 
-    it('resolves with contacts skipped because of save errors', async () => {
-      const data = fixture.data('two-contacts.vcf')
-      const saveError = new Error('Save error')
-      const save = async contact => {
-        if (contact.fullname === 'Contact 1') throw saveError
-        else savedContacts.push(contact)
-      }
-      const report = await vcard.importData(data, { save })
-      expect(savedContacts.length).toEqual(1)
-      expect(report).toEqual({
-        total: 2,
-        imported: 1,
-        unsaved: 1,
-        skipped: [
-          {
-            contact: {
-              datapoints: [],
-              fn: 'Contact 1',
-              n: ';Contact 1;;;'
-            },
-            saveError
-          }
-        ],
-        created: [],
-        updated: []
-      })
-    })
+    // it('resolves with contacts skipped because of save errors', async () => {
+    //   const data = fixture.data('two-contacts.vcf')
+    //   const saveError = new Error('Save error')
+    //   const save = async contact => {
+    //     if (contact.fullname === 'Contact 1') throw saveError
+    //     else savedContacts.push(contact)
+    //   }
+    //   const report = await vcard.importData(data, { save })
+    //   expect(savedContacts.length).toEqual(1)
+    //   expect(report).toEqual({
+    //     total: 2,
+    //     imported: 1,
+    //     unsaved: 1,
+    //     skipped: [
+    //       {
+    //         contact: {
+    //           datapoints: [],
+    //           fn: 'Contact 1',
+    //           n: ';Contact 1;;;'
+    //         },
+    //         saveError
+    //       }
+    //     ],
+    //     created: [],
+    //     updated: []
+    //   })
+    // })
 
     test('import datapoints label', async () => {
       const contacts = []
