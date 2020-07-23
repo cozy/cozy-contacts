@@ -1,13 +1,8 @@
 import React from 'react'
+import { PropTypes } from 'prop-types'
 import TextField from 'cozy-ui/transpiled/react/MuiCozyTheme/TextField'
 
-export const DumbField = ({
-  input,
-  type,
-  labelProps,
-  isMultiline,
-  ...rest
-}) => (
+const FieldInput = ({ input, type, labelProps, isMultiline, ...rest }) => (
   <TextField
     {...input}
     {...rest}
@@ -17,6 +12,13 @@ export const DumbField = ({
     multiline={isMultiline}
     rows="2"
     InputLabelProps={labelProps}
-    aria-label="dumbField"
   />
 )
+
+FieldInput.propTypes = {
+  type: PropTypes.string,
+  labelProps: PropTypes.object,
+  isMultiline: PropTypes.bool
+}
+
+export default FieldInput
