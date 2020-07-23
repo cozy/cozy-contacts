@@ -6,12 +6,11 @@ import Icon from 'cozy-ui/transpiled/react/Icon'
 
 import FieldsetTitle from '../Components/FieldsetTitle'
 import Fieldset from '../Components/Fieldset'
-import IconGoogle from '../../assets/icons/connect-google.svg'
 
 const ACCOUNTS_MAPPING = {
   'konnector-google': {
     label: 'Google',
-    icon: IconGoogle
+    icon: 'google'
   }
 }
 
