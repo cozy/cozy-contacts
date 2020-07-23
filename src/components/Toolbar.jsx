@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import Button from 'cozy-ui/transpiled/react/Button'
-import Icon from 'cozy-ui/transpiled/react/Icon'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import ContactFormModal from './Modals/ContactFormModal'
 import withModal from './HOCs/withModal'
 import ContactCardModal from './Modals/ContactCardModal'
 import ContactImportationModal from './ContactImportationModal/'
-import IconTeam from '../assets/icons/team.svg'
 
 const style = { pointerEvents: 'all' }
 
@@ -43,7 +41,7 @@ class Toolbar extends Component {
           }}
           label={t('empty.importation')}
           theme="secondary"
-          icon={<Icon icon={IconTeam} />}
+          icon="team"
           style={style}
         />
       </div>

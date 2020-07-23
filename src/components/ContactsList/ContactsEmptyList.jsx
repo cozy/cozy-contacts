@@ -14,7 +14,6 @@ import ContactCardModal from '../Modals/ContactCardModal'
 import ImportGoogleButton from '../Buttons/ImportGoogleButton'
 
 import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
-import IconTeam from '../../assets/icons/team.svg'
 
 const style = { pointerEvents: 'all' }
 
@@ -85,7 +84,7 @@ class ContactsEmptyList extends React.Component {
                   }}
                   label={t('empty.importation')}
                   theme="secondary"
-                  icon={IconTeam}
+                  icon="team"
                   style={style}
                 />
               </span>
