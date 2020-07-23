@@ -102,10 +102,7 @@ const ContactForm = ({ contact, onSubmit, t }) => (
       setSubmitContactForm(handleSubmit)
       return (
         <div>
-          <form
-            onSubmit={handleSubmit}
-            className="u-flex u-flex-column u-flex-items-stretch u-flex-justify-start"
-          >
+          <form onSubmit={handleSubmit} className="u-flex u-flex-column">
             <FieldsetTitle title={t('contact_info')} />
             {fields.map(
               ({
