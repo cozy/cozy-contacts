@@ -11,11 +11,12 @@ import { getConnectedAccounts } from '../../helpers/contacts'
 import withContactsMutations from '../../connections/allContacts'
 import ContactCard from '../ContactCard/ContactCard'
 import SpinnerContact from '../Components/Spinner'
-import ContactCardMenu from './ContactCardMenu'
 import ContactFormModal from './ContactFormModal'
 import ContactGroups from '../ContactCard/ContactGroups'
+import Button from 'cozy-ui/transpiled/react/Button'
 import { Query } from 'cozy-client'
 import { flow } from 'lodash'
+
 export class ContactCardModal extends React.Component {
   state = {
     editMode: false,
@@ -113,15 +114,23 @@ export const DumbContactCardModal = ({
               {children}
               <div className="u-flex u-flex-row u-ml-0-s u-mr-3 u-mr-0-s">
                 <ContactGroups contact={contact} allGroups={allGroups} />
-                <ContactCardMenu
-                  deleteAction={{
-                    label: t('delete'),
-                    action: toggleConfirmDeleteModal
-                  }}
-                  editAction={{
-                    label: t('edit'),
-                    action: toggleEditMode
-                  }}
+                <Button
+                  theme="secondary"
+                  extension="narrow"
+                  icon="rename"
+                  iconOnly
+                  label={t('edit')}
+                  size="small"
+                  onClick={toggleEditMode}
+                />
+                <Button
+                  theme="secondary"
+                  extension="narrow"
+                  icon="trash"
+                  iconOnly
+                  label={t('delete')}
+                  size="small"
+                  onClick={toggleConfirmDeleteModal}
                 />
               </div>
             </ModalHeader>
