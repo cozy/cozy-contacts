@@ -15,7 +15,6 @@ const ContactCardMenu = ({ editAction, deleteAction, t }) => (
         theme="secondary"
         extension="narrow"
         icon="dots"
-        className="fix-c-btn"
         iconOnly
         label={t('menu')}
         size="small"
