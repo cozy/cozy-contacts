@@ -54,7 +54,7 @@ Array [
               width="16"
             >
               <use
-                xlinkHref="#icon-0"
+                xlinkHref="#telephone"
               />
             </svg>
           </div>
@@ -100,7 +100,7 @@ Array [
               width="16"
             >
               <use
-                xlinkHref="#icon-0"
+                xlinkHref="#email"
               />
             </svg>
           </div>
@@ -146,7 +146,7 @@ Array [
               width="16"
             >
               <use
-                xlinkHref="#icon-0"
+                xlinkHref="#location"
               />
             </svg>
           </div>
@@ -184,7 +184,7 @@ Array [
               width="16"
             >
               <use
-                xlinkHref="#icon-0"
+                xlinkHref="#calendar"
               />
             </svg>
           </div>
@@ -215,7 +215,7 @@ Array [
               width="16"
             >
               <use
-                xlinkHref="#icon-0"
+                xlinkHref="#flag"
               />
             </svg>
           </div>
@@ -305,7 +305,7 @@ Array [
               width="16"
             >
               <use
-                xlinkHref="#icon-0"
+                xlinkHref="#email"
               />
             </svg>
           </div>
@@ -341,7 +341,7 @@ Array [
               width="16"
             >
               <use
-                xlinkHref="#icon-0"
+                xlinkHref="#calendar"
               />
             </svg>
           </div>
@@ -372,7 +372,7 @@ Array [
               width="16"
             >
               <use
-                xlinkHref="#icon-0"
+                xlinkHref="#flag"
               />
             </svg>
           </div>
@@ -409,7 +409,7 @@ Array [
             width="16"
           >
             <use
-              xlinkHref="#icon-0"
+              xlinkHref="#google"
             />
           </svg>
         </div>
@@ -489,7 +489,7 @@ Array [
               width="16"
             >
               <use
-                xlinkHref="#icon-0"
+                xlinkHref="#email"
               />
             </svg>
           </div>
@@ -525,7 +525,7 @@ Array [
               width="16"
             >
               <use
-                xlinkHref="#icon-0"
+                xlinkHref="#calendar"
               />
             </svg>
           </div>
@@ -556,7 +556,7 @@ Array [
               width="16"
             >
               <use
-                xlinkHref="#icon-0"
+                xlinkHref="#flag"
               />
             </svg>
           </div>
@@ -593,7 +593,7 @@ Array [
             width="16"
           >
             <use
-              xlinkHref="#icon-0"
+              xlinkHref="#google"
             />
           </svg>
         </div>

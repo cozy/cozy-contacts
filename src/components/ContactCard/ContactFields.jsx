@@ -6,14 +6,6 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import FieldsetTitle from '../Components/FieldsetTitle'
 import Fieldset from '../Components/Fieldset'
-import IconBirthday from '../../assets/icons/calendar.svg'
-import IconNote from '../../assets/icons/comment.svg'
-import IconCompany from '../../assets/icons/company.svg'
-import IconCozy from '../../assets/icons/cozy.svg'
-import IconEmail from '../../assets/icons/email.svg'
-import IconFlag from '../../assets/icons/flag.svg'
-import IconAddress from '../../assets/icons/location.svg'
-import IconPhone from '../../assets/icons/phone-number.svg'
 
 const ContactFields = ({ fields, title }) => (
   <div>
@@ -83,16 +75,16 @@ FieldValue.propTypes = {
 const FieldValueWithI18n = translate()(FieldValue)
 
 const iconsByType = {
-  birthday: IconBirthday,
-  note: IconNote,
-  company: IconCompany,
-  cozy: IconCozy,
-  email: IconEmail,
-  address: IconAddress,
-  phone: IconPhone
+  birthday: 'calendar',
+  note: 'comment',
+  company: 'company',
+  cozy: 'cloud',
+  email: 'email',
+  address: 'location',
+  phone: 'telephone'
 }
 
-const getIcon = fieldType => iconsByType[fieldType] || IconFlag
+const getIcon = fieldType => iconsByType[fieldType] || 'flag'
 
 const emptyAddress = {
   street: '',

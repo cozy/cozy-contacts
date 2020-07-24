@@ -4,8 +4,6 @@ import IntentOpener from 'cozy-ui/transpiled/react/IntentOpener'
 import Button from 'cozy-ui/transpiled/react/Button'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
-import IconGoogle from '../../assets/icons/connect-google.svg'
-
 const style = { pointerEvents: 'all' }
 const ImportGoogleButton = props => (
   <IntentOpener
@@ -17,7 +15,7 @@ const ImportGoogleButton = props => (
     <Button
       theme="secondary"
       className="contacts-empty-button"
-      icon={IconGoogle}
+      icon="google"
       label={props.t('empty.google')}
       style={style}
     />

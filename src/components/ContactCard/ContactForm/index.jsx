@@ -4,14 +4,6 @@ import { Form } from 'react-final-form'
 import arrayMutators from 'final-form-arrays'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
-import IconEmail from '../../../assets/icons/email.svg'
-import IconPhone from '../../../assets/icons/phone-number.svg'
-import IconAddress from '../../../assets/icons/location.svg'
-import IconCozy from '../../../assets/icons/cozy.svg'
-import IconCompany from '../../../assets/icons/company.svg'
-import IconBirthday from '../../../assets/icons/calendar.svg'
-import IconNote from '../../../assets/icons/comment.svg'
-
 import FieldsetTitle from '../../Components/FieldsetTitle'
 import ContactFormField from './ContactFormField'
 import ContactFieldInput from '../ContactFieldInput'
@@ -32,7 +24,7 @@ const fields = [
   },
   {
     name: 'phone',
-    icon: IconPhone,
+    icon: 'telephone',
     type: 'tel',
     hasLabel: true,
     isArray: true,
@@ -40,7 +32,7 @@ const fields = [
   },
   {
     name: 'email',
-    icon: IconEmail,
+    icon: 'email',
     type: 'email',
     hasLabel: true,
     isArray: true,
@@ -48,7 +40,7 @@ const fields = [
   },
   {
     name: 'address',
-    icon: IconAddress,
+    icon: 'location',
     type: 'text',
     hasLabel: true,
     isArray: true,
@@ -56,24 +48,24 @@ const fields = [
   },
   {
     name: 'cozy',
-    icon: IconCozy,
+    icon: 'cloud',
     type: 'url',
     hasLabel: true
   },
   {
     name: 'company',
-    icon: IconCompany,
+    icon: 'company',
     type: 'text'
   },
   {
     name: 'birthday',
-    icon: IconBirthday,
+    icon: 'calendar',
     type: 'date',
     labelProps: { shrink: true }
   },
   {
     name: 'note',
-    icon: IconNote,
+    icon: 'comment',
     type: 'text',
     isMultiline: true
   }
