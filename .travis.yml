@@ -47,3 +47,5 @@ deploy:
     script: yarn run deploy
     on:
       tags: true
+after_deploy:
+  - yarn bundlesize
