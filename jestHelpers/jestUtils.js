@@ -1,22 +1,21 @@
-const isDeprecatedLifecycleWarning = (msg, componentName) => {
+const isDeprecatedLifecycleWarning = (args, componentName) => {
   return (
-    msg.includes('has been renamed, and is not recommended for use') &&
-    msg.includes(componentName)
+    args[0].includes('has been renamed, and is not recommended for use') &&
+    args[1].includes(componentName)
   )
 }
 
 export const ignoreOnConditions = (originalWarn, ignoreConditions) => {
   return function(...args) {
-    const msg = args[0]
-    if (ignoreConditions.some(condition => condition(msg))) {
+    if (ignoreConditions.some(condition => condition(...args))) {
       return
     }
     originalWarn.apply(this, args)
   }
 }
 
-export const makeDeprecatedLifecycleMatcher = componentName => msg =>
-  isDeprecatedLifecycleWarning(msg, componentName)
+export const makeDeprecatedLifecycleMatcher = componentName => (...args) =>
+  isDeprecatedLifecycleWarning(args, componentName)
 
 export const callAndThrow = (fn, errorMessage) => {
   return function() {
