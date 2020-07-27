@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import palette from 'cozy-ui/transpiled/react/palette'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
 import FieldsetTitle from '../Components/FieldsetTitle'
 import Fieldset from '../Components/Fieldset'
@@ -37,7 +37,7 @@ const ContactField = ({ type, values }) => (
     </div>
     <div>
       {values.map((value, index) => (
-        <FieldValueWithI18n type={type} value={value} key={index} />
+        <FieldValue type={type} value={value} key={index} />
       ))}
     </div>
   </div>
@@ -48,7 +48,8 @@ ContactField.propTypes = {
   values: PropTypes.array.isRequired
 }
 
-const FieldValue = ({ type, value, t, f }) => {
+const FieldValue = ({ type, value }) => {
+  const { t, f } = useI18n()
   const renderedValue = renderFieldValue(value, type, t, f)
   const label = value.type || value.label || null
 
@@ -67,17 +68,14 @@ FieldValue.propTypes = {
     PropTypes.string,
     PropTypes.number,
     PropTypes.object
-  ]),
-  t: PropTypes.func.isRequired,
-  f: PropTypes.func.isRequired
+  ])
 }
-
-const FieldValueWithI18n = translate()(FieldValue)
 
 const iconsByType = {
   birthday: 'calendar',
   note: 'comment',
   company: 'company',
+  jobTitle: 'people',
   cozy: 'cloud',
   email: 'email',
   address: 'location',

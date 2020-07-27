@@ -4,12 +4,14 @@ export const supportedFieldsInOrder = [
   'address',
   'cozy',
   'company',
+  'jobTitle',
   'birthday',
   'note'
 ]
 
 export const getFieldListFrom = contact =>
   Object.keys(contact).map(type => ({ type, values: contact[type] }))
+
 export const filterFieldList = fields =>
   fields.filter(
     field =>
@@ -28,6 +30,7 @@ export const filterFieldList = fields =>
         'me'
       ].includes(field.type) === false && field.values
   )
+
 export const groupUnsupportedFields = (fields, supportedFieldTypes) => {
   const supportedFields = fields.filter(field =>
     supportedFieldTypes.includes(field.type)
@@ -42,6 +45,7 @@ export const groupUnsupportedFields = (fields, supportedFieldTypes) => {
     }
   ])
 }
+
 export const orderFieldList = (fields, fieldsInOrder) =>
   fields.slice().sort((a, b) => {
     const indexA = fieldsInOrder.includes(a.type)
@@ -52,6 +56,7 @@ export const orderFieldList = (fields, fieldsInOrder) =>
       : fieldsInOrder.length
     return indexA - indexB
   })
+
 export const makeValuesArray = fields =>
   fields.map(field => ({
     ...field,
