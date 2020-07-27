@@ -9,7 +9,7 @@ branches:
 env:
   global:
     - CXX=g++-4.8
-    - MATTERMOST_CHANNEL=appvengers
+    - MATTERMOST_CHANNEL=contacts
     # To generate a new key: travis encrypt GITHUB_TOKEN=<token> -r cozy/cozy-contacts
     - secure: OnT+4EKE7IHu+1C/KTFpbsNJiD2fTM9bEfLxytIjSH35n8iWZyGdHLBlVrUulKLw47ir+g8T/FmEVJ9u+JSfYaq25oSoPUrcdW8Qs7RA+lg4W7LWGFXQeDaDC7KS1dRxQDc4eaRxfmbyDNEQG3HwsVbcaZXCrZQmwLGj5NWAseblvshLkhpYrdeMYIt+JUod63VUskdq8FVzm9AuFxBA1Ut4rwyX3wou5TDZMAgYwf1rlveAxkmZhYQQlt4j7Hyb5zT/K1S+zXKm4H+pqA/tvSbSRIw5JKFRf2tywom2Tn87BJ8mxYuMA2ANnsQ4c3jeJgQCNOk4oG5gUbPOa+JCN6RehHrsiGROExK0UY/e1uxFJfgyLmONBppJMFWO8Cn6Qxz5WQnrm/a5sE2RbZg+UuLi3WJIK6+yb/8P9XBPmZauBDLE6EOtUtx15Ti8WPZfuAbEBnJ7Q9gJv/5fpiMrgaYniohgU8cNs5qN6BsA/8JiY/f3lcVjLsPP4x+j0NzqKcUEXbMjXMGHWaQK/fizlcTH6moL8unlLNKkEmLEtg4w1x4cj3jvBMOiZsOfsGugqu0ZS2YRJqjpImVUThuPRoQkASR8mpq33PGXjBcKMPBol4K7c8DNrWKmwI1wgq/dl82wBDGIA3kAL6lrh4fBqzck2yqLrCdgH1MmolF14dI=
     # To generate a new key: travis encrypt REGISTRY_TOKEN=<token> -r cozy/cozy-contacts
