@@ -1,7 +1,8 @@
 const isDeprecatedLifecycleWarning = (args, componentName) => {
+  const [message, component] = args
   return (
-    args[0].includes('has been renamed, and is not recommended for use') &&
-    args[1].includes(componentName)
+    message.includes('has been renamed, and is not recommended for use') &&
+    component.includes(componentName)
   )
 }
 

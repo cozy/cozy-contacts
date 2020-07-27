@@ -1,16 +1,8 @@
 import Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import {
-  makeDeprecatedLifecycleMatcher,
-  ignoreOnConditions,
-  callAndThrow
-} from './jestUtils'
+import { makeDeprecatedLifecycleMatcher, ignoreOnConditions } from './jestUtils'
 
 Enzyme.configure({ adapter: new Adapter() })
-
-//
-// PATRICK
-//
 
 const ignoredWarnings = {
   ReactFinalForm: {
@@ -33,36 +25,8 @@ const ignoredWarnings = {
 // console.warn = ignoreOnConditions(
 //   // eslint-disable-next-line no-console
 //   console.warn,
-//   // callAndThrow(console.warn, 'console.warn should not be called during tests'),
 //   Object.values(ignoredWarnings).map(x => x.matcher)
 // )
-
-//
-// DEBUG
-//
-
-// const origWarn = console.warn // eslint-disable-line no-console
-// console.warn = function(...args) {
-//   const [msg, component] = args
-//   // console.info('>> ARGS : ', args)
-//   console.info('>> MESSAGE : ', msg)
-//   console.info('>> COMPONENT : ', component)
-//   if (
-//     component.includes('ReactFinalForm') ||
-//     component.includes('Provider') ||
-//     component.includes('Select')
-//   ) {
-//     console.info('>> if')
-//     return
-//   }
-//   console.info('>> else')
-//   // return console.warn('SOME') // eslint-disable-line no-console
-//   return origWarn.apply(this, arguments)
-// }
-
-//
-// JU
-//
 
 const toBeIgnored = {
   ReactFinalForm: {
