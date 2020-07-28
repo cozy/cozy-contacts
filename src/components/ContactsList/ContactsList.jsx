@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import flag from 'cozy-flags'
-import Button from 'cozy-ui/transpiled/react/Button'
+import Button, { ButtonLink } from 'cozy-ui/transpiled/react/Button'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import { sortLastNameFirst, buildLastNameFirst } from './'
@@ -37,6 +37,19 @@ class ContactsList extends Component {
       }, {})
       return (
         <div className="list-wrapper">
+          <div className="list-category">
+            {Object.keys(categorizedContacts).map(header => (
+              <ButtonLink
+                className="category"
+                key={`shortcut-${header}`}
+                href={`#cat-${header}`}
+                theme="secondary"
+                round
+              >
+                {header === t('empty-list') ? '_' : header}
+              </ButtonLink>
+            ))}
+          </div>
           {flag('select-all-contacts') && (
             <div>
               <Button
@@ -56,7 +69,7 @@ class ContactsList extends Component {
                 <ContactHeaderRow key={header} header={header} />
                 <ol className="sublist-contact">
                   {categorizedContacts[header].map(contact => (
-                    <li key={`contact-${contact._id}`}>
+                    <li key={`contact-${contact._id}`} id={`cat-${header}`}>
                       <ContactRow
                         id={contact._id}
                         key={contact._id}
