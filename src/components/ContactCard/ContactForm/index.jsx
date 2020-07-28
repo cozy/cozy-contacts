@@ -52,7 +52,7 @@ const ContactForm = ({ contact, onSubmit, t }) => (
                   key={name}
                   name={name}
                   icon={icon}
-                  label={t(`field.${name}`)}
+                  label={t(`fields.${name}`)}
                   t={t}
                   isArray={isArray}
                   renderInput={(inputName, id) => (
@@ -60,11 +60,10 @@ const ContactForm = ({ contact, onSubmit, t }) => (
                       id={id}
                       name={inputName}
                       type={type}
-                      label={t(`field.${name}`)}
-                      placeholder={t(`placeholder.${name}`)}
+                      label={t(`fields.${name}`)}
                       required={required}
                       withLabel={hasLabel}
-                      labelPlaceholder={t('placeholder.label')}
+                      labelPlaceholder={t('fields.label')}
                       labelProps={labelProps}
                       isMultiline={isMultiline}
                     />

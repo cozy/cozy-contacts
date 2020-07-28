@@ -26,7 +26,7 @@
     "save": "Une erreur est survenue lors de l'enregistrement du contact, veuillez réessayer"
   },
   "formatted_address": "%{pobox} %{street} %{postcode} %{city} %{region} %{country}",
-  "field": {
+  "fields": {
     "givenName": "Prénom",
     "familyName": "Nom",
     "phone": "Téléphone",
@@ -36,7 +36,8 @@
     "company": "Entreprise",
     "jobTitle": "Fonction",
     "birthday": "Anniversaire",
-    "note": "Notes"
+    "note": "Notes",
+    "label": "Libellé"
   },
   "importation": {
     "cancel": "Annuler",
@@ -60,9 +61,6 @@
     "title": "Importer des contacts",
     "transfer_file": "Transférer un fichier",
     "available_soon": "Vous pourrez bientôt importer vos contacts depuis d'autres services (iCloud, Facebook...)."
-  },
-  "placeholder": {
-    "label": "Libellé"
   },
   "addLabel": {
     "address": "Ajouter une adresse",
