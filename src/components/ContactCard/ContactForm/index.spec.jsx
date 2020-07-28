@@ -29,6 +29,7 @@ const labels = [
   'Address',
   'Cozy URL',
   'Company',
+  'Job title',
   'Birthday',
   'Notes'
 ]
@@ -62,6 +63,7 @@ describe('ContactForm', () => {
     expect(getByDisplayValue(contact.address[0].formattedAddress)).toBeTruthy()
     expect(getByDisplayValue(contact.cozy[0].url)).toBeTruthy()
     expect(getByDisplayValue(contact.company)).toBeTruthy()
+    expect(getByDisplayValue(contact.jobTitle)).toBeTruthy()
     expect(getByDisplayValue(contact.note)).toBeTruthy()
   })
 
@@ -84,6 +86,7 @@ describe('ContactForm', () => {
       'address[0].address': '18 rue des fleurs, Pecado',
       cozy: 'https://jcvd.cozy.cloud',
       company: 'Cozy CLoud',
+      jobTitle: 'Dreamer',
       birthday: '31/12/2015',
       note: 'Whatever.'
     }
@@ -106,6 +109,7 @@ describe('ContactForm', () => {
       Address: '18 rue des fleurs, Pecado',
       'Cozy URL': 'https://jcvd.cozy.cloud',
       Company: 'Cozy CLoud',
+      jobTitle: 'Dreamer',
       Birthday: '31/12/2015',
       Notes: 'Whatever.'
     }

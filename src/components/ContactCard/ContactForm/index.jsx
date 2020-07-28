@@ -10,66 +10,7 @@ import ContactFieldInput from '../ContactFieldInput'
 import { fullContactPropTypes } from '../../ContactPropTypes'
 import contactToFormValues from './contactToFormValues'
 import formValuesToContact from './formValuesToContact'
-
-const fields = [
-  {
-    name: 'givenName',
-    icon: 'people',
-    type: 'text'
-  },
-  {
-    name: 'familyName',
-    icon: null,
-    type: 'text'
-  },
-  {
-    name: 'phone',
-    icon: 'telephone',
-    type: 'tel',
-    hasLabel: true,
-    isArray: true,
-    addLabel: 'add-phone'
-  },
-  {
-    name: 'email',
-    icon: 'email',
-    type: 'email',
-    hasLabel: true,
-    isArray: true,
-    addLabel: 'add-email'
-  },
-  {
-    name: 'address',
-    icon: 'location',
-    type: 'text',
-    hasLabel: true,
-    isArray: true,
-    addLabel: 'add-address'
-  },
-  {
-    name: 'cozy',
-    icon: 'cloud',
-    type: 'url',
-    hasLabel: true
-  },
-  {
-    name: 'company',
-    icon: 'company',
-    type: 'text'
-  },
-  {
-    name: 'birthday',
-    icon: 'calendar',
-    type: 'date',
-    labelProps: { shrink: true }
-  },
-  {
-    name: 'note',
-    icon: 'comment',
-    type: 'text',
-    isMultiline: true
-  }
-]
+import { fields } from './fieldsConfig'
 
 // this variable will be set in the form's render prop
 // and used by the submit button in ContactFormModal
@@ -111,7 +52,7 @@ const ContactForm = ({ contact, onSubmit, t }) => (
                   key={name}
                   name={name}
                   icon={icon}
-                  label={t(`field.${name}`)}
+                  label={t(`fields.${name}`)}
                   t={t}
                   isArray={isArray}
                   renderInput={(inputName, id) => (
@@ -119,11 +60,10 @@ const ContactForm = ({ contact, onSubmit, t }) => (
                       id={id}
                       name={inputName}
                       type={type}
-                      label={t(`field.${name}`)}
-                      placeholder={t(`placeholder.${name}`)}
+                      label={t(`fields.${name}`)}
                       required={required}
                       withLabel={hasLabel}
-                      labelPlaceholder={t('placeholder.label')}
+                      labelPlaceholder={t('fields.label')}
                       labelProps={labelProps}
                       isMultiline={isMultiline}
                     />
@@ -143,7 +83,5 @@ ContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired
 }
-
-export { fields }
 
 export default translate()(ContactForm)

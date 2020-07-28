@@ -1,4 +1,4 @@
-import { fields } from './index'
+import { fields } from './fieldsConfig'
 import { getFormattedAddress } from '../ContactFields'
 
 export const moveToHead = shouldBeHead => items =>
@@ -21,6 +21,7 @@ const contactToFormValues = (contact, t) => {
       address,
       birthday,
       company,
+      jobTitle,
       cozy,
       email,
       name,
@@ -62,6 +63,7 @@ const contactToFormValues = (contact, t) => {
       cozy: cozyValue,
       cozyLabel: cozyLabel,
       company,
+      jobTitle,
       birthday,
       note
     }

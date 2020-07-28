@@ -22,7 +22,6 @@ class ContactFieldInput extends React.Component {
       name,
       type,
       label,
-      placeholder,
       required,
       withLabel,
       labelPlaceholder,
@@ -40,7 +39,6 @@ class ContactFieldInput extends React.Component {
           label={label}
           labelProps={labelProps}
           isMultiline={isMultiline}
-          placeholder={placeholder}
           required={required}
           onFocus={this.onFocus}
           onBlur={this.onMainInputBlur}
@@ -68,7 +66,6 @@ ContactFieldInput.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
   withLabel: PropTypes.bool,
   labelPlaceholder: PropTypes.string,
   labelProps: PropTypes.object,
@@ -79,7 +76,6 @@ ContactFieldInput.propTypes = {
 ContactFieldInput.defaultProps = {
   withLabel: false,
   required: false,
-  placeholder: '',
   labelPlaceholder: ''
 }
 

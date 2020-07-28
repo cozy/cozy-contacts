@@ -31,6 +31,7 @@ describe('formValuesToContact', () => {
       ],
       birthday: '1999-5-1',
       company: 'Cozy cloud',
+      jobTitle: 'Dreamer',
       cozy: [
         {
           label: 'MyCozy',
@@ -82,6 +83,7 @@ describe('formValuesToContact', () => {
       ],
       birthday: null,
       company: undefined,
+      jobTitle: undefined,
       cozy: undefined,
       cozyLabel: undefined,
       email: [
@@ -109,6 +111,7 @@ describe('formValuesToContact', () => {
       phone: [],
       cozy: [],
       company: '',
+      jobTitle: '',
       birthday: null,
       note: '',
       relationships: { groups: { data: [] } },

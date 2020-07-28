@@ -26,6 +26,7 @@ Object {
     },
   ],
   "fullname": "Jean-Claude Van Cozy",
+  "jobTitle": "Dreamer",
   "metadata": Object {
     "cozy": true,
     "version": 1,
@@ -58,6 +59,7 @@ Object {
   "cozy": Array [],
   "email": Array [],
   "fullname": "",
+  "jobTitle": "",
   "metadata": Object {
     "cozy": true,
     "version": 1,

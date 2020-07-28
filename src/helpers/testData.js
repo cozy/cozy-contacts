@@ -30,6 +30,7 @@ export const johnDoeContact = {
   ],
   birthday: '1999-5-1',
   company: 'Cozy cloud',
+  jobTitle: 'Dreamer',
   cozy: [
     {
       label: 'MyCozy',
@@ -98,6 +99,7 @@ export const johnDoeFormValues = {
   givenName: 'John',
   familyName: 'Doe',
   company: 'Cozy cloud',
+  jobTitle: 'Dreamer',
   note:
     'Atque cupiditate saepe omnis quos ut molestiae labore voluptates omnis.'
 }
@@ -109,6 +111,7 @@ export const contactWithGroup = {
   _rev: '6-57f4ab78b1fb97bb90ea273ec881f196',
   address: [],
   company: '',
+  jobTitle: '',
   cozy: [{ primary: true, url: 'https://q.mycozy.cloud' }],
   cozyMetadata: {
     createdAt: '2019-05-21T12:24:01.084Z',
