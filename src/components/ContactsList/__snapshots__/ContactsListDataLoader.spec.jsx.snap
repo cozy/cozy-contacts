@@ -4,6 +4,19 @@ exports[`ContactsListOrSpinner should display the contact List 1`] = `
 <div
   className="list-wrapper"
 >
+  <div
+    className="list-category"
+  >
+    <a
+      className="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--round___1Lkyl category"
+      href="#cat-EMPTY"
+      title={null}
+    >
+      <span>
+        _
+      </span>
+    </a>
+  </div>
   <ol
     className="list-contact"
   >
@@ -16,7 +29,9 @@ exports[`ContactsListOrSpinner should display the contact List 1`] = `
       <ol
         className="sublist-contact"
       >
-        <li>
+        <li
+          id="cat-EMPTY"
+        >
           <div
             className="contact"
             onClick={[Function]}
