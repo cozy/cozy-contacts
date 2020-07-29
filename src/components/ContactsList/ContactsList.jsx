@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import flag from 'cozy-flags'
-import Button from 'cozy-ui/transpiled/react/Button'
+import { ButtonLink, Button } from 'cozy-ui/transpiled/react/Button'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import { sortLastNameFirst, buildLastNameFirst } from './'
@@ -36,47 +36,66 @@ class ContactsList extends Component {
         return acc
       }, {})
       return (
-        <div className="list-wrapper">
-          {flag('select-all-contacts') && (
-            <div>
-              <Button
-                label={
-                  allContactsSelected ? t('unselect-all') : t('select-all')
-                }
-                theme="secondary"
-                onClick={() =>
-                  allContactsSelected ? clearSelection() : selectAll(contacts)
-                }
-              />
-            </div>
-          )}
-          <ol className="list-contact">
+        <div className="contacts-list-container u-flex u-flex-row-reverse">
+          <div className="u-flex u-flex-column u-flex-items-center u-mh-1">
             {Object.keys(categorizedContacts).map(header => (
-              <li key={`cat-${header}`}>
-                <ContactHeaderRow key={header} header={header} />
-                <ol className="sublist-contact">
-                  {categorizedContacts[header].map(contact => (
-                    <li key={`contact-${contact._id}`}>
-                      <ContactRow
-                        id={contact._id}
-                        key={contact._id}
-                        contact={contact}
-                        onClick={() =>
-                          showModal(
-                            <ContactCardModal
-                              onClose={this.hideContactCard}
-                              id={contact._id}
-                            />
-                          )
-                        }
-                      />
-                    </li>
-                  ))}
-                </ol>
-              </li>
+              <ButtonLink
+                subtle
+                href={`#cat-${header}`}
+                key={`cat-${header}`}
+                label={header}
+              />
             ))}
-          </ol>
-          <div />
+            <ButtonLink
+              subtle
+              icon="up"
+              href="#cat-EMPTY"
+              key="#cat-UP"
+              className="u-pos-sticky u-top-xxl"
+            />
+          </div>
+          <div className="list-wrapper">
+            {flag('select-all-contacts') && (
+              <div>
+                <Button
+                  label={
+                    allContactsSelected ? t('unselect-all') : t('select-all')
+                  }
+                  theme="secondary"
+                  onClick={() =>
+                    allContactsSelected ? clearSelection() : selectAll(contacts)
+                  }
+                />
+              </div>
+            )}
+            <ol className="list-contact">
+              {Object.keys(categorizedContacts).map(header => (
+                <li key={`cat-${header}`} id={`cat-${header}`}>
+                  <ContactHeaderRow key={header} header={header} />
+                  <ol className="sublist-contact">
+                    {categorizedContacts[header].map(contact => (
+                      <li key={`contact-${contact._id}`}>
+                        <ContactRow
+                          id={contact._id}
+                          key={contact._id}
+                          contact={contact}
+                          onClick={() =>
+                            showModal(
+                              <ContactCardModal
+                                onClose={this.hideContactCard}
+                                id={contact._id}
+                              />
+                            )
+                          }
+                        />
+                      </li>
+                    ))}
+                  </ol>
+                </li>
+              ))}
+            </ol>
+            <div />
+          </div>
         </div>
       )
     }
