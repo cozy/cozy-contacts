@@ -27,7 +27,9 @@ export const filterFieldList = fields =>
         'relationships',
         'groups',
         'accounts',
-        'me'
+        'me',
+        'displayName',
+        'indexes'
       ].includes(field.type) === false && field.values
   )
 
