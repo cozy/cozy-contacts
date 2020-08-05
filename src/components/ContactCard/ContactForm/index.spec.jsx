@@ -68,8 +68,35 @@ describe('ContactForm', () => {
   })
 
   it('should submit a well formatted contact', () => {
+    const expected = {
+      address: [
+        {
+          formattedAddress: '18 rue des fleurs, Pecado',
+          primary: true,
+          type: undefined
+        }
+      ],
+      birthday: '31/12/2015',
+      company: 'Cozy CLoud',
+      cozy: [
+        { label: undefined, primary: true, url: 'https://jcvd.cozy.cloud' }
+      ],
+      displayName: 'Jean-Claude Van Cozy',
+      email: [{ address: 'jcvc@cozy.cloud', primary: true, type: undefined }],
+      fullname: 'Jean-Claude Van Cozy',
+      indexes: {
+        byFamilyNameGivenNameEmailCozyUrl:
+          'Van CozyJean-Claudejcvc@cozy.cloudjcvd.cozy.cloud'
+      },
+      jobTitle: 'Dreamer',
+      metadata: { cozy: true, version: 1 },
+      name: { familyName: 'Van Cozy', givenName: 'Jean-Claude' },
+      note: 'Whatever.',
+      phone: [{ number: '+33678987654', primary: true, type: undefined }],
+      relationships: { groups: { data: [] } }
+    }
     const onSubmit = contact => {
-      expect(contact).toMatchSnapshot()
+      expect(contact).toEqual(expected)
     }
 
     const form = mount(
@@ -133,8 +160,25 @@ describe('ContactForm', () => {
   })
 
   it('should submit empty fields', () => {
+    const expected = {
+      address: [],
+      birthday: undefined,
+      company: '',
+      cozy: [],
+      displayName: '',
+      email: [],
+      fullname: '',
+      indexes: { byFamilyNameGivenNameEmailCozyUrl: '' },
+      jobTitle: '',
+      metadata: { cozy: true, version: 1 },
+      name: { familyName: undefined, givenName: undefined },
+      note: '',
+      phone: [],
+      relationships: { groups: { data: [] } }
+    }
+
     const onSubmit = contact => {
-      expect(contact).toMatchSnapshot()
+      expect(contact).toEqual(expected)
     }
 
     const form = mount(
