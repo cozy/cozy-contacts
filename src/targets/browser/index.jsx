@@ -9,12 +9,7 @@ import { I18n, initTranslation } from 'cozy-ui/transpiled/react/I18n'
 import App from 'components/App'
 import configureStore from 'store/configureStore'
 import { hot } from 'react-hot-loader'
-import {
-  DOCTYPE_CONTACTS,
-  DOCTYPE_CONTACTS_VERSION,
-  DOCTYPE_CONTACT_GROUPS,
-  DOCTYPE_CONTACT_ACCOUNTS
-} from '../../helpers/doctypes'
+import { schema } from '../../helpers/doctypes'
 import manifest from '../../../manifest.webapp'
 import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
 
@@ -94,6 +89,7 @@ const getCozyURI = () => {
 
   return `${protocol}//${data.cozyDomain}`
 }
+
 function initCozyClient(/* cozyDomain, cozyToken */) {
   return new CozyClient({
     uri: getCozyURI(),
@@ -102,23 +98,7 @@ function initCozyClient(/* cozyDomain, cozyToken */) {
       slug: manifest.name,
       version: manifest.version
     },
-    schema: {
-      contacts: {
-        doctype: DOCTYPE_CONTACTS,
-        doctypeVersion: DOCTYPE_CONTACTS_VERSION,
-        relationships: {
-          groups: {
-            type: 'has-many',
-            doctype: DOCTYPE_CONTACT_GROUPS
-          },
-          accounts: {
-            type: 'has-many',
-            doctype: DOCTYPE_CONTACT_ACCOUNTS
-          }
-        }
-      },
-      groups: { doctype: DOCTYPE_CONTACT_GROUPS }
-    }
+    schema
   })
 }
 

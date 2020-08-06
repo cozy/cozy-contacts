@@ -1,3 +1,10 @@
+import { models } from 'cozy-client'
+const {
+  getFullname,
+  getIndexByFamilyNameGivenNameEmailCozyUrl,
+  getDisplayName
+} = models.contact
+
 export const supportedFieldsInOrder = [
   'phone',
   'email',
@@ -99,4 +106,22 @@ export const normalizeFields = contact => {
   )
   const orderedFields = orderFieldList(groupedFields, supportedFieldsInOrder)
   return makeValuesArray(orderedFields)
+}
+
+/**
+ * Update fullname, displayName and Index values of a contact
+ * @param {object} contact - an io.cozy.contact document
+ * @returns {object} an io.cozy.contact document
+ */
+export const updateIndexFullNameAndDisplayName = contact => {
+  return {
+    ...contact,
+    fullname: getFullname(contact),
+    displayName: getDisplayName(contact),
+    indexes: {
+      byFamilyNameGivenNameEmailCozyUrl: getIndexByFamilyNameGivenNameEmailCozyUrl(
+        contact
+      )
+    }
+  }
 }
