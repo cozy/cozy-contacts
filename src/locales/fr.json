@@ -103,6 +103,9 @@
       },
       "contactsAccounts": {
         "description": "Utilisé pour faire les associations entre vos contacts et vos comptes distants"
+      },
+      "triggers": {
+        "description": "Utilisé pour trier les contacts"
       }
     }
   },

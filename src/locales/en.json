@@ -103,6 +103,9 @@
       },
       "contactsAccounts": {
         "description": "Required to link your contacts with your remote accounts"
+      },
+      "triggers": {
+        "description": "Used to sort contacts"
       }
     }
   },

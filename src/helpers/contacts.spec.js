@@ -1,5 +1,9 @@
 import MockDate from 'mockdate'
-import { getConnectedAccounts, normalizeFields } from './contacts'
+import {
+  getConnectedAccounts,
+  normalizeFields,
+  updateIndexFullNameAndDisplayName
+} from './contacts'
 import { johnDoeContact } from './testData'
 
 const MOCKED_DATE = '2018-01-01T12:00:00.210Z'
@@ -126,5 +130,20 @@ describe('normalizeFields', () => {
     ]
 
     expect(normalizeFields(johnDoeContact)).toEqual(expected)
+  })
+})
+
+describe('updateIndexFullNameAndDisplayName', () => {
+  it('should returns a contact with new attributes', () => {
+    const expected = {
+      ...johnDoeContact,
+      displayName: 'John Doe',
+      fullname: 'John Doe',
+      indexes: {
+        byFamilyNameGivenNameEmailCozyUrl:
+          'DoeJohnjohn.doe@cozycloud.ccjohndoe.mycozy.cloud'
+      }
+    }
+    expect(updateIndexFullNameAndDisplayName(johnDoeContact)).toEqual(expected)
   })
 })

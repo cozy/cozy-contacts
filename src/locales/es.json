@@ -103,6 +103,9 @@
       },
       "contactsAccounts": {
         "description": "Necesario para vincular sus contactos con sus cuentas remotas"
+      },
+      "triggers": {
+        "description": "Necesario para clasificar los contactos"
       }
     }
   },

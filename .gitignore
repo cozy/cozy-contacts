@@ -45,6 +45,11 @@ mobile/fastlane/Preview.html
 mobile/Preview.html
 
 
+# Services
+.token.json
+konnector-dev-config.json
+
+
 # Default
 # /!\ KEEP THIS SECTION THE LAST ONE
 !.gitkeep
