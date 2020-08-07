@@ -87,3 +87,14 @@ export const getFullContactName = name => {
 
 export const getConnectedAccounts = contact =>
   contact.accounts.data.filter(account => account.sourceAccount !== null)
+
+export const normalizeFields = contact => {
+  const fields = getFieldListFrom(contact)
+  const filteredFields = filterFieldList(fields)
+  const groupedFields = groupUnsupportedFields(
+    filteredFields,
+    supportedFieldsInOrder
+  )
+  const orderedFields = orderFieldList(groupedFields, supportedFieldsInOrder)
+  return makeValuesArray(orderedFields)
+}

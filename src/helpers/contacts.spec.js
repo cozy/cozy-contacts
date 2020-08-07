@@ -1,15 +1,6 @@
 import MockDate from 'mockdate'
-
-import {
-  getFieldListFrom,
-  filterFieldList,
-  groupUnsupportedFields,
-  supportedFieldsInOrder,
-  orderFieldList,
-  makeValuesArray,
-  getConnectedAccounts
-} from './contacts'
-import { DOCTYPE_CONTACTS } from './doctypes'
+import { getConnectedAccounts, normalizeFields } from './contacts'
+import { johnDoeContact } from './testData'
 
 const MOCKED_DATE = '2018-01-01T12:00:00.210Z'
 
@@ -20,87 +11,6 @@ beforeAll(() => {
 afterAll(() => {
   jest.restoreAllMocks()
   MockDate.reset()
-})
-
-describe('Manage Contacts fields', () => {
-  test('full transformation', () => {
-    const contact = {
-      _id: 'c6899688-6cc6-4ffb-82d4-ab9f9b82c582',
-      id: 'c6899688-6cc6-4ffb-82d4-ab9f9b82c582',
-      _rev: '1-9368a4f2e467c449f4a1f5171a784aa8',
-      _type: DOCTYPE_CONTACTS,
-      metadata: {
-        version: 1
-      },
-      groups: ['abc', 'def'],
-      address: [
-        {
-          city: 'Stafford',
-          country: 'Solomon Islands',
-          postcode: '06635',
-          primary: true,
-          street: '48 Fuller Road'
-        }
-      ],
-      birthday: '1998-06-03',
-      email: [
-        { address: 'rikki.white@celmax.name', primary: true },
-        { address: 'eleanore.fennell@thermolock.name', primary: false }
-      ],
-      name: { familyName: 'White', givenName: 'Rikki' },
-      fullname: 'Rikki White',
-      phone: [
-        { number: '+33 (1)9 14 02 28 31', primary: true },
-        { number: '+33 (2)3 99 53 65 21', primary: false }
-      ],
-      unknownField: 'unknownField',
-      emptyField: ''
-    }
-    const expectedContact = [
-      {
-        type: 'phone',
-        values: [
-          { number: '+33 (1)9 14 02 28 31', primary: true },
-          { number: '+33 (2)3 99 53 65 21', primary: false }
-        ]
-      },
-      {
-        type: 'email',
-        values: [
-          { address: 'rikki.white@celmax.name', primary: true },
-          { address: 'eleanore.fennell@thermolock.name', primary: false }
-        ]
-      },
-      {
-        type: 'address',
-        values: [
-          {
-            city: 'Stafford',
-            country: 'Solomon Islands',
-            postcode: '06635',
-            primary: true,
-            street: '48 Fuller Road'
-          }
-        ]
-      },
-      { type: 'birthday', values: ['1998-06-03'] },
-      { type: 'other', values: ['unknownField'] }
-    ]
-    const immutableContact = { ...contact }
-
-    const normalizedFields = makeValuesArray(
-      orderFieldList(
-        groupUnsupportedFields(
-          filterFieldList(getFieldListFrom(contact)),
-          supportedFieldsInOrder
-        ),
-        supportedFieldsInOrder
-      )
-    )
-
-    expect(contact).toEqual(immutableContact)
-    expect(normalizedFields).toEqual(expectedContact)
-  })
 })
 
 describe('getConnectedAccounts', () => {
@@ -122,13 +32,14 @@ describe('getConnectedAccounts', () => {
         ]
       }
     }
-    expect(getConnectedAccounts(contact)).toEqual([
+    const expected = [
       {
         _type: 'io.cozy.contacts.accounts',
         _id: 'abc',
         sourceAccount: '3290840'
       }
-    ])
+    ]
+    expect(getConnectedAccounts(contact)).toEqual(expected)
   })
 
   it('should work for a contact with disconnected accounts', () => {
@@ -155,5 +66,65 @@ describe('getConnectedAccounts', () => {
       }
     }
     expect(getConnectedAccounts(contact).length).toBe(0)
+  })
+})
+
+describe('normalizeFields', () => {
+  it('should create an array [{type: string, values: arrayOfObject}] from contact attributes', () => {
+    const expected = [
+      {
+        type: 'phone',
+        values: [
+          { number: '+33 (2)0 90 00 54 04', primary: true },
+          { number: '+33 6 77 11 22 33', primary: false }
+        ]
+      },
+      {
+        type: 'email',
+        values: [
+          { address: 'john.doe@posteo.net', primary: false, type: 'personal' },
+          { address: 'john.doe@cozycloud.cc', primary: true }
+        ]
+      },
+      {
+        type: 'address',
+        values: [
+          {
+            formattedAddress: '94 Hinton Road 05034 Fresno, Singapore',
+            primary: true,
+            type: 'Home'
+          },
+          {
+            city: 'Port Easter',
+            country: 'Cocos (Keeling) Islands',
+            postcode: '84573',
+            street: '426 Runolfsson Knolls',
+            type: 'Work'
+          }
+        ]
+      },
+      {
+        type: 'cozy',
+        values: [
+          {
+            label: 'MyCozy',
+            primary: true,
+            url: 'https://johndoe.mycozy.cloud'
+          }
+        ]
+      },
+      { type: 'company', values: ['Cozy cloud'] },
+      { type: 'jobTitle', values: ['Dreamer'] },
+      { type: 'birthday', values: ['1999-5-1'] },
+      {
+        type: 'note',
+        values: [
+          'Atque cupiditate saepe omnis quos ut molestiae labore voluptates omnis.'
+        ]
+      },
+      { type: 'other', values: [] }
+    ]
+
+    expect(normalizeFields(johnDoeContact)).toEqual(expected)
   })
 })
