@@ -66,6 +66,11 @@ describe('formValuesToContact', () => {
         groups: {
           data: []
         }
+      },
+      displayName: 'John Doe',
+      indexes: {
+        byFamilyNameGivenNameEmailCozyUrl:
+          'DoeJohnjohn.doe@cozycloud.ccjohndoe.mycozy.cloud'
       }
     }
     const result = formValuesToContact(johnDoeFormValues, null)
@@ -115,7 +120,11 @@ describe('formValuesToContact', () => {
       birthday: null,
       note: '',
       relationships: { groups: { data: [] } },
-      metadata: { version: 1, cozy: true }
+      metadata: { version: 1, cozy: true },
+      displayName: 'Doe Jane',
+      indexes: {
+        byFamilyNameGivenNameEmailCozyUrl: 'JaneDoe'
+      }
     }
 
     const result = formValuesToContact(formValues, null)
