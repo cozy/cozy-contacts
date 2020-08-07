@@ -5,28 +5,13 @@ import ContactIdentity from './ContactIdentity'
 import ContactGroupsList from '../ContactGroups/ContactGroupList'
 import ContactFields from './ContactFields'
 import { fullContactPropTypes } from '../ContactPropTypes'
-import {
-  getFieldListFrom,
-  filterFieldList,
-  groupUnsupportedFields,
-  supportedFieldsInOrder,
-  orderFieldList,
-  makeValuesArray,
-  getConnectedAccounts
-} from '../../helpers/contacts'
+import { normalizeFields, getConnectedAccounts } from '../../helpers/contacts'
 import ContactAccounts from './ContactAccounts'
 
 const ContactCard = ({ t, contact, renderHeader, renderBody, allGroups }) => {
-  const fields = getFieldListFrom(contact)
-  const filteredFields = filterFieldList(fields)
-  const groupedFields = groupUnsupportedFields(
-    filteredFields,
-    supportedFieldsInOrder
-  )
-  const orderedFields = orderFieldList(groupedFields, supportedFieldsInOrder)
-  const normalizedFields = makeValuesArray(orderedFields)
-
+  const normalizedFields = normalizeFields(contact)
   const activeContactAccounts = getConnectedAccounts(contact)
+
   return (
     <>
       {renderHeader(
