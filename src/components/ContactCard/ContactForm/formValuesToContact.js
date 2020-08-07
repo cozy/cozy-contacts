@@ -1,4 +1,11 @@
 import get from 'lodash/get'
+import { models } from 'cozy-client'
+
+const {
+  getFullname,
+  getIndexByFamilyNameGivenNameEmailCozyUrl,
+  getDisplayName
+} = models.contact
 
 const formValuesToContact = (data, oldContact) => {
   const {
@@ -14,10 +21,7 @@ const formValuesToContact = (data, oldContact) => {
     note
   } = data
 
-  const fullName = (givenName || '') + ' ' + (familyName || '')
-
-  return {
-    fullname: fullName.trim(),
+  const contact = {
     name: {
       givenName,
       familyName
@@ -70,6 +74,17 @@ const formValuesToContact = (data, oldContact) => {
       ...get(oldContact, 'metadata', {}),
       version: 1,
       cozy: true
+    }
+  }
+
+  return {
+    ...contact,
+    fullname: getFullname(contact),
+    displayName: getDisplayName(contact),
+    indexes: {
+      byFamilyNameGivenNameEmailCozyUrl: getIndexByFamilyNameGivenNameEmailCozyUrl(
+        contact
+      )
     }
   }
 }
