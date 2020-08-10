@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import withBreakpoints from 'cozy-ui/react/helpers/withBreakpoints'
+import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
 
 import withModalContainer from '../HOCs/withModal'
 import contactPropTypes from '../ContactPropTypes'

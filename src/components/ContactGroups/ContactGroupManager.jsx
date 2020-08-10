@@ -5,7 +5,10 @@ import classNames from 'classnames'
 
 import Button from 'cozy-ui/transpiled/react/Button'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
-import SelectBox, { ActionsOption, components } from 'cozy-ui/react/SelectBox'
+import SelectBox, {
+  ActionsOption,
+  components
+} from 'cozy-ui/transpiled/react/SelectBox'
 import Overlay from 'cozy-ui/transpiled/react/Overlay'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import palette from 'cozy-ui/transpiled/react/palette'

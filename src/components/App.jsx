@@ -5,7 +5,7 @@ import flow from 'lodash/flow'
 import { Main, Layout, Content } from 'cozy-ui/transpiled/react/Layout'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import { Title } from 'cozy-ui/transpiled/react/Text'
-import withBreakpoints from 'cozy-ui/react/helpers/withBreakpoints'
+import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
 
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Query } from 'cozy-client'
