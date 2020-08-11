@@ -2,8 +2,10 @@ import { connect } from 'react-redux'
 
 const mapStateToProps = state => {
   const selection = state.appReducers.selection || []
+  const filterLetter = state.appReducers.filter.filterLetter || null
   return {
-    selection: selection.selection
+    selection: selection.selection,
+    filterLetter
   }
 }
 

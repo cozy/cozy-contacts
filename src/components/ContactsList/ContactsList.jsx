@@ -11,6 +11,7 @@ import ContactHeaderRow from './ContactHeaderRow'
 import withModal from '../HOCs/withModal'
 import ContactCardModal from '../Modals/ContactCardModal'
 import withSelection from '../Selection/selectionContainer'
+import AlphabetFilter from '../AlphabetFilter/AlphabetFilter'
 
 class ContactsList extends Component {
   render() {
@@ -18,6 +19,7 @@ class ContactsList extends Component {
       clearSelection,
       contacts,
       selection,
+      filterLetter,
       showModal,
       selectAll,
       t
@@ -27,7 +29,16 @@ class ContactsList extends Component {
       return <ContactsEmptyList />
     } else {
       const allContactsSelected = contacts.length === selection.length
-      const sortedContacts = [...contacts].sort(sortLastNameFirst)
+      const sortedContacts = [...contacts]
+        .filter(
+          contact =>
+            filterLetter === null ||
+            (contact.name &&
+              contact.name.familyName &&
+              contact.name.familyName.charAt(0) &&
+              contact.name.familyName.charAt(0).toUpperCase() === filterLetter)
+        )
+      .sort(sortLastNameFirst)
       const categorizedContacts = sortedContacts.reduce((acc, contact) => {
         const name = buildLastNameFirst(contact)
         const header = name[0] || t('empty-list')
@@ -37,6 +48,7 @@ class ContactsList extends Component {
       }, {})
       return (
         <div className="list-wrapper">
+          <AlphabetFilter contacts={contacts} />
           {flag('select-all-contacts') && (
             <div>
               <Button
