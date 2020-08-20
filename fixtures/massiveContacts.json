@@ -1,0 +1,111 @@
+{
+  "io.cozy.contacts": [
+    {{#repeat 550}}
+    {
+      "_id": "{{guid}}",
+      "name": {
+        "givenName": "{{firstName}}",
+        "familyName": "{{lastName}}"
+      },
+      "phone": [
+        { "number": "{{phone '+33 (x)x xx xx xx xx'}}", "primary": true }
+      ],
+      "email": [
+        { "address": "{{email}}", "primary": true }
+      ],
+      "birthday": "{{date '1950' '2000' 'YYYY-MM-DD'}}",
+      "address": [
+        { "street": "{{int 1 100}} {{street}}", "city": "{{city}}", "country": "{{country}}", "postcode": "{{zipcode}}", "primary": true }
+      ],
+      "relationships": {"groups": {"data":[{"_id": "group_id_work","_type": "io.cozy.contacts.groups"}]}},
+      "metadata": {
+        "version": 1
+      }
+    }
+    {{/repeat}}
+    ,
+    {{#repeat 550}}
+    {
+      "_id": "{{guid}}",
+      "name": {
+        "givenName": "{{firstName}}",
+        "familyName": "{{lastName}}"
+      },
+      "phone": [
+        { "number": "{{phone '+33 (x)x xx xx xx xx'}}", "primary": true }
+      ],
+      "email": [
+        { "address": "{{email}}", "primary": true }
+      ],
+      "birthday": "{{date '1950' '2000' 'YYYY-MM-DD'}}",
+      "address": [
+        { "street": "{{int 1 100}} {{street}}", "city": "{{city}}", "country": "{{country}}", "postcode": "{{zipcode}}", "primary": true }
+      ]
+    }
+    {{/repeat}}
+     ,
+    {{#repeat 550}}
+    {
+      "_id": "{{guid}}",
+      "name": {
+        "givenName": "{{firstName}}",
+        "familyName": "{{lastName}}"
+      },
+      "phone": [
+        { "number": "{{phone '+33 (x)x xx xx xx xx'}}", "primary": true },
+        { "number": "{{phone '+33 (x)x xx xx xx xx'}}", "primary": false }
+      ],
+      "email": [
+        { "address": "{{email}}", "primary": true },
+        { "address": "{{email}}", "primary": false }
+      ],
+      "birthday": "{{date '1950' '2000' 'YYYY-MM-DD'}}",
+      "address": [
+        { "street": "{{int 1 100}} {{street}}", "city": "{{city}}", "country": "{{country}}", "postcode": "{{zipcode}}", "primary": true }
+      ],
+      "relationships": {"groups": {"data":[{"_id": "group_id_family","_type": "io.cozy.contacts.groups"}]}},
+      "metadata": {
+        "version": 1
+      }
+    }
+    {{/repeat}}
+     ,
+    {{#repeat 550}}
+    {
+      "_id": "{{guid}}",
+      "name": {
+        "givenName": "{{company}}"
+      },
+      "phone": [
+        { "number": "{{phone '+33 (x)x xx xx xx xx'}}", "primary": true }
+      ],
+      "email": [
+        { "address": "{{email}}", "primary": true }
+      ],
+      "address": [
+        { "street": "{{int 1 100}} {{street}}", "city": "{{city}}", "country": "{{country}}", "postcode": "{{zipcode}}", "primary": true }
+      ],
+      "relationships": {"groups": {"data":[{"_id": "group_id_work","_type": "io.cozy.contacts.groups"}, {"_id": "group_id_family","_type": "io.cozy.contacts.groups"}]}},
+      "metadata": {
+        "version": 1
+      }
+    }
+    {{/repeat}}
+  ],
+  "io.cozy.contacts.groups": [
+    {
+      "_id": "group_id_work",
+      "name": "Work",
+      "metadata": {
+        "version": 1
+      }
+    },
+    {
+      "_id": "group_id_family",
+      "name": "Family",
+      "metadata": {
+        "version": 1
+      }
+    }
+  ]
+}
