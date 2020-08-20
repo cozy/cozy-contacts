@@ -21,6 +21,7 @@
     "cozyPublish": "git fetch origin ${DEPLOY_BRANCH:-build}:${DEPLOY_BRANCH:-build} && cozy-scripts publish --token $REGISTRY_TOKEN --build-commit $(git rev-parse ${DEPLOY_BRANCH:-build})",
     "postbuild": "bundlesize",
     "fixtures": "ACH import fixtures/contacts.json",
+    "fixtures:massive": "ACH import fixtures/massiveContacts.json",
     "services:keepIndexFullNameAndDisplayNameUpToDate": "cozy-konnector-dev -m manifest.webapp build/services/keepIndexFullNameAndDisplayNameUpToDate/contacts.js"
   },
   "repository": {
