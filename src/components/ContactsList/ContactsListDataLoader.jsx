@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
 
-import ContactsList from '.'
+import ContactsList from './ContactsList'
 import SpinnerContact from '../Components/Spinner'
 
 class ContactsListDataLoader extends Component {

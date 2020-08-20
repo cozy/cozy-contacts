@@ -4,7 +4,7 @@ import flag from 'cozy-flags'
 import Button from 'cozy-ui/transpiled/react/Button'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
-import { sortLastNameFirst, buildLastNameFirst } from './'
+import { categorizeContacts } from '../../helpers/contactList'
 import ContactsEmptyList from './ContactsEmptyList'
 import ContactRow from './ContactRow'
 import ContactHeaderRow from './ContactHeaderRow'
@@ -27,14 +27,8 @@ class ContactsList extends Component {
       return <ContactsEmptyList />
     } else {
       const allContactsSelected = contacts.length === selection.length
-      const sortedContacts = [...contacts].sort(sortLastNameFirst)
-      const categorizedContacts = sortedContacts.reduce((acc, contact) => {
-        const name = buildLastNameFirst(contact)
-        const header = name[0] || t('empty-list')
-        acc[header] = acc[header] || []
-        acc[header].push(contact)
-        return acc
-      }, {})
+      const categorizedContacts = categorizeContacts(contacts, t('empty-list'))
+
       return (
         <div className="list-wrapper">
           {flag('select-all-contacts') && (
