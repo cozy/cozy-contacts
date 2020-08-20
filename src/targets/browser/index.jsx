@@ -1,26 +1,30 @@
 /* global cozy */
 
-import 'styles'
-
 import React from 'react'
-import CozyClient, { CozyProvider } from 'cozy-client'
+import { Provider } from 'react-redux'
 import { render } from 'react-dom'
-import { I18n, initTranslation } from 'cozy-ui/transpiled/react/I18n'
-import App from 'components/App'
-import configureStore from 'store/configureStore'
 import { hot } from 'react-hot-loader'
-import { schema } from '../../helpers/doctypes'
-import manifest from '../../../manifest.webapp'
+
+import CozyClient, { CozyProvider } from 'cozy-client'
+import { I18n, initTranslation } from 'cozy-ui/transpiled/react/I18n'
 import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
 
+import App from 'components/App'
+import configureStore from 'store/configureStore'
+import { schema } from '../../helpers/doctypes'
+import manifest from '../../../manifest.webapp'
+import '../../styles/index.styl'
+
 const RootApp = props => (
-  <CozyProvider client={props.client} store={props.store}>
-    <I18n lang={props.lang} polyglot={props.polyglot}>
-      <MuiCozyTheme>
-        <HotedApp />
-      </MuiCozyTheme>
-    </I18n>
-  </CozyProvider>
+  <Provider store={props.store}>
+    <CozyProvider client={props.client} store={props.store}>
+      <I18n lang={props.lang} polyglot={props.polyglot}>
+        <MuiCozyTheme>
+          <HotedApp />
+        </MuiCozyTheme>
+      </I18n>
+    </CozyProvider>
+  </Provider>
 )
 
 const HotedApp = hot(module)(App)

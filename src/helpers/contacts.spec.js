@@ -141,7 +141,7 @@ describe('updateIndexFullNameAndDisplayName', () => {
       fullname: 'John Doe',
       indexes: {
         byFamilyNameGivenNameEmailCozyUrl:
-          'DoeJohnjohn.doe@cozycloud.ccjohndoe.mycozy.cloud'
+          'Doejohnjohn.doe@cozycloud.ccjohndoe.mycozy.cloud'
       }
     }
     expect(updateIndexFullNameAndDisplayName(johnDoeContact)).toEqual(expected)

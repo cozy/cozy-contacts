@@ -3,14 +3,19 @@ import PropTypes from 'prop-types'
 import { shallow } from 'enzyme'
 import selectionContainer from './selectionContainer'
 import AppLike from '../../tests/Applike'
-const DummyComponent = ({ title = '' }) => <span title={title} />
-const DummyComponentWithSelection = selectionContainer(DummyComponent)
 import configureStore from '../../store/configureStore'
 import getCozyClient from '../../tests/client'
 
+const DummyComponent = ({ title = '' }) => <span title={title} />
 DummyComponent.propTypes = {
   title: PropTypes.string
 }
+const DummyComponentWithSelection = selectionContainer(DummyComponent)
+
+// Uses a different version of react-redux
+// to prevent Enzyme's incompatibility with actual react-redux version
+// see https://github.com/enzymejs/enzyme/issues/2202 and https://github.com/enzymejs/enzyme/issues/2302
+jest.mock('react-redux', () => require('react-redux-test'))
 
 describe('A component with selection', () => {
   let testedComponent

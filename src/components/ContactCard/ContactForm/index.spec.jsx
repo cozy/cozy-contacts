@@ -86,7 +86,7 @@ describe('ContactForm', () => {
       fullname: 'Jean-Claude Van Cozy',
       indexes: {
         byFamilyNameGivenNameEmailCozyUrl:
-          'Van CozyJean-Claudejcvc@cozy.cloudjcvd.cozy.cloud'
+          'Van cozyjean-claudejcvc@cozy.cloudjcvd.cozy.cloud'
       },
       jobTitle: 'Dreamer',
       metadata: { cozy: true, version: 1 },
@@ -168,7 +168,7 @@ describe('ContactForm', () => {
       displayName: '',
       email: [],
       fullname: '',
-      indexes: { byFamilyNameGivenNameEmailCozyUrl: '' },
+      indexes: { byFamilyNameGivenNameEmailCozyUrl: {} },
       jobTitle: '',
       metadata: { cozy: true, version: 1 },
       name: { familyName: undefined, givenName: undefined },
