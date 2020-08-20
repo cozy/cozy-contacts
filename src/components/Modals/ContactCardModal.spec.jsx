@@ -1,9 +1,11 @@
 import React from 'react'
-import { ContactCardModal, DumbContactCardModal } from './ContactCardModal'
+import ContactCardModal, { DumbContactCardModal } from './ContactCardModal'
 import { render } from '@testing-library/react'
-import { createMockClient } from 'cozy-client'
 import AppLike from '../../tests/Applike'
 import { contactWithGroup as contact, groups } from '../../helpers/testData'
+import { createMockClient, useQuery } from 'cozy-client'
+
+jest.mock('cozy-client/dist/hooks/useQuery', () => jest.fn())
 
 const client = createMockClient({})
 const setup = ({
@@ -31,6 +33,13 @@ describe('ContactCardModal', () => {
       onClose: jest.fn,
       deleteContact: jest.fn
     }
+    useQuery.mockReturnValue({
+      data: [],
+      fetchStatus: 'pending',
+      hasMore: true,
+      fetchMore: jest.fn()
+    })
+
     const jsx = (
       <AppLike client={client}>
         <ContactCardModal {...props} />
