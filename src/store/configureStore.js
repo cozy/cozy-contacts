@@ -8,7 +8,6 @@ import {
   getTracker,
   createTrackerMiddleware
 } from 'cozy-ui/transpiled/react/helpers/tracker'
-//import { isReporterEnabled, getReporterMiddleware } from 'lib/sentry'
 
 import appReducers from '../reducers'
 
@@ -16,32 +15,28 @@ const configureStore = (client, t, persistedState) => {
   // Enable Redux dev tools
   const composeEnhancers =
     (__DEVELOPMENT__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
-  const cozyReducer = client.reducer()
-  // reducers
-  //const reducers = [appReducers, persistedState, cozyReducer]
-  const reducers = combineReducers({
-    appReducers,
-    persistedState,
-    cozy: cozyReducer
-  })
+
   // middlewares
   const middlewares = [thunkMiddleware.withExtraArgument({ client, t })]
 
+  // tracker middleware
   if (shouldEnableTracking() && getTracker()) {
     middlewares.push(createTrackerMiddleware())
   }
+
+  // logger middleware
   if (flag('logs') && __DEVELOPMENT__) {
-    // eslint-disable-line
     // must be the last middleware in chain https://git.io/vHQpt
     const loggerMiddleware = createLogger()
     middlewares.push(loggerMiddleware)
   }
-  /* if (isReporterEnabled()) {
-    middlewares.push(getReporterMiddleware(cozyClient))
-  } */
 
   const store = createStore(
-    reducers,
+    combineReducers({
+      appReducers,
+      cozy: client.reducer(),
+      persistedState
+    }),
     composeEnhancers(applyMiddleware.apply(null, middlewares))
   )
 
