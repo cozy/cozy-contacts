@@ -135,6 +135,36 @@
       "metadata": {
         "version": 1
       }
+    },
+    {
+      "_id": "{{guid}}",
+      "name": {},
+      "phone": [
+        { "number": "{{phone '+33 (x)x xx xx xx xx'}}", "primary": true }
+      ],
+      "metadata": {
+        "version": 1
+      }
+    },
+    {
+      "_id": "{{guid}}",
+      "name": {},
+      "email": [
+        { "address": "matt.damon@noemail.net", "primary": true }
+      ],
+      "metadata": {
+        "version": 1
+      }
+    },
+    {
+      "_id": "{{guid}}",
+      "name": {},
+      "cozy": [
+        { "url": "https://john.cozy.cc", "primary": true }
+      ],
+      "metadata": {
+        "version": 1
+      }
     }
   ],
   "io.cozy.contacts.groups": [
