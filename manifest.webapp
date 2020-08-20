@@ -57,7 +57,7 @@
     "triggers": {
       "description": "Used to sort contacts",
       "type": "io.cozy.triggers",
-      "verbs": ["GET"]
+      "verbs": ["GET", "POST"]
     }
   },
   "intents": [
