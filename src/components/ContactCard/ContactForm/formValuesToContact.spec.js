@@ -17,61 +17,31 @@ describe('formValuesToContact', () => {
           type: 'Work'
         }
       ],
-      email: [
-        {
-          address: 'john.doe@cozycloud.cc',
-          primary: true,
-          type: undefined
-        },
-        {
-          address: 'john.doe@posteo.net',
-          type: 'personal',
-          primary: false
-        }
-      ],
       birthday: '1999-5-1',
       company: 'Cozy cloud',
-      jobTitle: 'Dreamer',
       cozy: [
-        {
-          label: 'MyCozy',
-          primary: true,
-          url: 'https://johndoe.mycozy.cloud'
-        }
+        { label: 'MyCozy', primary: true, url: 'https://johndoe.mycozy.cloud' }
+      ],
+      displayName: 'John Doe',
+      email: [
+        { address: 'john.doe@cozycloud.cc', primary: true, type: undefined },
+        { address: 'john.doe@posteo.net', primary: false, type: 'personal' }
       ],
       fullname: 'John Doe',
-      name: {
-        givenName: 'John',
-        familyName: 'Doe'
+      indexes: {
+        byFamilyNameGivenNameEmailCozyUrl:
+          'Doejohnjohn.doe@cozycloud.ccjohndoe.mycozy.cloud'
       },
-      metadata: {
-        cozy: true,
-        version: 1
-      },
+      jobTitle: 'Dreamer',
+      metadata: { cozy: true, version: 1 },
+      name: { familyName: 'Doe', givenName: 'John' },
       note:
         'Atque cupiditate saepe omnis quos ut molestiae labore voluptates omnis.',
       phone: [
-        {
-          number: '+33 (2)0 90 00 54 04',
-          primary: true,
-          type: undefined
-        },
-        {
-          number: '+33 6 77 11 22 33',
-          primary: false,
-          type: undefined
-        }
+        { number: '+33 (2)0 90 00 54 04', primary: true, type: undefined },
+        { number: '+33 6 77 11 22 33', primary: false, type: undefined }
       ],
-      relationships: {
-        groups: {
-          data: []
-        }
-      },
-      displayName: 'John Doe',
-      indexes: {
-        byFamilyNameGivenNameEmailCozyUrl:
-          'DoeJohnjohn.doe@cozycloud.ccjohndoe.mycozy.cloud'
-      }
+      relationships: { groups: { data: [] } }
     }
     const result = formValuesToContact(johnDoeFormValues, null)
     expect(result).toEqual(expected)
@@ -109,22 +79,20 @@ describe('formValuesToContact', () => {
       ]
     }
     const expected = {
-      fullname: 'Doe Jane',
-      name: { givenName: 'Doe', familyName: 'Jane' },
-      email: [],
       address: [],
-      phone: [],
-      cozy: [],
-      company: '',
-      jobTitle: '',
       birthday: null,
-      note: '',
-      relationships: { groups: { data: [] } },
-      metadata: { version: 1, cozy: true },
+      company: '',
+      cozy: [],
       displayName: 'Doe Jane',
-      indexes: {
-        byFamilyNameGivenNameEmailCozyUrl: 'JaneDoe'
-      }
+      email: [],
+      fullname: 'Doe Jane',
+      indexes: { byFamilyNameGivenNameEmailCozyUrl: 'Janedoe' },
+      jobTitle: '',
+      metadata: { cozy: true, version: 1 },
+      name: { familyName: 'Jane', givenName: 'Doe' },
+      note: '',
+      phone: [],
+      relationships: { groups: { data: [] } }
     }
 
     const result = formValuesToContact(formValues, null)
