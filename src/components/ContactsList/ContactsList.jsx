@@ -11,6 +11,7 @@ import ContactHeaderRow from './ContactHeaderRow'
 import withModal from '../HOCs/withModal'
 import ContactCardModal from '../Modals/ContactCardModal'
 import withSelection from '../Selection/selectionContainer'
+import { Icon } from 'cozy-ui/transpiled/react'
 
 class ContactsList extends Component {
   render() {
@@ -30,53 +31,75 @@ class ContactsList extends Component {
       const sortedContacts = [...contacts].sort(sortLastNameFirst)
       const categorizedContacts = sortedContacts.reduce((acc, contact) => {
         const name = buildLastNameFirst(contact)
-        const header = name[0] || t('empty-list')
+        const header = name[0] ? name[0].toUpperCase() : t('empty-list')
         acc[header] = acc[header] || []
         acc[header].push(contact)
         return acc
       }, {})
       return (
-        <div className="list-wrapper">
-          {flag('select-all-contacts') && (
-            <div>
-              <Button
-                label={
-                  allContactsSelected ? t('unselect-all') : t('select-all')
-                }
-                theme="secondary"
-                onClick={() =>
-                  allContactsSelected ? clearSelection() : selectAll(contacts)
-                }
-              />
+        <div className="index-list-wrapper u-flex u-flex-row u-flex-column-t">
+          <div className="index-wrapper u-pv-2 u-pl-2">
+            <div className="index-contacts u-pos-fixed u-pos-static-t">
+              {Object.keys(categorizedContacts).map((header, index) => {
+                const emptyHeader = header.length > 1
+                return (
+                  <>
+                    <a
+                      key={`link-${header}`}
+                      href={`#${header}`}
+                      className={`u-db ${
+                        emptyHeader ? 'u-dn' : 'u-di'
+                      }-t u-mv-half u-ml-half-t`}
+                    >
+                      {emptyHeader ? <Icon icon="up" /> : header}
+                    </a>
+                    {index === 13 && <br className="u-dn u-di-t" />}
+                  </>
+                )
+              })}
             </div>
-          )}
-          <ol className="list-contact">
-            {Object.keys(categorizedContacts).map(header => (
-              <li key={`cat-${header}`}>
-                <ContactHeaderRow key={header} header={header} />
-                <ol className="sublist-contact">
-                  {categorizedContacts[header].map(contact => (
-                    <li key={`contact-${contact._id}`}>
-                      <ContactRow
-                        id={contact._id}
-                        key={contact._id}
-                        contact={contact}
-                        onClick={() =>
-                          showModal(
-                            <ContactCardModal
-                              onClose={this.hideContactCard}
-                              id={contact._id}
-                            />
-                          )
-                        }
-                      />
-                    </li>
-                  ))}
-                </ol>
-              </li>
-            ))}
-          </ol>
-          <div />
+          </div>
+          <div className="list-wrapper">
+            {flag('select-all-contacts') && (
+              <div>
+                <Button
+                  label={
+                    allContactsSelected ? t('unselect-all') : t('select-all')
+                  }
+                  theme="secondary"
+                  onClick={() =>
+                    allContactsSelected ? clearSelection() : selectAll(contacts)
+                  }
+                />
+              </div>
+            )}
+            <ol className="list-contact">
+              {Object.keys(categorizedContacts).map(header => (
+                <li id={header} key={`cat-${header}`}>
+                  <ContactHeaderRow key={header} header={header} />
+                  <ol className="sublist-contact">
+                    {categorizedContacts[header].map(contact => (
+                      <li key={`contact-${contact._id}`}>
+                        <ContactRow
+                          id={contact._id}
+                          key={contact._id}
+                          contact={contact}
+                          onClick={() =>
+                            showModal(
+                              <ContactCardModal
+                                onClose={this.hideContactCard}
+                                id={contact._id}
+                              />
+                            )
+                          }
+                        />
+                      </li>
+                    ))}
+                  </ol>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       )
     }
