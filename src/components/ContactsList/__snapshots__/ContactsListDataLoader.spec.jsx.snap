@@ -2,96 +2,124 @@
 
 exports[`ContactsListOrSpinner should display the contact List 1`] = `
 <div
-  className="list-wrapper"
+  className="index-list-wrapper u-flex u-flex-row u-flex-column-t"
 >
-  <ol
-    className="list-contact"
+  <div
+    className="index-wrapper u-pv-2 u-pl-2"
   >
-    <li>
-      <div
-        className="divider"
+    <div
+      className="index-contacts u-pos-fixed u-pos-static-t"
+    >
+      <a
+        className="u-db u-dn-t u-mv-half u-ml-half-t"
+        href="#EMPTY"
       >
-        EMPTY
-      </div>
-      <ol
-        className="sublist-contact"
+        <svg
+          className="styles__icon___23x3R"
+          height="16"
+          style={Object {}}
+          width="16"
+        >
+          <use
+            xlinkHref="#up"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div
+    className="list-wrapper"
+  >
+    <ol
+      className="list-contact"
+    >
+      <li
+        id="EMPTY"
       >
-        <li>
-          <div
-            className="contact"
-            onClick={[Function]}
-          >
+        <div
+          className="divider"
+        >
+          EMPTY
+        </div>
+        <ol
+          className="sublist-contact"
+        >
+          <li>
             <div
-              className="contact-selection"
+              className="contact"
               onClick={[Function]}
             >
-              <span
-                data-input="checkbox"
-              >
-                <input
-                  checked={false}
-                  readOnly={true}
-                  type="checkbox"
-                />
-                <label />
-              </span>
-            </div>
-            <div
-              className="contact-identity"
-            >
               <div
-                className="styles__c-avatar___PpDI- styles__c-avatar--small___1Y_Pv"
+                className="contact-selection"
+                onClick={[Function]}
               >
-                
-                
-                <svg
-                  className="styles__icon___23x3R"
-                  height="16"
-                  style={Object {}}
-                  width="16"
+                <span
+                  data-input="checkbox"
                 >
-                  <use
-                    xlinkHref="#people"
+                  <input
+                    checked={false}
+                    readOnly={true}
+                    type="checkbox"
                   />
-                </svg>
+                  <label />
+                </span>
               </div>
               <div
-                className="u-ellipsis"
+                className="contact-identity"
               >
-                <span
-                  className="contact-firstname"
+                <div
+                  className="styles__c-avatar___PpDI- styles__c-avatar--small___1Y_Pv"
                 >
                   
-                </span>
-                 
-                <span
-                  className="contact-lastname"
-                >
                   
-                </span>
+                  <svg
+                    className="styles__icon___23x3R"
+                    height="16"
+                    style={Object {}}
+                    width="16"
+                  >
+                    <use
+                      xlinkHref="#people"
+                    />
+                  </svg>
+                </div>
+                <div
+                  className="u-ellipsis"
+                >
+                  <span
+                    className="contact-firstname"
+                  >
+                    
+                  </span>
+                   
+                  <span
+                    className="contact-lastname"
+                  >
+                    
+                  </span>
+                </div>
+              </div>
+              <div
+                className="contact-email u-ellipsis"
+              >
+                johndoe@localhost
+              </div>
+              <div
+                className="contact-phone u-ellipsis"
+              >
+                —
+              </div>
+              <div
+                className="contact-cozyurl u-ellipsis"
+              >
+                —
               </div>
             </div>
-            <div
-              className="contact-email u-ellipsis"
-            >
-              johndoe@localhost
-            </div>
-            <div
-              className="contact-phone u-ellipsis"
-            >
-              —
-            </div>
-            <div
-              className="contact-cozyurl u-ellipsis"
-            >
-              —
-            </div>
-          </div>
-        </li>
-      </ol>
-    </li>
-  </ol>
-  <div />
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </div>
 </div>
 `;
 

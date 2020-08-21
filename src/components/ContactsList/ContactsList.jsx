@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import flag from 'cozy-flags'
 import Button from 'cozy-ui/transpiled/react/Button'
+import Icon from 'cozy-ui/transpiled/react/Icon'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import { sortLastNameFirst, buildLastNameFirst } from './'
@@ -11,7 +12,6 @@ import ContactHeaderRow from './ContactHeaderRow'
 import withModal from '../HOCs/withModal'
 import ContactCardModal from '../Modals/ContactCardModal'
 import withSelection from '../Selection/selectionContainer'
-import { Icon } from 'cozy-ui/transpiled/react'
 
 class ContactsList extends Component {
   render() {
@@ -43,9 +43,8 @@ class ContactsList extends Component {
               {Object.keys(categorizedContacts).map((header, index) => {
                 const emptyHeader = header.length > 1
                 return (
-                  <>
+                  <Fragment key={`link-${header}`}>
                     <a
-                      key={`link-${header}`}
                       href={`#${header}`}
                       className={`u-db ${
                         emptyHeader ? 'u-dn' : 'u-di'
@@ -54,7 +53,7 @@ class ContactsList extends Component {
                       {emptyHeader ? <Icon icon="up" /> : header}
                     </a>
                     {index === 13 && <br className="u-dn u-di-t" />}
-                  </>
+                  </Fragment>
                 )
               })}
             </div>
