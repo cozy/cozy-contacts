@@ -41,27 +41,27 @@ exports[`ContactsListOrSpinner should display the contact List 1`] = `
             >
               <div
                 className="styles__c-avatar___PpDI- styles__c-avatar--small___1Y_Pv"
+                style={
+                  Object {
+                    "backgroundColor": "var(--puertoRico)",
+                    "color": "white",
+                  }
+                }
               >
                 
-                
-                <svg
-                  className="styles__icon___23x3R"
-                  height="16"
-                  style={Object {}}
-                  width="16"
+                <span
+                  className="styles__c-avatar-initials___310qC"
                 >
-                  <use
-                    xlinkHref="#people"
-                  />
-                </svg>
+                  J
+                </span>
               </div>
               <div
                 className="u-ellipsis u-ml-1"
               >
-                <span>
-                  <span>
-                    johndoe@localhost
-                  </span>
+                <span
+                  className=""
+                >
+                  johndoe@localhost
                    
                 </span>
               </div>

@@ -72,28 +72,6 @@ export const makeValuesArray = fields =>
     values: Array.isArray(field.values) ? field.values : [field.values]
   }))
 
-export const getInitials = name => {
-  if (!name) return ''
-  return ['givenName', 'familyName']
-    .map(part => name[part] || '')
-    .map(name => name[0])
-    .join('')
-}
-
-export const getFullContactName = name => {
-  if (!name) return ''
-  return [
-    'namePrefix',
-    'givenName',
-    'additionalName',
-    'familyName',
-    'nameSuffix'
-  ]
-    .map(part => name[part])
-    .join(' ')
-    .trim()
-}
-
 export const getConnectedAccounts = contact =>
   contact.accounts.data.filter(account => account.sourceAccount !== null)
 

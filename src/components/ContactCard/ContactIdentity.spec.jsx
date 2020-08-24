@@ -53,6 +53,30 @@ describe('ContactIdentity', () => {
       </AppLike>
     )
     const avatar = app.find('Avatar')
+    expect(avatar.prop('text')).toEqual('S')
+  })
+
+  it('should have the right informations even if the contact does not have a name or email', () => {
+    const contactWithoutName = {
+      groups: {
+        data: [
+          { _id: 'a', _type: DOCTYPE_CONTACT_GROUPS },
+          { _id: 'b', _type: DOCTYPE_CONTACT_GROUPS }
+        ]
+      }
+    }
+    const groupsMock = [
+      { _id: 'a', name: 'The A Team' },
+      { _id: 'b', name: 'The B Team' },
+      { _id: 'c', name: 'The C Team' }
+    ]
+
+    const app = mount(
+      <AppLike>
+        <ContactIdentity contact={contactWithoutName} groups={groupsMock} />
+      </AppLike>
+    )
+    const avatar = app.find('Avatar')
     expect(avatar.prop('text')).toEqual('')
   })
 })
