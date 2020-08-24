@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import find from 'lodash/find'
 import PropTypes from 'prop-types'
 
+import { fullContactPropTypes } from '../ContactPropTypes'
 import withSelection from '../Selection/selectionContainer'
 
 class ContactSelection extends Component {
@@ -33,7 +34,7 @@ class ContactSelection extends Component {
 }
 const ContactWithSelection = withSelection(ContactSelection)
 ContactSelection.propTypes = {
-  contact: PropTypes.object.isRequired,
+  contact: fullContactPropTypes.isRequired,
   toggleSelection: PropTypes.func.isRequired,
   selection: PropTypes.array.isRequired
 }
