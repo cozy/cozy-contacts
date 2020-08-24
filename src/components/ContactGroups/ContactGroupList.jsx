@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { fullContactPropTypes } from '../ContactPropTypes'
 import FieldsetTitle from '../Components/FieldsetTitle'
 import GroupItem from '../Components/GroupItem'
 
@@ -23,7 +24,7 @@ export const ContactGroupsList = ({ contact, allGroups, title }) => {
 }
 
 ContactGroupsList.propTypes = {
-  contact: PropTypes.object.isRequired,
+  contact: fullContactPropTypes.isRequired,
   allGroups: PropTypes.array.isRequired,
   title: PropTypes.string
 }
