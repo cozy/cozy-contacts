@@ -56,18 +56,13 @@ exports[`ContactsListOrSpinner should display the contact List 1`] = `
                 </svg>
               </div>
               <div
-                className="u-ellipsis"
+                className="u-ellipsis u-ml-1"
               >
-                <span
-                  className="contact-firstname"
-                >
-                  
-                </span>
-                 
-                <span
-                  className="contact-lastname"
-                >
-                  
+                <span>
+                  <span>
+                    johndoe@localhost
+                  </span>
+                   
                 </span>
               </div>
             </div>

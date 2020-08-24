@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+
+import { models } from 'cozy-client'
 import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
 
+import { fullContactPropTypes } from '../ContactPropTypes'
 import withModalContainer from '../HOCs/withModal'
-import contactPropTypes from '../ContactPropTypes'
 import ContactWithSelection from './ContactSelection'
-
 import ContactPhone from './Contacts/ContactPhone'
 import ContactIdentity from './Contacts/ContactIdentity'
 import ContactCozy from './Contacts/ContactCozy'
 import ContactEmail from './Contacts/ContactEmail'
 
-const getPrimaryOrFirst = (arr = [{}]) => arr.find(obj => obj.primary) || arr[0]
+const { getPrimaryCozy, getPrimaryPhone, getPrimaryEmail } = models.contact
 
 class ContactRow extends Component {
   render() {
@@ -20,35 +21,24 @@ class ContactRow extends Component {
       onClick,
       breakpoints: { isMobile }
     } = this.props
-    const { number: phone } = getPrimaryOrFirst(contact.phone) || {
-      number: undefined
-    }
+    const email = getPrimaryEmail(contact) || undefined
+    const phone = getPrimaryPhone(contact) || undefined
+    const cozyUrl = getPrimaryCozy(contact) || undefined
 
-    const { address: email } = getPrimaryOrFirst(contact.email) || {
-      address: undefined
-    }
-    const name = contact.name || {}
-    const isMyself = contact.metadata ? !!contact.metadata.me : false
-    const cozyUrl = getPrimaryOrFirst(contact.cozy) || { url: undefined }
     return (
       <div className="contact" onClick={onClick}>
         <ContactWithSelection contact={contact} />
-        <ContactIdentity name={name} myself={isMyself} />
+        <ContactIdentity contact={contact} />
         {!isMobile && <ContactEmail email={email} />}
         {!isMobile && <ContactPhone phone={phone} />}
-        {!isMobile && <ContactCozy cozyUrl={cozyUrl.url} />}
+        {!isMobile && <ContactCozy cozyUrl={cozyUrl} />}
       </div>
     )
   }
 }
-ContactRow.propTypes = {
-  contact: PropTypes.shape({
-    name: contactPropTypes.name,
-    email: PropTypes.arrayOf(contactPropTypes.email),
-    phone: PropTypes.arrayOf(contactPropTypes.phone),
-    metadata: contactPropTypes.metadata
-  }).isRequired,
 
+ContactRow.propTypes = {
+  contact: fullContactPropTypes.isRequired,
   onClick: PropTypes.func
 }
 ContactRow.defaultProps = {
