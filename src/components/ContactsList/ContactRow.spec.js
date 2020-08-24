@@ -6,7 +6,7 @@ import AppLike from '../../tests/Applike'
 import ContactRow from './ContactRow'
 import renderer from 'react-test-renderer'
 describe('ContactRow', () => {
-  test('should accept the strict minimum', () => {
+  it('should accept the strict minimum', () => {
     const contact = { email: [{ address: 'johndoe@localhost' }] }
     const contactRowInstance = (
       <AppLike>
@@ -18,7 +18,8 @@ describe('ContactRow', () => {
     expect(contactrowemail).toBeDefined()
     expect(contactrowemail.text()).toBe(contact.email[0].address)
   })
-  test('should display data', () => {
+
+  it('should display data', () => {
     const contact = {
       name: { familyName: 'Doe', givenName: 'John' },
       phone: [{ number: '0123456789' }],
@@ -47,8 +48,9 @@ describe('ContactRow', () => {
     expect(contactrowcozyurl).toBeDefined()
     expect(contactrowcozyurl.text()).toBe(contact.cozy[0].url)
   })
-  test('should display empty string for missing information', () => {
-    const contact = { email: [{ address: 'johndoe@localhost' }] }
+
+  it('should display default value for missing information', () => {
+    const contact = {}
     const contactRowInstance = (
       <AppLike>
         <ContactRow contact={contact} />
@@ -65,7 +67,8 @@ describe('ContactRow', () => {
     expect(contactrowcozyurl).toBeDefined()
     expect(contactrowcozyurl.text().trim()).toBe('—')
   })
-  test('should accept empty array', () => {
+
+  it('should accept empty array', () => {
     const contact = { email: [] }
     const contactRowInstance = (
       <AppLike>
@@ -78,7 +81,7 @@ describe('ContactRow', () => {
     expect(contactrowemail.text()).toBe('—')
   })
 
-  test('should match the contact snapshot', () => {
+  it('should match the contact snapshot', () => {
     const contact = {
       name: { familyName: 'Doe', givenName: 'John' },
       phone: [{ number: '0123456789' }],
