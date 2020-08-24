@@ -1,3 +1,4 @@
+import cozyBar from 'cozy-bar/dist/cozy-bar'
 import manifest from '../../manifest.webapp'
 
 const getDataOrDefault = (data, defaultData) =>
@@ -32,14 +33,13 @@ export const getValues = ({
 
 /**
  * Cozy bar initialization
- * @param {object} cozy - global cozy object
  * @param {object} client - cozy client
  */
-export const initBar = (cozy, client) => {
+export const initBar = client => {
   const root = document.querySelector('[role=application]')
   const { appName, appNamePrefix, iconPath, lang } = getValues(root.dataset)
 
-  cozy.bar.init({
+  cozyBar.init({
     appName,
     appNamePrefix,
     cozyClient: client,
