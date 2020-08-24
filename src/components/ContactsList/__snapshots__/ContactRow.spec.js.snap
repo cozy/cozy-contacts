@@ -42,18 +42,16 @@ exports[`ContactRow should match the contact snapshot 1`] = `
     <div
       className="u-ellipsis u-ml-1"
     >
-      <span>
-        <span>
-          John
-        </span>
+      <span
+        className=""
+      >
+        John
          
       </span>
-      <span>
-        <span
-          className="u-bold"
-        >
-          Doe
-        </span>
+      <span
+        className="u-fw-bold"
+      >
+        Doe
          
       </span>
     </div>

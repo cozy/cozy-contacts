@@ -41,7 +41,11 @@ describe('formValuesToContact', () => {
         { number: '+33 (2)0 90 00 54 04', primary: true, type: undefined },
         { number: '+33 6 77 11 22 33', primary: false, type: undefined }
       ],
-      relationships: { groups: { data: [] } }
+      relationships: {
+        groups: {
+          data: []
+        }
+      }
     }
     const result = formValuesToContact(johnDoeFormValues, null)
     expect(result).toEqual(expected)
