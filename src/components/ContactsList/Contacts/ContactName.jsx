@@ -1,17 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import cx from 'classnames'
 
-const ContactName = ({ displayName, lastname }) => {
+const ContactName = ({ displayName, familyName }) => {
   const namesToDisplay = (displayName && displayName.split(' ')) || []
   return (
     <div className="u-ellipsis u-ml-1">
       {namesToDisplay.map((name, key) => (
-        <span key={`display-${key}`}>
-          {name === lastname ? (
-            <span className={'u-bold'}>{name}</span>
-          ) : (
-            <span>{name}</span>
-          )}
+        <span
+          key={`display-${key}`}
+          className={cx({ 'u-fw-bold': name === familyName })}
+        >
+          {name}
           &nbsp;
         </span>
       ))}
@@ -21,7 +21,7 @@ const ContactName = ({ displayName, lastname }) => {
 
 ContactName.propTypes = {
   displayName: PropTypes.string,
-  lastname: PropTypes.string
+  familyName: PropTypes.string
 }
 ContactName.defaultProps = {
   displayName: ''
