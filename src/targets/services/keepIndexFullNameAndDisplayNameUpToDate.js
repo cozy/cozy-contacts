@@ -3,7 +3,7 @@ import { schema } from '../../helpers/doctypes'
 import log from 'cozy-logger'
 import {
   fetchContactsToUpdate,
-  fetchLastSuccessOfService
+  fetchNormalizedServiceByName
 } from '../../helpers/fetches'
 import { updateIndexFullNameAndDisplayName } from '../../helpers/contacts'
 import { omit } from 'lodash'
@@ -12,11 +12,14 @@ export const keepIndexFullNameAndDisplayNameUpToDate = async () => {
   log('info', `Executing keepIndexFullNameAndDisplayNameUpToDate service`)
   const client = CozyClient.fromEnv(process.env, { schema })
 
-  const lastSuccess = await fetchLastSuccessOfService(
+  const normalizedService = await fetchNormalizedServiceByName(
     client,
     'keepIndexFullNameAndDisplayNameUpToDate'
   )
-  const contactsToUpdate = await fetchContactsToUpdate(client, lastSuccess)
+  const contactsToUpdate = await fetchContactsToUpdate(
+    client,
+    normalizedService.current_state.last_success
+  )
   const updatedContactsToUpload = contactsToUpdate.map(
     // omit is to prevent updateAll error : Bad special document member: _type
     // issue here : https://github.com/cozy/cozy-client/issues/758
