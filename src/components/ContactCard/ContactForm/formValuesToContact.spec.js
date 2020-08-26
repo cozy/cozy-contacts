@@ -71,8 +71,8 @@ describe('formValuesToContact', () => {
           emailLabel: undefined
         }
       ],
-      familyName: 'Jane',
-      givenName: 'Doe',
+      familyName: 'Doe',
+      givenName: 'Jane',
       note: undefined,
       phone: [
         {
@@ -87,13 +87,13 @@ describe('formValuesToContact', () => {
       birthday: null,
       company: '',
       cozy: [],
-      displayName: 'Doe Jane',
+      displayName: 'Jane Doe',
       email: [],
-      fullname: 'Doe Jane',
-      indexes: { byFamilyNameGivenNameEmailCozyUrl: 'Janedoe' },
+      fullname: 'Jane Doe',
+      indexes: { byFamilyNameGivenNameEmailCozyUrl: 'Doejane' },
       jobTitle: '',
       metadata: { cozy: true, version: 1 },
-      name: { familyName: 'Jane', givenName: 'Doe' },
+      name: { familyName: 'Doe', givenName: 'Jane' },
       note: '',
       phone: [],
       relationships: { groups: { data: [] } }
