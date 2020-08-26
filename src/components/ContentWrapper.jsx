@@ -1,51 +1,35 @@
 import React from 'react'
-import { DOCTYPE_CONTACTS } from '../helpers/doctypes'
-import ContactsListDataLoader from './ContactsList/ContactsListDataLoader'
+import { PropTypes } from 'prop-types'
+
+import { Content } from 'cozy-ui/transpiled/react/Layout'
+
 import Header from './Header'
 import Toolbar from './Toolbar'
-import { Content } from 'cozy-ui/transpiled/react/Layout'
-import { Query } from 'cozy-client'
+import ContactsList from './ContactsList/ContactsList.jsx'
+import SpinnerContact from './Components/Spinner'
+import fetchSortedContacts from './Hooks/fetchSortedContacts'
 
-const ContentWrapper = () => (
-  <Query
-    query={client =>
-      client
-        .all(DOCTYPE_CONTACTS)
-        .include(['accounts'])
-        .where({
-          $or: [
-            {
-              trashed: {
-                $exists: false
-              }
-            },
-            {
-              trashed: false
-            }
-          ],
-          _id: {
-            $gt: null
-          }
-        })
-        .indexFields(['_id'])
-    }
-  >
-    {({ data: contacts, fetchStatus, hasMore, fetchMore }) => {
-      return (
-        <>
-          {contacts.length >= 1 && <Header right={<Toolbar />} />}
-          <Content>
-            <ContactsListDataLoader
-              contacts={contacts}
-              fetchStatus={fetchStatus}
-              hasMore={hasMore}
-              fetchMore={fetchMore}
-            />
-          </Content>
-        </>
-      )
-    }}
-  </Query>
-)
+const ContentWrapper = ({ hasServiceBeenLaunched }) => {
+  const [hasContactsToShow, contacts] = fetchSortedContacts(
+    hasServiceBeenLaunched
+  )
+
+  if (!hasContactsToShow) {
+    return <SpinnerContact size="xxlarge" loadingType="fetching_contacts" />
+  }
+
+  return (
+    <>
+      {contacts.length >= 1 && <Header right={<Toolbar />} />}
+      <Content>
+        <ContactsList contacts={contacts} />
+      </Content>
+    </>
+  )
+}
+
+ContentWrapper.propTypes = {
+  hasServiceBeenLaunched: PropTypes.bool
+}
 
 export default ContentWrapper
