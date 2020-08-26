@@ -1,5 +1,13 @@
+import { useEffect } from 'react'
 import flag from 'cozy-flags'
-export const initFlags = () => {
+
+const flagsList = () => {
+  flag('switcher', true)
+  flag('logs')
+  flag('select-all-contacts')
+}
+
+const initFlags = () => {
   let activateFlags = flag('switcher') === true ? true : false
   if (process.env.NODE_ENV !== 'production' && flag('switcher') === null) {
     activateFlags = true
@@ -13,8 +21,10 @@ export const initFlags = () => {
   }
 }
 
-const flagsList = () => {
-  flag('switcher', true)
-  flag('logs')
-  flag('select-all-contacts')
+const useFlags = () => {
+  useEffect(() => {
+    initFlags()
+  }, [])
 }
+
+export default useFlags
