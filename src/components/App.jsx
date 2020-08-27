@@ -38,16 +38,19 @@ const ContactsApp = props => {
   const { BarCenter } = cozy.bar
   const { deleteContact, cleanTrashedGroups } = props
 
-  const setStateOfServiceToLaunch = useCallback(async () => {
-    const serviceToLaunch = await fetchNormalizedServiceByName(
-      client,
-      'keepIndexFullNameAndDisplayNameUpToDate'
-    )
-    setServiceToLaunch(serviceToLaunch)
-    setHasServiceBeenLaunched(
-      serviceToLaunch.current_state.last_success.length > 0
-    )
-  }, [])
+  const setStateOfServiceToLaunch = useCallback(
+    async () => {
+      const serviceToLaunch = await fetchNormalizedServiceByName(
+        client,
+        'keepIndexFullNameAndDisplayNameUpToDate'
+      )
+      setServiceToLaunch(serviceToLaunch)
+      setHasServiceBeenLaunched(
+        serviceToLaunch.current_state.last_success.length > 0
+      )
+    },
+    [client]
+  )
 
   useEffect(() => {
     cleanTrashedGroups()
