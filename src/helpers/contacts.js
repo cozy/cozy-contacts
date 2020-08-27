@@ -1,3 +1,4 @@
+import { sortBy } from 'lodash'
 import { models } from 'cozy-client'
 const {
   getFullname,
@@ -102,4 +103,26 @@ export const updateIndexFullNameAndDisplayName = contact => {
       )
     }
   }
+}
+
+/**
+ * Get contacts with indexes,
+ * harmonize contacts without indexes and
+ * sort them by indexes
+ * @param {array} contactsWithIndexes - contacts with indexes
+ * @param {array} contactsWithNoIndexes - contacts without indexes
+ * @returns {array} contacts with indexes and sorted
+ */
+export const harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl = (
+  contactsWithIndexes,
+  contactsWithNoIndexes
+) => {
+  const updatedContacts = contactsWithNoIndexes.map(contact =>
+    updateIndexFullNameAndDisplayName(contact)
+  )
+  const concatedContacts = contactsWithIndexes.concat(updatedContacts)
+  const sortedData = sortBy(concatedContacts, [
+    'indexes.byFamilyNameGivenNameEmailCozyUrl'
+  ])
+  return sortedData
 }
