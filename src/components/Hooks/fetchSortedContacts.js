@@ -30,6 +30,9 @@ const fetchSortedContacts = hasServiceBeenLaunched => {
     isContactsWithIndexesFinished && isContactsWithNoIndexesFinished
 
   if (fetchesAreFinished && !hasAlreadySortedContacts) {
+    // hasServiceBeenLaunched will be deprecated when
+    // all instances have been migrated.
+    // Therefore, the false condition will no longer be needed and can be removed.
     const reworkedContacts = hasServiceBeenLaunched
       ? contactsWithIndexes.concat(contactsWithNoIndexes)
       : harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl(

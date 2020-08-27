@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/cozy/cozy-contacts#readme",
   "devDependencies": {
+    "@testing-library/react-hooks": "3.4.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-preset-cozy-app": "1.8.1",
     "bundlesize": "0.18.0",
