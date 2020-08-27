@@ -4,7 +4,7 @@ import { DOCTYPE_CONTACTS } from './doctypes'
 import { updateIndexFullNameAndDisplayName } from './contacts'
 
 /**
- * Fetch and returns a promise of contacts to update according to this :
+ * Fetches and returns a promise of contacts to update according to this :
  * The update date of the contact is more recent than the 'date'
  * @param {object} client - cozyClient
  * @param {string} date - date of comparison
@@ -50,12 +50,12 @@ export const fetchContactsToUpdate = async (client, date) => {
 }
 
 /**
- * Fetch and returns a promise of service's last success time
+ * Fetches and returns a promise of normalized service
  * @param {object} client - cozyClient
  * @param {string} serviceName - name of the service
- * @returns {promise<String>} last success time of a service
+ * @returns {promise<Object>} normalized service
  */
-export const fetchLastSuccessOfService = async (client, serviceName) => {
+export const fetchNormalizedServiceByName = async (client, serviceName) => {
   try {
     const triggersByName = await client.query(
       client.find('io.cozy.triggers', {
@@ -63,12 +63,12 @@ export const fetchLastSuccessOfService = async (client, serviceName) => {
       })
     )
 
-    const trigger = await client.query(
+    const normalizedTrigger = await client.query(
       client.get('io.cozy.triggers', triggersByName.data[0].id)
     )
 
-    return trigger.data.current_state.last_success
+    return normalizedTrigger.data
   } catch (e) {
-    throw new Error(`Can't find last exectution of ${serviceName} : ${e}`)
+    throw new Error(`Can't find ${serviceName} : ${e}`)
   }
 }

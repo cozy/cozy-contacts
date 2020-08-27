@@ -32,3 +32,46 @@ export const queryAllGroups = {
     fetchPolicy: olderThan30sec
   }
 }
+
+export const contactsByFamilyNameGivenNameEmailCozyUrl = {
+  definition: () =>
+    Q(DOCTYPE_CONTACTS)
+      .include(['accounts'])
+      .where({
+        $or: [
+          {
+            trashed: {
+              $exists: false
+            }
+          },
+          {
+            trashed: false
+          }
+        ],
+        'indexes.byFamilyNameGivenNameEmailCozyUrl': {
+          $exists: true
+        }
+      })
+      .indexFields(['indexes.byFamilyNameGivenNameEmailCozyUrl'])
+      .sortBy([{ 'indexes.byFamilyNameGivenNameEmailCozyUrl': 'asc' }])
+      .limitBy(1000),
+  options: {
+    as: 'contactsByFamilyNameGivenNameEmailCozyUrl'
+  }
+}
+
+export const contactsWithoutIndexes = {
+  definition: () =>
+    Q(DOCTYPE_CONTACTS)
+      .include(['accounts'])
+      .where({
+        'indexes.byFamilyNameGivenNameEmailCozyUrl': {
+          $exists: false
+        }
+      })
+      .indexFields(['_id'])
+      .limitBy(1000),
+  options: {
+    as: 'contactsWithoutIndexes'
+  }
+}

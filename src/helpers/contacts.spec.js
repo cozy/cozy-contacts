@@ -2,7 +2,8 @@ import MockDate from 'mockdate'
 import {
   getConnectedAccounts,
   normalizeFields,
-  updateIndexFullNameAndDisplayName
+  updateIndexFullNameAndDisplayName,
+  harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl
 } from './contacts'
 import { johnDoeContact } from './testData'
 
@@ -145,5 +146,75 @@ describe('updateIndexFullNameAndDisplayName', () => {
       }
     }
     expect(updateIndexFullNameAndDisplayName(johnDoeContact)).toEqual(expected)
+  })
+})
+
+describe('harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl', () => {
+  it('should returns contacts with indexes and sorted by indexes.byFamilyNameGivenNameEmailCozyUrl', () => {
+    const contactsWithIndexes = [
+      {
+        name: {
+          givenName: 'Matt',
+          familyName: 'Damon'
+        },
+        indexes: {
+          byFamilyNameGivenNameEmailCozyUrl: 'Mattdamon'
+        }
+      },
+      {
+        name: {
+          givenName: 'John',
+          familyName: 'Doe'
+        },
+        indexes: {
+          byFamilyNameGivenNameEmailCozyUrl: 'Johndoe'
+        }
+      }
+    ]
+
+    const contactsWithNoIndexes = [
+      {
+        name: {
+          givenName: 'Anton',
+          familyName: 'Bradbury'
+        }
+      },
+      {
+        name: {
+          givenName: 'William',
+          familyName: 'Wallace'
+        }
+      }
+    ]
+
+    const expected = [
+      {
+        displayName: 'Anton Bradbury',
+        fullname: 'Anton Bradbury',
+        name: { familyName: 'Bradbury', givenName: 'Anton' },
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'Bradburyanton' }
+      },
+      {
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'Johndoe' },
+        name: { familyName: 'Doe', givenName: 'John' }
+      },
+      {
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'Mattdamon' },
+        name: { familyName: 'Damon', givenName: 'Matt' }
+      },
+      {
+        displayName: 'William Wallace',
+        fullname: 'William Wallace',
+        name: { familyName: 'Wallace', givenName: 'William' },
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'Wallacewilliam' }
+      }
+    ]
+
+    expect(
+      harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl(
+        contactsWithIndexes,
+        contactsWithNoIndexes
+      )
+    ).toEqual(expected)
   })
 })

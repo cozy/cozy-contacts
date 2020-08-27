@@ -1,4 +1,4 @@
-import { fetchContactsToUpdate, fetchLastSuccessOfService } from './fetches'
+import { fetchContactsToUpdate, fetchNormalizedServiceByName } from './fetches'
 import { updateIndexFullNameAndDisplayName } from './contacts'
 import { johnDoeContact } from './testData'
 
@@ -18,17 +18,18 @@ describe('fetchContactsToUpdate', () => {
   })
 })
 
-describe('fetchLastSuccessOfService', () => {
-  it('should fetch the latest execution date', async () => {
-    const triggersResult = {
+describe('fetchNormalizedServiceByName', () => {
+  it('should fetch a normalized service', async () => {
+    const trigger = {
       data: [
         {
           id: '6e0847f496cbeb11e3ed653f170086bd'
         }
       ]
     }
-    const trigger = {
+    const normalizedTrigger = {
       data: {
+        id: '6e0847f496cbeb11e3ed653f170086bd',
         current_state: {
           last_success: '2020-08-12T11:14:46.060006+02:00'
         }
@@ -37,11 +38,14 @@ describe('fetchLastSuccessOfService', () => {
 
     client.query = jest
       .fn()
-      .mockReturnValueOnce(triggersResult)
       .mockReturnValueOnce(trigger)
+      .mockReturnValueOnce(normalizedTrigger)
 
-    const expected = '2020-08-12T11:14:46.060006+02:00'
-    expect(await fetchLastSuccessOfService(client, 'serviceName')).toMatch(
+    const expected = {
+      id: '6e0847f496cbeb11e3ed653f170086bd',
+      current_state: { last_success: '2020-08-12T11:14:46.060006+02:00' }
+    }
+    expect(await fetchNormalizedServiceByName(client, 'serviceName')).toEqual(
       expected
     )
   })
