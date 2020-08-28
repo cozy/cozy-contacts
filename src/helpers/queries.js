@@ -26,7 +26,8 @@ export const queryAllGroups = {
           }
         ]
       })
-      .sortBy([{ name: 'asc' }]),
+      .sortBy([{ name: 'asc' }])
+      .indexFields(['name']),
   options: {
     as: 'allGroups',
     fetchPolicy: olderThan30sec
