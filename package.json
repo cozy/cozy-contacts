@@ -38,7 +38,7 @@
   "devDependencies": {
     "@testing-library/react-hooks": "3.4.1",
     "babel-core": "7.0.0-bridge.0",
-    "babel-preset-cozy-app": "1.8.1",
+    "babel-preset-cozy-app": "1.9.1",
     "bundlesize": "0.18.0",
     "cozy-ach": "1.28.0",
     "cozy-jobs-cli": "1.13.6",
