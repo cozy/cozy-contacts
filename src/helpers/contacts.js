@@ -126,3 +126,24 @@ export const harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl = (
   ])
   return sortedData
 }
+
+/**
+ * Sort and rework contacts according to 'keepIndexFullNameAndDisplayNameUpToDate' service status
+ * @param {bool} hasServiceBeenLaunched - 'keepIndexFullNameAndDisplayNameUpToDate' service launch status
+ * @param {array} contactsWithIndexes - Contacts with indexes
+ * @param {array} contactsWithNoIndexes - Contacts without indexes
+ * @returns {array} Sorted and harmonized contacts
+ */
+export const reworkContacts = (
+  hasServiceBeenLaunched,
+  contactsWithIndexes,
+  contactsWithNoIndexes
+) => {
+  const reworkedContacts = hasServiceBeenLaunched
+    ? contactsWithIndexes.concat(contactsWithNoIndexes)
+    : harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl(
+        contactsWithIndexes,
+        contactsWithNoIndexes
+      )
+  return reworkedContacts
+}

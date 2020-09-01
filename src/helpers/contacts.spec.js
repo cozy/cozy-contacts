@@ -3,7 +3,8 @@ import {
   getConnectedAccounts,
   normalizeFields,
   updateIndexFullNameAndDisplayName,
-  harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl
+  harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl,
+  reworkContacts
 } from './contacts'
 import { johnDoeContact } from './testData'
 
@@ -212,6 +213,93 @@ describe('harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl', () => {
 
     expect(
       harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl(
+        contactsWithIndexes,
+        contactsWithNoIndexes
+      )
+    ).toEqual(expected)
+  })
+})
+
+describe('reworkContacts', () => {
+  it('should returns sorted contacts, and contacts without indexes should be harmonized', () => {
+    const hasServiceBeenLaunched = false
+    const contactsWithIndexes = [
+      {
+        name: {
+          givenName: 'Matt',
+          familyName: 'Damon'
+        },
+        indexes: {
+          byFamilyNameGivenNameEmailCozyUrl: 'Mattdamon'
+        }
+      }
+    ]
+
+    const contactsWithNoIndexes = [
+      {
+        name: {
+          givenName: 'Anton',
+          familyName: 'Bradbury'
+        }
+      }
+    ]
+
+    const expected = [
+      {
+        displayName: 'Anton Bradbury',
+        fullname: 'Anton Bradbury',
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'Bradburyanton' },
+        name: { familyName: 'Bradbury', givenName: 'Anton' }
+      },
+      {
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'Mattdamon' },
+        name: { familyName: 'Damon', givenName: 'Matt' }
+      }
+    ]
+
+    expect(
+      reworkContacts(
+        hasServiceBeenLaunched,
+        contactsWithIndexes,
+        contactsWithNoIndexes
+      )
+    ).toEqual(expected)
+  })
+
+  it('should returns sorted contacts with no transformation on contacts without indexes', () => {
+    const hasServiceBeenLaunched = true
+    const contactsWithIndexes = [
+      {
+        name: {
+          givenName: 'Matt',
+          familyName: 'Damon'
+        },
+        indexes: {
+          byFamilyNameGivenNameEmailCozyUrl: 'Mattdamon'
+        }
+      }
+    ]
+
+    const contactsWithNoIndexes = [
+      {
+        name: {
+          givenName: 'Anton',
+          familyName: 'Bradbury'
+        }
+      }
+    ]
+
+    const expected = [
+      {
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'Mattdamon' },
+        name: { familyName: 'Damon', givenName: 'Matt' }
+      },
+      { name: { familyName: 'Bradbury', givenName: 'Anton' } }
+    ]
+
+    expect(
+      reworkContacts(
+        hasServiceBeenLaunched,
         contactsWithIndexes,
         contactsWithNoIndexes
       )

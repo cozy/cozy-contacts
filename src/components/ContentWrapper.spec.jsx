@@ -1,11 +1,10 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { createMockClient, useQuery } from 'cozy-client'
+import { createMockClient } from 'cozy-client'
 import AppLike from '../tests/Applike'
-import ContentWrapper from './ContentWrapper'
+import { ContentWrapperResult } from './ContentWrapper'
 
 const client = createMockClient({})
-jest.mock('cozy-client/dist/hooks/useQuery', () => jest.fn())
 
 const contactsWithIndexes = [
   {
@@ -16,26 +15,63 @@ const contactsWithIndexes = [
   }
 ]
 
-const contactsWithoutIndexes = [
+const contactsWithNoIndexes = [
   {
     name: { givenName: 'William', familyName: 'Wallace' }
   }
 ]
 
-describe('ContentWrapper', () => {
-  it("should show a spinner if queries don't have both fetchStatus to loaded", () => {
-    const props = { hasServiceBeenLaunched: false }
-    const result = {
+describe('ContentWrapperResult', () => {
+  it('should show a spinner if data has not been loaded', () => {
+    const hasServiceBeenLaunched = false
+    const contactsWithIndexesResult = {
       data: [{}],
       fetchStatus: 'pending',
       hasMore: false,
       fetchMore: jest.fn()
     }
-    useQuery.mockReturnValue(result)
-
+    const contactsWithNoIndexesResult = {
+      data: [{}],
+      fetchStatus: 'pending',
+      hasMore: false,
+      fetchMore: jest.fn()
+    }
+    const props = {
+      hasServiceBeenLaunched,
+      contactsWithIndexesResult,
+      contactsWithNoIndexesResult
+    }
     const jsx = (
       <AppLike client={client}>
-        <ContentWrapper {...props} />
+        <ContentWrapperResult {...props} />
+      </AppLike>
+    )
+    const { getByTestId } = render(jsx)
+    expect(getByTestId('contactSpinner'))
+  })
+
+  it('should show a spinner if one query is still loading', () => {
+    const hasServiceBeenLaunched = false
+    const contactsWithIndexesResult = {
+      data: contactsWithIndexes,
+      fetchStatus: 'loaded',
+      hasMore: false,
+      fetchMore: jest.fn()
+    }
+    const contactsWithNoIndexesResult = {
+      data: [{}],
+      fetchStatus: 'loading',
+      hasMore: false,
+      fetchMore: jest.fn()
+    }
+    const props = {
+      hasServiceBeenLaunched,
+      contactsWithIndexesResult,
+      contactsWithNoIndexesResult
+    }
+    const jsx = (
+      <AppLike client={client}>
+        <ContentWrapperResult {...props} />
       </AppLike>
     )
     const { getByTestId } = render(jsx)
@@ -43,18 +79,27 @@ describe('ContentWrapper', () => {
   })
 
   it('should show a spinner if queries are both loaded but still with more data to fetch', () => {
-    const props = { hasServiceBeenLaunched: false }
-    const result = {
-      data: [{}],
+    const hasServiceBeenLaunched = false
+    const contactsWithIndexesResult = {
+      data: contactsWithIndexes,
       fetchStatus: 'loaded',
       hasMore: true,
       fetchMore: jest.fn()
     }
-    useQuery.mockReturnValue(result)
-
+    const contactsWithNoIndexesResult = {
+      data: contactsWithNoIndexes,
+      fetchStatus: 'loaded',
+      hasMore: true,
+      fetchMore: jest.fn()
+    }
+    const props = {
+      hasServiceBeenLaunched,
+      contactsWithIndexesResult,
+      contactsWithNoIndexesResult
+    }
     const jsx = (
       <AppLike client={client}>
-        <ContentWrapper {...props} />
+        <ContentWrapperResult {...props} />
       </AppLike>
     )
     const { getByTestId } = render(jsx)
@@ -62,27 +107,27 @@ describe('ContentWrapper', () => {
   })
 
   it('should have empty section (for contacts without indexes) if service has been launched', () => {
-    const props = { hasServiceBeenLaunched: true }
-    const valueForContactsWithIndexes = {
+    const hasServiceBeenLaunched = true
+    const contactsWithIndexesResult = {
       data: contactsWithIndexes,
       fetchStatus: 'loaded',
       hasMore: false,
       fetchMore: jest.fn()
     }
-    const valueForContactsWithoutIndexes = {
-      data: contactsWithoutIndexes,
+    const contactsWithNoIndexesResult = {
+      data: contactsWithNoIndexes,
       fetchStatus: 'loaded',
       hasMore: false,
       fetchMore: jest.fn()
     }
-
-    useQuery
-      .mockReturnValue(valueForContactsWithoutIndexes)
-      .mockReturnValueOnce(valueForContactsWithIndexes)
-
+    const props = {
+      hasServiceBeenLaunched,
+      contactsWithIndexesResult,
+      contactsWithNoIndexesResult
+    }
     const jsx = (
       <AppLike client={client}>
-        <ContentWrapper {...props} />
+        <ContentWrapperResult {...props} />
       </AppLike>
     )
     const { getByText } = render(jsx)
@@ -90,27 +135,27 @@ describe('ContentWrapper', () => {
   })
 
   it('should not have empty section (for contacts without indexes) if service has not been launched', () => {
-    const props = { hasServiceBeenLaunched: false }
-    const valueForContactsWithIndexes = {
+    const hasServiceBeenLaunched = false
+    const contactsWithIndexesResult = {
       data: contactsWithIndexes,
       fetchStatus: 'loaded',
       hasMore: false,
       fetchMore: jest.fn()
     }
-    const valueForContactsWithoutIndexes = {
-      data: contactsWithoutIndexes,
+    const contactsWithNoIndexesResult = {
+      data: contactsWithNoIndexes,
       fetchStatus: 'loaded',
       hasMore: false,
       fetchMore: jest.fn()
     }
-
-    useQuery
-      .mockReturnValue(valueForContactsWithoutIndexes)
-      .mockReturnValueOnce(valueForContactsWithIndexes)
-
+    const props = {
+      hasServiceBeenLaunched,
+      contactsWithIndexesResult,
+      contactsWithNoIndexesResult
+    }
     const jsx = (
       <AppLike client={client}>
-        <ContentWrapper {...props} />
+        <ContentWrapperResult {...props} />
       </AppLike>
     )
     const { queryByText } = render(jsx)
