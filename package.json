@@ -60,7 +60,7 @@
   },
   "dependencies": {
     "@material-ui/core": "3.9.4",
-    "@testing-library/react": "10.4.3",
+    "@testing-library/react": "10.4.9",
     "classnames": "2.2.6",
     "cozy-bar": "7.9.0",
     "cozy-client": "13.21.0",
