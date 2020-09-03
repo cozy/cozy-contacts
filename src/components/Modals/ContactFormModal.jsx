@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { PropTypes } from 'prop-types'
 import Modal, {
   ModalHeader,
@@ -21,53 +21,60 @@ const ContactFormModal = ({
   afterMutation,
   updateContact,
   t
-}) => (
-  <Modal
-    overflowHidden={true}
-    dismissAction={onClose}
-    mobileFullscreen={true}
-    into="body"
-    size="xlarge"
-  >
-    <ModalHeader>{title}</ModalHeader>
-    <ModalDescription>
-      <ContactForm
-        contact={contact}
-        onSubmit={async formData => {
-          const createOrUpdate = contact ? updateContact : createContact
-          const updatedContact = {
-            ...contact,
-            ...formData
-          }
-          try {
-            const resp = await createOrUpdate(updatedContact)
-            afterMutation(resp.data)
-          } catch (err) {
-            // eslint-disable-next-line no-console
-            console.warn(err)
-            Alerter.error('error.save')
-          }
-        }}
-      />
-    </ModalDescription>
-    <ModalFooter className="u-ta-right">
-      <Button
-        type="button"
-        theme="secondary"
-        label={t('cancel')}
-        onClick={onClose}
-      />
-      <Button
-        type="submit"
-        label={t('save')}
-        onClick={event => {
-          const submitContactForm = getSubmitContactForm()
-          submitContactForm(event)
-        }}
-      />
-    </ModalFooter>
-  </Modal>
-)
+}) => {
+  const [isFormBeingSubmitted, setIsFormBeingSubmitted] = useState(false)
+
+  const submitForm = event => {
+    setIsFormBeingSubmitted(true)
+    const submitContactForm = getSubmitContactForm()
+    submitContactForm(event)
+  }
+  return (
+    <Modal
+      overflowHidden={true}
+      dismissAction={onClose}
+      mobileFullscreen={true}
+      into="body"
+      size="xlarge"
+    >
+      <ModalHeader>{title}</ModalHeader>
+      <ModalDescription>
+        <ContactForm
+          contact={contact}
+          onSubmit={async formData => {
+            const createOrUpdate = contact ? updateContact : createContact
+            const updatedContact = {
+              ...contact,
+              ...formData
+            }
+            try {
+              const resp = await createOrUpdate(updatedContact)
+              afterMutation(resp.data)
+            } catch (err) {
+              // eslint-disable-next-line no-console
+              console.warn(err)
+              Alerter.error('error.save')
+            }
+          }}
+        />
+      </ModalDescription>
+      <ModalFooter className="u-ta-right">
+        <Button
+          type="button"
+          theme="secondary"
+          label={t('cancel')}
+          onClick={onClose}
+        />
+        <Button
+          type="submit"
+          label={t('save')}
+          busy={isFormBeingSubmitted}
+          onClick={event => submitForm(event)}
+        />
+      </ModalFooter>
+    </Modal>
+  )
+}
 
 ContactFormModal.propTypes = {
   afterMutation: PropTypes.func.isRequired,
