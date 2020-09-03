@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { PropTypes } from 'prop-types'
 import flow from 'lodash/flow'
+import get from 'lodash/get'
 
 import { useClient } from 'cozy-client'
 import { Main, Layout } from 'cozy-ui/transpiled/react/Layout'
@@ -46,7 +47,7 @@ const ContactsApp = props => {
       )
       setServiceToLaunch(serviceToLaunch)
       setHasServiceBeenLaunched(
-        serviceToLaunch.current_state.last_success.length > 0
+        get(serviceToLaunch, 'current_state.last_success', '').length > 0
       )
     },
     [client]

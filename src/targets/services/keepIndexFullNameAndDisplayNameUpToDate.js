@@ -1,12 +1,13 @@
+import omit from 'lodash/omit'
 import CozyClient from 'cozy-client'
-import { schema } from '../../helpers/doctypes'
 import log from 'cozy-logger'
+
+import { schema } from '../../helpers/doctypes'
 import {
   fetchContactsToUpdate,
   fetchNormalizedServiceByName
 } from '../../helpers/fetches'
 import { updateIndexFullNameAndDisplayName } from '../../helpers/contacts'
-import { omit } from 'lodash'
 
 export const keepIndexFullNameAndDisplayNameUpToDate = async () => {
   log('info', `Executing keepIndexFullNameAndDisplayNameUpToDate service`)

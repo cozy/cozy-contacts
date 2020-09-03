@@ -1,8 +1,9 @@
+import CozyClient from 'cozy-client'
+
 import { fetchContactsToUpdate, fetchNormalizedServiceByName } from './fetches'
 import { updateIndexFullNameAndDisplayName } from './contacts'
 import { johnDoeContact } from './testData'
 
-import CozyClient from 'cozy-client'
 const client = new CozyClient({})
 
 describe('fetchContactsToUpdate', () => {
@@ -10,9 +11,20 @@ describe('fetchContactsToUpdate', () => {
     const lastSuccess = new Date()
     const contactToUpdate = johnDoeContact
     const contactUpToDate = updateIndexFullNameAndDisplayName(johnDoeContact)
-    client.queryAll = jest.fn(() =>
-      Promise.resolve([contactToUpdate, contactUpToDate])
-    )
+    const queryResult = [contactToUpdate, contactUpToDate]
+    client.queryAll = jest.fn().mockResolvedValue(queryResult)
+
+    const expected = [contactToUpdate]
+    expect(await fetchContactsToUpdate(client, lastSuccess)).toEqual(expected)
+  })
+
+  it('should returns contact to update even if lastSuccess is undefined', async () => {
+    const lastSuccess = undefined
+    const contactToUpdate = johnDoeContact
+    const contactUpToDate = updateIndexFullNameAndDisplayName(johnDoeContact)
+    const queryResult = [contactToUpdate, contactUpToDate]
+    client.queryAll = jest.fn().mockResolvedValue(queryResult)
+
     const expected = [contactToUpdate]
     expect(await fetchContactsToUpdate(client, lastSuccess)).toEqual(expected)
   })
