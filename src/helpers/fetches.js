@@ -12,7 +12,8 @@ import { updateIndexFullNameAndDisplayName } from './contacts'
  */
 export const fetchContactsToUpdate = async (client, date) => {
   try {
-    const dateUTCForced = new Date(date).toISOString()
+    const minimumUpdateTime = date || '0000-01-01T00:00:00.00Z'
+    const dateUTCForced = new Date(minimumUpdateTime).toISOString()
     const contacts = []
 
     const queryDef = client
