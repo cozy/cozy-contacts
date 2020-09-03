@@ -38,6 +38,7 @@ exports[`ContactFormModal component should render a contact form in a modal 1`] 
       type="button"
     />
     <DefaultButton
+      busy={false}
       label="save"
       onClick={[Function]}
       type="submit"
