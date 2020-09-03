@@ -42,9 +42,20 @@ Cozy's apps use a standard set of _npm scripts_ to run common tasks, like watch,
 ### Fixtures
 
 A fixture file is available, you can import its data with :
+
 ```
 $ yarn fixtures
 ```
+
+You can also import more than 2000 contacts in one batch with this other command :
+
+```
+$ yarn fixtures:massive
+```
+
+### Services
+
+Services can be triggered (and tested manually) by running `yarn services:[ServiceName]`. You can take a look to the [cozy-konnector-dev documentation][cozy-konnector-dev] for more informations.
 
 ### Run it inside the VM
 
@@ -152,6 +163,7 @@ cozy-contacts is developed by cozy and distributed under the [AGPL v3 license][a
 [bill-doctype]: https://github.com/cozy/cozy-konnector-libs/blob/master/models/bill.js
 [konnector-doctype]: https://github.com/cozy/cozy-konnector-libs/blob/master/models/base_model.js
 [konnectors]: https://github.com/cozy/cozy-konnector-libs
+[cozy-konnector-dev]: https://github.com/konnectors/libs/tree/master/packages/cozy-jobs-cli#cozy-konnector-dev
 [agpl-3.0]: https://www.gnu.org/licenses/agpl-3.0.html
 [contribute]: CONTRIBUTING.md
 [tx]: https://www.transifex.com/cozy/
