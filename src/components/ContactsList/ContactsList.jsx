@@ -8,20 +8,12 @@ import { categorizeContacts } from '../../helpers/contactList'
 import ContactsEmptyList from './ContactsEmptyList'
 import ContactRow from './ContactRow'
 import ContactHeaderRow from './ContactHeaderRow'
-import withModal from '../HOCs/withModal'
-import ContactCardModal from '../Modals/ContactCardModal'
+
 import withSelection from '../Selection/selectionContainer'
 
 class ContactsList extends Component {
   render() {
-    const {
-      clearSelection,
-      contacts,
-      selection,
-      showModal,
-      selectAll,
-      t
-    } = this.props
+    const { clearSelection, contacts, selection, selectAll, t } = this.props
 
     if (contacts.length === 0) {
       return <ContactsEmptyList />
@@ -55,14 +47,6 @@ class ContactsList extends Component {
                         id={contact._id}
                         key={contact._id}
                         contact={contact}
-                        onClick={() =>
-                          showModal(
-                            <ContactCardModal
-                              onClose={this.hideContactCard}
-                              id={contact._id}
-                            />
-                          )
-                        }
                       />
                     </li>
                   ))}
@@ -77,9 +61,8 @@ class ContactsList extends Component {
   }
 }
 ContactsList.propTypes = {
-  showModal: PropTypes.func.isRequired,
   contacts: PropTypes.array.isRequired
 }
 ContactsList.defaultProps = {}
 
-export default translate()(withModal(withSelection(ContactsList)))
+export default translate()(withSelection(ContactsList))

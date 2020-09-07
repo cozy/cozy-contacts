@@ -7,7 +7,8 @@ import { models } from 'cozy-client'
 import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
 
 import { fullContactPropTypes } from '../ContactPropTypes'
-import withModalContainer from '../HOCs/withModal'
+import withModal from '../HOCs/withModal'
+import ContactCardModal from '../Modals/ContactCardModal'
 import ContactWithSelection from './ContactSelection'
 import ContactPhone from './Contacts/ContactPhone'
 import ContactIdentity from './Contacts/ContactIdentity'
@@ -49,7 +50,7 @@ class ContactRow extends Component {
   render() {
     const {
       contact,
-      onClick,
+      showModal,
       breakpoints: { isMobile }
     } = this.props
     const email = getPrimaryEmail(contact) || undefined
@@ -57,7 +58,14 @@ class ContactRow extends Component {
     const cozyUrl = getPrimaryCozy(contact) || undefined
 
     return (
-      <div className="contact" onClick={onClick}>
+      <div
+        className="contact"
+        onClick={() =>
+          showModal(
+            <ContactCardModal onClose={this.hideContactCard} id={contact._id} />
+          )
+        }
+      >
         <ContactWithSelection contact={contact} />
         <ContactIdentity contact={contact} />
         {!isMobile && <ContactEmail email={email} />}
@@ -70,11 +78,10 @@ class ContactRow extends Component {
 
 ContactRow.propTypes = {
   contact: fullContactPropTypes.isRequired,
-  onClick: PropTypes.func
+  showModal: PropTypes.func.isRequired
 }
 ContactRow.defaultProps = {
-  selection: null,
-  onClick: null
+  selection: null
 }
 
-export default withBreakpoints()(withModalContainer(ContactRow))
+export default withBreakpoints()(withModal(ContactRow))
