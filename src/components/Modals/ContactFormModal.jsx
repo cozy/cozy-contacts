@@ -23,12 +23,31 @@ const ContactFormModal = ({
   t
 }) => {
   const [isFormBeingSubmitted, setIsFormBeingSubmitted] = useState(false)
+  const [contactInForm, setContactInForm] = useState(contact)
 
-  const submitForm = event => {
-    setIsFormBeingSubmitted(true)
+  const triggerFormSubmit = event => {
     const submitContactForm = getSubmitContactForm()
     submitContactForm(event)
   }
+
+  const handleFormSubmit = async formData => {
+    const createOrUpdate = contactInForm ? updateContact : createContact
+    const updatedContact = {
+      ...contactInForm,
+      ...formData
+    }
+    setIsFormBeingSubmitted(true)
+    setContactInForm(updatedContact)
+    try {
+      const resp = await createOrUpdate(updatedContact)
+      afterMutation(resp.data)
+    } catch (err) {
+      setIsFormBeingSubmitted(false)
+      console.warn(err) // eslint-disable-line no-console
+      Alerter.error('error.save')
+    }
+  }
+
   return (
     <Modal
       overflowHidden={true}
@@ -39,24 +58,7 @@ const ContactFormModal = ({
     >
       <ModalHeader>{title}</ModalHeader>
       <ModalDescription>
-        <ContactForm
-          contact={contact}
-          onSubmit={async formData => {
-            const createOrUpdate = contact ? updateContact : createContact
-            const updatedContact = {
-              ...contact,
-              ...formData
-            }
-            try {
-              const resp = await createOrUpdate(updatedContact)
-              afterMutation(resp.data)
-            } catch (err) {
-              // eslint-disable-next-line no-console
-              console.warn(err)
-              Alerter.error('error.save')
-            }
-          }}
-        />
+        <ContactForm contact={contactInForm} onSubmit={handleFormSubmit} />
       </ModalDescription>
       <ModalFooter className="u-ta-right">
         <Button
@@ -69,7 +71,7 @@ const ContactFormModal = ({
           type="submit"
           label={t('save')}
           busy={isFormBeingSubmitted}
-          onClick={event => submitForm(event)}
+          onClick={triggerFormSubmit}
         />
       </ModalFooter>
     </Modal>
