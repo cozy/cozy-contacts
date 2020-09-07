@@ -1,10 +1,10 @@
 import React from 'react'
+import renderer from 'react-test-renderer'
 import { mount } from 'enzyme'
 
 import AppLike from '../../tests/Applike'
+import ContactRow, { hasDocBeenUpdated } from './ContactRow'
 
-import ContactRow from './ContactRow'
-import renderer from 'react-test-renderer'
 describe('ContactRow', () => {
   it('should accept the strict minimum', () => {
     const contact = { email: [{ address: 'johndoe@localhost' }] }
@@ -96,5 +96,85 @@ describe('ContactRow', () => {
       )
       .toJSON()
     expect(tree).toMatchSnapshot()
+  })
+})
+
+describe('hasDocBeenUpdated', () => {
+  it('should return false if nothing changed', () => {
+    const document = {
+      contact: {
+        name: { familyName: 'Doe', givenName: 'John' },
+        _rev: '001',
+        cozyMetadata: { updatedAt: '2020' }
+      }
+    }
+    const nextDocument = {
+      contact: {
+        name: { familyName: 'Doe', givenName: 'John' },
+        _rev: '001',
+        cozyMetadata: { updatedAt: '2020' }
+      }
+    }
+    const isUpdated = hasDocBeenUpdated(document, nextDocument)
+    expect(isUpdated).toBe(false)
+  })
+
+  it('should return true if document rev changed', () => {
+    const document = {
+      name: { familyName: 'Doe', givenName: 'John' },
+      _rev: '001',
+      cozyMetadata: { updatedAt: '2020' }
+    }
+    const nextDocument = {
+      name: { familyName: 'Doe', givenName: 'John' },
+      _rev: '002',
+      cozyMetadata: { updatedAt: '2020' }
+    }
+    const isUpdated = hasDocBeenUpdated(document, nextDocument)
+    expect(isUpdated).toBe(true)
+  })
+
+  it('should return true if document updatedAt changed', () => {
+    const document = {
+      name: { familyName: 'Doe', givenName: 'John' },
+      _rev: '001',
+      cozyMetadata: { updatedAt: '2019' }
+    }
+    const nextDocument = {
+      name: { familyName: 'Doe', givenName: 'John' },
+      _rev: '001',
+      cozyMetadata: { updatedAt: '2020' }
+    }
+    const isUpdated = hasDocBeenUpdated(document, nextDocument)
+    expect(isUpdated).toBe(true)
+  })
+
+  it('should return true if document updatedAt and rev changed', () => {
+    const document = {
+      name: { familyName: 'Doe', givenName: 'John' },
+      _rev: '001',
+      cozyMetadata: { updatedAt: '2019' }
+    }
+    const nextDocument = {
+      name: { familyName: 'Doe', givenName: 'John' },
+      _rev: '002',
+      cozyMetadata: { updatedAt: '2020' }
+    }
+    const isUpdated = hasDocBeenUpdated(document, nextDocument)
+    expect(isUpdated).toBe(true)
+  })
+
+  it('should return true if document cozyMetadata is missing', () => {
+    const document = {
+      name: { familyName: 'Doe', givenName: 'John' },
+      _rev: '001'
+    }
+    const nextDocument = {
+      name: { familyName: 'Doe', givenName: 'John' },
+      _rev: '001',
+      cozyMetadata: { updatedAt: '2020' }
+    }
+    const isUpdated = hasDocBeenUpdated(document, nextDocument)
+    expect(isUpdated).toBe(true)
   })
 })
