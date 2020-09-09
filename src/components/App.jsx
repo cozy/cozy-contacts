@@ -11,7 +11,6 @@ import { Title } from 'cozy-ui/transpiled/react/Text'
 import { useI18n, useBreakpoints } from 'cozy-ui/transpiled/react'
 import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
 import flag, { FlagSwitcher } from 'cozy-flags'
-import 'cozy-ui/transpiled/react/stylesheet.css'
 import log from 'cozy-logger'
 
 import withContactsMutations from '../connections/allContacts'

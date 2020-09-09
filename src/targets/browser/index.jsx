@@ -1,3 +1,4 @@
+import 'cozy-ui/transpiled/react/stylesheet.css'
 
 import React from 'react'
 import { Provider } from 'react-redux'

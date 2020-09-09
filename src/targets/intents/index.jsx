@@ -1,4 +1,5 @@
 import '@babel/polyfill'
+import 'cozy-ui/transpiled/react/stylesheet.css'
 
 import 'styles'
 import 'styles/intent'
