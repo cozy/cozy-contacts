@@ -66,6 +66,16 @@ export const contactsWithoutIndexes = {
     Q(DOCTYPE_CONTACTS)
       .include(['accounts'])
       .where({
+        $or: [
+          {
+            trashed: {
+              $exists: false
+            }
+          },
+          {
+            trashed: false
+          }
+        ],
         'indexes.byFamilyNameGivenNameEmailCozyUrl': {
           $exists: false
         }
