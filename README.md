@@ -55,7 +55,7 @@ $ yarn fixtures:massive
 
 ### Services
 
-Services can be triggered (and tested manually) by running `yarn services:[ServiceName]`. You can take a look to the [cozy-konnector-dev documentation][cozy-konnector-dev] for more informations.
+Services can be triggered (and tested manually) by running `yarn services:[ServiceName]`. Otherwise, the application must be installed (by cozy-stack or store) for the services to work. You can take a look to the [service documentation][service] and [cozy-konnector-dev documentation][cozy-konnector-dev] for more informations.
 
 ### Run it inside the VM
 
@@ -176,3 +176,4 @@ cozy-contacts is developed by cozy and distributed under the [AGPL v3 license][a
 [nvm]: https://github.com/creationix/nvm
 [ndenv]: https://github.com/riywo/ndenv
 [jest]: https://facebook.github.io/jest/
+[service]: https://docs.cozy.io/en/cozy-stack/apps/#services
