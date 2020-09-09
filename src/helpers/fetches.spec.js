@@ -61,4 +61,47 @@ describe('fetchNormalizedServiceByName', () => {
       expected
     )
   })
+
+  it('should return null if no trigger found', async () => {
+    const trigger = {
+      data: []
+    }
+
+    client.query = jest.fn().mockReturnValueOnce(trigger)
+
+    expect(await fetchNormalizedServiceByName(client, 'serviceName')).toEqual(
+      null
+    )
+  })
+
+  it('should return null if query returns undefined', async () => {
+    const trigger = undefined
+
+    client.query = jest.fn().mockReturnValueOnce(trigger)
+
+    expect(await fetchNormalizedServiceByName(client, 'serviceName')).toEqual(
+      null
+    )
+  })
+
+  it('should return null if no normalized trigger found', async () => {
+    const trigger = {
+      data: [
+        {
+          id: '6e0847f496cbeb11e3ed653f170086bd'
+        }
+      ]
+    }
+
+    const normalizedTrigger = null
+
+    client.query = jest
+      .fn()
+      .mockReturnValueOnce(trigger)
+      .mockReturnValueOnce(normalizedTrigger)
+
+    expect(await fetchNormalizedServiceByName(client, 'serviceName')).toEqual(
+      null
+    )
+  })
 })

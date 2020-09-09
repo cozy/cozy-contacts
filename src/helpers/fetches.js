@@ -1,5 +1,6 @@
+import isEqual from 'lodash/isEqual'
 import log from 'cozy-logger'
-import { isEqual } from 'lodash'
+
 import { DOCTYPE_CONTACTS } from './doctypes'
 import { updateIndexFullNameAndDisplayName } from './contacts'
 
@@ -70,6 +71,7 @@ export const fetchNormalizedServiceByName = async (client, serviceName) => {
 
     return normalizedTrigger.data
   } catch (e) {
-    throw new Error(`Can't find ${serviceName} : ${e}`)
+    log('error', `Can't find ${serviceName} : ${e}`)
+    return null
   }
 }
