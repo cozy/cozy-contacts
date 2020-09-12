@@ -1,4 +1,4 @@
-import { categorizeContacts } from './contactList'
+import { categorizeContacts, filterContacts } from './contactList'
 
 describe('Categorize contacts', () => {
   it('should categorize contacts by indexes.byFamilyNameGivenNameEmailCozyUrl', () => {
@@ -35,5 +35,17 @@ describe('Categorize contacts', () => {
         { indexes: { byFamilyNameGivenNameEmailCozyUrl: 'Z' }, name: 'Zorro' }
       ]
     })
+  })
+})
+
+describe('Filter contacts', () => {
+  it('should filter contacts by name.familyName', () => {
+    const contacts = [
+      { name: { familyName: 'Alex' } },
+      { name: { familyName: 'Alan' } },
+      { name: { familyName: 'Cleo' } }
+    ]
+    const filteredContacts = filterContacts(contacts, 'a')
+    expect(filteredContacts.length).toEqual(2)
   })
 })
