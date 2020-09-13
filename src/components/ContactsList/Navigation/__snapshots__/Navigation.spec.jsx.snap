@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation component render correctly navigation component 1`] = `
+<nav
+  className="navigation"
+>
+  <ol />
+</nav>
+`;
