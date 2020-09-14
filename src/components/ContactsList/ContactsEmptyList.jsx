@@ -1,4 +1,3 @@
-/* global cozy */
 import React from 'react'
 
 import { translate } from 'cozy-ui/transpiled/react/I18n'
@@ -20,17 +19,6 @@ const style = { pointerEvents: 'all' }
 class ContactsEmptyList extends React.Component {
   state = {
     hasConnector: false
-  }
-
-  componentDidMount() {
-    // cozy-client-js is needed for intents
-    // we should refactor to not duplicate initialization code (see src/targets/browser/index.jsx)
-    const root = document.querySelector('[role=application]')
-    const data = root.dataset
-    cozy.client.init({
-      cozyURL: `${window.location.protocol}//${data.cozyDomain}`,
-      token: data.cozyToken
-    })
   }
 
   afterConnection = result => {

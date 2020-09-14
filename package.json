@@ -5,7 +5,6 @@
     "lint": "yarn lint:js && yarn lint:styles",
     "lint:js": "eslint '{src,test}/**/*.{js,jsx}'",
     "lint:styles": "stylint src/styles --config ./.stylintrc",
-    "prebuild": "yarn lint",
     "build": "yarn build:browser",
     "build:browser": "cozy-scripts build --browser",
     "build:mobile": "cozy-scripts build --mobile",
@@ -19,7 +18,6 @@
     "test": "cozy-scripts test",
     "stack:docker": "docker run --rm -it -p 8080:8080 -p 5984:5984 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev",
     "cozyPublish": "git fetch origin ${DEPLOY_BRANCH:-build}:${DEPLOY_BRANCH:-build} && cozy-scripts publish --token $REGISTRY_TOKEN --build-commit $(git rev-parse ${DEPLOY_BRANCH:-build})",
-    "postbuild": "bundlesize",
     "fixtures": "ACH import fixtures/contacts.json",
     "fixtures:massive": "ACH import fixtures/massiveContacts.json",
     "services:keepIndexFullNameAndDisplayNameUpToDate": "cozy-konnector-dev -m manifest.webapp build/services/keepIndexFullNameAndDisplayNameUpToDate/contacts.js"
@@ -40,7 +38,6 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-preset-cozy-app": "1.9.1",
     "bundlesize": "0.18.0",
-    "cozy-ach": "1.30.0",
     "cozy-jobs-cli": "1.13.6",
     "cozy-scripts": "1.13.2",
     "enzyme": "3.11.0",
