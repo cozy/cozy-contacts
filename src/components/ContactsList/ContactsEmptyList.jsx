@@ -6,12 +6,13 @@ import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
 import Empty from 'cozy-ui/transpiled/react/Empty'
 import Button from 'cozy-ui/transpiled/react/Button'
 import Infos from 'cozy-ui/transpiled/react/Infos'
+import Stack from 'cozy-ui/transpiled/react/Stack'
 
 import withModal from '../HOCs/withModal'
 import ContactImportationModal from '../ContactImportationModal/'
 import ContactFormModal from '../Modals/ContactFormModal'
 import ContactCardModal from '../Modals/ContactCardModal'
-import ImportGoogleButton from '../Buttons/ImportGoogleButton'
+import StoreButton from './StoreButton'
 
 import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
 
@@ -60,10 +61,6 @@ class ContactsEmptyList extends React.Component {
       breakpoints: { isDesktop }
     } = this.props
     const { hasConnector } = this.state
-    const host = window.location.host
-    const isToutaticeInstance =
-      /\.mytoutatice\.cloud$/.test(host) ||
-      /\.testcloud\.toutatice\.fr$/.test(host) //@TODO Some contexts don't have the google connector available. A better way to do this would be to query the list of available connectors.
 
     return (
       <div className="u-flex u-flex-column u-flex-items-center">
@@ -74,34 +71,32 @@ class ContactsEmptyList extends React.Component {
           text={hasConnector ? t('empty.after') : ''}
         >
           {!hasConnector && (
-            <div className="u-flex u-flex-column u-mt-1">
-              <span className="u-m-0 u-mb-half">
-                <Button
-                  className="u-m-0"
-                  onClick={this.showContactImportationModal}
-                  label={t('empty.importation')}
-                  theme="secondary"
-                  icon="team"
-                  style={style}
-                  extension="full"
-                />
-              </span>
-              <span className="u-m-0 u-mb-half">
-                {!isToutaticeInstance && (
-                  <ImportGoogleButton onComplete={this.afterConnection} />
-                )}
-              </span>
-              <span>
-                <Button
-                  subtle
-                  theme="secondary"
-                  onClick={this.showCreateContactModal}
-                  icon={'plus'}
-                  label={t('create_contact')}
-                  style={style}
-                />
-              </span>
-            </div>
+            <>
+              <Stack spacing="xs" className="u-mt-1">
+                <div>
+                  <Button
+                    onClick={this.showContactImportationModal}
+                    label={t('empty.importation')}
+                    theme="secondary"
+                    icon="team"
+                    style={style}
+                    extension="full"
+                  />
+                </div>
+                <div>
+                  <StoreButton />
+                </div>
+              </Stack>
+              <Button
+                className="u-mt-1-half"
+                subtle
+                theme="secondary"
+                onClick={this.showCreateContactModal}
+                icon="plus"
+                label={t('create_contact')}
+                style={style}
+              />
+            </>
           )}
           {!isDesktop && <SoonComponent t={t} />}
         </Empty>
