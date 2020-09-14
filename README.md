@@ -41,6 +41,8 @@ Cozy's apps use a standard set of _npm scripts_ to run common tasks, like watch,
 
 ### Fixtures
 
+:warn: To import fixtures, `ach` must be available globally (see [the doc here][ach]).
+
 A fixture file is available, you can import its data with :
 
 ```
@@ -176,3 +178,5 @@ cozy-contacts is developed by cozy and distributed under the [AGPL v3 license][a
 [nvm]: https://github.com/creationix/nvm
 [ndenv]: https://github.com/riywo/ndenv
 [jest]: https://facebook.github.io/jest/
+[ach]: https://docs.cozy.io/en/ach/
+
