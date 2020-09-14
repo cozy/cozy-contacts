@@ -1,4 +1,4 @@
-/* global cozy */
+import 'cozy-ui/transpiled/react/stylesheet.css'
 
 import React from 'react'
 import { Provider } from 'react-redux'
@@ -35,7 +35,7 @@ function init() {
    * an error from cozy-client "store is already defined"
    */
   setTimeout(() => {
-    initBar(cozy, client)
+    initBar(client)
   }, 0)
 
   render(

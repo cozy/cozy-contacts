@@ -10,7 +10,7 @@ module.exports = {
     '\\.worker.entry.js': '<rootDir>/jestHelpers/mocks/workerMock.js'
   },
   transform: {
-    '^.+\\.(js|jsx)?$': '<rootDir>/babel-transformer.js',
+    '^.+\\.jsx?$': 'babel-jest',
     '^.+\\.webapp$': '<rootDir>/json-transformer.js'
   },
   testEnvironment: 'jest-environment-jsdom-sixteen',

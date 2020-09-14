@@ -11,7 +11,6 @@ import { Title } from 'cozy-ui/transpiled/react/Text'
 import { useI18n, useBreakpoints } from 'cozy-ui/transpiled/react'
 import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
 import flag, { FlagSwitcher } from 'cozy-flags'
-import 'cozy-ui/transpiled/react/stylesheet.css'
 import log from 'cozy-logger'
 
 import withContactsMutations from '../connections/allContacts'
@@ -39,30 +38,24 @@ const ContactsApp = props => {
   const { BarCenter } = cozy.bar
   const { deleteContact, cleanTrashedGroups } = props
 
-  const setStateOfServiceToLaunch = useCallback(
-    async () => {
-      const serviceToLaunch = await fetchNormalizedServiceByName(
-        client,
-        'keepIndexFullNameAndDisplayNameUpToDate'
-      )
-      setServiceToLaunch(serviceToLaunch)
-      setHasServiceBeenLaunched(
-        get(serviceToLaunch, 'current_state.last_success', '').length > 0
-      )
-    },
-    [client]
-  )
+  const setStateOfServiceToLaunch = useCallback(async () => {
+    const serviceToLaunch = await fetchNormalizedServiceByName(
+      client,
+      'keepIndexFullNameAndDisplayNameUpToDate'
+    )
+    setServiceToLaunch(serviceToLaunch)
+    setHasServiceBeenLaunched(
+      get(serviceToLaunch, 'current_state.last_success', '').length > 0
+    )
+  }, [client])
 
   useEffect(() => {
     cleanTrashedGroups()
   }, [])
 
-  useEffect(
-    () => {
-      setStateOfServiceToLaunch()
-    },
-    [setStateOfServiceToLaunch]
-  )
+  useEffect(() => {
+    setStateOfServiceToLaunch()
+  }, [setStateOfServiceToLaunch])
 
   useEffect(() => {
     // HACK to be removed
@@ -83,14 +76,13 @@ const ContactsApp = props => {
 
   return (
     <Layout monocolumn="true">
-      {isMobile &&
-        cozyBarHack && (
-          <BarCenter>
-            <Title>
-              <span className={'fil-path-title'}>Contacts</span>
-            </Title>
-          </BarCenter>
-        )}
+      {isMobile && cozyBarHack && (
+        <BarCenter>
+          <Title>
+            <span className={'fil-path-title'}>Contacts</span>
+          </Title>
+        </BarCenter>
+      )}
       <Main>
         {flag('switcher') && <FlagSwitcher />}
         <ContactsSelectionBar trashAction={deleteContact} />
