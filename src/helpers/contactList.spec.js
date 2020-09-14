@@ -1,6 +1,6 @@
 import { categorizeContacts } from './contactList'
 
-describe('Categorize contacts', () => {
+describe('categorizeContacts', () => {
   it('should categorize contacts by indexes.byFamilyNameGivenNameEmailCozyUrl', () => {
     const contacts = [
       { name: 'Alex', indexes: { byFamilyNameGivenNameEmailCozyUrl: 'A' } },

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+
 import flag from 'cozy-flags'
 import Button from 'cozy-ui/transpiled/react/Button'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
@@ -18,7 +19,7 @@ class ContactsList extends Component {
     if (contacts.length === 0) {
       return <ContactsEmptyList />
     } else {
-      const allContactsSelected = contacts.length === selection.length
+      const isAllContactsSelected = contacts.length === selection.length
       const categorizedContacts = categorizeContacts(contacts, t('empty-list'))
 
       return (
@@ -27,21 +28,21 @@ class ContactsList extends Component {
             <div>
               <Button
                 label={
-                  allContactsSelected ? t('unselect-all') : t('select-all')
+                  isAllContactsSelected ? t('unselect-all') : t('select-all')
                 }
                 theme="secondary"
                 onClick={() =>
-                  allContactsSelected ? clearSelection() : selectAll(contacts)
+                  isAllContactsSelected ? clearSelection() : selectAll(contacts)
                 }
               />
             </div>
           )}
           <ol className="list-contact">
-            {Object.keys(categorizedContacts).map(header => (
+            {Object.entries(categorizedContacts).map(([header, contacts]) => (
               <li key={`cat-${header}`}>
                 <ContactHeaderRow key={header} header={header} />
                 <ol className="sublist-contact">
-                  {categorizedContacts[header].map(contact => (
+                  {contacts.map(contact => (
                     <li key={`contact-${contact._id}`}>
                       <ContactRow
                         id={contact._id}
