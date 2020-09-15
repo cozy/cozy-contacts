@@ -51,7 +51,7 @@ const ContactsApp = props => {
 
   useEffect(() => {
     cleanTrashedGroups()
-  }, [])
+  }, [cleanTrashedGroups])
 
   useEffect(() => {
     setStateOfServiceToLaunch()
