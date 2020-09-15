@@ -1,4 +1,4 @@
-import { sortBy } from 'lodash'
+import sortBy from 'lodash/sortBy'
 import { models } from 'cozy-client'
 const {
   getFullname,
@@ -121,10 +121,10 @@ export const harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl = (
     updateIndexFullNameAndDisplayName(contact)
   )
   const concatedContacts = contactsWithIndexes.concat(updatedContacts)
-  const sortedData = sortBy(concatedContacts, [
+  const sortedContacts = sortBy(concatedContacts, [
     'indexes.byFamilyNameGivenNameEmailCozyUrl'
   ])
-  return sortedData
+  return sortedContacts
 }
 
 /**
