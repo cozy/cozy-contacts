@@ -10,7 +10,7 @@ import get from 'lodash/get'
 export const categorizeContacts = (contacts, emptyHeader) => {
   return contacts.reduce((acc, contact) => {
     const index = get(contact, 'indexes.byFamilyNameGivenNameEmailCozyUrl', '')
-    const header = index[0] || emptyHeader
+    const header = (index !== null && index[0]) || emptyHeader
     acc[header] = acc[header] || []
     acc[header].push(contact)
     return acc
