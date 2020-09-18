@@ -15,30 +15,34 @@ class Toolbar extends Component {
     return this.props.showModal(<ContactCardModal id={contact.id} />)
   }
 
+  showContactFormModal = () => {
+    this.props.showModal(
+      <ContactFormModal
+        afterMutation={this.onCreateContact}
+        onClose={() => {}}
+        title={this.props.t('create_contact')}
+      />
+    )
+  }
+
+  showContactImportationModal = () => {
+    this.props.showModal(
+      <ContactImportationModal closeAction={this.props.hideModal} />
+    )
+  }
+
   render() {
-    const { showModal, t } = this.props
+    const { t } = this.props
     return (
       <div className="actions">
         <Button
-          onClick={() => {
-            showModal(
-              <ContactFormModal
-                afterMutation={this.onCreateContact}
-                onClose={() => {}}
-                title={t('create_contact')}
-              />
-            )
-          }}
-          icon={'plus'}
+          onClick={this.showContactFormModal}
+          icon="plus"
           label={t('create_contact')}
           style={style}
         />
         <Button
-          onClick={() => {
-            showModal(
-              <ContactImportationModal closeAction={this.props.hideModal} />
-            )
-          }}
+          onClick={this.showContactImportationModal}
           label={t('empty.importation')}
           theme="secondary"
           icon="team"
@@ -48,7 +52,5 @@ class Toolbar extends Component {
     )
   }
 }
-
-Toolbar.propTypes = {}
 
 export default translate()(withModal(Toolbar))
