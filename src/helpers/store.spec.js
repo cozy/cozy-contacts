@@ -1,6 +1,6 @@
 import { createMockClient } from 'cozy-client'
 
-import { getFilteredStoreUrl } from './StoreButton'
+import { getFilteredStoreUrl } from './store'
 
 describe('getFilteredStoreUrl', () => {
   it('should return correct store url', () => {
