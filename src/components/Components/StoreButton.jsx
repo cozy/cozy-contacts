@@ -4,22 +4,8 @@ import { useClient } from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { ButtonLink } from 'cozy-ui/transpiled/react/Button'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
-import { generateUniversalLink } from 'cozy-ui/transpiled/react/AppLinker'
 
-import { DOCTYPE_CONTACTS } from '../../helpers/doctypes'
-
-/**
- * Returns the store application url filtered by konnector and Contacts doctype
- * @param {object} client - cozy client
- * @returns {string} Universal link to store application
- */
-export const getFilteredStoreUrl = client =>
-  generateUniversalLink({
-    cozyUrl: client.getStackClient().uri,
-    slug: 'store',
-    subDomainType: client.getInstanceOptions().cozySubdomainType,
-    nativePath: `discover/?type=konnector&doctype=${DOCTYPE_CONTACTS}`
-  })
+import { getFilteredStoreUrl } from '../../helpers/store'
 
 const StoreButton = () => {
   const client = useClient()
