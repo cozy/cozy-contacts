@@ -32,5 +32,6 @@ describe('ContactListLetterSelection', () => {
     const component = wrapper(props)
     component.find(Chip).simulate('click')
     expect(props.onClick).toHaveBeenCalledTimes(1)
+    expect(component.find(Chip).prop('value')).toBe(props.letterList[0])
   })
 })

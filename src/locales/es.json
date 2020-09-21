@@ -18,7 +18,7 @@
   "empty": {
     "title": "Importar sus contactos",
     "description": "Hacer click en el botón \"Crear un contacti\" para comenzar a usar la aplicación.",
-    "google": "Conectarse con Google Contacts",
+    "store": "Importar desde una fuente externa",
     "importation": "Importar contacts (vCard)",
     "after": "Importar sus contactos puede tomar algunos minutos, tómese el tiempo para disfrutar de un merecido descanso y tomarse un café ☕️"
   },

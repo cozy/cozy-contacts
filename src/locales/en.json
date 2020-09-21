@@ -18,7 +18,7 @@
   "empty": {
     "title": "Import your contacts",
     "description": "Click the \"Create a contact\" button to start using the app.",
-    "google": "Connect Google Contacts",
+    "store": "Import from an external source",
     "importation": "Import contacts (vCard)",
     "after": "Importing your contacts might take a few minutes, time to enjoy a well deserved coffee break ☕️"
   },

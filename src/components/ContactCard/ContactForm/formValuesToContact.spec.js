@@ -30,7 +30,7 @@ describe('formValuesToContact', () => {
       fullname: 'John Doe',
       indexes: {
         byFamilyNameGivenNameEmailCozyUrl:
-          'Doejohnjohn.doe@cozycloud.ccjohndoe.mycozy.cloud'
+          'doejohnjohn.doe@cozycloud.ccjohndoe.mycozy.cloud'
       },
       jobTitle: 'Dreamer',
       metadata: { cozy: true, version: 1 },
@@ -90,7 +90,7 @@ describe('formValuesToContact', () => {
       displayName: 'Jane Doe',
       email: [],
       fullname: 'Jane Doe',
-      indexes: { byFamilyNameGivenNameEmailCozyUrl: 'Doejane' },
+      indexes: { byFamilyNameGivenNameEmailCozyUrl: 'doejane' },
       jobTitle: '',
       metadata: { cozy: true, version: 1 },
       name: { familyName: 'Doe', givenName: 'Jane' },
