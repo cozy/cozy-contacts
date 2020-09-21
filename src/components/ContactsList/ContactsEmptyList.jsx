@@ -76,7 +76,7 @@ class ContactsEmptyList extends React.Component {
                 <div>
                   <Button
                     onClick={this.showContactImportationModal}
-                    label={t('empty.importation')}
+                    label={t('empty.import_vcard')}
                     theme="secondary"
                     icon="team"
                     style={style}
