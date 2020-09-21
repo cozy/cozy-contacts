@@ -1,56 +1,50 @@
-import React, { Component } from 'react'
-import Button from 'cozy-ui/transpiled/react/Button'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import React from 'react'
+import { PropTypes } from 'prop-types'
 
-import ContactFormModal from './Modals/ContactFormModal'
+import Button from 'cozy-ui/transpiled/react/Button'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+
 import withModal from './HOCs/withModal'
+import ContactFormModal from './Modals/ContactFormModal'
 import ContactCardModal from './Modals/ContactCardModal'
-import ContactImportationModal from './ContactImportationModal/'
+import ImportDropdown from './Components/ImportDropdown'
 
 const style = { pointerEvents: 'all' }
 
-class Toolbar extends Component {
-  onCreateContact = contact => {
-    this.props.hideModal()
-    return this.props.showModal(<ContactCardModal id={contact.id} />)
+const Toolbar = ({ showModal, hideModal }) => {
+  const { t } = useI18n()
+
+  const onCreateContact = contact => {
+    hideModal()
+    return showModal(<ContactCardModal id={contact.id} />)
   }
 
-  showContactFormModal = () => {
-    this.props.showModal(
+  const showContactFormModal = () => {
+    showModal(
       <ContactFormModal
-        afterMutation={this.onCreateContact}
+        afterMutation={onCreateContact}
         onClose={() => {}}
-        title={this.props.t('create_contact')}
+        title={t('create_contact')}
       />
     )
   }
 
-  showContactImportationModal = () => {
-    this.props.showModal(
-      <ContactImportationModal closeAction={this.props.hideModal} />
-    )
-  }
-
-  render() {
-    const { t } = this.props
-    return (
-      <div className="actions">
-        <Button
-          onClick={this.showContactFormModal}
-          icon="plus"
-          label={t('create_contact')}
-          style={style}
-        />
-        <Button
-          onClick={this.showContactImportationModal}
-          label={t('empty.importation')}
-          theme="secondary"
-          icon="team"
-          style={style}
-        />
-      </div>
-    )
-  }
+  return (
+    <div className="actions">
+      <Button
+        onClick={showContactFormModal}
+        icon="plus"
+        label={t('create_contact')}
+        style={style}
+      />
+      <ImportDropdown />
+    </div>
+  )
 }
 
-export default translate()(withModal(Toolbar))
+Toolbar.propTypes = {
+  showModal: PropTypes.func.isRequired,
+  hideModal: PropTypes.func.isRequired
+}
+
+export default withModal(Toolbar)
