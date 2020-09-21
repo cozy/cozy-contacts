@@ -52,7 +52,7 @@
     "update": "se ha actualizado un contacto |||||| %{smart_count} contactos se han actualizado ",
     "empty_file": "Este archivo está vacío",
     "export_steps_intro": "Para obtener sus contactos de otro programa, primero debe exportar la lista completa:",
-    "export_to_vcard_step": "Exportar sus contactos a un archivo con el formato vCard (*.vcf).",
+    "export_to_vcard_step": "Exportar sus contactos a un archivo con el formato vCard (*.vcf)",
     "invalid_file_type": "Este tipo de archivo no es compatible",
     "no_file": "Seleccionar su archivo aquí",
     "open_contact_manager_step": "Abrir su gestor de contactos favorito",

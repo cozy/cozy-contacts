@@ -23,7 +23,10 @@ class ImportationInput extends React.Component {
         className="c-btn c-btn--secondary c-btn--subtle importation-file-selection-button"
       >
         <span>
-          <Icon icon="upload" className="importation-file-selection-icon" />
+          <Icon
+            icon="upload"
+            className="importation-file-selection-icon u-mr-half"
+          />
           {t('importation.transfer_file')}
           <input
             className="importation-file-selection-input"
