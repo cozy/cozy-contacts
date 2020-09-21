@@ -52,7 +52,7 @@
     "update": "un contact a été mis à jour |||| %{smart_count} contacts ont été mis à jour",
     "empty_file": "Ce fichier est vide.",
     "export_steps_intro": "Pour récupérer vos contacts depuis un autre programme, vous devez d'abord exporter la liste dans son intégralité :",
-    "export_to_vcard_step": "Exporter vos contacts dans un fichier au format vCard (*.vcf)..",
+    "export_to_vcard_step": "Exporter vos contacts dans un fichier au format vCard (*.vcf)",
     "invalid_file_type": "Ce type de fichier n'est pas supporté.",
     "no_file": "Selectionner votre fichier ici",
     "open_contact_manager_step": "Ouvrir votre gestionnaire de contacts favori",
