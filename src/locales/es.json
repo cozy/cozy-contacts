@@ -18,9 +18,14 @@
   "empty": {
     "title": "Importar sus contactos",
     "description": "Hacer click en el botón \"Crear un contacti\" para comenzar a usar la aplicación.",
-    "store": "Importar desde una fuente externa",
-    "importation": "Importar contacts (vCard)",
+    "import_store": "Importar de otras fuentes",
+    "import_vcard": "Importar desde un archivo vCard",
     "after": "Importar sus contactos puede tomar algunos minutos, tómese el tiempo para disfrutar de un merecido descanso y tomarse un café ☕️"
+  },
+  "import": {
+    "title": "Importar contacts",
+    "store": "De otras fuentes",
+    "vcard": "Desde un archivo vCard"
   },
   "error": {
     "save": "Se ha producido un error al guardar el contacto, inténtelo de nuevo."
