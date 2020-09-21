@@ -8,10 +8,28 @@ import { categorizeContacts } from '../../helpers/contactList'
 import ContactsEmptyList from './ContactsEmptyList'
 import ContactRow from './ContactRow'
 import ContactHeaderRow from './ContactHeaderRow'
+import { ContactListLetterSelection } from './ContactsList/ContactListLetterSelection'
 
 import withSelection from '../Selection/selectionContainer'
 
 class ContactsList extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      searchQuery: ''
+    }
+  }
+
+  categorizeContactsByLetter(categorizedContactsList) {
+    const { searchQuery } = this.state
+
+    if (searchQuery === '' || searchQuery === 'RESET') {
+      return categorizedContactsList
+    }
+
+    return categorizedContactsList[searchQuery]
+  }
+
   render() {
     const { clearSelection, contacts, selection, selectAll, t } = this.props
 
@@ -19,10 +37,19 @@ class ContactsList extends Component {
       return <ContactsEmptyList />
     } else {
       const allContactsSelected = contacts.length === selection.length
-      const categorizedContacts = categorizeContacts(contacts, t('empty-list'))
+      const categorizedContacts = this.categorizeContactsByLetter(
+        categorizeContacts(contacts, t('empty-list'))
+      )
 
       return (
         <div className="list-wrapper">
+          <ContactListLetterSelection
+            onClick={event =>
+              this.setState({
+                searchQuery: event.target.value
+              })
+            }
+          />
           {flag('select-all-contacts') && (
             <div>
               <Button
