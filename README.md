@@ -3,6 +3,7 @@
 [![Github Release version shield](https://img.shields.io/github/tag/cozy/cozy-contacts.svg)](https://github.com/cozy/cozy-contacts/releases)
 [![NPM Licence shield](https://img.shields.io/npm/l/cozy-contacts.svg)](https://github.com/cozy/cozy-contacts/blob/master/LICENSE)
 
+Test
 
 # cozy-contacts
 
