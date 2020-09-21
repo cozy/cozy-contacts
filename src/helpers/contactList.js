@@ -1,4 +1,5 @@
 import get from 'lodash/get'
+import removeAccents from 'remove-accents'
 
 /**
  * Categorize contacts by first letter of their indexes.byFamilyNameGivenNameEmailCozyUrl
@@ -10,7 +11,8 @@ import get from 'lodash/get'
 export const categorizeContacts = (contacts, emptyHeader) => {
   return contacts.reduce((acc, contact) => {
     const index = get(contact, 'indexes.byFamilyNameGivenNameEmailCozyUrl', '')
-    const header = (index !== null && index[0]) || emptyHeader
+    const hasIndex = index !== null && index.length > 0
+    const header = (hasIndex && removeAccents(index[0])) || emptyHeader
     acc[header] = acc[header] || []
     acc[header].push(contact)
     return acc
