@@ -4,8 +4,8 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Text, Caption } from 'cozy-ui/transpiled/react/Text'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 
-import FieldsetTitle from '../Components/FieldsetTitle'
-import Fieldset from '../Components/Fieldset'
+import FieldsetTitle from '../Common/FieldsetTitle'
+import Fieldset from '../Common/Fieldset'
 
 const ACCOUNTS_MAPPING = {
   'konnector-google': {

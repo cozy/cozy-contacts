@@ -19,7 +19,7 @@ import { ModalManager } from '../helpers/modalManager'
 import useFlags from './Hooks/useFlags'
 import container from './AppContainer'
 import ContentWrapper from './ContentWrapper'
-import SpinnerContact from './Components/Spinner'
+import SpinnerContact from './Common/Spinner'
 import { fetchNormalizedServiceByName } from '../helpers/fetches'
 
 const ContactsApp = props => {

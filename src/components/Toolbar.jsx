@@ -7,7 +7,7 @@ import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import withModal from './HOCs/withModal'
 import ContactFormModal from './Modals/ContactFormModal'
 import ContactCardModal from './Modals/ContactCardModal'
-import ImportDropdown from './Components/ImportDropdown'
+import ImportDropdown from './Common/ImportDropdown'
 
 const style = { pointerEvents: 'all' }
 
