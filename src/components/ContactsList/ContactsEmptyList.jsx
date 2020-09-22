@@ -12,7 +12,7 @@ import withModal from '../HOCs/withModal'
 import ContactImportationModal from '../ContactImportationModal/'
 import ContactFormModal from '../Modals/ContactFormModal'
 import ContactCardModal from '../Modals/ContactCardModal'
-import StoreButton from '../Components/StoreButton'
+import StoreButton from '../Common/StoreButton'
 
 import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
 

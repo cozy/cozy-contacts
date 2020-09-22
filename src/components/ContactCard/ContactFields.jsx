@@ -4,8 +4,8 @@ import Icon from 'cozy-ui/transpiled/react/Icon'
 import palette from 'cozy-ui/transpiled/react/palette'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
-import FieldsetTitle from '../Components/FieldsetTitle'
-import Fieldset from '../Components/Fieldset'
+import FieldsetTitle from '../Common/FieldsetTitle'
+import Fieldset from '../Common/Fieldset'
 
 const ContactFields = ({ fields, title }) => (
   <div>

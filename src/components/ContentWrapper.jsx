@@ -7,7 +7,7 @@ import { Content } from 'cozy-ui/transpiled/react/Layout'
 import Header from './Header'
 import Toolbar from './Toolbar'
 import ContactsList from './ContactsList/ContactsList.jsx'
-import SpinnerContact from './Components/Spinner'
+import SpinnerContact from './Common/Spinner'
 import {
   contactsByFamilyNameGivenNameEmailCozyUrl,
   contactsWithoutIndexes

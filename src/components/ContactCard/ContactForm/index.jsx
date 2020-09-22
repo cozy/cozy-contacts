@@ -4,7 +4,7 @@ import { Form } from 'react-final-form'
 import arrayMutators from 'final-form-arrays'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
-import FieldsetTitle from '../../Components/FieldsetTitle'
+import FieldsetTitle from '../../Common/FieldsetTitle'
 import ContactFormField from './ContactFormField'
 import ContactFieldInput from '../ContactFieldInput'
 import { fullContactPropTypes } from '../../ContactPropTypes'

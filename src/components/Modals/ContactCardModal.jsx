@@ -13,7 +13,7 @@ import Modal, {
 import { getConnectedAccounts } from '../../helpers/contacts'
 import withContactsMutations from '../../connections/allContacts'
 import ContactCard from '../ContactCard/ContactCard'
-import SpinnerContact from '../Components/Spinner'
+import SpinnerContact from '../Common/Spinner'
 import ContactFormModal from './ContactFormModal'
 import ContactGroups from '../ContactCard/ContactGroups'
 import { buildContactQuery, queryAllGroups } from '../../helpers/queries'
