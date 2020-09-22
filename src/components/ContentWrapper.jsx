@@ -1,5 +1,4 @@
 import React from 'react'
-import { PropTypes } from 'prop-types'
 
 import { Query } from 'cozy-client'
 
@@ -9,8 +8,11 @@ import {
   contactsByFamilyNameGivenNameEmailCozyUrl,
   contactsWithoutIndexes
 } from '../helpers/queries'
+import useService from './Hooks/useService'
 
-const ContentWrapper = ({ hasServiceBeenLaunched }) => {
+const ContentWrapper = () => {
+  const hasServiceBeenLaunched = useService()
+
   if (hasServiceBeenLaunched === null) {
     return <SpinnerContact size="xxlarge" loadingType="fetching_contacts" />
   }
@@ -47,10 +49,6 @@ const ContentWrapper = ({ hasServiceBeenLaunched }) => {
       }}
     </Query>
   )
-}
-
-ContentWrapper.propTypes = {
-  hasServiceBeenLaunched: PropTypes.bool
 }
 
 export default ContentWrapper
