@@ -2,7 +2,7 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import { createMockClient } from 'cozy-client'
 import AppLike from '../tests/Applike'
-import { ContentWrapperResult } from './ContentWrapper'
+import ContentResult from './ContentResult'
 
 const client = createMockClient({})
 
@@ -21,7 +21,7 @@ const contactsWithNoIndexes = [
   }
 ]
 
-describe('ContentWrapperResult', () => {
+describe('ContentResult', () => {
   it('should show a spinner if data has not been loaded', () => {
     const hasServiceBeenLaunched = false
     const contactsWithIndexesResult = {
@@ -43,7 +43,7 @@ describe('ContentWrapperResult', () => {
     }
     const jsx = (
       <AppLike client={client}>
-        <ContentWrapperResult {...props} />
+        <ContentResult {...props} />
       </AppLike>
     )
     const { getByTestId } = render(jsx)
@@ -71,7 +71,7 @@ describe('ContentWrapperResult', () => {
     }
     const jsx = (
       <AppLike client={client}>
-        <ContentWrapperResult {...props} />
+        <ContentResult {...props} />
       </AppLike>
     )
     const { getByTestId } = render(jsx)
@@ -99,7 +99,7 @@ describe('ContentWrapperResult', () => {
     }
     const jsx = (
       <AppLike client={client}>
-        <ContentWrapperResult {...props} />
+        <ContentResult {...props} />
       </AppLike>
     )
     const { getByTestId } = render(jsx)
@@ -127,7 +127,7 @@ describe('ContentWrapperResult', () => {
     }
     const jsx = (
       <AppLike client={client}>
-        <ContentWrapperResult {...props} />
+        <ContentResult {...props} />
       </AppLike>
     )
     const { getByText } = render(jsx)
@@ -155,7 +155,7 @@ describe('ContentWrapperResult', () => {
     }
     const jsx = (
       <AppLike client={client}>
-        <ContentWrapperResult {...props} />
+        <ContentResult {...props} />
       </AppLike>
     )
     const { queryByText } = render(jsx)
