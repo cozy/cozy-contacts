@@ -57,7 +57,7 @@ class ContactGroupManager extends Component {
     }
   }
 
-  toggleMenuIsOpen = () => {
+  toggleMenu = () => {
     this.setState(state => ({ menuIsOpen: !state.menuIsOpen }))
   }
 
@@ -78,7 +78,7 @@ class ContactGroupManager extends Component {
         {this.state.menuIsOpen && (
           <Overlay
             className={classNames('overlay-creation-group')}
-            onClick={this.toggleMenuIsOpen}
+            onClick={this.toggleMenu}
           />
         )}
         <SelectBox
@@ -108,7 +108,7 @@ class ContactGroupManager extends Component {
           createGroup={createGroup}
           deleteGroup={deleteGroup}
           styles={customStyles}
-          toggleMenuIsOpen={this.toggleMenuIsOpen}
+          toggleMenu={this.toggleMenu}
         />
       </>
     )
