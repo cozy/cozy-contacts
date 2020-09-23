@@ -6,15 +6,12 @@ import ContactGroupCreation from '../ContactGroupCreation'
 
 const Menu = props => {
   const { children } = props
-  const { createGroup, toggleMenuIsOpen, ...selectProps } = props.selectProps
+  const { createGroup, toggleMenu, ...selectProps } = props.selectProps
 
   return (
     <components.Menu {...props} selectProps={selectProps}>
       {children}
-      <ContactGroupCreation
-        createGroup={createGroup}
-        toggleMenuIsOpen={toggleMenuIsOpen}
-      />
+      <ContactGroupCreation createGroup={createGroup} toggleMenu={toggleMenu} />
     </components.Menu>
   )
 }

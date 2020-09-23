@@ -6,11 +6,8 @@ import Icon from 'cozy-ui/transpiled/react/Icon'
 import palette from 'cozy-ui/transpiled/react/palette'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
-const Control = ({ selectProps: { toggleMenuIsOpen } }) => {
+const Control = ({ selectProps: { toggleMenu } }) => {
   const { t } = useI18n()
-  const toggleMenu = () => {
-    toggleMenuIsOpen()
-  }
 
   return (
     <Button
