@@ -26,15 +26,17 @@ const useService = () => {
     setStateOfServiceToLaunch()
   }, [setStateOfServiceToLaunch])
 
-  // start keepIndexFullNameAndDisplayNameUpToDate service
-  // if never launched before
-  if (serviceToLaunch && hasServiceBeenLaunched === false) {
-    log(
-      'info',
-      `Executing keepIndexFullNameAndDisplayNameUpToDate service by Contacts app`
-    )
-    client.collection('io.cozy.triggers').launch(serviceToLaunch)
-  }
+  useEffect(() => {
+    // start keepIndexFullNameAndDisplayNameUpToDate service
+    // if never launched before
+    if (serviceToLaunch && hasServiceBeenLaunched === false) {
+      log(
+        'info',
+        `Executing keepIndexFullNameAndDisplayNameUpToDate service by Contacts app`
+      )
+      client.collection('io.cozy.triggers').launch(serviceToLaunch)
+    }
+  }, [serviceToLaunch, hasServiceBeenLaunched, client])
 
   return hasServiceBeenLaunched
 }
