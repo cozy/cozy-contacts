@@ -1,0 +1,44 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+
+import Input from 'cozy-ui/transpiled/react/Input'
+
+const EditGroupName = ({ groupName, setEditedGroupId }) => {
+  const stopPropagation = e => {
+    e.stopPropagation()
+  }
+
+  const exitEditMode = () => setEditedGroupId('')
+
+  const handleKeyDown = async e => {
+    const ENTER_KEY_CODE = 13
+    if (e.keyCode == ENTER_KEY_CODE) {
+      exitEditMode()
+      // TODO : Add function to save new group name
+    }
+    stopPropagation(e)
+  }
+
+  return (
+    <Input
+      id={'editGroupInput'}
+      type="text"
+      defaultValue={groupName}
+      size="tiny"
+      autoComplete="off"
+      autoFocus={true}
+      onKeyDown={handleKeyDown}
+      onClick={stopPropagation}
+      onFocus={stopPropagation}
+      onMouseDown={stopPropagation}
+      onBlur={exitEditMode}
+    />
+  )
+}
+
+Option.propTypes = {
+  groupName: PropTypes.string.isRequired,
+  setEditedGroupId: PropTypes.string.isRequired
+}
+
+export default EditGroupName

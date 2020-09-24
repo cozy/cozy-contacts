@@ -41,7 +41,8 @@ const captureEscapeEvent = e => {
 
 class ContactGroupManager extends Component {
   state = {
-    menuIsOpen: false
+    menuIsOpen: false,
+    editedGroupId: ''
   }
 
   componentDidMount() {
@@ -60,8 +61,8 @@ class ContactGroupManager extends Component {
   toggleMenu = () => {
     this.setState(state => ({ menuIsOpen: !state.menuIsOpen }))
   }
-
   forceMenuOpen = () => this.setState({ menuIsOpen: true })
+  setEditedGroupId = id => this.setState({ editedGroupId: id })
 
   render() {
     const {
@@ -72,10 +73,11 @@ class ContactGroupManager extends Component {
       deleteGroup,
       t
     } = this.props
+    const { menuIsOpen, editedGroupId } = this.state
 
     return (
       <>
-        {this.state.menuIsOpen && (
+        {menuIsOpen && (
           <Overlay
             className={classNames('overlay-creation-group')}
             onClick={this.toggleMenu}
@@ -84,7 +86,7 @@ class ContactGroupManager extends Component {
         <SelectBox
           classNamePrefix="react-select"
           isMulti
-          menuIsOpen={this.state.menuIsOpen}
+          menuIsOpen={menuIsOpen}
           blurInputOnSelect={true}
           hideSelectedOptions={false}
           isSearchable={false}
@@ -109,6 +111,8 @@ class ContactGroupManager extends Component {
           deleteGroup={deleteGroup}
           styles={customStyles}
           toggleMenu={this.toggleMenu}
+          setEditedGroupId={this.setEditedGroupId}
+          editedGroupId={editedGroupId}
         />
       </>
     )
