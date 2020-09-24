@@ -147,3 +147,25 @@ export const reworkContacts = (
       )
   return reworkedContacts
 }
+
+/**
+ * Returns the contact's formatted address
+ * @param {object} address - A contact address
+ * @param {function} t - Translate function
+ * @returns {string} - The contact's formatted address
+ */
+export const getFormattedAddress = (address, t) => {
+  if (address.formattedAddress) {
+    return address.formattedAddress
+  } else {
+    const emptyAddress = {
+      street: '',
+      pobox: '',
+      city: '',
+      region: '',
+      postcode: '',
+      country: ''
+    }
+    return t('formatted_address', { ...emptyAddress, ...address }).trim()
+  }
+}
