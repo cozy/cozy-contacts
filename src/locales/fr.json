@@ -30,6 +30,9 @@
   "error": {
     "save": "Une erreur est survenue lors de l'enregistrement du contact, veuillez réessayer"
   },
+  "formatted": {
+    "date": "DD/MM/YYYY"
+  },
   "formatted_address": "%{pobox} %{street} %{postcode} %{city} %{region} %{country}",
   "fields": {
     "givenName": "Prénom",

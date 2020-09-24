@@ -11,7 +11,7 @@ const FieldByType = ({ value, type }) => {
 
   switch (type) {
     case 'birthday':
-      return <Birthday value={value} f={f} />
+      return <Birthday value={value} f={f} t={t} />
     case 'address':
       return <Location value={value} t={t} />
     case 'email':
