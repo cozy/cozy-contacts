@@ -1,5 +1,5 @@
 import { fields } from './fieldsConfig'
-import { getFormattedAddress } from '../ContactFields'
+import { getFormattedAddress } from '../../../helpers/contacts'
 
 export const moveToHead = shouldBeHead => items =>
   items.reduce((arr, v) => (shouldBeHead(v) ? [v, ...arr] : [...arr, v]), [])

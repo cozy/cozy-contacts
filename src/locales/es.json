@@ -30,7 +30,10 @@
   "error": {
     "save": "Se ha producido un error al guardar el contacto, inténtelo de nuevo."
   },
-  "formatted_address": "%{pobox} %{street} %{postcode} %{city} %{region} %{country}",
+  "formatted": {
+    "date": "YYYY-MM-DD",
+    "address": "%{pobox} %{street} %{postcode} %{city} %{region} %{country}"
+  },
   "fields": {
     "givenName": "Nombre",
     "familyName": "Apellido",
