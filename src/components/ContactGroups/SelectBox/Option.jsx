@@ -3,22 +3,41 @@ import PropTypes from 'prop-types'
 
 import { ActionsOption } from 'cozy-ui/transpiled/react/SelectBox'
 
-const Option = props => (
-  <ActionsOption
-    {...props}
-    withCheckbox
-    actions={[
-      {
-        icon: 'trash',
-        onClick: ({ data }) => props.selectProps.deleteGroup(data)
-      }
-    ]}
-  />
-)
+import EditGroupName from './EditGroupName'
+
+const Option = props => {
+  const { name: groupName, id: groupId } = props.data
+  const { editedGroupId, setEditedGroupId, deleteGroup } = props.selectProps
+
+  return editedGroupId === groupId ? (
+    <EditGroupName groupName={groupName} setEditedGroupId={setEditedGroupId} />
+  ) : (
+    <ActionsOption
+      {...props}
+      withCheckbox
+      actions={[
+        {
+          icon: 'pen',
+          onClick: ({ data }) => setEditedGroupId(data.id)
+        },
+        {
+          icon: 'trash',
+          onClick: ({ data }) => deleteGroup(data)
+        }
+      ]}
+    />
+  )
+}
 
 Option.propTypes = {
   selectProps: PropTypes.shape({
-    deleteGroup: PropTypes.func.isRequired
+    editedGroupId: PropTypes.string.isRequired,
+    deleteGroup: PropTypes.func.isRequired,
+    setEditedGroupId: PropTypes.func.isRequired
+  }),
+  data: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired
   })
 }
 
