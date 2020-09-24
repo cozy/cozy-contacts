@@ -32,11 +32,18 @@ export class ContactGroupsClass extends React.Component {
     const { contact, allGroups } = this.props
 
     if (isExistingGroup(allGroups, group)) {
-      return
+      return Alerter.error(
+        this.props.t('groups.already_exists', { name: group.name })
+      )
     }
-    const createdGroup = await this.props.createGroup(group)
 
-    await contact.groups.addById(createdGroup.data._id)
+    const createdGroup = await this.props.createGroup(group)
+    if (get(createdGroup, 'data.name') === group.name) {
+      await contact.groups.addById(createdGroup.data._id)
+      return Alerter.success(this.props.t('groups.created.success'))
+    }
+
+    Alerter.error(this.props.t('groups.created.error'))
   }
 
   deleteGroup = async group => {
@@ -84,7 +91,7 @@ export class ContactGroupsClass extends React.Component {
     if (get(updatedGroup, 'data.name') === newName) {
       return Alerter.success(this.props.t('groups.renamed.success'))
     }
-    return Alerter.error(this.props.t('groups.renamed.error'))
+    Alerter.error(this.props.t('groups.renamed.error'))
   }
 
   render() {
