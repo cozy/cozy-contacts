@@ -31,7 +31,7 @@ describe('contactToFormValues function', () => {
 
     const result = contactToFormValues(johnDoeContact, tSpy)
     expect(result).toEqual(expected)
-    expect(tSpy).toHaveBeenCalledWith('formatted_address', {
+    expect(tSpy).toHaveBeenCalledWith('formatted.address', {
       pobox: '',
       street: '426 Runolfsson Knolls',
       postcode: '84573',
