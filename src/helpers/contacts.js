@@ -166,6 +166,6 @@ export const getFormattedAddress = (address, t) => {
       postcode: '',
       country: ''
     }
-    return t('formatted_address', { ...emptyAddress, ...address }).trim()
+    return t('formatted.address', { ...emptyAddress, ...address }).trim()
   }
 }
