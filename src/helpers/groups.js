@@ -1,7 +1,4 @@
-export const checkIfGroupAlreadyExists = (
-  groupsAlreadyCreated,
-  groupToCreate
-) => {
+export const isExistingGroup = (groupsAlreadyCreated, groupToCreate) => {
   const isNameAlreadyUsed =
     groupsAlreadyCreated.find(
       group => group.name.toLowerCase() === groupToCreate.name.toLowerCase()

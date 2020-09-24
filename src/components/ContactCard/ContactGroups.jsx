@@ -10,7 +10,7 @@ import { fullContactPropTypes } from '../ContactPropTypes'
 import ContactGroupManager from '../ContactGroups/ContactGroupManager'
 import withContactsMutations from '../../connections/allContacts'
 import withGroupsMutations from '../../connections/allGroups'
-import { checkIfGroupAlreadyExists } from '../ContactGroups/helpers/groups'
+import { isExistingGroup } from '../../helpers/groups'
 import container from './ContactGroupsContainer'
 
 export class ContactGroupsClass extends React.Component {
@@ -26,16 +26,18 @@ export class ContactGroupsClass extends React.Component {
       contact.groups.removeById(toRemove.map(({ _id }) => _id))
     // we can't do both at the same time right now, see https://github.com/cozy/cozy-client/issues/358
   }
+
   createGroup = async group => {
     const { contact, allGroups } = this.props
 
-    if (checkIfGroupAlreadyExists(allGroups, group)) {
+    if (isExistingGroup(allGroups, group)) {
       return
     }
     const createdGroup = await this.props.createGroup(group)
 
     await contact.groups.addById(createdGroup.data._id)
   }
+
   deleteGroup = async group => {
     const { data: flaggedGroup } = await this.props.updateGroup({
       ...group,
@@ -56,11 +58,13 @@ export class ContactGroupsClass extends React.Component {
       duration: alertDuration
     })
   }
+
   cancelGroupDelete = async group => {
     delete group.trashed
     await this.props.updateGroup(group)
     Alerter.info(this.props.t('groups.remove_canceled', { name: group.name }))
   }
+
   render() {
     const { contact, allGroups } = this.props
     const userGroups = contact.groups.data
