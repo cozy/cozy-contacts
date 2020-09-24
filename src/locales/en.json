@@ -83,6 +83,10 @@
     "none": "There is no existing group.",
     "manage": "Manage groups",
     "create": "Create a group",
+    "created": {
+      "success": "The group has been created correctly.",
+      "error": "The group has not been created."
+    },
     "name": "Name of the group",
     "removed": "The group %{name} has been removed.",
     "remove_canceled": "The group %{name} has been restored. Contacts are still linked.",

@@ -83,6 +83,10 @@
     "none": "Il n'y a pas encore de groupes.",
     "manage": "Gérer les groupes",
     "create": "Créer un groupe",
+    "created": {
+      "success": "Le groupe a bien été créé.",
+      "error": "Le groupe n'a pas été créé."
+    },
     "name": "Nom du groupe",
     "removed": "Le groupe %{name} a bien été supprimé.",
     "remove_canceled": "Le groupe %{name} n'a pas été supprimé. Vous n'avez pas perdu la liaison avec ses contacts.",
