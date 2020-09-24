@@ -71,6 +71,7 @@ class ContactGroupManager extends Component {
       onGroupSelectionChange,
       createGroup,
       deleteGroup,
+      renameGroup,
       t
     } = this.props
     const { menuIsOpen, editedGroupId } = this.state
@@ -109,6 +110,7 @@ class ContactGroupManager extends Component {
           }}
           createGroup={createGroup}
           deleteGroup={deleteGroup}
+          renameGroup={renameGroup}
           styles={customStyles}
           toggleMenu={this.toggleMenu}
           setEditedGroupId={this.setEditedGroupId}

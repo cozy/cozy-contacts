@@ -85,7 +85,12 @@
     "create": "Create a group",
     "name": "Name of the group",
     "removed": "The group %{name} has been removed.",
-    "remove_canceled": "The group %{name} has been restored. Contacts are still linked."
+    "remove_canceled": "The group %{name} has been restored. Contacts are still linked.",
+    "already_exists": "The group %{name} already exists.",
+    "renamed": {
+      "success": "The group has been renamed correctly.",
+      "error": "The group has not been renamed."
+    }
   },
   "delete-confirmation": {
     "title": "Delete this contact? |||| Delete these contacts?",

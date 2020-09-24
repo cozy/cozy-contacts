@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 
 import Input from 'cozy-ui/transpiled/react/Input'
 
-const EditGroupName = ({ groupName, setEditedGroupId }) => {
+const EditGroupName = ({
+  groupId,
+  groupName,
+  setEditedGroupId,
+  renameGroup
+}) => {
+  const inputRef = useRef()
+
   const stopPropagation = e => {
     e.stopPropagation()
   }
@@ -14,7 +21,7 @@ const EditGroupName = ({ groupName, setEditedGroupId }) => {
     const ENTER_KEY_CODE = 13
     if (e.keyCode == ENTER_KEY_CODE) {
       exitEditMode()
-      // TODO : Add function to save new group name
+      renameGroup(groupId, inputRef.current.value)
     }
     stopPropagation(e)
   }
@@ -22,6 +29,7 @@ const EditGroupName = ({ groupName, setEditedGroupId }) => {
   return (
     <Input
       id={'editGroupInput'}
+      inputRef={inputRef}
       type="text"
       defaultValue={groupName}
       size="tiny"

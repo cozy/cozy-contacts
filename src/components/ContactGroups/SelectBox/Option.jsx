@@ -7,10 +7,20 @@ import EditGroupName from './EditGroupName'
 
 const Option = props => {
   const { name: groupName, id: groupId } = props.data
-  const { editedGroupId, setEditedGroupId, deleteGroup } = props.selectProps
+  const {
+    editedGroupId,
+    setEditedGroupId,
+    deleteGroup,
+    renameGroup
+  } = props.selectProps
 
   return editedGroupId === groupId ? (
-    <EditGroupName groupName={groupName} setEditedGroupId={setEditedGroupId} />
+    <EditGroupName
+      groupId={groupId}
+      groupName={groupName}
+      setEditedGroupId={setEditedGroupId}
+      renameGroup={renameGroup}
+    />
   ) : (
     <ActionsOption
       {...props}
