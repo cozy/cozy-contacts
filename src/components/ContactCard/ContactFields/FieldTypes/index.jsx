@@ -37,8 +37,8 @@ export const Cozy = ({ url }) => {
   )
 }
 
-export const Birthday = ({ value, f }) => {
-  return f(new Date(value), 'YYYY-M-D')
+export const Birthday = ({ value, t, f }) => {
+  return f(new Date(value), t('formatted.date'))
 }
 
 export const Default = ({ value }) => {
