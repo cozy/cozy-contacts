@@ -85,7 +85,12 @@
     "create": "Créer un groupe",
     "name": "Nom du groupe",
     "removed": "Le groupe %{name} a bien été supprimé.",
-    "remove_canceled": "Le groupe %{name} n'a pas été supprimé. Vous n'avez pas perdu la liaison avec ses contacts."
+    "remove_canceled": "Le groupe %{name} n'a pas été supprimé. Vous n'avez pas perdu la liaison avec ses contacts.",
+    "already_exists": "Le groupe %{name} existe déjà.",
+    "renamed": {
+      "success": "Le groupe a bien été renommé.",
+      "error": "Le groupe n'a pas été renommé."
+    }
   },
   "delete-confirmation": {
     "title": "Supprimer ce contact ? |||| Supprimer ces contacts ?",

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import flow from 'lodash/flow'
+import get from 'lodash/get'
 import differenceBy from 'lodash/differenceBy'
 
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
@@ -65,6 +66,27 @@ export class ContactGroupsClass extends React.Component {
     Alerter.info(this.props.t('groups.remove_canceled', { name: group.name }))
   }
 
+  renameGroup = async (groupId, newName) => {
+    const { allGroups } = this.props
+    const group = allGroups.find(group => group.id === groupId)
+    const allOtherGroups = allGroups.filter(group => group.id !== groupId)
+
+    if (isExistingGroup(allOtherGroups, { name: newName })) {
+      return Alerter.error(
+        this.props.t('groups.already_exists', { name: newName })
+      )
+    }
+
+    const updatedGroup = await this.props.updateGroup({
+      ...group,
+      name: newName
+    })
+    if (get(updatedGroup, 'data.name') === newName) {
+      return Alerter.success(this.props.t('groups.renamed.success'))
+    }
+    return Alerter.error(this.props.t('groups.renamed.error'))
+  }
+
   render() {
     const { contact, allGroups } = this.props
     const userGroups = contact.groups.data
@@ -80,6 +102,7 @@ export class ContactGroupsClass extends React.Component {
           onGroupSelectionChange={this.updateContactGroups}
           createGroup={this.createGroup}
           deleteGroup={this.deleteGroup}
+          renameGroup={this.renameGroup}
         />
       </div>
     )
