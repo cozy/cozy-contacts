@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import flow from 'lodash/flow'
-import get from 'lodash/get'
 import differenceBy from 'lodash/differenceBy'
 
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
@@ -37,13 +36,13 @@ export class ContactGroupsClass extends React.Component {
       )
     }
 
-    const createdGroup = await this.props.createGroup(group)
-    if (get(createdGroup, 'data.name') === group.name) {
+    try {
+      const createdGroup = await this.props.createGroup(group)
       await contact.groups.addById(createdGroup.data._id)
       return Alerter.success(this.props.t('groups.created.success'))
+    } catch {
+      return Alerter.error(this.props.t('groups.created.error'))
     }
-
-    Alerter.error(this.props.t('groups.created.error'))
   }
 
   deleteGroup = async group => {
@@ -84,14 +83,12 @@ export class ContactGroupsClass extends React.Component {
       )
     }
 
-    const updatedGroup = await this.props.updateGroup({
-      ...group,
-      name: newName
-    })
-    if (get(updatedGroup, 'data.name') === newName) {
+    try {
+      await this.props.updateGroup({ ...group, name: newName })
       return Alerter.success(this.props.t('groups.renamed.success'))
+    } catch {
+      return Alerter.error(this.props.t('groups.renamed.error'))
     }
-    Alerter.error(this.props.t('groups.renamed.error'))
   }
 
   render() {
