@@ -1,4 +1,5 @@
 import React from 'react'
+import { PropTypes } from 'prop-types'
 import { unicodeNumberToChar } from '../../helpers/utils'
 
 const ContactsListNav = ({ handleClick, activeItems }) => {
@@ -15,5 +16,10 @@ const ContactsListNav = ({ handleClick, activeItems }) => {
     </div >
   )
 };
+
+ContactsListNav.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  activeItems: PropTypes.array.isRequired
+}
 
 export default ContactsListNav;
