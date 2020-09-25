@@ -1,16 +1,44 @@
 @require 'settings/palette.styl'
 @require 'components/table.styl'
 
-.list-wrapper
+.list-container
     width 100%
     max-width 80rem
     margin 0 auto
+    display grid
+    grid-template-columns 1fr 3rem
+
+.contact-nav
+    padding 0 0 0 1.5rem
+
+.contact-nav-wrapper
+    position sticky
+    top 0
+
+.contact-nav-btn
+    text-transform uppercase
+    font-weight 700
+    font-size .75rem
+    line-height 1.33
+    margin 0 0 .3rem 0
+
+.contact-nav-enable   
+    cursor pointer
+    opacity 1
+
+.contact-nav-disable
+    cursor default
+    opacity .2
+
+.list-wrapper
+    width 100%
     box-shadow 0 4px 4px 0 silver
+    height fit-content
 
 .topbar
     width 100%
     max-width 80rem
-    margin .75rem auto
+    margin .75rem auto 2rem
     display flex
     flex 0 0 auto
 

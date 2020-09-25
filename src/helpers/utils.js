@@ -1,0 +1,1 @@
+export const unicodeNumberToChar = (length, startAt) => [...Array(length).keys()].map(i => String.fromCharCode(i + startAt))
