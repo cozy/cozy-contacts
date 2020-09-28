@@ -133,4 +133,44 @@ describe('formValuesToContact', () => {
     const result = formValuesToContact(johnDoeFormValues, oldContact)
     expect(result.metadata).toEqual(expectedMetadata)
   })
+
+  it('should not erase additional information if it was present in the contact', () => {
+    const oldContact = {
+      name: {
+        additionalName: 'J.',
+        familyName: 'House',
+        givenName: 'Gregory',
+        namePrefix: 'Dr.',
+        nameSuffix: 'III'
+      },
+      me: true
+    }
+    const expected = {
+      name: {
+        additionalName: 'J.',
+        familyName: 'Doe',
+        givenName: 'John',
+        namePrefix: 'Dr.',
+        nameSuffix: 'III'
+      },
+      me: true
+    }
+
+    const result = formValuesToContact(johnDoeFormValues, oldContact)
+    Object.keys(oldContact).map(key =>
+      expect(result[key]).toEqual(expected[key])
+    )
+  })
+
+  it('should not erase attributes not in the doctype if it was present in the contact', () => {
+    const oldContact = {
+      otherInfoNotInDoctype: {
+        information: 'Lorem Ipsum'
+      }
+    }
+    const expected = { information: 'Lorem Ipsum' }
+
+    const result = formValuesToContact(johnDoeFormValues, oldContact)
+    expect(result.otherInfoNotInDoctype).toEqual(expected)
+  })
 })

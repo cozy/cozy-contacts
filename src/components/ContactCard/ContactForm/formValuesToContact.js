@@ -1,4 +1,4 @@
-import get from 'lodash/get'
+import merge from 'lodash/merge'
 import { updateIndexFullNameAndDisplayName } from '../../../helpers/contacts'
 
 const formValuesToContact = (data, oldContact) => {
@@ -65,13 +65,14 @@ const formValuesToContact = (data, oldContact) => {
       }
     },
     metadata: {
-      ...get(oldContact, 'metadata', {}),
       version: 1,
       cozy: true
     }
   }
 
-  return updateIndexFullNameAndDisplayName(contactWithFormValues)
+  return updateIndexFullNameAndDisplayName(
+    merge({ ...oldContact }, contactWithFormValues)
+  )
 }
 
 export default formValuesToContact
