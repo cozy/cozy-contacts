@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -45,19 +44,6 @@ class ContactGroupManager extends Component {
     editedGroupId: ''
   }
 
-  componentDidMount() {
-    this.menuRef = React.createRef()
-  }
-
-  componentDidUpdate(prevProps) {
-    if (
-      prevProps.allGroups.length !== this.props.allGroups.length &&
-      this.menuRef.current
-    ) {
-      ReactDOM.findDOMNode(this.menuRef.current).scrollTop = '9999' // eslint-disable-line react/no-find-dom-node
-    }
-  }
-
   toggleMenu = () => {
     this.setState(state => ({ menuIsOpen: !state.menuIsOpen }))
   }
@@ -100,7 +86,6 @@ class ContactGroupManager extends Component {
           onChange={onGroupSelectionChange}
           getOptionLabel={group => group.name}
           getOptionValue={group => group._id}
-          menuRef={this.menuRef}
           components={{
             Control,
             Menu,
