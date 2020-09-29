@@ -28,7 +28,10 @@ const Option = props => {
       actions={[
         {
           icon: 'pen',
-          onClick: ({ data }) => setEditedGroupId(data.id)
+          onClick: ({ data }) => setEditedGroupId(data.id),
+          iconProps: {
+            'data-testid': `ActionsOption_${props.children}-icon_pen`
+          }
         },
         {
           icon: 'trash',
