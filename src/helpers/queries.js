@@ -7,7 +7,8 @@ export const buildContactQuery = id => ({
   definition: () => Q(DOCTYPE_CONTACTS).getById(id),
   options: {
     as: `contactById-${id}`,
-    fetchPolicy: olderThan30sec
+    fetchPolicy: olderThan30sec,
+    singleDocData: true
   }
 })
 

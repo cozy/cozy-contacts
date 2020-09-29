@@ -62,7 +62,7 @@ const ContactCardModal = props => {
       {dataHaveBeenLoaded ? (
         <DumbContactCardModal
           editMode={editMode}
-          contact={resultContactById.data[0]}
+          contact={resultContactById.data}
           allGroups={resultAllGroups.data}
           t={t}
           toggleConfirmDeleteModal={toggleConfirmDeleteModal}
