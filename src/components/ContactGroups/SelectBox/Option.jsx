@@ -11,7 +11,8 @@ const Option = props => {
     editedGroupId,
     setEditedGroupId,
     deleteGroup,
-    renameGroup
+    renameGroup,
+    isMulti
   } = props.selectProps
 
   return editedGroupId === groupId ? (
@@ -24,7 +25,7 @@ const Option = props => {
   ) : (
     <ActionsOption
       {...props}
-      withCheckbox
+      withCheckbox={isMulti ? true : false}
       actions={[
         {
           icon: 'pen',
