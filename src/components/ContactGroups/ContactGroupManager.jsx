@@ -2,34 +2,14 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { translate } from 'cozy-ui/transpiled/react/I18n'
 import SelectBox from 'cozy-ui/transpiled/react/SelectBox'
 import Overlay from 'cozy-ui/transpiled/react/Overlay'
 
-import Control from './SelectBox/Control'
+import ControlDefault from './SelectBox/ControlDefault'
 import Menu from './SelectBox/Menu'
 import MenuList from './SelectBox/MenuList'
 import Option from './SelectBox/Option'
 import SelectContainer from './SelectBox/SelectContainer'
-
-const customStyles = {
-  container: base => ({
-    ...base,
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    zIndex: 100000
-  }),
-  menu: base => ({
-    ...base
-  }),
-  noOptionsMessage: () => ({}),
-  option: base => ({
-    ...base,
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis'
-  })
-}
 
 const captureEscapeEvent = e => {
   if (e.key === 'Escape') {
@@ -52,15 +32,21 @@ class ContactGroupManager extends Component {
 
   render() {
     const {
-      contactGroups,
+      value,
       allGroups,
-      onGroupSelectionChange,
+      onChange,
       createGroup,
       deleteGroup,
       renameGroup,
-      t
+      styles,
+      control,
+      isMulti,
+      noOptionsMessage,
+      preliminaryOptions
     } = this.props
     const { menuIsOpen, editedGroupId } = this.state
+
+    const options = preliminaryOptions.concat(allGroups)
 
     return (
       <>
@@ -72,22 +58,23 @@ class ContactGroupManager extends Component {
         )}
         <SelectBox
           classNamePrefix="react-select"
-          isMulti
+          isMulti={isMulti}
           menuIsOpen={menuIsOpen}
           blurInputOnSelect={true}
           hideSelectedOptions={false}
           isSearchable={false}
+          isClearable={false}
           closeMenuOnSelect={false}
           tabSelectsValue={false}
           onKeyDown={captureEscapeEvent}
-          noOptionsMessage={() => t('groups.none')}
-          options={allGroups}
-          value={contactGroups}
-          onChange={onGroupSelectionChange}
+          noOptionsMessage={noOptionsMessage}
+          options={options}
+          value={value}
+          onChange={onChange}
           getOptionLabel={group => group.name}
           getOptionValue={group => group._id}
           components={{
-            Control,
+            Control: control ? control : ControlDefault,
             Menu,
             MenuList,
             Option,
@@ -96,7 +83,7 @@ class ContactGroupManager extends Component {
           createGroup={createGroup}
           deleteGroup={deleteGroup}
           renameGroup={renameGroup}
-          styles={customStyles}
+          styles={styles}
           toggleMenu={this.toggleMenu}
           setEditedGroupId={this.setEditedGroupId}
           editedGroupId={editedGroupId}
@@ -107,10 +94,19 @@ class ContactGroupManager extends Component {
 }
 
 ContactGroupManager.propTypes = {
-  contactGroups: PropTypes.array.isRequired,
+  // for multiple selections, value can an array
+  value: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   allGroups: PropTypes.array.isRequired,
-  onGroupSelectionChange: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  style: PropTypes.object,
+  control: PropTypes.func,
+  isMulti: PropTypes.bool,
+  noOptionsMessage: PropTypes.func,
+  preliminaryOptions: PropTypes.array
 }
 
-export default translate()(ContactGroupManager)
+ContactGroupManager.defaultProps = {
+  isMulti: false
+}
+
+export default ContactGroupManager
