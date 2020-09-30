@@ -41,7 +41,7 @@
     "cozy-scripts": "5.1.1",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.4",
-    "enzyme-to-json": "3.5.0",
+    "enzyme-to-json": "3.6.1",
     "git-directory-deploy": "1.5.1",
     "identity-obj-proxy": "3.0.0",
     "jest-environment-jsdom-sixteen": "1.0.3",
