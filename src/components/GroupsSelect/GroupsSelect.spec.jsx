@@ -2,23 +2,17 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
 import { groups } from '../../helpers/testData'
-import GroupManager from './GroupManager'
+import GroupsSelect from './GroupsSelect'
 import AppLike from '../../tests/Applike'
 import Control from './SelectBox/Control'
-
-const createGroup = jest.fn()
-const renameGroup = jest.fn()
 
 const setup = () => {
   const root = render(
     <AppLike>
-      <GroupManager
+      <GroupsSelect
         value={[groups[0]]}
         allGroups={groups}
         onChange={() => {}}
-        createGroup={createGroup}
-        deleteGroup={() => {}}
-        renameGroup={renameGroup}
         control={Control}
       />
     </AppLike>
@@ -26,7 +20,7 @@ const setup = () => {
   return { root }
 }
 
-describe('GroupManager', () => {
+describe('GroupsSelect', () => {
   it('should display every groups and group creation button', () => {
     const { root } = setup()
     const { getByText } = root
@@ -52,7 +46,6 @@ describe('GroupManager', () => {
     expect(createGroupInput.value).toBe('new group')
     fireEvent.keyDown(createGroupInput, { key: 'Enter', keyCode: '13' })
     expect(createGroupInput.value).toBe('')
-    expect(createGroup).toHaveBeenCalled()
   })
 
   it('should be able to rename a group', async () => {
@@ -69,7 +62,7 @@ describe('GroupManager', () => {
 
     // it should trigger rename function by pressing Enter key, and remove input
     fireEvent.keyDown(editGroupInput, { key: 'Enter', keyCode: '13' })
-    expect(renameGroup).toHaveBeenCalled()
+
     expect(queryByRole('textbox', { id: 'editGroupInput' })).toBeNull()
   })
 })
