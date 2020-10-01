@@ -1,12 +1,11 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
 
-import differenceBy from 'lodash/differenceBy'
-
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { ModalHeader, ModalContent } from 'cozy-ui/transpiled/react/Modal'
 import Button from 'cozy-ui/transpiled/react/Button'
 
+import { updateContactGroups } from '../../helpers/groups'
 import { fullContactPropTypes } from '../ContactPropTypes'
 import ContactCard from '../ContactCard/ContactCard'
 import GroupsSelect from '../GroupsSelect/GroupsSelect'
@@ -39,15 +38,8 @@ const ContactInfo = ({
 }) => {
   const { t } = useI18n()
 
-  const updateContactGroups = nextGroups => {
-    const currentGroups = contact.groups.data
-    const toAdd = differenceBy(nextGroups, currentGroups, '_id')
-    const toRemove = differenceBy(currentGroups, nextGroups, '_id')
-
-    if (toAdd.length > 0) contact.groups.addById(toAdd.map(({ _id }) => _id))
-    else if (toRemove.length > 0)
-      contact.groups.removeById(toRemove.map(({ _id }) => _id))
-    // we can't do both at the same time right now, see https://github.com/cozy/cozy-client/issues/358
+  const handleChange = nextGroups => {
+    updateContactGroups(contact, nextGroups)
   }
 
   const addGroupToContact = async createdGroup => {
@@ -71,7 +63,7 @@ const ContactInfo = ({
               contact={contact}
               allGroups={allGroups}
               styles={customStyles}
-              onChange={updateContactGroups}
+              onChange={handleChange}
               value={userGroups}
               control={Control}
               isMulti
