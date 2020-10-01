@@ -9,8 +9,8 @@ import Button from 'cozy-ui/transpiled/react/Button'
 
 import { fullContactPropTypes } from '../ContactPropTypes'
 import ContactCard from '../ContactCard/ContactCard'
-import ContactGroups from '../ContactCard/ContactGroups'
-import Control from '../ContactGroups/SelectBox/Control'
+import GroupsSelect from '../GroupsSelect/GroupsSelect'
+import Control from '../GroupsSelect/SelectBox/Control'
 
 const customStyles = {
   container: base => ({
@@ -67,7 +67,7 @@ const ContactInfo = ({
         <ModalHeader className="u-flex u-flex-items-center u-flex-column-s u-pr-1-half-s u-flex-justify-between">
           {children}
           <div className="u-flex u-flex-row u-ml-0-s u-mr-3 u-mr-0-s">
-            <ContactGroups
+            <GroupsSelect
               contact={contact}
               allGroups={allGroups}
               styles={customStyles}

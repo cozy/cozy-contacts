@@ -2,7 +2,7 @@ import React from 'react'
 
 import { components } from 'cozy-ui/transpiled/react/SelectBox'
 
-import ContactGroupCreation from '../ContactGroupCreation'
+import GroupCreation from '../GroupCreation'
 
 const Menu = props => {
   const { children } = props
@@ -11,7 +11,7 @@ const Menu = props => {
   return (
     <components.Menu {...props} selectProps={selectProps}>
       {children}
-      <ContactGroupCreation createGroup={createGroup} />
+      <GroupCreation createGroup={createGroup} />
     </components.Menu>
   )
 }

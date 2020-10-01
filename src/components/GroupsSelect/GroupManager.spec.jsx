@@ -2,7 +2,7 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
 import { groups } from '../../helpers/testData'
-import ContactGroupManager from './ContactGroupManager'
+import GroupManager from './GroupManager'
 import AppLike from '../../tests/Applike'
 
 const createGroup = jest.fn()
@@ -11,7 +11,7 @@ const renameGroup = jest.fn()
 const setup = () => {
   const root = render(
     <AppLike>
-      <ContactGroupManager
+      <GroupManager
         contactGroups={[groups[0]]}
         allGroups={groups}
         onGroupSelectionChange={() => {}}
@@ -24,7 +24,7 @@ const setup = () => {
   return { root }
 }
 
-describe('ContactGroupManager', () => {
+describe('GroupManager', () => {
   it('should display every groups and group creation button', () => {
     const { root } = setup()
     const { getByText } = root

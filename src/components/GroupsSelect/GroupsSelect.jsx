@@ -7,12 +7,12 @@ import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import Context from '../Context'
-import ContactGroupManager from '../ContactGroups/ContactGroupManager'
+import ContactGroupManager from './GroupManager'
 import withGroupsMutations from '../../connections/allGroups'
 import { isExistingGroup } from '../../helpers/groups'
-import container from './ContactGroupsContainer'
+import container from '../ContactCard/ContactGroupsContainer'
 
-export class ContactGroupsClass extends React.Component {
+export class GroupsSelectClass extends React.Component {
   static contextType = Context
 
   createGroup = async group => {
@@ -124,13 +124,13 @@ export class ContactGroupsClass extends React.Component {
   }
 }
 
-export const ContactGroups = flow(
+export const GroupsSelect = flow(
   withGroupsMutations,
   translate(),
   container
-)(ContactGroupsClass)
+)(GroupsSelectClass)
 
-ContactGroupsClass.propTypes = {
+GroupsSelectClass.propTypes = {
   cleanTrashedGroups: PropTypes.func.isRequired,
   allGroups: PropTypes.array.isRequired,
   t: PropTypes.func.isRequired,
@@ -144,13 +144,13 @@ ContactGroupsClass.propTypes = {
   preliminaryOptions: PropTypes.array
 }
 
-ContactGroupsClass.defaultProps = {
+GroupsSelectClass.defaultProps = {
   isMulti: false,
   preliminaryOptions: []
 }
 
-ContactGroups.propTypes = {
+GroupsSelect.propTypes = {
   allGroups: PropTypes.array.isRequired
 }
 
-export default ContactGroups
+export default GroupsSelect

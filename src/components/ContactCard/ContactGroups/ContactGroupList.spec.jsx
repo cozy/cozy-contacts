@@ -1,10 +1,10 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import renderer from 'react-test-renderer'
-import { DOCTYPE_CONTACT_GROUPS } from '../../helpers/doctypes'
+import { DOCTYPE_CONTACT_GROUPS } from '../../../helpers/doctypes'
 
 import ContactGroupList from './ContactGroupList'
-import AppLike from '../../tests/Applike'
+import AppLike from '../../../tests/Applike'
 describe('ContactGroupList', () => {
   it('should display groups', () => {
     const contactMock = {
