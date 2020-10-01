@@ -6,7 +6,8 @@ import SpinnerContact from './Common/Spinner'
 import ContentResult from './ContentResult'
 import {
   contactsByFamilyNameGivenNameEmailCozyUrl,
-  contactsWithoutIndexes
+  contactsWithoutIndexes,
+  queryAllGroups
 } from '../helpers/queries'
 import useService from './Hooks/useService'
 
@@ -39,11 +40,23 @@ const ContentWrapper = () => {
               }
 
               return (
-                <ContentResult
-                  hasServiceBeenLaunched={hasServiceBeenLaunched}
-                  contactsWithIndexesResult={contactsWithIndexesResult}
-                  contactsWithNoIndexesResult={contactsWithNoIndexesResult}
-                />
+                <Query
+                  query={queryAllGroups.definition}
+                  as={queryAllGroups.options.as}
+                >
+                  {allGroupsResult => {
+                    return (
+                      <ContentResult
+                        hasServiceBeenLaunched={hasServiceBeenLaunched}
+                        contactsWithIndexesResult={contactsWithIndexesResult}
+                        contactsWithNoIndexesResult={
+                          contactsWithNoIndexesResult
+                        }
+                        allGroupsResult={allGroupsResult}
+                      />
+                    )
+                  }}
+                </Query>
               )
             }}
           </Query>
