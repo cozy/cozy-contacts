@@ -2,18 +2,42 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import flow from 'lodash/flow'
 import get from 'lodash/get'
+import classNames from 'classnames'
 
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
+import Overlay from 'cozy-ui/transpiled/react/Overlay'
+import SelectBox from 'cozy-ui/transpiled/react/SelectBox'
 
 import Context from '../Context'
-import ContactGroupManager from './GroupManager'
 import withGroupsMutations from '../../connections/allGroups'
 import { isExistingGroup } from '../../helpers/groups'
 import container from '../ContactCard/ContactGroupsContainer'
 
+import ControlDefault from './SelectBox/ControlDefault'
+import Menu from './SelectBox/Menu'
+import MenuList from './SelectBox/MenuList'
+import Option from './SelectBox/Option'
+import SelectContainer from './SelectBox/SelectContainer'
+
+const captureEscapeEvent = e => {
+  if (e.key === 'Escape') {
+    e.stopPropagation()
+    e.target.blur()
+  }
+}
 export class GroupsSelectClass extends React.Component {
   static contextType = Context
+  state = {
+    menuIsOpen: false,
+    editedGroupId: ''
+  }
+
+  toggleMenu = () => {
+    this.setState(state => ({ menuIsOpen: !state.menuIsOpen }))
+  }
+  forceMenuOpen = () => this.setState({ menuIsOpen: true })
+  setEditedGroupId = id => this.setState({ editedGroupId: id })
 
   createGroup = async group => {
     const { allGroups, onGroupCreation } = this.props
@@ -103,32 +127,55 @@ export class GroupsSelectClass extends React.Component {
       noOptionsMessage,
       preliminaryOptions
     } = this.props
+    const { menuIsOpen, editedGroupId } = this.state
+    const { createGroup, deleteGroup, renameGroup } = this
+
+    const options = preliminaryOptions.concat(allGroups)
 
     return (
       <div className="u-flex-shrink-0 u-m-0">
-        <ContactGroupManager
-          value={value}
-          allGroups={allGroups}
-          onChange={onChange}
-          createGroup={this.createGroup}
-          deleteGroup={this.deleteGroup}
-          renameGroup={this.renameGroup}
-          styles={styles}
-          control={control}
+        {menuIsOpen && (
+          <Overlay
+            className={classNames('overlay-creation-group')}
+            onClick={this.toggleMenu}
+          />
+        )}
+        <SelectBox
+          classNamePrefix="react-select"
           isMulti={isMulti}
+          menuIsOpen={menuIsOpen}
+          blurInputOnSelect={true}
+          hideSelectedOptions={false}
+          isSearchable={false}
+          isClearable={false}
+          closeMenuOnSelect={false}
+          tabSelectsValue={false}
+          onKeyDown={captureEscapeEvent}
           noOptionsMessage={noOptionsMessage}
-          preliminaryOptions={preliminaryOptions}
+          options={options}
+          value={value}
+          onChange={onChange}
+          getOptionLabel={group => group.name}
+          getOptionValue={group => group._id}
+          components={{
+            Control: control ? control : ControlDefault,
+            Menu,
+            MenuList,
+            Option,
+            SelectContainer
+          }}
+          createGroup={createGroup}
+          deleteGroup={deleteGroup}
+          renameGroup={renameGroup}
+          styles={styles}
+          toggleMenu={this.toggleMenu}
+          setEditedGroupId={this.setEditedGroupId}
+          editedGroupId={editedGroupId}
         />
       </div>
     )
   }
 }
-
-export const GroupsSelect = flow(
-  withGroupsMutations,
-  translate(),
-  container
-)(GroupsSelectClass)
 
 GroupsSelectClass.propTypes = {
   cleanTrashedGroups: PropTypes.func.isRequired,
@@ -148,6 +195,12 @@ GroupsSelectClass.defaultProps = {
   isMulti: false,
   preliminaryOptions: []
 }
+
+const GroupsSelect = flow(
+  withGroupsMutations,
+  translate(),
+  container
+)(GroupsSelectClass)
 
 GroupsSelect.propTypes = {
   allGroups: PropTypes.array.isRequired
