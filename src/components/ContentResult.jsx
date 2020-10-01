@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { PropTypes } from 'prop-types'
 import filter from 'lodash/filter'
 
-import { isQueryLoading, useQuery, hasQueryBeenLoaded } from 'cozy-client'
+import { isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 import { Content } from 'cozy-ui/transpiled/react/Layout'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
@@ -14,21 +14,16 @@ import SpinnerContact from './Common/Spinner'
 import { reworkContacts } from '../helpers/contacts'
 
 import GroupsSelect from './GroupsSelect/GroupsSelect'
-import { queryAllGroups } from '../helpers/queries'
 
 export const ContentResult = ({
   hasServiceBeenLaunched,
   contactsWithIndexesResult,
-  contactsWithNoIndexesResult
+  contactsWithNoIndexesResult,
+  allGroupsResult
 }) => {
   const { t } = useI18n()
   const { selectedGroup, setSelectedGroup, defaultGroup } = useContext(
     ContactsContext
-  )
-
-  const resultAllGroups = useQuery(
-    queryAllGroups.definition,
-    queryAllGroups.options
   )
 
   const dataHaveBeenLoaded =
@@ -36,7 +31,7 @@ export const ContentResult = ({
     !isQueryLoading(contactsWithNoIndexesResult) &&
     !contactsWithIndexesResult.hasMore &&
     !contactsWithNoIndexesResult.hasMore &&
-    (!isQueryLoading(resultAllGroups) || hasQueryBeenLoaded(resultAllGroups))
+    (!isQueryLoading(allGroupsResult) || hasQueryBeenLoaded(allGroupsResult))
 
   if (!dataHaveBeenLoaded)
     return <SpinnerContact size="xxlarge" loadingType="fetching_contacts" />
@@ -60,7 +55,7 @@ export const ContentResult = ({
         <Header
           left={
             <GroupsSelect
-              allGroups={resultAllGroups.data}
+              allGroups={allGroupsResult.data}
               value={selectedGroup}
               onChange={setSelectedGroup}
               noOptionsMessage={() => t('filter.none')}
@@ -80,7 +75,8 @@ export const ContentResult = ({
 ContentResult.propTypes = {
   hasServiceBeenLaunched: PropTypes.bool.isRequired,
   contactsWithIndexesResult: PropTypes.object.isRequired,
-  contactsWithNoIndexesResult: PropTypes.object.isRequired
+  contactsWithNoIndexesResult: PropTypes.object.isRequired,
+  allGroupsResult: PropTypes.object.isRequired
 }
 
 export default ContentResult

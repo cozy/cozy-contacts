@@ -1,8 +1,11 @@
 import React from 'react'
 import { render } from '@testing-library/react'
+
 import { createMockClient } from 'cozy-client'
+
 import AppLike from '../tests/Applike'
 import ContentResult from './ContentResult'
+import { groups } from '../helpers/testData'
 
 const client = createMockClient({})
 
@@ -14,12 +17,15 @@ const contactsWithIndexes = [
     indexes: { byFamilyNameGivenNameEmailCozyUrl: 'Doejane' }
   }
 ]
-
 const contactsWithNoIndexes = [
   {
     name: { givenName: 'William', familyName: 'Wallace' }
   }
 ]
+const allGroupsResult = {
+  data: groups,
+  fetchStatus: 'loaded'
+}
 
 describe('ContentResult', () => {
   it('should show a spinner if data has not been loaded', () => {
@@ -39,7 +45,8 @@ describe('ContentResult', () => {
     const props = {
       hasServiceBeenLaunched,
       contactsWithIndexesResult,
-      contactsWithNoIndexesResult
+      contactsWithNoIndexesResult,
+      allGroupsResult
     }
     const jsx = (
       <AppLike client={client}>
@@ -67,7 +74,8 @@ describe('ContentResult', () => {
     const props = {
       hasServiceBeenLaunched,
       contactsWithIndexesResult,
-      contactsWithNoIndexesResult
+      contactsWithNoIndexesResult,
+      allGroupsResult
     }
     const jsx = (
       <AppLike client={client}>
@@ -95,7 +103,8 @@ describe('ContentResult', () => {
     const props = {
       hasServiceBeenLaunched,
       contactsWithIndexesResult,
-      contactsWithNoIndexesResult
+      contactsWithNoIndexesResult,
+      allGroupsResult
     }
     const jsx = (
       <AppLike client={client}>
@@ -123,13 +132,16 @@ describe('ContentResult', () => {
     const props = {
       hasServiceBeenLaunched,
       contactsWithIndexesResult,
-      contactsWithNoIndexesResult
+      contactsWithNoIndexesResult,
+      allGroupsResult
     }
+
     const jsx = (
       <AppLike client={client}>
         <ContentResult {...props} />
       </AppLike>
     )
+
     const { getByText } = render(jsx)
     expect(getByText('EMPTY'))
   })
@@ -151,7 +163,8 @@ describe('ContentResult', () => {
     const props = {
       hasServiceBeenLaunched,
       contactsWithIndexesResult,
-      contactsWithNoIndexesResult
+      contactsWithNoIndexesResult,
+      allGroupsResult
     }
     const jsx = (
       <AppLike client={client}>
