@@ -97,6 +97,10 @@
       "error": "Le groupe n'a pas été renommé."
     }
   },
+  "filter": {
+    "none": "Créer des groupes de contacts pour faciliter leur classement et le partage !",
+    "all-contacts": "Tous les contacts"
+  },
   "delete-confirmation": {
     "title": "Supprimer ce contact ? |||| Supprimer ces contacts ?",
     "description-simple": "Ce contact sera définitivement supprimé de votre Cozy. |||| Ces contacts seront supprimés définitivement de votre Cozy.",
