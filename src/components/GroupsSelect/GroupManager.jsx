@@ -106,7 +106,8 @@ ContactGroupManager.propTypes = {
 }
 
 ContactGroupManager.defaultProps = {
-  isMulti: false
+  isMulti: false,
+  preliminaryOptions: []
 }
 
 export default ContactGroupManager
