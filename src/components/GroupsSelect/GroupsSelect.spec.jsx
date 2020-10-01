@@ -1,4 +1,4 @@
-import { ContactGroupsClass } from './ContactGroups'
+import { GroupsSelectClass } from './GroupsSelect'
 describe('ContactGroups', () => {
   describe('Updating groups', () => {
     let mockContact, component
@@ -11,13 +11,13 @@ describe('ContactGroups', () => {
         }
       }
 
-      component = new ContactGroupsClass({
+      component = new GroupsSelectClass({
         contact: mockContact
       })
     })
 
     it('should add groups', () => {
-      const component = new ContactGroupsClass({
+      const component = new GroupsSelectClass({
         contact: mockContact
       })
       component.updateContactGroups([{ _id: 1 }, { _id: 2 }])

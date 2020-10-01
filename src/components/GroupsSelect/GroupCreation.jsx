@@ -12,7 +12,7 @@ const normalizeGroupData = name => {
     }
   }
 }
-class ContactGroupCreation extends Component {
+class GroupCreation extends Component {
   state = {
     isInputDisplayed: false,
     groupName: ''
@@ -87,4 +87,4 @@ class ContactGroupCreation extends Component {
   }
 }
 
-export default translate()(ContactGroupCreation)
+export default translate()(GroupCreation)

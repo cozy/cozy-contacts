@@ -13,7 +13,7 @@ import ContactsList from './ContactsList/ContactsList.jsx'
 import SpinnerContact from './Common/Spinner'
 import { reworkContacts } from '../helpers/contacts'
 
-import ContactGroups from './ContactCard/ContactGroups'
+import GroupsSelect from './GroupsSelect/GroupsSelect'
 import { queryAllGroups } from '../helpers/queries'
 
 export const ContentResult = ({
@@ -59,7 +59,7 @@ export const ContentResult = ({
       {contacts.length >= 1 && (
         <Header
           left={
-            <ContactGroups
+            <GroupsSelect
               allGroups={resultAllGroups.data}
               value={selectedGroup}
               onChange={setSelectedGroup}
