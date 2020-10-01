@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { PropTypes } from 'prop-types'
+import get from 'lodash/get'
+
 import Modal, {
   ModalHeader,
   ModalDescription,
@@ -9,6 +11,7 @@ import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import Button from 'cozy-ui/transpiled/react/Button'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
+import ContactsContext from '../Context'
 import ContactForm, { getSubmitContactForm } from '../ContactCard/ContactForm'
 import { fullContactPropTypes } from '../ContactPropTypes'
 import withContactsMutations from '../../connections/allContacts'
@@ -22,6 +25,7 @@ const ContactFormModal = ({
   updateContact,
   t
 }) => {
+  const { selectedGroup, defaultGroup } = useContext(ContactsContext)
   const [isFormBeingSubmitted, setIsFormBeingSubmitted] = useState(false)
   const [contactInForm, setContactInForm] = useState(contact)
 
@@ -31,11 +35,18 @@ const ContactFormModal = ({
   }
 
   const handleFormSubmit = async formData => {
+    const hasSelectedGroup =
+      get(selectedGroup, '_id') !== get(defaultGroup, '_id')
     const createOrUpdate = contactInForm ? updateContact : createContact
     const updatedContact = {
       ...contactInForm,
       ...formData
     }
+
+    if (hasSelectedGroup) {
+      updatedContact.relationships.groups.data.push(selectedGroup)
+    }
+
     setIsFormBeingSubmitted(true)
     setContactInForm(updatedContact)
     try {
