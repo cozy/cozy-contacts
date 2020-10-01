@@ -1,7 +1,12 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { render, fireEvent } from '@testing-library/react'
+
+import { createMockClient } from 'cozy-client'
 
 import { DumbContactFormModal } from './ContactFormModal'
+import AppLike from '../../tests/Applike'
+
+const client = createMockClient({})
 
 describe('ContactFormModal component', () => {
   let props
@@ -23,29 +28,63 @@ describe('ContactFormModal component', () => {
       name: {
         familyName: 'John',
         givenName: 'Doe'
-      },
-      birthday: '1959-05-15'
+      }
     }
     const propsWithContact = {
       ...props,
       contact
     }
-    const jsx = <DumbContactFormModal {...propsWithContact} />
-    const wrapper = shallow(jsx)
-    expect(wrapper).toMatchSnapshot()
+
+    const jsx = (
+      <AppLike client={client}>
+        <DumbContactFormModal {...propsWithContact} />
+      </AppLike>
+    )
+
+    const { getByRole } = render(jsx)
+    const firstNameInput = getByRole('textbox', { name: 'Firstname' })
+    const lastNameInput = getByRole('textbox', { name: 'Lastname' })
+    expect(firstNameInput.value).toBe('Doe')
+    expect(lastNameInput.value).toBe('John')
   })
 
   it('should pass a new contact to the creation function', () => {
     const formData = {
       company: 'Cozy Cloud'
     }
-    const jsx = <DumbContactFormModal {...props} />
-    const wrapper = shallow(jsx)
-    const form = wrapper.find('withI18n(ContactForm)')
-    form.prop('onSubmit')(formData)
-    expect(props.createContact).toHaveBeenCalledWith({
-      company: 'Cozy Cloud'
+
+    const jsx = (
+      <AppLike client={client}>
+        <DumbContactFormModal {...props} />
+      </AppLike>
+    )
+
+    const expected = {
+      address: [],
+      birthday: undefined,
+      company: 'Cozy Cloud',
+      cozy: [],
+      displayName: '',
+      email: [],
+      fullname: '',
+      indexes: { byFamilyNameGivenNameEmailCozyUrl: null },
+      jobTitle: '',
+      metadata: { cozy: true, version: 1 },
+      name: { familyName: undefined, givenName: undefined },
+      note: '',
+      phone: [],
+      relationships: { groups: { data: [] } }
+    }
+
+    const { getByRole } = render(jsx)
+    const companyInput = getByRole('textbox', { name: 'Company' })
+    fireEvent.change(companyInput, {
+      target: { value: formData.company }
     })
+    const submitButton = getByRole('button', { name: 'save' })
+    fireEvent.click(submitButton)
+
+    expect(props.createContact).toHaveBeenCalledWith(expected)
   })
 
   it('should pass previous contact data to the update function', () => {
@@ -53,36 +92,50 @@ describe('ContactFormModal component', () => {
       name: {
         familyName: 'John',
         givenName: 'Doe'
-      },
-      _type: 'io.cozy.contacts',
-      _id: '789172abb56edf565098',
-      cozyMetadata: {
-        createdByApp: 'Cozy Contacts'
       }
     }
     const propsWithContact = {
       ...props,
       contact
     }
-    const jsx = <DumbContactFormModal {...propsWithContact} />
-    const wrapper = shallow(jsx)
-    const form = wrapper.find('withI18n(ContactForm)')
-
     const formData = {
       company: 'Cozy Cloud'
     }
-    form.prop('onSubmit')(formData)
-    expect(props.updateContact).toHaveBeenCalledWith({
+
+    const expected = {
+      address: [],
+      birthday: undefined,
+      company: 'Cozy Cloud',
+      cozy: [],
+      displayName: 'Doe John',
+      email: [],
+      fullname: 'Doe John',
+      indexes: { byFamilyNameGivenNameEmailCozyUrl: 'johndoe' },
+      jobTitle: '',
+      metadata: { cozy: true, version: 1 },
       name: {
         familyName: 'John',
         givenName: 'Doe'
       },
-      _type: 'io.cozy.contacts',
-      _id: '789172abb56edf565098',
-      cozyMetadata: {
-        createdByApp: 'Cozy Contacts'
-      },
-      company: 'Cozy Cloud'
+      note: '',
+      phone: [],
+      relationships: { groups: { data: [] } }
+    }
+
+    const jsx = (
+      <AppLike client={client}>
+        <DumbContactFormModal {...propsWithContact} />
+      </AppLike>
+    )
+
+    const { getByRole } = render(jsx)
+    const companyInput = getByRole('textbox', { name: 'Company' })
+    fireEvent.change(companyInput, {
+      target: { value: formData.company }
     })
+    const submitButton = getByRole('button', { name: 'save' })
+    fireEvent.click(submitButton)
+
+    expect(props.updateContact).toHaveBeenCalledWith(expected)
   })
 })

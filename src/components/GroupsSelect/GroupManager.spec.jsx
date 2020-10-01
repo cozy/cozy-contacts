@@ -4,6 +4,7 @@ import { render, fireEvent } from '@testing-library/react'
 import { groups } from '../../helpers/testData'
 import GroupManager from './GroupManager'
 import AppLike from '../../tests/Applike'
+import Control from './SelectBox/Control'
 
 const createGroup = jest.fn()
 const renameGroup = jest.fn()
@@ -12,12 +13,13 @@ const setup = () => {
   const root = render(
     <AppLike>
       <GroupManager
-        contactGroups={[groups[0]]}
+        value={[groups[0]]}
         allGroups={groups}
-        onGroupSelectionChange={() => {}}
+        onChange={() => {}}
         createGroup={createGroup}
         deleteGroup={() => {}}
         renameGroup={renameGroup}
+        control={Control}
       />
     </AppLike>
   )
