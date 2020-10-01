@@ -76,6 +76,7 @@
     "phone": "Add a phone"
   },
   "SelectionBar": {
+    "close": "Close",
     "selected_count": "contact selected |||| contacts selected",
     "trash": "delete"
   },
