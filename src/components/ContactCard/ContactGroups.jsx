@@ -1,16 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import flow from 'lodash/flow'
+import get from 'lodash/get'
 
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
+import Context from '../Context'
 import ContactGroupManager from '../ContactGroups/ContactGroupManager'
 import withGroupsMutations from '../../connections/allGroups'
 import { isExistingGroup } from '../../helpers/groups'
 import container from './ContactGroupsContainer'
 
 export class ContactGroupsClass extends React.Component {
+  static contextType = Context
+
   createGroup = async group => {
     const { allGroups, onGroupCreation } = this.props
 
@@ -32,7 +36,8 @@ export class ContactGroupsClass extends React.Component {
   }
 
   deleteGroup = async group => {
-    const { onGroupDeletion } = this.props
+    const { selectedGroup, setSelectedGroupAsDefault } = this.context
+    const isGroupSelected = get(group, '_id') === get(selectedGroup, '_id')
     const { data: flaggedGroup } = await this.props.updateGroup({
       ...group,
       trashed: true
@@ -52,8 +57,8 @@ export class ContactGroupsClass extends React.Component {
       duration: alertDuration
     })
 
-    if (onGroupDeletion) {
-      onGroupDeletion(group)
+    if (isGroupSelected) {
+      setSelectedGroupAsDefault()
     }
   }
 
@@ -64,9 +69,11 @@ export class ContactGroupsClass extends React.Component {
   }
 
   renameGroup = async (groupId, newName) => {
+    const { selectedGroup, setSelectedGroup } = this.context
     const { allGroups } = this.props
     const group = allGroups.find(group => group.id === groupId)
     const allOtherGroups = allGroups.filter(group => group.id !== groupId)
+    const isGroupSelected = get(group, '_id') === get(selectedGroup, '_id')
 
     if (isExistingGroup(allOtherGroups, { name: newName })) {
       return Alerter.error(
@@ -75,7 +82,10 @@ export class ContactGroupsClass extends React.Component {
     }
 
     try {
-      await this.props.updateGroup({ ...group, name: newName })
+      const { data } = await this.props.updateGroup({ ...group, name: newName })
+      if (isGroupSelected) {
+        setSelectedGroup(data)
+      }
       return Alerter.success(this.props.t('groups.renamed.success'))
     } catch {
       return Alerter.error(this.props.t('groups.renamed.error'))
