@@ -97,6 +97,10 @@
       "error": "The group has not been renamed."
     }
   },
+  "filter": {
+    "none": "Create contact groups to facilitate filing and sharing!",
+    "all-contacts": "All contacts"
+  },
   "delete-confirmation": {
     "title": "Delete this contact? |||| Delete these contacts?",
     "description-simple": "This contact will be removed permanently from your Cozy. |||| These contacts will be removed permanently from your Cozy.",
