@@ -1,12 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { ActionsOption } from 'cozy-ui/transpiled/react/SelectBox'
+import {
+  ActionsOption,
+  Option as DefaultOption
+} from 'cozy-ui/transpiled/react/SelectBox'
 
 import EditGroupName from './EditGroupName'
 
 const Option = props => {
-  const { name: groupName, id: groupId } = props.data
+  const { name: groupName, id: groupId, withNoAction } = props.data
   const {
     editedGroupId,
     setEditedGroupId,
@@ -15,14 +18,22 @@ const Option = props => {
     isMulti
   } = props.selectProps
 
-  return editedGroupId === groupId ? (
-    <EditGroupName
-      groupId={groupId}
-      groupName={groupName}
-      setEditedGroupId={setEditedGroupId}
-      renameGroup={renameGroup}
-    />
-  ) : (
+  if (editedGroupId === groupId) {
+    return (
+      <EditGroupName
+        groupId={groupId}
+        groupName={groupName}
+        setEditedGroupId={setEditedGroupId}
+        renameGroup={renameGroup}
+      />
+    )
+  }
+
+  if (withNoAction) {
+    return <DefaultOption {...props} />
+  }
+
+  return (
     <ActionsOption
       {...props}
       withCheckbox={isMulti ? true : false}
@@ -51,7 +62,8 @@ Option.propTypes = {
   }),
   data: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired
+    id: PropTypes.string,
+    withNoAction: PropTypes.bool
   })
 }
 
