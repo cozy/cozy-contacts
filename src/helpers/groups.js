@@ -37,3 +37,7 @@ export const filterContactsByGroup = (contacts, selectedGroup) => {
   const filteredContacts = filter(contacts, filterRule)
   return filteredContacts
 }
+
+export const addGroupToContact = async (contact, createdGroup) => {
+  await contact.groups.addById(createdGroup.data._id)
+}
