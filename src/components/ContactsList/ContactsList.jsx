@@ -23,7 +23,7 @@ class ContactsList extends Component {
     document.removeEventListener('keyup', this.onKeyUp)
   }
 
-  onKeyUp(event) {
+  onKeyUp = event => {
     const { key } = event
 
     if (!key.match(/^[a-z]$/i)) {
