@@ -39,7 +39,7 @@ export class GroupsSelectClass extends React.Component {
   setEditedGroupId = id => this.setState({ editedGroupId: id })
 
   createGroup = async group => {
-    const { allGroups, onGroupCreation } = this.props
+    const { allGroups, onGroupCreated } = this.props
 
     if (isExistingGroup(allGroups, group)) {
       return Alerter.error('groups.already_exists', { name: group.name })
@@ -47,8 +47,8 @@ export class GroupsSelectClass extends React.Component {
 
     try {
       const createdGroup = await this.props.createGroup(group)
-      if (onGroupCreation) {
-        onGroupCreation(createdGroup)
+      if (onGroupCreated) {
+        onGroupCreated(createdGroup)
       }
       return Alerter.success('groups.created.success')
     } catch {
@@ -186,7 +186,8 @@ GroupsSelectClass.propTypes = {
   isMulti: PropTypes.bool,
   noOptionsMessage: PropTypes.func,
   preliminaryOptions: PropTypes.array,
-  withCheckbox: PropTypes.bool
+  withCheckbox: PropTypes.bool,
+  onGroupCreated: PropTypes.func
 }
 
 GroupsSelectClass.defaultProps = {
