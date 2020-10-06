@@ -121,13 +121,10 @@ export class GroupsSelectClass extends React.Component {
       control,
       isMulti,
       noOptionsMessage,
-      preliminaryOptions,
       withCheckbox
     } = this.props
     const { menuIsOpen, editedGroupId } = this.state
     const { createGroup, deleteGroup, renameGroup } = this
-
-    const options = preliminaryOptions.concat(allGroups)
 
     return (
       <div className="u-flex-shrink-0 u-m-0">
@@ -150,7 +147,7 @@ export class GroupsSelectClass extends React.Component {
           tabSelectsValue={false}
           onKeyDown={captureEscapeEvent}
           noOptionsMessage={noOptionsMessage}
-          options={options}
+          options={allGroups}
           value={value}
           onChange={onChange}
           getOptionLabel={group => group.name}
@@ -185,14 +182,12 @@ GroupsSelectClass.propTypes = {
   control: PropTypes.func,
   isMulti: PropTypes.bool,
   noOptionsMessage: PropTypes.func,
-  preliminaryOptions: PropTypes.array,
   withCheckbox: PropTypes.bool,
   onGroupCreated: PropTypes.func
 }
 
 GroupsSelectClass.defaultProps = {
-  isMulti: false,
-  preliminaryOptions: []
+  isMulti: false
 }
 
 const GroupsSelect = flow(
