@@ -54,17 +54,18 @@ export const ContentResult = ({
     })
   }
 
+  const options = [defaultGroup].concat(allGroupsResult.data)
+
   return (
     <>
       {contacts.length >= 1 && (
         <Header
           left={
             <GroupsSelect
-              allGroups={allGroupsResult.data}
+              allGroups={options}
               value={selectedGroup}
               onChange={setSelectedGroup}
               noOptionsMessage={() => t('filter.none')}
-              preliminaryOptions={[defaultGroup]}
               styles={customStyles}
             />
           }
