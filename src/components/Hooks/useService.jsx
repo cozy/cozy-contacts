@@ -6,39 +6,33 @@ import log from 'cozy-logger'
 
 import { fetchNormalizedServiceByName } from '../../helpers/fetches'
 
-const useService = () => {
-  const [serviceToLaunch, setServiceToLaunch] = useState(null)
-  const [hasServiceBeenLaunched, setHasServiceBeenLaunched] = useState(null)
+const hasServiceBeenLaunched = service => {
+  return get(service, 'current_state.last_success', '').length > 0
+}
+
+const useService = name => {
+  const [service, setService] = useState(null)
+  const hasBeenLaunched = service && hasServiceBeenLaunched(service)
   const client = useClient()
 
-  const setStateOfServiceToLaunch = useCallback(async () => {
-    const serviceToLaunch = await fetchNormalizedServiceByName(
-      client,
-      'keepIndexFullNameAndDisplayNameUpToDate'
-    )
-    setServiceToLaunch(serviceToLaunch)
-    setHasServiceBeenLaunched(
-      get(serviceToLaunch, 'current_state.last_success', '').length > 0
-    )
-  }, [client])
+  const fetchService = useCallback(async () => {
+    const service = await fetchNormalizedServiceByName(client, name)
+    setService(service)
+  }, [client, name])
 
   useEffect(() => {
-    setStateOfServiceToLaunch()
-  }, [setStateOfServiceToLaunch])
+    fetchService()
+  }, [fetchService])
 
   useEffect(() => {
-    // start keepIndexFullNameAndDisplayNameUpToDate service
-    // if never launched before
-    if (serviceToLaunch && hasServiceBeenLaunched === false) {
-      log(
-        'info',
-        `Executing keepIndexFullNameAndDisplayNameUpToDate service by Contacts app`
-      )
-      client.collection('io.cozy.triggers').launch(serviceToLaunch)
+    // start service if it has never been launched before
+    if (service && hasBeenLaunched === false) {
+      log('info', `Executing ${name} service by Contacts app`)
+      client.collection('io.cozy.triggers').launch(service)
     }
-  }, [serviceToLaunch, hasServiceBeenLaunched, client])
+  }, [service, client, hasBeenLaunched, name])
 
-  return hasServiceBeenLaunched
+  return hasBeenLaunched
 }
 
 export default useService

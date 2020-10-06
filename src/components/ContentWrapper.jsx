@@ -11,7 +11,9 @@ import {
 import useService from './Hooks/useService'
 
 const ContentWrapper = () => {
-  const hasServiceBeenLaunched = useService()
+  const hasServiceBeenLaunched = useService(
+    'keepIndexFullNameAndDisplayNameUpToDate'
+  )
 
   if (hasServiceBeenLaunched === null) {
     return <SpinnerContact size="xxlarge" loadingType="fetching_contacts" />
