@@ -67,7 +67,7 @@ const ContactInfo = ({
               value={userGroups}
               control={Control}
               isMulti
-              onGroupCreation={addGroupToContact}
+              onGroupCreated={addGroupToContact}
               noOptionsMessage={() => t('groups.none')}
               withCheckbox
             />
