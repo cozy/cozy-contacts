@@ -121,7 +121,8 @@ export class GroupsSelectClass extends React.Component {
       control,
       isMulti,
       noOptionsMessage,
-      preliminaryOptions
+      preliminaryOptions,
+      withCheckbox
     } = this.props
     const { menuIsOpen, editedGroupId } = this.state
     const { createGroup, deleteGroup, renameGroup } = this
@@ -139,6 +140,7 @@ export class GroupsSelectClass extends React.Component {
         <SelectBox
           classNamePrefix="react-select"
           isMulti={isMulti}
+          withCheckbox={withCheckbox}
           menuIsOpen={menuIsOpen}
           blurInputOnSelect={true}
           hideSelectedOptions={false}
@@ -183,7 +185,8 @@ GroupsSelectClass.propTypes = {
   control: PropTypes.func,
   isMulti: PropTypes.bool,
   noOptionsMessage: PropTypes.func,
-  preliminaryOptions: PropTypes.array
+  preliminaryOptions: PropTypes.array,
+  withCheckbox: PropTypes.bool
 }
 
 GroupsSelectClass.defaultProps = {

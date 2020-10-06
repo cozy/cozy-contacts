@@ -69,6 +69,7 @@ const ContactInfo = ({
               isMulti
               onGroupCreation={addGroupToContact}
               noOptionsMessage={() => t('groups.none')}
+              withCheckbox
             />
             <Button
               theme="secondary"
