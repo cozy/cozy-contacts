@@ -6,6 +6,9 @@ import GroupsSelect from './GroupsSelect'
 import AppLike from '../../tests/Applike'
 import Control from './SelectBox/Control'
 
+const createGroup = jest.fn()
+const updateGroup = jest.fn()
+
 const setup = () => {
   const root = render(
     <AppLike>
@@ -47,6 +50,8 @@ describe('GroupsSelect', () => {
     fireEvent.change(createGroupInput, { target: { value: 'new group' } })
     expect(createGroupInput.value).toBe('new group')
     fireEvent.keyDown(createGroupInput, { key: 'Enter', keyCode: '13' })
+
+    expect(createGroup).toHaveBeenCalled()
     expect(createGroupInput.value).toBe('')
   })
 
@@ -65,6 +70,7 @@ describe('GroupsSelect', () => {
     // it should trigger rename function by pressing Enter key, and remove input
     fireEvent.keyDown(editGroupInput, { key: 'Enter', keyCode: '13' })
 
+    expect(updateGroup).toHaveBeenCalled()
     expect(queryByRole('textbox', { id: 'editGroupInput' })).toBeNull()
   })
 })
