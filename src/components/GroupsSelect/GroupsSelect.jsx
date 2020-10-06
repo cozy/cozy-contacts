@@ -16,7 +16,6 @@ import container from '../ContactCard/ContactGroupsContainer'
 
 import ControlDefault from './SelectBox/ControlDefault'
 import Menu from './SelectBox/Menu'
-import MenuList from './SelectBox/MenuList'
 import Option from './SelectBox/Option'
 import SelectContainer from './SelectBox/SelectContainer'
 
@@ -157,7 +156,6 @@ export class GroupsSelectClass extends React.Component {
           components={{
             Control: control ? control : ControlDefault,
             Menu,
-            MenuList,
             Option,
             SelectContainer
           }}
