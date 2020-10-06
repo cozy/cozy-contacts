@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 
 import { CozyProvider } from 'cozy-client'
 import I18n from 'cozy-ui/transpiled/react/I18n'
+import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 import langEn from '../locales/en.json'
 import configureStore from '../store/configureStore'
@@ -12,13 +13,15 @@ import { ContextProvider } from '../components/Context'
 const store = configureStore(getCozyClient(), null, {})
 
 const AppLike = ({ children, client }) => (
-  <Provider store={store}>
-    <CozyProvider client={client || getCozyClient()}>
-      <I18n lang={'en'} dictRequire={() => langEn}>
-        <ContextProvider>{children}</ContextProvider>
-      </I18n>
-    </CozyProvider>
-  </Provider>
+  <BreakpointsProvider>
+    <Provider store={store}>
+      <CozyProvider client={client || getCozyClient()}>
+        <I18n lang={'en'} dictRequire={() => langEn}>
+          <ContextProvider>{children}</ContextProvider>
+        </I18n>
+      </CozyProvider>
+    </Provider>
+  </BreakpointsProvider>
 )
 
 AppLike.defaultProps = {
