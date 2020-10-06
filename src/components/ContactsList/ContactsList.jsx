@@ -12,6 +12,8 @@ import ContactHeaderRow from './ContactHeaderRow'
 
 import withSelection from '../Selection/selectionContainer'
 
+const getGroupId = key => `contact-group-${key}`
+
 class ContactsList extends Component {
   render() {
     const { clearSelection, contacts, selection, selectAll, t } = this.props
@@ -39,7 +41,7 @@ class ContactsList extends Component {
           )}
           <ol className="list-contact">
             {Object.entries(categorizedContacts).map(([header, contacts]) => (
-              <li key={`cat-${header}`}>
+              <li key={`cat-${header}`} id={getGroupId(header)}>
                 <ContactHeaderRow key={header} header={header} />
                 <ol className="sublist-contact">
                   {contacts.map(contact => (
