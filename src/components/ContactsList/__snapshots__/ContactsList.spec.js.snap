@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactsList should match the snapshot 1`] = `
+<div
+  className="list-wrapper"
+>
+  <ol
+    className="list-contact"
+  >
+    <li
+      id="contact-group-j"
+    >
+      <div
+        className="divider"
+      >
+        j
+      </div>
+      <ol
+        className="sublist-contact"
+      >
+        <li>
+          <div
+            className="contact"
+            onClick={[Function]}
+          >
+            <div
+              className="contact-selection"
+              onClick={[Function]}
+            >
+              <span
+                data-input="checkbox"
+              >
+                <input
+                  checked={false}
+                  readOnly={true}
+                  type="checkbox"
+                />
+                <label />
+              </span>
+            </div>
+            <div
+              className="contact-identity"
+            >
+              <div
+                className="styles__c-avatar___PpDI- styles__c-avatar--small___1Y_Pv"
+                style={
+                  Object {
+                    "backgroundColor": "var(--brightSun)",
+                    "color": "white",
+                  }
+                }
+              >
+                
+                <span
+                  className="styles__c-avatar-initials___310qC"
+                >
+                  JD
+                </span>
+              </div>
+              <div
+                className="u-ellipsis u-ml-1"
+              >
+                <span
+                  className=""
+                >
+                  John
+                   
+                </span>
+                <span
+                  className="u-fw-bold"
+                >
+                  Doe
+                   
+                </span>
+              </div>
+            </div>
+            <div
+              className="contact-email u-ellipsis"
+            >
+              john.doe@cozycloud.cc
+            </div>
+            <div
+              className="contact-phone u-ellipsis"
+            >
+              +33 (2)0 90 00 54 04
+            </div>
+            <div
+              className="contact-cozyurl u-ellipsis"
+            >
+              https://johndoe.mycozy.cloud
+            </div>
+          </div>
+        </li>
+      </ol>
+    </li>
+  </ol>
+  <div />
+</div>
+`;
