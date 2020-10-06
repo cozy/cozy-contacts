@@ -1,11 +1,12 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
+import get from 'lodash/get'
 
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { ModalHeader, ModalContent } from 'cozy-ui/transpiled/react/Modal'
 import Button from 'cozy-ui/transpiled/react/Button'
 
-import { updateContactGroups } from '../../helpers/groups'
+import { updateContactGroups, addGroupToContact } from '../../helpers/groups'
 import { fullContactPropTypes } from '../ContactPropTypes'
 import ContactCard from '../ContactCard/ContactCard'
 import GroupsSelect from '../GroupsSelect/GroupsSelect'
@@ -42,14 +43,7 @@ const ContactInfo = ({
     updateContactGroups(contact, nextGroups)
   }
 
-  const addGroupToContact = async createdGroup => {
-    await contact.groups.addById(createdGroup.data._id)
-  }
-
-  const userGroups = contact.groups.data
-    .filter(group => group)
-    .map(userGroup => allGroups.find(group => group._id === userGroup._id))
-    .filter(value => value)
+  const handleValue = get(contact, 'relationships.groups.data', [])
 
   return (
     <ContactCard
