@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { PropTypes } from 'prop-types'
-import filter from 'lodash/filter'
 
 import { isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 import { Content } from 'cozy-ui/transpiled/react/Layout'
@@ -12,7 +11,7 @@ import Toolbar from './Toolbar'
 import ContactsList from './ContactsList/ContactsList.jsx'
 import SpinnerContact from './Common/Spinner'
 import { reworkContacts } from '../helpers/contacts'
-
+import { filterContactsByGroup } from '../helpers/groups'
 import GroupsSelect from './GroupsSelect/GroupsSelect'
 
 export const ContentResult = ({
@@ -42,12 +41,9 @@ export const ContentResult = ({
     contactsWithNoIndexesResult.data
   )
 
-  let filteredContacts = contacts
-
-  if (selectedGroup._id) {
-    const filters = ['groups', { data: [selectedGroup] }]
-    filteredContacts = filter(contacts, filters)
-  }
+  const filteredContacts = selectedGroup._id
+    ? filterContactsByGroup(contacts, selectedGroup)
+    : contacts
 
   return (
     <>
