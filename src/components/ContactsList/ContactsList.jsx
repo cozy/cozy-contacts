@@ -10,6 +10,7 @@ import ContactsEmptyList from './ContactsEmptyList'
 import ContactRow from './ContactRow'
 import ContactHeaderRow from './ContactHeaderRow'
 
+import withModal from '../HOCs/withModal'
 import withSelection from '../Selection/selectionContainer'
 
 const getGroupId = key => `contact-group-${key}`
@@ -38,9 +39,10 @@ class ContactsList extends Component {
   }
 
   scrollToGroup(id) {
+    const { show: isModalShown } = this.props
     const groupElement = document.getElementById(getGroupId(id))
 
-    if (groupElement) {
+    if (!isModalShown && groupElement) {
       groupElement.scrollIntoView({
         behavior: 'smooth'
       })
@@ -100,4 +102,4 @@ ContactsList.propTypes = {
 }
 ContactsList.defaultProps = {}
 
-export default translate()(withSelection(ContactsList))
+export default translate()(withModal(withSelection(ContactsList)))
