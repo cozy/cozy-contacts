@@ -1,6 +1,10 @@
 import { connect } from 'react-redux'
 import { showModal, hideModal } from '../../helpers/modalManager'
 
+const mapStateToProps = state => ({
+  ...state.appReducers.ui
+})
+
 const mapDispatchToProps = dispatch => ({
   showModal: modal => {
     return dispatch(showModal(modal))
@@ -12,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
 
 const withModalContainer = component =>
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(component)
 
