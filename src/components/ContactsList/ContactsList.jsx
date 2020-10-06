@@ -15,6 +15,38 @@ import withSelection from '../Selection/selectionContainer'
 const getGroupId = key => `contact-group-${key}`
 
 class ContactsList extends Component {
+  componentDidMount() {
+    document.addEventListener('keyup', this.onKeyUp)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keyup', this.onKeyUp)
+  }
+
+  onKeyUp(event) {
+    const { key } = event
+
+    if (!key.match(/^[a-z]$/i)) {
+      /**
+       * Ignore keyup for non letter keys
+       * the `i` flag is needed when caps lock is activated
+       */
+      return
+    }
+
+    this.scrollToGroup(key)
+  }
+
+  scrollToGroup(id) {
+    const groupElement = document.getElementById(getGroupId(id))
+
+    if (groupElement) {
+      groupElement.scrollIntoView({
+        behavior: 'smooth'
+      })
+    }
+  }
+
   render() {
     const { clearSelection, contacts, selection, selectAll, t } = this.props
 
