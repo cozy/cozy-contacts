@@ -3,7 +3,7 @@ import 'cozy-ui/transpiled/react/stylesheet.css'
 import React from 'react'
 import { Provider } from 'react-redux'
 import { render } from 'react-dom'
-import { hot } from 'react-hot-loader'
+import memoize from 'lodash/memoize'
 
 import { CozyProvider } from 'cozy-client'
 import { I18n, initTranslation } from 'cozy-ui/transpiled/react/I18n'
@@ -16,9 +16,7 @@ import { getClient } from '../../helpers/client'
 import { getValues, initBar } from '../../helpers/bar'
 import '../../styles/index.styl'
 
-const HotedApp = hot(module)(App)
-
-function init() {
+const setupApp = memoize(() => {
   const root = document.querySelector('[role=application]')
   const { lang } = getValues(root.dataset)
   const polyglot = initTranslation(lang, lang => require(`locales/${lang}`))
@@ -38,13 +36,19 @@ function init() {
     initBar(client)
   }, 0)
 
+  return { root, store, client, lang, polyglot }
+})
+
+const init = () => {
+  const { root, store, client, lang, polyglot } = setupApp()
+
   render(
     <Provider store={store}>
       <CozyProvider client={client} store={store}>
         <I18n lang={lang} polyglot={polyglot}>
           <MuiCozyTheme>
             <BreakpointsProvider>
-              <HotedApp />
+              <App />
             </BreakpointsProvider>
           </MuiCozyTheme>
         </I18n>
@@ -57,3 +61,8 @@ function init() {
 document.addEventListener('DOMContentLoaded', () => {
   init()
 })
+
+if (module.hot) {
+  init()
+  module.hot.accept()
+}
