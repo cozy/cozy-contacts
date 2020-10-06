@@ -98,7 +98,7 @@
     }
   },
   "filter": {
-    "none": "Create contact groups to facilitate filing and sharing!",
+    "no-group": "Create contact groups to facilitate filing and sharing!",
     "all-contacts": "All contacts"
   },
   "delete-confirmation": {

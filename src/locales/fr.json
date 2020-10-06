@@ -98,7 +98,7 @@
     }
   },
   "filter": {
-    "none": "Créer des groupes de contacts pour faciliter leur classement et le partage !",
+    "no-group": "Créer des groupes de contacts pour faciliter leur classement et le partage !",
     "all-contacts": "Tous les contacts"
   },
   "delete-confirmation": {
