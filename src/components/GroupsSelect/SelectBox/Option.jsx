@@ -15,7 +15,7 @@ const Option = props => {
     setEditedGroupId,
     deleteGroup,
     renameGroup,
-    isMulti
+    withCheckbox
   } = props.selectProps
 
   if (editedGroupId === groupId) {
@@ -36,7 +36,7 @@ const Option = props => {
   return (
     <ActionsOption
       {...props}
-      withCheckbox={isMulti ? true : false}
+      withCheckbox={withCheckbox}
       actions={[
         {
           icon: 'pen',
@@ -58,7 +58,8 @@ Option.propTypes = {
   selectProps: PropTypes.shape({
     editedGroupId: PropTypes.string.isRequired,
     deleteGroup: PropTypes.func.isRequired,
-    setEditedGroupId: PropTypes.func.isRequired
+    setEditedGroupId: PropTypes.func.isRequired,
+    withCheckbox: PropTypes.bool
   }),
   data: PropTypes.shape({
     name: PropTypes.string.isRequired,
