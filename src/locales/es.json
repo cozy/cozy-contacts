@@ -98,7 +98,7 @@
     }
   },
   "filter": {
-    "none": "Crear grupos de contacto para facilitar el archivo y el intercambio!",
+    "no-group": "Crear grupos de contacto para facilitar el archivo y el intercambio!",
     "all-contacts": "Todos los contactos"
   },
   "delete-confirmation": {

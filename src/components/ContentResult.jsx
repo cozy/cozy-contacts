@@ -65,7 +65,7 @@ export const ContentResult = ({
               allGroups={options}
               value={selectedGroup}
               onChange={setSelectedGroup}
-              noOptionsMessage={() => t('filter.none')}
+              noOptionsMessage={() => t('filter.no-group')}
               styles={customStyles}
             />
           }
