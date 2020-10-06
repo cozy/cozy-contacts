@@ -61,15 +61,27 @@ Services can be triggered (and tested manually) by running `yarn services:[Servi
 
 ### Run it inside the VM
 
-You can easily run the app:
+First, you need to install `docker` and our `cozy-app-dev` image. See how to in our [install the development environment documentation][setup]
+
+Then, you need to build at least once the `Contacts` app before running the docker image:
 
 ```sh
 $ yarn start
 ```
 
+Then, in an other process, you can run the docker image: 
+
+```sh
+$ yarn stack:docker:dev
+```
+
 Your app is now available at http://app.cozy.tools:8080.
 
+Password is `cozy` by default.
+
 This command uses the [cozy-stack docker image][cozy-stack-docker].
+
+By launching this `stack:docker:dev` command, you disable our Content Security Policy (CSP) (which are very restrictive by default) to have access to the HMR. Don't forget to test your builded application (not watched) using `stack:docker:prod` to activate them.
 
 ### Living on the edge
 
