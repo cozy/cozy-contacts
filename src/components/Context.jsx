@@ -3,9 +3,9 @@ import React, { createContext, useState } from 'react'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { getDefaultSelectedGroup } from '../helpers/groups'
 
-const ContactsContext = createContext()
+const SelectedGroupContext = createContext()
 
-const ContextProvider = ({ children }) => {
+const SelectedGroupProvider = ({ children }) => {
   const { t } = useI18n()
   const [selectedGroup, setSelectedGroup] = useState(getDefaultSelectedGroup(t))
 
@@ -15,12 +15,12 @@ const ContextProvider = ({ children }) => {
   }
 
   return (
-    <ContactsContext.Provider value={contextValue}>
+    <SelectedGroupContext.Provider value={contextValue}>
       {children}
-    </ContactsContext.Provider>
+    </SelectedGroupContext.Provider>
   )
 }
 
-export default ContactsContext
+export default SelectedGroupContext
 
-export { ContextProvider }
+export { SelectedGroupProvider }
