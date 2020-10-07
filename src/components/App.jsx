@@ -10,7 +10,7 @@ import { useI18n, useBreakpoints } from 'cozy-ui/transpiled/react'
 import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
 import flag, { FlagSwitcher } from 'cozy-flags'
 
-import { SelectedGroupProvider } from './Context'
+import { SelectedGroupProvider } from './Contexts/SelectedGroup'
 import withContactsMutations from '../connections/allContacts'
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
 import { ModalManager } from '../helpers/modalManager'
@@ -32,7 +32,7 @@ const ContactsApp = props => {
   return (
     <SelectedGroupProvider>
       <Layout monocolumn="true">
-      {isMobile && (
+        {isMobile && (
           <BarCenter>
             <Title>
               <span className={'fil-path-title'}>Contacts</span>

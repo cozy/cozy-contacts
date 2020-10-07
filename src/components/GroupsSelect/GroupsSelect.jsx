@@ -9,7 +9,7 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 import Overlay from 'cozy-ui/transpiled/react/Overlay'
 import SelectBox from 'cozy-ui/transpiled/react/SelectBox'
 
-import SelectedGroupContext from '../Context'
+import SelectedGroupContext from '../Contexts/SelectedGroup'
 import withGroupsMutations from '../../connections/allGroups'
 import { getDefaultSelectedGroup, isExistingGroup } from '../../helpers/groups'
 import container from '../ContactCard/ContactGroupsContainer'
