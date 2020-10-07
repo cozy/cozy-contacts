@@ -8,7 +8,7 @@ import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoin
 import langEn from '../locales/en.json'
 import configureStore from '../store/configureStore'
 import getCozyClient from './client'
-import { SelectedGroupProvider } from '../components/Context'
+import { SelectedGroupProvider } from '../components/Contexts/SelectedGroup'
 
 const store = configureStore(getCozyClient(), null, {})
 

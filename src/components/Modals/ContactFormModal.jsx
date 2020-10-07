@@ -10,7 +10,7 @@ import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import Button from 'cozy-ui/transpiled/react/Button'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
-import SelectedGroupContext from '../Context'
+import SelectedGroupContext from '../Contexts/SelectedGroup'
 import ContactForm, { getSubmitContactForm } from '../ContactCard/ContactForm'
 import { fullContactPropTypes } from '../ContactPropTypes'
 import withContactsMutations from '../../connections/allContacts'
