@@ -6,7 +6,7 @@ import { Content } from 'cozy-ui/transpiled/react/Layout'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
-import ContactsContext from './Context'
+import SelectedGroupContext from './Context'
 import Header from './Header'
 import Toolbar from './Toolbar'
 import ContactsList from './ContactsList/ContactsList.jsx'
@@ -27,7 +27,7 @@ export const ContentResult = ({
 }) => {
   const { t } = useI18n()
   const { isMobile } = useBreakpoints()
-  const { selectedGroup, setSelectedGroup } = useContext(ContactsContext)
+  const { selectedGroup, setSelectedGroup } = useContext(SelectedGroupContext)
 
   const dataHaveBeenLoaded =
     !isQueryLoading(contactsWithIndexesResult) &&

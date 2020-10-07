@@ -8,7 +8,7 @@ import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoin
 import langEn from '../locales/en.json'
 import configureStore from '../store/configureStore'
 import getCozyClient from './client'
-import { ContextProvider } from '../components/Context'
+import { SelectedGroupProvider } from '../components/Context'
 
 const store = configureStore(getCozyClient(), null, {})
 
@@ -17,7 +17,7 @@ const AppLike = ({ children, client }) => (
     <Provider store={store}>
       <CozyProvider client={client || getCozyClient()}>
         <I18n lang={'en'} dictRequire={() => langEn}>
-          <ContextProvider>{children}</ContextProvider>
+          <SelectedGroupProvider>{children}</SelectedGroupProvider>
         </I18n>
       </CozyProvider>
     </Provider>

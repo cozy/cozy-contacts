@@ -10,7 +10,7 @@ import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import Button from 'cozy-ui/transpiled/react/Button'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
-import ContactsContext from '../Context'
+import SelectedGroupContext from '../Context'
 import ContactForm, { getSubmitContactForm } from '../ContactCard/ContactForm'
 import { fullContactPropTypes } from '../ContactPropTypes'
 import withContactsMutations from '../../connections/allContacts'
@@ -26,7 +26,7 @@ const ContactFormModal = ({
   updateContact,
   t
 }) => {
-  const { selectedGroup } = useContext(ContactsContext)
+  const { selectedGroup } = useContext(SelectedGroupContext)
   const [isFormBeingSubmitted, setIsFormBeingSubmitted] = useState(false)
   const [contactInForm, setContactInForm] = useState(contact)
 
