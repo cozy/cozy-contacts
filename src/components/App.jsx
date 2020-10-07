@@ -1,5 +1,5 @@
 /* global cozy */
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { PropTypes } from 'prop-types'
 import flow from 'lodash/flow'
 
@@ -18,11 +18,6 @@ import container from './AppContainer'
 import ContentWrapper from './ContentWrapper'
 
 const ContactsApp = props => {
-  // HACK to avoid CozyBar error :
-  // you tried to use the CozyBar API (BarCenter) but the CozyBar is not initialised yet via cozy.bar.init
-  // TODO : TO BE REMOVED
-  const [cozyBarHack, setcozyBarHack] = useState(false)
-
   useFlags()
   const { t } = useI18n()
   const { isMobile } = useBreakpoints()
@@ -33,16 +28,9 @@ const ContactsApp = props => {
     cleanTrashedGroups()
   }, [cleanTrashedGroups])
 
-  useEffect(() => {
-    // HACK to be removed
-    setTimeout(() => {
-      setcozyBarHack(true)
-    }, 0)
-  }, [])
-
   return (
     <Layout monocolumn="true">
-      {isMobile && cozyBarHack && (
+      {isMobile && (
         <BarCenter>
           <Title>
             <span className={'fil-path-title'}>Contacts</span>
