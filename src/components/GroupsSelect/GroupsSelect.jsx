@@ -11,7 +11,7 @@ import SelectBox from 'cozy-ui/transpiled/react/SelectBox'
 
 import Context from '../Context'
 import withGroupsMutations from '../../connections/allGroups'
-import { isExistingGroup } from '../../helpers/groups'
+import { getDefaultSelectedGroup, isExistingGroup } from '../../helpers/groups'
 import container from '../ContactCard/ContactGroupsContainer'
 
 import ControlDefault from './SelectBox/ControlDefault'
@@ -57,7 +57,7 @@ export class GroupsSelectClass extends React.Component {
 
   deleteGroup = async group => {
     const { t, updateGroup, cleanTrashedGroups } = this.props
-    const { selectedGroup, setSelectedGroupAsDefault } = this.context
+    const { selectedGroup, setSelectedGroup } = this.context
     const isDeletedGroupSelected =
       get(group, '_id') === get(selectedGroup, '_id')
     const { data: flaggedGroup } = await updateGroup({
@@ -81,7 +81,7 @@ export class GroupsSelectClass extends React.Component {
     })
 
     if (isDeletedGroupSelected) {
-      setSelectedGroupAsDefault()
+      setSelectedGroup(getDefaultSelectedGroup(t))
     }
   }
 

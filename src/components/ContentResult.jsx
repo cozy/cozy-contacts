@@ -12,7 +12,11 @@ import Toolbar from './Toolbar'
 import ContactsList from './ContactsList/ContactsList.jsx'
 import SpinnerContact from './Common/Spinner'
 import { reworkContacts } from '../helpers/contacts'
-import { filterContactsByGroup } from '../helpers/groups'
+import {
+  filterContactsByGroup,
+  getDefaultSelectedGroup,
+  hasSelectedGroup
+} from '../helpers/groups'
 import GroupsSelect from './GroupsSelect/GroupsSelect'
 
 export const ContentResult = ({
@@ -23,9 +27,7 @@ export const ContentResult = ({
 }) => {
   const { t } = useI18n()
   const { isMobile } = useBreakpoints()
-  const { selectedGroup, setSelectedGroup, defaultGroup } = useContext(
-    ContactsContext
-  )
+  const { selectedGroup, setSelectedGroup } = useContext(ContactsContext)
 
   const dataHaveBeenLoaded =
     !isQueryLoading(contactsWithIndexesResult) &&
@@ -43,7 +45,7 @@ export const ContentResult = ({
     contactsWithNoIndexesResult.data
   )
 
-  const filteredContacts = selectedGroup._id
+  const filteredContacts = hasSelectedGroup(selectedGroup, t)
     ? filterContactsByGroup(contacts, selectedGroup)
     : contacts
 
@@ -54,7 +56,7 @@ export const ContentResult = ({
     })
   }
 
-  const options = [defaultGroup].concat(allGroupsResult.data)
+  const options = [getDefaultSelectedGroup(t)].concat(allGroupsResult.data)
 
   return (
     <>

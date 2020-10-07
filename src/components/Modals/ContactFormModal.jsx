@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react'
 import { PropTypes } from 'prop-types'
-import get from 'lodash/get'
 
 import Modal, {
   ModalHeader,
@@ -16,6 +15,7 @@ import ContactForm, { getSubmitContactForm } from '../ContactCard/ContactForm'
 import { fullContactPropTypes } from '../ContactPropTypes'
 import withContactsMutations from '../../connections/allContacts'
 import { addGroupToContact } from '../../helpers/contacts'
+import { hasSelectedGroup } from '../../helpers/groups'
 
 const ContactFormModal = ({
   contact,
@@ -26,7 +26,7 @@ const ContactFormModal = ({
   updateContact,
   t
 }) => {
-  const { selectedGroup, defaultGroup } = useContext(ContactsContext)
+  const { selectedGroup } = useContext(ContactsContext)
   const [isFormBeingSubmitted, setIsFormBeingSubmitted] = useState(false)
   const [contactInForm, setContactInForm] = useState(contact)
 
@@ -36,15 +36,13 @@ const ContactFormModal = ({
   }
 
   const handleFormSubmit = async formData => {
-    const hasSelectedGroup =
-      get(selectedGroup, '_id') !== get(defaultGroup, '_id')
     const createOrUpdate = contactInForm ? updateContact : createContact
     let updatedContact = {
       ...contactInForm,
       ...formData
     }
 
-    if (hasSelectedGroup) {
+    if (hasSelectedGroup(selectedGroup, t)) {
       updatedContact = addGroupToContact(updatedContact, selectedGroup)
     }
 
