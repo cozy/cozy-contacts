@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types'
 import { isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 import { Content } from 'cozy-ui/transpiled/react/Layout'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 import ContactsContext from './Context'
 import Header from './Header'
@@ -21,6 +22,7 @@ export const ContentResult = ({
   allGroupsResult
 }) => {
   const { t } = useI18n()
+  const { isMobile } = useBreakpoints()
   const { selectedGroup, setSelectedGroup, defaultGroup } = useContext(
     ContactsContext
   )
@@ -45,6 +47,13 @@ export const ContentResult = ({
     ? filterContactsByGroup(contacts, selectedGroup)
     : contacts
 
+  const customStyles = {
+    container: base => ({
+      ...base,
+      ...(!isMobile && { width: '24rem' })
+    })
+  }
+
   return (
     <>
       {contacts.length >= 1 && (
@@ -56,6 +65,7 @@ export const ContentResult = ({
               onChange={setSelectedGroup}
               noOptionsMessage={() => t('filter.none')}
               preliminaryOptions={[defaultGroup]}
+              styles={customStyles}
             />
           }
           right={<Toolbar />}

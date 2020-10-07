@@ -14,8 +14,13 @@
     display flex
     flex 0 0 auto
 
+    +small-screen()
+        flex-direction column
+
     .topbar__left
         flex 1
+        +small-screen()
+            margin-bottom 1rem
 
 .actions
     display flex
