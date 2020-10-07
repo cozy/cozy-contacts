@@ -43,9 +43,7 @@ export class GroupsSelectClass extends React.Component {
     const { allGroups, onGroupCreation } = this.props
 
     if (isExistingGroup(allGroups, group)) {
-      return Alerter.error(
-        this.props.t('groups.already_exists', { name: group.name })
-      )
+      return Alerter.error('groups.already_exists', { name: group.name })
     }
 
     try {
@@ -53,9 +51,9 @@ export class GroupsSelectClass extends React.Component {
       if (onGroupCreation) {
         onGroupCreation(createdGroup)
       }
-      return Alerter.success(this.props.t('groups.created.success'))
+      return Alerter.success('groups.created.success')
     } catch {
-      return Alerter.error(this.props.t('groups.created.error'))
+      return Alerter.error('groups.created.error')
     }
   }
 
@@ -72,7 +70,8 @@ export class GroupsSelectClass extends React.Component {
       this.props.cleanTrashedGroups()
     }, alertDuration)
 
-    Alerter.info(this.props.t('groups.removed', { name: flaggedGroup.name }), {
+    Alerter.info('groups.removed', {
+      name: flaggedGroup.name,
       buttonText: this.props.t('cancel'),
       buttonAction: () => {
         clearTimeout(alertTimeout)
@@ -89,7 +88,7 @@ export class GroupsSelectClass extends React.Component {
   cancelGroupDelete = async group => {
     delete group.trashed
     await this.props.updateGroup(group)
-    Alerter.info(this.props.t('groups.remove_canceled', { name: group.name }))
+    Alerter.info('groups.remove_canceled', { name: group.name })
   }
 
   renameGroup = async (groupId, newName) => {
@@ -100,9 +99,7 @@ export class GroupsSelectClass extends React.Component {
     const isGroupSelected = get(group, '_id') === get(selectedGroup, '_id')
 
     if (isExistingGroup(allOtherGroups, { name: newName })) {
-      return Alerter.error(
-        this.props.t('groups.already_exists', { name: newName })
-      )
+      return Alerter.error('groups.already_exists', { name: newName })
     }
 
     try {
@@ -110,9 +107,9 @@ export class GroupsSelectClass extends React.Component {
       if (isGroupSelected) {
         setSelectedGroup(data)
       }
-      return Alerter.success(this.props.t('groups.renamed.success'))
+      return Alerter.success('groups.renamed.success')
     } catch {
-      return Alerter.error(this.props.t('groups.renamed.error'))
+      return Alerter.error('groups.renamed.error')
     }
   }
 
