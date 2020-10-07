@@ -13,7 +13,7 @@ import ContactHeaderRow from './ContactHeaderRow'
 import withModal from '../HOCs/withModal'
 import withSelection from '../Selection/selectionContainer'
 
-const getGroupId = key => `contact-group-${key}`
+export const getGroupId = key => `contact-group-${key}`
 
 class ContactsList extends Component {
   componentDidMount() {
@@ -39,8 +39,13 @@ class ContactsList extends Component {
   }
 
   scrollToGroup(id) {
+    // guard needed for testing purposes
+    if (!this.containerRef) return
+
     const { show: isModalShown } = this.props
-    const groupElement = document.getElementById(getGroupId(id))
+    const [groupElement] = this.containerRef.getElementsByClassName(
+      getGroupId(id)
+    )
 
     if (!isModalShown && groupElement) {
       groupElement.scrollIntoView({
@@ -59,7 +64,7 @@ class ContactsList extends Component {
       const categorizedContacts = categorizeContacts(contacts, t('empty-list'))
 
       return (
-        <div className="list-wrapper">
+        <div className="list-wrapper" ref={ref => (this.containerRef = ref)}>
           {flag('select-all-contacts') && (
             <div>
               <Button
@@ -75,7 +80,7 @@ class ContactsList extends Component {
           )}
           <ol className="list-contact">
             {Object.entries(categorizedContacts).map(([header, contacts]) => (
-              <li key={`cat-${header}`} id={getGroupId(header)}>
+              <li key={`cat-${header}`} className={getGroupId(header)}>
                 <ContactHeaderRow key={header} header={header} />
                 <ol className="sublist-contact">
                   {contacts.map(contact => (

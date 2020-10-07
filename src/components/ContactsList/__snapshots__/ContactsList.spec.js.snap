@@ -8,7 +8,7 @@ exports[`ContactsList should match the snapshot 1`] = `
     className="list-contact"
   >
     <li
-      id="contact-group-j"
+      className="contact-group-j"
     >
       <div
         className="divider"
