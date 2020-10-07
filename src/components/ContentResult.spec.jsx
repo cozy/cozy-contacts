@@ -4,6 +4,7 @@ import { render, fireEvent } from '@testing-library/react'
 import AppLike from '../tests/Applike'
 import ContentResult from './ContentResult'
 import { groups } from '../helpers/testData'
+import enLocale from '../locales/en.json'
 
 const mockedContacts = {
   withIndexes: [
@@ -21,6 +22,7 @@ const mockedContacts = {
   ],
   withGroup: [
     {
+      name: { givenName: 'Jack', familyName: 'Ingroup' },
       displayName: 'Jack Ingroup',
       indexes: { byFamilyNameGivenNameEmailCozyUrl: 'jackingroup' },
       relationships: {
@@ -144,25 +146,25 @@ describe('ContentResult - filtering', () => {
       }
     })
 
+    const contactWithGroup = mockedContacts.withGroup[0].name.familyName
+    const contactWithoutGroup = mockedContacts.withIndexes[0].name.familyName
+
     const { getByText, queryByText } = root
 
     // contacts with and without group should be present
-    expect(getByText('Ingroup'))
-    expect(getByText('Doe'))
+    expect(getByText(contactWithGroup))
+    expect(getByText(contactWithoutGroup))
 
-    fireEvent.click(getByText('All contacts'))
+    // open the group filter and select first group
+    fireEvent.click(getByText(enLocale.filter['all-contacts']))
     fireEvent.click(getByText(groups[0].name))
 
     // should not return an empty contact list
-    expect(
-      queryByText(
-        'You will soon be able to import your contacts from other services (iCloud, Facebook...).'
-      )
-    ).toBeNull()
+    expect(queryByText(enLocale.importation.available_soon)).toBeNull()
 
     // contacts without group should not be present
-    expect(getByText('Ingroup'))
-    expect(queryByText('Doe')).toBeNull()
+    expect(getByText(contactWithGroup))
+    expect(queryByText(contactWithoutGroup)).toBeNull()
   })
 
   it('should show empty list after filtering contacts with no group', () => {
@@ -170,14 +172,55 @@ describe('ContentResult - filtering', () => {
 
     const { getByText } = root
 
-    fireEvent.click(getByText('All contacts'))
+    // open the group filter and select first group
+    fireEvent.click(getByText(enLocale.filter['all-contacts']))
     fireEvent.click(getByText(groups[0].name))
 
     // should return an empty contact list
-    expect(
-      getByText(
-        'You will soon be able to import your contacts from other services (iCloud, Facebook...).'
-      )
+    expect(getByText(enLocale.importation.available_soon))
+  })
+
+  it('should show empty message in group filter if no group to filter on', () => {
+    const allGroupsResult = {
+      data: [],
+      fetchStatus: 'loaded'
+    }
+    const { root } = setup({
+      allGroupsResult
+    })
+
+    const { getByText, getAllByText } = root
+
+    // open the group filter
+    fireEvent.click(getByText(enLocale.filter['all-contacts']))
+
+    // should be all-contacts only once, and show the empty groups message
+    expect(getAllByText(enLocale.filter['all-contacts']).length).toBe(1)
+    expect(getByText(enLocale.filter['no-group']))
+  })
+
+  it('should show correct entry after selecting an option', () => {
+    const { root } = setup()
+
+    const { getByText, getByTestId } = root
+
+    expect(getByTestId('selectBox-controlDefault').textContent).toBe(
+      enLocale.filter['all-contacts']
+    )
+
+    // open the group filter and select first group
+    fireEvent.click(getByText(enLocale.filter['all-contacts']))
+    fireEvent.click(getByText(groups[0].name))
+
+    // should show group name instead of default option
+    expect(getByTestId('selectBox-controlDefault').textContent).toBe(
+      groups[0].name
+    )
+
+    // should show default option again after selecting it
+    fireEvent.click(getByText(enLocale.filter['all-contacts']))
+    expect(getByTestId('selectBox-controlDefault').textContent).toBe(
+      enLocale.filter['all-contacts']
     )
   })
 })

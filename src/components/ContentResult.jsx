@@ -53,10 +53,14 @@ export const ContentResult = ({
     container: base => ({
       ...base,
       ...(!isMobile && { width: '24rem' })
-    })
+    }),
+    noOptionsMessage: base => ({ ...base, textAlign: 'left' })
   }
 
-  const options = [getDefaultSelectedGroup(t)].concat(allGroupsResult.data)
+  const options =
+    allGroupsResult.data.length > 0
+      ? [getDefaultSelectedGroup(t)].concat(allGroupsResult.data)
+      : allGroupsResult.data
 
   return (
     <>
