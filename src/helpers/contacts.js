@@ -1,5 +1,6 @@
 import sortBy from 'lodash/sortBy'
-import { models } from 'cozy-client'
+import { models, HasMany } from 'cozy-client'
+
 const {
   getFullname,
   getIndexByFamilyNameGivenNameEmailCozyUrl,
@@ -169,3 +170,11 @@ export const getFormattedAddress = (address, t) => {
     return t('formatted.address', { ...emptyAddress, ...address }).trim()
   }
 }
+
+/**
+ * Add a group to a contact
+ * @param {object} contact - An io.cozy.contact document
+ * @param {object} group - An io.cozy.contacts.groups document
+ */
+export const addGroupToContact = (contact, group) =>
+  HasMany.setHasManyItem(contact, 'groups', group._id, group)
