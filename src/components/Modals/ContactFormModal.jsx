@@ -15,6 +15,7 @@ import ContactsContext from '../Context'
 import ContactForm, { getSubmitContactForm } from '../ContactCard/ContactForm'
 import { fullContactPropTypes } from '../ContactPropTypes'
 import withContactsMutations from '../../connections/allContacts'
+import { addGroupToContact } from '../../helpers/contacts'
 
 const ContactFormModal = ({
   contact,
@@ -38,13 +39,13 @@ const ContactFormModal = ({
     const hasSelectedGroup =
       get(selectedGroup, '_id') !== get(defaultGroup, '_id')
     const createOrUpdate = contactInForm ? updateContact : createContact
-    const updatedContact = {
+    let updatedContact = {
       ...contactInForm,
       ...formData
     }
 
     if (hasSelectedGroup) {
-      updatedContact.relationships.groups.data.push(selectedGroup)
+      updatedContact = addGroupToContact(updatedContact, selectedGroup)
     }
 
     setIsFormBeingSubmitted(true)
