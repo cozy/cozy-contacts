@@ -41,3 +41,22 @@ export const filterContactsByGroup = (contacts, selectedGroup) => {
 export const addGroupToContact = async (contact, createdGroup) => {
   await contact.groups.addById(createdGroup.data._id)
 }
+
+/**
+ * Returns the group defined as default in the group filter
+ * @param {function} t - Translate
+ */
+export const getDefaultSelectedGroup = t => ({
+  name: t('filter.all-contacts'),
+  withNoAction: true
+})
+
+/**
+ * Returns whether a group is selected in group filter
+ * @param {object} selectedGroup - Group selected in group filter
+ * @param {function} t - Translate
+ */
+export const hasSelectedGroup = (selectedGroup, t) => {
+  const defaultSelectedGroup = getDefaultSelectedGroup(t)
+  return get(selectedGroup, '_id') !== get(defaultSelectedGroup, '_id')
+}

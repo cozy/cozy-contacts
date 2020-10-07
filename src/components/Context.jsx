@@ -1,29 +1,17 @@
 import React, { createContext, useState } from 'react'
 
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { getDefaultSelectedGroup } from '../helpers/groups'
 
 const ContactsContext = createContext()
 
 const ContextProvider = ({ children }) => {
   const { t } = useI18n()
-
-  const defaultGroup = {
-    name: t('filter.all-contacts'),
-    withNoAction: true,
-    isGroup: false
-  }
-
-  const [selectedGroup, setSelectedGroup] = useState(defaultGroup)
-
-  const setSelectedGroupAsDefault = () => {
-    setSelectedGroup(defaultGroup)
-  }
+  const [selectedGroup, setSelectedGroup] = useState(getDefaultSelectedGroup(t))
 
   const contextValue = {
     selectedGroup,
-    setSelectedGroup,
-    defaultGroup,
-    setSelectedGroupAsDefault
+    setSelectedGroup
   }
 
   return (
