@@ -48,7 +48,7 @@ export class GroupsSelectClass extends React.Component {
     }
 
     try {
-      const createdGroup = await createGroup(group)
+      const { data: createdGroup } = await createGroup(group)
       if (onGroupCreated) {
         onGroupCreated(createdGroup)
       }

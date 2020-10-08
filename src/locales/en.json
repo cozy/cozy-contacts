@@ -28,7 +28,8 @@
     "vcard": "From a vCard file"
   },
   "error": {
-    "save": "An error occurred while saving the contact, please try again"
+    "save": "An error occurred while saving the contact, please try again",
+    "group_selected": "There was a problem when selecting a group, please try again."
   },
   "formatted": {
     "date": "YYYY-MM-DD",
