@@ -65,13 +65,21 @@ export const fetchNormalizedServiceByName = async (client, serviceName) => {
       })
     )
 
+    if (!triggersByName || 0 === triggersByName.data.length) {
+      throw new Error('service is not available')
+    }
+
     const normalizedTrigger = await client.query(
       client.get('io.cozy.triggers', triggersByName.data[0].id)
     )
 
+    if (!normalizedTrigger) {
+      throw new Error('normalized service is not available')
+    }
+
     return normalizedTrigger.data
   } catch (e) {
-    log('error', `Can't find ${serviceName} : ${e}`)
+    log('error', `Can't find ${serviceName}: ${e}`)
     return null
   }
 }
