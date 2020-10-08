@@ -13,7 +13,9 @@ const setup = () => {
         value={[groups[0]]}
         allGroups={groups}
         onChange={() => {}}
-        control={Control}
+        components={{ Control }}
+        createGroup={createGroup}
+        updateGroup={updateGroup}
       />
     </AppLike>
   )
