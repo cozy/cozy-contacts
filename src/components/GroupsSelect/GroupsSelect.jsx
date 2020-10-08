@@ -15,9 +15,9 @@ import { isExistingGroup } from '../../helpers/groups'
 import container from '../ContactCard/ContactGroupsContainer'
 
 import ControlDefault from './SelectBox/ControlDefault'
-import Menu from './SelectBox/Menu'
-import Option from './SelectBox/Option'
-import SelectContainer from './SelectBox/SelectContainer'
+import CustomMenu from './SelectBox/Menu'
+import CustomOption from './SelectBox/Option'
+import CustomSelectContainer from './SelectBox/SelectContainer'
 
 const captureEscapeEvent = e => {
   if (e.key === 'Escape') {
@@ -35,18 +35,17 @@ export class GroupsSelectClass extends React.Component {
   toggleMenu = () => {
     this.setState(state => ({ menuIsOpen: !state.menuIsOpen }))
   }
-  forceMenuOpen = () => this.setState({ menuIsOpen: true })
   setEditedGroupId = id => this.setState({ editedGroupId: id })
 
   createGroup = async group => {
-    const { allGroups, onGroupCreated } = this.props
+    const { allGroups, onGroupCreated, createGroup } = this.props
 
     if (isExistingGroup(allGroups, group)) {
       return Alerter.error('groups.already_exists', { name: group.name })
     }
 
     try {
-      const createdGroup = await this.props.createGroup(group)
+      const createdGroup = await createGroup(group)
       if (onGroupCreated) {
         onGroupCreated(createdGroup)
       }
@@ -57,21 +56,23 @@ export class GroupsSelectClass extends React.Component {
   }
 
   deleteGroup = async group => {
+    const { t, updateGroup, cleanTrashedGroups } = this.props
     const { selectedGroup, setSelectedGroupAsDefault } = this.context
-    const isGroupSelected = get(group, '_id') === get(selectedGroup, '_id')
-    const { data: flaggedGroup } = await this.props.updateGroup({
+    const isDeletedGroupSelected =
+      get(group, '_id') === get(selectedGroup, '_id')
+    const { data: flaggedGroup } = await updateGroup({
       ...group,
       trashed: true
     })
     const alertDuration = 3 * 1000
 
     const alertTimeout = setTimeout(() => {
-      this.props.cleanTrashedGroups()
+      cleanTrashedGroups()
     }, alertDuration)
 
     Alerter.info('groups.removed', {
       name: flaggedGroup.name,
-      buttonText: this.props.t('cancel'),
+      buttonText: t('cancel'),
       buttonAction: () => {
         clearTimeout(alertTimeout)
         this.cancelGroupDelete(flaggedGroup)
@@ -79,31 +80,33 @@ export class GroupsSelectClass extends React.Component {
       duration: alertDuration
     })
 
-    if (isGroupSelected) {
+    if (isDeletedGroupSelected) {
       setSelectedGroupAsDefault()
     }
   }
 
   cancelGroupDelete = async group => {
+    const { updateGroup } = this.props
     delete group.trashed
-    await this.props.updateGroup(group)
+    await updateGroup(group)
     Alerter.info('groups.remove_canceled', { name: group.name })
   }
 
   renameGroup = async (groupId, newName) => {
     const { selectedGroup, setSelectedGroup } = this.context
-    const { allGroups } = this.props
+    const { allGroups, updateGroup } = this.props
     const group = allGroups.find(group => group.id === groupId)
     const allOtherGroups = allGroups.filter(group => group.id !== groupId)
-    const isGroupSelected = get(group, '_id') === get(selectedGroup, '_id')
+    const isRenamedGroupSelected =
+      get(group, '_id') === get(selectedGroup, '_id')
 
     if (isExistingGroup(allOtherGroups, { name: newName })) {
       return Alerter.error('groups.already_exists', { name: newName })
     }
 
     try {
-      const { data } = await this.props.updateGroup({ ...group, name: newName })
-      if (isGroupSelected) {
+      const { data } = await updateGroup({ ...group, name: newName })
+      if (isRenamedGroupSelected) {
         setSelectedGroup(data)
       }
       return Alerter.success('groups.renamed.success')
@@ -118,20 +121,32 @@ export class GroupsSelectClass extends React.Component {
       allGroups,
       styles,
       onChange,
-      control,
       isMulti,
       noOptionsMessage,
-      withCheckbox
+      withCheckbox,
+      components
     } = this.props
     const { menuIsOpen, editedGroupId } = this.state
-    const { createGroup, deleteGroup, renameGroup } = this
+    const {
+      createGroup,
+      deleteGroup,
+      renameGroup,
+      toggleMenu,
+      setEditedGroupId
+    } = this
+    const {
+      Control = ControlDefault,
+      Menu = CustomMenu,
+      Option = CustomOption,
+      SelectContainer = CustomSelectContainer
+    } = components
 
     return (
       <div className="u-flex-shrink-0 u-m-0">
         {menuIsOpen && (
           <Overlay
             className={classNames('overlay-creation-group')}
-            onClick={this.toggleMenu}
+            onClick={toggleMenu}
           />
         )}
         <SelectBox
@@ -153,7 +168,7 @@ export class GroupsSelectClass extends React.Component {
           getOptionLabel={group => group.name}
           getOptionValue={group => group._id}
           components={{
-            Control: control ? control : ControlDefault,
+            Control,
             Menu,
             Option,
             SelectContainer
@@ -162,8 +177,8 @@ export class GroupsSelectClass extends React.Component {
           deleteGroup={deleteGroup}
           renameGroup={renameGroup}
           styles={styles}
-          toggleMenu={this.toggleMenu}
-          setEditedGroupId={this.setEditedGroupId}
+          toggleMenu={toggleMenu}
+          setEditedGroupId={setEditedGroupId}
           editedGroupId={editedGroupId}
         />
       </div>
@@ -177,17 +192,23 @@ GroupsSelectClass.propTypes = {
   t: PropTypes.func.isRequired,
   styles: PropTypes.object,
   onChange: PropTypes.func.isRequired,
-  // for multiple selections, value can an array
+  // for multiple selections, value can be an array
   value: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-  control: PropTypes.func,
+  // to customize react-select elements
+  components: PropTypes.object,
+  // to define if it is possible to select more than one option
   isMulti: PropTypes.bool,
+  // noOptionsMessage is used to show a message when there is no options in the menu list
   noOptionsMessage: PropTypes.func,
+  // hide/show checkbox besides menu list options
   withCheckbox: PropTypes.bool,
+  // function to be triggered after creating a group
   onGroupCreated: PropTypes.func
 }
 
 GroupsSelectClass.defaultProps = {
-  isMulti: false
+  isMulti: false,
+  components: {}
 }
 
 const GroupsSelect = flow(

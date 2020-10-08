@@ -64,8 +64,8 @@ const ContactInfo = ({
               allGroups={allGroups}
               styles={customStyles}
               onChange={handleChange}
-              value={userGroups}
-              control={Control}
+              value={handleValue}
+              components={{ Control }}
               isMulti
               onGroupCreated={addGroupToContact}
               noOptionsMessage={() => t('groups.none')}
