@@ -11,7 +11,10 @@ import SelectBox from 'cozy-ui/transpiled/react/SelectBox'
 
 import SelectedGroupContext from '../Contexts/SelectedGroup'
 import withGroupsMutations from '../../connections/allGroups'
-import { getDefaultSelectedGroup, isExistingGroup } from '../../helpers/groups'
+import {
+  translatedDefaultSelectedGroup,
+  isExistingGroup
+} from '../../helpers/groups'
 import container from '../ContactCard/ContactGroupsContainer'
 
 import ControlDefault from './SelectBox/ControlDefault'
@@ -81,7 +84,7 @@ export class GroupsSelectClass extends React.Component {
     })
 
     if (isDeletedGroupSelected) {
-      setSelectedGroup(getDefaultSelectedGroup(t))
+      setSelectedGroup(translatedDefaultSelectedGroup(t))
     }
   }
 

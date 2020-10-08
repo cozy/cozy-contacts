@@ -14,8 +14,7 @@ import SpinnerContact from './Common/Spinner'
 import { reworkContacts } from '../helpers/contacts'
 import {
   filterContactsByGroup,
-  getDefaultSelectedGroup,
-  hasSelectedGroup
+  translatedDefaultSelectedGroup
 } from '../helpers/groups'
 import GroupsSelect from './GroupsSelect/GroupsSelect'
 
@@ -45,9 +44,7 @@ export const ContentResult = ({
     contactsWithNoIndexesResult.data
   )
 
-  const filteredContacts = hasSelectedGroup(selectedGroup, t)
-    ? filterContactsByGroup(contacts, selectedGroup)
-    : contacts
+  const filteredContactsByGroup = filterContactsByGroup(contacts, selectedGroup)
 
   const customStyles = {
     container: base => ({
@@ -59,7 +56,7 @@ export const ContentResult = ({
 
   const options =
     allGroupsResult.data.length > 0
-      ? [getDefaultSelectedGroup(t)].concat(allGroupsResult.data)
+      ? [translatedDefaultSelectedGroup(t)].concat(allGroupsResult.data)
       : allGroupsResult.data
 
   return (
@@ -79,7 +76,7 @@ export const ContentResult = ({
         />
       )}
       <Content>
-        <ContactsList contacts={filteredContacts} />
+        <ContactsList contacts={filteredContactsByGroup} />
       </Content>
     </>
   )
