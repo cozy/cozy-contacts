@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { PropTypes } from 'prop-types'
 
-import { isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 import { Content } from 'cozy-ui/transpiled/react/Layout'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
@@ -10,54 +9,31 @@ import SelectedGroupContext from './Contexts/SelectedGroup'
 import Header from './Header'
 import Toolbar from './Toolbar'
 import ContactsList from './ContactsList/ContactsList.jsx'
-import SpinnerContact from './Common/Spinner'
-import { reworkContacts } from '../helpers/contacts'
+import GroupsSelect from './GroupsSelect/GroupsSelect'
 import {
   filterContactsByGroup,
   translatedDefaultSelectedGroup
 } from '../helpers/groups'
-import GroupsSelect from './GroupsSelect/GroupsSelect'
 
-export const ContentResult = ({
-  hasServiceBeenLaunched,
-  contactsWithIndexesResult,
-  contactsWithNoIndexesResult,
-  allGroupsResult
-}) => {
+const setCustomStyles = isMobile => ({
+  container: base => ({
+    ...base,
+    ...(!isMobile && { width: '24rem' })
+  }),
+  noOptionsMessage: base => ({ ...base, textAlign: 'left' })
+})
+
+const setOptions = (allGroups, defaultSelectedGroup) =>
+  allGroups.length > 0 ? [defaultSelectedGroup].concat(allGroups) : allGroups
+
+export const ContentResult = ({ contacts, allGroups }) => {
   const { t } = useI18n()
-  const { isMobile } = useBreakpoints()
   const { selectedGroup, setSelectedGroup } = useContext(SelectedGroupContext)
+  const { isMobile } = useBreakpoints()
 
-  const dataHaveBeenLoaded =
-    !isQueryLoading(contactsWithIndexesResult) &&
-    !isQueryLoading(contactsWithNoIndexesResult) &&
-    !contactsWithIndexesResult.hasMore &&
-    !contactsWithNoIndexesResult.hasMore &&
-    (!isQueryLoading(allGroupsResult) || hasQueryBeenLoaded(allGroupsResult))
-
-  if (!dataHaveBeenLoaded)
-    return <SpinnerContact size="xxlarge" loadingType="fetching_contacts" />
-
-  const contacts = reworkContacts(
-    hasServiceBeenLaunched,
-    contactsWithIndexesResult.data,
-    contactsWithNoIndexesResult.data
-  )
-
+  const customStyles = setCustomStyles(isMobile)
+  const options = setOptions(allGroups, translatedDefaultSelectedGroup(t))
   const filteredContactsByGroup = filterContactsByGroup(contacts, selectedGroup)
-
-  const customStyles = {
-    container: base => ({
-      ...base,
-      ...(!isMobile && { width: '24rem' })
-    }),
-    noOptionsMessage: base => ({ ...base, textAlign: 'left' })
-  }
-
-  const options =
-    allGroupsResult.data.length > 0
-      ? [translatedDefaultSelectedGroup(t)].concat(allGroupsResult.data)
-      : allGroupsResult.data
 
   return (
     <>
@@ -83,10 +59,8 @@ export const ContentResult = ({
 }
 
 ContentResult.propTypes = {
-  hasServiceBeenLaunched: PropTypes.bool.isRequired,
-  contactsWithIndexesResult: PropTypes.object.isRequired,
-  contactsWithNoIndexesResult: PropTypes.object.isRequired,
-  allGroupsResult: PropTypes.object.isRequired
+  contacts: PropTypes.array.isRequired,
+  allGroups: PropTypes.array.isRequired
 }
 
 export default ContentResult
