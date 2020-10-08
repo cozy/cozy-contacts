@@ -3,7 +3,7 @@ import React from 'react'
 import { Query } from 'cozy-client'
 
 import SpinnerContact from './Common/Spinner'
-import ContentResult from './ContentResult'
+import ContentRework from './ContentRework'
 import {
   contactsByFamilyNameGivenNameEmailCozyUrl,
   contactsWithoutIndexes,
@@ -46,7 +46,7 @@ const ContentWrapper = () => {
                 >
                   {allGroupsResult => {
                     return (
-                      <ContentResult
+                      <ContentRework
                         hasServiceBeenLaunched={hasServiceBeenLaunched}
                         contactsWithIndexesResult={contactsWithIndexesResult}
                         contactsWithNoIndexesResult={

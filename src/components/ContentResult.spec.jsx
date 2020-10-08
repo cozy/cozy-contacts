@@ -3,151 +3,34 @@ import { render, fireEvent } from '@testing-library/react'
 
 import AppLike from '../tests/Applike'
 import ContentResult from './ContentResult'
-import { groups } from '../helpers/testData'
+import { groups, contactWithGroup, johnDoeContact } from '../helpers/testData'
 import enLocale from '../locales/en.json'
 
 const mockedContacts = {
-  withIndexes: [
-    {
-      name: { givenName: 'Jane', familyName: 'Doe' },
-      fullname: 'Jane Doe',
-      displayName: 'Jane Doe',
-      indexes: { byFamilyNameGivenNameEmailCozyUrl: 'Doejane' }
-    }
-  ],
-  withoutIndexes: [
-    {
-      name: { givenName: 'William', familyName: 'Wallace' }
-    }
-  ],
-  withGroup: [
-    {
-      name: { givenName: 'Jack', familyName: 'Ingroup' },
-      displayName: 'Jack Ingroup',
-      indexes: { byFamilyNameGivenNameEmailCozyUrl: 'jackingroup' },
-      relationships: {
-        groups: {
-          data: groups
-        }
-      }
-    }
-  ]
+  withoutGroup: [johnDoeContact],
+  withGroup: [contactWithGroup]
 }
 
 const setup = ({
-  hasServiceBeenLaunched = true,
-  contactsWithIndexesResult = {
-    data: mockedContacts.withIndexes,
-    fetchStatus: 'loaded',
-    hasMore: false,
-    fetchMore: jest.fn()
-  },
-  contactsWithNoIndexesResult = {
-    data: mockedContacts.withoutIndexes,
-    fetchStatus: 'loaded',
-    hasMore: false,
-    fetchMore: jest.fn()
-  },
-  allGroupsResult = {
-    data: groups,
-    fetchStatus: 'loaded'
-  }
+  contacts = mockedContacts.withoutGroup,
+  allGroups = groups
 } = {}) => {
   const root = render(
     <AppLike>
-      <ContentResult
-        hasServiceBeenLaunched={hasServiceBeenLaunched}
-        contactsWithIndexesResult={contactsWithIndexesResult}
-        contactsWithNoIndexesResult={contactsWithNoIndexesResult}
-        allGroupsResult={allGroupsResult}
-      />
+      <ContentResult contacts={contacts} allGroups={allGroups} />
     </AppLike>
   )
   return { root }
 }
 
 describe('ContentResult', () => {
-  it('should show a spinner if data has not been loaded', () => {
-    const { root } = setup({
-      hasServiceBeenLaunched: false,
-      contactsWithIndexesResult: {
-        data: [{}],
-        fetchStatus: 'pending',
-        hasMore: false,
-        fetchMore: jest.fn()
-      },
-      contactsWithNoIndexesResult: {
-        data: [{}],
-        fetchStatus: 'pending',
-        hasMore: false,
-        fetchMore: jest.fn()
-      }
-    })
-    const { getByTestId } = root
-    expect(getByTestId('contactSpinner'))
-  })
-  it('should show a spinner if one query is still loading', () => {
-    const { root } = setup({
-      hasServiceBeenLaunched: false,
-      contactsWithIndexesResult: {
-        data: mockedContacts.withIndexes,
-        fetchStatus: 'loaded',
-        hasMore: false,
-        fetchMore: jest.fn()
-      },
-      contactsWithNoIndexesResult: {
-        data: [{}],
-        fetchStatus: 'loading',
-        hasMore: false,
-        fetchMore: jest.fn()
-      }
-    })
-    const { getByTestId } = root
-    expect(getByTestId('contactSpinner'))
-  })
-  it('should show a spinner if queries are both loaded but still with more data to fetch', () => {
-    const { root } = setup({
-      hasServiceBeenLaunched: false,
-      contactsWithIndexesResult: {
-        data: mockedContacts.withIndexes,
-        fetchStatus: 'loaded',
-        hasMore: true,
-        fetchMore: jest.fn()
-      },
-      contactsWithNoIndexesResult: {
-        data: mockedContacts.withoutIndexes,
-        fetchStatus: 'loaded',
-        hasMore: true,
-        fetchMore: jest.fn()
-      }
-    })
-    const { getByTestId } = root
-    expect(getByTestId('contactSpinner'))
-  })
-  it('should have empty section (for contacts without indexes) if service has been launched', () => {
-    const { root } = setup()
-    const { getByText } = root
-    expect(getByText('EMPTY'))
-  })
-  it('should not have empty section (for contacts without indexes) if service has not been launched', () => {
-    const { root } = setup({
-      hasServiceBeenLaunched: false
-    })
-    const { queryByText } = root
-    expect(queryByText('EMPTY')).toBeNull()
-  })
-})
-
-describe('ContentResult - filtering', () => {
   it('should show only filtered contacts after selecting a group filter', () => {
     const { root } = setup({
-      contactsWithIndexesResult: {
-        data: [mockedContacts.withIndexes[0], mockedContacts.withGroup[0]]
-      }
+      contacts: [mockedContacts.withoutGroup[0], mockedContacts.withGroup[0]]
     })
 
     const contactWithGroup = mockedContacts.withGroup[0].name.familyName
-    const contactWithoutGroup = mockedContacts.withIndexes[0].name.familyName
+    const contactWithoutGroup = mockedContacts.withoutGroup[0].name.familyName
 
     const { getByText, queryByText } = root
 
@@ -181,13 +64,7 @@ describe('ContentResult - filtering', () => {
   })
 
   it('should show empty message in group filter if no group to filter on', () => {
-    const allGroupsResult = {
-      data: [],
-      fetchStatus: 'loaded'
-    }
-    const { root } = setup({
-      allGroupsResult
-    })
+    const { root } = setup({ allGroups: [] })
 
     const { getByText, getAllByText } = root
 
