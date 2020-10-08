@@ -12,7 +12,7 @@ const hasServiceBeenLaunched = service => {
 
 const useService = name => {
   const [service, setService] = useState(null)
-  const hasBeenLaunched = service && hasServiceBeenLaunched(service)
+  const hasBeenLaunched = !!service && hasServiceBeenLaunched(service)
   const client = useClient()
 
   const fetchService = useCallback(async () => {
