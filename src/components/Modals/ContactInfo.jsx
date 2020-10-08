@@ -2,11 +2,13 @@ import React from 'react'
 import { PropTypes } from 'prop-types'
 import get from 'lodash/get'
 
+import log from 'cozy-logger'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { ModalHeader, ModalContent } from 'cozy-ui/transpiled/react/Modal'
 import Button from 'cozy-ui/transpiled/react/Button'
+import Alerter from 'cozy-ui/transpiled/react/Alerter'
 
-import { updateContactGroups, addGroupToContact } from '../../helpers/groups'
+import { updateContactGroups } from '../../helpers/groups'
 import { fullContactPropTypes } from '../ContactPropTypes'
 import ContactCard from '../ContactCard/ContactCard'
 import GroupsSelect from '../GroupsSelect/GroupsSelect'
@@ -39,8 +41,17 @@ const ContactInfo = ({
 }) => {
   const { t } = useI18n()
 
-  const handleChange = nextGroups => {
-    updateContactGroups(contact, nextGroups)
+  const handleChange = async nextGroups => {
+    try {
+      await updateContactGroups(contact, nextGroups)
+    } catch (error) {
+      Alerter.success('error.group_selected')
+      log('error', `There was a problem when selecting a group : ${error}`)
+    }
+  }
+
+  const handleOnGroupCreated = async createdGroup => {
+    await contact.groups.addById(createdGroup._id)
   }
 
   const handleValue = get(contact, 'relationships.groups.data', [])
@@ -61,7 +72,7 @@ const ContactInfo = ({
               value={handleValue}
               components={{ Control }}
               isMulti
-              onGroupCreated={addGroupToContact}
+              onGroupCreated={handleOnGroupCreated}
               noOptionsMessage={() => t('groups.none')}
               withCheckbox
             />

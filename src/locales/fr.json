@@ -28,7 +28,8 @@
     "vcard": "Depuis un fichier vCard"
   },
   "error": {
-    "save": "Une erreur est survenue lors de l'enregistrement du contact, veuillez réessayer"
+    "save": "Une erreur est survenue lors de l'enregistrement du contact, veuillez réessayer",
+    "group_selected": "Il y a eu un problème lors de la sélection d'un groupe, veuillez réessayer."
   },
   "formatted": {
     "date": "DD/MM/YYYY",

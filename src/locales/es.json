@@ -28,7 +28,8 @@
     "vcard": "Desde un archivo vCard"
   },
   "error": {
-    "save": "Se ha producido un error al guardar el contacto, inténtelo de nuevo."
+    "save": "Se ha producido un error al guardar el contacto, inténtelo de nuevo.",
+    "group_selected": "Hubo un problema al seleccionar un grupo, inténtelo de nuevo."
   },
   "formatted": {
     "date": "YYYY-MM-DD",
