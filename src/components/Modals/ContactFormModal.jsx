@@ -42,7 +42,7 @@ const ContactFormModal = ({
       ...formData
     }
 
-    if (hasSelectedGroup(selectedGroup, t)) {
+    if (hasSelectedGroup(selectedGroup)) {
       updatedContact = addGroupToContact(updatedContact, selectedGroup)
     }
 
