@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types'
 import { Content } from 'cozy-ui/transpiled/react/Layout'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import { ControlDefault } from 'cozy-ui/transpiled/react/SelectBox'
 
 import SelectedGroupContext from './Contexts/SelectedGroup'
 import Header from './Header'
@@ -26,6 +27,18 @@ const setCustomStyles = isMobile => ({
 const setOptions = (allGroups, defaultSelectedGroup) =>
   allGroups.length > 0 ? [defaultSelectedGroup].concat(allGroups) : allGroups
 
+const ControlDefaultWithTestId = ({ ...props }) => {
+  return (
+    <ControlDefault
+      {...props}
+      innerProps={{
+        ...props.innerProps,
+        'data-testid': 'selectBox-controlDefault'
+      }}
+    />
+  )
+}
+
 export const ContentResult = ({ contacts, allGroups }) => {
   const { t } = useI18n()
   const { selectedGroup, setSelectedGroup } = useContext(SelectedGroupContext)
@@ -46,6 +59,9 @@ export const ContentResult = ({ contacts, allGroups }) => {
               onChange={setSelectedGroup}
               noOptionsMessage={() => t('filter.no-group')}
               styles={customStyles}
+              components={{
+                Control: ControlDefaultWithTestId
+              }}
             />
           }
           right={<Toolbar />}

@@ -17,7 +17,6 @@ import {
 } from '../../helpers/groups'
 import container from '../ContactCard/ContactGroupsContainer'
 
-import ControlDefault from './SelectBox/ControlDefault'
 import CustomMenu from './SelectBox/Menu'
 import CustomOption from './SelectBox/Option'
 import CustomSelectContainer from './SelectBox/SelectContainer'
@@ -137,12 +136,12 @@ export class GroupsSelectClass extends React.Component {
       toggleMenu,
       setEditedGroupId
     } = this
-    const {
-      Control = ControlDefault,
-      Menu = CustomMenu,
-      Option = CustomOption,
-      SelectContainer = CustomSelectContainer
-    } = components
+
+    const defaultComponents = {
+      Menu: CustomMenu,
+      Option: CustomOption,
+      SelectContainer: CustomSelectContainer
+    }
 
     return (
       <div className="u-flex-shrink-0 u-m-0">
@@ -170,17 +169,12 @@ export class GroupsSelectClass extends React.Component {
           onChange={onChange}
           getOptionLabel={group => group.name}
           getOptionValue={group => group._id}
-          components={{
-            Control,
-            Menu,
-            Option,
-            SelectContainer
-          }}
+          components={{ ...defaultComponents, ...components }}
           createGroup={createGroup}
           deleteGroup={deleteGroup}
           renameGroup={renameGroup}
           styles={styles}
-          toggleMenu={toggleMenu}
+          onControlClicked={toggleMenu}
           setEditedGroupId={setEditedGroupId}
           editedGroupId={editedGroupId}
         />
