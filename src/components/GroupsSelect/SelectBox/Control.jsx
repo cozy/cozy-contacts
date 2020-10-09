@@ -6,7 +6,7 @@ import Icon from 'cozy-ui/transpiled/react/Icon'
 import palette from 'cozy-ui/transpiled/react/palette'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
-const Control = ({ selectProps: { toggleMenu } }) => {
+const Control = ({ selectProps: { onControlClicked } }) => {
   const { t } = useI18n()
 
   return (
@@ -14,7 +14,7 @@ const Control = ({ selectProps: { toggleMenu } }) => {
       theme="secondary"
       size="small"
       label={t('groups.manage')}
-      onClick={toggleMenu}
+      onClick={onControlClicked}
     >
       <Icon
         icon="bottom-select"
