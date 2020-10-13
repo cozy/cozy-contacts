@@ -1,8 +1,16 @@
+import Polyglot from 'node-polyglot'
+
 import formValuesToContact from './formValuesToContact'
-import { johnDoeFormValues } from '../../../helpers/testData'
+import { updateIndexFullNameAndDisplayName } from '../../../helpers/contacts'
+import { johnDoeFormValues, johnDoeContact } from '../../../helpers/testData'
+import en from '../../../locales/en.json'
+
+const polyglot = new Polyglot()
+polyglot.extend(en)
+const t = polyglot.t.bind(polyglot)
 
 describe('formValuesToContact', () => {
-  it('should convert form values to contact', () => {
+  it('should convert form values to contact when creating a contact', () => {
     const expected = {
       address: [
         {
@@ -47,7 +55,12 @@ describe('formValuesToContact', () => {
         }
       }
     }
-    const result = formValuesToContact(johnDoeFormValues, null)
+
+    const result = formValuesToContact({
+      formValues: johnDoeFormValues,
+      oldContact: null,
+      t
+    })
     expect(result).toEqual(expected)
   })
 
@@ -60,7 +73,7 @@ describe('formValuesToContact', () => {
           type: undefined
         }
       ],
-      birthday: null,
+      birthday: undefined,
       company: undefined,
       jobTitle: undefined,
       cozy: undefined,
@@ -82,9 +95,10 @@ describe('formValuesToContact', () => {
         }
       ]
     }
+
     const expected = {
       address: [],
-      birthday: null,
+      birthday: '',
       company: '',
       cozy: [],
       displayName: 'Jane Doe',
@@ -99,7 +113,7 @@ describe('formValuesToContact', () => {
       relationships: { groups: { data: [] } }
     }
 
-    const result = formValuesToContact(formValues, null)
+    const result = formValuesToContact({ formValues, oldContact: null, t })
     expect(result).toEqual(expected)
   })
 
@@ -117,6 +131,7 @@ describe('formValuesToContact', () => {
         }
       }
     }
+
     const expectedMetadata = {
       cozy: true,
       google: {
@@ -130,11 +145,16 @@ describe('formValuesToContact', () => {
       },
       version: 1
     }
-    const result = formValuesToContact(johnDoeFormValues, oldContact)
+
+    const result = formValuesToContact({
+      formValues: johnDoeFormValues,
+      oldContact,
+      t
+    })
     expect(result.metadata).toEqual(expectedMetadata)
   })
 
-  it('should not erase additional information if it was present in the contact', () => {
+  it('should not remove additional data if it was present in the contact', () => {
     const oldContact = {
       name: {
         additionalName: 'J.',
@@ -145,6 +165,7 @@ describe('formValuesToContact', () => {
       },
       me: true
     }
+
     const expected = {
       name: {
         additionalName: 'J.',
@@ -156,13 +177,17 @@ describe('formValuesToContact', () => {
       me: true
     }
 
-    const result = formValuesToContact(johnDoeFormValues, oldContact)
+    const result = formValuesToContact({
+      formValues: johnDoeFormValues,
+      oldContact,
+      t
+    })
     Object.keys(oldContact).map(key =>
       expect(result[key]).toEqual(expected[key])
     )
   })
 
-  it('should not erase attributes not in the doctype if it was present in the contact', () => {
+  it('should not remove attributes not in the doctype if it was present in the contact', () => {
     const oldContact = {
       otherInfoNotInDoctype: {
         information: 'Lorem Ipsum'
@@ -170,7 +195,150 @@ describe('formValuesToContact', () => {
     }
     const expected = { information: 'Lorem Ipsum' }
 
-    const result = formValuesToContact(johnDoeFormValues, oldContact)
+    const result = formValuesToContact({
+      formValues: johnDoeFormValues,
+      oldContact,
+      t
+    })
     expect(result.otherInfoNotInDoctype).toEqual(expected)
+  })
+
+  it('should erase contact datas for empty fields', () => {
+    const formValues = {
+      givenName: undefined,
+      familyName: undefined,
+      company: undefined,
+      jobTitle: undefined,
+      birthday: undefined,
+      note: undefined,
+      address: [undefined],
+      email: [undefined],
+      phone: [undefined],
+      cozy: undefined
+    }
+
+    const expected = updateIndexFullNameAndDisplayName({
+      ...johnDoeContact,
+      name: { givenName: '', familyName: '' },
+      company: '',
+      jobTitle: '',
+      address: [],
+      email: [],
+      cozy: [],
+      phone: [],
+      birthday: '',
+      note: '',
+      relationships: { groups: { data: [] } }
+    })
+
+    const result = formValuesToContact({
+      formValues,
+      oldContact: johnDoeContact,
+      t
+    })
+    expect(result).toEqual(expected)
+  })
+
+  it('should erase contact datas for emptied fields', () => {
+    const formValues = {
+      givenName: '',
+      familyName: '',
+      company: '',
+      jobTitle: '',
+      birthday: '',
+      note: '',
+      address: [{}],
+      email: [{}],
+      phone: [{}],
+      cozy: ''
+    }
+
+    const expected = updateIndexFullNameAndDisplayName({
+      ...johnDoeContact,
+      name: { givenName: '', familyName: '' },
+      company: '',
+      jobTitle: '',
+      address: [],
+      email: [],
+      cozy: [],
+      phone: [],
+      birthday: '',
+      note: '',
+      relationships: { groups: { data: [] } }
+    })
+
+    const result = formValuesToContact({
+      formValues,
+      oldContact: johnDoeContact,
+      t
+    })
+    expect(result).toEqual(expected)
+  })
+
+  it('should not remove contact unformatted address if nothing change', () => {
+    const formValues = {
+      address: [{ address: '94 Hinton Road 05034 Fresno Singapore' }]
+    }
+
+    const oldContact = {
+      address: [
+        {
+          pobox: '94',
+          street: 'Hinton Road',
+          city: 'Fresno',
+          country: 'Singapore',
+          postcode: '05034',
+          type: 'Work'
+        }
+      ]
+    }
+
+    const expected = {
+      address: [
+        {
+          pobox: '94',
+          street: 'Hinton Road',
+          city: 'Fresno',
+          country: 'Singapore',
+          postcode: '05034',
+          type: 'Work'
+        }
+      ]
+    }
+
+    const result = formValuesToContact({ formValues, oldContact, t })
+    expect(result.address).toEqual(expected.address)
+  })
+
+  it('should replace contact unformatted address by formatted one if something change', () => {
+    const formValues = {
+      address: [{ address: '01 Hinton Road 05034 Fresno, Singapore' }]
+    }
+
+    const oldContact = {
+      address: [
+        {
+          pobox: '94',
+          street: 'Hinton Road',
+          city: 'Fresno',
+          country: 'Singapore',
+          postcode: '05034',
+          type: 'Work'
+        }
+      ]
+    }
+
+    const expected = {
+      address: [
+        {
+          formattedAddress: '01 Hinton Road 05034 Fresno, Singapore',
+          primary: true,
+          type: undefined
+        }
+      ]
+    }
+
+    const result = formValuesToContact({ formValues, oldContact, t })
+    expect(result.address).toEqual(expected.address)
   })
 })
