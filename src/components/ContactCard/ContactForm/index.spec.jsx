@@ -162,7 +162,7 @@ describe('ContactForm', () => {
   it('should submit empty fields', () => {
     const expected = {
       address: [],
-      birthday: undefined,
+      birthday: '',
       company: '',
       cozy: [],
       displayName: '',
@@ -171,7 +171,7 @@ describe('ContactForm', () => {
       indexes: { byFamilyNameGivenNameEmailCozyUrl: null },
       jobTitle: '',
       metadata: { cozy: true, version: 1 },
-      name: { familyName: undefined, givenName: undefined },
+      name: { familyName: '', givenName: '' },
       note: '',
       phone: [],
       relationships: { groups: { data: [] } }

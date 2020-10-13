@@ -1,7 +1,36 @@
-import merge from 'lodash/merge'
-import { updateIndexFullNameAndDisplayName } from '../../../helpers/contacts'
+import get from 'lodash/get'
+import {
+  updateIndexFullNameAndDisplayName,
+  getFormattedAddress
+} from '../../../helpers/contacts'
 
-const formValuesToContact = (data, oldContact) => {
+const createAddress = ({ address, oldContact, t }) => {
+  return address
+    ? address
+        .filter(val => val && val.address)
+        .map((addressField, index) => {
+          const formattedAddress = addressField.address
+          const oldContactAddress = get(oldContact, `address[${index}]`)
+          const oldContactFormattedAddress =
+            (oldContactAddress && getFormattedAddress(oldContactAddress, t)) ||
+            ''
+          const addressHasBeenModified =
+            formattedAddress !== oldContactFormattedAddress
+
+          if (addressHasBeenModified) {
+            return {
+              formattedAddress: addressField.address,
+              type: addressField.addressLabel,
+              primary: index === 0
+            }
+          }
+
+          return oldContactAddress
+        })
+    : []
+}
+
+const formValuesToContact = ({ formValues, oldContact, t }) => {
   const {
     givenName,
     familyName,
@@ -13,66 +42,62 @@ const formValuesToContact = (data, oldContact) => {
     jobTitle,
     birthday,
     note
-  } = data
+  } = formValues
 
   const contactWithFormValues = {
+    ...oldContact,
     name: {
-      givenName,
-      familyName
+      ...get(oldContact, 'name'),
+      givenName: givenName || '',
+      familyName: familyName || ''
     },
     email: email
-      .filter(val => val && val.email)
-      .map(({ email, emailLabel }, index) => ({
-        address: email,
-        type: emailLabel,
-        primary: index === 0
-      })),
-    address:
-      address &&
-      address
-        .filter(val => val && val.address)
-        .map(({ address, addressLabel }, index) => ({
-          formattedAddress: address,
-          type: addressLabel,
-          primary: index === 0
-        })),
-    phone:
-      phone &&
-      phone
-        .filter(val => val && val.phone)
-        .map(({ phone, phoneLabel }, index) => ({
-          number: phone,
-          type: phoneLabel,
-          primary: index === 0
-        })),
+      ? email
+          .filter(val => val && val.email)
+          .map(({ email, emailLabel }, index) => ({
+            address: email,
+            type: emailLabel,
+            primary: index === 0
+          }))
+      : [],
+    address: createAddress({ address, oldContact, t }),
+    phone: phone
+      ? phone
+          .filter(val => val && val.phone)
+          .map(({ phone, phoneLabel }, index) => ({
+            number: phone,
+            type: phoneLabel,
+            primary: index === 0
+          }))
+      : [],
     cozy: cozy
       ? [
           {
             url: cozy,
-            label: data['cozyLabel'],
+            label: formValues['cozyLabel'],
             primary: true
           }
         ]
       : [],
     company: company || '',
     jobTitle: jobTitle || '',
-    birthday,
+    birthday: birthday || '',
     note: note || '',
     // If we don't create the relationships field manually, cozy-client doesn't create it automatically when needed
     relationships: {
+      ...get(oldContact, 'relationships'),
       groups: {
         data: []
       }
     },
     metadata: {
+      ...get(oldContact, 'metadata'),
       version: 1,
       cozy: true
     }
   }
 
-  return updateIndexFullNameAndDisplayName(
-    merge({ ...oldContact }, contactWithFormValues)
-  )
+  return updateIndexFullNameAndDisplayName(contactWithFormValues)
 }
 
 export default formValuesToContact

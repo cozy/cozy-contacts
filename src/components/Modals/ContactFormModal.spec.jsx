@@ -61,7 +61,7 @@ describe('ContactFormModal component', () => {
 
     const expected = {
       address: [],
-      birthday: undefined,
+      birthday: '',
       company: 'Cozy Cloud',
       cozy: [],
       displayName: '',
@@ -70,7 +70,7 @@ describe('ContactFormModal component', () => {
       indexes: { byFamilyNameGivenNameEmailCozyUrl: null },
       jobTitle: '',
       metadata: { cozy: true, version: 1 },
-      name: { familyName: undefined, givenName: undefined },
+      name: { familyName: '', givenName: '' },
       note: '',
       phone: [],
       relationships: { groups: { data: [] } }
@@ -104,7 +104,7 @@ describe('ContactFormModal component', () => {
 
     const expected = {
       address: [],
-      birthday: undefined,
+      birthday: '',
       company: 'Cozy Cloud',
       cozy: [],
       displayName: 'Doe John',

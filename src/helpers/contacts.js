@@ -156,19 +156,29 @@ export const reworkContacts = (
  * @returns {string} - The contact's formatted address
  */
 export const getFormattedAddress = (address, t) => {
-  if (address.formattedAddress) {
+  if (address && address.formattedAddress) {
     return address.formattedAddress
-  } else {
-    const emptyAddress = {
-      street: '',
-      pobox: '',
-      city: '',
-      region: '',
-      postcode: '',
-      country: ''
-    }
-    return t('formatted.address', { ...emptyAddress, ...address }).trim()
   }
+
+  const emptyAddress = {
+    pobox: '',
+    street: '',
+    postcode: '',
+    city: '',
+    region: '',
+    country: ''
+  }
+
+  const unformattedAddress = {
+    ...emptyAddress,
+    ...address
+  }
+
+  return t('formatted.address', unformattedAddress)
+    .trim()
+    .split(' ')
+    .filter(val => val.length > 0)
+    .join(' ')
 }
 
 /**
