@@ -3572,10 +3572,10 @@ cozy-ui@35.22.0:
     react-select "2.2.0"
     react-swipeable-views "0.13.3"
 
-cozy-ui@37.5.0:
-  version "37.5.0"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-37.5.0.tgz#53eba821f9782b7fb0fae292814cc4556b456ae0"
-  integrity sha512-IjzhWKUTHdpCw1saAiIUUxDLBFPMYnkQFZMR50MHixQxAlPFCzjJ+QFw1WaZCY90ziIcbNJZZRFC3+aeXC33Aw==
+cozy-ui@38.1.0:
+  version "38.1.0"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-38.1.0.tgz#b9c0c6620809b1ddffea03b79b18d2349c1402bb"
+  integrity sha512-3IbgVL92/M8ixecJe6HbmEGiNmJ0PkGsddGv4jimXY9wPYI2N1+mu8o6f635gAFJNSGE/DaFmM5BLwmvPMMlVw==
   dependencies:
     "@babel/runtime" "^7.3.4"
     "@popperjs/core" "^2.4.4"
@@ -3587,7 +3587,6 @@ cozy-ui@37.5.0:
     intersection-observer "0.11.0"
     node-polyglot "^2.2.2"
     normalize.css "^7.0.0"
-    react-hot-loader "^4.3.11"
     react-markdown "^4.0.8"
     react-pdf "^4.0.5"
     react-popper "^2.2.3"
