@@ -2,9 +2,9 @@ import sortBy from 'lodash/sortBy'
 import { models, HasMany } from 'cozy-client'
 
 const {
-  getFullname,
-  getIndexByFamilyNameGivenNameEmailCozyUrl,
-  getDisplayName
+  makeFullname,
+  makeDefaultSortIndexValue,
+  makeDisplayName
 } = models.contact
 
 export const supportedFieldsInOrder = [
@@ -96,12 +96,10 @@ export const normalizeFields = contact => {
 export const updateIndexFullNameAndDisplayName = contact => {
   return {
     ...contact,
-    fullname: getFullname(contact),
-    displayName: getDisplayName(contact),
+    fullname: makeFullname(contact),
+    displayName: makeDisplayName(contact),
     indexes: {
-      byFamilyNameGivenNameEmailCozyUrl: getIndexByFamilyNameGivenNameEmailCozyUrl(
-        contact
-      )
+      byFamilyNameGivenNameEmailCozyUrl: makeDefaultSortIndexValue(contact)
     }
   }
 }

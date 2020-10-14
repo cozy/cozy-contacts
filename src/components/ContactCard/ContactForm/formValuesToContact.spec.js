@@ -341,4 +341,37 @@ describe('formValuesToContact', () => {
     const result = formValuesToContact({ formValues, oldContact, t })
     expect(result.address).toEqual(expected.address)
   })
+
+  it('should replace name, index, fullname and displayName properly to name change', () => {
+    const formValues = {
+      givenName: 'Jane',
+      familyName: 'Doe'
+    }
+
+    const oldContact = {
+      name: {
+        givenName: 'John',
+        familyName: 'Doe'
+      },
+      fullname: 'John Doe',
+      displayName: 'John Doe',
+      indexes: { byFamilyNameGivenNameEmailCozyUrl: 'doejohn' }
+    }
+
+    const expected = {
+      name: {
+        givenName: 'Jane',
+        familyName: 'Doe'
+      },
+      fullname: 'Jane Doe',
+      displayName: 'Jane Doe',
+      indexes: { byFamilyNameGivenNameEmailCozyUrl: 'doejane' }
+    }
+
+    const result = formValuesToContact({ formValues, oldContact, t })
+    expect(result.name).toEqual(expected.name)
+    expect(result.fullname).toEqual(expected.fullname)
+    expect(result.displayName).toEqual(expected.displayName)
+    expect(result.indexes).toEqual(expected.indexes)
+  })
 })
