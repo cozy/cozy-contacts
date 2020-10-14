@@ -11,10 +11,12 @@ import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoin
 
 import App from 'components/App'
 import '../../styles/index.styl'
-import setupAppContext from './setupAppContext'
+import setupApp from './setupApp'
+import { SelectedGroupProvider } from '../../components/Contexts/SelectedGroup'
+import { SearchProvider } from '../../components/Contexts/Search'
 
 const init = () => {
-  const { root, store, client, lang, polyglot } = setupAppContext()
+  const { root, store, client, lang, polyglot } = setupApp()
 
   render(
     <Provider store={store}>
@@ -22,7 +24,11 @@ const init = () => {
         <I18n lang={lang} polyglot={polyglot}>
           <MuiCozyTheme>
             <BreakpointsProvider>
-              <App />
+              <SelectedGroupProvider>
+                <SearchProvider>
+                  <App />
+                </SearchProvider>
+              </SelectedGroupProvider>
             </BreakpointsProvider>
           </MuiCozyTheme>
         </I18n>
