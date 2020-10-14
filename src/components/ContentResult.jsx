@@ -17,7 +17,7 @@ import {
   translatedDefaultSelectedGroup
 } from '../helpers/groups'
 
-const setCustomStyles = isMobile => ({
+const setGroupsSelectCustomStyles = isMobile => ({
   container: base => ({
     ...base,
     ...(!isMobile && { maxWidth: '24rem' })
@@ -25,7 +25,7 @@ const setCustomStyles = isMobile => ({
   noOptionsMessage: base => ({ ...base, textAlign: 'left' })
 })
 
-const setOptions = (allGroups, defaultSelectedGroup) =>
+const setGroupsSelectOptions = (allGroups, defaultSelectedGroup) =>
   allGroups.length > 0 ? [defaultSelectedGroup].concat(allGroups) : allGroups
 
 const ControlDefaultWithTestId = ({ ...props }) => {
@@ -45,10 +45,13 @@ export const ContentResult = ({ contacts, allGroups }) => {
   const { selectedGroup, setSelectedGroup } = useContext(SelectedGroupContext)
   const { isMobile } = useBreakpoints()
 
-  const customStyles = setCustomStyles(isMobile)
-  const options = setOptions(allGroups, translatedDefaultSelectedGroup(t))
-  const filteredContactsByGroup = filterContactsByGroup(contacts, selectedGroup)
+  const groupsSelectCustomStyles = setGroupsSelectCustomStyles(isMobile)
+  const groupsSelectOptions = setGroupsSelectOptions(
+    allGroups,
+    translatedDefaultSelectedGroup(t)
+  )
 
+  const filteredContactsByGroup = filterContactsByGroup(contacts, selectedGroup)
   return (
     <>
       {contacts.length >= 1 && (
@@ -58,11 +61,11 @@ export const ContentResult = ({ contacts, allGroups }) => {
               <Search />
               <GroupsSelect
                 className="u-w-100 u-maw-6"
-                allGroups={options}
+                allGroups={groupsSelectOptions}
                 value={selectedGroup}
                 onChange={setSelectedGroup}
                 noOptionsMessage={() => t('filter.no-group')}
-                styles={customStyles}
+                styles={groupsSelectCustomStyles}
                 components={{
                   Control: ControlDefaultWithTestId
                 }}
