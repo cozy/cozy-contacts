@@ -11,6 +11,7 @@ import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
 import flag, { FlagSwitcher } from 'cozy-flags'
 
 import { SelectedGroupProvider } from './Contexts/SelectedGroup'
+import { SearchProvider } from './Contexts/Search'
 import withContactsMutations from '../connections/allContacts'
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
 import { ModalManager } from '../helpers/modalManager'
@@ -31,23 +32,25 @@ const ContactsApp = props => {
 
   return (
     <SelectedGroupProvider>
-      <Layout monocolumn="true">
-        {isMobile && (
-          <BarCenter>
-            <Title>
-              <span className={'fil-path-title'}>Contacts</span>
-            </Title>
-          </BarCenter>
-        )}
-        <Main>
-          {flag('switcher') && <FlagSwitcher />}
-          <ContactsSelectionBar trashAction={deleteContact} />
-          <ContentWrapper />
-          <Alerter t={t} />
-          <ModalManager />
-        </Main>
-        <IconSprite />
-      </Layout>
+      <SearchProvider>
+        <Layout monocolumn="true">
+          {isMobile && (
+            <BarCenter>
+              <Title>
+                <span className={'fil-path-title'}>Contacts</span>
+              </Title>
+            </BarCenter>
+          )}
+          <Main>
+            {flag('switcher') && <FlagSwitcher />}
+            <ContactsSelectionBar trashAction={deleteContact} />
+            <ContentWrapper />
+            <Alerter t={t} />
+            <ModalManager />
+          </Main>
+          <IconSprite />
+        </Layout>
+      </SearchProvider>
     </SelectedGroupProvider>
   )
 }
