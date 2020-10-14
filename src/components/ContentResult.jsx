@@ -7,6 +7,7 @@ import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import { ControlDefault } from 'cozy-ui/transpiled/react/SelectBox'
 
 import SelectedGroupContext from './Contexts/SelectedGroup'
+import SearchContext from './Contexts/Search'
 import Header from './Header'
 import Toolbar from './Toolbar'
 import ContactsList from './ContactsList/ContactsList.jsx'
@@ -16,6 +17,7 @@ import {
   filterContactsByGroup,
   translatedDefaultSelectedGroup
 } from '../helpers/groups'
+import { filterContactsBySearch } from '../helpers/search'
 
 const setGroupsSelectCustomStyles = isMobile => ({
   container: base => ({
@@ -43,6 +45,7 @@ const ControlDefaultWithTestId = ({ ...props }) => {
 export const ContentResult = ({ contacts, allGroups }) => {
   const { t } = useI18n()
   const { selectedGroup, setSelectedGroup } = useContext(SelectedGroupContext)
+  const { searchValue } = useContext(SearchContext)
   const [filteredContacts, setFilteredContacts] = useState(contacts)
   const { isMobile } = useBreakpoints()
 
@@ -57,8 +60,12 @@ export const ContentResult = ({ contacts, allGroups }) => {
       contacts,
       selectedGroup
     )
-    setFilteredContacts(filteredContactsByGroup)
-  }, [contacts, selectedGroup, setFilteredContacts])
+    const filteredContactsBySearch = filterContactsBySearch(
+      filteredContactsByGroup,
+      searchValue
+    )
+    setFilteredContacts(filteredContactsBySearch)
+  }, [contacts, searchValue, selectedGroup, setFilteredContacts])
 
   return (
     <>

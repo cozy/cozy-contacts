@@ -3,6 +3,7 @@
 exports[`ContactRow should match the contact snapshot 1`] = `
 <div
   className="contact"
+  data-testid="contact-row"
   onClick={[Function]}
 >
   <div
