@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 
 import flag from 'cozy-flags'
@@ -9,16 +9,17 @@ import ContactsEmptyList from './ContactsEmptyList'
 import CategorizedList from './CategorizedList'
 import UncategorizedList from './UncategorizedList'
 import withSelection from '../Selection/selectionContainer'
+import SearchContext from '../Contexts/Search'
 
 const ContactsList = ({ contacts, clearSelection, selection, selectAll }) => {
   const { t } = useI18n()
+  const { searchValue } = useContext(SearchContext)
 
   if (contacts.length === 0) {
     return <ContactsEmptyList />
   }
 
-  const isSearched = false // TODO use context to determine bool result according to search input
-  const List = isSearched ? UncategorizedList : CategorizedList
+  const List = searchValue.length > 0 ? UncategorizedList : CategorizedList
   const isAllContactsSelected = contacts.length === selection.length
 
   const handleAllContactSelection = () => {
