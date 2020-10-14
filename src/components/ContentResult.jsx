@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { PropTypes } from 'prop-types'
 
 import { Content } from 'cozy-ui/transpiled/react/Layout'
@@ -43,6 +43,7 @@ const ControlDefaultWithTestId = ({ ...props }) => {
 export const ContentResult = ({ contacts, allGroups }) => {
   const { t } = useI18n()
   const { selectedGroup, setSelectedGroup } = useContext(SelectedGroupContext)
+  const [filteredContacts, setFilteredContacts] = useState(contacts)
   const { isMobile } = useBreakpoints()
 
   const groupsSelectCustomStyles = setGroupsSelectCustomStyles(isMobile)
@@ -51,7 +52,14 @@ export const ContentResult = ({ contacts, allGroups }) => {
     translatedDefaultSelectedGroup(t)
   )
 
-  const filteredContactsByGroup = filterContactsByGroup(contacts, selectedGroup)
+  useEffect(() => {
+    const filteredContactsByGroup = filterContactsByGroup(
+      contacts,
+      selectedGroup
+    )
+    setFilteredContacts(filteredContactsByGroup)
+  }, [contacts, selectedGroup, setFilteredContacts])
+
   return (
     <>
       {contacts.length >= 1 && (
@@ -76,7 +84,7 @@ export const ContentResult = ({ contacts, allGroups }) => {
         />
       )}
       <Content>
-        <ContactsList contacts={filteredContactsByGroup} />
+        <ContactsList contacts={filteredContacts} />
       </Content>
     </>
   )
