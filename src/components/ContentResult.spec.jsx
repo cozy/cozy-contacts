@@ -1,10 +1,12 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, act } from '@testing-library/react'
 
 import AppLike from '../tests/Applike'
 import ContentResult from './ContentResult'
 import { groups, contactWithGroup, johnDoeContact } from '../helpers/testData'
 import enLocale from '../locales/en.json'
+
+const sleep = duration => new Promise(resolve => setTimeout(resolve, duration))
 
 const mockedContacts = {
   withoutGroup: [johnDoeContact],
@@ -23,7 +25,7 @@ const setup = ({
   return { root }
 }
 
-describe('ContentResult', () => {
+describe('ContentResult - groups', () => {
   it('should show only filtered contacts after selecting a group filter', () => {
     const { root } = setup({
       contacts: [mockedContacts.withoutGroup[0], mockedContacts.withGroup[0]]
@@ -99,5 +101,89 @@ describe('ContentResult', () => {
     expect(getByTestId('selectBox-controlDefault').textContent).toBe(
       enLocale.filter['all-contacts']
     )
+  })
+})
+
+describe('ContentResult - search', () => {
+  // put search value and awaits the search completion
+  const search = async (searchValue, getByPlaceholderText) => {
+    const searchInput = getByPlaceholderText('Search')
+    fireEvent.change(searchInput, { target: { value: searchValue } })
+    await act(async () => {
+      await sleep(1000)
+    })
+  }
+
+  it('should not show any category when using search input', async () => {
+    const { root } = setup()
+    const searchValue = 'John'
+
+    const { queryByText, getByText, getByPlaceholderText } = root
+
+    // category of the contact
+    expect(getByText('EMPTY')).toBeTruthy()
+
+    await search(searchValue, getByPlaceholderText)
+
+    expect(queryByText('EMPTY')).toBeNull()
+  })
+
+  it('should show contacts in correct order when using search input', async () => {
+    const contacts = [
+      { _id: '01', name: { givenName: 'John', familyName: 'Connor' } },
+      {
+        _id: '02',
+        name: { givenName: 'Matt', familyName: 'Damon' },
+        note: 'friend of John'
+      },
+      {
+        _id: '03',
+        name: { givenName: 'Jane', familyName: 'Doe' }
+      }
+    ]
+    const searchValue = 'John'
+    const { root } = setup({ contacts })
+
+    const { getAllByTestId, getByPlaceholderText } = root
+
+    await search(searchValue, getByPlaceholderText)
+
+    const contactRows = getAllByTestId('contact-row')
+
+    expect(contactRows.length).toBe(2)
+    expect(contactRows[0].textContent).toMatch('John')
+    expect(contactRows[1].textContent).toMatch('Matt')
+  })
+
+  it('should sort contacts by groups and search', async () => {
+    const contacts = [
+      {
+        _id: '01',
+        name: { givenName: 'John', familyName: 'Doe' },
+        relationships: { groups: { data: groups } }
+      },
+      {
+        _id: '02',
+        name: { givenName: 'Matt', familyName: 'Damon' }
+      },
+      {
+        _id: '03',
+        name: { givenName: 'Jane', familyName: 'Doe' }
+      }
+    ]
+    const searchValue = 'Doe'
+    const { root } = setup({ contacts })
+
+    const { getByText, queryByText, getByPlaceholderText } = root
+
+    // open the group filter and select the first group
+    fireEvent.click(getByText(enLocale.filter['all-contacts']))
+    fireEvent.click(getByText(groups[0].name))
+
+    await search(searchValue, getByPlaceholderText)
+
+    expect(getByText('John')).toBeTruthy()
+    expect(queryByText('Matt')).toBeNull()
+    expect(queryByText('Jane')).toBeNull()
   })
 })

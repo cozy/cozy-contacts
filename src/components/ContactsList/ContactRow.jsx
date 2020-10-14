@@ -60,6 +60,7 @@ class ContactRow extends Component {
     return (
       <div
         className="contact"
+        data-testid="contact-row"
         onClick={() =>
           showModal(
             <ContactCardModal onClose={this.hideContactCard} id={contact._id} />
