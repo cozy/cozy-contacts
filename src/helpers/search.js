@@ -1,4 +1,7 @@
+import debounce from 'lodash/debounce'
 import Fuse from 'fuse.js'
+
+import flag from 'cozy-flags'
 
 const fuseOptions = {
   findAllMatches: true,
@@ -60,7 +63,25 @@ const fuse = new Fuse([], fuseOptions)
 export const filterContactsBySearch = (contacts, searchValue) => {
   if (searchValue.length === 0) return contacts
 
+  if (flag('search-threshold')) {
+    fuse.options.threshold = flag.store.get('search-threshold')
+    console.info('fuse threshold :', fuse.options.threshold) //eslint-disable-line no-console
+  }
+
   fuse.setCollection(contacts)
   const fuseResults = fuse.search(searchValue)
   return fuseResults.map(result => result.item)
 }
+
+const setThreshold = value => {
+  if (!isNaN(value)) {
+    console.info('changing fuse threshold to', value) //eslint-disable-line no-console
+    console.info('please change the search value') //eslint-disable-line no-console
+    flag.store.set('search-threshold', value)
+  }
+}
+
+export const delayedSetThreshold = debounce(
+  thresholdValue => setThreshold(thresholdValue),
+  375
+)
