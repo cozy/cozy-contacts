@@ -5,6 +5,7 @@ const flagsList = () => {
   flag('switcher', true)
   flag('logs')
   flag('select-all-contacts')
+  flag('search-threshold')
 }
 
 const initFlags = () => {

@@ -5,6 +5,8 @@ import { Content } from 'cozy-ui/transpiled/react/Layout'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import { ControlDefault } from 'cozy-ui/transpiled/react/SelectBox'
+import Input from 'cozy-ui/transpiled/react/Input'
+import flag from 'cozy-flags'
 
 import SelectedGroupContext from './Contexts/SelectedGroup'
 import SearchContext from './Contexts/Search'
@@ -17,7 +19,7 @@ import {
   filterContactsByGroup,
   translatedDefaultSelectedGroup
 } from '../helpers/groups'
-import { filterContactsBySearch } from '../helpers/search'
+import { filterContactsBySearch, delayedSetThreshold } from '../helpers/search'
 
 const setGroupsSelectCustomStyles = isMobile => ({
   container: base => ({
@@ -55,6 +57,11 @@ export const ContentResult = ({ contacts, allGroups }) => {
     translatedDefaultSelectedGroup(t)
   )
 
+  const handleSearchThreshold = ev => {
+    const thresholdValue = parseFloat(ev.target.value)
+    delayedSetThreshold(thresholdValue)
+  }
+
   useEffect(() => {
     const filteredContactsByGroup = filterContactsByGroup(
       contacts,
@@ -73,6 +80,11 @@ export const ContentResult = ({ contacts, allGroups }) => {
         <Header
           left={
             <>
+              {flag('search-threshold') && (
+                <div>
+                  <Input onChange={handleSearchThreshold} defaultValue="0.3" />
+                </div>
+              )}
               <Search />
               <GroupsSelect
                 className="u-w-100 u-maw-6"
