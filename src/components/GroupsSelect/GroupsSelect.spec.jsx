@@ -1,13 +1,16 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
+import { createGroup, updateGroup } from '../../connections/allGroups'
 import { groups } from '../../helpers/testData'
 import GroupsSelect from './GroupsSelect'
 import AppLike from '../../tests/Applike'
 import Control from './SelectBox/Control'
 
-const createGroup = jest.fn()
-const updateGroup = jest.fn()
+jest.mock('../../connections/allGroups', () => ({
+  createGroup: jest.fn(),
+  updateGroup: jest.fn()
+}))
 
 const setup = () => {
   const root = render(
@@ -17,8 +20,6 @@ const setup = () => {
         allGroups={groups}
         onChange={() => {}}
         components={{ Control }}
-        createGroup={createGroup}
-        updateGroup={updateGroup}
       />
     </AppLike>
   )

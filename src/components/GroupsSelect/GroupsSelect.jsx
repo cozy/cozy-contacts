@@ -4,13 +4,14 @@ import flow from 'lodash/flow'
 import get from 'lodash/get'
 import cx from 'classnames'
 
+import { withClient } from 'cozy-client'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import Overlay from 'cozy-ui/transpiled/react/Overlay'
 import SelectBox from 'cozy-ui/transpiled/react/SelectBox'
 
 import SelectedGroupContext from '../Contexts/SelectedGroup'
-import withGroupsMutations from '../../connections/allGroups'
+import { createGroup, updateGroup } from '../../connections/allGroups'
 import {
   translatedDefaultSelectedGroup,
   isExistingGroup
@@ -40,14 +41,14 @@ export class GroupsSelectClass extends React.Component {
   setEditedGroupId = id => this.setState({ editedGroupId: id })
 
   createGroup = async group => {
-    const { allGroups, onGroupCreated, createGroup } = this.props
+    const { allGroups, onGroupCreated, client } = this.props
 
     if (isExistingGroup(allGroups, group)) {
       return Alerter.error('groups.already_exists', { name: group.name })
     }
 
     try {
-      const { data: createdGroup } = await createGroup(group)
+      const { data: createdGroup } = await createGroup(client, group)
       if (onGroupCreated) {
         onGroupCreated(createdGroup)
       }
@@ -58,11 +59,11 @@ export class GroupsSelectClass extends React.Component {
   }
 
   deleteGroup = async group => {
-    const { t, updateGroup, cleanTrashedGroups } = this.props
+    const { t, cleanTrashedGroups, client } = this.props
     const { selectedGroup, setSelectedGroup } = this.context
     const isDeletedGroupSelected =
       get(group, '_id') === get(selectedGroup, '_id')
-    const { data: flaggedGroup } = await updateGroup({
+    const { data: flaggedGroup } = await updateGroup(client, {
       ...group,
       trashed: true
     })
@@ -88,15 +89,15 @@ export class GroupsSelectClass extends React.Component {
   }
 
   cancelGroupDelete = async group => {
-    const { updateGroup } = this.props
+    const { client } = this.props
     delete group.trashed
-    await updateGroup(group)
+    await updateGroup(client, group)
     Alerter.info('groups.remove_canceled', { name: group.name })
   }
 
   renameGroup = async (groupId, newName) => {
     const { selectedGroup, setSelectedGroup } = this.context
-    const { allGroups, updateGroup } = this.props
+    const { allGroups, client } = this.props
     const group = allGroups.find(group => group.id === groupId)
     const allOtherGroups = allGroups.filter(group => group.id !== groupId)
     const isRenamedGroupSelected =
@@ -107,7 +108,7 @@ export class GroupsSelectClass extends React.Component {
     }
 
     try {
-      const { data } = await updateGroup({ ...group, name: newName })
+      const { data } = await updateGroup(client, { ...group, name: newName })
       if (isRenamedGroupSelected) {
         setSelectedGroup(data)
       }
@@ -130,13 +131,7 @@ export class GroupsSelectClass extends React.Component {
       className
     } = this.props
     const { menuIsOpen, editedGroupId } = this.state
-    const {
-      createGroup,
-      deleteGroup,
-      renameGroup,
-      toggleMenu,
-      setEditedGroupId
-    } = this
+    const { toggleMenu, setEditedGroupId } = this
 
     const defaultComponents = {
       Menu: CustomMenu,
@@ -168,9 +163,9 @@ export class GroupsSelectClass extends React.Component {
           getOptionLabel={group => group.name}
           getOptionValue={group => group._id}
           components={{ ...defaultComponents, ...components }}
-          createGroup={createGroup}
-          deleteGroup={deleteGroup}
-          renameGroup={renameGroup}
+          createGroup={this.createGroup}
+          deleteGroup={this.deleteGroup}
+          renameGroup={this.renameGroup}
           styles={styles}
           onControlClicked={toggleMenu}
           setEditedGroupId={setEditedGroupId}
@@ -208,7 +203,7 @@ GroupsSelectClass.defaultProps = {
 }
 
 const GroupsSelect = flow(
-  withGroupsMutations,
+  withClient,
   translate(),
   container
 )(GroupsSelectClass)
