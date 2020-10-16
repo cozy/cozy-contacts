@@ -1,17 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
+import { withClient } from 'cozy-client'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import Modal, {
   ModalContent,
   ModalHeader
 } from 'cozy-ui/transpiled/react/Modal'
-import withContactsMutations from '../../connections/allContacts'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
+
+import { importContact } from '../../connections/allContacts'
 import ExportStepsExplanation from './ExportStepsExplanation'
 import ContactImportationActions from './ContactImportationActions'
 import ContactImportationCard from './ContactImportationCard'
 import Importation from '../../importation'
 import Status from '../../importation/status'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 const ERROR_STATUS_SET = new Set([Status.FILE_ISSUE, Status.COMPLETE_FAILURE])
 
@@ -39,11 +42,11 @@ class ContactImportationModal extends React.Component {
 
   importFile = async () => {
     const { importation } = this.state
-    const { importContact, closeAction, t } = this.props
+    const { closeAction, t, client } = this.props
     const { runningImportation, finishedImportationPromise } = Importation.run(
       importation,
       {
-        save: importContact,
+        save: contact => importContact(client, contact),
         onProgress: this.onProgress
       }
     )
@@ -105,8 +108,7 @@ class ContactImportationModal extends React.Component {
   }
 }
 ContactImportationModal.propTypes = {
-  importContact: PropTypes.func.isRequired,
   closeAction: PropTypes.func.isRequired
 }
 
-export default translate()(withContactsMutations(ContactImportationModal))
+export default withClient(translate()(ContactImportationModal))

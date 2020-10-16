@@ -1,21 +1,26 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
+import flow from 'lodash/flow'
+
+import { withClient } from 'cozy-client'
 import SelectionBar from 'cozy-ui/transpiled/react/SelectionBar'
 import Modal from 'cozy-ui/transpiled/react/Modal'
+
 import withSelection from '../Selection/selectionContainer'
 import withModalContainer from '../HOCs/withModal'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { getConnectedAccounts } from '../../helpers/contacts'
+import { deleteContact } from '../../connections/allContacts'
 
 class ContactsSelectionBar extends Component {
   render() {
     const {
       selection,
       clearSelection,
-      trashAction,
       showModal,
       t,
-      hideModal
+      hideModal,
+      client
     } = this.props
     return selection.length > 0 ? (
       <SelectionBar
@@ -49,7 +54,9 @@ class ContactsSelectionBar extends Component {
                   primaryText={t('delete')}
                   primaryType="danger"
                   primaryAction={async () => {
-                    await Promise.all(selection.map(trashAction))
+                    await Promise.all(
+                      selection.map(contact => deleteContact(client, contact))
+                    )
                     clearSelection()
                     hideModal()
                   }}
@@ -67,10 +74,12 @@ class ContactsSelectionBar extends Component {
 }
 ContactsSelectionBar.propTypes = {
   selection: PropTypes.array.isRequired,
-  clearSelection: PropTypes.func.isRequired,
-  trashAction: PropTypes.func.isRequired
+  clearSelection: PropTypes.func.isRequired
 }
 
-export default translate()(
-  withModalContainer(withSelection(ContactsSelectionBar))
-)
+export default flow(
+  withClient,
+  translate(),
+  withModalContainer,
+  withSelection
+)(ContactsSelectionBar)

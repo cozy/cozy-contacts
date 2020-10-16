@@ -1,5 +1,8 @@
 import React, { useState, useContext } from 'react'
 import { PropTypes } from 'prop-types'
+import flow from 'lodash/flow'
+
+import { withClient } from 'cozy-client'
 
 import Modal, {
   ModalHeader,
@@ -13,7 +16,7 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 import SelectedGroupContext from '../Contexts/SelectedGroup'
 import ContactForm, { getSubmitContactForm } from '../ContactCard/ContactForm'
 import { fullContactPropTypes } from '../ContactPropTypes'
-import withContactsMutations from '../../connections/allContacts'
+import { createContact, updateContact } from '../../connections/allContacts'
 import { addGroupToContact } from '../../helpers/contacts'
 import { hasSelectedGroup } from '../../helpers/groups'
 
@@ -21,10 +24,9 @@ const ContactFormModal = ({
   contact,
   onClose,
   title,
-  createContact,
   afterMutation,
-  updateContact,
-  t
+  t,
+  client
 }) => {
   const { selectedGroup } = useContext(SelectedGroupContext)
   const [isFormBeingSubmitted, setIsFormBeingSubmitted] = useState(false)
@@ -49,7 +51,7 @@ const ContactFormModal = ({
     setIsFormBeingSubmitted(true)
     setContactInForm(updatedContact)
     try {
-      const resp = await createOrUpdate(updatedContact)
+      const resp = await createOrUpdate(client, updatedContact)
       afterMutation(resp.data)
     } catch (err) {
       setIsFormBeingSubmitted(false)
@@ -93,8 +95,6 @@ ContactFormModal.propTypes = {
   contact: fullContactPropTypes,
   onClose: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  createContact: PropTypes.func.isRequired,
-  updateContact: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired
 }
 
@@ -104,4 +104,7 @@ ContactFormModal.defaultProps = {
 
 export { ContactFormModal as DumbContactFormModal }
 
-export default withContactsMutations(translate()(ContactFormModal))
+export default flow(
+  withClient,
+  translate()
+)(ContactFormModal)
