@@ -81,7 +81,7 @@ describe('ContentResult - groups', () => {
   it('should show correct entry after selecting an option', () => {
     const { root } = setup()
 
-    const { getByText, getByTestId } = root
+    const { queryByText, getByText, getByTestId } = root
 
     expect(getByTestId('selectBox-controlDefault').textContent).toBe(
       enLocale.filter['all-contacts']
@@ -91,12 +91,16 @@ describe('ContentResult - groups', () => {
     fireEvent.click(getByText(enLocale.filter['all-contacts']))
     fireEvent.click(getByText(groups[0].name))
 
+    // should close the menu after selecting an option
+    expect(queryByText(groups[1].name)).toBeNull()
+
     // should show group name instead of default option
     expect(getByTestId('selectBox-controlDefault').textContent).toBe(
       groups[0].name
     )
 
     // should show default option again after selecting it
+    fireEvent.click(getByTestId('selectBox-controlDefault'))
     fireEvent.click(getByText(enLocale.filter['all-contacts']))
     expect(getByTestId('selectBox-controlDefault').textContent).toBe(
       enLocale.filter['all-contacts']

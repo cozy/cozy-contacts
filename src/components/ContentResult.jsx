@@ -93,6 +93,7 @@ export const ContentResult = ({ contacts, allGroups }) => {
                 onChange={setSelectedGroup}
                 noOptionsMessage={() => t('filter.no-group')}
                 styles={groupsSelectCustomStyles}
+                closeMenuOnSelect={true}
                 components={{
                   Control: ControlDefaultWithTestId
                 }}
