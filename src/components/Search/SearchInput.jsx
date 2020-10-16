@@ -9,7 +9,7 @@ import Icon from 'cozy-ui/transpiled/react/Icon'
 
 import SearchContext from '../Contexts/Search'
 
-const Search = () => {
+const SearchInput = () => {
   const { t } = useI18n()
   const { setSearchValue } = useContext(SearchContext)
 
@@ -34,4 +34,4 @@ const Search = () => {
   )
 }
 
-export default Search
+export default SearchInput

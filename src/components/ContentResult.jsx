@@ -14,7 +14,7 @@ import Header from './Header'
 import Toolbar from './Toolbar'
 import ContactsList from './ContactsList/ContactsList.jsx'
 import GroupsSelect from './GroupsSelect/GroupsSelect'
-import Search from './Search/Search'
+import SearchInput from './Search/SearchInput'
 import {
   filterContactsByGroup,
   translatedDefaultSelectedGroup
@@ -85,7 +85,7 @@ export const ContentResult = ({ contacts, allGroups }) => {
                   <Input onChange={handleSearchThreshold} defaultValue="0.3" />
                 </div>
               )}
-              <Search />
+              <SearchInput />
               <GroupsSelect
                 className="u-w-100 u-maw-6"
                 allGroups={groupsSelectOptions}
