@@ -38,6 +38,11 @@ export class GroupsSelectClass extends React.Component {
   toggleMenu = () => {
     this.setState(state => ({ menuIsOpen: !state.menuIsOpen }))
   }
+
+  closeMenu = () => {
+    this.setState({ menuIsOpen: false })
+  }
+
   setEditedGroupId = id => this.setState({ editedGroupId: id })
 
   createGroup = async group => {
@@ -118,20 +123,30 @@ export class GroupsSelectClass extends React.Component {
     }
   }
 
+  handleChange = props => {
+    const { onChange, closeMenuOnSelect } = this.props
+
+    if (closeMenuOnSelect) {
+      this.closeMenu()
+    }
+
+    onChange(props)
+  }
+
   render() {
     const {
       value,
       allGroups,
       styles,
-      onChange,
       isMulti,
       noOptionsMessage,
       withCheckbox,
       components,
-      className
+      className,
+      closeMenuOnSelect
     } = this.props
     const { menuIsOpen, editedGroupId } = this.state
-    const { toggleMenu, setEditedGroupId } = this
+    const { toggleMenu, setEditedGroupId, handleChange } = this
 
     const defaultComponents = {
       Menu: CustomMenu,
@@ -153,13 +168,13 @@ export class GroupsSelectClass extends React.Component {
           hideSelectedOptions={false}
           isSearchable={false}
           isClearable={false}
-          closeMenuOnSelect={false}
+          closeMenuOnSelect={closeMenuOnSelect}
           tabSelectsValue={false}
           onKeyDown={captureEscapeEvent}
           noOptionsMessage={noOptionsMessage}
           options={allGroups}
           value={value}
-          onChange={onChange}
+          onChange={handleChange}
           getOptionLabel={group => group.name}
           getOptionValue={group => group._id}
           components={{ ...defaultComponents, ...components }}
@@ -194,12 +209,14 @@ GroupsSelectClass.propTypes = {
   withCheckbox: PropTypes.bool,
   // function to be triggered after creating a group
   onGroupCreated: PropTypes.func,
-  className: PropTypes.string
+  className: PropTypes.string,
+  closeMenuOnSelect: PropTypes.bool
 }
 
 GroupsSelectClass.defaultProps = {
   isMulti: false,
-  components: {}
+  components: {},
+  closeMenuOnSelect: false
 }
 
 const GroupsSelect = flow(
