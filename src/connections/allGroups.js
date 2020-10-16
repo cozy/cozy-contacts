@@ -1,19 +1,8 @@
-import { withMutations } from 'cozy-client'
 import { DOCTYPE_CONTACT_GROUPS } from '../helpers/doctypes'
 
-const withGroupsMutations = withMutations(client => ({
-  createGroup: attributes => client.create(DOCTYPE_CONTACT_GROUPS, attributes),
-  updateGroup: group => client.save(group),
-  deleteGroup: group => client.destroy(group)
-}))
+export const createGroup = (client, attributes) =>
+  client.create(DOCTYPE_CONTACT_GROUPS, attributes)
 
-export default withGroupsMutations
+export const updateGroup = (client, group) => client.save(group)
 
-export const allGroupsQuery = client =>
-  client
-    .find(DOCTYPE_CONTACT_GROUPS)
-    .where({
-      trashed: { $exists: false }
-    })
-    .sortBy([{ name: 'asc' }])
-    .indexFields(['name'])
+export const deleteGroup = (client, group) => client.destroy(group)
