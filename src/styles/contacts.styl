@@ -10,19 +10,30 @@ main > [role=main]
     box-shadow 0 4px 4px 0 silver
 
 .topbar
-    width 100%
     max-width 80rem
-    margin .75rem auto
     display flex
-    flex 0 0 auto
+    width 100%
+    margin 1rem auto
 
     +small-screen()
         flex-direction column
 
-    .topbar__left
-        flex 1
+    &__left
+        display flex
+        flex 1 1 auto
+        justify-content center
+        align-items center
+        padding-right 1rem
+
         +small-screen()
+            flex-direction column
+            padding-right 0
             margin-bottom 1rem
+
+    &__right
+        display flex
+        justify-content center
+        align-items center
 
 .actions
     display flex

@@ -11,6 +11,7 @@ import Header from './Header'
 import Toolbar from './Toolbar'
 import ContactsList from './ContactsList/ContactsList.jsx'
 import GroupsSelect from './GroupsSelect/GroupsSelect'
+import Search from './Search/Search'
 import {
   filterContactsByGroup,
   translatedDefaultSelectedGroup
@@ -19,7 +20,7 @@ import {
 const setCustomStyles = isMobile => ({
   container: base => ({
     ...base,
-    ...(!isMobile && { width: '24rem' })
+    ...(!isMobile && { maxWidth: '24rem' })
   }),
   noOptionsMessage: base => ({ ...base, textAlign: 'left' })
 })
@@ -53,16 +54,20 @@ export const ContentResult = ({ contacts, allGroups }) => {
       {contacts.length >= 1 && (
         <Header
           left={
-            <GroupsSelect
-              allGroups={options}
-              value={selectedGroup}
-              onChange={setSelectedGroup}
-              noOptionsMessage={() => t('filter.no-group')}
-              styles={customStyles}
-              components={{
-                Control: ControlDefaultWithTestId
-              }}
-            />
+            <>
+              <Search />
+              <GroupsSelect
+                className="u-w-100 u-maw-6"
+                allGroups={options}
+                value={selectedGroup}
+                onChange={setSelectedGroup}
+                noOptionsMessage={() => t('filter.no-group')}
+                styles={customStyles}
+                components={{
+                  Control: ControlDefaultWithTestId
+                }}
+              />
+            </>
           }
           right={<Toolbar />}
         />
