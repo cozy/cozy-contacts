@@ -1,16 +1,22 @@
 import React, { useState } from 'react'
 import { PropTypes } from 'prop-types'
 
-import { useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
+import {
+  useQuery,
+  isQueryLoading,
+  hasQueryBeenLoaded,
+  useClient
+} from 'cozy-client'
 import Modal from 'cozy-ui/transpiled/react/Modal'
 
 import DumbContactCardModal from './DumbContactCardModal'
-import withContactsMutations from '../../connections/allContacts'
+import { deleteContact } from '../../connections/allContacts'
 import SpinnerContact from '../Common/Spinner'
 import { buildContactQuery, queryAllGroups } from '../../helpers/queries'
 
 const ContactCardModal = props => {
   const { onClose, id } = props
+  const client = useClient()
   const [editMode, setEditMode] = useState(false)
   const [
     shouldDisplayConfirmDeleteModal,
@@ -21,10 +27,10 @@ const ContactCardModal = props => {
     setShouldDisplayConfirmDeleteModal(!shouldDisplayConfirmDeleteModal)
   }
 
-  const deleteContact = async (contactParam = null) => {
-    const { contact, deleteContact, onDeleteContact, onClose } = props
+  const handleDeleteContact = async (contactParam = null) => {
+    const { contact, onDeleteContact, onClose } = props
     onClose && onClose()
-    await deleteContact(contactParam ? contactParam : contact)
+    await deleteContact(client, contactParam ? contactParam : contact)
     onDeleteContact && onDeleteContact(contactParam ? contactParam : contact)
   }
 
@@ -59,7 +65,7 @@ const ContactCardModal = props => {
           toggleConfirmDeleteModal={toggleConfirmDeleteModal}
           toggleEditMode={toggleEditMode}
           shouldDisplayConfirmDeleteModal={shouldDisplayConfirmDeleteModal}
-          deleteContact={deleteContact}
+          deleteContact={handleDeleteContact}
         />
       )}
     </Modal>
@@ -67,11 +73,10 @@ const ContactCardModal = props => {
 }
 
 ContactCardModal.propTypes = {
-  onClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
   id: PropTypes.string.isRequired,
-  deleteContact: PropTypes.func.isRequired,
   onDeleteContact: PropTypes.func,
   isloading: PropTypes.bool
 }
 
-export default withContactsMutations(ContactCardModal)
+export default ContactCardModal

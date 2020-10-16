@@ -5,8 +5,13 @@ import { createMockClient } from 'cozy-client'
 
 import { DumbContactFormModal } from './ContactFormModal'
 import AppLike from '../../tests/Applike'
+import { createContact, updateContact } from '../../connections/allContacts'
 
 const client = createMockClient({})
+jest.mock('../../connections/allContacts', () => ({
+  createContact: jest.fn().mockResolvedValue({ data: 'created' }),
+  updateContact: jest.fn().mockResolvedValue({ data: 'updated' })
+}))
 
 describe('ContactFormModal component', () => {
   let props
@@ -15,11 +20,10 @@ describe('ContactFormModal component', () => {
     props = {
       afterMutation: jest.fn(),
       contact: null,
-      createContact: jest.fn().mockResolvedValue({ data: 'created' }),
       onClose: jest.fn(),
       title: 'Edit contact',
-      updateContact: jest.fn().mockResolvedValue({ data: 'updated' }),
-      t: jest.fn(x => x)
+      t: jest.fn(x => x),
+      client: client
     }
   })
 
@@ -81,10 +85,11 @@ describe('ContactFormModal component', () => {
     fireEvent.change(companyInput, {
       target: { value: formData.company }
     })
+
     const submitButton = getByRole('button', { name: 'save' })
     fireEvent.click(submitButton)
 
-    expect(props.createContact).toHaveBeenCalledWith(expected)
+    expect(createContact).toHaveBeenCalledWith(client, expected)
   })
 
   it('should pass previous contact data to the update function', () => {
@@ -136,6 +141,6 @@ describe('ContactFormModal component', () => {
     const submitButton = getByRole('button', { name: 'save' })
     fireEvent.click(submitButton)
 
-    expect(props.updateContact).toHaveBeenCalledWith(expected)
+    expect(updateContact).toHaveBeenCalledWith(client, expected)
   })
 })

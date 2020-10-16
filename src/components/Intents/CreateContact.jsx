@@ -1,17 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import flow from 'lodash/flow'
+
+import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import IntentHeader from 'cozy-ui/transpiled/react/IntentHeader'
+
 import ContactForm from '../ContactCard/ContactForm'
-import withContactsMutations from '../../connections/allContacts'
+import { createContact } from '../../connections/allContacts'
 import IntentMain from './IntentMain'
 
 class CreateContact extends React.Component {
   createContact = async contact => {
+    const { client } = this.props
     try {
       const me = !!this.props.data.me
       if (me) contact.metadata.me = true
-      const resp = await this.props.createContact(contact)
+      const resp = await createContact(client, contact)
       this.props.onTerminate(resp.data)
     } catch (e) {
       this.props.onError('Could not create contact')
@@ -35,15 +40,19 @@ class CreateContact extends React.Component {
     )
   }
 }
+
 CreateContact.propTypes = {
   data: PropTypes.object,
   onTerminate: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
-  onError: PropTypes.func.isRequired,
-  createContact: PropTypes.func.isRequired
+  onError: PropTypes.func.isRequired
 }
+
 CreateContact.defaultProps = {
   data: {}
 }
 
-export default translate()(withContactsMutations(CreateContact))
+export default flow(
+  translate(),
+  withClient
+)(CreateContact)

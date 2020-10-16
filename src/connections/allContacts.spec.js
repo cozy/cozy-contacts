@@ -1,28 +1,13 @@
-import React from 'react'
-import { shallow } from 'enzyme'
-import withContactsMutations from './allContacts'
-import AppLike from '../tests/Applike'
+import { deleteContact } from './allContacts'
 
-const DummyComponent = () => <span />
-const DummyComponentWithMutations = withContactsMutations(DummyComponent)
-
-describe('Cozy Contacts API', () => {
-  let testedComponent, client
+describe('', () => {
+  let client
   beforeEach(() => {
     client = {
       create: jest.fn(),
       save: jest.fn(),
       destroy: jest.fn()
     }
-
-    const root = (
-      <AppLike>
-        <DummyComponentWithMutations client={client} />
-      </AppLike>
-    )
-    const app = shallow(root)
-    const wrappedComponent = app.find(DummyComponentWithMutations)
-    testedComponent = wrappedComponent.dive()
   })
 
   it('should delete a contact with no sources', () => {
@@ -32,13 +17,14 @@ describe('Cozy Contacts API', () => {
         sync: {}
       }
     }
-    testedComponent.prop('deleteContact')(contact)
+
+    deleteContact(client, contact)
     expect(client.destroy).toHaveBeenCalledWith(contact)
 
     const contactWithoutMetadata = {
       _id: '456'
     }
-    testedComponent.prop('deleteContact')(contactWithoutMetadata)
+    deleteContact(client, contactWithoutMetadata)
     expect(client.destroy).toHaveBeenCalledWith(contactWithoutMetadata)
   })
 
@@ -53,7 +39,8 @@ describe('Cozy Contacts API', () => {
         }
       }
     }
-    testedComponent.prop('deleteContact')(contact)
+
+    deleteContact(client, contact)
     expect(client.destroy).not.toHaveBeenCalled()
     expect(client.save).toHaveBeenCalledWith({
       ...contact,
