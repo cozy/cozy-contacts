@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import flow from 'lodash/flow'
 import get from 'lodash/get'
-import classNames from 'classnames'
+import cx from 'classnames'
 
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
@@ -126,7 +126,8 @@ export class GroupsSelectClass extends React.Component {
       isMulti,
       noOptionsMessage,
       withCheckbox,
-      components
+      components,
+      className
     } = this.props
     const { menuIsOpen, editedGroupId } = this.state
     const {
@@ -144,12 +145,9 @@ export class GroupsSelectClass extends React.Component {
     }
 
     return (
-      <div className="u-flex-shrink-0 u-m-0">
+      <div className={cx('u-flex-auto u-w-100', className)}>
         {menuIsOpen && (
-          <Overlay
-            className={classNames('overlay-creation-group')}
-            onClick={toggleMenu}
-          />
+          <Overlay className="overlay-creation-group" onClick={toggleMenu} />
         )}
         <SelectBox
           classNamePrefix="react-select"
@@ -200,7 +198,8 @@ GroupsSelectClass.propTypes = {
   // hide/show checkbox besides menu list options
   withCheckbox: PropTypes.bool,
   // function to be triggered after creating a group
-  onGroupCreated: PropTypes.func
+  onGroupCreated: PropTypes.func,
+  className: PropTypes.string
 }
 
 GroupsSelectClass.defaultProps = {

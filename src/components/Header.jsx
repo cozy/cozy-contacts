@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types'
 const Header = ({ left, right }) => (
   <div className="topbar">
     <div className="topbar__left">{left}</div>
-    <div className="u-flex u-flex-items-center">{right}</div>
+    <div className="topbar__right">{right}</div>
   </div>
 )
 
