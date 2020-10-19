@@ -18,6 +18,7 @@
   "search": "Search",
   "empty": {
     "title": "Import your contacts",
+    "title_filtered": "No contact corresponds to your search.",
     "description": "Click the \"Create a contact\" button to start using the app.",
     "import_store": "Import from an other sources",
     "import_vcard": "Import from a vCard file",

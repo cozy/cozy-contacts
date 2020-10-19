@@ -1,5 +1,5 @@
-import React from 'react'
-import { PropTypes } from 'prop-types'
+import React, { useContext } from 'react'
+import PropTypes from 'prop-types'
 
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
@@ -14,6 +14,9 @@ import ContactFormModal from '../Modals/ContactFormModal'
 import ContactCardModal from '../Modals/ContactCardModal'
 import StoreButton from '../Common/StoreButton'
 import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
+import SearchContext from '../Contexts/Search'
+import SelectedGroupContext from '../Contexts/SelectedGroup'
+import { hasSelectedGroup } from '../../helpers/groups'
 
 const style = { pointerEvents: 'all' }
 
@@ -26,6 +29,15 @@ const SoonComponent = ({ t }) => (
 const ContactsEmptyList = ({ hideModal, showModal }) => {
   const { t } = useI18n()
   const { isDesktop } = useBreakpoints()
+  const { searchValue } = useContext(SearchContext)
+  const { selectedGroup } = useContext(SelectedGroupContext)
+
+  const isContactsFiltered =
+    searchValue.length > 0 || hasSelectedGroup(selectedGroup)
+
+  const emptyTitle = isContactsFiltered
+    ? t('empty.title_filtered')
+    : t('empty.title')
 
   const onCreateContact = contact => {
     hideModal()
@@ -48,11 +60,7 @@ const ContactsEmptyList = ({ hideModal, showModal }) => {
 
   return (
     <div className="u-flex u-flex-column u-flex-items-center">
-      <Empty
-        className="contacts-empty"
-        icon={EmptyIcon}
-        title={t('empty.title')}
-      >
+      <Empty className="contacts-empty" icon={EmptyIcon} title={emptyTitle}>
         <Stack spacing="xs" className="u-mt-1">
           <div>
             <Button
