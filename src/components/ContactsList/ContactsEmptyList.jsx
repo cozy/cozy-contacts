@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { PropTypes } from 'prop-types'
 
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
@@ -27,13 +27,6 @@ const ContactsEmptyList = ({ hideModal, showModal }) => {
   const { t } = useI18n()
   const { isDesktop } = useBreakpoints()
 
-  const [hasConnector, setHasConnector] = useState(false)
-
-  const afterConnection = result => {
-    setHasConnector(result !== null)
-    setTimeout(() => window.location.reload(), 15000)
-  }
-
   const onCreateContact = contact => {
     hideModal()
     return showModal(<ContactCardModal id={contact.id} />)
@@ -59,36 +52,31 @@ const ContactsEmptyList = ({ hideModal, showModal }) => {
         className="contacts-empty"
         icon={EmptyIcon}
         title={t('empty.title')}
-        text={hasConnector ? t('empty.after') : ''}
       >
-        {!hasConnector && (
-          <>
-            <Stack spacing="xs" className="u-mt-1">
-              <div>
-                <Button
-                  onClick={showContactImportationModal}
-                  label={t('empty.import_vcard')}
-                  theme="secondary"
-                  icon="team"
-                  style={style}
-                  extension="full"
-                />
-              </div>
-              <div>
-                <StoreButton />
-              </div>
-            </Stack>
+        <Stack spacing="xs" className="u-mt-1">
+          <div>
             <Button
-              className="u-mt-1-half"
-              subtle
+              onClick={showContactImportationModal}
+              label={t('empty.import_vcard')}
               theme="secondary"
-              onClick={showCreateContactModal}
-              icon="plus"
-              label={t('create_contact')}
+              icon="team"
               style={style}
+              extension="full"
             />
-          </>
-        )}
+          </div>
+          <div>
+            <StoreButton />
+          </div>
+        </Stack>
+        <Button
+          className="u-mt-1-half"
+          subtle
+          theme="secondary"
+          onClick={showCreateContactModal}
+          icon="plus"
+          label={t('create_contact')}
+          style={style}
+        />
         {!isDesktop && <SoonComponent t={t} />}
       </Empty>
       {isDesktop && <SoonComponent t={t} />}
