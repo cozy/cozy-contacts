@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { PropTypes } from 'prop-types'
+import PropTypes from 'prop-types'
 
 import { Content } from 'cozy-ui/transpiled/react/Layout'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'

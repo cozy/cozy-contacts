@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { PropTypes } from 'prop-types'
+import PropTypes from 'prop-types'
 import flow from 'lodash/flow'
 
 import { withClient } from 'cozy-client'

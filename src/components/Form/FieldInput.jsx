@@ -1,5 +1,6 @@
 import React from 'react'
-import { PropTypes } from 'prop-types'
+import PropTypes from 'prop-types'
+
 import TextField from 'cozy-ui/transpiled/react/MuiCozyTheme/TextField'
 
 const FieldInput = ({ input, type, labelProps, isMultiline, ...rest }) => (

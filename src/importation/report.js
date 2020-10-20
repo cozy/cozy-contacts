@@ -2,7 +2,7 @@
 // - know what to do next in UI (hence the various counters)
 // - debug issues (hence the skipped contacts with error details)
 
-import { PropTypes } from 'prop-types'
+import PropTypes from 'prop-types'
 
 const contactWithErrorPropType = errorPropName =>
   PropTypes.shape({
