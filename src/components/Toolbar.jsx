@@ -1,5 +1,5 @@
 import React from 'react'
-import { PropTypes } from 'prop-types'
+import PropTypes from 'prop-types'
 
 import Button from 'cozy-ui/transpiled/react/Button'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'

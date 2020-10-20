@@ -1,5 +1,5 @@
 import React from 'react'
-import { PropTypes } from 'prop-types'
+import PropTypes from 'prop-types'
 
 const Header = ({ left, right }) => (
   <div className="topbar">

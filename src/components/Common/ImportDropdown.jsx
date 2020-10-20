@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { PropTypes } from 'prop-types'
+import PropTypes from 'prop-types'
 
 import { useClient } from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'

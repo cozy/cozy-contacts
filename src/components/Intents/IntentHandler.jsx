@@ -1,7 +1,7 @@
 import React, { Children, Component } from 'react'
-import { PropTypes } from 'prop-types'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import PropTypes from 'prop-types'
 
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Empty from 'cozy-ui/transpiled/react/Empty'
 
