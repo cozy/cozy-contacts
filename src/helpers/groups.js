@@ -47,7 +47,7 @@ export const filterContactsByGroup = (contacts, selectedGroup) => {
  * Returns the group defined as default in the group filter
  */
 export const defaultSelectedGroup = {
-  name: 'filter.all-contacts',
+  name: 'filter.all-groups',
   withNoAction: true
 }
 

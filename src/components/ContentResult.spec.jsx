@@ -41,7 +41,7 @@ describe('ContentResult - groups', () => {
     expect(getByText(contactWithoutGroup))
 
     // open the group filter and select first group
-    fireEvent.click(getByText(enLocale.filter['all-contacts']))
+    fireEvent.click(getByText(enLocale.filter['all-groups']))
     fireEvent.click(getByText(groups[0].name))
 
     // should not return an empty contact list
@@ -58,7 +58,7 @@ describe('ContentResult - groups', () => {
     const { getByText } = root
 
     // open the group filter and select first group
-    fireEvent.click(getByText(enLocale.filter['all-contacts']))
+    fireEvent.click(getByText(enLocale.filter['all-groups']))
     fireEvent.click(getByText(groups[0].name))
 
     // should return an empty contact list
@@ -71,10 +71,10 @@ describe('ContentResult - groups', () => {
     const { getByText, getAllByText } = root
 
     // open the group filter
-    fireEvent.click(getByText(enLocale.filter['all-contacts']))
+    fireEvent.click(getByText(enLocale.filter['all-groups']))
 
-    // should be all-contacts only once, and show the empty groups message
-    expect(getAllByText(enLocale.filter['all-contacts']).length).toBe(1)
+    // should be all-groups only once, and show the empty groups message
+    expect(getAllByText(enLocale.filter['all-groups']).length).toBe(1)
     expect(getByText(enLocale.filter['no-group']))
   })
 
@@ -84,11 +84,11 @@ describe('ContentResult - groups', () => {
     const { queryByText, getByText, getByTestId } = root
 
     expect(getByTestId('selectBox-controlDefault').textContent).toBe(
-      enLocale.filter['all-contacts']
+      enLocale.filter['all-groups']
     )
 
     // open the group filter and select first group
-    fireEvent.click(getByText(enLocale.filter['all-contacts']))
+    fireEvent.click(getByText(enLocale.filter['all-groups']))
     fireEvent.click(getByText(groups[0].name))
 
     // should close the menu after selecting an option
@@ -101,9 +101,9 @@ describe('ContentResult - groups', () => {
 
     // should show default option again after selecting it
     fireEvent.click(getByTestId('selectBox-controlDefault'))
-    fireEvent.click(getByText(enLocale.filter['all-contacts']))
+    fireEvent.click(getByText(enLocale.filter['all-groups']))
     expect(getByTestId('selectBox-controlDefault').textContent).toBe(
-      enLocale.filter['all-contacts']
+      enLocale.filter['all-groups']
     )
   })
 })
@@ -181,7 +181,7 @@ describe('ContentResult - search', () => {
     const { getByText, queryByText, getByPlaceholderText } = root
 
     // open the group filter and select the first group
-    fireEvent.click(getByText(enLocale.filter['all-contacts']))
+    fireEvent.click(getByText(enLocale.filter['all-groups']))
     fireEvent.click(getByText(groups[0].name))
 
     await search(searchValue, getByPlaceholderText)
