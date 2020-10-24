@@ -10,6 +10,7 @@ import configureStore from '../store/configureStore'
 import getCozyClient from './client'
 import { SelectedGroupProvider } from '../components/Contexts/SelectedGroup'
 import { SearchProvider } from '../components/Contexts/Search'
+import { ScrollToCategoryProvider } from '../components/Contexts/ScrollToCategory'
 
 const store = configureStore(getCozyClient(), null, {})
 
@@ -19,7 +20,9 @@ const AppLike = ({ children, client }) => (
       <CozyProvider client={client || getCozyClient()}>
         <I18n lang={'en'} dictRequire={() => langEn}>
           <SelectedGroupProvider>
-            <SearchProvider>{children}</SearchProvider>
+            <SearchProvider>
+              <ScrollToCategoryProvider>{children}</ScrollToCategoryProvider>
+            </SearchProvider>
           </SelectedGroupProvider>
         </I18n>
       </CozyProvider>

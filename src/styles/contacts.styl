@@ -8,15 +8,41 @@ main > [role=main]
 
 .list-wrapper
     box-shadow 0 4px 4px 0 silver
+    position relative
+
+.scroll-by-category
+    display flex
+    margin-top 1rem
+
+    .label
+        color var(--secondaryTextColor)
+        margin-right 0.3rem
+
+    .item
+        cursor pointer
+        color var(--secondaryTextColor)
+        font-weight bold
+        &:after
+            content '\0000B7'
+            margin 0 0.3rem
+            color var(--coolGrey)
+            font-weight normal
+        &:last-child:after
+            content ''
+
+        &__selected
+            color var(--primaryColorLight)
 
 .topbar
     max-width 80rem
-    display flex
     width 100%
     margin 1rem auto
 
-    +small-screen()
-        flex-direction column
+    &__top
+        display flex
+
+        +small-screen()
+            flex-direction column
 
     &__left
         display flex
@@ -103,6 +129,8 @@ $reset-list
 
 .divider
     @extend $table-divider
+    &__relative
+        position relative
 
 // TODO: Find a better way to set the .empty icon size
 .contacts-empty>svg

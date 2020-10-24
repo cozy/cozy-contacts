@@ -5,7 +5,6 @@ import flag from 'cozy-flags'
 import Button from 'cozy-ui/transpiled/react/Button'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
-import ContactsEmptyList from './ContactsEmptyList'
 import CategorizedList from './CategorizedList'
 import UncategorizedList from './UncategorizedList'
 import withSelection from '../Selection/selectionContainer'
@@ -15,11 +14,8 @@ const ContactsList = ({ contacts, clearSelection, selection, selectAll }) => {
   const { t } = useI18n()
   const { searchValue } = useContext(SearchContext)
 
-  if (contacts.length === 0) {
-    return <ContactsEmptyList />
-  }
-
   const List = searchValue.length > 0 ? UncategorizedList : CategorizedList
+
   const isAllContactsSelected = contacts.length === selection.length
 
   const handleAllContactSelection = () => {

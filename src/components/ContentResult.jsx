@@ -12,7 +12,9 @@ import SelectedGroupContext from './Contexts/SelectedGroup'
 import SearchContext from './Contexts/Search'
 import Header from './Header'
 import Toolbar from './Toolbar'
-import ContactsList from './ContactsList/ContactsList.jsx'
+import ScrollByCategory from './Scroll/ScrollByCategory'
+import ContactsList from './ContactsList/ContactsList'
+import ContactsEmptyList from './ContactsList/ContactsEmptyList'
 import GroupsSelect from './GroupsSelect/GroupsSelect'
 import SearchInput from './Search/SearchInput'
 import {
@@ -101,10 +103,19 @@ export const ContentResult = ({ contacts, allGroups }) => {
             </>
           }
           right={<Toolbar />}
+          bottom={
+            searchValue || isMobile ? null : (
+              <ScrollByCategory contacts={filteredContacts} />
+            )
+          }
         />
       )}
       <Content>
-        <ContactsList contacts={filteredContacts} />
+        {filteredContacts.length ? (
+          <ContactsList contacts={filteredContacts} />
+        ) : (
+          <ContactsEmptyList />
+        )}
       </Content>
     </>
   )
