@@ -4,6 +4,7 @@ import { render, fireEvent, act } from '@testing-library/react'
 import AppLike from '../tests/Applike'
 import ContentResult from './ContentResult'
 import { groups, contactWithGroup, johnDoeContact } from '../helpers/testData'
+import { categorizeContacts } from '../helpers/contactList'
 import enLocale from '../locales/en.json'
 
 const sleep = duration => new Promise(resolve => setTimeout(resolve, duration))
@@ -24,6 +25,19 @@ const setup = ({
   )
   return { root }
 }
+
+describe('ContentResult - scroll by category', () => {
+  it('should display each category in the scroll by toolbar and in the contact list', () => {
+    const contacts = [johnDoeContact, contactWithGroup]
+    const { root } = setup({ contacts })
+    const { getAllByText } = root
+
+    const categorizedContacts = categorizeContacts(contacts, 'EMPTY')
+    Object.entries(categorizedContacts).forEach(([header]) => {
+      expect(getAllByText(header).length).toBe(2)
+    })
+  })
+})
 
 describe('ContentResult - groups', () => {
   it('should show only filtered contacts after selecting a group filter', () => {
@@ -122,10 +136,10 @@ describe('ContentResult - search', () => {
     const { root } = setup()
     const searchValue = 'John'
 
-    const { queryByText, getByText, getByPlaceholderText } = root
+    const { queryByText, getAllByText, getByPlaceholderText } = root
 
-    // category of the contact
-    expect(getByText('EMPTY')).toBeTruthy()
+    // category of the contact + scroll by category element
+    expect(getAllByText('EMPTY').length).toBe(2)
 
     await search(searchValue, getByPlaceholderText)
 

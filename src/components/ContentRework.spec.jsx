@@ -114,13 +114,13 @@ describe('ContentRework', () => {
     expect(getByTestId('contactSpinner'))
   })
 
-  it('should have empty section (for contacts without indexes) if service has been launched', () => {
+  it('should have empty section and empty scroll link(for contacts without indexes) if service has been launched', () => {
     const { root } = setup()
-    const { getByText } = root
-    expect(getByText('EMPTY'))
+    const { getAllByText } = root
+    expect(getAllByText('EMPTY').length).toBe(2)
   })
 
-  it('should not have empty section (for contacts without indexes) if service has not been launched', () => {
+  it('should not have empty section neither empty scroll link (for contacts without indexes) if service has not been launched', () => {
     const { root } = setup({
       hasServiceBeenLaunched: false
     })
