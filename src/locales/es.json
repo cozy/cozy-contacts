@@ -8,6 +8,7 @@
   "edit-contact": "Editar un contacto",
   "save": "Guardar",
   "delete": "Borrar",
+  "scroll-by-category": "Ir a :",
   "selected_contacts": "%{smart_count} contacto seleccionado |||| %{smart_count} contactos seleccionados",
   "select-all": "Seleccionarlos todos",
   "unselect-all": "Desmarcar",

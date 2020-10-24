@@ -8,6 +8,7 @@
   "edit-contact": "Edit contact",
   "save": "Save",
   "delete": "Delete",
+  "scroll-by-category": "Go to:",
   "selected_contacts": "%{smart_count} selected contact |||| %{smart_count} selected contacts",
   "select-all": "Select all",
   "unselect-all": "Unselect all",
