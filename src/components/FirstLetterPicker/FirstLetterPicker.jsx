@@ -1,3 +1,5 @@
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+
 import React, { useContext } from 'react'
 import SelectedFirstLetterContext from '../Contexts/SelectedFirstLetter'
 import Button from 'cozy-ui/transpiled/react/Button'
@@ -7,6 +9,7 @@ import '../../styles/firstLetterPicker.styl'
 const LETTERS = 'abcdefghijklmnopqrstuvwxyz'.split('')
 
 const FirstLetterPicker = () => {
+  const { t } = useI18n()
   const { selectedFirstLetter, setSelectedFirstLetter } = useContext(
     SelectedFirstLetterContext
   )
@@ -15,7 +18,7 @@ const FirstLetterPicker = () => {
     <nav className="first-letter-picker">
       <Button
         data-testid="letter-filter-none"
-        label={'All'}
+        label={t('all')}
         onClick={() => setSelectedFirstLetter(null)}
         size="large"
         subtle

@@ -136,5 +136,6 @@
   },
   "loading": {
     "fetching_contacts": "Estamos cargando sus contactos, por favor espere."
-  }
+  },
+  "all": "Todos"
 }
