@@ -16,6 +16,7 @@ import StoreButton from '../Common/StoreButton'
 import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
 import SearchContext from '../Contexts/Search'
 import SelectedGroupContext from '../Contexts/SelectedGroup'
+import SelectedFirstLetterContext from '../Contexts/SelectedFirstLetter'
 import { hasSelectedGroup } from '../../helpers/groups'
 
 const style = { pointerEvents: 'all' }
@@ -31,9 +32,12 @@ const ContactsEmptyList = ({ hideModal, showModal }) => {
   const { isDesktop } = useBreakpoints()
   const { searchValue } = useContext(SearchContext)
   const { selectedGroup } = useContext(SelectedGroupContext)
+  const { selectedFirstLetter } = useContext(SelectedFirstLetterContext)
 
   const isContactsFiltered =
-    searchValue.length > 0 || hasSelectedGroup(selectedGroup)
+    searchValue.length > 0 ||
+    hasSelectedGroup(selectedGroup) ||
+    selectedFirstLetter
 
   const emptyTitle = isContactsFiltered
     ? t('empty.title_filtered')

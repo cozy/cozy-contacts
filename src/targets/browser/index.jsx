@@ -14,6 +14,7 @@ import '../../styles/index.styl'
 import setupApp from './setupApp'
 import { SelectedGroupProvider } from '../../components/Contexts/SelectedGroup'
 import { SearchProvider } from '../../components/Contexts/Search'
+import { SelectedFirstLetterProvider } from '../../components/Contexts/SelectedFirstLetter'
 
 const init = () => {
   const { root, store, client, lang, polyglot } = setupApp()
@@ -26,7 +27,9 @@ const init = () => {
             <BreakpointsProvider>
               <SelectedGroupProvider>
                 <SearchProvider>
-                  <App />
+                  <SelectedFirstLetterProvider>
+                    <App />
+                  </SelectedFirstLetterProvider>
                 </SearchProvider>
               </SelectedGroupProvider>
             </BreakpointsProvider>

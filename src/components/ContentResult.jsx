@@ -19,7 +19,13 @@ import {
   filterContactsByGroup,
   translatedDefaultSelectedGroup
 } from '../helpers/groups'
-import { filterContactsBySearch, delayedSetThreshold } from '../helpers/search'
+import {
+  filterContactsBySearch,
+  filterContactsByFirstLetter,
+  delayedSetThreshold
+} from '../helpers/search'
+import FirstLetterPicker from './FirstLetterPicker/FirstLetterPicker'
+import SelectedFirstLetterContext from './Contexts/SelectedFirstLetter'
 
 const setGroupsSelectCustomStyles = isMobile => ({
   container: base => ({
@@ -50,6 +56,7 @@ export const ContentResult = ({ contacts, allGroups }) => {
   const { searchValue } = useContext(SearchContext)
   const [filteredContacts, setFilteredContacts] = useState(contacts)
   const { isMobile } = useBreakpoints()
+  const { selectedFirstLetter } = useContext(SelectedFirstLetterContext)
 
   const groupsSelectCustomStyles = setGroupsSelectCustomStyles(isMobile)
   const groupsSelectOptions = setGroupsSelectOptions(
@@ -71,8 +78,18 @@ export const ContentResult = ({ contacts, allGroups }) => {
       filteredContactsByGroup,
       searchValue
     )
-    setFilteredContacts(filteredContactsBySearch)
-  }, [contacts, searchValue, selectedGroup, setFilteredContacts])
+    const filteredContactsByFirstLetter = filterContactsByFirstLetter(
+      filteredContactsBySearch,
+      selectedFirstLetter
+    )
+    setFilteredContacts(filteredContactsByFirstLetter)
+  }, [
+    contacts,
+    searchValue,
+    selectedGroup,
+    selectedFirstLetter,
+    setFilteredContacts
+  ])
 
   return (
     <>
@@ -103,6 +120,7 @@ export const ContentResult = ({ contacts, allGroups }) => {
           right={<Toolbar />}
         />
       )}
+      <FirstLetterPicker />
       <Content>
         <ContactsList contacts={filteredContacts} />
       </Content>

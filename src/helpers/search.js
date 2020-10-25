@@ -85,3 +85,17 @@ export const delayedSetThreshold = debounce(
   thresholdValue => setThreshold(thresholdValue),
   375
 )
+
+export const filterContactsByFirstLetter = (contacts, letter) => {
+  if (!letter) return contacts
+
+  return contacts.filter(contact => {
+    if (!contact.name) return false
+
+    const { familyName, givenName } = contact.name
+
+    if (familyName) return familyName[0].toLowerCase() === letter
+    if (givenName) return givenName[0].toLowerCase() === letter
+    return false
+  })
+}
