@@ -191,3 +191,25 @@ describe('ContentResult - search', () => {
     expect(queryByText('Jane')).toBeNull()
   })
 })
+
+describe('ContentResult - first letter', () => {
+  it('should show contacts having a last or first name starting with the requested letter', () => {
+    const contacts = [
+      { _id: '01', name: { givenName: 'John', familyName: 'Connor' } },
+      { _id: '02', name: { givenName: 'Matt', familyName: 'Damon' } },
+      { _id: '03', name: { givenName: 'Donald' } }
+    ]
+
+    const { root } = setup({ contacts })
+    const { getByTestId, getAllByTestId } = root
+
+    // click on the D letter
+    fireEvent.click(getByTestId('letter-filter-d'))
+
+    const contactRows = getAllByTestId('contact-row')
+
+    expect(contactRows.length).toBe(2)
+    expect(contactRows[0].textContent).toMatch('Matt')
+    expect(contactRows[1].textContent).toMatch('Donald')
+  })
+})
