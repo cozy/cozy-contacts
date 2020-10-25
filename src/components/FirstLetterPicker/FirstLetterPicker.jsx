@@ -1,5 +1,8 @@
 import React, { useContext } from 'react'
 import SelectedFirstLetterContext from '../Contexts/SelectedFirstLetter'
+import Button from 'cozy-ui/transpiled/react/Button'
+
+import '../../styles/firstLetterPicker.styl'
 
 const LETTERS = 'abcdefghijklmnopqrstuvwxyz'.split('')
 
@@ -9,23 +12,27 @@ const FirstLetterPicker = () => {
   )
 
   return (
-    <nav>
-      <button
+    <nav className="first-letter-picker">
+      <Button
         data-testid="letter-filter-none"
-        disabled={!selectedFirstLetter}
+        label={'All'}
         onClick={() => setSelectedFirstLetter(null)}
-      >
-        All
-      </button>
+        size="large"
+        subtle
+        style={{ padding: '0 8px' }}
+        theme={selectedFirstLetter ? 'secondary' : null}
+      />
       {LETTERS.map(letter => (
-        <button
+        <Button
           data-testid={`letter-filter-${letter}`}
-          disabled={selectedFirstLetter === letter}
           key={letter}
+          label={letter}
           onClick={() => setSelectedFirstLetter(letter)}
-        >
-          {letter}
-        </button>
+          size="large"
+          subtle
+          style={{ padding: '0 8px' }}
+          theme={selectedFirstLetter === letter ? null : 'secondary'}
+        />
       ))}
     </nav>
   )

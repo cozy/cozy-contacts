@@ -9,8 +9,6 @@ import ContactFormModal from './Modals/ContactFormModal'
 import ContactCardModal from './Modals/ContactCardModal'
 import ImportDropdown from './Common/ImportDropdown'
 
-const style = { pointerEvents: 'all' }
-
 const Toolbar = ({ showModal, hideModal }) => {
   const { t } = useI18n()
 
@@ -31,12 +29,7 @@ const Toolbar = ({ showModal, hideModal }) => {
 
   return (
     <div className="actions">
-      <Button
-        onClick={showContactFormModal}
-        icon="plus"
-        label={t('create_contact')}
-        style={style}
-      />
+      <Button onClick={showContactFormModal} label={t('create_contact')} />
       <ImportDropdown />
     </div>
   )
