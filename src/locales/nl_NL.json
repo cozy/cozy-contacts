@@ -1,0 +1,140 @@
+{
+  "associated_accounts": "Account gekoppeld aan deze contactpersoon |||| Accounts gekoppeld aan deze contactpersoon",
+  "menu": "Menu",
+  "create_contact": "Contactpersoon toevoegen",
+  "cancel": "Annuleren",
+  "confirm": "Bevestigen",
+  "edit": "Bewerken",
+  "edit-contact": "Contactpersoon bewerken",
+  "save": "Opslaan",
+  "delete": "Verwijderen",
+  "selected_contacts": "%{smart_count} geselecteerde contactpersoon |||| %{smart_count} geselecteerde contactpersonen",
+  "select-all": "Alles selecteren",
+  "unselect-all": "Niets selecteren",
+  "contact_info": "Contactpersoongegevens",
+  "contact_group": "Groepen",
+  "me": "ik",
+  "empty-list": "LEEG",
+  "search": "Zoeken",
+  "empty": {
+    "title": "Contactpersonen importeren",
+    "title_filtered": "Geen zoekresultaten.",
+    "description": "Klik op 'Contactpersoon toevoegen' om aan de slag te gaan.",
+    "import_store": "Importeren uit andere bronnen",
+    "import_vcard": "Importeren uit vCard-bestand",
+    "after": "Het importeren van je contactpersonen kan een paar minuten duren, dus zet even een lekker kopje koffie ☕️"
+  },
+  "import": {
+    "title": "Contactpersonen importeren",
+    "store": "Uit andere bronnen",
+    "vcard": "Uit vCard-bestand"
+  },
+  "error": {
+    "save": "Er is een fout opgetreden tijdens het opslaan. Probeer het opnieuw.",
+    "group_selected": "Er is een fout opgetreden tijdens het selecteren. Probeer het opnieuw."
+  },
+  "formatted": {
+    "date": "YYYY-MM-DD",
+    "address": "%{pobox} %{street} %{postcode} %{city} %{region} %{country}"
+  },
+  "fields": {
+    "givenName": "Voornaam",
+    "familyName": "Achternaam",
+    "phone": "Telefoonnummer",
+    "email": "E-mailadres",
+    "address": "Adres",
+    "cozy": "Cozy-url",
+    "company": "Bedrijf",
+    "jobTitle": "Functienaam",
+    "birthday": "Verjaardag",
+    "note": "Aantekeningen",
+    "label": "Label"
+  },
+  "importation": {
+    "cancel": "Annuleren",
+    "complete_failure": "Importeren mislukt.",
+    "complete_success": "Gefeliciteerd!",
+    "creation": "één contactpersoon toegevoegd |||| %{smart_count} contactpersonen toegevoegd",
+    "update": "één contactpersoon bijgewerkt |||| %{smart_count} contactpersonen bijgewerkt",
+    "empty_file": "Het bestand is leeg.",
+    "export_steps_intro": "Als je je contactpersonen wilt ophalen uit een andere app, moet je eerst de hele lijst exporteren:",
+    "export_to_vcard_step": "Exporteer je contactpersonen naar een vCard-bestand (*.vcf)",
+    "invalid_file_type": "Dit bestandstype wordt niet ondersteund.",
+    "no_file": "Kies hier je bestand",
+    "open_contact_manager_step": "Open je favoriete contactpersoonbeheerapp",
+    "partial_success": "%{smart_count} van %{total} contactpersoon geïmporteerd. |||| %{smart_count} van %{total} contactpersonen geïmporteerd.",
+    "ready": "Klaar om te importeren",
+    "retry": "Opnieuw",
+    "retry_hint": "Probeer opnieuw te importeren.",
+    "retry_or_select_another_hint": "Probeer het opnieuw of kies een ander bestand.",
+    "run": "Importeren",
+    "running": "Bezig met overdracht...",
+    "title": "Contactpersonen importeren",
+    "transfer_file": "Bestand overdragen",
+    "available_soon": "Binnenkort kun je je contactpersonen importeren uit andere diensten, zoals iCloud en Facebook."
+  },
+  "addLabel": {
+    "address": "Adres toevoegen",
+    "email": "E-mailadres toevoegen",
+    "phone": "Telefoonnummer toevoegen"
+  },
+  "SelectionBar": {
+    "close": "Sluiten",
+    "selected_count": "contactpersoon geselecteerd |||| contactpersonen geselecteerd",
+    "trash": "verwijderen"
+  },
+  "groups": {
+    "none": "Er is nog geen groep.",
+    "manage": "Groepen beheren",
+    "create": "Groep samenstellen",
+    "created": {
+      "success": "De groep is samengesteld.",
+      "error": "De groep is niet samengesteld."
+    },
+    "name": "Groepsnaam",
+    "removed": "De groep '%{name}' is verwijderd.",
+    "remove_canceled": "De groep '%{name}' is hersteld. Contactpersonen zijn nog steeds gekoppeld.",
+    "already_exists": "De groep '%{name}' bestaat al.",
+    "renamed": {
+      "success": "De groepsnaam is gewijzigd.",
+      "error": "De groepsnaam is niet gewijzigd."
+    }
+  },
+  "filter": {
+    "no-group": "Stel contactpersoongroepen samen om ordenen en delen te vereenvoudigen!",
+    "all-groups": "Alle groepen"
+  },
+  "delete-confirmation": {
+    "title": "Wil je deze contactpersoon verwijderen? |||| Wil je deze contactpersonen verwijderen?",
+    "description-simple": "Deze contactpersoon wordt permanent verwijderd uit je Cozy. |||| Deze contactpersonen worden permanent verwijderd uit je Cozy.",
+    "description-google": "Deze contactpersoon wordt permanent verwijderd uit je Google-adresboek. |||| Deze contactpersonen worden permanent verwijderd uit je Google-adresboek.",
+    "description-mixed": "Deze contactpersonen worden permanent verwijderd uit je Cozy. De personen die gekoppeld zijn aan je Google-account worden tevens verwijderd uit je Google-adresboek."
+  },
+  "intent": {
+    "creation_error": "Er is een fout opgetreden tijdens het communiceren met de andere app. Probeer het later opnieuw."
+  },
+  "manifest": {
+    "short_description": "Cozy Contactpersonen helpt je bij het opslaan en beheren van contactpersonen op je Cozy.",
+    "long_description": "Met Cozy Contactpersonen kun je:\n\n* Contactpersonen toevoegen, bewerken en sorteren\n* Groepen beheren\n* Het delen vanuit Cozy Schijf vereenvoudigen\n* Je Google-contactpersonen synchroniseren\n* En binnenkort kun je ook contactpersonen synchroniseren van je telefoon en andere online-diensten (iCloud, Facebook, etc.)",
+    "permissions": {
+      "apps": {
+        "description": "Vereist door het hoofdmenu om app-pictogrammen te tonen"
+      },
+      "contacts": {
+        "description": "Vereist om je contactpersonen te kunnen beheren"
+      },
+      "contactsgroups": {
+        "description": "Vereist om groepen te beheren"
+      },
+      "contactsAccounts": {
+        "description": "Vereist om je contactpersonen te koppelen aan online-accounts"
+      },
+      "triggers": {
+        "description": "Wordt gebruikt om contactpersonen te sorteren"
+      }
+    }
+  },
+  "loading": {
+    "fetching_contacts": "Bezig met laden van contactpersonen..."
+  }
+}
