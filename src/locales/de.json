@@ -1,0 +1,140 @@
+{
+  "associated_accounts": "Konto verbunden mit diesem Kontakt |||| Konten verbunden mit diesem Kontakt",
+  "menu": "Menü",
+  "create_contact": "Erstelle einen Kontakt",
+  "cancel": "Abbrechen",
+  "confirm": "Bestätigen",
+  "edit": "Bearbeiten",
+  "edit-contact": "Kontakt bearbeiten",
+  "save": "Speichern",
+  "delete": "Löschen",
+  "selected_contacts": "%{smart_count} ausgewählter Kontakt |||| %{smart_count} ausgewählte Kontakte",
+  "select-all": "Alle auswählen",
+  "unselect-all": "Alle abwählen",
+  "contact_info": "Kontakt-Informationen",
+  "contact_group": "Gruppen",
+  "me": "ich",
+  "empty-list": "Leer",
+  "search": "Suche",
+  "empty": {
+    "title": "Deine Kontakte importieren",
+    "title_filtered": "Kein Kontakt entspricht deiner Suche.",
+    "description": "Um die Anwendung zu starten, klicke die \"Erstelle Kontakt\"-Fläche.",
+    "import_store": "Aus einer anderen Quelle importieren",
+    "import_vcard": "Aus einer vCard Datei importieren",
+    "after": "Das Importieren von Kontakten kann einige Minuten dauern. Zeit, eine wohlverdiente Kaffeepause zu genießen."
+  },
+  "import": {
+    "title": "Kontakte importieren",
+    "store": "Aus anderen Quellen",
+    "vcard": "Aus einer vCard Datei"
+  },
+  "error": {
+    "save": "Beim Speichern des Kontaktes trat ein Fehler auf. Bitte versuche es erneut. ",
+    "group_selected": "Beim Auswählen der Gruppe gab es ein Problem, bitte versuche es erneut."
+  },
+  "formatted": {
+    "date": "YYYY.MM.DD",
+    "address": "%{pobox} %{street} %{postcode} %{city} %{region} %{country}"
+  },
+  "fields": {
+    "givenName": "Vorname",
+    "familyName": "Nachname",
+    "phone": "Telefon",
+    "email": "E-Mail",
+    "address": "Adresse",
+    "cozy": "Cozy URL",
+    "company": "Firma",
+    "jobTitle": "Beruf",
+    "birthday": "Geburtstag",
+    "note": "Notizen",
+    "label": "Label"
+  },
+  "importation": {
+    "cancel": "Abbrechen",
+    "complete_failure": "Import fehlgeschlagen",
+    "complete_success": "Glückwunsch!",
+    "creation": "Ein Kontakt wurde erstellt |||| %{smart_count} Kontakte wurden erstellt",
+    "update": "Ein Kontakt wurde aktualisiert |||| %{smart_count} Kontakte wurden aktualisiert",
+    "empty_file": "Die Datei ist leer.",
+    "export_steps_intro": "Um deine Kontakte aus einem anderen Programm zu importieren, musst du dort erst die ganze Liste exportieren:",
+    "export_to_vcard_step": "Exportiere deine Kontakte in eine vCard (*.vcf) Datei",
+    "invalid_file_type": "Dieser Dateityp wird nicht unterstützt.",
+    "no_file": "Wähle hier deine Datei",
+    "open_contact_manager_step": "Öffne dein bevorzugtes Kontakt-Verwaltungsprogramm",
+    "partial_success": "%{smart_count} von %{total} Kontakt wurden importiert. |||| %{smart_count} von %{total} Kontakten wurde importiert.",
+    "ready": "Bereit zum Importieren",
+    "retry": "Versuch' es erneut",
+    "retry_hint": "Bitte versuche es erneut, um deinen Import zu abzuschließen.",
+    "retry_or_select_another_hint": "Versuch' es erneut oder wähle eine andere Datei",
+    "run": "Import",
+    "running": "Übertragung der Datei ...",
+    "title": "Importiere Kontakte",
+    "transfer_file": "Übertrage eine Datei",
+    "available_soon": "Bald wird du in der Lage sein, deine Kontakte von anderen Services (iCloud, Facebook, ...) zu importieren."
+  },
+  "addLabel": {
+    "address": "Adresse hinzufügen",
+    "email": "E-Mail hinzufügen",
+    "phone": "Telefonnummer hinzufügen"
+  },
+  "SelectionBar": {
+    "close": "Schließen",
+    "selected_count": "Kontakt ausgewählt |||| Kontakte ausgewählt",
+    "trash": "Löschen"
+  },
+  "groups": {
+    "none": "Es existiert keine Gruppe.",
+    "manage": "Verwalte Gruppen",
+    "create": "Erstelle eine Gruppe",
+    "created": {
+      "success": "Die Gruppe wurde erfolgreich erstellt.",
+      "error": "Die Gruppe wurde nicht erstellt."
+    },
+    "name": "Name der Gruppe",
+    "removed": "Die Gruppe %{name} wurde entfernt.",
+    "remove_canceled": "Die Gruppe %{name} wurde wiederhergestellt. Kontakte sind nach wie vor verknüpft.",
+    "already_exists": "Die Gruppe %{name} existiert bereits.",
+    "renamed": {
+      "success": "Die Gruppe wurde erfolgreich umbenannt.",
+      "error": "Die Gruppe wurde nicht umbenannt."
+    }
+  },
+  "filter": {
+    "no-group": "Erstelle Kontakt Gruppen, um das Abheften und Teilen zu erleichtern.",
+    "all-groups": "Alle Gruppen"
+  },
+  "delete-confirmation": {
+    "title": "Diesen Kontakt löschen? |||| Diese Kontakte löschen?",
+    "description-simple": "Dieser Kontakt wird dauerhaft aus Cozy entfernt. |||| Diese Kontakte werden dauerhaft aus Cozy entfernt.",
+    "description-google": "Dieser Kontakt wird auch aus deinem Google Adressbuch gelöscht. |||| Diese Kontakte werden auch aus deinem Google Adressbuch gelöscht.",
+    "description-mixed": "Diese Kontakte werden dauerhaft aus deinem Cozy entfernt. Die Kontakte, die mit deinem Google-Konto verknüpft sind, werden auch aus deinem Google Adressbuch gelöscht."
+  },
+  "intent": {
+    "creation_error": "Beim Kontaktieren der anderen App ist ein Fehler aufgetreten. Bitte versuch' es später noch einmal!"
+  },
+  "manifest": {
+    "short_description": "Cozy Kontakte hilft dir, all deine Kontakte aus deinem Cozy zu speichern, zu sichern und zu verwalten.",
+    "long_description": "Mit Cozy Kontakte kannst du :\n\n* deine Kontakte hinzufügen, bearbeiten und sortieren,\n* deine Gruppen von Kontakten verwalten,\n* dein Teilen aus Cozy Drive mit deinen Kontakten erleichtern,\n* deine Google Kontakte synchronisieren,\n* und bald deine Kontakte von deinem Handy und anderen Online-Diensten (iCloud, Facebook, ...) synchronisieren",
+    "permissions": {
+      "apps": {
+        "description": "Benötigt vom Hauptmenü, um die Symbole der Anwendungen anzuzeigen"
+      },
+      "contacts": {
+        "description": "Benötigt, um deine Kontakte zu verwalten"
+      },
+      "contactsgroups": {
+        "description": "Benötigt, um Kontaktgruppen zu verwalten"
+      },
+      "contactsAccounts": {
+        "description": "Benötigt, um deine Kontakte mit deinen Remote-Konten zu verbinden"
+      },
+      "triggers": {
+        "description": "Benutzt um Kontakte zu sortieren"
+      }
+    }
+  },
+  "loading": {
+    "fetching_contacts": "Deine Kontakte werden geladen, bitte warten."
+  }
+}
