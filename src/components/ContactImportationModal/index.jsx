@@ -3,10 +3,7 @@ import PropTypes from 'prop-types'
 
 import { withClient } from 'cozy-client'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
-import Modal, {
-  ModalContent,
-  ModalHeader
-} from 'cozy-ui/transpiled/react/Modal'
+import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import { importContact } from '../../connections/allContacts'
@@ -15,8 +12,6 @@ import ContactImportationActions from './ContactImportationActions'
 import ContactImportationCard from './ContactImportationCard'
 import Importation from '../../importation'
 import Status from '../../importation/status'
-
-const ERROR_STATUS_SET = new Set([Status.FILE_ISSUE, Status.COMPLETE_FAILURE])
 
 class ContactImportationModal extends React.Component {
   state = {
@@ -80,33 +75,33 @@ class ContactImportationModal extends React.Component {
     const { closeAction, t } = this.props
 
     return (
-      <Modal
-        into="body"
-        size="small"
-        className={
-          ERROR_STATUS_SET.has(importation.status) && 'importation-error'
+      <Dialog
+        open={true}
+        onClose={closeAction}
+        title={t('importation.title')}
+        content={
+          <>
+            <ExportStepsExplanation />
+            <ContactImportationCard
+              importation={importation}
+              progress={progress}
+              onFileSelected={this.selectFile}
+              onFileUnselected={this.unselectFile}
+            />
+          </>
         }
-        dismissAction={closeAction}
-      >
-        <ModalHeader title={t('importation.title')} />
-        <ModalContent>
-          <ExportStepsExplanation />
-          <ContactImportationCard
-            importation={importation}
-            progress={progress}
-            onFileSelected={this.selectFile}
-            onFileUnselected={this.unselectFile}
-          />
+        actions={
           <ContactImportationActions
             importation={importation}
             cancelAction={closeAction}
             importAction={this.importFile}
           />
-        </ModalContent>
-      </Modal>
+        }
+      />
     )
   }
 }
+
 ContactImportationModal.propTypes = {
   closeAction: PropTypes.func.isRequired
 }
