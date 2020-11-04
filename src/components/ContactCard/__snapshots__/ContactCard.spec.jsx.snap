@@ -6,11 +6,10 @@ Array [
     className="u-flex u-flex-items-center u-flex-column-s u-flex-justify-start-s u-ov-hidden u-maw-100 u-mr-1 u-mr-0-s"
   >
     <div
-      className="styles__c-avatar___PpDI- u-mb-half-s u-flex-shrink-0"
+      className="styles__c-avatar___PpDI- styles__c-avatar--text___2dvna u-mb-half-s u-flex-shrink-0"
       style={
         Object {
           "backgroundColor": "var(--weirdGreen)",
-          "color": "white",
         }
       }
     >
@@ -239,11 +238,10 @@ Array [
     className="u-flex u-flex-items-center u-flex-column-s u-flex-justify-start-s u-ov-hidden u-maw-100 u-mr-1 u-mr-0-s"
   >
     <div
-      className="styles__c-avatar___PpDI- u-mb-half-s u-flex-shrink-0"
+      className="styles__c-avatar___PpDI- styles__c-avatar--text___2dvna u-mb-half-s u-flex-shrink-0"
       style={
         Object {
           "backgroundColor": "var(--weirdGreen)",
-          "color": "white",
         }
       }
     >
@@ -441,11 +439,10 @@ Array [
     className="u-flex u-flex-items-center u-flex-column-s u-flex-justify-start-s u-ov-hidden u-maw-100 u-mr-1 u-mr-0-s"
   >
     <div
-      className="styles__c-avatar___PpDI- u-mb-half-s u-flex-shrink-0"
+      className="styles__c-avatar___PpDI- styles__c-avatar--text___2dvna u-mb-half-s u-flex-shrink-0"
       style={
         Object {
           "backgroundColor": "var(--weirdGreen)",
-          "color": "white",
         }
       }
     >
