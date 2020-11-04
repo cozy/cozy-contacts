@@ -4,7 +4,8 @@ import flow from 'lodash/flow'
 
 import { withClient } from 'cozy-client'
 import SelectionBar from 'cozy-ui/transpiled/react/SelectionBar'
-import Modal from 'cozy-ui/transpiled/react/Modal'
+import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
+import Button from 'cozy-ui/transpiled/react/Button'
 
 import withSelection from '../Selection/selectionContainer'
 import withModalContainer from '../HOCs/withModal'
@@ -43,26 +44,37 @@ class ContactsSelectionBar extends Component {
                 description = 'delete-confirmation.description-mixed'
 
               showModal(
-                <Modal
-                  into="body"
+                <ConfirmDialog
+                  open={true}
+                  onClose={hideModal}
                   title={t('delete-confirmation.title', {
                     smart_count: selection.length
                   })}
-                  description={t(description, {
+                  content={t(description, {
                     smart_count: selection.length
                   })}
-                  primaryText={t('delete')}
-                  primaryType="danger"
-                  primaryAction={async () => {
-                    await Promise.all(
-                      selection.map(contact => deleteContact(client, contact))
-                    )
-                    clearSelection()
-                    hideModal()
-                  }}
-                  secondaryText={t('cancel')}
-                  secondaryAction={() => hideModal()}
-                  dismissAction={hideModal}
+                  actions={
+                    <>
+                      <Button
+                        theme="secondary"
+                        label={t('cancel')}
+                        onClick={hideModal}
+                      />
+                      <Button
+                        theme="danger"
+                        label={t('delete')}
+                        onClick={async () => {
+                          await Promise.all(
+                            selection.map(contact =>
+                              deleteContact(client, contact)
+                            )
+                          )
+                          clearSelection()
+                          hideModal()
+                        }}
+                      />
+                    </>
+                  }
                 />
               )
             }
