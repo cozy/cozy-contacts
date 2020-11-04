@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Modal from 'cozy-ui/transpiled/react/Modal'
+import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
+import Button from 'cozy-ui/transpiled/react/Button'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
 import { fullContactPropTypes } from '../ContactPropTypes'
@@ -14,12 +15,13 @@ const ConfirmDeleteModal = ({
 }) => {
   const { t } = useI18n()
   return (
-    <Modal
-      into="body"
+    <ConfirmDialog
+      open={true}
+      onClose={toggleConfirmDeleteModal}
       title={t('delete-confirmation.title', {
         smart_count: 1
       })}
-      description={t(
+      content={t(
         getConnectedAccounts(contact).length > 0
           ? 'delete-confirmation.description-google'
           : 'delete-confirmation.description-simple',
@@ -27,12 +29,20 @@ const ConfirmDeleteModal = ({
           smart_count: 1
         }
       )}
-      primaryText={t('delete')}
-      primaryType="danger"
-      primaryAction={() => deleteContact(contact)}
-      secondaryText={t('cancel')}
-      secondaryAction={toggleConfirmDeleteModal}
-      dismissAction={toggleConfirmDeleteModal}
+      actions={
+        <>
+          <Button
+            theme="secondary"
+            label={t('cancel')}
+            onClick={toggleConfirmDeleteModal}
+          />
+          <Button
+            theme="danger"
+            label={t('delete')}
+            onClick={() => deleteContact(contact)}
+          />
+        </>
+      }
     />
   )
 }
