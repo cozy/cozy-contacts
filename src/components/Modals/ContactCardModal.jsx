@@ -63,7 +63,7 @@ const ContactCardModal = props => {
       toggleConfirmDeleteModal={toggleConfirmDeleteModal}
       toggleEditMode={toggleEditMode}
       shouldDisplayConfirmDeleteModal={shouldDisplayConfirmDeleteModal}
-      deleteContact={handleDeleteContact}
+      onDeleteContact={handleDeleteContact}
     />
   )
 }

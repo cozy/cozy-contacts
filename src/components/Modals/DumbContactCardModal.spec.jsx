@@ -22,7 +22,7 @@ const setup = ({
     toggleConfirmDeleteModal: jest.fn(),
     toggleEditMode: jest.fn(),
     shouldDisplayConfirmDeleteModal,
-    deleteContact: jest.fn(),
+    onDeleteContact: jest.fn(),
     dataHaveBeenLoaded: true,
     onClose: jest.fn()
   }

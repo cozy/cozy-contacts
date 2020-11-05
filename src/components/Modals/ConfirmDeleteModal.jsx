@@ -11,7 +11,7 @@ import { getConnectedAccounts } from '../../helpers/contacts'
 const ConfirmDeleteModal = ({
   contact,
   toggleConfirmDeleteModal,
-  deleteContact
+  onDeleteContact
 }) => {
   const { t } = useI18n()
   return (
@@ -39,7 +39,7 @@ const ConfirmDeleteModal = ({
           <Button
             theme="danger"
             label={t('delete')}
-            onClick={() => deleteContact(contact)}
+            onClick={() => onDeleteContact(contact)}
           />
         </>
       }
@@ -50,7 +50,7 @@ const ConfirmDeleteModal = ({
 ConfirmDeleteModal.propTypes = {
   contact: fullContactPropTypes.isRequired,
   toggleConfirmDeleteModal: PropTypes.func.isRequired,
-  deleteContact: PropTypes.func.isRequired
+  onDeleteContact: PropTypes.func.isRequired
 }
 
 export default ConfirmDeleteModal
