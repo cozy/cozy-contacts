@@ -6,23 +6,30 @@ import Icon from 'cozy-ui/transpiled/react/Icon'
 import palette from 'cozy-ui/transpiled/react/palette'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
-const Control = ({ selectProps: { onControlClicked } }) => {
+const Control = ({
+  innerRef,
+  innerProps,
+  selectProps: { onControlClicked }
+}) => {
   const { t } = useI18n()
 
   return (
-    <Button
-      theme="secondary"
-      size="small"
-      label={t('groups.manage')}
-      onClick={onControlClicked}
-    >
-      <Icon
-        icon="bottom-select"
-        color={palette['coolGrey']}
-        width="12"
-        className="group-manager__indicator"
-      />
-    </Button>
+    <div ref={innerRef} {...innerProps}>
+      <Button
+        theme="secondary"
+        size="small"
+        label={t('groups.manage')}
+        onClick={onControlClicked}
+        onTouchStart={onControlClicked}
+      >
+        <Icon
+          icon="bottom-select"
+          color={palette['coolGrey']}
+          width="12"
+          className="group-manager__indicator"
+        />
+      </Button>
+    </div>
   )
 }
 
