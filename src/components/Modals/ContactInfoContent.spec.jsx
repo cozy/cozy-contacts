@@ -1,13 +1,13 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import ContactCard from './ContactCard'
+import ContactInfoContent from './ContactInfoContent'
 import AppLike from '../../tests/Applike'
 import {
   DOCTYPE_CONTACT_GROUPS,
   DOCTYPE_CONTACT_ACCOUNTS
 } from '../../helpers/doctypes'
 
-describe('ContactCard', () => {
+describe('ContactInfoContent', () => {
   it('should match snapshot when groups are available but no one is linked to the specified contact', () => {
     const contact = {
       _id: 'c6899688-6cc6-4ffb-82d4-ab9f9b82c582',
@@ -51,7 +51,7 @@ describe('ContactCard', () => {
     const tree = renderer
       .create(
         <AppLike>
-          <ContactCard contact={contact} allGroups={groups} />
+          <ContactInfoContent contact={contact} allGroups={groups} />
         </AppLike>
       )
       .toJSON()
@@ -95,7 +95,7 @@ describe('ContactCard', () => {
     const tree = renderer
       .create(
         <AppLike>
-          <ContactCard contact={contact} allGroups={groups} />
+          <ContactInfoContent contact={contact} allGroups={groups} />
         </AppLike>
       )
       .toJSON()
@@ -148,7 +148,7 @@ describe('ContactCard', () => {
     const tree = renderer
       .create(
         <AppLike>
-          <ContactCard contact={contact} allGroups={groups} />
+          <ContactInfoContent contact={contact} allGroups={groups} />
         </AppLike>
       )
       .toJSON()
