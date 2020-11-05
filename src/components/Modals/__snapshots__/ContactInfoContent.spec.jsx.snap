@@ -1,263 +1,213 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ContactCard should match snapshot when groups are available but no one is linked to the specified contact 1`] = `
-Array [
-  <div
-    className="u-flex u-flex-items-center u-flex-column-s u-flex-justify-start-s u-ov-hidden u-maw-100 u-mr-1 u-mr-0-s"
+exports[`ContactInfoContent should match snapshot when groups are available but no one is linked to the specified contact 1`] = `
+<div>
+  <h3
+    className="u-title-h2 u-mt-1-half u-mb-1"
   >
-    <div
-      className="styles__c-avatar___PpDI- styles__c-avatar--text___2dvna u-mb-half-s u-flex-shrink-0"
-      style={
-        Object {
-          "backgroundColor": "var(--weirdGreen)",
-        }
-      }
-    >
-      
-      <span
-        className="styles__c-avatar-initials___310qC"
+    Contact informations
+  </h3>
+  <ol
+    className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s"
+  >
+    <li>
+      <div
+        className="u-flex u-mt-half"
       >
-        RW
-      </span>
-    </div>
-    <h1
-      className="u-title-h1 u-mv-0 u-mh-1 u-mb-half-s u-ellipsis u-spacellipsis-s u-maw-100 u-ta-center-s"
-    >
-      Rikki White
-    </h1>
-  </div>,
-  <div>
-    <h3
-      className="u-title-h2 u-mt-1-half u-mb-1"
-    >
-      Contact informations
-    </h3>
-    <ol
-      className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s"
-    >
-      <li>
         <div
-          className="u-flex u-mt-half"
+          className="u-mr-1 u-fz-large"
         >
-          <div
-            className="u-mr-1 u-fz-large"
-          >
-            <svg
-              className="styles__icon___23x3R"
-              height="16"
-              style={
-                Object {
-                  "fill": "var(--coolGrey)",
-                }
+          <svg
+            className="styles__icon___23x3R"
+            height="16"
+            style={
+              Object {
+                "fill": "var(--coolGrey)",
               }
-              width="16"
+            }
+            width="16"
+          >
+            <use
+              xlinkHref="#telephone"
+            />
+          </svg>
+        </div>
+        <div>
+          <div
+            className="u-mb-half u-breakword u-fz-medium"
+          >
+            <a
+              className="u-link"
+              href="tel:+33 (1)9 14 02 28 31"
             >
-              <use
-                xlinkHref="#telephone"
-              />
-            </svg>
+              +33 (1)9 14 02 28 31
+            </a>
           </div>
-          <div>
-            <div
-              className="u-mb-half u-breakword u-fz-medium"
+          <div
+            className="u-mb-half u-breakword u-fz-medium"
+          >
+            <a
+              className="u-link"
+              href="tel:+33 (2)3 99 53 65 21"
             >
-              <a
-                className="u-link"
-                href="tel:+33 (1)9 14 02 28 31"
-              >
-                +33 (1)9 14 02 28 31
-              </a>
-            </div>
-            <div
-              className="u-mb-half u-breakword u-fz-medium"
-            >
-              <a
-                className="u-link"
-                href="tel:+33 (2)3 99 53 65 21"
-              >
-                +33 (2)3 99 53 65 21
-              </a>
-            </div>
+              +33 (2)3 99 53 65 21
+            </a>
           </div>
         </div>
-      </li>
-      <li>
+      </div>
+    </li>
+    <li>
+      <div
+        className="u-flex u-mt-half"
+      >
         <div
-          className="u-flex u-mt-half"
+          className="u-mr-1 u-fz-large"
         >
-          <div
-            className="u-mr-1 u-fz-large"
-          >
-            <svg
-              className="styles__icon___23x3R"
-              height="16"
-              style={
-                Object {
-                  "fill": "var(--coolGrey)",
-                }
+          <svg
+            className="styles__icon___23x3R"
+            height="16"
+            style={
+              Object {
+                "fill": "var(--coolGrey)",
               }
-              width="16"
+            }
+            width="16"
+          >
+            <use
+              xlinkHref="#email"
+            />
+          </svg>
+        </div>
+        <div>
+          <div
+            className="u-mb-half u-breakword u-fz-medium"
+          >
+            <a
+              className="u-link"
+              href="mailto:rikki.white@celmax.name"
             >
-              <use
-                xlinkHref="#email"
-              />
-            </svg>
+              rikki.white@celmax.name
+            </a>
           </div>
-          <div>
-            <div
-              className="u-mb-half u-breakword u-fz-medium"
+          <div
+            className="u-mb-half u-breakword u-fz-medium"
+          >
+            <a
+              className="u-link"
+              href="mailto:eleanore.fennell@thermolock.name"
             >
-              <a
-                className="u-link"
-                href="mailto:rikki.white@celmax.name"
-              >
-                rikki.white@celmax.name
-              </a>
-            </div>
-            <div
-              className="u-mb-half u-breakword u-fz-medium"
-            >
-              <a
-                className="u-link"
-                href="mailto:eleanore.fennell@thermolock.name"
-              >
-                eleanore.fennell@thermolock.name
-              </a>
-            </div>
+              eleanore.fennell@thermolock.name
+            </a>
           </div>
         </div>
-      </li>
-      <li>
+      </div>
+    </li>
+    <li>
+      <div
+        className="u-flex u-mt-half"
+      >
         <div
-          className="u-flex u-mt-half"
+          className="u-mr-1 u-fz-large"
         >
-          <div
-            className="u-mr-1 u-fz-large"
-          >
-            <svg
-              className="styles__icon___23x3R"
-              height="16"
-              style={
-                Object {
-                  "fill": "var(--coolGrey)",
-                }
+          <svg
+            className="styles__icon___23x3R"
+            height="16"
+            style={
+              Object {
+                "fill": "var(--coolGrey)",
               }
-              width="16"
+            }
+            width="16"
+          >
+            <use
+              xlinkHref="#location"
+            />
+          </svg>
+        </div>
+        <div>
+          <div
+            className="u-mb-half u-breakword u-fz-medium"
+          >
+            <a
+              className="u-link"
+              href="https://nominatim.openstreetmap.org/search?format=html&q=48%20Fuller%20Road%2006635%20Stafford%20Solomon%20Islands"
+              rel="noopener noreferrer"
+              target="_blank"
             >
-              <use
-                xlinkHref="#location"
-              />
-            </svg>
-          </div>
-          <div>
-            <div
-              className="u-mb-half u-breakword u-fz-medium"
-            >
-              <a
-                className="u-link"
-                href="https://nominatim.openstreetmap.org/search?format=html&q=48%20Fuller%20Road%2006635%20Stafford%20Solomon%20Islands"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                48 Fuller Road 06635 Stafford Solomon Islands
-              </a>
-            </div>
+              48 Fuller Road 06635 Stafford Solomon Islands
+            </a>
           </div>
         </div>
-      </li>
-      <li>
+      </div>
+    </li>
+    <li>
+      <div
+        className="u-flex u-mt-half"
+      >
         <div
-          className="u-flex u-mt-half"
+          className="u-mr-1 u-fz-large"
         >
-          <div
-            className="u-mr-1 u-fz-large"
-          >
-            <svg
-              className="styles__icon___23x3R"
-              height="16"
-              style={
-                Object {
-                  "fill": "var(--coolGrey)",
-                }
+          <svg
+            className="styles__icon___23x3R"
+            height="16"
+            style={
+              Object {
+                "fill": "var(--coolGrey)",
               }
-              width="16"
-            >
-              <use
-                xlinkHref="#calendar"
-              />
-            </svg>
-          </div>
-          <div>
-            <div
-              className="u-mb-half u-breakword u-fz-medium"
-            >
-              1998-06-03
-            </div>
+            }
+            width="16"
+          >
+            <use
+              xlinkHref="#calendar"
+            />
+          </svg>
+        </div>
+        <div>
+          <div
+            className="u-mb-half u-breakword u-fz-medium"
+          >
+            1998-06-03
           </div>
         </div>
-      </li>
-      <li>
+      </div>
+    </li>
+    <li>
+      <div
+        className="u-flex u-mt-half"
+      >
         <div
-          className="u-flex u-mt-half"
+          className="u-mr-1 u-fz-large"
         >
-          <div
-            className="u-mr-1 u-fz-large"
-          >
-            <svg
-              className="styles__icon___23x3R"
-              height="16"
-              style={
-                Object {
-                  "fill": "var(--coolGrey)",
-                }
+          <svg
+            className="styles__icon___23x3R"
+            height="16"
+            style={
+              Object {
+                "fill": "var(--coolGrey)",
               }
-              width="16"
-            >
-              <use
-                xlinkHref="#flag"
-              />
-            </svg>
-          </div>
-          <div>
-            <div
-              className="u-mb-half u-breakword u-fz-medium"
-            >
-              unsupportedField
-            </div>
+            }
+            width="16"
+          >
+            <use
+              xlinkHref="#flag"
+            />
+          </svg>
+        </div>
+        <div>
+          <div
+            className="u-mb-half u-breakword u-fz-medium"
+          >
+            unsupportedField
           </div>
         </div>
-      </li>
-    </ol>
-  </div>,
-]
+      </div>
+    </li>
+  </ol>
+</div>
 `;
 
-exports[`ContactCard should match snapshot with accounts and groups 1`] = `
+exports[`ContactInfoContent should match snapshot with accounts and groups 1`] = `
 Array [
-  <div
-    className="u-flex u-flex-items-center u-flex-column-s u-flex-justify-start-s u-ov-hidden u-maw-100 u-mr-1 u-mr-0-s"
-  >
-    <div
-      className="styles__c-avatar___PpDI- styles__c-avatar--text___2dvna u-mb-half-s u-flex-shrink-0"
-      style={
-        Object {
-          "backgroundColor": "var(--weirdGreen)",
-        }
-      }
-    >
-      
-      <span
-        className="styles__c-avatar-initials___310qC"
-      >
-        RW
-      </span>
-    </div>
-    <h1
-      className="u-title-h1 u-mv-0 u-mh-1 u-mb-half-s u-ellipsis u-spacellipsis-s u-maw-100 u-ta-center-s"
-    >
-      Rikki White
-    </h1>
-  </div>,
   <div
     className="u-mb-2"
   >
@@ -433,32 +383,8 @@ Array [
 ]
 `;
 
-exports[`ContactCard should match snapshot with accounts without groups 1`] = `
+exports[`ContactInfoContent should match snapshot with accounts without groups 1`] = `
 Array [
-  <div
-    className="u-flex u-flex-items-center u-flex-column-s u-flex-justify-start-s u-ov-hidden u-maw-100 u-mr-1 u-mr-0-s"
-  >
-    <div
-      className="styles__c-avatar___PpDI- styles__c-avatar--text___2dvna u-mb-half-s u-flex-shrink-0"
-      style={
-        Object {
-          "backgroundColor": "var(--weirdGreen)",
-        }
-      }
-    >
-      
-      <span
-        className="styles__c-avatar-initials___310qC"
-      >
-        RW
-      </span>
-    </div>
-    <h1
-      className="u-title-h1 u-mv-0 u-mh-1 u-mb-half-s u-ellipsis u-spacellipsis-s u-maw-100 u-ta-center-s"
-    >
-      Rikki White
-    </h1>
-  </div>,
   <div>
     <h3
       className="u-title-h2 u-mt-1-half u-mb-1"
