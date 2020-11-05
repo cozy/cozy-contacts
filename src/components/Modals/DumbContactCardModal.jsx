@@ -15,7 +15,7 @@ export const DumbContactCardModal = ({
   toggleConfirmDeleteModal,
   toggleEditMode,
   shouldDisplayConfirmDeleteModal,
-  deleteContact,
+  onDeleteContact,
   dataHaveBeenLoaded,
   onClose
 }) => {
@@ -45,7 +45,7 @@ export const DumbContactCardModal = ({
         <ConfirmDeleteModal
           contact={contact}
           toggleConfirmDeleteModal={toggleConfirmDeleteModal}
-          deleteContact={deleteContact}
+          onDeleteContact={onDeleteContact}
         />
       )}
     </>
@@ -59,7 +59,7 @@ DumbContactCardModal.propTypes = {
   toggleEditMode: PropTypes.func.isRequired,
   toggleConfirmDeleteModal: PropTypes.func.isRequired,
   shouldDisplayConfirmDeleteModal: PropTypes.bool.isRequired,
-  deleteContact: PropTypes.func.isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
   dataHaveBeenLoaded: PropTypes.bool,
   onClose: PropTypes.func.isRequired
 }
