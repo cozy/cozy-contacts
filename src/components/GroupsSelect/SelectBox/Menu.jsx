@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { components } from 'cozy-ui/transpiled/react/SelectBox'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 
 import GroupCreation from '../GroupCreation'
 
@@ -10,8 +11,10 @@ const Menu = props => {
 
   return (
     <components.Menu {...props} selectProps={selectProps}>
-      {children}
-      <GroupCreation createGroup={createGroup} />
+      <Typography variant="body1">
+        {children}
+        <GroupCreation createGroup={createGroup} />
+      </Typography>
     </components.Menu>
   )
 }
