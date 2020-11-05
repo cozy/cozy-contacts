@@ -14,6 +14,14 @@ import { getConnectedAccounts } from '../../helpers/contacts'
 import { deleteContact } from '../../connections/allContacts'
 
 class ContactsSelectionBar extends Component {
+  state = {
+    isBusy: false
+  }
+
+  componentDidUpdate() {
+    console.info('componentDidUpdate ContactsSelectionBar')
+  }
+
   render() {
     const {
       selection,
@@ -23,6 +31,8 @@ class ContactsSelectionBar extends Component {
       hideModal,
       client
     } = this.props
+    console.info('render ContactsSelectionBar', this.state)
+
     return selection.length > 0 ? (
       <SelectionBar
         selected={selection}
@@ -43,6 +53,8 @@ class ContactsSelectionBar extends Component {
               else if (someContactsConnected)
                 description = 'delete-confirmation.description-mixed'
 
+              console.info('SelectionBar actions this.state', this.state)
+
               showModal(
                 <ConfirmDialog
                   open={true}
@@ -62,15 +74,22 @@ class ContactsSelectionBar extends Component {
                       />
                       <Button
                         theme="danger"
-                        label={t('delete')}
+                        label={`${this.state.isBusy}`}
+                        busy={this.state.isBusy}
                         onClick={async () => {
-                          await Promise.all(
-                            selection.map(contact =>
-                              deleteContact(client, contact)
-                            )
-                          )
-                          clearSelection()
-                          hideModal()
+                          console.info('before setState', this.state)
+                          this.setState({ isBusy: true }, () => {
+                            console.info('after setState callback', this.state)
+                          })
+                          console.info('after setState', this.state)
+                          // await Promise.all(
+                          //   selection.map(contact =>
+                          //     deleteContact(client, contact)
+                          //   )
+                          // )
+                          // this.setState({ isBusy: false })
+                          // clearSelection()
+                          // hideModal()
                         }}
                       />
                     </>
