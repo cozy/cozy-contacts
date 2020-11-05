@@ -143,7 +143,8 @@ export class GroupsSelectClass extends React.Component {
       withCheckbox,
       components,
       className,
-      closeMenuOnSelect
+      closeMenuOnSelect,
+      menuPosition
     } = this.props
     const { menuIsOpen, editedGroupId } = this.state
     const { toggleMenu, setEditedGroupId, handleChange } = this
@@ -185,6 +186,7 @@ export class GroupsSelectClass extends React.Component {
           onControlClicked={toggleMenu}
           setEditedGroupId={setEditedGroupId}
           editedGroupId={editedGroupId}
+          menuPosition={menuPosition}
         />
       </div>
     )
@@ -210,7 +212,8 @@ GroupsSelectClass.propTypes = {
   // function to be triggered after creating a group
   onGroupCreated: PropTypes.func,
   className: PropTypes.string,
-  closeMenuOnSelect: PropTypes.bool
+  closeMenuOnSelect: PropTypes.bool,
+  menuPosition: PropTypes.oneOf(['fixed', 'absolute'])
 }
 
 GroupsSelectClass.defaultProps = {
