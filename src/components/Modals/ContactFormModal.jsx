@@ -4,11 +4,7 @@ import flow from 'lodash/flow'
 
 import { withClient } from 'cozy-client'
 
-import Modal, {
-  ModalHeader,
-  ModalDescription,
-  ModalFooter
-} from 'cozy-ui/transpiled/react/Modal'
+import { FixedDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import Button from 'cozy-ui/transpiled/react/Button'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
@@ -61,32 +57,31 @@ const ContactFormModal = ({
   }
 
   return (
-    <Modal
-      overflowHidden={true}
-      dismissAction={onClose}
-      mobileFullscreen={true}
-      into="body"
-      size="xlarge"
-    >
-      <ModalHeader>{title}</ModalHeader>
-      <ModalDescription>
+    <FixedDialog
+      open={true}
+      onClose={onClose}
+      size="large"
+      title={title}
+      content={
         <ContactForm contact={contactInForm} onSubmit={handleFormSubmit} />
-      </ModalDescription>
-      <ModalFooter className="u-ta-right">
-        <Button
-          type="button"
-          theme="secondary"
-          label={t('cancel')}
-          onClick={onClose}
-        />
-        <Button
-          type="submit"
-          label={t('save')}
-          busy={isFormBeingSubmitted}
-          onClick={triggerFormSubmit}
-        />
-      </ModalFooter>
-    </Modal>
+      }
+      actions={
+        <>
+          <Button
+            type="button"
+            theme="secondary"
+            label={t('cancel')}
+            onClick={onClose}
+          />
+          <Button
+            type="submit"
+            label={t('save')}
+            busy={isFormBeingSubmitted}
+            onClick={triggerFormSubmit}
+          />
+        </>
+      }
+    />
   )
 }
 

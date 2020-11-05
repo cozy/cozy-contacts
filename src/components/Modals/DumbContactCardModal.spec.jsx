@@ -19,10 +19,12 @@ const setup = ({
     editMode,
     contact,
     allGroups,
-    toggleConfirmDeleteModal: jest.fn,
-    toggleEditMode: jest.fn,
+    toggleConfirmDeleteModal: jest.fn(),
+    toggleEditMode: jest.fn(),
     shouldDisplayConfirmDeleteModal,
-    deleteContact: jest.fn
+    deleteContact: jest.fn(),
+    dataHaveBeenLoaded: true,
+    onClose: jest.fn()
   }
 }
 
