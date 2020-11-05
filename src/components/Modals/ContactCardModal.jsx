@@ -7,16 +7,16 @@ import {
   hasQueryBeenLoaded,
   useClient
 } from 'cozy-client'
-import Modal from 'cozy-ui/transpiled/react/Modal'
 
 import DumbContactCardModal from './DumbContactCardModal'
 import { deleteContact } from '../../connections/allContacts'
-import SpinnerContact from '../Common/Spinner'
+
 import { buildContactQuery, queryAllGroups } from '../../helpers/queries'
 
 const ContactCardModal = props => {
   const { onClose, id } = props
   const client = useClient()
+
   const [editMode, setEditMode] = useState(false)
   const [
     shouldDisplayConfirmDeleteModal,
@@ -54,21 +54,17 @@ const ContactCardModal = props => {
     (!isQueryLoading(resultAllGroups) || hasQueryBeenLoaded(resultAllGroups))
 
   return (
-    <Modal into="body" dismissAction={onClose} size="xlarge" mobileFullscreen>
-      {!dataHaveBeenLoaded ? (
-        <SpinnerContact size="xxlarge" />
-      ) : (
-        <DumbContactCardModal
-          editMode={editMode}
-          contact={resultContactById.data}
-          allGroups={resultAllGroups.data}
-          toggleConfirmDeleteModal={toggleConfirmDeleteModal}
-          toggleEditMode={toggleEditMode}
-          shouldDisplayConfirmDeleteModal={shouldDisplayConfirmDeleteModal}
-          deleteContact={handleDeleteContact}
-        />
-      )}
-    </Modal>
+    <DumbContactCardModal
+      dataHaveBeenLoaded={dataHaveBeenLoaded}
+      onClose={onClose}
+      editMode={editMode}
+      contact={resultContactById.data}
+      allGroups={resultAllGroups.data}
+      toggleConfirmDeleteModal={toggleConfirmDeleteModal}
+      toggleEditMode={toggleEditMode}
+      shouldDisplayConfirmDeleteModal={shouldDisplayConfirmDeleteModal}
+      deleteContact={handleDeleteContact}
+    />
   )
 }
 
