@@ -14,7 +14,7 @@ const CategorizedList = ({ contacts }) => {
   return (
     <ol className="list-contact">
       {Object.entries(categorizedContacts).map(([header, contacts]) => (
-        <li key={`cat-${header}`}>
+        <li id={`cat-${header}`} key={`cat-${header}`}>
           <ContactHeaderRow header={header} />
           <ContactsSubList contacts={contacts} />
         </li>
