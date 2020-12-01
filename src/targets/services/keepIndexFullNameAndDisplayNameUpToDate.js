@@ -8,6 +8,9 @@ import {
   fetchNormalizedServiceByName
 } from '../../helpers/fetches'
 import { updateIndexFullNameAndDisplayName } from '../../helpers/contacts'
+import fetch from 'node-fetch'
+
+global.fetch = fetch
 
 export const keepIndexFullNameAndDisplayNameUpToDate = async () => {
   log('info', `Executing keepIndexFullNameAndDisplayNameUpToDate service`)
