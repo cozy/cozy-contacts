@@ -40,6 +40,11 @@ export const contactsByFamilyNameGivenNameEmailCozyUrl = {
     Q(DOCTYPE_CONTACTS)
       .include(['accounts'])
       .where({
+        'indexes.byFamilyNameGivenNameEmailCozyUrl': {
+          $gt: null
+        }
+      })
+      .partialIndex({
         $or: [
           {
             trashed: {
@@ -67,6 +72,11 @@ export const contactsWithoutIndexes = {
     Q(DOCTYPE_CONTACTS)
       .include(['accounts'])
       .where({
+        _id: {
+          $gt: null
+        }
+      })
+      .partialIndex({
         $or: [
           {
             trashed: {
