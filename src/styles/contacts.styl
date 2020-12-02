@@ -6,6 +6,10 @@ main > [role=main]
     max-width 80rem
     margin 0 auto
 
+[role=banner] .coz-bar-container
+    +small-screen()
+        align-items center
+
 .list-wrapper
     box-shadow 0 4px 4px 0 silver
 
@@ -109,10 +113,3 @@ $reset-list
 .contacts-empty>svg
     height 300px
     width 280px
-
-.fil-path-title
-    font-size 1.3rem
-    height 3rem
-    display flex
-    align-items center
-    padding 0 .25rem
