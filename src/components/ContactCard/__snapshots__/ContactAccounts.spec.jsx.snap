@@ -32,16 +32,16 @@ Array [
           <div
             className="u-mb-half u-breakword"
           >
-            <div
-              className="u-text"
+            <p
+              className="MuiTypography-root-1 MuiTypography-body1-10"
             >
               Google
-            </div>
-            <div
-              className="u-caption"
+            </p>
+            <span
+              className="MuiTypography-root-1 MuiTypography-caption-11 MuiTypography-colorTextSecondary-34"
             >
               john.doe@gmail.com
-            </div>
+            </span>
           </div>
         </div>
       </div>

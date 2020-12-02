@@ -2,12 +2,13 @@
 import React, { useEffect } from 'react'
 import flow from 'lodash/flow'
 
+import flag, { FlagSwitcher } from 'cozy-flags'
 import { Main, Layout } from 'cozy-ui/transpiled/react/Layout'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
-import { Title } from 'cozy-ui/transpiled/react/Text'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useI18n, useBreakpoints } from 'cozy-ui/transpiled/react'
 import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
-import flag, { FlagSwitcher } from 'cozy-flags'
+import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
 
 import { SelectedGroupProvider } from './Contexts/SelectedGroup'
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
@@ -32,9 +33,9 @@ const ContactsApp = props => {
       <Layout monocolumn="true">
         {isMobile && (
           <BarCenter>
-            <Title>
-              <span className={'fil-path-title'}>Contacts</span>
-            </Title>
+            <MuiCozyTheme>
+              <Typography variant="h4">Contacts</Typography>
+            </MuiCozyTheme>
           </BarCenter>
         )}
         <Main>

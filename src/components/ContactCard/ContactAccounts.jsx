@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
-import { Text, Caption } from 'cozy-ui/transpiled/react/Text'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 
 import FieldsetTitle from '../Common/FieldsetTitle'
@@ -30,8 +30,10 @@ const ContactAccounts = ({ accounts, t }) => (
               </div>
               <div>
                 <div className="u-mb-half u-breakword">
-                  <Text>{label}</Text>
-                  <Caption>{account.name}</Caption>
+                  <Typography variant="body1">{label}</Typography>
+                  <Typography variant="caption" color="textSecondary">
+                    {account.name}
+                  </Typography>
                 </div>
               </div>
             </div>
