@@ -754,13 +754,6 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
-"@babel/runtime@7.5.5":
-  version "7.5.5"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.5.5.tgz#74fba56d35efbeca444091c7850ccd494fd2f132"
-  integrity sha512-28QvEGyQyNkB0/m2B4FU7IEZGK2NUrcMtT6BZEFALTguLk+AUT6ofsHtPk5QyjAdUkpMJ+/Em+quwz4HOt30AQ==
-  dependencies:
-    regenerator-runtime "^0.13.2"
-
 "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.3", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.4", "@babel/runtime@^7.5.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.8.4":
   version "7.11.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.11.2.tgz#f549c13c754cc40b87644b9fa9f09a6a95fe0736"
@@ -3419,19 +3412,7 @@ cozy-device-helper@^1.7.3:
   dependencies:
     lodash "4.17.19"
 
-cozy-doctypes@1.72.2:
-  version "1.72.2"
-  resolved "https://registry.yarnpkg.com/cozy-doctypes/-/cozy-doctypes-1.72.2.tgz#ac3d6813780008e5a4115a70679a0f25cf7efd81"
-  integrity sha512-ITrfljuDBsRQ4AaDUup+0Weh7K+QlZfX38R1YFw9nsLWZMy8GCvUvaJ6vLk7UWj9SmoO/+A2Dwz2T/p9je+DZA==
-  dependencies:
-    "@babel/runtime" "7.5.5"
-    cozy-logger "^1.6.0"
-    date-fns "1.30.1"
-    es6-promise-pool "2.5.0"
-    lodash "4.17.15"
-    prop-types "^15.7.2"
-
-cozy-doctypes@^1.74.8:
+cozy-doctypes@1.75.1, cozy-doctypes@^1.74.8:
   version "1.75.1"
   resolved "https://registry.yarnpkg.com/cozy-doctypes/-/cozy-doctypes-1.75.1.tgz#76effe72fb233f03bb77be06dd82f88754d8efbd"
   integrity sha512-9PX/Dv+jYVV4TfDfBpu4TbVudv8PIHzbLUNwY7FyZ4poyGvRSFE8YFvnHgO0ShREgCJ2Ivw3lVJuF6xpkJHv6g==
@@ -10338,7 +10319,7 @@ regenerator-runtime@^0.12.0:
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.12.1.tgz#fa1a71544764c036f8c49b13a08b2594c9f8a0de"
   integrity sha512-odxIc1/vDlo4iZcfXqRYFj0vpXFNoGdKMAUieAlFYO6m/nl5e9KR/beGf41z4a1FI+aQgtjhuaSlDxQ0hmkrHg==
 
-regenerator-runtime@^0.13.2, regenerator-runtime@^0.13.4:
+regenerator-runtime@^0.13.4:
   version "0.13.7"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
   integrity sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==
