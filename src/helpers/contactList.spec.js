@@ -17,31 +17,43 @@ describe('categorizeContacts', () => {
     ]
     const categorizedContacts = categorizeContacts(contacts, 'EMPTY')
     expect(categorizedContacts).toEqual({
-      A: [
-        { indexes: { byFamilyNameGivenNameEmailCozyUrl: 'A' }, name: 'Alex' },
-        { indexes: { byFamilyNameGivenNameEmailCozyUrl: 'A' }, name: 'Alan' },
-        { indexes: { byFamilyNameGivenNameEmailCozyUrl: 'À' }, name: 'Àlbert' }
-      ],
-      B: [
-        { indexes: { byFamilyNameGivenNameEmailCozyUrl: 'B' }, name: 'Bernard' }
-      ],
-      C: [
-        { indexes: { byFamilyNameGivenNameEmailCozyUrl: 'C' }, name: 'Cleo' }
-      ],
-      E: [
-        { indexes: { byFamilyNameGivenNameEmailCozyUrl: 'È' }, name: 'Èllen' }
-      ],
-      EMPTY: [
-        { indexes: { byFamilyNameGivenNameEmailCozyUrl: '' }, name: '' },
-        { indexes: { byFamilyNameGivenNameEmailCozyUrl: {} }, name: {} },
-        { indexes: { byFamilyNameGivenNameEmailCozyUrl: null }, name: 'John' }
-      ],
-      X: [
-        { indexes: { byFamilyNameGivenNameEmailCozyUrl: 'X' }, name: 'Xavier' }
-      ],
-      Z: [
-        { indexes: { byFamilyNameGivenNameEmailCozyUrl: 'Z' }, name: 'Zorro' }
-      ]
+      letters: ['A', 'B', 'C', 'E', 'X', 'Z'],
+      categorizedContacts: {
+        A: [
+          { indexes: { byFamilyNameGivenNameEmailCozyUrl: 'A' }, name: 'Alex' },
+          { indexes: { byFamilyNameGivenNameEmailCozyUrl: 'A' }, name: 'Alan' },
+          {
+            indexes: { byFamilyNameGivenNameEmailCozyUrl: 'À' },
+            name: 'Àlbert'
+          }
+        ],
+        B: [
+          {
+            indexes: { byFamilyNameGivenNameEmailCozyUrl: 'B' },
+            name: 'Bernard'
+          }
+        ],
+        C: [
+          { indexes: { byFamilyNameGivenNameEmailCozyUrl: 'C' }, name: 'Cleo' }
+        ],
+        E: [
+          { indexes: { byFamilyNameGivenNameEmailCozyUrl: 'È' }, name: 'Èllen' }
+        ],
+        EMPTY: [
+          { indexes: { byFamilyNameGivenNameEmailCozyUrl: '' }, name: '' },
+          { indexes: { byFamilyNameGivenNameEmailCozyUrl: {} }, name: {} },
+          { indexes: { byFamilyNameGivenNameEmailCozyUrl: null }, name: 'John' }
+        ],
+        X: [
+          {
+            indexes: { byFamilyNameGivenNameEmailCozyUrl: 'X' },
+            name: 'Xavier'
+          }
+        ],
+        Z: [
+          { indexes: { byFamilyNameGivenNameEmailCozyUrl: 'Z' }, name: 'Zorro' }
+        ]
+      }
     })
   })
 })

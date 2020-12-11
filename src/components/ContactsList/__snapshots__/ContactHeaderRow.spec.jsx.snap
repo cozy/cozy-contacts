@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactHeaderRow should match the ContactHeaderRow snapshot 1`] = `
+<div
+  className="divider"
+>
+  <div
+    className="divider__header"
+  >
+    A
+  </div>
+  <div
+    className="divider__nav"
+  >
+    <button
+      className="divider__nav__item -selected"
+      onClick={[Function]}
+    >
+      A
+    </button>
+    <button
+      className="divider__nav__item "
+      onClick={[Function]}
+    >
+      B
+    </button>
+    <button
+      className="divider__nav__item "
+      onClick={[Function]}
+    >
+      C
+    </button>
+  </div>
+</div>
+`;

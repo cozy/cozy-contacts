@@ -105,6 +105,25 @@ $reset-list
 .divider
     @extend $table-divider
 
+.divider__header
+    flex: 1
+    margin-right: 1rem
+
+.divider__nav
+    white-space nowrap
+    overflow-x auto
+
+.divider__nav__item
+    border none
+    text-transform uppercase
+    cursor pointer
+    color: inherit
+    text-decoration underline
+
+.divider__nav__item.-selected
+    font-weight bold
+    text-decoration none
+
 // TODO: Find a better way to set the .empty icon size
 .contacts-empty>svg
     height 300px
