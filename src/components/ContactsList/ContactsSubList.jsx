@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 
-import ContactRow from './ContactRow'
+import ContactRow from "./ContactRow";
 
 const ContactsSubList = ({ contacts }) => {
   return (
@@ -12,11 +12,11 @@ const ContactsSubList = ({ contacts }) => {
         </li>
       ))}
     </ol>
-  )
-}
+  );
+};
 
 ContactsSubList.propTypes = {
   contacts: PropTypes.array.isRequired
-}
+};
 
-export default ContactsSubList
+export default ContactsSubList;

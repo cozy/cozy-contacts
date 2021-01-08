@@ -1,23 +1,23 @@
-import React from 'react'
+import React from "react";
 
-import { Query } from 'cozy-client'
+import { Query } from "cozy-client";
 
-import SpinnerContact from './Common/Spinner'
-import ContentRework from './ContentRework'
+import SpinnerContact from "./Common/Spinner";
+import ContentRework from "./ContentRework";
 import {
   contactsByFamilyNameGivenNameEmailCozyUrl,
   contactsWithoutIndexes,
   queryAllGroups
-} from '../helpers/queries'
-import useService from './Hooks/useService'
+} from "../helpers/queries";
+import useService from "./Hooks/useService";
 
 const ContentWrapper = () => {
   const hasServiceBeenLaunched = useService(
-    'keepIndexFullNameAndDisplayNameUpToDate'
-  )
+    "keepIndexFullNameAndDisplayNameUpToDate"
+  );
 
   if (hasServiceBeenLaunched === null) {
-    return <SpinnerContact size="xxlarge" loadingType="fetching_contacts" />
+    return <SpinnerContact size="xxlarge" loadingType="fetching_contacts" />;
   }
   return (
     <Query
@@ -26,7 +26,7 @@ const ContentWrapper = () => {
     >
       {contactsWithIndexesResult => {
         if (contactsWithIndexesResult.hasMore) {
-          contactsWithIndexesResult.fetchMore()
+          contactsWithIndexesResult.fetchMore();
         }
 
         return (
@@ -36,7 +36,7 @@ const ContentWrapper = () => {
           >
             {contactsWithNoIndexesResult => {
               if (contactsWithNoIndexesResult.hasMore) {
-                contactsWithNoIndexesResult.fetchMore()
+                contactsWithNoIndexesResult.fetchMore();
               }
 
               return (
@@ -54,16 +54,16 @@ const ContentWrapper = () => {
                         }
                         allGroupsResult={allGroupsResult}
                       />
-                    )
+                    );
                   }}
                 </Query>
-              )
+              );
             }}
           </Query>
-        )
+        );
       }}
     </Query>
-  )
-}
+  );
+};
 
-export default ContentWrapper
+export default ContentWrapper;
