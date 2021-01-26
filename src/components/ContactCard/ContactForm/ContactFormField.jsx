@@ -1,11 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FieldArray } from 'react-final-form-arrays'
+import uniqueId from 'lodash/uniqueId'
+
 import Button from 'cozy-ui/transpiled/react/Button'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import palette from 'cozy-ui/transpiled/react/palette'
-import uniqueId from 'lodash/uniqueId'
 import { Media, Img, Bd } from 'cozy-ui/transpiled/react/Media'
+import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
 
 class ContactFormField extends React.Component {
   constructor(props) {
@@ -43,7 +45,7 @@ class ContactFormField extends React.Component {
                     )
                   )}
                   <Button
-                    icon="plus"
+                    icon={PlusIcon}
                     theme="text"
                     type="button"
                     onClick={() => this.addField(fields)}

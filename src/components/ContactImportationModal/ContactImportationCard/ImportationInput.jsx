@@ -1,8 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import Icon from 'cozy-ui/transpiled/react/Icon'
-import Importation from '../../../importation'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
+import UploadIcon from 'cozy-ui/transpiled/react/Icons/Upload'
+
+import Importation from '../../../importation'
 
 class ImportationInput extends React.Component {
   state = {
@@ -24,7 +27,7 @@ class ImportationInput extends React.Component {
       >
         <span>
           <Icon
-            icon="upload"
+            icon={UploadIcon}
             className="importation-file-selection-icon u-mr-half"
           />
           {t('importation.transfer_file')}

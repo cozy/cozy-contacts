@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import Button from 'cozy-ui/transpiled/react/Button'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
 
 import withModal from './HOCs/withModal'
 import ContactFormModal from './Modals/ContactFormModal'
@@ -33,7 +34,7 @@ const Toolbar = ({ showModal, hideModal }) => {
     <div className="actions">
       <Button
         onClick={showContactFormModal}
-        icon="plus"
+        icon={PlusIcon}
         label={t('create_contact')}
         style={style}
       />

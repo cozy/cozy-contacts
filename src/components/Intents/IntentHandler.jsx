@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Empty from 'cozy-ui/transpiled/react/Empty'
+import CozyIcon from 'cozy-ui/transpiled/react/Icons/Cozy'
 
 class IntentHandler extends Component {
   constructor(props) {
@@ -60,7 +61,7 @@ class IntentHandler extends Component {
           )}
           {error && (
             <Empty
-              icon="cozy"
+              icon={CozyIcon}
               title={t('intent.service.creation.error.title')}
               text={error.message}
             />
