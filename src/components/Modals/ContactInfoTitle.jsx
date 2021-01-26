@@ -6,6 +6,8 @@ import log from 'cozy-logger'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Button from 'cozy-ui/transpiled/react/Button'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
+import RenameIcon from 'cozy-ui/transpiled/react/Icons/Rename'
+import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
 
 import { updateContactGroups } from '../../helpers/groups'
 import { fullContactPropTypes } from '../ContactPropTypes'
@@ -75,7 +77,7 @@ const ContactInfoTitle = ({
         <Button
           theme="secondary"
           extension="narrow"
-          icon="rename"
+          icon={RenameIcon}
           iconOnly
           label={t('edit')}
           size="small"
@@ -84,7 +86,7 @@ const ContactInfoTitle = ({
         <Button
           theme="secondary"
           extension="narrow"
-          icon="trash"
+          icon={TrashIcon}
           iconOnly
           label={t('delete')}
           size="small"

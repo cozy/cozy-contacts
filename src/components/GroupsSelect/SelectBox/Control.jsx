@@ -5,6 +5,7 @@ import Button from 'cozy-ui/transpiled/react/Button'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import palette from 'cozy-ui/transpiled/react/palette'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import BottomSelectIcon from 'cozy-ui/transpiled/react/Icons/BottomSelect'
 
 const Control = ({
   innerRef,
@@ -23,7 +24,7 @@ const Control = ({
       >
         {t('groups.manage')}
         <Icon
-          icon="bottom-select"
+          icon={BottomSelectIcon}
           color={palette['coolGrey']}
           width="12"
           className="group-manager__indicator"

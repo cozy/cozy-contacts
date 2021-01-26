@@ -7,6 +7,9 @@ import Empty from 'cozy-ui/transpiled/react/Empty'
 import Button from 'cozy-ui/transpiled/react/Button'
 import Infos from 'cozy-ui/transpiled/react/Infos'
 import Stack from 'cozy-ui/transpiled/react/Stack'
+import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
+import InfoIcon from 'cozy-ui/transpiled/react/Icons/Info'
+import TeamIcon from 'cozy-ui/transpiled/react/Icons/Team'
 
 import withModal from '../HOCs/withModal'
 import ContactImportationModal from '../ContactImportationModal/'
@@ -22,7 +25,7 @@ const style = { pointerEvents: 'all' }
 
 const SoonComponent = ({ t }) => (
   <div className="u-pt-1 u-pb-2">
-    <Infos text={t('importation.available_soon')} icon="info" />
+    <Infos text={t('importation.available_soon')} icon={InfoIcon} />
   </div>
 )
 
@@ -67,7 +70,7 @@ const ContactsEmptyList = ({ hideModal, showModal }) => {
               onClick={showContactImportationModal}
               label={t('empty.import_vcard')}
               theme="secondary"
-              icon="team"
+              icon={TeamIcon}
               style={style}
               extension="full"
             />
@@ -81,7 +84,7 @@ const ContactsEmptyList = ({ hideModal, showModal }) => {
           subtle
           theme="secondary"
           onClick={showCreateContactModal}
-          icon="plus"
+          icon={PlusIcon}
           label={t('create_contact')}
           style={style}
         />

@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import Button from 'cozy-ui/transpiled/react/Button'
 import IntentHeader from 'cozy-ui/transpiled/react/IntentHeader'
+
 import IntentMain from './IntentMain'
 import ContactsList from '../ContactsList/ContactsList'
 

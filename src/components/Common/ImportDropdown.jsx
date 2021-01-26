@@ -7,6 +7,8 @@ import ActionMenu, { ActionMenuItem } from 'cozy-ui/transpiled/react/ActionMenu'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import Button from 'cozy-ui/transpiled/react/Button'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
+import TeamIcon from 'cozy-ui/transpiled/react/Icons/Team'
+import BottomIcon from 'cozy-ui/transpiled/react/Icons/Bottom'
 
 import withModal from '../HOCs/withModal'
 import ContactImportationModal from '../ContactImportationModal'
@@ -35,9 +37,9 @@ const ImportDropdown = ({ showModal, hideModal }) => {
           onClick={showMenu}
           label={t('import.title')}
           theme="secondary"
-          icon="team"
+          icon={TeamIcon}
         >
-          <Icon className="u-ml-half" icon="bottom" />
+          <Icon className="u-ml-half" icon={BottomIcon} />
         </Button>
       </span>
       {menuDisplayed && (
@@ -47,7 +49,7 @@ const ImportDropdown = ({ showModal, hideModal }) => {
           onClose={hideMenu}
         >
           <ActionMenuItem
-            left={<Icon icon="team" />}
+            left={<Icon icon={TeamIcon} />}
             onClick={showContactImportationModal}
           >
             {t('import.vcard')}
