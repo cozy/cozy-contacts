@@ -5,6 +5,7 @@ import get from 'lodash/get'
 
 import { models } from 'cozy-client'
 import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
+import { TableRow } from 'cozy-ui/transpiled/react/Table'
 
 import { fullContactPropTypes } from '../ContactPropTypes'
 import withModal from '../HOCs/withModal'
@@ -58,7 +59,7 @@ class ContactRow extends Component {
     const cozyUrl = getPrimaryCozy(contact) || undefined
 
     return (
-      <div
+      <TableRow
         className="contact"
         data-testid="contact-row"
         onClick={() => showModal(<ContactCardModal id={contact._id} />)}
@@ -68,7 +69,7 @@ class ContactRow extends Component {
         {!isMobile && <ContactEmail email={email} />}
         {!isMobile && <ContactPhone phone={phone} />}
         {!isMobile && <ContactCozy cozyUrl={cozyUrl} />}
-      </div>
+      </TableRow>
     )
   }
 }
