@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react'
 import flow from 'lodash/flow'
 
+import { useClient } from 'cozy-client'
 import flag, { FlagSwitcher } from 'cozy-flags'
 import { Main, Layout } from 'cozy-ui/transpiled/react/Layout'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
@@ -17,12 +18,12 @@ import useFlags from './Hooks/useFlags'
 import container from './AppContainer'
 import ContentWrapper from './ContentWrapper'
 
-const ContactsApp = props => {
+const ContactsApp = ({ cleanTrashedGroups }) => {
   useFlags()
+  const client = useClient()
   const { t } = useI18n()
   const { isMobile } = useBreakpoints()
   const { BarCenter } = cozy.bar
-  const { cleanTrashedGroups } = props
 
   useEffect(() => {
     cleanTrashedGroups()
@@ -34,7 +35,7 @@ const ContactsApp = props => {
         {isMobile && (
           <BarCenter>
             <MuiCozyTheme>
-              <Typography variant="h4">Contacts</Typography>
+              <Typography variant="h4">{client.appMetadata.slug}</Typography>
             </MuiCozyTheme>
           </BarCenter>
         )}
