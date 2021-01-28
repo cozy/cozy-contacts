@@ -1,7 +1,8 @@
 import memoize from 'lodash/memoize'
 
-import { initTranslation } from 'cozy-ui/transpiled/react/I18n'
 import configureStore from 'store/configureStore'
+import { initTranslation } from 'cozy-ui/transpiled/react/I18n'
+
 import { getClient } from '../../helpers/client'
 import { getValues, initBar } from '../../helpers/bar'
 
@@ -10,8 +11,7 @@ import { getValues, initBar } from '../../helpers/bar'
  */
 const setupApp = memoize(() => {
   const root = document.querySelector('[role=application]')
-
-  const { lang } = getValues(root.dataset)
+  const { lang, appName } = getValues(root.dataset)
   const polyglot = initTranslation(lang, lang => require(`locales/${lang}`))
   const client = getClient()
   const persistedState = {}
@@ -23,7 +23,7 @@ const setupApp = memoize(() => {
   )
   client.setStore(store)
 
-  initBar(client)
+  initBar({ client, root, lang, appName })
 
   return { root, store, client, lang, polyglot }
 })

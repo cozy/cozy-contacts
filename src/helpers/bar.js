@@ -36,9 +36,8 @@ export const getValues = ({
  * Cozy bar initialization
  * @param {object} client - cozy client
  */
-export const initBar = client => {
-  const root = document.querySelector('[role=application]')
-  const { appName, appNamePrefix, iconPath, lang } = getValues(root.dataset)
+export const initBar = ({ client, root, lang, appName }) => {
+  const { appNamePrefix, iconPath } = getValues(root.dataset)
 
   cozy.bar.init({
     appName,
