@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
@@ -13,23 +13,49 @@ const CategorizedList = ({ contacts }) => {
   const { t } = useI18n()
   const categorizedContacts = categorizeContacts(contacts, t('empty-list'))
 
-  useKeypress((event) => {
-    const contactCategory = document.getElementsByClassName(
-      `contact-category-${event.key.toLowerCase()}`
-    )
+  const categoriesRefs = {
+    a: useRef(),
+    b: useRef(),
+    c: useRef(),
+    d: useRef(),
+    e: useRef(),
+    f: useRef(),
+    g: useRef(),
+    h: useRef(),
+    i: useRef(),
+    j: useRef(),
+    k: useRef(),
+    l: useRef(),
+    m: useRef(),
+    n: useRef(),
+    o: useRef(),
+    p: useRef(),
+    q: useRef(),
+    r: useRef(),
+    s: useRef(),
+    t: useRef(),
+    u: useRef(),
+    v: useRef(),
+    w: useRef(),
+    x: useRef(),
+    y: useRef(),
+    z: useRef()
+  }
 
-    if (contactCategory.length == 0) {
+  // No typings ?
+  // How to unregister the event listener ?
+  useKeypress(event => {
+    if (!categoriesRefs[event.key.toLowerCase()].current) {
       return
     }
-
+    categoriesRefs[event.key.toLowerCase()].current.scrollIntoView()
     Alerter.info(`Jump To ${event.key.toUpperCase()}`)
-    contactCategory[0].scrollIntoView()
   })
 
   return (
     <ol className="list-contact">
       {Object.entries(categorizedContacts).map(([header, contacts]) => (
-        <li key={`cat-${header}`} className={'contact-category-' + header}>
+        <li key={`cat-${header}`} ref={categoriesRefs[header]}>
           <ContactHeaderRow key={header} header={header} />
           <ContactsSubList contacts={contacts} />
         </li>
