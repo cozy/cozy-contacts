@@ -42,8 +42,7 @@ const CategorizedList = ({ contacts }) => {
     z: useRef()
   }
 
-  // No typings ?
-  // How to unregister the event listener ?
+  // Handle keypress event to navigate to the corresponding contact category.
   useKeypress(event => {
     if (!categoriesRefs[event.key.toLowerCase()].current) {
       return
