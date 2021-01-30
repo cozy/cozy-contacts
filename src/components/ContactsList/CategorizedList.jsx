@@ -49,7 +49,7 @@ const CategorizedList = ({ contacts }) => {
       return
     }
     categoriesRefs[event.key.toLowerCase()].current.scrollIntoView()
-    Alerter.info(`Jump To ${event.key.toUpperCase()}`)
+    Alerter.info(`${t('navigate_to')} ${event.key.toUpperCase()}`)
   })
 
   return (
