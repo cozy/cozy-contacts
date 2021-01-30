@@ -7,12 +7,13 @@ import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import ContactHeaderRow from './ContactHeaderRow'
 import ContactsSubList from './ContactsSubList'
 import { categorizeContacts } from '../../helpers/contactList'
+import useKeypress from '../Hooks/useKeypress'
 
 const CategorizedList = ({ contacts }) => {
   const { t } = useI18n()
   const categorizedContacts = categorizeContacts(contacts, t('empty-list'))
 
-  document.onkeypress = function handleKeyPress(event) {
+  useKeypress((event) => {
     const contactCategory = document.getElementsByClassName(
       `contact-category-${event.key.toLowerCase()}`
     )
@@ -23,7 +24,7 @@ const CategorizedList = ({ contacts }) => {
 
     Alerter.info(`Jump To ${event.key.toUpperCase()}`)
     contactCategory[0].scrollIntoView()
-  }
+  })
 
   return (
     <ol className="list-contact">
