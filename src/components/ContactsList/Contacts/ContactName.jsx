@@ -2,10 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 
+import Typography from 'cozy-ui/transpiled/react/Typography'
+
 const ContactName = ({ displayName, familyName }) => {
   const namesToDisplay = (displayName && displayName.split(' ')) || []
   return (
-    <div className="u-ellipsis u-ml-1">
+    <Typography className="u-ml-1" variant="body1" noWrap gutterBottom inline>
       {namesToDisplay.map((name, key) => (
         <span
           key={`display-${key}`}
@@ -15,7 +17,7 @@ const ContactName = ({ displayName, familyName }) => {
           &nbsp;
         </span>
       ))}
-    </div>
+    </Typography>
   )
 }
 
