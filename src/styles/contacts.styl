@@ -43,35 +43,8 @@ main > [role=main]
 .actions
     display flex
 
-$reset-list
-    list-style none
-    padding-left 0
-    margin 0
-
-.list-contact
-    @extend $table
-    @extend $reset-list
-
-.sublist-contact
-    @extend $reset-list
-
-    :last-child
-        .contact
-            border 0
-
-.contact
-    color coolGrey
-    cursor pointer
-
-    +small-screen()
-        height auto
-
 .contact-selection
     position absolute
-    left .5rem
-
-    +small-screen()
-        position relative
 
 .contact-identity
     flex-basis 30%
@@ -92,14 +65,6 @@ $reset-list
 
 .contact-email
     flex-basis 30%
-
-+small-screen()
-    .contact-identity
-    .contact-phone
-    .contact-cozyurl
-    .contact-email
-        flex-basis auto
-        padding .3rem 1rem
 
 // TODO: Find a better way to set the .empty icon size
 .contacts-empty>svg

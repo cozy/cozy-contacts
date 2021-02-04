@@ -5,7 +5,7 @@ import get from 'lodash/get'
 
 import { models } from 'cozy-client'
 import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
-import { TableRow } from 'cozy-ui/transpiled/react/Table'
+import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 
 import { fullContactPropTypes } from '../ContactPropTypes'
 import withModal from '../HOCs/withModal'
@@ -52,6 +52,7 @@ class ContactRow extends Component {
     const {
       contact,
       showModal,
+      divider,
       breakpoints: { isMobile }
     } = this.props
     const email = getPrimaryEmail(contact) || undefined
@@ -59,9 +60,10 @@ class ContactRow extends Component {
     const cozyUrl = getPrimaryCozy(contact) || undefined
 
     return (
-      <TableRow
-        className="contact"
+      <ListItem
+        className="u-c-pointer"
         data-testid="contact-row"
+        divider={divider}
         onClick={() => showModal(<ContactCardModal id={contact._id} />)}
       >
         <ContactWithSelection contact={contact} />
@@ -69,14 +71,15 @@ class ContactRow extends Component {
         {!isMobile && <ContactEmail email={email} />}
         {!isMobile && <ContactPhone phone={phone} />}
         {!isMobile && <ContactCozy cozyUrl={cozyUrl} />}
-      </TableRow>
+      </ListItem>
     )
   }
 }
 
 ContactRow.propTypes = {
   contact: fullContactPropTypes.isRequired,
-  showModal: PropTypes.func.isRequired
+  showModal: PropTypes.func.isRequired,
+  divider: PropTypes.bool
 }
 ContactRow.defaultProps = {
   selection: null
