@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import ListSubheader from 'cozy-ui/transpiled/react/MuiCozyTheme/ListSubheader'
 
-import ContactHeaderRow from './ContactHeaderRow'
 import ContactsSubList from './ContactsSubList'
 import { categorizeContacts } from '../../helpers/contactList'
 
@@ -15,7 +15,8 @@ const CategorizedList = ({ contacts }) => {
     <ol className="list-contact">
       {Object.entries(categorizedContacts).map(([header, contacts]) => (
         <li key={`cat-${header}`}>
-          <ContactHeaderRow key={header} header={header} />
+          <ListSubheader key={header}>{header}</ListSubheader>
+
           <ContactsSubList contacts={contacts} />
         </li>
       ))}
