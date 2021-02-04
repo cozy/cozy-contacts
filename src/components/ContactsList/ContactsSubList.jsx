@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 
 import List from 'cozy-ui/transpiled/react/MuiCozyTheme/List'
 
-import ContactRow from './ContactRow'
+import ContactListItem from './ContactListItem'
 
 const ContactsSubList = ({ contacts }) => {
   return (
     <List>
       {contacts.map((contact, index) => (
-        <ContactRow
+        <ContactListItem
           id={contact._id}
           key={contact._id}
           contact={contact}

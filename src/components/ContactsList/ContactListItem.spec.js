@@ -3,20 +3,20 @@ import renderer from 'react-test-renderer'
 import { mount } from 'enzyme'
 
 import AppLike from '../../tests/Applike'
-import ContactRow, { hasDocBeenUpdated } from './ContactRow'
+import ContactListItem, { hasDocBeenUpdated } from './ContactListItem'
 
-describe('ContactRow', () => {
+describe('ContactListItem', () => {
   it('should accept the strict minimum', () => {
     const contact = { email: [{ address: 'johndoe@localhost' }] }
-    const contactRowInstance = (
+    const contactListItemInstance = (
       <AppLike>
-        <ContactRow contact={contact} />
+        <ContactListItem contact={contact} />
       </AppLike>
     )
-    const contactrow = mount(contactRowInstance)
-    const contactrowemail = contactrow.find('ContactEmail')
-    expect(contactrowemail).toBeDefined()
-    expect(contactrowemail.text()).toBe(contact.email[0].address)
+    const contactListItem = mount(contactListItemInstance)
+    const contactListItemEmail = contactListItem.find('ContactEmail')
+    expect(contactListItemEmail).toBeDefined()
+    expect(contactListItemEmail.text()).toBe(contact.email[0].address)
   })
 
   it('should display data', () => {
@@ -26,59 +26,59 @@ describe('ContactRow', () => {
       email: [{ address: 'johndoe@localhost' }],
       cozy: [{ url: 'http://johndoe.mycozy.cloud' }]
     }
-    const contactRowInstance = (
+    const ContactListItemInstance = (
       <AppLike>
-        <ContactRow contact={contact} />
+        <ContactListItem contact={contact} />
       </AppLike>
     )
-    const contactrow = mount(contactRowInstance)
-    const contactrowname = contactrow.find('ContactName')
-    expect(contactrowname).toBeDefined()
-    expect(contactrowname.text()).toEqual(
+    const contactListItem = mount(ContactListItemInstance)
+    const contactListItemName = contactListItem.find('ContactName')
+    expect(contactListItemName).toBeDefined()
+    expect(contactListItemName.text()).toEqual(
       expect.stringContaining(contact.name.givenName)
     )
-    expect(contactrowname.text()).toEqual(
+    expect(contactListItemName.text()).toEqual(
       expect.stringContaining(contact.name.familyName)
     )
-    const contactrowphone = contactrow.find('ContactPhone')
-    expect(contactrowphone).toBeDefined()
-    expect(contactrowphone.text()).toBe(contact.phone[0].number)
+    const contactListItemPhone = contactListItem.find('ContactPhone')
+    expect(contactListItemPhone).toBeDefined()
+    expect(contactListItemPhone.text()).toBe(contact.phone[0].number)
 
-    const contactrowcozyurl = contactrow.find('ContactCozy')
-    expect(contactrowcozyurl).toBeDefined()
-    expect(contactrowcozyurl.text()).toBe(contact.cozy[0].url)
+    const contactListItemCozyurl = contactListItem.find('ContactCozy')
+    expect(contactListItemCozyurl).toBeDefined()
+    expect(contactListItemCozyurl.text()).toBe(contact.cozy[0].url)
   })
 
   it('should display default value for missing information', () => {
     const contact = {}
-    const contactRowInstance = (
+    const ContactListItemInstance = (
       <AppLike>
-        <ContactRow contact={contact} />
+        <ContactListItem contact={contact} />
       </AppLike>
     )
-    const contactrow = mount(contactRowInstance)
-    const contactrowname = contactrow.find('ContactName')
-    expect(contactrowname).toBeDefined()
-    expect(contactrowname.text().trim()).toBe('')
-    const contactrowphone = contactrow.find('ContactPhone')
-    expect(contactrowphone).toBeDefined()
-    expect(contactrowphone.text().trim()).toBe('—')
-    const contactrowcozyurl = contactrow.find('ContactCozy')
-    expect(contactrowcozyurl).toBeDefined()
-    expect(contactrowcozyurl.text().trim()).toBe('—')
+    const contactListItem = mount(ContactListItemInstance)
+    const contactListItemName = contactListItem.find('ContactName')
+    expect(contactListItemName).toBeDefined()
+    expect(contactListItemName.text().trim()).toBe('')
+    const contactListItemPhone = contactListItem.find('ContactPhone')
+    expect(contactListItemPhone).toBeDefined()
+    expect(contactListItemPhone.text().trim()).toBe('—')
+    const contactListItemCozyurl = contactListItem.find('ContactCozy')
+    expect(contactListItemCozyurl).toBeDefined()
+    expect(contactListItemCozyurl.text().trim()).toBe('—')
   })
 
   it('should accept empty array', () => {
     const contact = { email: [] }
-    const contactRowInstance = (
+    const ContactListItemInstance = (
       <AppLike>
-        <ContactRow contact={contact} />
+        <ContactListItem contact={contact} />
       </AppLike>
     )
-    const contactrow = mount(contactRowInstance)
-    const contactrowemail = contactrow.find('ContactEmail')
-    expect(contactrowemail).toBeDefined()
-    expect(contactrowemail.text()).toBe('—')
+    const contactListItem = mount(ContactListItemInstance)
+    const contactListItemEmail = contactListItem.find('ContactEmail')
+    expect(contactListItemEmail).toBeDefined()
+    expect(contactListItemEmail.text()).toBe('—')
   })
 
   it('should match the contact snapshot', () => {
@@ -91,7 +91,7 @@ describe('ContactRow', () => {
     const tree = renderer
       .create(
         <AppLike>
-          <ContactRow contact={contact} />
+          <ContactListItem contact={contact} />
         </AppLike>
       )
       .toJSON()
