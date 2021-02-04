@@ -29,7 +29,7 @@ export const hasDocBeenUpdated = (document, nextDocument) =>
   get(document, 'cozyMetadata.updatedAt') !==
     get(nextDocument, 'cozyMetadata.updatedAt')
 
-class ContactRow extends Component {
+class ContactListItem extends Component {
   shouldComponentUpdate(nextProps) {
     const { contact, ...otherProps } = this.props
 
@@ -62,7 +62,7 @@ class ContactRow extends Component {
     return (
       <ListItem
         className="u-c-pointer"
-        data-testid="contact-row"
+        data-testid="contact-listItem"
         divider={divider}
         onClick={() => showModal(<ContactCardModal id={contact._id} />)}
       >
@@ -76,13 +76,13 @@ class ContactRow extends Component {
   }
 }
 
-ContactRow.propTypes = {
+ContactListItem.propTypes = {
   contact: fullContactPropTypes.isRequired,
   showModal: PropTypes.func.isRequired,
   divider: PropTypes.bool
 }
-ContactRow.defaultProps = {
+ContactListItem.defaultProps = {
   selection: null
 }
 
-export default withBreakpoints()(withModal(ContactRow))
+export default withBreakpoints()(withModal(ContactListItem))

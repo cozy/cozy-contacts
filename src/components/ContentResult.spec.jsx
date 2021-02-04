@@ -152,11 +152,11 @@ describe('ContentResult - search', () => {
 
     await search(searchValue, getByPlaceholderText)
 
-    const contactRows = getAllByTestId('contact-row')
+    const contactListItems = getAllByTestId('contact-listItem')
 
-    expect(contactRows.length).toBe(2)
-    expect(contactRows[0].textContent).toMatch('John')
-    expect(contactRows[1].textContent).toMatch('Matt')
+    expect(contactListItems.length).toBe(2)
+    expect(contactListItems[0].textContent).toMatch('John')
+    expect(contactListItems[1].textContent).toMatch('Matt')
   })
 
   it('should sort contacts by groups and search', async () => {
