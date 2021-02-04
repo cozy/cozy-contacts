@@ -1,7 +1,8 @@
 import React from 'react'
 
-import { Avatar } from 'cozy-ui/transpiled/react/Avatar'
 import { models } from 'cozy-client'
+import { Avatar } from 'cozy-ui/transpiled/react/Avatar'
+import { TableCell } from 'cozy-ui/transpiled/react/Table'
 
 import { fullContactPropTypes } from '../../ContactPropTypes'
 import ContactName from './ContactName'
@@ -18,11 +19,11 @@ const ContactIdentity = ({ contact }) => {
   const isMyself = contact.metadata ? !!contact.metadata.me : false
 
   return (
-    <div className="contact-identity">
+    <TableCell className="contact-identity u-ellipsis">
       <Avatar text={getInitials(contact)} size="small" />
       <ContactName displayName={displayName} familyName={name.familyName} />
       {isMyself && <MyselfMarker />}
-    </div>
+    </TableCell>
   )
 }
 ContactIdentity.propTypes = {

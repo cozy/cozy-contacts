@@ -1,7 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
+import { TableCell } from 'cozy-ui/transpiled/react/Table'
+
 const ContactEmail = ({ email }) => (
-  <div className="contact-email u-ellipsis">{email}</div>
+  <TableCell className="contact-email u-ellipsis">{email}</TableCell>
 )
 ContactEmail.propTypes = {
   email: PropTypes.string
