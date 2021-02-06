@@ -8,13 +8,18 @@ import ContactsListAlphabeticalShortcuts from './ContactsListAlphabeticalShortcu
 describe('ContactsListAlphabeticalShortcuts', () => {
   it('should display alphabetical shortcuts for 1 letter', () => {
     const contacts = [
-        { name: { familyName: 'Doe', givenName: 'John' }, indexes: { byFamilyNameGivenNameEmailCozyUrl: "doejohn" } }
+      {
+        name: { familyName: 'Doe', givenName: 'John' },
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'doejohn' }
+      }
     ]
+
     const alphabeticalShortcutsInstance = (
       <AppLike>
         <ContactsListAlphabeticalShortcuts contacts={contacts} />
       </AppLike>
     )
+
     const alphabeticalShortcuts = mount(alphabeticalShortcutsInstance)
     const shortcutLinks = alphabeticalShortcuts.find('a')
     expect(shortcutLinks).toBeDefined()
@@ -23,14 +28,22 @@ describe('ContactsListAlphabeticalShortcuts', () => {
 
   it('should display alphabetical shortcuts for 2 letters', () => {
     const contacts = [
-        { name: { familyName: 'Backer', givenName: 'Miles' }, indexes: { byFamilyNameGivenNameEmailCozyUrl: "backermiles" } },
-        { name: { familyName: 'Doe', givenName: 'John' }, indexes: { byFamilyNameGivenNameEmailCozyUrl: "doejohn" } },
+      {
+        name: { familyName: 'Backer', givenName: 'Miles' },
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'backermiles' }
+      },
+      {
+        name: { familyName: 'Doe', givenName: 'John' },
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'doejohn' }
+      }
     ]
+
     const alphabeticalShortcutsInstance = (
       <AppLike>
         <ContactsListAlphabeticalShortcuts contacts={contacts} />
       </AppLike>
     )
+
     const alphabeticalShortcuts = mount(alphabeticalShortcutsInstance)
     const shortcutLinks = alphabeticalShortcuts.find('a')
     expect(shortcutLinks).toBeDefined()
@@ -41,14 +54,22 @@ describe('ContactsListAlphabeticalShortcuts', () => {
 
   it('should display alphabetical shortcuts for 2 ordered letters even if contacts list is not ordered', () => {
     const contacts = [
-        { name: { familyName: 'Doe', givenName: 'John' }, indexes: { byFamilyNameGivenNameEmailCozyUrl: "doejohn" } },
-        { name: { familyName: 'Backer', givenName: 'Miles' }, indexes: { byFamilyNameGivenNameEmailCozyUrl: "backermiles" } },
+      {
+        name: { familyName: 'Doe', givenName: 'John' },
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'doejohn' }
+      },
+      {
+        name: { familyName: 'Backer', givenName: 'Miles' },
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'backermiles' }
+      }
     ]
+
     const alphabeticalShortcutsInstance = (
       <AppLike>
         <ContactsListAlphabeticalShortcuts contacts={contacts} />
       </AppLike>
     )
+
     const alphabeticalShortcuts = mount(alphabeticalShortcutsInstance)
     const shortcutLinks = alphabeticalShortcuts.find('a')
     expect(shortcutLinks).toBeDefined()
@@ -59,11 +80,13 @@ describe('ContactsListAlphabeticalShortcuts', () => {
 
   it('should accept empty array', () => {
     const contacts = []
+
     const alphabeticalShortcutsInstance = (
       <AppLike>
         <ContactsListAlphabeticalShortcuts contacts={contacts} />
       </AppLike>
     )
+
     const alphabeticalShortcuts = mount(alphabeticalShortcutsInstance)
     const shortcutLinks = alphabeticalShortcuts.find('a')
     expect(shortcutLinks).toBeDefined()
@@ -72,9 +95,18 @@ describe('ContactsListAlphabeticalShortcuts', () => {
 
   it('should match the alphabetical shortcuts snapshot', () => {
     const contacts = [
-        { name: { familyName: 'Backer', givenName: 'Miles' }, indexes: { byFamilyNameGivenNameEmailCozyUrl: "backermiles" } },
-        { name: { familyName: 'Doe', givenName: 'John' }, indexes: { byFamilyNameGivenNameEmailCozyUrl: "doejohn" } },
-        { name: { familyName: 'Carroll', givenName: 'Aiden' }, indexes: { byFamilyNameGivenNameEmailCozyUrl: "carrollaiden" } },
+      {
+        name: { familyName: 'Backer', givenName: 'Miles' },
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'backermiles' }
+      },
+      {
+        name: { familyName: 'Doe', givenName: 'John' },
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'doejohn' }
+      },
+      {
+        name: { familyName: 'Carroll', givenName: 'Aiden' },
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'carrollaiden' }
+      }
     ]
 
     const tree = renderer
@@ -84,6 +116,7 @@ describe('ContactsListAlphabeticalShortcuts', () => {
         </AppLike>
       )
       .toJSON()
+
     expect(tree).toMatchSnapshot()
   })
 })

@@ -8,28 +8,27 @@ import { categorizeContacts } from '../../helpers/contactList'
 
 const ContactsListAlphabeticalShortcuts = ({ contacts }) => {
   const { t } = useI18n()
-  
-  const isCategorisedList = () => {
-    const { searchValue } = useContext(SearchContext)
-    
-    return searchValue.length === 0;
+
+  const { searchValue } = useContext(SearchContext)
+
+  if (searchValue.length > 0) {
+    return null
   }
-  
-  if (!isCategorisedList()) {
-    return (null)
-  }
-    
+
   const categorizedContacts = categorizeContacts(contacts, t('empty-list'))
 
-  const letterShortcuts = Object
-    .keys(categorizedContacts)
+  const letterShortcuts = Object.keys(categorizedContacts)
     .filter(letter => letter !== 'EMPTY')
-    .sort();
+    .sort()
 
   return (
     <div className="contacts-list-alphabetical-shortcuts">
       {letterShortcuts.map(letter => {
-        return <a key={`#cat-${letter}`} href={`#cat-${letter}`}>{letter.toUpperCase()}</a>
+        return (
+          <a key={`#cat-${letter}`} href={`#cat-${letter}`}>
+            {letter.toUpperCase()}
+          </a>
+        )
       })}
     </div>
   )
