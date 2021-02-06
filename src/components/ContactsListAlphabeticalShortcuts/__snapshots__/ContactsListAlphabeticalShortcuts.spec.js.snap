@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ContactListItem should match the alphabetical shortcuts snapshot 1`] = `
+exports[`ContactsListAlphabeticalShortcuts should match the alphabetical shortcuts snapshot 1`] = `
 <div
   className="contacts-list-alphabetical-shortcuts"
 >
