@@ -1,6 +1,8 @@
 import isEqual from 'lodash/isEqual'
 import log from 'cozy-logger'
 
+import { Q } from 'cozy-client'
+
 import { DOCTYPE_CONTACTS } from './doctypes'
 import { updateIndexFullNameAndDisplayName } from './contacts'
 
@@ -70,7 +72,7 @@ export const fetchNormalizedServiceByName = async (client, serviceName) => {
     }
 
     const normalizedTrigger = await client.query(
-      client.get('io.cozy.triggers', triggersByName.data[0].id)
+      Q('io.cozy.triggers').getById(triggersByName.data[0].id)
     )
 
     if (!normalizedTrigger) {
