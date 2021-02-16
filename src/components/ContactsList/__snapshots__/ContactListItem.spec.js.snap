@@ -23,7 +23,7 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
     </span>
   </div>
   <div
-    className="styles__TableCell___yJCq7 contact-identity u-ellipsis"
+    className="styles__TableCell___yJCq7 contact-identity u-flex u-flex-items-center u-ellipsis"
   >
     <div
       className="styles__c-avatar___PpDI- styles__c-avatar--text___2dvna"
