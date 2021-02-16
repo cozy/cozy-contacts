@@ -2,7 +2,7 @@
 
 exports[`ContactListItem should match the contact snapshot 1`] = `
 <li
-  className="MuiListItem-root-1 MuiListItem-default-4 MuiListItem-gutters-9 u-c-pointer"
+  className="MuiListItem-root u-c-pointer MuiListItem-gutters"
   data-testid="contact-listItem"
   disabled={false}
   onClick={[Function]}
@@ -42,7 +42,8 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
       </span>
     </div>
     <p
-      className="MuiTypography-root-13 MuiTypography-body1-22 MuiTypography-noWrap-39 MuiTypography-gutterBottom-40 MuiTypography-inline-48 u-ml-1"
+      className="MuiTypography-root u-ml-1 MuiTypography-body1 MuiTypography-noWrap MuiTypography-gutterBottom"
+      inline={true}
     >
       <span
         className=""

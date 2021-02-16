@@ -119,7 +119,7 @@ describe('ContactForm', () => {
     }
 
     Object.keys(fields).forEach(fieldName => {
-      const candidates = form.find(`TextField[name='${fieldName}']`)
+      const candidates = form.find(`ForwardRef(TextField)[name='${fieldName}']`)
       const field = candidates.length === 1 ? candidates : candidates.first()
       field.props().onChange({ target: { value: fields[fieldName] } })
     })

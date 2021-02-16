@@ -33,12 +33,12 @@ Array [
             className="u-mb-half u-breakword"
           >
             <p
-              className="MuiTypography-root-1 MuiTypography-body1-10"
+              className="MuiTypography-root MuiTypography-body1"
             >
               Google
             </p>
             <span
-              className="MuiTypography-root-1 MuiTypography-caption-11 MuiTypography-colorTextSecondary-34"
+              className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary"
             >
               john.doe@gmail.com
             </span>
