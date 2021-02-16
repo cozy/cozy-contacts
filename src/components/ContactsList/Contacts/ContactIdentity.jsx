@@ -19,7 +19,7 @@ const ContactIdentity = ({ contact }) => {
   const isMyself = contact.metadata ? !!contact.metadata.me : false
 
   return (
-    <TableCell className="contact-identity u-ellipsis">
+    <TableCell className="contact-identity u-flex u-flex-items-center u-ellipsis">
       <Avatar text={getInitials(contact)} size="small" />
       <ContactName displayName={displayName} familyName={name.familyName} />
       {isMyself && <MyselfMarker />}
