@@ -61,6 +61,24 @@ export const translatedDefaultSelectedGroup = t => ({
 })
 
 /**
+ * Returns the letter defined as default in the group filter
+ */
+export const defaultSelectedLetter = {
+  name: 'filter.all-letters',
+  withNoAction: true
+}
+
+/**
+ * Returns the translated group defined as default in the group filter
+ * @param {function} t - Translate
+ */
+export const translatedDefaultSelectedLetter = t => ({
+  ...defaultSelectedLetter,
+  name: t(defaultSelectedLetter.name)
+})
+
+
+/**
  * Returns whether a group is selected in group filter
  * @param {object} selectedGroup - Group selected in group filter
  * @param {function} t - Translate

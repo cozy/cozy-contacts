@@ -30,7 +30,12 @@ const ContentRework = ({
     contactsWithNoIndexesResult.data
   )
 
-  return <ContentResult contacts={contacts} allGroups={allGroupsResult.data} />
+  const refs = contacts.reduce((acc, value) => {
+    acc[value._id] = React.createRef();
+    return acc;
+  }, {});
+
+  return <ContentResult contacts={contacts} refs={refs} allGroups={allGroupsResult.data} />
 }
 
 ContentRework.propTypes = {

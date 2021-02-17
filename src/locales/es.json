@@ -102,7 +102,9 @@
   },
   "filter": {
     "no-group": "Crear grupos de contacto para facilitar el archivo y el intercambio!",
-    "all-groups": "Todos los grupos"
+    "no-letter": "No letter.",
+    "all-groups": "Todos los grupos",
+    "all-letters": "Go to letter..."
   },
   "delete-confirmation": {
     "title": "¿Borrar este contacto? |||| ¿Borrar estos contactos?",

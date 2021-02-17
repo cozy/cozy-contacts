@@ -102,7 +102,9 @@
   },
   "filter": {
     "no-group": "Create contact groups to facilitate filing and sharing!",
-    "all-groups": "All groups"
+    "no-letter": "No letter.",
+    "all-groups": "All groups",
+    "all-letters": "Go to letter..."
   },
   "delete-confirmation": {
     "title": "Delete this contact? |||| Delete these contacts?",

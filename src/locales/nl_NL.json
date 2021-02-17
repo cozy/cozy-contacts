@@ -102,7 +102,9 @@
   },
   "filter": {
     "no-group": "Stel contactpersoongroepen samen om ordenen en delen te vereenvoudigen!",
-    "all-groups": "Alle groepen"
+    "no-letter": "No letter.",
+    "all-groups": "Alle groepen",
+    "all-letters": "Go to letter..."
   },
   "delete-confirmation": {
     "title": "Wil je deze contactpersoon verwijderen? |||| Wil je deze contactpersonen verwijderen?",

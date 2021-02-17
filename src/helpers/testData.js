@@ -221,3 +221,5 @@ export const groups = [
     name: 'groupe test'
   }
 ]
+
+export const letters = [{name: 'a'}, {name: 'c'}, {name: 'r'}, {name: 's'}]

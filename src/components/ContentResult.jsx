@@ -7,17 +7,20 @@ import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import { ControlDefault } from 'cozy-ui/transpiled/react/SelectBox'
 import Input from 'cozy-ui/transpiled/react/Input'
 import flag from 'cozy-flags'
-
+import { categorizeContacts } from '../helpers/contactList'
 import SelectedGroupContext from './Contexts/SelectedGroup'
+import SelectedLetterContext from './Contexts/SelectedLetter'
 import SearchContext from './Contexts/Search'
 import Header from './Header'
 import Toolbar from './Toolbar'
 import ContactsList from './ContactsList/ContactsList.jsx'
 import GroupsSelect from './GroupsSelect/GroupsSelect'
+import LetterSelect from './LetterSelect/LetterSelect'
 import SearchInput from './Search/SearchInput'
 import {
   filterContactsByGroup,
-  translatedDefaultSelectedGroup
+  translatedDefaultSelectedGroup,
+  translatedDefaultSelectedLetter
 } from '../helpers/groups'
 import { filterContactsBySearch, delayedSetThreshold } from '../helpers/search'
 
@@ -32,6 +35,9 @@ const setGroupsSelectCustomStyles = isMobile => ({
 const setGroupsSelectOptions = (allGroups, defaultSelectedGroup) =>
   allGroups.length > 0 ? [defaultSelectedGroup].concat(allGroups) : allGroups
 
+const setLettersSelectOptions = (allLetters, defaultSelectedLetter) =>
+  allLetters.length > 0 ? [defaultSelectedLetter].concat(allLetters) : allLetters
+
 const ControlDefaultWithTestId = ({ ...props }) => {
   return (
     <ControlDefault
@@ -44,9 +50,22 @@ const ControlDefaultWithTestId = ({ ...props }) => {
   )
 }
 
-export const ContentResult = ({ contacts, allGroups }) => {
+const ControlDefaultWithTestId2 = ({ ...props }) => {
+  return (
+    <ControlDefault
+      {...props}
+      innerProps={{
+        ...props.innerProps,
+        'data-testid': 'selectBox-controlDefault'
+      }}
+    />
+  )
+}
+
+export const ContentResult = ({ contacts, refs, allGroups }) => {
   const { t } = useI18n()
   const { selectedGroup, setSelectedGroup } = useContext(SelectedGroupContext)
+  const { selectedLetter, setSelectedLetter } = useContext(SelectedLetterContext)
   const { searchValue } = useContext(SearchContext)
   const [filteredContacts, setFilteredContacts] = useState(contacts)
   const { isMobile } = useBreakpoints()
@@ -55,6 +74,13 @@ export const ContentResult = ({ contacts, allGroups }) => {
   const groupsSelectOptions = setGroupsSelectOptions(
     allGroups,
     translatedDefaultSelectedGroup(t)
+  )
+
+  const categorizedContacts = categorizeContacts(contacts, t('empty-list'))
+  const allLetters = Object.keys(categorizedContacts).map(key => ({name:key}))
+  const lettersSelectOptions = setLettersSelectOptions(
+    allLetters,
+    translatedDefaultSelectedLetter(t)
   )
 
   const handleSearchThreshold = ev => {
@@ -98,13 +124,26 @@ export const ContentResult = ({ contacts, allGroups }) => {
                   Control: ControlDefaultWithTestId
                 }}
               />
+
+              <LetterSelect
+                className="u-w-100 u-maw-6"
+                refs={refs}
+                allLetters={lettersSelectOptions}
+                value={selectedLetter}
+                onChange={setSelectedLetter}
+                noOptionsMessage={() => t('filter.no-letter')}
+                closeMenuOnSelect={true}
+                components={{
+                  Control: ControlDefaultWithTestId2
+                }}
+              />
             </>
           }
           right={<Toolbar />}
         />
       )}
       <Content>
-        <ContactsList contacts={filteredContacts} />
+        <ContactsList refs={refs} contacts={filteredContacts} />
       </Content>
     </>
   )
@@ -112,6 +151,7 @@ export const ContentResult = ({ contacts, allGroups }) => {
 
 ContentResult.propTypes = {
   contacts: PropTypes.array.isRequired,
+  refs: PropTypes.object.isRequired,
   allGroups: PropTypes.array.isRequired
 }
 

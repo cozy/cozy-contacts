@@ -102,7 +102,9 @@
   },
   "filter": {
     "no-group": "Créer des groupes de contacts pour faciliter leur classement et le partage !",
-    "all-groups": "Tous les groupes"
+    "no-letter": "Aucune lettre.",
+    "all-groups": "Tous les groupes",
+    "all-letters": "Aller à la lettre..."
   },
   "delete-confirmation": {
     "title": "Supprimer ce contact ? |||| Supprimer ces contacts ?",

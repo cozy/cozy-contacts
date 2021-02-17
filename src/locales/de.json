@@ -102,7 +102,9 @@
   },
   "filter": {
     "no-group": "Erstelle Kontakt Gruppen, um das Abheften und Teilen zu erleichtern.",
-    "all-groups": "Alle Gruppen"
+    "no-letter": "No letter.",
+    "all-groups": "Alle Gruppen",
+    "all-letters": "Go to letter..."
   },
   "delete-confirmation": {
     "title": "Diesen Kontakt löschen? |||| Diese Kontakte löschen?",

@@ -12,6 +12,7 @@ import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
 import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
 
 import { SelectedGroupProvider } from './Contexts/SelectedGroup'
+import { SelectedLetterProvider } from './Contexts/SelectedLetter'
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
 import { ModalManager } from '../helpers/modalManager'
 import useFlags from './Hooks/useFlags'
@@ -29,25 +30,27 @@ const ContactsApp = ({ cleanTrashedGroups }) => {
     cleanTrashedGroups()
   }, [cleanTrashedGroups])
 
-  return (
+return (
     <SelectedGroupProvider>
-      <Layout monocolumn="true">
-        {isMobile && (
-          <BarCenter>
-            <MuiCozyTheme>
-              <Typography variant="h4">{client.appMetadata.slug}</Typography>
-            </MuiCozyTheme>
-          </BarCenter>
-        )}
-        <Main>
-          {flag('switcher') && <FlagSwitcher />}
-          <ContactsSelectionBar />
-          <ContentWrapper />
-          <Alerter t={t} />
-          <ModalManager />
-        </Main>
-        <IconSprite />
-      </Layout>
+      <SelectedLetterProvider>
+        <Layout monocolumn="true">
+          {isMobile && (
+            <BarCenter>
+              <MuiCozyTheme>
+                <Typography variant="h4">{client.appMetadata.slug}</Typography>
+              </MuiCozyTheme>
+            </BarCenter>
+          )}
+          <Main>
+            {flag('switcher') && <FlagSwitcher />}
+            <ContactsSelectionBar />
+            <ContentWrapper />
+            <Alerter t={t} />
+            <ModalManager />
+          </Main>
+          <IconSprite />
+        </Layout>
+      </SelectedLetterProvider>
     </SelectedGroupProvider>
   )
 }
