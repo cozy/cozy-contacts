@@ -1,0 +1,315 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CategorizedContactList alphabetical links should match the categorized list snapshot 1`] = `
+Array [
+  <div>
+    <button
+      className="styles__c-btn___-2Vnj styles__c-btn--subtle___OknKf styles__c-btn--center___16_Xh alphabetical-link"
+      onClick={[Function]}
+      title={null}
+      type="submit"
+    >
+      <span>
+        <span
+          className={null}
+        >
+          C
+        </span>
+      </span>
+    </button>
+    <button
+      className="styles__c-btn___-2Vnj styles__c-btn--subtle___OknKf styles__c-btn--center___16_Xh alphabetical-link"
+      onClick={[Function]}
+      title={null}
+      type="submit"
+    >
+      <span>
+        <span
+          className={null}
+        >
+          G
+        </span>
+      </span>
+    </button>
+    <button
+      className="styles__c-btn___-2Vnj styles__c-btn--subtle___OknKf styles__c-btn--center___16_Xh alphabetical-link"
+      onClick={[Function]}
+      title={null}
+      type="submit"
+    >
+      <span>
+        <span
+          className={null}
+        >
+          V
+        </span>
+      </span>
+    </button>
+  </div>,
+  <div
+    className="styles__Table___x3ZsI"
+  >
+    <ul
+      className="MuiList-root MuiList-padding"
+    >
+      <li
+        className="MuiListSubheader-root MuiListSubheader-sticky MuiListSubheader-gutters"
+      >
+        c
+      </li>
+      <ul
+        className="MuiList-root MuiList-padding"
+      >
+        <li
+          className="MuiListItem-root u-c-pointer MuiListItem-gutters"
+          data-testid="contact-listItem"
+          disabled={false}
+          onClick={[Function]}
+        >
+          <div
+            className="contact-selection"
+            onClick={[Function]}
+          >
+            <span
+              data-input="checkbox"
+            >
+              <input
+                checked={false}
+                readOnly={true}
+                type="checkbox"
+              />
+              <label />
+            </span>
+          </div>
+          <div
+            className="styles__TableCell___yJCq7 contact-identity u-flex u-flex-items-center u-ellipsis"
+          >
+            <div
+              className="styles__c-avatar___PpDI- styles__c-avatar--text___2dvna"
+              style={
+                Object {
+                  "--circleSize": "32px",
+                  "backgroundColor": "var(--lavender)",
+                }
+              }
+            >
+              
+              <span
+                className="styles__c-avatar-initials___310qC"
+              >
+                ZC
+              </span>
+            </div>
+            <p
+              className="MuiTypography-root u-ml-1 MuiTypography-body1 MuiTypography-noWrap MuiTypography-gutterBottom"
+              inline={true}
+            >
+              <span
+                className=""
+              >
+                Zy
+                 
+              </span>
+              <span
+                className="u-fw-bold"
+              >
+                Co
+                 
+              </span>
+            </p>
+          </div>
+          <div
+            className="styles__TableCell___yJCq7 contact-email u-ellipsis"
+          >
+            —
+          </div>
+          <div
+            className="styles__TableCell___yJCq7 contact-phone u-ellipsis"
+          >
+            —
+          </div>
+          <div
+            className="styles__TableCell___yJCq7 contact-cozyurl u-ellipsis"
+          >
+            —
+          </div>
+        </li>
+      </ul>
+    </ul>
+    <ul
+      className="MuiList-root MuiList-padding"
+    >
+      <li
+        className="MuiListSubheader-root MuiListSubheader-sticky MuiListSubheader-gutters"
+      >
+        v
+      </li>
+      <ul
+        className="MuiList-root MuiList-padding"
+      >
+        <li
+          className="MuiListItem-root u-c-pointer MuiListItem-gutters"
+          data-testid="contact-listItem"
+          disabled={false}
+          onClick={[Function]}
+        >
+          <div
+            className="contact-selection"
+            onClick={[Function]}
+          >
+            <span
+              data-input="checkbox"
+            >
+              <input
+                checked={false}
+                readOnly={true}
+                type="checkbox"
+              />
+              <label />
+            </span>
+          </div>
+          <div
+            className="styles__TableCell___yJCq7 contact-identity u-flex u-flex-items-center u-ellipsis"
+          >
+            <div
+              className="styles__c-avatar___PpDI- styles__c-avatar--text___2dvna"
+              style={
+                Object {
+                  "--circleSize": "32px",
+                  "backgroundColor": "var(--puertoRico)",
+                }
+              }
+            >
+              
+              <span
+                className="styles__c-avatar-initials___310qC"
+              >
+                TV
+              </span>
+            </div>
+            <p
+              className="MuiTypography-root u-ml-1 MuiTypography-body1 MuiTypography-noWrap MuiTypography-gutterBottom"
+              inline={true}
+            >
+              <span
+                className=""
+              >
+                Tor
+                 
+              </span>
+              <span
+                className="u-fw-bold"
+              >
+                Vic
+                 
+              </span>
+            </p>
+          </div>
+          <div
+            className="styles__TableCell___yJCq7 contact-email u-ellipsis"
+          >
+            —
+          </div>
+          <div
+            className="styles__TableCell___yJCq7 contact-phone u-ellipsis"
+          >
+            —
+          </div>
+          <div
+            className="styles__TableCell___yJCq7 contact-cozyurl u-ellipsis"
+          >
+            —
+          </div>
+        </li>
+      </ul>
+    </ul>
+    <ul
+      className="MuiList-root MuiList-padding"
+    >
+      <li
+        className="MuiListSubheader-root MuiListSubheader-sticky MuiListSubheader-gutters"
+      >
+        g
+      </li>
+      <ul
+        className="MuiList-root MuiList-padding"
+      >
+        <li
+          className="MuiListItem-root u-c-pointer MuiListItem-gutters"
+          data-testid="contact-listItem"
+          disabled={false}
+          onClick={[Function]}
+        >
+          <div
+            className="contact-selection"
+            onClick={[Function]}
+          >
+            <span
+              data-input="checkbox"
+            >
+              <input
+                checked={false}
+                readOnly={true}
+                type="checkbox"
+              />
+              <label />
+            </span>
+          </div>
+          <div
+            className="styles__TableCell___yJCq7 contact-identity u-flex u-flex-items-center u-ellipsis"
+          >
+            <div
+              className="styles__c-avatar___PpDI- styles__c-avatar--text___2dvna"
+              style={
+                Object {
+                  "--circleSize": "32px",
+                  "backgroundColor": "var(--pumpkinOrange)",
+                }
+              }
+            >
+              
+              <span
+                className="styles__c-avatar-initials___310qC"
+              >
+                NG
+              </span>
+            </div>
+            <p
+              className="MuiTypography-root u-ml-1 MuiTypography-body1 MuiTypography-noWrap MuiTypography-gutterBottom"
+              inline={true}
+            >
+              <span
+                className=""
+              >
+                Noble
+                 
+              </span>
+              <span
+                className="u-fw-bold"
+              >
+                Gre
+                 
+              </span>
+            </p>
+          </div>
+          <div
+            className="styles__TableCell___yJCq7 contact-email u-ellipsis"
+          >
+            —
+          </div>
+          <div
+            className="styles__TableCell___yJCq7 contact-phone u-ellipsis"
+          >
+            —
+          </div>
+          <div
+            className="styles__TableCell___yJCq7 contact-cozyurl u-ellipsis"
+          >
+            —
+          </div>
+        </li>
+      </ul>
+    </ul>
+  </div>,
+]
+`;
