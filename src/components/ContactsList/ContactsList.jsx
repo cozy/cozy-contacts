@@ -28,13 +28,13 @@ const ContactsList = ({ contacts, clearSelection, selection, selectAll }) => {
     isAllContactsSelected ? clearSelection() : selectAll(contacts)
   }
 
-  const letterCategorie = Object.entries(categorizeContacts(contacts, t('empty-list')))
+  const letterCategory = Object.entries(categorizeContacts(contacts, t('empty-list')))
     .filter(([header]) => header !== 'EMPTY')
 
   return (
     <div className="list-wrapper">
       <ul className="directory" role='directory'>
-         {letterCategorie.map(([header], i) => (
+         {letterCategory.map(([header], i) => (
               <li key={i} className={`viewContent${header === selected ? ' selected' : ''}`}>
                   <a href={`#${header}`} onClick={() => setSelected(header)}>
                     <span className='title'>{header}</span>
