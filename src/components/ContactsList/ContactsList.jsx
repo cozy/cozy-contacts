@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 
+import { config } from '../../constants/search'
+
 import flag from 'cozy-flags'
 import Button from 'cozy-ui/transpiled/react/Button'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
@@ -19,7 +21,10 @@ const ContactsList = ({ contacts, clearSelection, selection, selectAll }) => {
     return <ContactsEmptyList />
   }
 
-  const List = searchValue.length > 0 ? UncategorizedList : CategorizedList
+  const List =
+    searchValue.length >= config.MIN_SEARCH_TRESHOLD
+      ? UncategorizedList
+      : CategorizedList
   const isAllContactsSelected = contacts.length === selection.length
 
   const handleAllContactSelection = () => {

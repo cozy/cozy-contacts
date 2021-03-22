@@ -1,6 +1,6 @@
 import debounce from 'lodash/debounce'
 import Fuse from 'fuse.js'
-
+import { config } from '../constants/search'
 import flag from 'cozy-flags'
 
 const fuseOptions = {
@@ -61,7 +61,7 @@ const fuse = new Fuse([], fuseOptions)
  * @returns {array} Array of io.cozy.contact documents
  */
 export const filterContactsBySearch = (contacts, searchValue) => {
-  if (searchValue.length === 0) return contacts
+  if (searchValue.length <= config.MIN_SEARCH_TRESHOLD) return contacts
 
   if (flag('search-threshold')) {
     fuse.options.threshold = flag.store.get('search-threshold')
@@ -85,3 +85,30 @@ export const delayedSetThreshold = debounce(
   thresholdValue => setThreshold(thresholdValue),
   375
 )
+
+/**
+ * Scroll to corresponding section when one letter is entered
+ * @param {string} searchValue - Value of search input
+ * @param {object} ref - React ref object
+ * @returns {void}
+ */
+export const scrollToSection = (searchValue, ref) =>
+  ref &&
+  Array.isArray(searchValue.split()) &&
+  searchValue.length === config.MIN_SECTION_TRESHOLD &&
+  ref.current.scrollIntoView({
+    behavior: config.SCROLL_BEHAVIOR,
+    inline: config.SCROLL_ALIGNMENT
+  })
+
+/**
+ * Check if section corresponds to input first letter and returns ref if so
+ * @param {string} searchValue - Value of search input
+ * @param {object} ref - React ref object
+ * @param {string} header - Section letter
+ * @returns {boolean}
+ */
+export const applyRefIfCurrentSection = (searchValue, header, ref) =>
+  searchValue && header && searchValue[0].toLowerCase() === header.toLowerCase()
+    ? { ref }
+    : {}
