@@ -1,6 +1,6 @@
 {
   "name": "cozy-contacts",
-  "version": "0.9.5",
+  "version": "1.0.0",
   "scripts": {
     "lint": "yarn lint:js && yarn lint:styles",
     "lint:js": "eslint '{src,test}/**/*.{js,jsx}'",
