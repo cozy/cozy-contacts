@@ -1,10 +1,8 @@
 import React, { useCallback, useContext, useMemo } from 'react'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Button from 'cozy-ui/transpiled/react/Button'
 import SearchByLetterContext from '../Contexts/SearchByLetter'
 
 const SearchByLetter = ({ letters }) => {
-  const { t } = useI18n()
   const { setSearchByLetterValue } = useContext(SearchByLetterContext)
 
   const handleClick = useCallback(
@@ -41,10 +39,9 @@ const SearchByLetter = ({ letters }) => {
       'w',
       'x',
       'y',
-      'z',
-      t('empty-list')
+      'z'
     ],
-    [t]
+    []
   )
 
   return (

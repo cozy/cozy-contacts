@@ -4,7 +4,7 @@ import { render } from '@testing-library/react'
 import SearchByLetter from './SearchByLetter'
 import AppLike from '../../tests/Applike'
 
-const letters = ['a', 'g', 'y', 'empty']
+const letters = ['a', 'g', 'y']
 const setup = () => {
   const root = render(
     <AppLike>
