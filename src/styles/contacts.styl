@@ -40,6 +40,24 @@ main > [role=main]
         justify-content center
         align-items center
 
+.search-letter-wrapper
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: center
+    margin: 0 0.2rem
+
+    button
+        height: 30px;
+        margin-bottom: 1rem;
+        min-height: initial;
+        min-width: 30px;
+        padding: 0.2rem;
+        width: fit-content;
+
+        +small-screen()
+            margin-bottom: 0.5rem
+
 .actions
     display flex
 

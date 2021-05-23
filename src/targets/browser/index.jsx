@@ -18,6 +18,7 @@ import '../../styles/index.styl'
 import setupApp from './setupApp'
 import { SelectedGroupProvider } from '../../components/Contexts/SelectedGroup'
 import { SearchProvider } from '../../components/Contexts/Search'
+import { SearchByLetterProvider } from '../../components/Contexts/SearchByLetter'
 
 /*
 With MUI V4, it is possible to generate deterministic class names.
@@ -42,7 +43,9 @@ const init = () => {
               <BreakpointsProvider>
                 <SelectedGroupProvider>
                   <SearchProvider>
-                    <App />
+                    <SearchByLetterProvider>
+                      <App />
+                    </SearchByLetterProvider>
                   </SearchProvider>
                 </SelectedGroupProvider>
               </BreakpointsProvider>
