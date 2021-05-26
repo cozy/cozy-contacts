@@ -122,14 +122,14 @@ describe('ContentResult - search', () => {
     const { root } = setup()
     const searchValue = 'John'
 
-    const { queryByText, getByText, getByPlaceholderText } = root
+    const { queryAllByText, getAllByText, getByPlaceholderText } = root
 
     // category of the contact
-    expect(getByText('EMPTY')).toBeTruthy()
+    expect(getAllByText('EMPTY').length).toBe(2)
 
     await search(searchValue, getByPlaceholderText)
 
-    expect(queryByText('EMPTY')).toBeNull()
+    expect(queryAllByText('EMPTY').length).toBe(0)
   })
 
   it('should show contacts in correct order when using search input', async () => {

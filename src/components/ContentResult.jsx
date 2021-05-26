@@ -65,10 +65,8 @@ export const ContentResult = ({ contacts, allGroups }) => {
   }
 
   const firstLetterContacts = useMemo(() => {
-    return Object.keys(categorizeContacts(filteredContacts, '')).filter(
-      key => key !== ''
-    )
-  }, [filteredContacts])
+    return Object.keys(categorizeContacts(filteredContacts, t('empty-list')))
+  }, [filteredContacts, t])
 
   useEffect(() => {
     const filteredContactsByGroup = filterContactsByGroup(

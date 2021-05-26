@@ -116,15 +116,15 @@ describe('ContentRework', () => {
 
   it('should have empty section (for contacts without indexes) if service has been launched', () => {
     const { root } = setup()
-    const { getByText } = root
-    expect(getByText('EMPTY'))
+    const { getAllByText } = root
+    expect(getAllByText('EMPTY').length).toBe(2)
   })
 
   it('should not have empty section (for contacts without indexes) if service has not been launched', () => {
     const { root } = setup({
       hasServiceBeenLaunched: false
     })
-    const { queryByText } = root
-    expect(queryByText('EMPTY')).toBeNull()
+    const { queryAllByText } = root
+    expect(queryAllByText('EMPTY').length).toBe(1)
   })
 })
