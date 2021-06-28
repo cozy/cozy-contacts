@@ -11,7 +11,7 @@ import { getValues, initBar } from '../../helpers/bar'
  */
 const setupApp = memoize(() => {
   const root = document.querySelector('[role=application]')
-  const { lang, appName } = getValues(root.dataset)
+  const { lang, appName } = getValues(JSON.parse(root.dataset.cozy))
   const polyglot = initTranslation(lang, lang => require(`locales/${lang}`))
   const client = getClient()
   const persistedState = {}

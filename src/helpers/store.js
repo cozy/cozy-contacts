@@ -11,6 +11,6 @@ export const getFilteredStoreUrl = client =>
   generateUniversalLink({
     cozyUrl: client.getStackClient().uri,
     slug: 'store',
-    subDomainType: client.getInstanceOptions().cozySubdomainType,
+    subDomainType: client.getInstanceOptions().subdomain,
     nativePath: `discover/?type=konnector&doctype=${DOCTYPE_CONTACTS}`
   })
