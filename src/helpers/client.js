@@ -19,6 +19,7 @@ export const getClient = () => {
       slug: manifest.name,
       version: manifest.version
     },
-    schema
+    schema,
+    store: false
   })
 }

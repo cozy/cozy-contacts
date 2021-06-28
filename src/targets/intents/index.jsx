@@ -53,7 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const client = new cozyClient({
     uri: `${protocol}//${data.cozyDomain}`,
-    token: data.cozyToken
+    token: data.cozyToken,
+    store: false
   })
 
   renderApp(client, appLocale, data)
