@@ -106,6 +106,14 @@ describe('ContentResult - groups', () => {
       enLocale.filter['all-groups']
     )
   })
+
+  it('should display the vertical chars chip', () => {
+    const { root } = setup()
+
+    const { queryByTestId } = root
+
+    expect(queryByTestId('vertical-letters-chip')).not.toBeNull()
+  })
 })
 
 describe('ContentResult - search', () => {
@@ -189,5 +197,16 @@ describe('ContentResult - search', () => {
     expect(getByText('John')).toBeTruthy()
     expect(queryByText('Matt')).toBeNull()
     expect(queryByText('Jane')).toBeNull()
+  })
+
+  it('should not display the vertical chars chip', async () => {
+    const { root } = setup()
+    const searchValue = 'John'
+
+    const { queryByTestId, getByPlaceholderText } = root
+
+    await search(searchValue, getByPlaceholderText)
+
+    expect(queryByTestId('vertical-letters-chip')).toBeNull()
   })
 })
