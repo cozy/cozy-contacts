@@ -20,6 +20,7 @@ import {
   translatedDefaultSelectedGroup
 } from '../helpers/groups'
 import { filterContactsBySearch, delayedSetThreshold } from '../helpers/search'
+import CategorizedListNavigation from './CategorizedListNavigation/CategorizedListNavigation'
 
 const setGroupsSelectCustomStyles = isMobile => ({
   container: base => ({
@@ -76,33 +77,41 @@ export const ContentResult = ({ contacts, allGroups }) => {
 
   return (
     <>
-      {contacts.length >= 1 && (
-        <Header
-          left={
-            <>
-              {flag('search-threshold') && (
-                <div>
-                  <Input onChange={handleSearchThreshold} defaultValue="0.3" />
-                </div>
-              )}
-              <SearchInput />
-              <GroupsSelect
-                className="u-w-100 u-maw-6"
-                allGroups={groupsSelectOptions}
-                value={selectedGroup}
-                onChange={setSelectedGroup}
-                noOptionsMessage={() => t('filter.no-group')}
-                styles={groupsSelectCustomStyles}
-                closeMenuOnSelect={true}
-                components={{
-                  Control: ControlDefaultWithTestId
-                }}
-              />
-            </>
-          }
-          right={<Toolbar />}
-        />
-      )}
+      <>
+        {contacts.length >= 1 && (
+          <Header
+            left={
+              <>
+                {flag('search-threshold') && (
+                  <div>
+                    <Input
+                      onChange={handleSearchThreshold}
+                      defaultValue="0.3"
+                    />
+                  </div>
+                )}
+                <SearchInput />
+                <GroupsSelect
+                  className="u-w-100 u-maw-6"
+                  allGroups={groupsSelectOptions}
+                  value={selectedGroup}
+                  onChange={setSelectedGroup}
+                  noOptionsMessage={() => t('filter.no-group')}
+                  styles={groupsSelectCustomStyles}
+                  closeMenuOnSelect={true}
+                  components={{
+                    Control: ControlDefaultWithTestId
+                  }}
+                />
+              </>
+            }
+            right={<Toolbar />}
+          />
+        )}
+        {contacts.length >= 1 && !searchValue && (
+          <CategorizedListNavigation contacts={filteredContacts} />
+        )}
+      </>
       <Content>
         <ContactsList contacts={filteredContacts} />
       </Content>

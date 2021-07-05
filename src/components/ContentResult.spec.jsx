@@ -122,10 +122,10 @@ describe('ContentResult - search', () => {
     const { root } = setup()
     const searchValue = 'John'
 
-    const { queryByText, getByText, getByPlaceholderText } = root
+    const { queryByText, getAllByText, getByPlaceholderText } = root
 
-    // category of the contact
-    expect(getByText('EMPTY')).toBeTruthy()
+    // category of the contact and navigation button
+    expect(getAllByText('EMPTY').length).toBe(2)
 
     await search(searchValue, getByPlaceholderText)
 
