@@ -761,6 +761,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.10.0":
+  version "7.14.0"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.0.tgz#46794bc20b612c5f75e62dd071e24dfd95f1cbe6"
+  integrity sha512-JELkvo/DlpNdJ7dlyw/eY7E0suy5i5GQH+Vlxaq1nsNJ+H7f4Vtv3jMeCEgRhZZQFXTjldYfQgv2qmM6M1v5wA==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@^7.12.5":
   version "7.13.10"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.10.tgz#47d42a57b6095f4468da440388fdbad8bebf0d7d"
@@ -5367,10 +5374,12 @@ final-form-arrays@1.1.0:
   resolved "https://registry.yarnpkg.com/final-form-arrays/-/final-form-arrays-1.1.0.tgz#006cfb6be9a5b0b264ac044fbdad3381ede81b66"
   integrity sha512-iIrM1uotREIJaVctjM9zwcprpJNjH6RBxtOYBE1GxD5XV1UUMvka1LhUtkxB56ZJvgZe13v/+T/MpMxk6Kg/lw==
 
-final-form@4.10.0:
-  version "4.10.0"
-  resolved "https://registry.yarnpkg.com/final-form/-/final-form-4.10.0.tgz#6179bca7676925202510e9877eb1ad2ad1cd3460"
-  integrity sha512-pq/LKcynfI7CWJUX/YlMKwL6Xf5s6SxfjwFT6Saz4Qnwce5flShPQW7IOpxauy/PzD9LMwH/0qI5fXnNaBlOJg==
+final-form@4.20.2:
+  version "4.20.2"
+  resolved "https://registry.yarnpkg.com/final-form/-/final-form-4.20.2.tgz#c820b37d7ebb73d71169480256a36c7e6e6c9155"
+  integrity sha512-5i0IxqwjjPG1nUNCjWhqPCvQJJ2R+QwTwaAnjPmFnLbyjIHWuBPU8u+Ps4G3TcX2Sjno+O5xCZJzYcMJEzzfCQ==
+  dependencies:
+    "@babel/runtime" "^7.10.0"
 
 finalhandler@~1.1.2:
   version "1.1.2"
