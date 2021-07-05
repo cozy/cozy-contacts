@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, useMemo } from 'react'
 import PropTypes from 'prop-types'
 
 import { Content } from 'cozy-ui/transpiled/react/Layout'
@@ -15,11 +15,13 @@ import Toolbar from './Toolbar'
 import ContactsList from './ContactsList/ContactsList.jsx'
 import GroupsSelect from './GroupsSelect/GroupsSelect'
 import SearchInput from './Search/SearchInput'
+import SearchByLetter from './Search/SearchByLetter'
 import {
   filterContactsByGroup,
   translatedDefaultSelectedGroup
 } from '../helpers/groups'
 import { filterContactsBySearch, delayedSetThreshold } from '../helpers/search'
+import { categorizeContacts } from '../helpers/contactList'
 
 const setGroupsSelectCustomStyles = isMobile => ({
   container: base => ({
@@ -62,6 +64,10 @@ export const ContentResult = ({ contacts, allGroups }) => {
     delayedSetThreshold(thresholdValue)
   }
 
+  const firstLetterContacts = useMemo(() => {
+    return Object.keys(categorizeContacts(filteredContacts, t('empty-list')))
+  }, [filteredContacts, t])
+
   useEffect(() => {
     const filteredContactsByGroup = filterContactsByGroup(
       contacts,
@@ -77,31 +83,39 @@ export const ContentResult = ({ contacts, allGroups }) => {
   return (
     <>
       {contacts.length >= 1 && (
-        <Header
-          left={
-            <>
-              {flag('search-threshold') && (
-                <div>
-                  <Input onChange={handleSearchThreshold} defaultValue="0.3" />
-                </div>
-              )}
-              <SearchInput />
-              <GroupsSelect
-                className="u-w-100 u-maw-6"
-                allGroups={groupsSelectOptions}
-                value={selectedGroup}
-                onChange={setSelectedGroup}
-                noOptionsMessage={() => t('filter.no-group')}
-                styles={groupsSelectCustomStyles}
-                closeMenuOnSelect={true}
-                components={{
-                  Control: ControlDefaultWithTestId
-                }}
-              />
-            </>
-          }
-          right={<Toolbar />}
-        />
+        <>
+          <Header
+            left={
+              <>
+                {flag('search-threshold') && (
+                  <div>
+                    <Input
+                      onChange={handleSearchThreshold}
+                      defaultValue="0.3"
+                    />
+                  </div>
+                )}
+                <SearchInput />
+                <GroupsSelect
+                  className="u-w-100 u-maw-6"
+                  allGroups={groupsSelectOptions}
+                  value={selectedGroup}
+                  onChange={setSelectedGroup}
+                  noOptionsMessage={() => t('filter.no-group')}
+                  styles={groupsSelectCustomStyles}
+                  closeMenuOnSelect={true}
+                  components={{
+                    Control: ControlDefaultWithTestId
+                  }}
+                />
+              </>
+            }
+            right={<Toolbar />}
+          />
+          {searchValue.length === 0 && (
+            <SearchByLetter letters={firstLetterContacts} />
+          )}
+        </>
       )}
       <Content>
         <ContactsList contacts={filteredContacts} />
