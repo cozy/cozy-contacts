@@ -10,8 +10,50 @@ main > [role=main]
     +small-screen()
         align-items center
 
+.directory
+    line-height: 1
+    list-style: none
+    margin: 0 0 1em
+    clear: both
+
+ul.directory li.viewContent.selected
+    border-bottom: 3px solid var(--regularButtonPrimaryColor)
+
+ul.directory li.viewContent
+    float: left
+    border-bottom: 3px solid #f5f6f7
+
+ul.directory li.viewContent.selected a span.title
+    color: #32363f
+    font-weight: 600
+
+ul.directory li.viewContent a span.title
+    color: var(--regularButtonPrimaryColor)
+    font-size: .85em
+    max-width: none
+    font-weight: 500
+    text-transform: uppercase
+
+ul.directory li.viewContent a 
+    padding-right: 10px
+
+ul.directory li.viewContent a
+    padding: .5em 1em
+    display: block
+
+ul.directory li a
+    text-decoration: none
+    color: #4477a1
+    cursor: pointer
+
 .list-wrapper
     box-shadow 0 4px 4px 0 silver
+    display: flex
+    flex-direction: column
+    overflow: auto
+
+ .list-wrapper .contact-list
+    overflow: scroll
 
 .topbar
     display flex

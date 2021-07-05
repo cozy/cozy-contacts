@@ -16,7 +16,7 @@ const CategorizedList = ({ contacts }) => {
   return (
     <Table>
       {Object.entries(categorizedContacts).map(([header, contacts]) => (
-        <List key={`cat-${header}`}>
+        <List id={header} key={`cat-${header}`}>
           <ListSubheader key={header}>{header}</ListSubheader>
           <ContactsSubList contacts={contacts} />
         </List>
