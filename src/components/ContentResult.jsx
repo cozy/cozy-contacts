@@ -20,6 +20,7 @@ import {
   translatedDefaultSelectedGroup
 } from '../helpers/groups'
 import { filterContactsBySearch, delayedSetThreshold } from '../helpers/search'
+import ContactsListAlphabeticalShortcuts from './ContactsListAlphabeticalShortcuts/ContactsListAlphabeticalShortcuts'
 
 const setGroupsSelectCustomStyles = isMobile => ({
   container: base => ({
@@ -102,6 +103,9 @@ export const ContentResult = ({ contacts, allGroups }) => {
           }
           right={<Toolbar />}
         />
+      )}
+      {flag('alphabetical-navigation') && (
+        <ContactsListAlphabeticalShortcuts contacts={filteredContacts} />
       )}
       <Content>
         <ContactsList contacts={filteredContacts} />
