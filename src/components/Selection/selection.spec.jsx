@@ -15,7 +15,10 @@ const DummyComponentWithSelection = selectionContainer(DummyComponent)
 // Uses a different version of react-redux
 // to prevent Enzyme's incompatibility with actual react-redux version
 // see https://github.com/enzymejs/enzyme/issues/2202 and https://github.com/enzymejs/enzyme/issues/2302
-jest.mock('react-redux', () => require('react-redux-test'))
+jest.mock('react-redux', () => ({
+  ...jest.requireActual('react-redux-test'),
+  createSelectorHook: jest.fn()
+}))
 
 describe('A component with selection', () => {
   let testedComponent

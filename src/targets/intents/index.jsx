@@ -45,15 +45,16 @@ const getDataOrDefault = function(toTest, defaultData) {
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.querySelector('[role=application]')
-  const data = root.dataset
+  const data = JSON.parse(root.dataset.cozy)
 
-  const appLocale = getDataOrDefault(data.cozyLocale, 'en')
+  const appLocale = getDataOrDefault(data.locale, 'en')
 
   const protocol = window.location ? window.location.protocol : 'https:'
 
   const client = new cozyClient({
-    uri: `${protocol}//${data.cozyDomain}`,
-    token: data.cozyToken
+    uri: `${protocol}//${data.domain}`,
+    token: data.token,
+    store: false
   })
 
   renderApp(client, appLocale, data)

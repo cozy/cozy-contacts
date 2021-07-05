@@ -21,7 +21,8 @@ export const getCozyClient = ({ uri, token } = defaultOptions) => {
       groups: { doctype: DOCTYPE_CONTACT_GROUPS }
     },
     uri,
-    token
+    token,
+    store: false
   })
 
   return clientTest

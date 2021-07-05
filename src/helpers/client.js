@@ -8,17 +8,18 @@ import { schema } from './doctypes'
  */
 export const getClient = () => {
   const root = document.querySelector('[role=application]')
-  const data = root.dataset
+  const data = JSON.parse(root.dataset.cozy)
   const protocol = window.location.protocol
-  const cozyUrl = `${protocol}//${data.cozyDomain}`
+  const cozyUrl = `${protocol}//${data.domain}`
 
   return new CozyClient({
     uri: cozyUrl,
-    token: data.cozyToken,
+    token: data.token,
     appMetadata: {
       slug: manifest.name,
       version: manifest.version
     },
-    schema
+    schema,
+    store: false
   })
 }
