@@ -9,6 +9,7 @@ import { render } from 'react-dom'
 import { I18n } from 'cozy-ui/transpiled/react/I18n'
 import cozyClient, { CozyProvider } from 'cozy-client'
 import { Intents } from 'cozy-interapp'
+import { RealtimePlugin } from 'cozy-realtime'
 
 const renderApp = function(client, appLocale, appData) {
   const IntentHandler = require('components/Intents/IntentHandler').default
@@ -56,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     token: data.token,
     store: false
   })
+  client.registerPlugin(RealtimePlugin)
 
   renderApp(client, appLocale, data)
 })

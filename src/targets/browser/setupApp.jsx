@@ -1,4 +1,5 @@
 import memoize from 'lodash/memoize'
+import { RealtimePlugin } from 'cozy-realtime'
 
 import configureStore from 'store/configureStore'
 import { initTranslation } from 'cozy-ui/transpiled/react/I18n'
@@ -14,6 +15,8 @@ const setupApp = memoize(() => {
   const { lang, appName } = getValues(JSON.parse(root.dataset.cozy))
   const polyglot = initTranslation(lang, lang => require(`locales/${lang}`))
   const client = getClient()
+  client.registerPlugin(RealtimePlugin)
+
   const persistedState = {}
 
   const store = configureStore(
