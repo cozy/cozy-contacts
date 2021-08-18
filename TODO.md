@@ -6,7 +6,7 @@ Create technical debt stories:
 - fix warnings of "Multiple versions" of some dependencies during yarn start
 - fix warnings in console.log
 - no Hot Module Replacement generating the page
-- yarn test broken on my mac? or because of whatwg-mimetype?
+- Use dummies in tests
 
 Questions to ask:
 - why using Docker? (debugging very complicated, slow to launch, slow to update)
@@ -18,4 +18,3 @@ Onboarding improvement:
 - yarn watch does not show on which port, it is provided.
 
 => mention to start `stack:docker:dev` is needed and `start`
-

@@ -3,7 +3,12 @@ import { render, fireEvent, act } from '@testing-library/react'
 
 import AppLike from '../tests/Applike'
 import ContentResult from './ContentResult'
-import { groups, contactWithGroup, johnDoeContact } from '../helpers/testData'
+import {
+  groups,
+  contactWithGroup,
+  johnDoeContact,
+  dummyJohnDoeContact
+} from '../helpers/testData'
 import enLocale from '../locales/en.json'
 
 const sleep = duration => new Promise(resolve => setTimeout(resolve, duration))
@@ -158,36 +163,31 @@ describe('ContentResult - search', () => {
     expect(contactListItems[0].textContent).toMatch('John')
     expect(contactListItems[1].textContent).toMatch('Matt')
   })
+})
 
-  it('should sort contacts by groups and search', async () => {
-    const contacts = [
-      {
-        _id: '01',
-        name: { givenName: 'John', familyName: 'Doe' },
-        relationships: { groups: { data: groups } }
-      },
-      {
-        _id: '02',
-        name: { givenName: 'Matt', familyName: 'Damon' }
-      },
-      {
-        _id: '03',
-        name: { givenName: 'Jane', familyName: 'Doe' }
-      }
-    ]
-    const searchValue = 'Doe'
-    const { root } = setup({ contacts })
+describe('ContentResult - filterByLetter', () => {
+  it('should filter by letter', () => {
+    // Given
+    const { root } = setup({
+      contacts: [
+        dummyJohnDoeContact({ displayName: 'John' }),
+        dummyJohnDoeContact({ displayName: 'Noémie' })
+      ]
+    })
 
-    const { getByText, queryByText, getByPlaceholderText } = root
+    const { getByText, queryByText, getAllByRole } = root
+    expect(getAllByRole('button')[15].textContent).toEqual('N')
 
-    // open the group filter and select the first group
-    fireEvent.click(getByText(enLocale.filter['all-groups']))
-    fireEvent.click(getByText(groups[0].name))
+    // When
+    // open the group filter and select first group
+    fireEvent.click(getAllByRole('button')[15])
 
-    await search(searchValue, getByPlaceholderText)
+    // Then
+    // should not return an empty contact list
+    expect(queryByText(enLocale.importation.available_soon)).toBeNull()
 
-    expect(getByText('John')).toBeTruthy()
-    expect(queryByText('Matt')).toBeNull()
-    expect(queryByText('Jane')).toBeNull()
+    // contacts not starting by N should not be present
+    expect(queryByText('John')).toBeNull()
+    expect(getByText('Noémie'))
   })
 })

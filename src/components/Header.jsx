@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Header = ({ left, right, letters }) => (
-  <section className='filters'>
-    <div className='topbar'>
-      <div className='topbar__left'>{left}</div>
-      <div className='topbar__right'>{right}</div>
+  <section className="filters">
+    <div className="topbar">
+      <div className="topbar__left">{left}</div>
+      <div className="topbar__right">{right}</div>
     </div>
-    <div className='filters__letters'>{letters}</div>
+    <div className="filters__letters">{letters}</div>
   </section>
 )
 

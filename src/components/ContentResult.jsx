@@ -64,7 +64,6 @@ export const ContentResult = ({ contacts, allGroups }) => {
   }
 
   const filterByLetter = letter => {
-    console.log('letter is clicked: ', letter)
     const filteredContactsBySearch = filterContactsByLetter(contacts, letter)
     setFilteredContacts(filteredContactsBySearch)
   }

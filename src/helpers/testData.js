@@ -1,3 +1,8 @@
+export const dummyJohnDoeContact = contact => ({
+  ...johnDoeContact,
+  ...contact
+})
+
 export const johnDoeContact = {
   id: '9ecfbf4b-20e7-4bac-87f1-eea53350857d',
   _id: '9ecfbf4b-20e7-4bac-87f1-eea53350857d',
