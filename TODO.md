@@ -15,6 +15,6 @@ Questions to ask:
 Onboarding improvement:
 - after yarn install, yarn fixtures fail with "Could not connect to http://cozy.tools:8080 "
 - yarn start succeeds, but it's only mentioned: "  Dev assets:        http://localhost:8888" but this page ends with: "{{.ThemeCSS}}"
-- yarn watch does not show on which port, it is provided.
+- yarn watch does not show on which port, it is provided. => only providen on Docker: `http://app.cozy.localhost:8080/`
 
 => mention to start `stack:docker:dev` is needed and `start`

@@ -19,7 +19,11 @@ import {
   filterContactsByGroup,
   translatedDefaultSelectedGroup
 } from '../helpers/groups'
-import { filterContactsBySearch, delayedSetThreshold, filterContactsByLetter } from '../helpers/search'
+import {
+  filterContactsBySearch,
+  delayedSetThreshold,
+  filterContactsByLetter
+} from '../helpers/search'
 import Button from 'cozy-ui/transpiled/react/Button'
 
 const setGroupsSelectCustomStyles = isMobile => ({
@@ -111,9 +115,9 @@ export const ContentResult = ({ contacts, allGroups }) => {
             <ul className="container">
               {Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ').map(letter => {
                 return (
-                  <li key={letter}>
+                  <li key={letter} className="letter">
                     <Button
-                      style={{ minWidth: 'inherit' }}
+                      style={{ minWidth: '3rem' }}
                       onClick={() => filterByLetter(letter)}
                       label={letter}
                     />
