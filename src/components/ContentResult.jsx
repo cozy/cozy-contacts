@@ -19,7 +19,8 @@ import {
   filterContactsByGroup,
   translatedDefaultSelectedGroup
 } from '../helpers/groups'
-import { filterContactsBySearch, delayedSetThreshold } from '../helpers/search'
+import { filterContactsBySearch, delayedSetThreshold, filterContactsByLetter } from '../helpers/search'
+import Button from 'cozy-ui/transpiled/react/Button'
 
 const setGroupsSelectCustomStyles = isMobile => ({
   container: base => ({
@@ -62,6 +63,12 @@ export const ContentResult = ({ contacts, allGroups }) => {
     delayedSetThreshold(thresholdValue)
   }
 
+  const filterByLetter = letter => {
+    console.log('letter is clicked: ', letter)
+    const filteredContactsBySearch = filterContactsByLetter(contacts, letter)
+    setFilteredContacts(filteredContactsBySearch)
+  }
+
   useEffect(() => {
     const filteredContactsByGroup = filterContactsByGroup(
       contacts,
@@ -101,6 +108,21 @@ export const ContentResult = ({ contacts, allGroups }) => {
             </>
           }
           right={<Toolbar />}
+          letters={
+            <ul className="container">
+              {Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ').map(letter => {
+                return (
+                  <li key={letter}>
+                    <Button
+                      style={{ minWidth: 'inherit' }}
+                      onClick={() => filterByLetter(letter)}
+                      label={letter}
+                    />
+                  </li>
+                )
+              })}
+            </ul>
+          }
         />
       )}
       <Content>

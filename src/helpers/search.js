@@ -73,6 +73,22 @@ export const filterContactsBySearch = (contacts, searchValue) => {
   return fuseResults.map(result => result.item)
 }
 
+/**
+ * Sort contacts according to the letter clicked
+ * @param {array} contacts - Array of io.cozy.contact documents
+ * @param {string} letter - Value of letter clicked
+ * @returns {array} Array of io.cozy.contact documents
+ */
+export const filterContactsByLetter = (contacts, letter) => {
+  fuse.setCollection(contacts)
+  const fuseResults = fuse.search(letter)
+  return fuseResults
+    .map(result => result.item)
+    .filter(
+      contact => contact.displayName.toUpperCase().substr(0, 1) === letter
+    )
+}
+
 const setThreshold = value => {
   if (!isNaN(value)) {
     console.info('changing fuse threshold to', value) //eslint-disable-line no-console
