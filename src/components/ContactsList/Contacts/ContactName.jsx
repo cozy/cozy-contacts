@@ -7,7 +7,13 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 const ContactName = ({ displayName, familyName }) => {
   const namesToDisplay = (displayName && displayName.split(' ')) || []
   return (
-    <Typography className="u-ml-1" variant="body1" noWrap gutterBottom inline>
+    <Typography
+      className="u-ml-1"
+      variant="body1"
+      noWrap
+      gutterBottom
+      display="inline"
+    >
       {namesToDisplay.map((name, key) => (
         <span
           key={`display-${key}`}

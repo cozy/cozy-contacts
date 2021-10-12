@@ -42,8 +42,7 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
       </span>
     </div>
     <p
-      className="MuiTypography-root u-ml-1 MuiTypography-body1 MuiTypography-noWrap MuiTypography-gutterBottom"
-      inline={true}
+      className="MuiTypography-root u-ml-1 MuiTypography-body1 MuiTypography-noWrap MuiTypography-gutterBottom MuiTypography-displayInline"
     >
       <span
         className=""
