@@ -9,4 +9,4 @@
 * ContactName Typography use right prop to get inlined
 
 ## 🔧 Tech
-*
+* Use node v12
