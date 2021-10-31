@@ -65,7 +65,7 @@
     "cozy-ui": "45.0.0-beta.4",
     "cozy-vcard": "0.2.18",
     "final-form": "4.10.0",
-    "final-form-arrays": "1.1.0",
+    "final-form-arrays": "3.0.2",
     "fuse.js": "6.4.6",
     "lodash": "4.17.21",
     "node-fetch": "2.6.1",
