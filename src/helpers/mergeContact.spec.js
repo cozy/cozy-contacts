@@ -22,6 +22,7 @@ describe('Merge contacts', () => {
       ],
       address: [{ formattedAddress: 'Westeros', primary: true, type: 'Work' }]
     }
+
     expect(mergeContact(fakeContact, importedContact)).toEqual(expectedContact)
   })
 
@@ -52,22 +53,44 @@ describe('Merge contacts', () => {
     expect(mergeContact(fakeContact, importedContact)).toEqual(expectedContact)
   })
 
-  test('should merge name only if it is longer', () => {
+  test('should merge properties', () => {
     const fakeContact = {
       email: [{ address: 'starck@localhost' }],
-      name: { familyName: 'Starck', givenName: 'N' },
+      name: { familyName: 'Starck' },
       phone: [{ number: '0987654321', primary: true, type: 'Work' }],
       address: [{ formattedAddress: 'Westeros', primary: true, type: 'Work' }]
     }
     const importedContact = {
-      name: { familyName: 'S.', givenName: 'Ned' },
+      name: { familyName: 'Starck', givenName: 'Ned' },
+      phone: [{ number: '0123456789' }],
       email: [{ address: 'ned@localhost' }]
     }
     const expectedContact = {
       email: [{ address: 'starck@localhost' }, { address: 'ned@localhost' }],
       name: { familyName: 'Starck', givenName: 'Ned' },
-      phone: [{ number: '0987654321', primary: true, type: 'Work' }],
+      phone: [
+        { number: '0987654321', primary: true, type: 'Work' },
+        { number: '0123456789' }
+      ],
       address: [{ formattedAddress: 'Westeros', primary: true, type: 'Work' }]
+    }
+
+    expect(mergeContact(fakeContact, importedContact)).toEqual(expectedContact)
+  })
+
+  test('should keeps the present fields', () => {
+    const fakeContact = {
+      name: { familyName: 'Starck', givenName: 'Ned' },
+      email: [{ address: 'ned@localhost' }]
+    }
+    const importedContact = {
+      name: { familyName: 'Ned Starck' },
+      address: [{ formattedAddress: 'Westeros' }]
+    }
+    const expectedContact = {
+      name: { familyName: 'Starck', givenName: 'Ned' },
+      email: [{ address: 'ned@localhost' }],
+      address: [{ formattedAddress: 'Westeros' }]
     }
     const mergedContact = mergeContact(fakeContact, importedContact)
     expect(mergedContact).toEqual(expectedContact)
