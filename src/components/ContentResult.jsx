@@ -103,7 +103,7 @@ export const ContentResult = ({ contacts, allGroups }) => {
           right={<Toolbar />}
         />
       )}
-      <Content>
+      <Content className="u-ov-hidden">
         <ContactsList contacts={filteredContacts} />
       </Content>
     </>

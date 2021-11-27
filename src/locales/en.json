@@ -16,6 +16,7 @@
   "me": "me",
   "empty-list": "EMPTY",
   "search": "Search",
+  "nav_by_letter": "Navigation by letter",
   "empty": {
     "title": "Import your contacts",
     "title_filtered": "No contact corresponds to your search.",

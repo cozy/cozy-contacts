@@ -16,6 +16,7 @@
   "me": "moi",
   "empty-list": "VIDE",
   "search": "Rechercher",
+  "nav_by_letter": "Navigation par lettre",
   "empty": {
     "title": "Importer vos contacts",
     "title_filtered": "Aucun contact ne correspond à votre recherche.",
