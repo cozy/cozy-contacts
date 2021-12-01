@@ -81,7 +81,7 @@
     "react-redux": "7.2.6",
     "redux": "4.1.2",
     "redux-logger": "3.0.6",
-    "redux-thunk": "2.3.0",
+    "redux-thunk": "2.4.1",
     "remove-accents": "0.4.2",
     "yarn-run-all": "3.1.1"
   },
