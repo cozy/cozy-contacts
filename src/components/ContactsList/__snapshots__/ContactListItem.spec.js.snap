@@ -30,7 +30,7 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
       style={
         Object {
           "--circleSize": "32px",
-          "backgroundColor": "var(--brightSun)",
+          "backgroundColor": "#FFC644",
         }
       }
     >
