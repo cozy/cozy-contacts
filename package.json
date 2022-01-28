@@ -62,7 +62,7 @@
     "classnames": "2.3.1",
     "cozy-app-publish": "^0.28.0",
     "cozy-bar": "^7.16.0",
-    "cozy-client": "^23.22.0",
+    "cozy-client": "^27.14.3",
     "cozy-doctypes": "^1.75.1",
     "cozy-flags": "^1.11.0",
     "cozy-logger": "^1.7.0",
