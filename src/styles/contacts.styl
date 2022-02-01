@@ -67,6 +67,10 @@ main > [role=main]
     flex-basis 30%
 
 // TODO: Find a better way to set the .empty icon size
-.contacts-empty>svg
-    height 300px
-    width 280px
+.contacts-empty
+    +small-screen()
+        margin-top: calc(50vh - 6rem)
+        transform: translateY(-50%)
+    &>svg
+        height 300px
+        width 280px

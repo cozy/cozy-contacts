@@ -61,6 +61,7 @@ class IntentHandler extends Component {
           )}
           {error && (
             <Empty
+              className="contacts-empty"
               icon={CozyIcon}
               title={t('intent.service.creation.error.title')}
               text={error.message}

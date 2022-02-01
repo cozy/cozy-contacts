@@ -10,7 +10,7 @@ import { Main, Layout } from 'cozy-ui/transpiled/react/Layout'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useI18n, useBreakpoints } from 'cozy-ui/transpiled/react'
-import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
+import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
 import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
 
 import { SelectedGroupProvider } from './Contexts/SelectedGroup'
@@ -49,7 +49,7 @@ const ContactsApp = ({ cleanTrashedGroups }) => {
           <Alerter t={t} />
           <ModalManager />
         </Main>
-        <IconSprite />
+        <Sprite />
       </Layout>
     </SelectedGroupProvider>
   )
