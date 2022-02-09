@@ -3785,6 +3785,13 @@ cozy-device-helper@^1.16.1:
   dependencies:
     lodash "^4.17.19"
 
+cozy-device-helper@^1.17.0:
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/cozy-device-helper/-/cozy-device-helper-1.17.0.tgz#fbce9737ea83c67969b2b173163b37299a36283c"
+  integrity sha512-G61i75dPe/JwLUxN0foWG34lnm+0iybMu05AjoXv/UU2fRsTPfNnsHH4ZRi5JS6OPK4ccuj+ffRmabdywo23TA==
+  dependencies:
+    lodash "^4.17.19"
+
 cozy-device-helper@^1.7.3:
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/cozy-device-helper/-/cozy-device-helper-1.10.2.tgz#f744ce65c76d1e5a95e30bf6c08bcc6d9d772f37"
@@ -3847,12 +3854,11 @@ cozy-harvest-lib@^7.1.1:
     react-markdown "^4.2.2"
     uuid "^3.3.2"
 
-cozy-intent@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/cozy-intent/-/cozy-intent-1.5.0.tgz#c4423fa81946484cb2d32da4523c5e052a174b28"
-  integrity sha512-yvQ8TwwmDUuwT63T7/DcmLbXdrnMvDKJorY1js8eboR9oG9vQsFHvXs0lndXIqu26WOtAB6DCC+2prwYh8M7NQ==
+cozy-intent@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/cozy-intent/-/cozy-intent-1.8.0.tgz#dce5fe4dfc547be9a809000f23c9a7070eaf05c8"
+  integrity sha512-c5KsEFV21I/CAooyNKBuwt18FWdfPOtnxK/rDQVZm8JhTj2EZ9dxVNSZR5dsKohBN+czA9Rwl0icmvsvFiNT+A==
   dependencies:
-    cozy-device-helper "^1.16.1"
     post-me "0.4.5"
 
 cozy-interapp@0.4.9:
@@ -9314,7 +9320,7 @@ node-notifier@^5.4.2:
     shellwords "^0.1.1"
     which "^1.3.0"
 
-node-polyglot@2.4.2:
+node-polyglot@2.4.2, node-polyglot@^2.4.0:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/node-polyglot/-/node-polyglot-2.4.2.tgz#e4876e6710b70dc00b1351a9a68de4af47a5d61d"
   integrity sha512-AgTVpQ32BQ5XPI+tFHJ9bCYxWwSLvtmEodX8ooftFhEuyCgBG6ijWulIVb7pH3THigtgvc9uLiPn0IO51KHpkg==
@@ -9333,17 +9339,6 @@ node-polyglot@^2.2.2:
     for-each "^0.3.3"
     has "^1.0.3"
     string.prototype.trim "^1.1.2"
-    warning "^4.0.3"
-
-node-polyglot@^2.4.0:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/node-polyglot/-/node-polyglot-2.4.2.tgz#e4876e6710b70dc00b1351a9a68de4af47a5d61d"
-  integrity sha512-AgTVpQ32BQ5XPI+tFHJ9bCYxWwSLvtmEodX8ooftFhEuyCgBG6ijWulIVb7pH3THigtgvc9uLiPn0IO51KHpkg==
-  dependencies:
-    array.prototype.foreach "^1.0.0"
-    has "^1.0.3"
-    object.entries "^1.1.4"
-    string.prototype.trim "^1.2.4"
     warning "^4.0.3"
 
 node-releases@^1.1.71:

@@ -12,6 +12,7 @@ import { CozyProvider } from 'cozy-client'
 import { I18n } from 'cozy-ui/transpiled/react/I18n'
 import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import { WebviewIntentProvider } from 'cozy-intent'
 
 import App from 'components/App'
 import '../../styles/index.styl'
@@ -34,23 +35,25 @@ const init = () => {
   const { root, store, client, lang, polyglot } = setupApp()
 
   render(
-    <Provider store={store}>
-      <StylesProvider generateClassName={generateClassName}>
-        <CozyProvider client={client}>
-          <I18n lang={lang} polyglot={polyglot}>
-            <MuiCozyTheme>
-              <BreakpointsProvider>
-                <SelectedGroupProvider>
-                  <SearchProvider>
-                    <App />
-                  </SearchProvider>
-                </SelectedGroupProvider>
-              </BreakpointsProvider>
-            </MuiCozyTheme>
-          </I18n>
-        </CozyProvider>
-      </StylesProvider>
-    </Provider>,
+    <WebviewIntentProvider>
+      <Provider store={store}>
+        <StylesProvider generateClassName={generateClassName}>
+          <CozyProvider client={client}>
+            <I18n lang={lang} polyglot={polyglot}>
+              <MuiCozyTheme>
+                <BreakpointsProvider>
+                  <SelectedGroupProvider>
+                    <SearchProvider>
+                      <App />
+                    </SearchProvider>
+                  </SelectedGroupProvider>
+                </BreakpointsProvider>
+              </MuiCozyTheme>
+            </I18n>
+          </CozyProvider>
+        </StylesProvider>
+      </Provider>
+    </WebviewIntentProvider>,
     root
   )
 }
