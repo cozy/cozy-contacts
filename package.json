@@ -67,7 +67,7 @@
     "cozy-doctypes": "^1.75.1",
     "cozy-flags": "^1.11.0",
     "cozy-harvest-lib": "^7.1.1",
-    "cozy-intent": "^1.8.0",
+    "cozy-intent": "^1.9.1",
     "cozy-logger": "^1.7.0",
     "cozy-realtime": "^3.13.0",
     "cozy-sharing": "^4.0.2",
