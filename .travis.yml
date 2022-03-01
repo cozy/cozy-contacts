@@ -19,20 +19,29 @@ cache:
   directories:
     - node_modules
 stages:
-  - lint
-  - test
+  - prebuild
   - build
 before_install:
   - sudo apt-get update
   - sudo apt-get install python3
 jobs:
   include:
-    - name: lint
-      stage: lint
+    - name: Prebuild
+      stage: "prebuild"
       node_js: 
         - 12
       script: 
         - yarn lint
+    - name: "Unit test node 12"
+      stage: "prebuild"
+      node_js:
+        - 12
+      script: yarn test
+    - name: "Unit test node 16"
+      stage: "prebuild"
+      node_js: 
+        - 16
+      script: yarn test
     - name: Build
       stage: build
       node_js: 
@@ -44,6 +53,7 @@ jobs:
           fi
         - if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then ssh-add /tmp/id_rsa_downcloud_contacts;
           fi
+      script: yarn build
       before_deploy:
         - yarn add cozy-app-publish
       deploy:
