@@ -52,7 +52,7 @@
     "mockdate": "3.0.5",
     "pretty-quick": "3.1.2",
     "react-dom": "16.13.1",
-    "react-redux-test": "npm:react-redux@5.1.2",
+    "react-redux-test": "npm:react-redux@7.2.7",
     "replace": "1.2.1",
     "stylint": "2.0.0"
   },
