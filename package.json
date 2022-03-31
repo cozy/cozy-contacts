@@ -65,7 +65,7 @@
     "cozy-client": "^27.26.3",
     "cozy-device-helper": "^1.17.0",
     "cozy-doctypes": "^1.83.7",
-    "cozy-flags": "^1.11.0",
+    "cozy-flags": "^2.8.7",
     "cozy-harvest-lib": "^7.3.6",
     "cozy-intent": "^1.13.5",
     "cozy-logger": "^1.9.0",
