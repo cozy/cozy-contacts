@@ -3774,13 +3774,6 @@ cozy-device-helper@^1.12.0:
   dependencies:
     lodash "^4.17.19"
 
-cozy-device-helper@^1.13.0:
-  version "1.13.0"
-  resolved "https://registry.yarnpkg.com/cozy-device-helper/-/cozy-device-helper-1.13.0.tgz#b1de05d1c84e869b71f41476ac6e9694b939db44"
-  integrity sha512-7GmDVahgzglMIMJ5aFiai930zrt7/elHqDPOdAmgOYfF1I+oA0MChh+xFl0ZO9AZN2LWyV3VDXEmi6Cjjvludg==
-  dependencies:
-    lodash "^4.17.19"
-
 cozy-device-helper@^1.17.0:
   version "1.17.0"
   resolved "https://registry.yarnpkg.com/cozy-device-helper/-/cozy-device-helper-1.17.0.tgz#fbce9737ea83c67969b2b173163b37299a36283c"
@@ -3956,13 +3949,13 @@ cozy-realtime@3.2.1:
   dependencies:
     minilog "3.1.0"
 
-cozy-realtime@^3.13.0:
-  version "3.14.0"
-  resolved "https://registry.yarnpkg.com/cozy-realtime/-/cozy-realtime-3.14.0.tgz#276e826483565000ac8e6180583e3aa91274cccd"
-  integrity sha512-jjrZJCd5AnI3YKtjhP9B/ys0Lx5sMboxUVenQEgsY9vPF7poclq8Wlfom++j/sXR0wYU+7MJdmntU3GvhtS+4Q==
+cozy-realtime@^4.0.5:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/cozy-realtime/-/cozy-realtime-4.0.5.tgz#61115917229092353264e8a94791f8a7219ec08c"
+  integrity sha512-ZsoEtnqneABu7+J/lTtCTFgNCNnXbruJo5LWKXZq0T6B2FFAH5AwbJCHSoOFftk3IUYEqAaZaLSdTmxalO06SQ==
   dependencies:
     "@cozy/minilog" "^1.0.0"
-    cozy-device-helper "^1.13.0"
+    cozy-device-helper "^1.17.0"
 
 cozy-release@1.10.0:
   version "1.10.0"
