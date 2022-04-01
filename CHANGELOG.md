@@ -2,8 +2,7 @@
 
 ## ✨ Features
 
-* Update cozy-client to 27.14.3
-* Update cozy-ui to 60.9.1
+* Update cozy packages
 
 ## 🐛 Bug Fixes
 

@@ -5,7 +5,7 @@ import flow from 'lodash/flow'
 import { useClient } from 'cozy-client'
 import { RealTimeQueries } from 'cozy-client'
 
-import flag, { FlagSwitcher } from 'cozy-flags'
+import FlagSwitcher from 'cozy-flags/dist/FlagSwitcher'
 import { Main, Layout } from 'cozy-ui/transpiled/react/Layout'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import Typography from 'cozy-ui/transpiled/react/Typography'
@@ -42,7 +42,7 @@ const ContactsApp = ({ cleanTrashedGroups }) => {
           </BarCenter>
         )}
         <Main>
-          {flag('switcher') && <FlagSwitcher />}
+          <FlagSwitcher />
           <ContactsSelectionBar />
           <RealTimeQueries doctype="io.cozy.contacts" />
           <ContentWrapper />
