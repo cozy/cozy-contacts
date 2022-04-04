@@ -6,15 +6,15 @@ import get from 'lodash/get'
 import { models } from 'cozy-client'
 import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
 import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
+import ContactCozy from 'cozy-ui/transpiled/react/ContactsList/Contacts/ContactCozy'
+import ContactEmail from 'cozy-ui/transpiled/react/ContactsList/Contacts/ContactEmail'
+import ContactIdentity from 'cozy-ui/transpiled/react/ContactsList/Contacts/ContactIdentity'
+import ContactPhone from 'cozy-ui/transpiled/react/ContactsList/Contacts/ContactPhone'
 
 import { fullContactPropTypes } from '../ContactPropTypes'
 import withModal from '../HOCs/withModal'
 import ContactCardModal from '../Modals/ContactCardModal'
 import ContactWithSelection from './ContactSelection'
-import ContactPhone from './Contacts/ContactPhone'
-import ContactIdentity from './Contacts/ContactIdentity'
-import ContactCozy from './Contacts/ContactCozy'
-import ContactEmail from './Contacts/ContactEmail'
 
 const { getPrimaryCozy, getPrimaryPhone, getPrimaryEmail } = models.contact
 
