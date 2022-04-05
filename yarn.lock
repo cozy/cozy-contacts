@@ -4095,10 +4095,10 @@ cozy-ui@35.22.0:
     react-select "2.2.0"
     react-swipeable-views "0.13.3"
 
-cozy-ui@^62.4.1:
-  version "62.4.1"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-62.4.1.tgz#3e38d31e708de57cc367d8a30cb3d578dfefa7af"
-  integrity sha512-f6OyxPIHHhk3T75vED3477vfwIto9PWhzANJ7UqsIB3A+ie7Sbc+dw8PB6MFAVs03gfVOgKYfrDDTMhdZVbRuw==
+cozy-ui@^62.5.0:
+  version "62.5.0"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-62.5.0.tgz#dbaf9698f13f84657c46cb622b55d7db9aca343e"
+  integrity sha512-xB8GpOxVrE40aJhclWyRAkd3/s2PTpWe0sTNnQgEppCw/J8WVdP6ek4VqWeb3psAL1Mx7ITDqxxoOSXULNEp4g==
   dependencies:
     "@babel/runtime" "^7.3.4"
     "@popperjs/core" "^2.4.4"
@@ -4110,7 +4110,7 @@ cozy-ui@^62.4.1:
     intersection-observer "0.11.0"
     mui-bottom-sheet "https://github.com/cozy/mui-bottom-sheet.git#v1.0.6"
     node-polyglot "^2.2.2"
-    normalize.css "^7.0.0"
+    normalize.css "^8.0.0"
     react-markdown "^4.0.8"
     react-pdf "^4.0.5"
     react-popper "^2.2.3"
@@ -9061,9 +9061,9 @@ ms@2.1.2, ms@^2.0.0, ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
-"mui-bottom-sheet@https://github.com/cozy/mui-bottom-sheet.git#v1.0.6":
+"mui-bottom-sheet@git+https://github.com/cozy/mui-bottom-sheet.git#v1.0.6":
   version "1.0.6"
-  resolved "https://github.com/cozy/mui-bottom-sheet.git#494c40416ecde95732c864f9b921e7e545075aa5"
+  resolved "git+https://github.com/cozy/mui-bottom-sheet.git#494c40416ecde95732c864f9b921e7e545075aa5"
   dependencies:
     "@juggle/resize-observer" "^3.1.3"
     jest-environment-jsdom-sixteen "^1.0.3"
@@ -9395,6 +9395,11 @@ normalize.css@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-7.0.0.tgz#abfb1dd82470674e0322b53ceb1aaf412938e4bf"
   integrity sha1-q/sd2CRwZ04DIrU86xqvQSk45L8=
+
+normalize.css@^8.0.0:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-8.0.1.tgz#9b98a208738b9cc2634caacbc42d131c97487bf3"
+  integrity sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==
 
 npm-run-all@4.1.5:
   version "4.1.5"
