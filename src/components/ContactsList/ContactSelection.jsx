@@ -1,29 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import find from 'lodash/find'
 
 import Checkbox from 'cozy-ui/transpiled/react/Checkbox'
 
 import { fullContactPropTypes } from '../ContactPropTypes'
 import withSelection from '../Selection/selectionContainer'
 
-const ContactSelection = ({ contact, selection, toggleSelection }) => {
+export const DumbContactSelection = ({
+  contact,
+  selection,
+  toggleSelection
+}) => {
+  const isChecked = selection.some(s => s.id === contact._id)
+
   return (
     <Checkbox
       onClick={e => {
         e.stopPropagation()
         toggleSelection(contact)
       }}
-      checked={find(selection, s => s.id === contact._id) !== undefined}
+      checked={isChecked}
       readOnly
     />
   )
 }
 
-ContactSelection.propTypes = {
+DumbContactSelection.propTypes = {
   contact: fullContactPropTypes.isRequired,
   toggleSelection: PropTypes.func.isRequired,
   selection: PropTypes.array.isRequired
 }
 
-export default withSelection(ContactSelection)
+export default withSelection(DumbContactSelection)
