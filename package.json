@@ -39,6 +39,7 @@
   },
   "homepage": "https://github.com/cozy/cozy-contacts#readme",
   "devDependencies": {
+    "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react-hooks": "3.7.0",
     "bundlesize": "0.18.1",
     "cozy-jobs-cli": "1.16.7",
@@ -71,7 +72,7 @@
     "cozy-logger": "^1.9.0",
     "cozy-realtime": "^4.0.5",
     "cozy-sharing": "^4.1.5",
-    "cozy-ui": "^62.4.1",
+    "cozy-ui": "^62.5.0",
     "cozy-vcard": "^0.2.18",
     "final-form": "4.10.0",
     "final-form-arrays": "1.1.0",

@@ -2,6 +2,7 @@ module.exports = {
   moduleFileExtensions: ['js', 'jsx', 'json', 'styl'],
   transformIgnorePatterns: ['node_modules/(?!cozy-ui)'],
   setupFiles: ['<rootDir>/jestHelpers/setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/jestHelpers/setupAfterEnv.js'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleNameMapper: {
     '.(png|gif|jpe?g)$': '<rootDir>/jestHelpers/mocks/fileMock.js',
