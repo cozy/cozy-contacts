@@ -39,6 +39,7 @@
   },
   "homepage": "https://github.com/cozy/cozy-contacts#readme",
   "devDependencies": {
+    "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react-hooks": "3.7.0",
     "bundlesize": "0.18.1",
     "cozy-jobs-cli": "1.16.7",
