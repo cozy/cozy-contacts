@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
@@ -8,15 +8,32 @@ import List from 'cozy-ui/transpiled/react/MuiCozyTheme/List'
 
 import ContactsSubList from './ContactsSubList'
 import { categorizeContacts } from '../../helpers/contactList'
+import SpeedDialContext from '../Contexts/SpeedDial'
 
 const CategorizedList = ({ contacts }) => {
   const { t } = useI18n()
   const categorizedContacts = categorizeContacts(contacts, t('empty-list'))
+  const { speedDialValue } = useContext(SpeedDialContext)
+
+  const refs = Object.entries(categorizedContacts).reduce((acc, [header]) => {
+    acc[header] = React.createRef()
+    return acc
+  }, {})
+
+  useEffect(() => {
+    if (speedDialValue && refs[speedDialValue]) {
+      refs[speedDialValue].current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+      refs[speedDialValue].current.focus({ preventScroll: true })
+    }
+  }, [speedDialValue, refs])
 
   return (
     <Table>
       {Object.entries(categorizedContacts).map(([header, contacts]) => (
-        <List key={`cat-${header}`}>
+        <List key={`cat-${header}`} ref={refs[header]}>
           <ListSubheader key={header}>{header}</ListSubheader>
           <ContactsSubList contacts={contacts} />
         </List>

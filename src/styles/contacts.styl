@@ -10,8 +10,36 @@ main > [role=main]
     +small-screen()
         align-items center
 
+.list-content-wrapper
+    height 100%
+    display flex
+    gap 24px
+
 .list-wrapper
     box-shadow 0 4px 4px 0 silver
+    flex 1 0 auto
+    overflow-y auto
+
+.list-speed-dial
+    display flex
+    flex-direction column
+    gap 12px
+    overflow-y auto
+
+.list-speed-dial::-webkit-scrollbar
+    display none
+
+.list-speed-dial-item > button
+    cursor pointer
+    text-transform uppercase
+    width 2.2rem
+    height 2.2rem
+    background #f4f5f6
+    border-radius 50%
+    border none
+
+.list-speed-dial-item > button:hover
+    background lightgray
 
 .topbar
     display flex

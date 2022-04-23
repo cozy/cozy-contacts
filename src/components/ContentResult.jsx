@@ -12,7 +12,7 @@ import SelectedGroupContext from './Contexts/SelectedGroup'
 import SearchContext from './Contexts/Search'
 import Header from './Header'
 import Toolbar from './Toolbar'
-import ContactsList from './ContactsList/ContactsList.jsx'
+import ContactsListWrapper from './ContactsList/ContactsListWrapper.jsx'
 import GroupsSelect from './GroupsSelect/GroupsSelect'
 import SearchInput from './Search/SearchInput'
 import {
@@ -20,6 +20,7 @@ import {
   translatedDefaultSelectedGroup
 } from '../helpers/groups'
 import { filterContactsBySearch, delayedSetThreshold } from '../helpers/search'
+import { SpeedDialProvider } from './Contexts/SpeedDial'
 
 const setGroupsSelectCustomStyles = isMobile => ({
   container: base => ({
@@ -104,7 +105,9 @@ export const ContentResult = ({ contacts, allGroups }) => {
         />
       )}
       <Content>
-        <ContactsList contacts={filteredContacts} />
+        <SpeedDialProvider>
+          <ContactsListWrapper contacts={filteredContacts} />
+        </SpeedDialProvider>
       </Content>
     </>
   )
