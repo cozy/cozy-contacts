@@ -21,15 +21,16 @@ const Control = ({
         size="small"
         onClick={onControlClicked}
         onTouchStart={onControlClicked}
-      >
-        {t('groups.manage')}
-        <Icon
-          icon={BottomSelectIcon}
-          color={palette['coolGrey']}
-          width="12"
-          className="group-manager__indicator"
-        />
-      </Button>
+        label={t('groups.manage')}
+        icon={
+          <Icon
+            icon={BottomSelectIcon}
+            color={palette['coolGrey']}
+            width="12"
+            className="group-manager__indicator"
+          />
+        }
+      />
     </div>
   )
 }
