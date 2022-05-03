@@ -2,6 +2,7 @@
 
 ## ✨ Features
 
+* Update cozy-intent to 1.17.1 for App Amirale support
 * Update cozy packages
 
 ## 🐛 Bug Fixes
