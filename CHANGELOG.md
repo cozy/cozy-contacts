@@ -11,3 +11,4 @@
 ## 🔧 Tech
 * Use node v12
 * Replace ContactsList element from cozy-ui ones
+* Add codeowners file
