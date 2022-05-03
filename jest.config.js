@@ -15,7 +15,7 @@ module.exports = {
     '^.+\\.webapp$': '<rootDir>/json-transformer.js'
   },
   testEnvironment: 'jest-environment-jsdom-sixteen',
-  browser: true,
+  resolver: "<rootDir>/resolver.js",
   testURL: 'http://localhost',
   globals: {
     __DEVELOPMENT__: false

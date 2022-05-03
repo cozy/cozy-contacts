@@ -4,6 +4,7 @@ const cleanTrashedGroups = () => async (dispatch, getState, { client }) => {
   const { data: trashedGroups } = await client.query(
     client.find(DOCTYPE_CONTACT_GROUPS).where({ trashed: true })
   )
+  //eslint-disable-next-line
   for (const trashedGroup of trashedGroups) {
     await removeGroupFromAllContacts(client, trashedGroup._id)
     await client.destroy(trashedGroup)
