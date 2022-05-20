@@ -16,6 +16,7 @@
   "me": "ich",
   "empty-list": "Leer",
   "search": "Suche",
+  "jump": "Zu Buchstabe gehen",
   "empty": {
     "title": "Deine Kontakte importieren",
     "title_filtered": "Kein Kontakt entspricht deiner Suche.",

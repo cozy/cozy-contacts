@@ -16,6 +16,7 @@
   "me": "yo",
   "empty-list": "VACIO",
   "search": "Busca",
+  "jump": "Ir a la letra",
   "empty": {
     "title": "Importar sus contactos",
     "title_filtered": "Ningún contacto corresponde a su búsqueda.",

@@ -13,6 +13,26 @@ main > [role=main]
 .list-wrapper
     box-shadow 0 4px 4px 0 silver
 
+.categorized-list-wrapper
+    display flex
+    flex-direction row-reverse
+
+.categorized-list-navigation
+    position sticky
+    top 0
+    align-self start
+    max-height calc(100vh - 9rem)
+    padding .5rem
+    overflow auto
+
+    +medium-screen()
+        top 3rem
+        max-height calc(100vh - 3rem)
+
+.categorized-list-header
+    +medium-screen()
+        top 3rem
+
 .topbar
     display flex
     flex-shrink 0
