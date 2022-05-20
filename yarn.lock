@@ -4326,10 +4326,10 @@ cozy-client@^27.15.0:
     sift "^6.0.0"
     url-search-params-polyfill "^8.0.0"
 
-cozy-client@^29.0.0:
-  version "29.0.0"
-  resolved "https://registry.yarnpkg.com/cozy-client/-/cozy-client-29.0.0.tgz#6a6267a3b8d233560de3920ec85b44ec78ebb257"
-  integrity sha512-87emHFLtaSO2XVKaXZBSqo3VhqePHUmFnJ98EHZRNuYutghxO9V4efGpyGNBrgGUOugsV3/wiVrBBPWM1lTIOA==
+cozy-client@^29.0.1:
+  version "29.0.1"
+  resolved "https://registry.yarnpkg.com/cozy-client/-/cozy-client-29.0.1.tgz#c29828c7358a0f4c275ccf4520a355ce4aec0edb"
+  integrity sha512-wf9UnHjErFerbOBIJMiA6EPlsTTIAm7I3s1h3riEyUPptBNMx7Kcrgvq8HbU8i7U3fWc4yDbzSiWIercJoIi5g==
   dependencies:
     "@cozy/minilog" "1.0.0"
     "@types/jest" "^26.0.20"
@@ -9923,9 +9923,9 @@ ms@2.1.2, ms@^2.0.0, ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
-"mui-bottom-sheet@git+https://github.com/cozy/mui-bottom-sheet.git#v1.0.6":
+"mui-bottom-sheet@https://github.com/cozy/mui-bottom-sheet.git#v1.0.6":
   version "1.0.6"
-  resolved "git+https://github.com/cozy/mui-bottom-sheet.git#494c40416ecde95732c864f9b921e7e545075aa5"
+  resolved "https://github.com/cozy/mui-bottom-sheet.git#494c40416ecde95732c864f9b921e7e545075aa5"
   dependencies:
     "@juggle/resize-observer" "^3.1.3"
     jest-environment-jsdom-sixteen "^1.0.3"
