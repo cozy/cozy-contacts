@@ -32,7 +32,7 @@ const ContactsQuickScroll = ({ contacts }) => {
 
   const uniqueLettersList = [...new Set(lettersList)]
 
-  if (lettersList.length > 0) {
+  if (uniqueLettersList.length > 0) {
     return (
       <Stack spacing="xs" className="letter-selector">
         {uniqueLettersList.map(l => (
