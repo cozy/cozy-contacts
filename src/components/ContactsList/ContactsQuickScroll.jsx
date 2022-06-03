@@ -2,6 +2,7 @@ import React from 'react'
 import get from 'lodash/get'
 import Stack from 'cozy-ui/react/Stack'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import debounce from 'lodash/debounce'
 
 const releaseEvent = event => {
   event.target.releasePointerCapture(event.pointerId)
@@ -16,9 +17,14 @@ const ContactsQuickScroll = ({ contacts, onQuickScroll }) => {
     }
   }
 
+  const debouncedScroll = debounce(l => onQuickScroll(l), 500, {
+    leading: true,
+    trailing: false
+  });
+
   const scrollToOnPointerEnter = letter => {
     if (isMobile) {
-      onQuickScroll(letter)
+      debouncedScroll(letter)
     }
   }
 
