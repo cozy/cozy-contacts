@@ -3,26 +3,22 @@ import get from 'lodash/get'
 import Stack from 'cozy-ui/react/Stack'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
-const scrollTo = letter => {
-  document.getElementById(letter).scrollIntoView()
-}
-
 const releaseEvent = event => {
   event.target.releasePointerCapture(event.pointerId)
 }
 
-const ContactsQuickScroll = ({ contacts }) => {
+const ContactsQuickScroll = ({ contacts, onQuickScroll }) => {
   const { isMobile } = useBreakpoints()
 
   const scrollToOnClick = letter => {
     if (!isMobile) {
-      scrollTo(letter)
+      onQuickScroll(letter)
     }
   }
 
   const scrollToOnPointerEnter = letter => {
     if (isMobile) {
-      scrollTo(letter)
+      onQuickScroll(letter)
     }
   }
 
@@ -48,6 +44,8 @@ const ContactsQuickScroll = ({ contacts }) => {
         ))}
       </Stack>
     )
+  } else {
+    return null
   }
 }
 

@@ -9,9 +9,15 @@ import List from 'cozy-ui/transpiled/react/MuiCozyTheme/List'
 import ContactsSubList from './ContactsSubList'
 import { categorizeContacts } from '../../helpers/contactList'
 
-const CategorizedList = ({ contacts }) => {
+const CategorizedList = ({ contacts, quickScrollLetter }) => {
   const { t } = useI18n()
   const categorizedContacts = categorizeContacts(contacts, t('empty-list'))
+
+  if (quickScrollLetter) {
+    document
+      .getElementById(quickScrollLetter)
+      .scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' })
+  }
 
   return (
     <Table>

@@ -50,6 +50,7 @@ export const ContentResult = ({ contacts, allGroups }) => {
   const { selectedGroup, setSelectedGroup } = useContext(SelectedGroupContext)
   const { searchValue } = useContext(SearchContext)
   const [filteredContacts, setFilteredContacts] = useState(contacts)
+  const [quickScrollLetter, setQuickScrollLetter] = useState(null)
   const { isMobile } = useBreakpoints()
 
   const groupsSelectCustomStyles = setGroupsSelectCustomStyles(isMobile)
@@ -106,9 +107,15 @@ export const ContentResult = ({ contacts, allGroups }) => {
       )}
       <Content>
         {flag('contacts-quick-select') && (
-          <ContactsQuickScroll contacts={filteredContacts} />
+          <ContactsQuickScroll
+            contacts={filteredContacts}
+            onQuickScroll={setQuickScrollLetter}
+          />
         )}
-        <ContactsList contacts={filteredContacts} />
+        <ContactsList
+          contacts={filteredContacts}
+          quickScrollLetter={quickScrollLetter}
+        />
       </Content>
     </>
   )
