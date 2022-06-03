@@ -6,6 +6,7 @@ const flagsList = () => {
   flag('logs')
   flag('select-all-contacts')
   flag('search-threshold')
+  flag('contacts-quick-select')
 }
 
 const initFlags = () => {

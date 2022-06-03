@@ -105,7 +105,9 @@ export const ContentResult = ({ contacts, allGroups }) => {
         />
       )}
       <Content>
-        <ContactsQuickScroll contacts={filteredContacts} />
+        {flag('contacts-quick-select') && (
+          <ContactsQuickScroll contacts={filteredContacts} />
+        )}
         <ContactsList contacts={filteredContacts} />
       </Content>
     </>
