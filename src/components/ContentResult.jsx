@@ -13,6 +13,7 @@ import SearchContext from './Contexts/Search'
 import Header from './Header'
 import Toolbar from './Toolbar'
 import ContactsList from './ContactsList/ContactsList.jsx'
+import ContactsQuickScroll from './ContactsList/ContactsQuickScroll.jsx'
 import GroupsSelect from './GroupsSelect/GroupsSelect'
 import SearchInput from './Search/SearchInput'
 import {
@@ -104,6 +105,7 @@ export const ContentResult = ({ contacts, allGroups }) => {
         />
       )}
       <Content>
+        <ContactsQuickScroll contacts={filteredContacts} />
         <ContactsList contacts={filteredContacts} />
       </Content>
     </>
