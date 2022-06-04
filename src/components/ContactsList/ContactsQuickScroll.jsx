@@ -20,7 +20,7 @@ const ContactsQuickScroll = ({ contacts, onQuickScroll }) => {
   const debouncedScroll = debounce(l => onQuickScroll(l), 500, {
     leading: true,
     trailing: false
-  });
+  })
 
   const scrollToOnPointerEnter = letter => {
     if (isMobile) {

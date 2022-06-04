@@ -40,7 +40,8 @@ describe('ContactsQuickScroll', () => {
       </AppLike>
     )
     const contactsQuickScroll = mount(contactsQuickScrollInstance)
-    expect(contactsQuickScroll.find('.letter-selector > .letter'))
-      .toHaveLength(contacts.length)
+    expect(contactsQuickScroll.find('.letter-selector > .letter')).toHaveLength(
+      contacts.length
+    )
   })
 })
