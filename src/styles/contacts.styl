@@ -13,6 +13,29 @@ main > [role=main]
 .list-wrapper
     box-shadow 0 4px 4px 0 silver
 
+.alphabet-list
+    display flex
+    justify-content center
+    margin-bottom 1rem
+
+    +small-screen()
+        flex-direction column
+        position fixed
+        z-index 1000
+        top 0
+        right 0
+        align-items center
+        margin-top: calc(50vh - 8rem)
+
+.chip-list
+    +small-screen()
+        position sticky !important
+        top 0 !important
+        height 15px !important
+        border none !important
+        font-weight bold
+        margin-bottom 0.1rem !important
+
 .topbar
     display flex
     flex-shrink 0

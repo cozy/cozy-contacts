@@ -11,7 +11,7 @@ import UncategorizedList from './UncategorizedList'
 import withSelection from '../Selection/selectionContainer'
 import SearchContext from '../Contexts/Search'
 
-const ContactsList = ({ contacts, clearSelection, selection, selectAll }) => {
+const ContactsList = ({ contacts, alphabetListRefs, clearSelection, selection, selectAll }) => {
   const { t } = useI18n()
   const { searchValue } = useContext(SearchContext)
 
@@ -37,7 +37,7 @@ const ContactsList = ({ contacts, clearSelection, selection, selectAll }) => {
           />
         </div>
       )}
-      <List contacts={contacts} />
+      <List contacts={contacts} alphabetListRefs={alphabetListRefs}/>
     </div>
   )
 }
