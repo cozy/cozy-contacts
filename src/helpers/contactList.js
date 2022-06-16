@@ -12,7 +12,8 @@ export const categorizeContacts = (contacts, emptyHeader) => {
   return contacts.reduce((acc, contact) => {
     const index = get(contact, 'indexes.byFamilyNameGivenNameEmailCozyUrl', '')
     const hasIndex = index !== null && index.length > 0
-    const header = (hasIndex && removeAccents(index[0])) || emptyHeader
+    const header =
+      (hasIndex && removeAccents(index[0]).toUpperCase()) || emptyHeader
     acc[header] = acc[header] || []
     acc[header].push(contact)
     return acc

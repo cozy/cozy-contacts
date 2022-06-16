@@ -1,6 +1,8 @@
 module.exports = {
   moduleFileExtensions: ['js', 'jsx', 'json', 'styl'],
-  transformIgnorePatterns: ['node_modules/(?!cozy-ui)'],
+  transformIgnorePatterns: [
+    'node_modules/(?!cozy-ui|cozy-harvest-lib|cozy-sharing)'
+  ],
   setupFiles: ['<rootDir>/jestHelpers/setup.js'],
   setupFilesAfterEnv: ['<rootDir>/jestHelpers/setupAfterEnv.js'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
@@ -15,7 +17,7 @@ module.exports = {
     '^.+\\.webapp$': '<rootDir>/json-transformer.js'
   },
   testEnvironment: 'jest-environment-jsdom-sixteen',
-  resolver: "<rootDir>/resolver.js",
+  resolver: '<rootDir>/resolver.js',
   testURL: 'http://localhost',
   globals: {
     __DEVELOPMENT__: false

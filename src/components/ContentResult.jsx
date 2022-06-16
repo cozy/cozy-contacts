@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
-import { Content } from 'cozy-ui/transpiled/react/Layout'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import { ControlDefault } from 'cozy-ui/transpiled/react/SelectBox'
@@ -103,9 +102,7 @@ export const ContentResult = ({ contacts, allGroups }) => {
           right={<Toolbar />}
         />
       )}
-      <Content>
-        <ContactsList contacts={filteredContacts} />
-      </Content>
+      <ContactsList contacts={filteredContacts} />
     </>
   )
 }
