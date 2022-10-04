@@ -116,8 +116,8 @@ describe('ContentRework', () => {
 
   it('should have empty section (for contacts without indexes) if service has been launched', () => {
     const { root } = setup()
-    const { getByText } = root
-    expect(getByText('EMPTY'))
+    const { getAllByText } = root
+    expect(getAllByText('EMPTY'))
   })
 
   it('should not have empty section (for contacts without indexes) if service has not been launched', () => {
