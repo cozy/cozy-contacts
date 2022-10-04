@@ -15,11 +15,14 @@ import Toolbar from './Toolbar'
 import ContactsList from './ContactsList/ContactsList.jsx'
 import GroupsSelect from './GroupsSelect/GroupsSelect'
 import SearchInput from './Search/SearchInput'
+import LetterBar from './LetterBar/LetterBar'
+import Letter from './LetterBar/Letter'
 import {
   filterContactsByGroup,
   translatedDefaultSelectedGroup
 } from '../helpers/groups'
 import { filterContactsBySearch, delayedSetThreshold } from '../helpers/search'
+import { categorizeContacts } from '../helpers/contactList'
 
 const setGroupsSelectCustomStyles = isMobile => ({
   container: base => ({
@@ -74,6 +77,20 @@ export const ContentResult = ({ contacts, allGroups }) => {
     setFilteredContacts(filteredContactsBySearch)
   }, [contacts, searchValue, selectedGroup, setFilteredContacts])
 
+  const categorizedContacts = categorizeContacts(contacts, t('empty-list'))
+
+  const letterRefs = Object.keys(categorizedContacts).reduce((acc, value) => {
+    acc[value] = React.createRef()
+    return acc
+  }, {})
+
+  const handleClick = id => {
+    letterRefs[id].current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }
+
   return (
     <>
       {contacts.length >= 1 && (
@@ -103,8 +120,19 @@ export const ContentResult = ({ contacts, allGroups }) => {
           right={<Toolbar />}
         />
       )}
+      {contacts.length >= 1 && searchValue.length === 0 && (
+        <LetterBar>
+          {Object.entries(categorizedContacts).map(([header]) => (
+            <Letter
+              key={header}
+              letter={header}
+              onClick={() => handleClick(header)}
+            ></Letter>
+          ))}
+        </LetterBar>
+      )}
       <Content>
-        <ContactsList contacts={filteredContacts} />
+        <ContactsList contacts={filteredContacts} letterRefs={letterRefs} />
       </Content>
     </>
   )
