@@ -8,20 +8,24 @@ import List from 'cozy-ui/transpiled/react/MuiCozyTheme/List'
 
 import ContactsSubList from './ContactsSubList'
 import { categorizeContacts } from '../../helpers/contactList'
+import CategoryLink from './CategoryLink'
 
 const CategorizedList = ({ contacts }) => {
   const { t } = useI18n()
   const categorizedContacts = categorizeContacts(contacts, t('empty-list'))
 
   return (
-    <Table>
-      {Object.entries(categorizedContacts).map(([header, contacts]) => (
-        <List key={`cat-${header}`}>
-          <ListSubheader key={header}>{header}</ListSubheader>
-          <ContactsSubList contacts={contacts} />
-        </List>
-      ))}
-    </Table>
+    <>
+      <CategoryLink categories={Object.keys(categorizedContacts)} />
+      <Table>
+        {Object.entries(categorizedContacts).map(([header, contacts]) => (
+          <List key={`cat-${header}`} id={`cat-${header}`}>
+            <ListSubheader key={header}>{header}</ListSubheader>
+            <ContactsSubList contacts={contacts} />
+          </List>
+        ))}
+      </Table>
+    </>
   )
 }
 
