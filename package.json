@@ -64,7 +64,7 @@
     "classnames": "2.3.1",
     "cozy-app-publish": "^0.29.0",
     "cozy-bar": "7.17.9",
-    "cozy-client": "^29.1.1",
+    "cozy-client": "^34.0.1",
     "cozy-device-helper": "^2.1.0",
     "cozy-doctypes": "^1.83.7",
     "cozy-flags": "^2.8.7",
