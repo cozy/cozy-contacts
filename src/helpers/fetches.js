@@ -62,7 +62,7 @@ export const fetchContactsToUpdate = async (client, date) => {
 export const fetchNormalizedServiceByName = async (client, serviceName) => {
   try {
     const triggersByName = await client.query(
-      client.find('io.cozy.triggers', {
+      Q('io.cozy.triggers', {
         'message.name': serviceName
       })
     )

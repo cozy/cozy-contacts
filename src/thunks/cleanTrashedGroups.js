@@ -1,8 +1,11 @@
+import { Q } from 'cozy-client'
 import { DOCTYPE_CONTACT_GROUPS, DOCTYPE_CONTACTS } from '../helpers/doctypes'
 
 const cleanTrashedGroups = () => async (dispatch, getState, { client }) => {
   const { data: trashedGroups } = await client.query(
-    client.find(DOCTYPE_CONTACT_GROUPS).where({ trashed: true })
+    Q(DOCTYPE_CONTACT_GROUPS)
+      .where({ trashed: true })
+      .indexFields(['trashed'])
   )
   //eslint-disable-next-line
   for (const trashedGroup of trashedGroups) {
@@ -18,9 +21,7 @@ const cleanTrashedGroups = () => async (dispatch, getState, { client }) => {
 
 const removeGroupFromAllContacts = async (client, groupId) => {
   const { data, next: hasMore } = await client.query(
-    client
-      .find(DOCTYPE_CONTACTS)
-      .indexFields(['relationships.groups.data'])
+    Q(DOCTYPE_CONTACTS)
       .where({
         relationships: {
           groups: {
@@ -33,6 +34,7 @@ const removeGroupFromAllContacts = async (client, groupId) => {
           }
         }
       })
+      .indexFields(['relationships.groups.data'])
   )
 
   const contacts = client.hydrateDocuments(DOCTYPE_CONTACTS, data)
