@@ -1,11 +1,16 @@
+jest.mock('cozy-client')
+import { Q } from 'cozy-client'
 import generateCleanTrashedGroupsFn from './cleanTrashedGroups'
 import { DOCTYPE_CONTACT_GROUPS, DOCTYPE_CONTACTS } from '../helpers/doctypes'
 
-const mockFindResponses = callback => doctype => {
-  return {
-    indexFields: jest.fn().mockReturnThis(),
-    where: jest.fn().mockReturnValue(callback(doctype))
-  }
+const mockQ = callback => {
+  Q.mockImplementation(doctype => {
+    return {
+      where: jest.fn().mockReturnValue({
+        indexFields: jest.fn().mockReturnValue(callback(doctype))
+      })
+    }
+  })
 }
 
 describe('cleaning trashed groups', () => {
@@ -39,7 +44,8 @@ describe('cleaning trashed groups', () => {
   })
 
   it('should do nothing when there are no groups to delete', async () => {
-    mockClient.find.mockImplementation(mockFindResponses(() => ({ data: [] })))
+    mockQ(() => ({ data: [] }))
+
     await cleanTrashedGroups(mockDispatch, mockGetState, { client: mockClient })
 
     expect(mockDispatch).toHaveBeenCalledWith({
@@ -52,12 +58,11 @@ describe('cleaning trashed groups', () => {
   it('should remove trashed groups', async () => {
     const groupsToTrash = [{ _id: '123' }, { _id: '456' }]
 
-    mockClient.find.mockImplementation(
-      mockFindResponses(doctype => {
-        if (doctype === DOCTYPE_CONTACT_GROUPS) return { data: groupsToTrash }
-        else if (doctype === DOCTYPE_CONTACTS) return { data: [] }
-      })
-    )
+    mockQ(doctype => {
+      if (doctype === DOCTYPE_CONTACT_GROUPS) return { data: groupsToTrash }
+      else if (doctype === DOCTYPE_CONTACTS) return { data: [] }
+    })
+
     await cleanTrashedGroups(mockDispatch, mockGetState, { client: mockClient })
 
     expect(mockDispatch).toHaveBeenCalledWith({
@@ -80,12 +85,11 @@ describe('cleaning trashed groups', () => {
       }
     }
 
-    mockClient.find.mockImplementation(
-      mockFindResponses(doctype => {
-        if (doctype === DOCTYPE_CONTACT_GROUPS) return { data: [groupToTrash] }
-        else if (doctype === DOCTYPE_CONTACTS) return { data: [contactToTrash] }
-      })
-    )
+    mockQ(doctype => {
+      if (doctype === DOCTYPE_CONTACT_GROUPS) return { data: [groupToTrash] }
+      else if (doctype === DOCTYPE_CONTACTS) return { data: [contactToTrash] }
+    })
+
     await cleanTrashedGroups(mockDispatch, mockGetState, { client: mockClient })
 
     expect(mockRemoveGroupById).toHaveBeenCalledWith(groupToTrash._id)
@@ -111,19 +115,17 @@ describe('cleaning trashed groups', () => {
     }
 
     let isFirstContactPage = true
-    mockClient.find.mockImplementation(
-      mockFindResponses(doctype => {
-        if (doctype === DOCTYPE_CONTACT_GROUPS) return { data: [groupToTrash] }
-        else if (doctype === DOCTYPE_CONTACTS) {
-          const response = {
-            data: [isFirstContactPage ? contactToTrash1 : contactToTrash2],
-            next: isFirstContactPage
-          }
-          if (isFirstContactPage) isFirstContactPage = false
-          return response
+    mockQ(doctype => {
+      if (doctype === DOCTYPE_CONTACT_GROUPS) return { data: [groupToTrash] }
+      else if (doctype === DOCTYPE_CONTACTS) {
+        const response = {
+          data: [isFirstContactPage ? contactToTrash1 : contactToTrash2],
+          next: isFirstContactPage
         }
-      })
-    )
+        if (isFirstContactPage) isFirstContactPage = false
+        return response
+      }
+    })
 
     await cleanTrashedGroups(mockDispatch, mockGetState, { client: mockClient })
 

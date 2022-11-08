@@ -15,7 +15,7 @@ export const buildContactQuery = id => ({
 export const queryAllGroups = {
   definition: () =>
     Q('io.cozy.contacts.groups')
-      .where({
+      .partialIndex({
         $or: [
           {
             trashed: {
