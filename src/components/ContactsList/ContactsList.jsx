@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 
 import flag from 'cozy-flags'
-import Button from 'cozy-ui/transpiled/react/Button'
+import Button from 'cozy-ui/transpiled/react/Buttons'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
 import ContactsEmptyList from './ContactsEmptyList'
@@ -32,8 +32,9 @@ const ContactsList = ({ contacts, clearSelection, selection, selectAll }) => {
         <div>
           <Button
             label={isAllContactsSelected ? t('unselect-all') : t('select-all')}
-            theme="secondary"
+            variant="secondary"
             onClick={handleAllContactSelection}
+            className="u-mb-1"
           />
         </div>
       )}

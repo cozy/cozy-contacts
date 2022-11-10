@@ -38,6 +38,7 @@ const ImportDropdown = ({ showModal, hideModal }) => {
           label={t('import.title')}
           theme="secondary"
           icon={TeamIcon}
+          className="u-m-0"
         >
           <Icon className="u-ml-half" icon={BottomIcon} />
         </Button>

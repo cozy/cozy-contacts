@@ -7,38 +7,35 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 import IntentHeader from 'cozy-ui/transpiled/react/IntentHeader'
 
 import ContactForm from '../ContactCard/ContactForm'
-import { createContact } from '../../connections/allContacts'
+import { createContact as createContactWithClient } from '../../connections/allContacts'
 import IntentMain from './IntentMain'
 
-class CreateContact extends React.Component {
-  createContact = async contact => {
-    const { client } = this.props
+const CreateContact = ({ client, data, onTerminate, onError, onCancel }) => {
+  const createContact = async contact => {
     try {
-      const me = !!this.props.data.me
+      const me = !!data.me
       if (me) contact.metadata.me = true
-      const resp = await createContact(client, contact)
-      this.props.onTerminate(resp.data)
+      const resp = await createContactWithClient(client, contact)
+      onTerminate(resp.data)
     } catch (e) {
-      this.props.onError('Could not create contact')
+      onError('Could not create contact')
     }
   }
 
-  cancel = () => {
-    this.props.onCancel()
+  const cancel = () => {
+    onCancel()
   }
 
-  render() {
-    return (
-      <div className="intent-layout">
-        <IntentHeader appEditor="Cozy" appName="Contacts" appIcon="/icon.svg" />
-        <IntentMain>
-          <div className="intent-create-form-wrapper">
-            <ContactForm onSubmit={this.createContact} onCancel={this.cancel} />
-          </div>
-        </IntentMain>
-      </div>
-    )
-  }
+  return (
+    <div className="intent-layout">
+      <IntentHeader appEditor="Cozy" appName="Contacts" appIcon="/icon.svg" />
+      <IntentMain>
+        <div className="intent-create-form-wrapper">
+          <ContactForm onSubmit={createContact} onCancel={cancel} />
+        </div>
+      </IntentMain>
+    </div>
+  )
 }
 
 CreateContact.propTypes = {

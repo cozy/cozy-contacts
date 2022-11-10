@@ -5,13 +5,13 @@ import flow from 'lodash/flow'
 import { withClient } from 'cozy-client'
 import SelectionBar from 'cozy-ui/transpiled/react/SelectionBar'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import Button from 'cozy-ui/transpiled/react/Button'
 
 import withSelection from '../Selection/selectionContainer'
 import withModalContainer from '../HOCs/withModal'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { getConnectedAccounts } from '../../helpers/contacts'
 import { deleteContact } from '../../connections/allContacts'
+import ConfirmDeleteActions from '../Common/ConfirmDeleteActions'
 
 class ContactsSelectionBar extends Component {
   render() {
@@ -54,26 +54,18 @@ class ContactsSelectionBar extends Component {
                     smart_count: selection.length
                   })}
                   actions={
-                    <>
-                      <Button
-                        theme="secondary"
-                        label={t('cancel')}
-                        onClick={hideModal}
-                      />
-                      <Button
-                        theme="danger"
-                        label={t('delete')}
-                        onClick={async () => {
-                          await Promise.all(
-                            selection.map(contact =>
-                              deleteContact(client, contact)
-                            )
+                    <ConfirmDeleteActions
+                      onCancel={hideModal}
+                      onDelete={async () => {
+                        await Promise.all(
+                          selection.map(contact =>
+                            deleteContact(client, contact)
                           )
-                          clearSelection()
-                          hideModal()
-                        }}
-                      />
-                    </>
+                        )
+                        clearSelection()
+                        hideModal()
+                      }}
+                    />
                   }
                 />
               )

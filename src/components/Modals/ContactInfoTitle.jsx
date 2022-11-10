@@ -4,7 +4,6 @@ import get from 'lodash/get'
 
 import log from 'cozy-logger'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import Button from 'cozy-ui/transpiled/react/Button'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import RenameIcon from 'cozy-ui/transpiled/react/Icons/Rename'
 import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
@@ -14,6 +13,9 @@ import { fullContactPropTypes } from '../ContactPropTypes'
 import ContactIdentity from '../ContactCard/ContactIdentity'
 import GroupsSelect from '../GroupsSelect/GroupsSelect'
 import Control from '../GroupsSelect/SelectBox/Control'
+import Button from 'cozy-ui/transpiled/react/Buttons'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import Grid from 'cozy-ui/transpiled/react/MuiCozyTheme/Grid'
 
 const customStyles = {
   container: base => ({
@@ -60,39 +62,43 @@ const ContactInfoTitle = ({
   return (
     <div className="u-flex u-flex-items-center u-flex-column-s u-pr-1-half-s u-flex-justify-between">
       <ContactIdentity contact={contact} allGroups={allGroups} />
-      <div className="u-flex u-flex-row u-ml-0-s u-mr-3 u-mr-0-s">
-        <GroupsSelect
-          contact={contact}
-          allGroups={allGroups}
-          styles={customStyles}
-          onChange={handleChange}
-          value={handleValue}
-          components={{ Control }}
-          isMulti
-          onGroupCreated={handleOnGroupCreated}
-          noOptionsMessage={() => t('groups.none')}
-          withCheckbox
-          menuPosition="fixed"
-        />
-        <Button
-          theme="secondary"
-          extension="narrow"
-          icon={RenameIcon}
-          iconOnly
-          label={t('edit')}
-          size="small"
-          onClick={toggleEditMode}
-        />
-        <Button
-          theme="secondary"
-          extension="narrow"
-          icon={TrashIcon}
-          iconOnly
-          label={t('delete')}
-          size="small"
-          onClick={toggleConfirmDeleteModal}
-        />
-      </div>
+      <Grid container spacing={1} className="u-w-auto u-ml-0-s u-mr-3 u-mr-0-s">
+        <Grid item>
+          <GroupsSelect
+            contact={contact}
+            allGroups={allGroups}
+            styles={customStyles}
+            onChange={handleChange}
+            value={handleValue}
+            components={{ Control }}
+            isMulti
+            onGroupCreated={handleOnGroupCreated}
+            noOptionsMessage={() => t('groups.none')}
+            withCheckbox
+            menuPosition="fixed"
+          />
+        </Grid>
+        <Grid item>
+          <Button
+            className="u-miw-auto"
+            variant="secondary"
+            label={<Icon icon={RenameIcon} size={12} />}
+            size="small"
+            onClick={toggleEditMode}
+            aria-label={t('edit')}
+          />
+        </Grid>
+        <Grid item>
+          <Button
+            className="u-miw-auto"
+            variant="secondary"
+            label={<Icon icon={TrashIcon} size={12} />}
+            onClick={toggleConfirmDeleteModal}
+            aria-label={t('delete')}
+            size="small"
+          />
+        </Grid>
+      </Grid>
     </div>
   )
 }

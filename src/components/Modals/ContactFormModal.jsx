@@ -6,7 +6,7 @@ import { withClient } from 'cozy-client'
 
 import { FixedDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
-import Button from 'cozy-ui/transpiled/react/Button'
+import Button from 'cozy-ui/transpiled/react/Buttons'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import SelectedGroupContext from '../Contexts/SelectedGroup'
@@ -67,13 +67,9 @@ const ContactFormModal = ({
       }
       actions={
         <>
+          <Button variant="secondary" label={t('cancel')} onClick={onClose} />
           <Button
-            type="button"
-            theme="secondary"
-            label={t('cancel')}
-            onClick={onClose}
-          />
-          <Button
+            className="u-ml-half"
             type="submit"
             label={t('save')}
             busy={isFormBeingSubmitted}
