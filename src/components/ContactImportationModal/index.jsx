@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import { withClient } from 'cozy-client'
+import { useClient } from 'cozy-client'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
 import { importContact } from '../../connections/allContacts'
 import ExportStepsExplanation from './ExportStepsExplanation'
@@ -13,40 +13,31 @@ import ContactImportationCard from './ContactImportationCard'
 import Importation from '../../importation'
 import Status from '../../importation/status'
 
-class ContactImportationModal extends React.Component {
-  state = {
-    importation: Importation.INIT,
-    progress: null
+const ContactImportationModal = ({ closeAction }) => {
+  const { t } = useI18n()
+  const client = useClient()
+
+  const [progress, setProgress] = useState(null)
+  const [importation, setImportation] = useState(Importation.INIT)
+
+  const selectFile = file => {
+    setImportation(Importation.selectFile(file, importation))
   }
 
-  updateImportation = importation => {
-    this.setState({ importation })
+  const unselectFile = () => {
+    setImportation(Importation.unselectFile(importation))
   }
 
-  selectFile = file => {
-    this.updateImportation(Importation.selectFile(file, this.state.importation))
-  }
-
-  unselectFile = () => {
-    this.updateImportation(Importation.unselectFile(this.state.importation))
-  }
-
-  onProgress = progress => {
-    this.setState({ progress })
-  }
-
-  importFile = async () => {
-    const { importation } = this.state
-    const { closeAction, t, client } = this.props
+  const importFile = async () => {
     const { runningImportation, finishedImportationPromise } = Importation.run(
       importation,
       {
         save: contact => importContact(client, contact),
-        onProgress: this.onProgress
+        onProgress: progress => setProgress(progress)
       }
     )
 
-    this.updateImportation(runningImportation)
+    setImportation(runningImportation)
 
     const finishedImportation = await finishedImportationPromise
     if (finishedImportation.status === Status.COMPLETE_SUCCESS) {
@@ -65,45 +56,40 @@ class ContactImportationModal extends React.Component {
       )
       closeAction()
     } else {
-      this.setState({ progress: null })
-      this.updateImportation(finishedImportation)
+      setProgress(null)
+      setImportation(finishedImportation)
     }
   }
 
-  render() {
-    const { importation, progress } = this.state
-    const { closeAction, t } = this.props
-
-    return (
-      <Dialog
-        open={true}
-        onClose={closeAction}
-        title={t('importation.title')}
-        content={
-          <>
-            <ExportStepsExplanation />
-            <ContactImportationCard
-              importation={importation}
-              progress={progress}
-              onFileSelected={this.selectFile}
-              onFileUnselected={this.unselectFile}
-            />
-          </>
-        }
-        actions={
-          <ContactImportationActions
+  return (
+    <Dialog
+      open={true}
+      onClose={closeAction}
+      title={t('importation.title')}
+      content={
+        <>
+          <ExportStepsExplanation />
+          <ContactImportationCard
             importation={importation}
-            cancelAction={closeAction}
-            importAction={this.importFile}
+            progress={progress}
+            onFileSelected={selectFile}
+            onFileUnselected={unselectFile}
           />
-        }
-      />
-    )
-  }
+        </>
+      }
+      actions={
+        <ContactImportationActions
+          importation={importation}
+          cancelAction={closeAction}
+          importAction={importFile}
+        />
+      }
+    />
+  )
 }
 
 ContactImportationModal.propTypes = {
   closeAction: PropTypes.func.isRequired
 }
 
-export default withClient(translate()(ContactImportationModal))
+export default ContactImportationModal

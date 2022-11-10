@@ -33,7 +33,7 @@ Array [
             className="u-mb-half u-breakword"
           >
             <p
-              className="MuiTypography-root MuiTypography-body1"
+              className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
             >
               Google
             </p>

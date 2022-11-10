@@ -71,7 +71,7 @@ class GroupCreation extends Component {
           {isInputDisplayed && (
             <Input
               id={'createGroupInput'}
-              inputRef={this.textInput}
+              ref={this.textInput}
               type="text"
               placeholder={t('groups.name')}
               onClick={this.onClick}

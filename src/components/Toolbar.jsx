@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Button from 'cozy-ui/transpiled/react/Button'
+import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
-
+import Icon from 'cozy-ui/transpiled/react/Icon'
 import withModal from './HOCs/withModal'
 import ContactFormModal from './Modals/ContactFormModal'
 import ContactCardModal from './Modals/ContactCardModal'
@@ -32,11 +32,12 @@ const Toolbar = ({ showModal, hideModal }) => {
 
   return (
     <div className="actions">
-      <Button
+      <Buttons
         onClick={showContactFormModal}
-        icon={PlusIcon}
+        startIcon={<Icon icon={PlusIcon} />}
         label={t('create_contact')}
         style={style}
+        className="u-mr-half"
       />
       <ImportDropdown />
     </div>

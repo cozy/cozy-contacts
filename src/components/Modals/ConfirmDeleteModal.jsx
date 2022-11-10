@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import Button from 'cozy-ui/transpiled/react/Button'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
 import { fullContactPropTypes } from '../ContactPropTypes'
 import { getConnectedAccounts } from '../../helpers/contacts'
+import ConfirmDeleteActions from '../Common/ConfirmDeleteActions'
 
 const ConfirmDeleteModal = ({
   contact,
@@ -30,18 +30,10 @@ const ConfirmDeleteModal = ({
         }
       )}
       actions={
-        <>
-          <Button
-            theme="secondary"
-            label={t('cancel')}
-            onClick={toggleConfirmDeleteModal}
-          />
-          <Button
-            theme="danger"
-            label={t('delete')}
-            onClick={() => onDeleteContact(contact)}
-          />
-        </>
+        <ConfirmDeleteActions
+          onCancel={toggleConfirmDeleteModal}
+          onDelete={() => onDeleteContact(contact)}
+        />
       }
     />
   )

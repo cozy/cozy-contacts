@@ -29,7 +29,7 @@ const EditGroupName = ({
   return (
     <Input
       id={'editGroupInput'}
-      inputRef={inputRef}
+      ref={inputRef}
       type="text"
       defaultValue={groupName}
       size="tiny"
