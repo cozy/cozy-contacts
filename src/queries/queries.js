@@ -1,5 +1,9 @@
 import { Q, fetchPolicies } from 'cozy-client'
-import { DOCTYPE_CONTACTS, DOCTYPE_CONTACT_GROUPS } from '../helpers/doctypes'
+import {
+  DOCTYPE_CONTACTS,
+  DOCTYPE_CONTACT_GROUPS,
+  DOCTYPE_TRIGGERS
+} from '../helpers/doctypes'
 
 const olderThan30sec = fetchPolicies.olderThan(30 * 1000)
 
@@ -75,6 +79,27 @@ export const buildContactsQueryWithoutIndexes = () => ({
   }
 })
 
+export const buildContactsQueryByUpdatedAtGT = date => ({
+  definition: Q(DOCTYPE_CONTACTS)
+    .where({
+      $or: [
+        {
+          cozyMetadata: { $exists: false }
+        },
+        {
+          'cozyMetadata.updatedAt': { $gt: date }
+        }
+      ]
+    })
+    .partialIndex({
+      trashed: {
+        $exists: false
+      }
+    })
+    .indexFields(['_id'])
+    .limitBy(1000)
+})
+
 // Contact groups doctype -------------
 
 export const buildContactGroupsQuery = () => ({
@@ -97,4 +122,18 @@ export const buildContactGroupsQuery = () => ({
     as: 'allGroups',
     fetchPolicy: olderThan30sec
   }
+})
+
+// Triggers doctype -------------
+
+export const buildTriggersQueryByName = name => ({
+  definition: Q(DOCTYPE_TRIGGERS)
+    .where({
+      'message.name': name
+    })
+    .indexFields(['message.name'])
+})
+
+export const buildTriggersQueryById = id => ({
+  definition: Q(DOCTYPE_TRIGGERS).getById(id)
 })

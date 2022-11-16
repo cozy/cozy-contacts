@@ -1,10 +1,13 @@
 import isEqual from 'lodash/isEqual'
 import log from 'cozy-logger'
 
-import { Q } from 'cozy-client'
-
-import { DOCTYPE_CONTACTS } from './doctypes'
 import { updateIndexFullNameAndDisplayName } from './contacts'
+
+import {
+  buildTriggersQueryByName,
+  buildTriggersQueryById,
+  buildContactsQueryByUpdatedAtGT
+} from '../queries/queries'
 
 /**
  * Fetches and returns a promise of contacts to update according to this :
@@ -19,25 +22,11 @@ export const fetchContactsToUpdate = async (client, date) => {
     const dateUTCForced = new Date(minimumUpdateTime).toISOString()
     const contacts = []
 
-    const queryDef = client
-      .find(DOCTYPE_CONTACTS)
-      .where({
-        trashed: {
-          $exists: false
-        },
-        $or: [
-          {
-            cozyMetadata: { $exists: false }
-          },
-          {
-            'cozyMetadata.updatedAt': { $gt: dateUTCForced }
-          }
-        ]
-      })
-      .indexFields(['_id'])
-      .limitBy(1000)
+    const contactsQueryByUpdatedAtGT = buildContactsQueryByUpdatedAtGT(
+      dateUTCForced
+    )
 
-    const result = await client.queryAll(queryDef)
+    const result = await client.queryAll(contactsQueryByUpdatedAtGT.definition)
     const expected = result.map(contact =>
       updateIndexFullNameAndDisplayName(contact)
     )
@@ -61,19 +50,15 @@ export const fetchContactsToUpdate = async (client, date) => {
  */
 export const fetchNormalizedServiceByName = async (client, serviceName) => {
   try {
-    const triggersByName = await client.query(
-      Q('io.cozy.triggers', {
-        'message.name': serviceName
-      })
-    )
+    const triggersQueryByName = buildTriggersQueryByName(serviceName)
+    const triggersByName = await client.query(triggersQueryByName.definition)
 
     if (!triggersByName || 0 === triggersByName.data.length) {
       throw new Error('service is not available')
     }
 
-    const normalizedTrigger = await client.query(
-      Q('io.cozy.triggers').getById(triggersByName.data[0].id)
-    )
+    const triggersQueryById = buildTriggersQueryById(triggersByName.data[0].id)
+    const normalizedTrigger = await client.query(triggersQueryById.definition)
 
     if (!normalizedTrigger) {
       throw new Error('normalized service is not available')
