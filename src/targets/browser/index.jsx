@@ -10,7 +10,7 @@ import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import { WebviewIntentProvider } from 'cozy-intent'
 
-import App from 'components/App'
+import AppRouter from 'components/AppRouter'
 import '../../styles/index.styl'
 import setupApp from './setupApp'
 import { SelectedGroupProvider } from '../../components/Contexts/SelectedGroup'
@@ -28,7 +28,7 @@ const init = () => {
               <BreakpointsProvider>
                 <SelectedGroupProvider>
                   <SearchProvider>
-                    <App />
+                    <AppRouter />
                   </SearchProvider>
                 </SelectedGroupProvider>
               </BreakpointsProvider>
