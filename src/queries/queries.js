@@ -100,6 +100,55 @@ export const buildContactsQueryByUpdatedAtGT = date => ({
     .limitBy(1000)
 })
 
+export const buildContactsQueryByEmailAdressOrPhoneNumber = (
+  addresses,
+  numbers
+) => {
+  return {
+    definition: Q(DOCTYPE_CONTACTS)
+      .where({
+        _id: {
+          $gt: null
+        },
+        $or: [
+          {
+            email: {
+              $elemMatch: {
+                address: {
+                  $in: addresses
+                }
+              }
+            }
+          },
+          {
+            phone: {
+              $elemMatch: {
+                number: {
+                  $in: numbers
+                }
+              }
+            }
+          }
+        ]
+      })
+      .partialIndex({
+        $or: [
+          {
+            email: {
+              $exists: true
+            }
+          },
+          {
+            phone: {
+              $exists: true
+            }
+          }
+        ]
+      })
+      .indexFields(['_id'])
+  }
+}
+
 // Contact groups doctype -------------
 
 export const buildContactGroupsQuery = () => ({
