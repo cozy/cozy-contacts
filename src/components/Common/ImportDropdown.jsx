@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
-import PropTypes from 'prop-types'
 
 import { useClient } from 'cozy-client'
+import { useNavigate } from 'react-router-dom'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import ActionMenu, { ActionMenuItem } from 'cozy-ui/transpiled/react/ActionMenu'
 import Icon from 'cozy-ui/transpiled/react/Icon'
@@ -9,22 +9,16 @@ import Button from 'cozy-ui/transpiled/react/Button'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import TeamIcon from 'cozy-ui/transpiled/react/Icons/Team'
 import BottomIcon from 'cozy-ui/transpiled/react/Icons/Bottom'
-
-import withModal from '../HOCs/withModal'
-import ContactImportationModal from '../ContactImportationModal'
 import { getFilteredStoreUrl } from '../../helpers/store'
 
-const ImportDropdown = ({ showModal, hideModal }) => {
+const ImportDropdown = () => {
   const { t } = useI18n()
   const client = useClient()
+  const navigate = useNavigate()
   const anchorRef = useRef()
   const [menuDisplayed, setMenuDisplayed] = useState(false)
   const showMenu = () => setMenuDisplayed(true)
   const hideMenu = () => setMenuDisplayed(false)
-
-  const showContactImportationModal = () => {
-    showModal(<ContactImportationModal closeAction={hideModal} />)
-  }
 
   const goToStore = () => {
     window.location = getFilteredStoreUrl(client)
@@ -51,7 +45,7 @@ const ImportDropdown = ({ showModal, hideModal }) => {
         >
           <ActionMenuItem
             left={<Icon icon={TeamIcon} />}
-            onClick={showContactImportationModal}
+            onClick={() => navigate('/import')}
           >
             {t('import.vcard')}
           </ActionMenuItem>
@@ -67,9 +61,4 @@ const ImportDropdown = ({ showModal, hideModal }) => {
   )
 }
 
-ImportDropdown.propTypes = {
-  showModal: PropTypes.func.isRequired,
-  hideModal: PropTypes.func.isRequired
-}
-
-export default withModal(ImportDropdown)
+export default ImportDropdown

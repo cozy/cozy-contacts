@@ -1,65 +1,69 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
 
-import { createMockClient } from 'cozy-client'
+import { useClient } from 'cozy-client'
+import { useParams } from 'react-router-dom'
 
-import { DumbContactFormModal } from './ContactFormModal'
 import AppLike from '../../tests/Applike'
+import ContactFormModal from './ContactFormModal'
 import { createContact, updateContact } from '../../connections/allContacts'
+import { act } from 'react-dom/test-utils'
 
-const client = createMockClient({})
 jest.mock('../../connections/allContacts', () => ({
   createContact: jest.fn().mockResolvedValue({ data: 'created' }),
   updateContact: jest.fn().mockResolvedValue({ data: 'updated' })
 }))
 
+jest.mock('cozy-client/dist/hooks/useClient', () => jest.fn())
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: jest.fn()
+}))
+
 describe('ContactFormModal component', () => {
-  let props
-
-  beforeEach(() => {
-    props = {
-      afterMutation: jest.fn(),
-      contact: null,
-      onClose: jest.fn(),
-      title: 'Edit contact',
-      t: jest.fn(x => x),
-      client: client
-    }
-  })
-
-  it('should render a contact form in a modal', () => {
+  it('should render a contact form in a modal', async () => {
     const contact = {
       name: {
         familyName: 'John',
         givenName: 'Doe'
       }
     }
-    const propsWithContact = {
-      ...props,
-      contact
-    }
+
+    useClient.mockReturnValue({
+      fetchQueryAndGetFromState: async () => ({ data: contact })
+    })
+
+    useParams.mockReturnValue({
+      contactId: 'ID'
+    })
 
     const jsx = (
-      <AppLike client={client}>
-        <DumbContactFormModal {...propsWithContact} />
+      <AppLike>
+        <ContactFormModal />
       </AppLike>
     )
 
     const { getByRole } = render(jsx)
-    const firstNameInput = getByRole('textbox', { name: 'Firstname' })
-    const lastNameInput = getByRole('textbox', { name: 'Lastname' })
-    expect(firstNameInput.value).toBe('Doe')
-    expect(lastNameInput.value).toBe('John')
+
+    await waitFor(() => {
+      const firstNameInput = getByRole('textbox', { name: 'Firstname' })
+      const lastNameInput = getByRole('textbox', { name: 'Lastname' })
+      expect(firstNameInput.value).toBe('Doe')
+      expect(lastNameInput.value).toBe('John')
+    })
   })
 
-  it('should pass a new contact to the creation function', () => {
+  it('should pass a new contact to the creation function', async () => {
     const formData = {
       company: 'Cozy Cloud'
     }
 
+    useParams.mockReturnValue({})
+
     const jsx = (
-      <AppLike client={client}>
-        <DumbContactFormModal {...props} />
+      <AppLike>
+        <ContactFormModal />
       </AppLike>
     )
 
@@ -81,28 +85,36 @@ describe('ContactFormModal component', () => {
     }
 
     const { getByRole } = render(jsx)
-    const companyInput = getByRole('textbox', { name: 'Company' })
-    fireEvent.change(companyInput, {
-      target: { value: formData.company }
+
+    await waitFor(() => {
+      const companyInput = getByRole('textbox', { name: 'Company' })
+      fireEvent.change(companyInput, {
+        target: { value: formData.company }
+      })
+
+      const submitButton = getByRole('button', { name: 'Save' })
+      fireEvent.click(submitButton)
+
+      expect(createContact).toHaveBeenCalledWith(expect.anything(), expected)
     })
-
-    const submitButton = getByRole('button', { name: 'save' })
-    fireEvent.click(submitButton)
-
-    expect(createContact).toHaveBeenCalledWith(client, expected)
   })
 
-  it('should pass previous contact data to the update function', () => {
+  it('should pass previous contact data to the update function', async () => {
     const contact = {
       name: {
         familyName: 'John',
         givenName: 'Doe'
       }
     }
-    const propsWithContact = {
-      ...props,
-      contact
-    }
+
+    useClient.mockReturnValue({
+      fetchQueryAndGetFromState: async () => ({ data: contact })
+    })
+
+    useParams.mockReturnValue({
+      contactId: 'ID'
+    })
+
     const formData = {
       company: 'Cozy Cloud'
     }
@@ -128,19 +140,35 @@ describe('ContactFormModal component', () => {
     }
 
     const jsx = (
-      <AppLike client={client}>
-        <DumbContactFormModal {...propsWithContact} />
+      <AppLike>
+        <ContactFormModal />
       </AppLike>
     )
 
     const { getByRole } = render(jsx)
-    const companyInput = getByRole('textbox', { name: 'Company' })
-    fireEvent.change(companyInput, {
-      target: { value: formData.company }
-    })
-    const submitButton = getByRole('button', { name: 'save' })
-    fireEvent.click(submitButton)
 
-    expect(updateContact).toHaveBeenCalledWith(client, expected)
+    let companyInput
+
+    await waitFor(() => {
+      companyInput = getByRole('textbox', { name: 'Company' })
+    })
+
+    await act(async () => {
+      fireEvent.change(companyInput, {
+        target: { value: formData.company }
+      })
+    })
+
+    let submitButton
+
+    await waitFor(() => {
+      submitButton = getByRole('button', { name: 'Save' })
+    })
+
+    await act(async () => {
+      fireEvent.click(submitButton)
+    })
+
+    expect(updateContact).toHaveBeenCalledWith(expect.anything(), expected)
   })
 })

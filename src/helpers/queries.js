@@ -4,7 +4,7 @@ import { DOCTYPE_CONTACTS } from './doctypes'
 const olderThan30sec = fetchPolicies.olderThan(30 * 1000)
 
 export const buildContactQuery = id => ({
-  definition: () => Q(DOCTYPE_CONTACTS).getById(id),
+  definition: Q(DOCTYPE_CONTACTS).getById(id),
   options: {
     as: `contactById-${id}`,
     fetchPolicy: olderThan30sec,

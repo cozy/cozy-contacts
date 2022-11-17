@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import PropTypes from 'prop-types'
 
+import { useNavigate } from 'react-router-dom'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import Empty from 'cozy-ui/transpiled/react/Empty'
@@ -11,10 +11,6 @@ import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
 import InfoIcon from 'cozy-ui/transpiled/react/Icons/Info'
 import TeamIcon from 'cozy-ui/transpiled/react/Icons/Team'
 
-import withModal from '../HOCs/withModal'
-import ContactImportationModal from '../ContactImportationModal/'
-import ContactFormModal from '../Modals/ContactFormModal'
-import ContactCardModal from '../Modals/ContactCardModal'
 import StoreButton from '../Common/StoreButton'
 import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
 import SearchContext from '../Contexts/Search'
@@ -29,7 +25,8 @@ const SoonComponent = ({ t }) => (
   </div>
 )
 
-const ContactsEmptyList = ({ hideModal, showModal }) => {
+const ContactsEmptyList = () => {
+  const navigate = useNavigate()
   const { t } = useI18n()
   const { isDesktop } = useBreakpoints()
   const { searchValue } = useContext(SearchContext)
@@ -42,32 +39,13 @@ const ContactsEmptyList = ({ hideModal, showModal }) => {
     ? t('empty.title_filtered')
     : t('empty.title')
 
-  const onCreateContact = contact => {
-    hideModal()
-    return showModal(<ContactCardModal id={contact.id} />)
-  }
-
-  const showCreateContactModal = () => {
-    showModal(
-      <ContactFormModal
-        afterMutation={onCreateContact}
-        onClose={() => {}}
-        title={t('create_contact')}
-      />
-    )
-  }
-
-  const showContactImportationModal = () => {
-    showModal(<ContactImportationModal closeAction={hideModal} />)
-  }
-
   return (
     <div className="u-flex u-flex-column u-flex-items-center">
       <Empty className="contacts-empty" icon={EmptyIcon} title={emptyTitle}>
         <Stack spacing="xs" className="u-mt-1">
           <div>
             <Button
-              onClick={showContactImportationModal}
+              onClick={() => navigate('/import')}
               label={t('empty.import_vcard')}
               theme="secondary"
               icon={TeamIcon}
@@ -83,7 +61,7 @@ const ContactsEmptyList = ({ hideModal, showModal }) => {
           className="u-mt-1-half"
           subtle
           theme="secondary"
-          onClick={showCreateContactModal}
+          onClick={() => navigate('/new')}
           icon={PlusIcon}
           label={t('create_contact')}
           style={style}
@@ -95,9 +73,4 @@ const ContactsEmptyList = ({ hideModal, showModal }) => {
   )
 }
 
-ContactsEmptyList.propTypes = {
-  showModal: PropTypes.func.isRequired,
-  hideModal: PropTypes.func.isRequired
-}
-
-export default withModal(ContactsEmptyList)
+export default ContactsEmptyList

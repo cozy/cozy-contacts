@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import get from 'lodash/get'
 
 import log from 'cozy-logger'
+import { useNavigate } from 'react-router-dom'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import RenameIcon from 'cozy-ui/transpiled/react/Icons/Rename'
@@ -36,12 +37,8 @@ const customStyles = {
   })
 }
 
-const ContactInfoTitle = ({
-  contact,
-  allGroups,
-  toggleEditMode,
-  toggleConfirmDeleteModal
-}) => {
+const ContactInfoTitle = ({ contact, allGroups }) => {
+  const navigate = useNavigate()
   const { t } = useI18n()
 
   const handleChange = async nextGroups => {
@@ -84,7 +81,7 @@ const ContactInfoTitle = ({
             variant="secondary"
             label={<Icon icon={RenameIcon} size={12} />}
             size="small"
-            onClick={toggleEditMode}
+            onClick={() => navigate('edit')}
             aria-label={t('edit')}
           />
         </Grid>
@@ -93,7 +90,7 @@ const ContactInfoTitle = ({
             className="u-miw-auto"
             variant="secondary"
             label={<Icon icon={TrashIcon} size={12} />}
-            onClick={toggleConfirmDeleteModal}
+            onClick={() => navigate('delete')}
             aria-label={t('delete')}
             size="small"
           />
@@ -105,9 +102,7 @@ const ContactInfoTitle = ({
 
 ContactInfoTitle.propTypes = {
   contact: fullContactPropTypes.isRequired,
-  allGroups: PropTypes.array.isRequired,
-  toggleEditMode: PropTypes.func.isRequired,
-  toggleConfirmDeleteModal: PropTypes.func.isRequired
+  allGroups: PropTypes.array.isRequired
 }
 
 export default ContactInfoTitle
