@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 
 import { useClient } from 'cozy-client'
+import { useNavigate } from 'react-router-dom'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
@@ -13,9 +13,11 @@ import ContactImportationCard from './ContactImportationCard'
 import Importation from '../../importation'
 import Status from '../../importation/status'
 
-const ContactImportationModal = ({ closeAction }) => {
+const ContactImportationModal = () => {
   const { t } = useI18n()
   const client = useClient()
+  const navigate = useNavigate()
+  const closeAction = () => navigate('/')
 
   const [progress, setProgress] = useState(null)
   const [importation, setImportation] = useState(Importation.INIT)
@@ -86,10 +88,6 @@ const ContactImportationModal = ({ closeAction }) => {
       }
     />
   )
-}
-
-ContactImportationModal.propTypes = {
-  closeAction: PropTypes.func.isRequired
 }
 
 export default ContactImportationModal

@@ -1,21 +1,36 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 
-import { fullContactPropTypes } from '../ContactPropTypes'
+import { useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
+import { useNavigate, useParams } from 'react-router-dom'
+import { buildContactQuery, queryAllGroups } from '../../helpers/queries'
+
 import ContactInfoTitle from './ContactInfoTitle'
 import ContactInfoContent from './ContactInfoContent'
 import SpinnerContact from '../Common/Spinner'
 
-const ContactInfoModal = ({
-  contact,
-  allGroups,
-  toggleEditMode,
-  toggleConfirmDeleteModal,
-  onClose,
-  dataHaveBeenLoaded
-}) => {
+const ContactInfoModal = () => {
+  const navigate = useNavigate()
+  const { contactId } = useParams()
+
+  const onClose = () => navigate('/')
+
+  const queryContactById = buildContactQuery(contactId)
+  const resultContactById = useQuery(
+    queryContactById.definition,
+    queryContactById.options
+  )
+  const resultAllGroups = useQuery(
+    queryAllGroups.definition,
+    queryAllGroups.options
+  )
+
+  const dataHaveBeenLoaded =
+    (!isQueryLoading(resultContactById) ||
+      hasQueryBeenLoaded(resultContactById)) &&
+    (!isQueryLoading(resultAllGroups) || hasQueryBeenLoaded(resultAllGroups))
+
   return (
     <Dialog
       open={true}
@@ -26,10 +41,8 @@ const ContactInfoModal = ({
           '...'
         ) : (
           <ContactInfoTitle
-            contact={contact}
-            allGroups={allGroups}
-            toggleEditMode={toggleEditMode}
-            toggleConfirmDeleteModal={toggleConfirmDeleteModal}
+            contact={resultContactById.data}
+            allGroups={resultAllGroups.data}
           />
         )
       }
@@ -37,20 +50,14 @@ const ContactInfoModal = ({
         !dataHaveBeenLoaded ? (
           <SpinnerContact size="xxlarge" />
         ) : (
-          <ContactInfoContent contact={contact} allGroups={allGroups} />
+          <ContactInfoContent
+            contact={resultContactById.data}
+            allGroups={resultAllGroups.data}
+          />
         )
       }
     />
   )
-}
-
-ContactInfoModal.propTypes = {
-  contact: fullContactPropTypes,
-  allGroups: PropTypes.array,
-  toggleEditMode: PropTypes.func.isRequired,
-  toggleConfirmDeleteModal: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
-  dataHaveBeenLoaded: PropTypes.bool
 }
 
 export default ContactInfoModal

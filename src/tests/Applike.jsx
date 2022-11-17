@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { CozyProvider } from 'cozy-client'
 import I18n from 'cozy-ui/transpiled/react/I18n'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import { HashRouter } from 'react-router-dom'
 
 import langEn from '../locales/en.json'
 import configureStore from '../store/configureStore'
@@ -19,7 +20,9 @@ const AppLike = ({ children, client }) => (
       <CozyProvider client={client || getCozyClient()}>
         <I18n lang={'en'} dictRequire={() => langEn}>
           <SelectedGroupProvider>
-            <SearchProvider>{children}</SearchProvider>
+            <SearchProvider>
+              <HashRouter>{children}</HashRouter>
+            </SearchProvider>
           </SelectedGroupProvider>
         </I18n>
       </CozyProvider>
