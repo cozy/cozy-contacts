@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 
 import get from 'lodash/get'
@@ -29,51 +29,48 @@ export const hasDocBeenUpdated = (document, nextDocument) =>
   get(document, 'cozyMetadata.updatedAt') !==
     get(nextDocument, 'cozyMetadata.updatedAt')
 
-class ContactListItem extends Component {
-  shouldComponentUpdate(nextProps) {
-    const { contact, ...otherProps } = this.props
+const shouldRerender = (props, nextProps) => {
+  const { contact, ...otherProps } = props
 
-    const hasOtherPropsBeenChanged = Object.entries(otherProps).some(
-      ([key, otherProp]) => {
-        return otherProp !== nextProps[key]
-      }
-    )
-
-    if (
-      hasDocBeenUpdated(contact, nextProps.contact) ||
-      hasOtherPropsBeenChanged
-    ) {
-      return true
+  const hasOtherPropsBeenChanged = Object.entries(otherProps).some(
+    ([key, otherProp]) => {
+      return otherProp !== nextProps[key]
     }
+  )
+
+  if (
+    hasDocBeenUpdated(contact, nextProps.contact) ||
+    hasOtherPropsBeenChanged
+  ) {
     return false
   }
+  return true
+}
 
-  render() {
-    const {
-      contact,
-      showModal,
-      divider,
-      breakpoints: { isMobile }
-    } = this.props
-    const email = getPrimaryEmail(contact) || undefined
-    const phone = getPrimaryPhone(contact) || undefined
-    const cozyUrl = getPrimaryCozy(contact) || undefined
+const ContactListItem = ({
+  contact,
+  showModal,
+  divider,
+  breakpoints: { isMobile }
+}) => {
+  const email = getPrimaryEmail(contact) || undefined
+  const phone = getPrimaryPhone(contact) || undefined
+  const cozyUrl = getPrimaryCozy(contact) || undefined
 
-    return (
-      <ListItem
-        className="u-c-pointer"
-        data-testid="contact-listItem"
-        divider={divider}
-        onClick={() => showModal(<ContactCardModal id={contact._id} />)}
-      >
-        <ContactWithSelection contact={contact} />
-        <ContactIdentity contact={contact} />
-        {!isMobile && <ContactEmail email={email} />}
-        {!isMobile && <ContactPhone phone={phone} />}
-        {!isMobile && <ContactCozy cozyUrl={cozyUrl} />}
-      </ListItem>
-    )
-  }
+  return (
+    <ListItem
+      className="u-c-pointer"
+      data-testid="contact-listItem"
+      divider={divider}
+      onClick={() => showModal(<ContactCardModal id={contact._id} />)}
+    >
+      <ContactWithSelection contact={contact} />
+      <ContactIdentity contact={contact} />
+      {!isMobile && <ContactEmail email={email} />}
+      {!isMobile && <ContactPhone phone={phone} />}
+      {!isMobile && <ContactCozy cozyUrl={cozyUrl} />}
+    </ListItem>
+  )
 }
 
 ContactListItem.propTypes = {
@@ -85,4 +82,7 @@ ContactListItem.defaultProps = {
   selection: null
 }
 
-export default withBreakpoints()(withModal(ContactListItem))
+export default memo(
+  withBreakpoints()(withModal(ContactListItem)),
+  shouldRerender
+)
