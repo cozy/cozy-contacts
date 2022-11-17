@@ -1,11 +1,26 @@
 import get from 'lodash/get'
 
+import uniqWith from 'lodash/uniqWith'
+import isEqual from 'lodash/isEqual'
 import { mergeContact } from '../helpers/mergeContact'
-import { findContactsWithSamePhoneOrEmail } from '../helpers/findContact'
 import { DOCTYPE_CONTACTS } from '../helpers/doctypes'
+import { buildContactsQueryByEmailAdressOrPhoneNumber } from '../queries/queries'
 
 export const importContact = async (client, attributes) => {
-  const contacts = await findContactsWithSamePhoneOrEmail(attributes)(client)
+  const addresses = (attributes['email'] || []).map(email => email.address)
+  const numbers = (attributes['phone'] || []).map(phone => phone.number)
+
+  const contactQueryByEmailAdressOrPhoneNumber = buildContactsQueryByEmailAdressOrPhoneNumber(
+    addresses,
+    numbers
+  )
+
+  const { data: contactByEmailAdressOrPhoneNumber } = await client.query(
+    contactQueryByEmailAdressOrPhoneNumber.definition
+  )
+
+  const contacts = uniqWith(contactByEmailAdressOrPhoneNumber, isEqual)
+
   if (contacts.length === 1) {
     const updatedContact = mergeContact(contacts[0], attributes)
     return client.save(updatedContact)
