@@ -11,7 +11,7 @@ const Menu = props => {
 
   return (
     <components.Menu {...props} selectProps={selectProps}>
-      <Typography variant="body1">
+      <Typography variant="body1" component="div">
         {children}
         <GroupCreation createGroup={createGroup} />
       </Typography>
