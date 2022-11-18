@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import get from 'lodash/get'
 
 import { models } from 'cozy-client'
-import { useNavigate } from 'react-router-dom'
 import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
 import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import ContactCozy from 'cozy-ui/transpiled/react/ContactsList/Contacts/ContactCozy'
@@ -28,12 +27,12 @@ export const hasDocBeenUpdated = (document, nextDocument) =>
   get(document, 'cozyMetadata.updatedAt') !==
     get(nextDocument, 'cozyMetadata.updatedAt')
 
-const shouldRerender = (props, nextProps) => {
+const areContactListItemEqual = (props, nextProps) => {
   const { contact, ...otherProps } = props
 
   const hasOtherPropsBeenChanged = Object.entries(otherProps).some(
     ([key, otherProp]) => {
-      return otherProp !== nextProps[key]
+      return key !== 'navigate' && otherProp !== nextProps[key]
     }
   )
 
@@ -46,8 +45,12 @@ const shouldRerender = (props, nextProps) => {
   return true
 }
 
-const ContactListItem = ({ contact, divider, breakpoints: { isMobile } }) => {
-  const navigate = useNavigate()
+const ContactListItem = ({
+  contact,
+  divider,
+  breakpoints: { isMobile },
+  navigate
+}) => {
   const email = getPrimaryEmail(contact) || undefined
   const phone = getPrimaryPhone(contact) || undefined
   const cozyUrl = getPrimaryCozy(contact) || undefined
@@ -76,4 +79,4 @@ ContactListItem.defaultProps = {
   selection: null
 }
 
-export default memo(withBreakpoints()(ContactListItem), shouldRerender)
+export default memo(withBreakpoints()(ContactListItem), areContactListItemEqual)
