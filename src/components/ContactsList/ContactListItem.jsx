@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import get from 'lodash/get'
 
 import { models } from 'cozy-client'
-import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
+import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import ContactCozy from 'cozy-ui/transpiled/react/ContactsList/Contacts/ContactCozy'
 import ContactEmail from 'cozy-ui/transpiled/react/ContactsList/Contacts/ContactEmail'
@@ -45,15 +45,11 @@ const areContactListItemEqual = (props, nextProps) => {
   return true
 }
 
-const ContactListItem = ({
-  contact,
-  divider,
-  breakpoints: { isMobile },
-  navigate
-}) => {
+const ContactListItem = ({ contact, divider, navigate }) => {
   const email = getPrimaryEmail(contact) || undefined
   const phone = getPrimaryPhone(contact) || undefined
   const cozyUrl = getPrimaryCozy(contact) || undefined
+  const { isMobile } = useBreakpoints()
 
   return (
     <ListItem
@@ -79,4 +75,4 @@ ContactListItem.defaultProps = {
   selection: null
 }
 
-export default memo(withBreakpoints()(ContactListItem), areContactListItemEqual)
+export default memo(ContactListItem, areContactListItemEqual)
