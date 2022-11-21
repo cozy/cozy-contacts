@@ -8,7 +8,8 @@ const mockQ = callback => {
     return {
       where: jest.fn().mockReturnValue({
         indexFields: jest.fn().mockReturnValue(callback(doctype))
-      })
+      }),
+      partialIndex: jest.fn().mockReturnValue(callback(doctype))
     }
   })
 }

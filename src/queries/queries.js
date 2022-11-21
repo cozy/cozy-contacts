@@ -149,6 +149,23 @@ export const buildContactsQueryByEmailAdressOrPhoneNumber = (
   }
 }
 
+export const buildContactsQueryByGroupId = groupId => ({
+  definition: Q(DOCTYPE_CONTACTS)
+    .where({
+      relationships: {
+        groups: {
+          data: {
+            $elemMatch: {
+              _id: groupId,
+              _type: DOCTYPE_CONTACT_GROUPS
+            }
+          }
+        }
+      }
+    })
+    .indexFields(['relationships.groups.data'])
+})
+
 // Contact groups doctype -------------
 
 export const buildContactGroupsQuery = () => ({
@@ -171,6 +188,10 @@ export const buildContactGroupsQuery = () => ({
     as: 'allGroups',
     fetchPolicy: olderThan30sec
   }
+})
+
+export const buildContactGroupsTrashedQuery = () => ({
+  definition: Q(DOCTYPE_CONTACT_GROUPS).partialIndex({ trashed: true })
 })
 
 // Triggers doctype -------------
