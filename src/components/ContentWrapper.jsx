@@ -1,68 +1,43 @@
 import React from 'react'
 
-import { Query } from 'cozy-client'
+import { useQueryAll } from 'cozy-client'
 
-import SpinnerContact from './Common/Spinner'
 import ContentRework from './ContentRework'
 import {
-  contactsByFamilyNameGivenNameEmailCozyUrl,
-  contactsWithoutIndexes,
-  queryAllGroups
+  buildContactsQueryByFamilyNameGivenNameEmailCozyUrl,
+  buildContactsQueryWithoutIndexes,
+  buildContactGroupsQuery
 } from '../queries/queries'
-import useService from './Hooks/useService'
 
-const ContentWrapper = () => {
-  const hasServiceBeenLaunched = useService(
-    'keepIndexFullNameAndDisplayNameUpToDate'
+const ContentWrapper = ({ hasServiceBeenLaunched }) => {
+  const contactsQueryByFamilyNameGivenNameEmailCozyUrl = buildContactsQueryByFamilyNameGivenNameEmailCozyUrl()
+
+  const contactsWithIndexesResult = useQueryAll(
+    contactsQueryByFamilyNameGivenNameEmailCozyUrl.definition,
+    contactsQueryByFamilyNameGivenNameEmailCozyUrl.options
   )
 
-  if (hasServiceBeenLaunched === null) {
-    return <SpinnerContact size="xxlarge" loadingType="fetching_contacts" />
-  }
+  const contactsQueryWithoutIndexes = buildContactsQueryWithoutIndexes()
+
+  const contactsWithNoIndexesResult = useQueryAll(
+    contactsQueryWithoutIndexes.definition,
+    contactsQueryWithoutIndexes.options
+  )
+
+  const contactGroupsQuery = buildContactGroupsQuery()
+
+  const contactGroupsResult = useQueryAll(
+    contactGroupsQuery.definition,
+    contactGroupsQuery.options
+  )
+
   return (
-    <Query
-      query={contactsByFamilyNameGivenNameEmailCozyUrl.definition}
-      as={contactsByFamilyNameGivenNameEmailCozyUrl.options.as}
-    >
-      {contactsWithIndexesResult => {
-        if (contactsWithIndexesResult.hasMore) {
-          contactsWithIndexesResult.fetchMore()
-        }
-
-        return (
-          <Query
-            query={contactsWithoutIndexes.definition}
-            as={contactsWithoutIndexes.options.as}
-          >
-            {contactsWithNoIndexesResult => {
-              if (contactsWithNoIndexesResult.hasMore) {
-                contactsWithNoIndexesResult.fetchMore()
-              }
-
-              return (
-                <Query
-                  query={queryAllGroups.definition}
-                  as={queryAllGroups.options.as}
-                >
-                  {allGroupsResult => {
-                    return (
-                      <ContentRework
-                        hasServiceBeenLaunched={hasServiceBeenLaunched}
-                        contactsWithIndexesResult={contactsWithIndexesResult}
-                        contactsWithNoIndexesResult={
-                          contactsWithNoIndexesResult
-                        }
-                        allGroupsResult={allGroupsResult}
-                      />
-                    )
-                  }}
-                </Query>
-              )
-            }}
-          </Query>
-        )
-      }}
-    </Query>
+    <ContentRework
+      hasServiceBeenLaunched={hasServiceBeenLaunched}
+      contactsWithIndexesResult={contactsWithIndexesResult}
+      contactsWithNoIndexesResult={contactsWithNoIndexesResult}
+      allGroupsResult={contactGroupsResult}
+    />
   )
 }
 

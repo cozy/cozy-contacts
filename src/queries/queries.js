@@ -5,7 +5,7 @@ const olderThan30sec = fetchPolicies.olderThan(30 * 1000)
 
 // Contacts doctype -------------
 
-export const buildContactQuery = id => ({
+export const buildContactsQueryById = id => ({
   definition: Q(DOCTYPE_CONTACTS).getById(id),
   options: {
     as: `contactById-${id}`,
@@ -14,90 +14,87 @@ export const buildContactQuery = id => ({
   }
 })
 
-export const contactsByFamilyNameGivenNameEmailCozyUrl = {
-  definition: () =>
-    Q(DOCTYPE_CONTACTS)
-      .include(['accounts'])
-      .where({
-        'indexes.byFamilyNameGivenNameEmailCozyUrl': {
-          $gt: null
-        }
-      })
-      .partialIndex({
-        $or: [
-          {
-            trashed: {
-              $exists: false
-            }
-          },
-          {
-            trashed: false
+export const buildContactsQueryByFamilyNameGivenNameEmailCozyUrl = () => ({
+  definition: Q(DOCTYPE_CONTACTS)
+    .include(['accounts'])
+    .where({
+      'indexes.byFamilyNameGivenNameEmailCozyUrl': {
+        $gt: null
+      }
+    })
+    .partialIndex({
+      $or: [
+        {
+          trashed: {
+            $exists: false
           }
-        ],
-        'indexes.byFamilyNameGivenNameEmailCozyUrl': {
-          $exists: true
+        },
+        {
+          trashed: false
         }
-      })
-      .indexFields(['indexes.byFamilyNameGivenNameEmailCozyUrl'])
-      .sortBy([{ 'indexes.byFamilyNameGivenNameEmailCozyUrl': 'asc' }])
-      .limitBy(1000),
+      ],
+      'indexes.byFamilyNameGivenNameEmailCozyUrl': {
+        $exists: true
+      }
+    })
+    .indexFields(['indexes.byFamilyNameGivenNameEmailCozyUrl'])
+    .sortBy([{ 'indexes.byFamilyNameGivenNameEmailCozyUrl': 'asc' }])
+    .limitBy(1000),
   options: {
     as: 'contactsByFamilyNameGivenNameEmailCozyUrl'
   }
-}
+})
 
-export const contactsWithoutIndexes = {
-  definition: () =>
-    Q(DOCTYPE_CONTACTS)
-      .include(['accounts'])
-      .where({
-        _id: {
-          $gt: null
-        }
-      })
-      .partialIndex({
-        $or: [
-          {
-            trashed: {
-              $exists: false
-            }
-          },
-          {
-            trashed: false
+export const buildContactsQueryWithoutIndexes = () => ({
+  definition: Q(DOCTYPE_CONTACTS)
+    .include(['accounts'])
+    .where({
+      _id: {
+        $gt: null
+      }
+    })
+    .partialIndex({
+      $or: [
+        {
+          trashed: {
+            $exists: false
           }
-        ],
-        'indexes.byFamilyNameGivenNameEmailCozyUrl': {
-          $exists: false
+        },
+        {
+          trashed: false
         }
-      })
-      .indexFields(['_id'])
-      .limitBy(1000),
+      ],
+      'indexes.byFamilyNameGivenNameEmailCozyUrl': {
+        $exists: false
+      }
+    })
+    .indexFields(['_id'])
+    .limitBy(1000),
   options: {
     as: 'contactsWithoutIndexes'
   }
-}
+})
 
 // Contact groups doctype -------------
 
-export const queryAllGroups = {
-  definition: () =>
-    Q(DOCTYPE_CONTACT_GROUPS)
-      .partialIndex({
-        $or: [
-          {
-            trashed: {
-              $exists: false
-            }
-          },
-          {
-            trashed: false
+export const buildContactGroupsQuery = () => ({
+  definition: Q(DOCTYPE_CONTACT_GROUPS)
+    .partialIndex({
+      $or: [
+        {
+          trashed: {
+            $exists: false
           }
-        ]
-      })
-      .sortBy([{ name: 'asc' }])
-      .indexFields(['name']),
+        },
+        {
+          trashed: false
+        }
+      ]
+    })
+    .sortBy([{ name: 'asc' }])
+    .indexFields(['name']),
   options: {
     as: 'allGroups',
     fetchPolicy: olderThan30sec
   }
-}
+})

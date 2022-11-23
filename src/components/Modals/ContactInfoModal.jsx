@@ -4,7 +4,10 @@ import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 
 import { useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 import { useNavigate, useParams } from 'react-router-dom'
-import { buildContactQuery, queryAllGroups } from '../../queries/queries'
+import {
+  buildContactsQueryById,
+  buildContactGroupsQuery
+} from '../../queries/queries'
 
 import ContactInfoTitle from './ContactInfoTitle'
 import ContactInfoContent from './ContactInfoContent'
@@ -16,14 +19,16 @@ const ContactInfoModal = () => {
 
   const onClose = () => navigate('/')
 
-  const queryContactById = buildContactQuery(contactId)
+  const queryContactById = buildContactsQueryById(contactId)
   const resultContactById = useQuery(
     queryContactById.definition,
     queryContactById.options
   )
+
+  const contactGroupsQuery = buildContactGroupsQuery()
   const resultAllGroups = useQuery(
-    queryAllGroups.definition,
-    queryAllGroups.options
+    contactGroupsQuery.definition,
+    contactGroupsQuery.options
   )
 
   const dataHaveBeenLoaded =
