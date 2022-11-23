@@ -1,7 +1,9 @@
 import { Q, fetchPolicies } from 'cozy-client'
-import { DOCTYPE_CONTACTS } from './doctypes'
+import { DOCTYPE_CONTACTS, DOCTYPE_CONTACT_GROUPS } from '../helpers/doctypes'
 
 const olderThan30sec = fetchPolicies.olderThan(30 * 1000)
+
+// Contacts doctype -------------
 
 export const buildContactQuery = id => ({
   definition: Q(DOCTYPE_CONTACTS).getById(id),
@@ -11,29 +13,6 @@ export const buildContactQuery = id => ({
     singleDocData: true
   }
 })
-
-export const queryAllGroups = {
-  definition: () =>
-    Q('io.cozy.contacts.groups')
-      .partialIndex({
-        $or: [
-          {
-            trashed: {
-              $exists: false
-            }
-          },
-          {
-            trashed: false
-          }
-        ]
-      })
-      .sortBy([{ name: 'asc' }])
-      .indexFields(['name']),
-  options: {
-    as: 'allGroups',
-    fetchPolicy: olderThan30sec
-  }
-}
 
 export const contactsByFamilyNameGivenNameEmailCozyUrl = {
   definition: () =>
@@ -95,5 +74,30 @@ export const contactsWithoutIndexes = {
       .limitBy(1000),
   options: {
     as: 'contactsWithoutIndexes'
+  }
+}
+
+// Contact groups doctype -------------
+
+export const queryAllGroups = {
+  definition: () =>
+    Q(DOCTYPE_CONTACT_GROUPS)
+      .partialIndex({
+        $or: [
+          {
+            trashed: {
+              $exists: false
+            }
+          },
+          {
+            trashed: false
+          }
+        ]
+      })
+      .sortBy([{ name: 'asc' }])
+      .indexFields(['name']),
+  options: {
+    as: 'allGroups',
+    fetchPolicy: olderThan30sec
   }
 }

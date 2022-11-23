@@ -4,7 +4,7 @@ import { useClient, useQuery } from 'cozy-client'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import { buildContactQuery } from '../../helpers/queries'
+import { buildContactQuery } from '../../queries/queries'
 
 import { getConnectedAccounts } from '../../helpers/contacts'
 import ConfirmDeleteActions from '../Common/ConfirmDeleteActions'

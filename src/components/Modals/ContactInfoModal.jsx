@@ -4,7 +4,7 @@ import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 
 import { useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 import { useNavigate, useParams } from 'react-router-dom'
-import { buildContactQuery, queryAllGroups } from '../../helpers/queries'
+import { buildContactQuery, queryAllGroups } from '../../queries/queries'
 
 import ContactInfoTitle from './ContactInfoTitle'
 import ContactInfoContent from './ContactInfoContent'
