@@ -4,7 +4,7 @@ import { useClient, useQuery } from 'cozy-client'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import { buildContactQuery } from '../../queries/queries'
+import { buildContactsQueryById } from '../../queries/queries'
 
 import { getConnectedAccounts } from '../../helpers/contacts'
 import ConfirmDeleteActions from '../Common/ConfirmDeleteActions'
@@ -17,19 +17,19 @@ const ConfirmDeleteModal = () => {
   const { contactId } = useParams()
   const { t } = useI18n()
 
-  const queryContactById = buildContactQuery(contactId)
-  const resultContactById = useQuery(
-    queryContactById.definition,
-    queryContactById.options
+  const contactsQueryById = buildContactsQueryById(contactId)
+  const resultContactsQueryById = useQuery(
+    contactsQueryById.definition,
+    contactsQueryById.options
   )
 
   const [contact, setContact] = useState()
 
   useEffect(() => {
-    if (!contact && resultContactById.data) {
-      setContact(resultContactById.data)
+    if (!contact && resultContactsQueryById.data) {
+      setContact(resultContactsQueryById.data)
     }
-  }, [contact, resultContactById])
+  }, [contact, resultContactsQueryById])
 
   const onClose = () => navigate(`/${contactId}`)
 

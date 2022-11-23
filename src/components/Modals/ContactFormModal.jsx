@@ -6,7 +6,7 @@ import { FixedDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import { buildContactQuery } from '../../queries/queries'
+import { buildContactsQueryById } from '../../queries/queries'
 
 import SelectedGroupContext from '../Contexts/SelectedGroup'
 import ContactForm, { getSubmitContactForm } from '../ContactCard/ContactForm'
@@ -23,12 +23,12 @@ const ContactFormModal = () => {
   useEffect(() => {
     const fetchContactById = async () => {
       if (contactId && !contactInForm) {
-        const queryContactById = buildContactQuery(contactId)
-        const resultContactById = await client.fetchQueryAndGetFromState({
-          definition: queryContactById.definition,
-          options: queryContactById.options
+        const contactsQueryById = buildContactsQueryById(contactId)
+        const resultContactsQueryById = await client.fetchQueryAndGetFromState({
+          definition: contactsQueryById.definition,
+          options: contactsQueryById.options
         })
-        setContactInForm(resultContactById.data)
+        setContactInForm(resultContactsQueryById.data)
       }
     }
     fetchContactById()
