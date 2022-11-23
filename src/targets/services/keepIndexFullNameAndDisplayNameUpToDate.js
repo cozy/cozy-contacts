@@ -2,7 +2,7 @@ import omit from 'lodash/omit'
 import CozyClient from 'cozy-client'
 import log from 'cozy-logger'
 
-import { schema } from '../../helpers/doctypes'
+import { schema, DOCTYPE_CONTACTS } from '../../helpers/doctypes'
 import {
   fetchContactsToUpdate,
   fetchNormalizedServiceByName
@@ -30,7 +30,7 @@ export const keepIndexFullNameAndDisplayNameUpToDate = async () => {
     // to be removed when issue is fixed
     contact => updateIndexFullNameAndDisplayName(omit(contact, '_type'))
   )
-  await client.collection('io.cozy.contacts').updateAll(updatedContactsToUpload)
+  await client.collection(DOCTYPE_CONTACTS).updateAll(updatedContactsToUpload)
   updatedContactsToUpload.length &&
     log('info', `All contacts successfully updated`)
 }

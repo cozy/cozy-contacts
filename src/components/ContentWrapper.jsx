@@ -8,7 +8,7 @@ import {
   contactsByFamilyNameGivenNameEmailCozyUrl,
   contactsWithoutIndexes,
   queryAllGroups
-} from '../helpers/queries'
+} from '../queries/queries'
 import useService from './Hooks/useService'
 
 const ContentWrapper = () => {
