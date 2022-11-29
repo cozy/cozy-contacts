@@ -5,7 +5,7 @@ import {
   DOCTYPE_TRIGGERS
 } from '../helpers/doctypes'
 
-const olderThan30sec = fetchPolicies.olderThan(30 * 1000)
+const older30s = 30 * 1000
 
 // Contacts doctype -------------
 
@@ -13,7 +13,7 @@ export const buildContactsQueryById = id => ({
   definition: Q(DOCTYPE_CONTACTS).getById(id),
   options: {
     as: `contactById-${id}`,
-    fetchPolicy: olderThan30sec,
+    fetchPolicy: fetchPolicies.olderThan(older30s),
     singleDocData: true
   }
 })
@@ -186,7 +186,7 @@ export const buildContactGroupsQuery = () => ({
     .indexFields(['name']),
   options: {
     as: 'allGroups',
-    fetchPolicy: olderThan30sec
+    fetchPolicy: fetchPolicies.olderThan(older30s)
   }
 })
 
