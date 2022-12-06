@@ -11,8 +11,7 @@ export function mergeContact(contact, attributes) {
 const strategies = {
   email: mergeArrayOfObject('address'),
   phone: mergeArrayOfObject('number'),
-  givenName: keepLonger,
-  familyName: keepLonger
+  name: completeObject
 }
 
 const fromStrategies = strategies => (objValue, srcValue, key) =>
@@ -26,8 +25,18 @@ function mergeArrayOfObject(key) {
   }
 }
 
-function keepLonger(objValue = '', srcValue = '') {
-  return objValue.length > srcValue.length ? objValue : srcValue
+function completeObject(objValue = '', srcValue = '') {
+  if (!objValue) {
+    return srcValue
+  }
+
+  Object.keys(srcValue).forEach(key => {
+    if (!objValue[key]) {
+      objValue[key] = srcValue[key]
+    }
+  })
+
+  return objValue
 }
 
 /**
