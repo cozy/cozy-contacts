@@ -1,9 +1,8 @@
 @require 'settings/palette.styl'
 @require 'components/table.styl'
 
-main > [role=main]
-    width 100%
-    max-width 80rem
+main
+    max-width 75rem
     margin 0 auto
 
 [role=banner] .coz-bar-container
@@ -15,13 +14,13 @@ main > [role=main]
 
 .topbar
     display flex
-    flex-shrink 0
-    max-width 80rem
-    width 100%
-    margin 1rem auto
+    margin 1rem 0
 
     +small-screen()
         flex-direction column
+
+    +large-screen()
+        margin 1rem
 
     &__left
         display flex
