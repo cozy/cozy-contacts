@@ -1,14 +1,17 @@
 import React, { useState, useRef } from 'react'
-
-import { useClient } from 'cozy-client'
 import { useNavigate } from 'react-router-dom'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+
 import ActionMenu, { ActionMenuItem } from 'cozy-ui/transpiled/react/ActionMenu'
-import Icon from 'cozy-ui/transpiled/react/Icon'
-import Button from 'cozy-ui/transpiled/react/Button'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
-import TeamIcon from 'cozy-ui/transpiled/react/Icons/Team'
+import AppLinker from 'cozy-ui/transpiled/react/AppLinker'
 import BottomIcon from 'cozy-ui/transpiled/react/Icons/Bottom'
+import Button from 'cozy-ui/transpiled/react/Button'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import Link from 'cozy-ui/transpiled/react/Link'
+import TeamIcon from 'cozy-ui/transpiled/react/Icons/Team'
+import { useClient } from 'cozy-client'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+
 import { getFilteredStoreUrl } from '../../helpers/store'
 
 const ImportDropdown = () => {
@@ -19,10 +22,6 @@ const ImportDropdown = () => {
   const [menuDisplayed, setMenuDisplayed] = useState(false)
   const showMenu = () => setMenuDisplayed(true)
   const hideMenu = () => setMenuDisplayed(false)
-
-  const goToStore = () => {
-    window.location = getFilteredStoreUrl(client)
-  }
 
   return (
     <>
@@ -49,12 +48,19 @@ const ImportDropdown = () => {
           >
             {t('import.vcard')}
           </ActionMenuItem>
-          <ActionMenuItem
-            left={<AppIcon app={'store'} className="u-h-1 u-w-1" />}
-            onClick={goToStore}
-          >
-            {t('import.store')}
-          </ActionMenuItem>
+
+          <AppLinker app={{ slug: 'store' }} href={getFilteredStoreUrl(client)}>
+            {({ onClick, href }) => (
+              <ActionMenuItem
+                left={<AppIcon app={'store'} className="u-h-1 u-w-1" />}
+                onClick={onClick}
+              >
+                <Link className="u-p-0" href={href}>
+                  {t('import.store')}
+                </Link>
+              </ActionMenuItem>
+            )}
+          </AppLinker>
         </ActionMenu>
       )}
     </>
