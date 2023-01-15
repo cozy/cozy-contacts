@@ -14,12 +14,10 @@ describe('getFilteredStoreUrl', () => {
       }
     })
 
-    const universalLink =
-      'https://links.mycozy.cloud/store/discover/?type=konnector&doctype=io.cozy.contacts'
     const nativePath = '#/discover/?type=konnector&doctype=io.cozy.contacts'
 
     const test = decodeURIComponent(getFilteredStoreUrl(client))
-    const expected = `${universalLink}&fallback=${protocol}://${subdomain}-store.${domain}/${nativePath}`
+    const expected = `${protocol}://${subdomain}-store.${domain}/${nativePath}`
 
     expect(test).toEqual(expected)
   })
