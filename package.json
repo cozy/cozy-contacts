@@ -1,6 +1,6 @@
 {
   "name": "cozy-contacts",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "engine": {
     "node": "~12",
     "npm": "~6"
