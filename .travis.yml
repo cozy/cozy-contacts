@@ -4,7 +4,7 @@ node_js:
   - "16"
 env:
   global:
-    - MATTERMOST_CHANNEL=contacts
+    - MATTERMOST_CHANNEL='{"dev":"contacts","beta":"contacts,publication","stable":"contacts,publication"}'
     # To generate a new key: travis encrypt GITHUB_TOKEN=<token> -r cozy/cozy-contacts
     - secure: "f56HAYQ1Y5K47uMJP2pptc030ZpOdHbzDwBf9RsVoxQfnIpu0Kk/AeTsHNOQQq8JaMmtr9mo1kOzM2xJncASNQDY9/ajUOncS+wQpB1TeKS2vuYD3pBtHGnDWg5wVuGB+Qyx0HUtG7hxDXtlgcxh0jq02gLoGxXz3LIHpiCsUamUtwv3xn9iXiXHHzdCkaD/pBWJvPfMAelhCm+qiN1G2OJJaHtbelQnYO4SOzTqtcFYjqa+H9Bne2ijj7ntVxxhuN1NDXMeHawblRXhwUZP78sJ75nhSAuux3jjNV2maPdPcrS10egkCP/WZXPzpT3+kAuUmbhkn4uNEtA9eECxHpskUDp/n+KOH+q4jGf6lF2z9OxL3KRIdzw+X0Agktq+4cjFWajVQhYaKTk9bGD1ZyOE+0evyxoTnKPjNfjTVg8nSl26w9gGZzxilbaGSJO+GZklsyb2WBl3omXLNvcpFf3RQbk8JYruRGQdESE6XbHBc16nmpMPMi7PS8DcgMqWHmnBTXoKwpe7o05ut4LLI+SGdqMms86KXFjRTxhOwGE/0P0HR9Jhbpn/lT+X1SRbspormciqx4YwkumNXi1627lcjjVwJf/RA39wM4EwoCF48hjAgSMWyg+cxs7dFnV1BZFi/VQIQ5IF6vZbI4wvvQKy8YHnlzUNuB/nXwZSq3I="
     # To generate a new key: travis encrypt REGISTRY_TOKEN=<token> -r cozy/cozy-contacts
