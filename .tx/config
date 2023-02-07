@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[o:cozy:p:cozy-contacts:r:src-locales-en-json--master]
+file_filter = src/locales/<lang>.json
+source_file = src/locales/en.json
+source_lang = en
+type        = KEYVALUEJSON
