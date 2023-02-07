@@ -142,7 +142,7 @@ Localization and translations are handled by [Transifex][tx], which is used by a
 
 As a _translator_, you can login to [Transifex][tx-signin] (using your Github account) and claim an access to the [app repository][tx-app]. Transifex will then create pull request on the repository, and the locales are merged after validating the pull request.
 
-As a _developer_, you just have to modify json in `/src/locales`.
+As a _developer_, you just have to modify json in `/src/locales`. New locales will be automatically added to Transifex. If you need to pull or push manually locales, you can use [Transifex CLI](tx-cli). If you were using a [transifex-client](tx-client), you must move to [Transifex CLI](tx-cli) to be compatible with the v3 API.
 
 
 ### Maintainer
@@ -182,7 +182,9 @@ cozy-contacts is developed by cozy and distributed under the [AGPL v3 license][a
 [contribute]: CONTRIBUTING.md
 [tx]: https://www.transifex.com/cozy/
 [tx-signin]: https://www.transifex.com/signin/
-[tx-app]: https://www.transifex.com/cozy/<SLUG_TX>/dashboard/
+[tx-app]: https://www.transifex.com/cozy/cozy-contacts/dashboard/
+[tx-cli]: https://developers.transifex.com/docs/cli
+[tx-client]: https://github.com/transifex/transifex-client
 [libera]: https://web.libera.chat/#cozycloud
 [forum]: https://forum.cozy.io/
 [github]: https://github.com/cozy/
