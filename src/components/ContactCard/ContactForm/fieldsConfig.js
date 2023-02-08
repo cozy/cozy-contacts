@@ -24,24 +24,21 @@ export const fields = [
     icon: 'telephone',
     type: 'tel',
     hasLabel: true,
-    isArray: true,
-    addLabel: 'add-phone'
+    isArray: true
   },
   {
     name: 'email',
     icon: 'email',
     type: 'email',
     hasLabel: true,
-    isArray: true,
-    addLabel: 'add-email'
+    isArray: true
   },
   {
     name: 'address',
     icon: 'location',
     type: 'text',
     hasLabel: true,
-    isArray: true,
-    addLabel: 'add-address'
+    isArray: true
   },
   {
     name: 'cozy',
