@@ -32,8 +32,8 @@ const ContactFieldInput = ({
         <HasValueCondition name={name} otherCondition={hasBeenFocused}>
           <div className="u-mt-half-s u-ml-half u-ml-0-s u-flex-shrink-0 u-w-auto">
             <Field
+              attributes={{ ...attributes, type: 'text' }}
               name={`${name}Label`}
-              type="text"
               label={labelPlaceholder}
               onFocus={onFocus}
               component={FieldInputWrapper}
