@@ -4,24 +4,19 @@ import PropTypes from 'prop-types'
 import TextField from 'cozy-ui/transpiled/react/MuiCozyTheme/TextField'
 
 import { fieldInputAttributes } from '../ContactCard/ContactFields/ContactFieldsProptypes'
+import FieldInputTextarea from './FieldInputTextarea'
 
 const FieldInput = ({ input, attributes, ...props }) => {
   const { labelProps, isMultiline, ...attrs } = attributes || {}
+
+  const Component = isMultiline ? FieldInputTextarea : TextField
+
   return (
-    <TextField
-      {...input}
-      {...props}
-      {...attrs}
-      {...(isMultiline && {
-        multiline: true,
-        minRows: 2
-      })}
-      InputLabelProps={labelProps}
-    />
+    <Component {...input} {...props} {...attrs} InputLabelProps={labelProps} />
   )
 }
 
-FieldInput.propTypes = {
+export const FieldInputPropTypes = {
   // See official documentation for more information: https://final-form.org/docs/react-final-form/types/FieldRenderProps
   input: PropTypes.object,
   //
@@ -36,6 +31,8 @@ FieldInput.propTypes = {
   variant: PropTypes.string,
   fullWidth: PropTypes.bool
 }
+
+FieldInput.propTypes = FieldInputPropTypes
 FieldInput.defaultProps = {
   variant: 'outlined',
   fullWidth: true
