@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
 
 import HasValueCondition from '../Form/HasValueCondition'
-import FieldInput from '../Form/FieldInput'
+import FieldInputWrapper from '../Form/FieldInputWrapper'
 import { fieldInputAttributes } from './ContactFields/ContactFieldsProptypes'
 
 const ContactFieldInput = ({
@@ -26,7 +26,7 @@ const ContactFieldInput = ({
         attributes={attributes}
         name={name}
         onFocus={onFocus}
-        component={FieldInput}
+        component={FieldInputWrapper}
       />
       {withLabel && (
         <HasValueCondition name={name} otherCondition={hasBeenFocused}>
@@ -36,7 +36,7 @@ const ContactFieldInput = ({
               type="text"
               label={labelPlaceholder}
               onFocus={onFocus}
-              component={FieldInput}
+              component={FieldInputWrapper}
             />
           </div>
         </HasValueCondition>
