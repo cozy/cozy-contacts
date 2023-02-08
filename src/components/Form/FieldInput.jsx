@@ -3,23 +3,42 @@ import PropTypes from 'prop-types'
 
 import TextField from 'cozy-ui/transpiled/react/MuiCozyTheme/TextField'
 
-const FieldInput = ({ input, type, labelProps, isMultiline, ...rest }) => (
-  <TextField
-    {...input}
-    {...rest}
-    type={type}
-    variant="outlined"
-    fullWidth={true}
-    multiline={isMultiline}
-    rows="2"
-    InputLabelProps={labelProps}
-  />
-)
+import { fieldInputAttributes } from '../ContactCard/ContactFields/ContactFieldsProptypes'
+
+const FieldInput = ({ input, attributes, ...props }) => {
+  const { labelProps, isMultiline, ...attrs } = attributes || {}
+  return (
+    <TextField
+      {...input}
+      {...props}
+      {...attrs}
+      {...(isMultiline && {
+        multiline: true,
+        minRows: 2
+      })}
+      InputLabelProps={labelProps}
+    />
+  )
+}
 
 FieldInput.propTypes = {
-  type: PropTypes.string,
-  labelProps: PropTypes.object,
-  isMultiline: PropTypes.bool
+  // See official documentation for more information: https://final-form.org/docs/react-final-form/types/FieldRenderProps
+  input: PropTypes.object,
+  //
+  attributes: fieldInputAttributes,
+  // Destructuring props
+  // See official documentation for more information: https://final-form.org/docs/react-final-form/types/FieldRenderProps
+  meta: PropTypes.object,
+  //
+  id: PropTypes.string,
+  label: PropTypes.string,
+  required: PropTypes.bool,
+  variant: PropTypes.string,
+  fullWidth: PropTypes.bool
+}
+FieldInput.defaultProps = {
+  variant: 'outlined',
+  fullWidth: true
 }
 
 export default FieldInput
