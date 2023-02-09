@@ -1,18 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import TextField from 'cozy-ui/transpiled/react/MuiCozyTheme/TextField'
-
 import { fieldInputAttributes } from '../ContactCard/ContactFields/ContactFieldsProptypes'
-import FieldInputTextarea from './FieldInputTextarea'
+import { getFieldInput } from '../../helpers/getFieldInput'
 
 const FieldInputWrapper = ({ input, attributes, ...props }) => {
-  const { labelProps, isMultiline, ...attrs } = attributes || {}
+  const { labelProps, ...restOfAttributes } = attributes || {}
 
-  const Component = isMultiline ? FieldInputTextarea : TextField
+  const Component = getFieldInput(attributes)
 
   return (
-    <Component {...input} {...props} {...attrs} InputLabelProps={labelProps} />
+    <Component
+      {...input}
+      {...props}
+      {...restOfAttributes}
+      InputLabelProps={labelProps}
+    />
   )
 }
 
