@@ -11,7 +11,7 @@ import cozyClient, { CozyProvider } from 'cozy-client'
 import { Intents } from 'cozy-interapp'
 import { RealtimePlugin } from 'cozy-realtime'
 
-const renderApp = function(client, appLocale, appData) {
+const renderApp = function (client, appLocale, appData) {
   const IntentHandler = require('components/Intents/IntentHandler').default
   const PickContacts = require('components/Intents/PickContacts').default
   const CreateContact = require('components/Intents/CreateContact').default
@@ -33,13 +33,13 @@ const renderApp = function(client, appLocale, appData) {
 }
 
 if (module.hot) {
-  module.hot.accept('components/App', function() {
+  module.hot.accept('components/App', function () {
     renderApp()
   })
 }
 
 // return a defaultData if the template hasn't been replaced by cozy-stack
-const getDataOrDefault = function(toTest, defaultData) {
+const getDataOrDefault = function (toTest, defaultData) {
   const templateRegex = /^\{\{\.[a-zA-Z]*\}\}$/ // {{.Example}}
   return templateRegex.test(toTest) ? defaultData : toTest
 }

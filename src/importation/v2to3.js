@@ -147,10 +147,7 @@ function primary({ pref, type }) {
 
 function typeWithoutPref({ pref, type }) {
   if (pref === false) return type
-  return _.chain(typeArray(type))
-    .without(prefType)
-    .join(' ')
-    .value()
+  return _.chain(typeArray(type)).without(prefType).join(' ').value()
 }
 
 function typeArray(type) {

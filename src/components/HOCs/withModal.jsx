@@ -11,9 +11,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const withModalContainer = component =>
-  connect(
-    null,
-    mapDispatchToProps
-  )(component)
+  connect(null, mapDispatchToProps)(component)
 
 export default withModalContainer

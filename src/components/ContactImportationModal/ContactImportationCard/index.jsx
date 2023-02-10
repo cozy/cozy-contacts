@@ -34,7 +34,7 @@ const ContactImportationCard = props => {
         <progress
           value={progress.current}
           max={progress.total}
-          className={'u-m-auto u-mv-0'}
+          className="u-m-auto u-mv-0"
         />
       )}
     </ContactImportationCardWrapper>

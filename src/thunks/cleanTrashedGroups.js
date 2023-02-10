@@ -11,7 +11,6 @@ const cleanTrashedGroups = () => {
     const { data: trashedGroups } = await client.query(
       contactGroupsTrashedQuery.definition
     )
-    //eslint-disable-next-line
     for (const trashedGroup of trashedGroups) {
       await removeGroupFromAllContacts(client, trashedGroup._id)
       await client.destroy(trashedGroup)

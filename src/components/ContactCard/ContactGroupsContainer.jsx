@@ -5,7 +5,4 @@ const mapDispatchToProps = dispatch => ({
   cleanTrashedGroups: () => dispatch(cleanTrashedGroups())
 })
 
-export default connect(
-  null,
-  mapDispatchToProps
-)
+export default connect(null, mapDispatchToProps)

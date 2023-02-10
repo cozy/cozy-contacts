@@ -43,8 +43,7 @@ describe('formValuesToContact', () => {
       jobTitle: 'Dreamer',
       metadata: { cozy: true, version: 1 },
       name: { familyName: 'Doe', givenName: 'John' },
-      note:
-        'Atque cupiditate saepe omnis quos ut molestiae labore voluptates omnis.',
+      note: 'Atque cupiditate saepe omnis quos ut molestiae labore voluptates omnis.',
       phone: [
         { number: '+33 (2)0 90 00 54 04', primary: true, type: undefined },
         { number: '+33 6 77 11 22 33', primary: false, type: undefined }

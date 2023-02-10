@@ -10,7 +10,8 @@ import {
 } from '../queries/queries'
 
 const ContentWrapper = ({ hasServiceBeenLaunched }) => {
-  const contactsQueryByFamilyNameGivenNameEmailCozyUrl = buildContactsQueryByFamilyNameGivenNameEmailCozyUrl()
+  const contactsQueryByFamilyNameGivenNameEmailCozyUrl =
+    buildContactsQueryByFamilyNameGivenNameEmailCozyUrl()
 
   const contactsWithIndexesResult = useQueryAll(
     contactsQueryByFamilyNameGivenNameEmailCozyUrl.definition,

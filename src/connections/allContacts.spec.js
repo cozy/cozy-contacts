@@ -33,7 +33,7 @@ describe('', () => {
       _id: '123',
       cozyMetadata: {
         sync: {
-          '456': {
+          456: {
             id: 'people/657623'
           }
         }

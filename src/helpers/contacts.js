@@ -1,11 +1,8 @@
 import sortBy from 'lodash/sortBy'
 import { models, HasMany } from 'cozy-client'
 
-const {
-  makeFullname,
-  makeDefaultSortIndexValue,
-  makeDisplayName
-} = models.contact
+const { makeFullname, makeDefaultSortIndexValue, makeDisplayName } =
+  models.contact
 
 export const supportedFieldsInOrder = [
   'phone',
