@@ -1,0 +1,35 @@
+{
+    "baseDir": "./build",
+    "files": [
+        {
+            "path": "**/contacts.<hash>.js"
+        },
+        {
+            "path": "**/contacts.<hash>.min.css"
+        },
+        {
+            "path": "app-contacts.<hash>.min.css"
+        },
+        {
+            "path": "services/**/*.js"
+        },
+        {
+            "path": "vendors-contatcs.<hash>.<hash>.min.css"
+        },
+        {
+            "path": "img/icon.<hash>.svg"
+        }
+    ],
+    "groups": [
+        {
+            "path": "**/*.js"
+        },
+        {
+            "path": "**/*.css"
+        },
+        {
+            "path": "img/*.*"
+        }
+    ],
+    "reportOutput": ["github"]
+}
