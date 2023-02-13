@@ -74,7 +74,7 @@ describe('A component with selection', () => {
   it('should pass other props', () => {
     const root = (
       <AppLike>
-        <DummyComponentWithSelection title={'with prop'} />
+        <DummyComponentWithSelection title="with prop" />
       </AppLike>
     )
     testedComponent = shallow(root)

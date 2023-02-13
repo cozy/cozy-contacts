@@ -52,7 +52,7 @@ const ImportDropdown = () => {
           <AppLinker app={{ slug: 'store' }} href={getFilteredStoreUrl(client)}>
             {({ onClick, href }) => (
               <ActionMenuItem
-                left={<AppIcon app={'store'} className="u-h-1 u-w-1" />}
+                left={<AppIcon app="store" className="u-h-1 u-w-1" />}
                 onClick={onClick}
               >
                 <Link className="u-p-0" href={href}>

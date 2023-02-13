@@ -47,8 +47,7 @@ export const johnDoeContact = {
     cozy: true,
     version: 1
   },
-  note:
-    'Atque cupiditate saepe omnis quos ut molestiae labore voluptates omnis.',
+  note: 'Atque cupiditate saepe omnis quos ut molestiae labore voluptates omnis.',
   phone: [
     {
       number: '+33 (2)0 90 00 54 04',
@@ -100,8 +99,7 @@ export const johnDoeFormValues = {
   familyName: 'Doe',
   company: 'Cozy cloud',
   jobTitle: 'Dreamer',
-  note:
-    'Atque cupiditate saepe omnis quos ut molestiae labore voluptates omnis.'
+  note: 'Atque cupiditate saepe omnis quos ut molestiae labore voluptates omnis.'
 }
 
 export const contactWithGroup = {

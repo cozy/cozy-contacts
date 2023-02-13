@@ -18,7 +18,7 @@ const AppLike = ({ children, client }) => (
   <BreakpointsProvider>
     <Provider store={store}>
       <CozyProvider client={client || getCozyClient()}>
-        <I18n lang={'en'} dictRequire={() => langEn}>
+        <I18n lang="en" dictRequire={() => langEn}>
           <SelectedGroupProvider>
             <SearchProvider>
               <HashRouter>{children}</HashRouter>

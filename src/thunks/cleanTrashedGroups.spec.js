@@ -70,7 +70,6 @@ describe('cleaning trashed groups', () => {
       type: 'CLEAN_TRASHED_GROUPS',
       groups: groupsToTrash
     })
-    //eslint-disable-next-line
     for (const groupToTrash of groupsToTrash)
       expect(mockClient.destroy).toHaveBeenCalledWith(groupToTrash)
   })

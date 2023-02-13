@@ -10,10 +10,8 @@ export const importContact = async (client, attributes) => {
   const addresses = (attributes['email'] || []).map(email => email.address)
   const numbers = (attributes['phone'] || []).map(phone => phone.number)
 
-  const contactQueryByEmailAdressOrPhoneNumber = buildContactsQueryByEmailAdressOrPhoneNumber(
-    addresses,
-    numbers
-  )
+  const contactQueryByEmailAdressOrPhoneNumber =
+    buildContactsQueryByEmailAdressOrPhoneNumber(addresses, numbers)
 
   const { data: contactByEmailAdressOrPhoneNumber } = await client.query(
     contactQueryByEmailAdressOrPhoneNumber.definition

@@ -22,9 +22,8 @@ export const fetchContactsToUpdate = async (client, date) => {
     const dateUTCForced = new Date(minimumUpdateTime).toISOString()
     const contacts = []
 
-    const contactsQueryByUpdatedAtGT = buildContactsQueryByUpdatedAtGT(
-      dateUTCForced
-    )
+    const contactsQueryByUpdatedAtGT =
+      buildContactsQueryByUpdatedAtGT(dateUTCForced)
 
     const result = await client.queryAll(contactsQueryByUpdatedAtGT.definition)
     const expected = result.map(contact =>

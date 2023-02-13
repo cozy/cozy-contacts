@@ -50,10 +50,8 @@ describe('importation', () => {
     it('returns a running importation + a finished importation promise', async () => {
       const file = fixture.validFile()
       const importation = { file, status: Status.READY }
-      const {
-        runningImportation,
-        finishedImportationPromise
-      } = Importation.run(importation)
+      const { runningImportation, finishedImportationPromise } =
+        Importation.run(importation)
       expect(runningImportation).toEqual({ file, status: Status.RUNNING })
       const finishedImportation = await finishedImportationPromise
       expect(finishedImportation).toEqual({

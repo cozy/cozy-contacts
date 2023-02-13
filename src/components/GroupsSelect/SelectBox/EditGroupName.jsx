@@ -28,7 +28,7 @@ const EditGroupName = ({
 
   return (
     <Input
-      id={'editGroupInput'}
+      id="editGroupInput"
       ref={inputRef}
       type="text"
       defaultValue={groupName}

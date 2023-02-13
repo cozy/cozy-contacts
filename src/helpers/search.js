@@ -65,7 +65,7 @@ export const filterContactsBySearch = (contacts, searchValue) => {
 
   if (flag('search-threshold')) {
     fuse.options.threshold = flag.store.get('search-threshold')
-    console.info('fuse threshold :', fuse.options.threshold) //eslint-disable-line no-console
+    console.info('fuse threshold :', fuse.options.threshold)
   }
 
   fuse.setCollection(contacts)
@@ -75,8 +75,8 @@ export const filterContactsBySearch = (contacts, searchValue) => {
 
 const setThreshold = value => {
   if (!isNaN(value)) {
-    console.info('changing fuse threshold to', value) //eslint-disable-line no-console
-    console.info('please change the search value') //eslint-disable-line no-console
+    console.info('changing fuse threshold to', value)
+    console.info('please change the search value')
     flag.store.set('search-threshold', value)
   }
 }

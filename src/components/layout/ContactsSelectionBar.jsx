@@ -15,14 +15,8 @@ import ConfirmDeleteActions from '../Common/ConfirmDeleteActions'
 
 class ContactsSelectionBar extends Component {
   render() {
-    const {
-      selection,
-      clearSelection,
-      showModal,
-      t,
-      hideModal,
-      client
-    } = this.props
+    const { selection, clearSelection, showModal, t, hideModal, client } =
+      this.props
     return selection.length > 0 ? (
       <SelectionBar
         selected={selection}

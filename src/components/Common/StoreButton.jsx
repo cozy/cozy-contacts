@@ -17,7 +17,7 @@ const StoreButton = () => {
       href={appStoreUrl}
       label={t('empty.import_store')}
       theme="secondary"
-      icon={<AppIcon app={'store'} className="u-h-1 u-w-1 u-mr-half" />}
+      icon={<AppIcon app="store" className="u-h-1 u-w-1 u-mr-half" />}
       extension="full"
     />
   )

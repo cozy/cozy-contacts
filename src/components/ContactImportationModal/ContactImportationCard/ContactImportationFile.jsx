@@ -41,7 +41,7 @@ export default function ImportationFile({ status, name, unselectAction }) {
               onClick={e => unselectAction(e)}
             >
               <Icon
-                icon={'cross'}
+                icon="cross"
                 color={palette['coolGrey']}
                 width="10"
                 height="10"

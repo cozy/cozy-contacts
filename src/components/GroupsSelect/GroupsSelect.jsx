@@ -222,11 +222,7 @@ GroupsSelectClass.defaultProps = {
   closeMenuOnSelect: false
 }
 
-const GroupsSelect = flow(
-  withClient,
-  translate(),
-  container
-)(GroupsSelectClass)
+const GroupsSelect = flow(withClient, translate(), container)(GroupsSelectClass)
 
 GroupsSelect.propTypes = {
   allGroups: PropTypes.array.isRequired

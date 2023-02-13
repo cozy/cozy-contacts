@@ -29,9 +29,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const selectionContainer = component =>
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(component)
+  connect(mapStateToProps, mapDispatchToProps)(component)
 
 export default selectionContainer

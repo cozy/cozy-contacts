@@ -49,7 +49,4 @@ CreateContact.defaultProps = {
   data: {}
 }
 
-export default flow(
-  translate(),
-  withClient
-)(CreateContact)
+export default flow(translate(), withClient)(CreateContact)
