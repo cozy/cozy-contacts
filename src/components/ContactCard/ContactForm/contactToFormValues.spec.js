@@ -8,6 +8,7 @@ describe('contactToFormValues function', () => {
     const expected = {
       address: [undefined],
       birthday: undefined,
+      gender: undefined,
       company: undefined,
       jobTitle: undefined,
       cozy: undefined,
@@ -49,6 +50,7 @@ describe('contactToFormValues function', () => {
       _rev: '1-19c313536e8b27473aa26bf105b03269',
       address: [],
       birthday: undefined,
+      gender: 'female',
       company: undefined,
       jobTitle: undefined,
       cozy: undefined,
@@ -63,6 +65,7 @@ describe('contactToFormValues function', () => {
     const expected = {
       address: [undefined],
       birthday: undefined,
+      gender: 'female',
       company: undefined,
       jobTitle: undefined,
       cozy: undefined,
@@ -86,6 +89,7 @@ describe('contactToFormValues function', () => {
       _rev: '1-19c313536e8b27473aa26bf105b03269',
       address: [],
       birthday: undefined,
+      gender: '',
       company: undefined,
       jobTitle: undefined,
       cozy: undefined,
@@ -97,6 +101,7 @@ describe('contactToFormValues function', () => {
     const expected = {
       address: [undefined],
       birthday: undefined,
+      gender: '',
       company: undefined,
       jobTitle: undefined,
       cozy: undefined,

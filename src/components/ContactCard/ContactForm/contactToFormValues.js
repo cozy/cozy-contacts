@@ -18,6 +18,7 @@ const contactToFormValues = (contact, t) => {
 
   if (contact) {
     const {
+      gender,
       address,
       birthday,
       company,
@@ -55,6 +56,7 @@ const contactToFormValues = (contact, t) => {
         : [undefined]
 
     return {
+      gender,
       givenName: name ? name.givenName : undefined,
       familyName: name ? name.familyName : undefined,
       phone: phoneValue,

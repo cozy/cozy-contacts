@@ -30,6 +30,7 @@ const createAddress = ({ address, oldContact, t }) => {
 
 const formValuesToContact = ({ formValues, oldContact, t }) => {
   const {
+    gender,
     givenName,
     familyName,
     phone,
@@ -44,6 +45,7 @@ const formValuesToContact = ({ formValues, oldContact, t }) => {
 
   const contactWithFormValues = {
     ...oldContact,
+    gender: gender || '',
     name: {
       ...oldContact?.name,
       givenName: givenName || '',

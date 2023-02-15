@@ -29,6 +29,7 @@ export const johnDoeContact = {
     }
   ],
   birthday: '1999-5-1',
+  gender: 'male',
   company: 'Cozy cloud',
   jobTitle: 'Dreamer',
   cozy: [
@@ -62,6 +63,7 @@ export const johnDoeContact = {
 
 export const johnDoeFormValues = {
   birthday: '1999-5-1',
+  gender: 'male',
   cozy: 'https://johndoe.mycozy.cloud',
   cozyLabel: 'MyCozy',
   address: [

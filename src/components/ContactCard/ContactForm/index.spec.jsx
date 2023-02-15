@@ -1,16 +1,12 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import ContactForm from './index'
-import { I18n } from 'cozy-ui/transpiled/react/I18n'
 
 import { render, fireEvent } from '@testing-library/react'
 import { createMockClient } from 'cozy-client'
 import AppLike from '../../../tests/Applike'
 
-import langEn from '../../../locales/en.json'
 import { johnDoeContact as contact } from '../../../helpers/testData'
-
-const dictRequire = () => langEn
 
 const client = createMockClient({})
 const setup = ({ contact }) => {
@@ -77,6 +73,7 @@ describe('ContactForm', () => {
         }
       ],
       birthday: '31/12/2015',
+      gender: 'male',
       company: 'Cozy CLoud',
       cozy: [
         { label: undefined, primary: true, url: 'https://jcvd.cozy.cloud' }
@@ -100,12 +97,13 @@ describe('ContactForm', () => {
     }
 
     const form = mount(
-      <I18n lang="en" dictRequire={dictRequire}>
+      <AppLike client={client}>
         <ContactForm onSubmit={onSubmit} onCancel={() => {}} />
-      </I18n>
+      </AppLike>
     )
 
     const fields = {
+      gender: 'male',
       givenName: 'Jean-Claude',
       familyName: 'Van Cozy',
       'phone[0].phone': '+33678987654',
@@ -163,6 +161,7 @@ describe('ContactForm', () => {
     const expected = {
       address: [],
       birthday: '',
+      gender: '',
       company: '',
       cozy: [],
       displayName: '',
@@ -182,9 +181,9 @@ describe('ContactForm', () => {
     }
 
     const form = mount(
-      <I18n lang="en" dictRequire={dictRequire}>
+      <AppLike client={client}>
         <ContactForm onSubmit={onSubmit} onCancel={() => {}} />
-      </I18n>
+      </AppLike>
     )
 
     form.find('form').simulate('submit')
