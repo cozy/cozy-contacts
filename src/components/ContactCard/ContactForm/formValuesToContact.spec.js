@@ -26,6 +26,8 @@ describe('formValuesToContact', () => {
         }
       ],
       birthday: '1999-5-1',
+      birthplace: 'somewhere',
+      gender: 'male',
       company: 'Cozy cloud',
       cozy: [
         { label: 'MyCozy', primary: true, url: 'https://johndoe.mycozy.cloud' }
@@ -73,6 +75,8 @@ describe('formValuesToContact', () => {
         }
       ],
       birthday: undefined,
+      birthplace: 'somewhere',
+      gender: 'female',
       company: undefined,
       jobTitle: undefined,
       cozy: undefined,
@@ -98,6 +102,8 @@ describe('formValuesToContact', () => {
     const expected = {
       address: [],
       birthday: '',
+      birthplace: 'somewhere',
+      gender: 'female',
       company: '',
       cozy: [],
       displayName: 'Jane Doe',
@@ -204,11 +210,13 @@ describe('formValuesToContact', () => {
 
   it('should erase contact datas for empty fields', () => {
     const formValues = {
+      gender: undefined,
       givenName: undefined,
       familyName: undefined,
       company: undefined,
       jobTitle: undefined,
       birthday: undefined,
+      birthplace: undefined,
       note: undefined,
       address: [undefined],
       email: [undefined],
@@ -226,6 +234,8 @@ describe('formValuesToContact', () => {
       cozy: [],
       phone: [],
       birthday: '',
+      birthplace: '',
+      gender: '',
       note: '',
       relationships: { groups: { data: [] } }
     })
@@ -240,11 +250,13 @@ describe('formValuesToContact', () => {
 
   it('should erase contact datas for emptied fields', () => {
     const formValues = {
+      gender: '',
       givenName: '',
       familyName: '',
       company: '',
       jobTitle: '',
       birthday: '',
+      birthplace: '',
       note: '',
       address: [{}],
       email: [{}],
@@ -262,6 +274,8 @@ describe('formValuesToContact', () => {
       cozy: [],
       phone: [],
       birthday: '',
+      birthplace: '',
+      gender: '',
       note: '',
       relationships: { groups: { data: [] } }
     })

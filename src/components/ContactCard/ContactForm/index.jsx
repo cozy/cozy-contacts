@@ -42,34 +42,20 @@ const ContactForm = ({ contact, onSubmit }) => {
             <form onSubmit={handleSubmit} className="u-flex u-flex-column">
               <FieldsetTitle title={t('contact_info')} />
               {fields.map(
-                ({
-                  name,
-                  icon,
-                  type,
-                  required,
-                  hasLabel,
-                  isArray,
-                  labelProps,
-                  isMultiline
-                }) => (
+                ({ name, icon, hasLabel, isArray, ...attributes }) => (
                   <ContactFormField
                     key={name}
                     name={name}
                     icon={icon}
-                    label={t(`fields.${name}`)}
-                    t={t}
                     isArray={isArray}
                     renderInput={(inputName, id) => (
                       <ContactFieldInput
+                        attributes={attributes}
                         id={id}
                         name={inputName}
-                        type={type}
                         label={t(`fields.${name}`)}
-                        required={required}
                         withLabel={hasLabel}
                         labelPlaceholder={t('fields.label')}
-                        labelProps={labelProps}
-                        isMultiline={isMultiline}
                       />
                     )}
                   />

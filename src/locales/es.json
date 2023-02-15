@@ -38,6 +38,7 @@
     "address": "%{pobox} %{street} %{postcode} %{city} %{region} %{country}"
   },
   "fields": {
+    "gender": "Civilidad",
     "givenName": "Nombre",
     "familyName": "Apellido",
     "phone": "Teléfono",
@@ -47,8 +48,13 @@
     "company": "Empresa",
     "jobTitle": "Cargo",
     "birthday": "Cumpleaños",
+    "birthplace": "Lugar de nacimiento",
     "note": "Notas",
     "label": "Etiqueta"
+  },
+  "gender": {
+    "man": "Hombre",
+    "woman": "Mujer"
   },
   "importation": {
     "cancel": "Anular",

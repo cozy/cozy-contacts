@@ -1,7 +1,25 @@
+const gender = [
+  {
+    value: 'male',
+    label: 'man'
+  },
+  {
+    value: 'female',
+    label: 'woman'
+  }
+]
+
 export const fields = [
   {
-    name: 'givenName',
+    name: 'gender',
     icon: 'people',
+    type: 'text',
+    select: true,
+    selectValue: gender
+  },
+  {
+    name: 'givenName',
+    icon: null,
     type: 'text'
   },
   {
@@ -24,24 +42,21 @@ export const fields = [
     icon: 'telephone',
     type: 'tel',
     hasLabel: true,
-    isArray: true,
-    addLabel: 'add-phone'
+    isArray: true
   },
   {
     name: 'email',
     icon: 'email',
     type: 'email',
     hasLabel: true,
-    isArray: true,
-    addLabel: 'add-email'
+    isArray: true
   },
   {
     name: 'address',
     icon: 'location',
     type: 'text',
     hasLabel: true,
-    isArray: true,
-    addLabel: 'add-address'
+    isArray: true
   },
   {
     name: 'cozy',
@@ -54,6 +69,11 @@ export const fields = [
     icon: 'calendar',
     type: 'date',
     labelProps: { shrink: true }
+  },
+  {
+    name: 'birthplace',
+    icon: null,
+    type: 'text'
   },
   {
     name: 'note',

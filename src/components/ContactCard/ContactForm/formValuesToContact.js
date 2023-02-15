@@ -1,4 +1,3 @@
-import get from 'lodash/get'
 import {
   updateIndexFullNameAndDisplayName,
   getFormattedAddress
@@ -10,7 +9,7 @@ const createAddress = ({ address, oldContact, t }) => {
         .filter(val => val && val.address)
         .map((addressField, index) => {
           const formattedAddress = addressField.address
-          const oldContactAddress = get(oldContact, `address[${index}]`)
+          const oldContactAddress = oldContact?.address?.[index]
           const oldContactFormattedAddress =
             (oldContactAddress && getFormattedAddress(oldContactAddress, t)) ||
             ''
@@ -24,7 +23,6 @@ const createAddress = ({ address, oldContact, t }) => {
               primary: index === 0
             }
           }
-
           return oldContactAddress
         })
     : []
@@ -32,6 +30,7 @@ const createAddress = ({ address, oldContact, t }) => {
 
 const formValuesToContact = ({ formValues, oldContact, t }) => {
   const {
+    gender,
     givenName,
     familyName,
     phone,
@@ -41,13 +40,15 @@ const formValuesToContact = ({ formValues, oldContact, t }) => {
     company,
     jobTitle,
     birthday,
+    birthplace,
     note
   } = formValues
 
   const contactWithFormValues = {
     ...oldContact,
+    gender: gender || '',
     name: {
-      ...get(oldContact, 'name'),
+      ...oldContact?.name,
       givenName: givenName || '',
       familyName: familyName || ''
     },
@@ -82,16 +83,17 @@ const formValuesToContact = ({ formValues, oldContact, t }) => {
     company: company || '',
     jobTitle: jobTitle || '',
     birthday: birthday || '',
+    birthplace: birthplace || '',
     note: note || '',
     // If we don't create the relationships field manually, cozy-client doesn't create it automatically when needed
     relationships: {
-      ...get(oldContact, 'relationships'),
+      ...oldContact?.relationships,
       groups: {
         data: []
       }
     },
     metadata: {
-      ...get(oldContact, 'metadata'),
+      ...oldContact?.metadata,
       version: 1,
       cozy: true
     }

@@ -22,6 +22,8 @@ export const filterFieldList = fields =>
   fields.filter(
     field =>
       [
+        'gender',
+        'birthplace',
         'name',
         'fullname',
         '_id',
