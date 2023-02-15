@@ -48,6 +48,7 @@
     "company": "Company",
     "jobTitle": "Job title",
     "birthday": "Birthday",
+    "birthplace": "Birthplace",
     "note": "Notes",
     "label": "Label"
   },

@@ -21,6 +21,7 @@ const contactToFormValues = (contact, t) => {
       gender,
       address,
       birthday,
+      birthplace,
       company,
       jobTitle,
       cozy,
@@ -67,6 +68,7 @@ const contactToFormValues = (contact, t) => {
       company,
       jobTitle,
       birthday,
+      birthplace,
       note
     }
   }

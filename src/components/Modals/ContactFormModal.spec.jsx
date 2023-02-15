@@ -70,6 +70,7 @@ describe('ContactFormModal component', () => {
     const expected = {
       address: [],
       birthday: '',
+      birthplace: '',
       gender: '',
       company: 'Cozy Cloud',
       cozy: [],
@@ -123,6 +124,7 @@ describe('ContactFormModal component', () => {
     const expected = {
       address: [],
       birthday: '',
+      birthplace: '',
       gender: '',
       company: 'Cozy Cloud',
       cozy: [],

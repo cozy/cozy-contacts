@@ -40,6 +40,7 @@ const formValuesToContact = ({ formValues, oldContact, t }) => {
     company,
     jobTitle,
     birthday,
+    birthplace,
     note
   } = formValues
 
@@ -82,6 +83,7 @@ const formValuesToContact = ({ formValues, oldContact, t }) => {
     company: company || '',
     jobTitle: jobTitle || '',
     birthday: birthday || '',
+    birthplace: birthplace || '',
     note: note || '',
     // If we don't create the relationships field manually, cozy-client doesn't create it automatically when needed
     relationships: {

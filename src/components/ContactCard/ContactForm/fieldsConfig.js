@@ -71,6 +71,11 @@ export const fields = [
     labelProps: { shrink: true }
   },
   {
+    name: 'birthplace',
+    icon: null,
+    type: 'text'
+  },
+  {
     name: 'note',
     icon: 'comment',
     type: 'text',

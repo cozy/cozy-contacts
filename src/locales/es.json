@@ -48,6 +48,7 @@
     "company": "Empresa",
     "jobTitle": "Cargo",
     "birthday": "Cumpleaños",
+    "birthplace": "Lugar de nacimiento",
     "note": "Notas",
     "label": "Etiqueta"
   },

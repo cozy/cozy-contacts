@@ -26,6 +26,7 @@ describe('formValuesToContact', () => {
         }
       ],
       birthday: '1999-5-1',
+      birthplace: 'somewhere',
       gender: 'male',
       company: 'Cozy cloud',
       cozy: [
@@ -74,6 +75,7 @@ describe('formValuesToContact', () => {
         }
       ],
       birthday: undefined,
+      birthplace: 'somewhere',
       gender: 'female',
       company: undefined,
       jobTitle: undefined,
@@ -100,6 +102,7 @@ describe('formValuesToContact', () => {
     const expected = {
       address: [],
       birthday: '',
+      birthplace: 'somewhere',
       gender: 'female',
       company: '',
       cozy: [],
@@ -213,6 +216,7 @@ describe('formValuesToContact', () => {
       company: undefined,
       jobTitle: undefined,
       birthday: undefined,
+      birthplace: undefined,
       note: undefined,
       address: [undefined],
       email: [undefined],
@@ -230,6 +234,7 @@ describe('formValuesToContact', () => {
       cozy: [],
       phone: [],
       birthday: '',
+      birthplace: '',
       gender: '',
       note: '',
       relationships: { groups: { data: [] } }
@@ -251,6 +256,7 @@ describe('formValuesToContact', () => {
       company: '',
       jobTitle: '',
       birthday: '',
+      birthplace: '',
       note: '',
       address: [{}],
       email: [{}],
@@ -268,6 +274,7 @@ describe('formValuesToContact', () => {
       cozy: [],
       phone: [],
       birthday: '',
+      birthplace: '',
       gender: '',
       note: '',
       relationships: { groups: { data: [] } }

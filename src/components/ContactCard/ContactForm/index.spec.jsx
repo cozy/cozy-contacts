@@ -73,6 +73,7 @@ describe('ContactForm', () => {
         }
       ],
       birthday: '31/12/2015',
+      birthplace: 'somewhere',
       gender: 'male',
       company: 'Cozy CLoud',
       cozy: [
@@ -113,6 +114,7 @@ describe('ContactForm', () => {
       company: 'Cozy CLoud',
       jobTitle: 'Dreamer',
       birthday: '31/12/2015',
+      birthplace: 'somewhere',
       note: 'Whatever.'
     }
 
@@ -161,6 +163,7 @@ describe('ContactForm', () => {
     const expected = {
       address: [],
       birthday: '',
+      birthplace: '',
       gender: '',
       company: '',
       cozy: [],
