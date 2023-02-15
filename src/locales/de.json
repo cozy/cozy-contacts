@@ -38,6 +38,7 @@
     "address": "%{pobox} %{street} %{postcode} %{city} %{region} %{country}"
   },
   "fields": {
+    "gender": "Höflichkeit",
     "givenName": "Vorname",
     "familyName": "Nachname",
     "phone": "Telefon",
@@ -49,6 +50,10 @@
     "birthday": "Geburtstag",
     "note": "Notizen",
     "label": "Label"
+  },
+  "gender": {
+    "man": "Männlich",
+    "woman": "Frauen"
   },
   "importation": {
     "cancel": "Abbrechen",

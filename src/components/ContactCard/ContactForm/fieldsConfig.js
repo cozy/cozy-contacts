@@ -1,7 +1,25 @@
+const gender = [
+  {
+    value: 'male',
+    label: 'man'
+  },
+  {
+    value: 'female',
+    label: 'woman'
+  }
+]
+
 export const fields = [
   {
-    name: 'givenName',
+    name: 'gender',
     icon: 'people',
+    type: 'text',
+    select: true,
+    selectValue: gender
+  },
+  {
+    name: 'givenName',
+    icon: null,
     type: 'text'
   },
   {

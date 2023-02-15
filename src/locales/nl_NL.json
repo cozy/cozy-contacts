@@ -38,6 +38,7 @@
     "address": "%{pobox} %{street} %{postcode} %{city} %{region} %{country}"
   },
   "fields": {
+    "gender": "Beleefdheid",
     "givenName": "Voornaam",
     "familyName": "Achternaam",
     "phone": "Telefoonnummer",
@@ -49,6 +50,10 @@
     "birthday": "Verjaardag",
     "note": "Aantekeningen",
     "label": "Label"
+  },
+  "gender": {
+    "man": "Mannelijk",
+    "woman": "Vrouwen"
   },
   "importation": {
     "cancel": "Annuleren",
