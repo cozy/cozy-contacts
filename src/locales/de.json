@@ -7,6 +7,7 @@
   "edit": "Bearbeiten",
   "edit-contact": "Kontakt bearbeiten",
   "save": "Speichern",
+  "ok": "Ok",
   "delete": "Löschen",
   "selected_contacts": "%{smart_count} ausgewählter Kontakt |||| %{smart_count} ausgewählte Kontakte",
   "select-all": "Alle auswählen",
@@ -50,7 +51,18 @@
     "birthday": "Geburtstag",
     "birthplace": "Geburtsort",
     "note": "Notizen",
-    "label": "Label"
+    "label": "Label",
+    "number": "Kanal Nummer",
+    "street": "Anschrift",
+    "code": "Postleitzahl",
+    "city": "Stadt",
+    "country": "Land",
+    "locality": "Lokalität",
+    "building": "Gebäude",
+    "stairs": "Stufen",
+    "floor": "Bühne",
+    "apartment": "Wohnung",
+    "entrycode": "Zugangscode"
   },
   "gender": {
     "man": "Männlich",

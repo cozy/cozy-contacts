@@ -7,6 +7,7 @@
   "edit": "Edit",
   "edit-contact": "Edit contact",
   "save": "Save",
+  "ok": "Ok",
   "delete": "Delete",
   "selected_contacts": "%{smart_count} selected contact |||| %{smart_count} selected contacts",
   "select-all": "Select all",
@@ -50,7 +51,18 @@
     "birthday": "Birthday",
     "birthplace": "Birthplace",
     "note": "Notes",
-    "label": "Label"
+    "label": "Label",
+    "number": "Lane number",
+    "street": "Postal address",
+    "code": "Postal code",
+    "city": "City",
+    "country": "Country",
+    "locality": "locality",
+    "building": "Building",
+    "stairs": "Stairs",
+    "floor": "Floor",
+    "apartment": "Apartment",
+    "entrycode": "Entry code"
   },
   "gender": {
     "man": "Man",
