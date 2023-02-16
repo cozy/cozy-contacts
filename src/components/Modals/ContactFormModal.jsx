@@ -22,6 +22,8 @@ const ContactFormModal = () => {
 
   const { selectedGroup } = useContext(SelectedGroupContext)
   const [isFormBeingSubmitted, setIsFormBeingSubmitted] = useState(false)
+  // Tip to avoid that, when submitting the form, the fields are filled with old information for a short time.
+  const [contactWithNewData, setContactWithNewData] = useState(null)
 
   // Tip while waiting for `getById` to be fixed
   // There is this fix, but apparently doesn't work here https://github.com/cozy/cozy-client/commit/c5b602256f3e4cd747734fa213500191eeb2e3c9
@@ -39,6 +41,7 @@ const ContactFormModal = () => {
   const onClose = () => (contactId ? navigate(`/${contactId}`) : navigate('/'))
 
   const handleFormSubmit = async formData => {
+    setContactWithNewData({ ...contact, ...formData })
     setIsFormBeingSubmitted(true)
     try {
       await createOrUpdateContact({
@@ -61,7 +64,12 @@ const ContactFormModal = () => {
       onClose={onClose}
       size="large"
       title={contact ? t('edit-contact') : t('create_contact')}
-      content={<ContactForm contact={contact} onSubmit={handleFormSubmit} />}
+      content={
+        <ContactForm
+          contact={contactWithNewData || contact}
+          onSubmit={handleFormSubmit}
+        />
+      }
       actions={
         <>
           <Button variant="secondary" label={t('cancel')} onClick={onClose} />
