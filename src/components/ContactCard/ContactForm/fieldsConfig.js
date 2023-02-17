@@ -54,7 +54,7 @@ export const fields = [
   {
     name: 'address',
     icon: 'location',
-    type: 'text',
+    type: 'button',
     subFields: [
       {
         name: 'number',
