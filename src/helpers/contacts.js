@@ -186,6 +186,7 @@ export const getFormattedAddress = (address, t) => {
   }
 
   const unformattedAddress = {
+    number: address.number || '',
     street: address.street || '',
     code: address.postcode || '',
     city: address.city || '',

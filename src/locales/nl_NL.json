@@ -36,7 +36,7 @@
   },
   "formatted": {
     "date": "YYYY-MM-DD",
-    "address": "%{street}, %{code} %{city}, %{country}"
+    "address": "%{number} %{street}, %{code} %{city}, %{country}"
   },
   "fields": {
     "gender": "Beleefdheid",
