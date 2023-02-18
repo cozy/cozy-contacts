@@ -74,7 +74,7 @@
     "cozy-logger": "^1.10.0",
     "cozy-realtime": "^4.3.0",
     "cozy-sharing": "^6.0.3",
-    "cozy-ui": "^80.2.1",
+    "cozy-ui": "^80.3.0",
     "cozy-vcard": "^0.2.18",
     "final-form": "4.10.0",
     "final-form-arrays": "1.1.0",
