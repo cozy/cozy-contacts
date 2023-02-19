@@ -4,14 +4,12 @@ const contactPropTypes = {
   phone: PropTypes.shape({
     number: PropTypes.string.isRequired,
     type: PropTypes.string,
-    label: PropTypes.string,
     primary: PropTypes.bool
   }),
   email: PropTypes.shape({
     address: PropTypes.string.isRequired,
     primary: PropTypes.bool,
-    type: PropTypes.string,
-    label: PropTypes.string
+    type: PropTypes.string
   }),
   name: PropTypes.shape({
     familyName: PropTypes.string,
@@ -36,7 +34,6 @@ const contactPropTypes = {
     entrycode: PropTypes.string,
     type: PropTypes.string,
     primary: PropTypes.bool,
-    label: PropTypes.string,
     formattedAddress: PropTypes.string
   }),
   cozy: PropTypes.shape({
