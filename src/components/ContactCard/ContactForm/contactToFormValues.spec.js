@@ -34,11 +34,10 @@ describe('contactToFormValues function', () => {
     const result = contactToFormValues(johnDoeContact, tSpy)
     expect(result).toEqual(expected)
     expect(tSpy).toHaveBeenCalledWith('formatted.address', {
-      pobox: '',
       street: '426 Runolfsson Knolls',
-      postcode: '84573',
+      code: '84573',
+      number: '',
       city: 'Port Easter',
-      region: '',
       country: 'Cocos (Keeling) Islands'
     })
   })

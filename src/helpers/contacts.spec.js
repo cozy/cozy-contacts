@@ -105,6 +105,7 @@ describe('normalizeFields', () => {
           {
             city: 'Port Easter',
             country: 'Cocos (Keeling) Islands',
+            pobox: '2',
             postcode: '84573',
             street: '426 Runolfsson Knolls',
             type: 'Work'

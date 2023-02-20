@@ -10,6 +10,7 @@ export const johnDoeContact = {
       primary: true
     },
     {
+      pobox: '2',
       street: '426 Runolfsson Knolls',
       city: 'Port Easter',
       country: 'Cocos (Keeling) Islands',
@@ -71,12 +72,34 @@ export const johnDoeFormValues = {
   address: [
     {
       address: '94 Hinton Road 05034 Fresno, Singapore',
-      addressLabel: 'Home'
+      addressLabel: 'Home',
+      addressapartment: undefined,
+      addressbuilding: undefined,
+      addresscity: undefined,
+      addresscode: undefined,
+      addresscountry: undefined,
+      addressentrycode: undefined,
+      addressfloor: undefined,
+      addresslocality: undefined,
+      addressnumber: undefined,
+      addressstairs: undefined,
+      addressstreet: '94 Hinton Road 05034 Fresno, Singapore'
     },
     {
       address:
         '426 Runolfsson Knolls 84573 Port Easter Cocos (Keeling) Islands',
-      addressLabel: 'Work'
+      addressLabel: 'Work',
+      addressapartment: undefined,
+      addressbuilding: undefined,
+      addresscity: 'Port Easter',
+      addresscode: '84573',
+      addresscountry: 'Cocos (Keeling) Islands',
+      addressentrycode: undefined,
+      addressfloor: undefined,
+      addresslocality: undefined,
+      addressnumber: undefined,
+      addressstairs: undefined,
+      addressstreet: '426 Runolfsson Knolls'
     }
   ],
   email: [

@@ -15,12 +15,38 @@ describe('formValuesToContact', () => {
       address: [
         {
           formattedAddress: '94 Hinton Road 05034 Fresno, Singapore',
+          city: undefined,
+          code: undefined,
+          country: undefined,
+          extendedAddress: {
+            apartment: undefined,
+            floor: undefined,
+            locality: undefined,
+            stairs: undefined,
+            entrycode: undefined,
+            building: undefined
+          },
+          number: undefined,
+          street: '94 Hinton Road 05034 Fresno, Singapore',
           primary: true,
           type: 'Home'
         },
         {
           formattedAddress:
             '426 Runolfsson Knolls 84573 Port Easter Cocos (Keeling) Islands',
+          city: 'Port Easter',
+          code: '84573',
+          country: 'Cocos (Keeling) Islands',
+          extendedAddress: {
+            apartment: undefined,
+            floor: undefined,
+            locality: undefined,
+            stairs: undefined,
+            entrycode: undefined,
+            building: undefined
+          },
+          number: undefined,
+          street: '426 Runolfsson Knolls',
           primary: false,
           type: 'Work'
         }
@@ -290,7 +316,23 @@ describe('formValuesToContact', () => {
 
   it('should not remove contact unformatted address if nothing change', () => {
     const formValues = {
-      address: [{ address: '94 Hinton Road 05034 Fresno Singapore' }]
+      address: [
+        {
+          address: 'Hinton Road, 05034 Fresno, Singapore',
+          addressnumber: undefined,
+          addressstreet: 'Hinton Road',
+          addresscode: '05034',
+          addresscity: 'Fresno',
+          addresscountry: 'Singapore',
+          addresslocality: undefined,
+          addressbuilding: undefined,
+          addressstairs: undefined,
+          addressfloor: undefined,
+          addressapartment: undefined,
+          addressentrycode: undefined,
+          addressLabel: 'Work'
+        }
+      ]
     }
 
     const oldContact = {
@@ -344,8 +386,14 @@ describe('formValuesToContact', () => {
     const expected = {
       address: [
         {
+          city: undefined,
+          code: undefined,
+          country: undefined,
           formattedAddress: '01 Hinton Road 05034 Fresno, Singapore',
+          number: undefined,
+          pobox: '94',
           primary: true,
+          street: undefined,
           type: undefined
         }
       ]
