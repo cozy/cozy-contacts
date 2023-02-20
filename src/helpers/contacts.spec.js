@@ -4,7 +4,8 @@ import {
   normalizeFields,
   updateIndexFullNameAndDisplayName,
   harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl,
-  reworkContacts
+  reworkContacts,
+  getFormattedAddress
 } from './contacts'
 import { johnDoeContact } from './testData'
 
@@ -304,5 +305,82 @@ describe('reworkContacts', () => {
         contactsWithNoIndexes
       )
     ).toEqual(expected)
+  })
+})
+
+describe('getFormattedAddress', () => {
+  describe('with connector address format', () => {
+    it('should return full formatted address', () => {
+      const addressMock = {
+        city: 'Cambridge',
+        country: 'Russian Federation',
+        postcode: '16862',
+        street: '38 Taylor Street'
+      }
+
+      const res = getFormattedAddress(
+        addressMock,
+        jest.fn(() => '38 Taylor Street, 16862 Cambridge, Russian Federation')
+      )
+
+      expect(res).toBe('38 Taylor Street, 16862 Cambridge, Russian Federation')
+    })
+    it('should return formatted address if only "postcode" & "city" values are defined', () => {
+      const addressMock = {
+        city: 'Cambridge',
+        country: undefined,
+        postcode: '16862',
+        street: undefined
+      }
+      const res = getFormattedAddress(
+        addressMock,
+        jest.fn(() => ' , 16862 Cambridge, ')
+      )
+
+      expect(res).toBe('16862 Cambridge')
+    })
+    it('should return formatted address if "postcode" & "city" values are undefined', () => {
+      const addressMock = {
+        city: 'Cambridge',
+        country: undefined,
+        postcode: undefined,
+        street: '38 Taylor Street'
+      }
+      const res = getFormattedAddress(
+        addressMock,
+        jest.fn(() => '38 Taylor Street,  , Cambridge')
+      )
+
+      expect(res).toBe('38 Taylor Street, Cambridge')
+    })
+    it('should return formatted address if "postcode" & "city" values are undefined', () => {
+      const addressMock = {
+        city: undefined,
+        country: undefined,
+        postcode: undefined,
+        street: undefined
+      }
+      const res = getFormattedAddress(
+        addressMock,
+        jest.fn(() => ' ,  , ')
+      )
+
+      expect(res).toBe('')
+    })
+  })
+
+  describe('with manual address format', () => {
+    it('should return full formatted address', () => {
+      const addressMock = {
+        formattedAddress: '38 Taylor Street 16862 Cambridge Russian Federation'
+      }
+
+      const res = getFormattedAddress(
+        addressMock,
+        jest.fn(() => '')
+      )
+
+      expect(res).toBe('38 Taylor Street 16862 Cambridge Russian Federation')
+    })
   })
 })

@@ -36,7 +36,7 @@
   },
   "formatted": {
     "date": "YYYY-MM-DD",
-    "address": "%{pobox} %{street} %{postcode} %{city} %{region} %{country}"
+    "address": "%{street}, %{code} %{city}, %{country}"
   },
   "fields": {
     "gender": "Beleefdheid",
