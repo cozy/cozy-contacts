@@ -1,21 +1,23 @@
 import React from 'react'
 import { render, fireEvent, waitFor } from '@testing-library/react'
-
-import { useClient } from 'cozy-client'
+import { act } from 'react-dom/test-utils'
 import { useParams } from 'react-router-dom'
+
+import { useQuery } from 'cozy-client'
 
 import AppLike from '../../tests/Applike'
 import ContactFormModal from './ContactFormModal'
-import { createContact, updateContact } from '../../connections/allContacts'
-import { act } from 'react-dom/test-utils'
+import { createOrUpdateContact } from '../../connections/allContacts'
 
 jest.mock('../../connections/allContacts', () => ({
   createContact: jest.fn().mockResolvedValue({ data: 'created' }),
-  updateContact: jest.fn().mockResolvedValue({ data: 'updated' })
+  updateContact: jest.fn().mockResolvedValue({ data: 'updated' }),
+  createOrUpdateContact: jest.fn()
 }))
-
-jest.mock('cozy-client/dist/hooks/useClient', () => jest.fn())
-
+jest.mock('cozy-client/dist/hooks', () => ({
+  ...jest.requireActual('cozy-client/dist/hooks'),
+  useQuery: jest.fn()
+}))
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: jest.fn()
@@ -30,8 +32,8 @@ describe('ContactFormModal component', () => {
       }
     }
 
-    useClient.mockReturnValue({
-      fetchQueryAndGetFromState: async () => ({ data: contact })
+    useQuery.mockReturnValue({
+      data: contact
     })
 
     useParams.mockReturnValue({
@@ -58,8 +60,13 @@ describe('ContactFormModal component', () => {
     const formData = {
       company: 'Cozy Cloud'
     }
+    useQuery.mockReturnValue({
+      data: {}
+    })
 
-    useParams.mockReturnValue({})
+    useParams.mockReturnValue({
+      contactId: 'ID'
+    })
 
     const jsx = (
       <AppLike>
@@ -97,7 +104,12 @@ describe('ContactFormModal component', () => {
       const submitButton = getByRole('button', { name: 'Save' })
       fireEvent.click(submitButton)
 
-      expect(createContact).toHaveBeenCalledWith(expect.anything(), expected)
+      expect(createOrUpdateContact).toHaveBeenCalledWith({
+        client: expect.anything(),
+        oldContact: {},
+        formData: expected,
+        selectedGroup: expect.anything()
+      })
     })
   })
 
@@ -109,8 +121,8 @@ describe('ContactFormModal component', () => {
       }
     }
 
-    useClient.mockReturnValue({
-      fetchQueryAndGetFromState: async () => ({ data: contact })
+    useQuery.mockReturnValue({
+      data: contact
     })
 
     useParams.mockReturnValue({
@@ -173,6 +185,11 @@ describe('ContactFormModal component', () => {
       fireEvent.click(submitButton)
     })
 
-    expect(updateContact).toHaveBeenCalledWith(expect.anything(), expected)
+    expect(createOrUpdateContact).toHaveBeenCalledWith({
+      client: expect.anything(),
+      oldContact: contact,
+      formData: expected,
+      selectedGroup: expect.anything()
+    })
   })
 })

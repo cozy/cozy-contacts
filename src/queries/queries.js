@@ -14,7 +14,8 @@ export const buildContactsQueryById = id => ({
   options: {
     as: `contactById-${id}`,
     fetchPolicy: fetchPolicies.olderThan(older30s),
-    singleDocData: true
+    singleDocData: true,
+    enabled: Boolean(id)
   }
 })
 
