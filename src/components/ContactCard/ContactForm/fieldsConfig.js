@@ -54,7 +54,64 @@ export const fields = [
   {
     name: 'address',
     icon: 'location',
-    type: 'text',
+    type: 'button',
+    subFields: [
+      {
+        name: 'number',
+        icon: null,
+        type: 'text'
+      },
+      {
+        name: 'street',
+        icon: null,
+        type: 'text'
+      },
+      {
+        name: 'code',
+        icon: null,
+        type: 'text'
+      },
+      {
+        name: 'city',
+        icon: null,
+        type: 'text'
+      },
+      {
+        name: 'country',
+        icon: null,
+        type: 'text'
+      },
+      {
+        name: 'locality',
+        icon: null,
+        type: 'text'
+      },
+      {
+        name: 'building',
+        icon: null,
+        type: 'text'
+      },
+      {
+        name: 'stairs',
+        icon: null,
+        type: 'text'
+      },
+      {
+        name: 'floor',
+        icon: null,
+        type: 'text'
+      },
+      {
+        name: 'apartment',
+        icon: null,
+        type: 'text'
+      },
+      {
+        name: 'entrycode',
+        icon: null,
+        type: 'text'
+      }
+    ],
     hasLabel: true,
     isArray: true
   },

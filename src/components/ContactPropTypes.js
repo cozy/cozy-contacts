@@ -4,14 +4,12 @@ const contactPropTypes = {
   phone: PropTypes.shape({
     number: PropTypes.string.isRequired,
     type: PropTypes.string,
-    label: PropTypes.string,
     primary: PropTypes.bool
   }),
   email: PropTypes.shape({
     address: PropTypes.string.isRequired,
     primary: PropTypes.bool,
-    type: PropTypes.string,
-    label: PropTypes.string
+    type: PropTypes.string
   }),
   name: PropTypes.shape({
     familyName: PropTypes.string,
@@ -25,11 +23,17 @@ const contactPropTypes = {
     pobox: PropTypes.string,
     city: PropTypes.string,
     region: PropTypes.string,
-    postcode: PropTypes.string,
     country: PropTypes.string,
+    number: PropTypes.string,
+    code: PropTypes.string,
+    locality: PropTypes.string,
+    building: PropTypes.string,
+    stairs: PropTypes.string,
+    floor: PropTypes.string,
+    apartment: PropTypes.string,
+    entrycode: PropTypes.string,
     type: PropTypes.string,
     primary: PropTypes.bool,
-    label: PropTypes.string,
     formattedAddress: PropTypes.string
   }),
   cozy: PropTypes.shape({

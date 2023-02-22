@@ -130,11 +130,11 @@ exports[`ContactInfoContent should match snapshot when groups are available but 
           >
             <a
               className="u-link"
-              href="https://nominatim.openstreetmap.org/search?format=html&q=48%20Fuller%20Road%2006635%20Stafford%20Solomon%20Islands"
+              href="https://nominatim.openstreetmap.org/search?format=html&q=48%20Fuller%20Road,%2006635%20Stafford,%20Solomon%20Islands"
               rel="noopener noreferrer"
               target="_blank"
             >
-              48 Fuller Road 06635 Stafford Solomon Islands
+              48 Fuller Road, 06635 Stafford, Solomon Islands
             </a>
           </div>
         </div>

@@ -7,6 +7,7 @@
   "edit": "Modifier",
   "edit-contact": "Modifier le contact",
   "save": "Enregistrer",
+  "ok": "Ok",
   "delete": "Supprimer",
   "selected_contacts": "%{smart_count} contact sélectionné |||| %{smart_count} contacts sélectionnés",
   "select-all": "Tout sélectionner",
@@ -35,7 +36,7 @@
   },
   "formatted": {
     "date": "DD/MM/YYYY",
-    "address": "%{pobox} %{street} %{postcode} %{city} %{region} %{country}"
+    "address": "%{number} %{street}, %{code} %{city}, %{country}"
   },
   "fields": {
     "gender": "Civilité",
@@ -50,7 +51,18 @@
     "birthday": "Anniversaire",
     "birthplace": "Lieu de naissance",
     "note": "Notes",
-    "label": "Libellé"
+    "label": "Libellé",
+    "number": "Numéro de voie",
+    "street": "Adresse postal",
+    "code": "Code postal",
+    "city": "Ville",
+    "country": "Pays",
+    "locality": "Lieu-dit",
+    "building": "Bâtiment",
+    "stairs": "Escalier",
+    "floor": "Etage",
+    "apartment": "Appartement",
+    "entrycode": "Code d'entrée"
   },
   "gender": {
     "man": "Homme",

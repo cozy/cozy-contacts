@@ -5,6 +5,11 @@ import { Field } from 'react-final-form'
 import HasValueCondition from '../Form/HasValueCondition'
 import FieldInputWrapper from '../Form/FieldInputWrapper'
 import { fieldInputAttributes } from './ContactFields/ContactFieldsProptypes'
+import ContactAddressModal from '../Modals/ContactAddressModal'
+
+const isAddressField = ({ subFields, type }) => {
+  return Boolean(subFields) && type === 'button'
+}
 
 const ContactFieldInput = ({
   name,
@@ -14,6 +19,16 @@ const ContactFieldInput = ({
   ...props
 }) => {
   const [hasBeenFocused, setHasBeenFocused] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const { subFields, ...restAttributes } = attributes
+
+  const propsUpdated = isAddressField(attributes)
+    ? {
+        ...props,
+        onClick: () => setIsOpen(true),
+        inputProps: { className: 'u-ta-left u-spacellipsis u-h-100' }
+      }
+    : props
 
   const onFocus = () => {
     setHasBeenFocused(true)
@@ -22,17 +37,24 @@ const ContactFieldInput = ({
   return (
     <div className="u-flex u-flex-column-s u-flex-grow-1 u-pr-3">
       <Field
-        {...props}
-        attributes={attributes}
+        {...propsUpdated}
+        attributes={restAttributes}
         name={name}
         onFocus={onFocus}
         component={FieldInputWrapper}
       />
+      {isAddressField(attributes) && isOpen && (
+        <ContactAddressModal
+          onClose={() => setIsOpen(false)}
+          name={name}
+          subFields={subFields}
+        />
+      )}
       {withLabel && (
         <HasValueCondition name={name} otherCondition={hasBeenFocused}>
           <div className="u-mt-half-s u-ml-half u-ml-0-s u-flex-shrink-0 u-w-auto">
             <Field
-              attributes={{ ...attributes, type: 'text' }}
+              attributes={{ ...restAttributes, type: 'text' }}
               name={`${name}Label`}
               label={labelPlaceholder}
               onFocus={onFocus}

@@ -7,6 +7,7 @@
   "edit": "Bewerken",
   "edit-contact": "Contactpersoon bewerken",
   "save": "Opslaan",
+  "ok": "Ok",
   "delete": "Verwijderen",
   "selected_contacts": "%{smart_count} geselecteerde contactpersoon |||| %{smart_count} geselecteerde contactpersonen",
   "select-all": "Alles selecteren",
@@ -35,7 +36,7 @@
   },
   "formatted": {
     "date": "YYYY-MM-DD",
-    "address": "%{pobox} %{street} %{postcode} %{city} %{region} %{country}"
+    "address": "%{number} %{street}, %{code} %{city}, %{country}"
   },
   "fields": {
     "gender": "Beleefdheid",
@@ -50,7 +51,18 @@
     "birthday": "Verjaardag",
     "birthplace": "Geboorteplaats",
     "note": "Aantekeningen",
-    "label": "Label"
+    "label": "Etiket",
+    "number": "Kanaal nummer",
+    "street": "Postadres",
+    "code": "Postcode",
+    "city": "Stad",
+    "country": "Land",
+    "locality": "Plaats",
+    "building": "Gebouw",
+    "stairs": "Trap",
+    "floor": "Fase",
+    "apartment": "Appartement",
+    "entrycode": "Toegangscode"
   },
   "gender": {
     "man": "Mannelijk",

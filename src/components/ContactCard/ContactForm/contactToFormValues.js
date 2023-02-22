@@ -35,6 +35,18 @@ const contactToFormValues = (contact, t) => {
       address && address.length > 0
         ? movePrimaryToHead(address).map(({ type, ...addressInfo }) => ({
             address: getFormattedAddress(addressInfo, t),
+            addressnumber: addressInfo.number,
+            addressstreet:
+              addressInfo.street || getFormattedAddress(addressInfo, t),
+            addresscode: addressInfo.postcode || addressInfo.code,
+            addresscity: addressInfo.city,
+            addresscountry: addressInfo.country,
+            addresslocality: addressInfo.extendedAddress?.locality,
+            addressbuilding: addressInfo.extendedAddress?.building,
+            addressstairs: addressInfo.extendedAddress?.stairs,
+            addressfloor: addressInfo.extendedAddress?.floor,
+            addressapartment: addressInfo.extendedAddress?.apartment,
+            addressentrycode: addressInfo.extendedAddress?.entrycode,
             addressLabel: type
           }))
         : [undefined]

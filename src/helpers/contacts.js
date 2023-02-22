@@ -146,6 +146,34 @@ export const reworkContacts = (
   return reworkedContacts
 }
 
+const cleanFormattedAddress = formattedAddress => {
+  // Replace all spaces by one space, to fix cases where there are multiple spaces
+  // Replace commas that have a space before
+  // And remove all spaces before & after the string
+  let formattedAddressClean = formattedAddress
+    .replace(/\s+/g, ' ')
+    .replace(/\s,/g, '')
+    .trim()
+
+  // Case where a comma is the last character
+  if (
+    formattedAddressClean.lastIndexOf(',') ===
+    formattedAddressClean.length - 1
+  ) {
+    formattedAddressClean = formattedAddressClean.slice(
+      0,
+      formattedAddressClean.length - 1
+    )
+  }
+
+  // Case where a comma is the first character
+  if (formattedAddressClean.indexOf(',') === 0) {
+    formattedAddressClean = formattedAddressClean.slice(1)
+  }
+
+  return formattedAddressClean
+}
+
 /**
  * Returns the contact's formatted address
  * @param {object} address - A contact address
@@ -157,25 +185,15 @@ export const getFormattedAddress = (address, t) => {
     return address.formattedAddress
   }
 
-  const emptyAddress = {
-    pobox: '',
-    street: '',
-    postcode: '',
-    city: '',
-    region: '',
-    country: ''
-  }
-
   const unformattedAddress = {
-    ...emptyAddress,
-    ...address
+    number: address.number || '',
+    street: address.street || '',
+    code: address.postcode || '',
+    city: address.city || '',
+    country: address.country || ''
   }
 
-  return t('formatted.address', unformattedAddress)
-    .trim()
-    .split(' ')
-    .filter(val => val.length > 0)
-    .join(' ')
+  return cleanFormattedAddress(t('formatted.address', unformattedAddress))
 }
 
 /**
@@ -185,3 +203,24 @@ export const getFormattedAddress = (address, t) => {
  */
 export const addGroupToContact = (contact, group) =>
   HasMany.setHasManyItem(contact, 'groups', group._id, group)
+
+/**
+ * Make formatted address
+ * @param {{ name: string, value: string }[]} subFieldsState - State of address sub fields
+ * @returns {string} - Formatted address
+ */
+export const makeFormattedAddressWithSubFields = (subFieldsState, t) => {
+  const normalizedAddress = subFieldsState.reduce((acc, curr) => {
+    const key = curr.name
+      .split('.')
+      .pop()
+      .replace(/address/, '')
+
+    return {
+      ...acc,
+      [key]: curr.value || ''
+    }
+  }, {})
+
+  return cleanFormattedAddress(t('formatted.address', normalizedAddress))
+}

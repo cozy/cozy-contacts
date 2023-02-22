@@ -4,7 +4,9 @@ import {
   normalizeFields,
   updateIndexFullNameAndDisplayName,
   harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl,
-  reworkContacts
+  reworkContacts,
+  makeFormattedAddressWithSubFields,
+  getFormattedAddress
 } from './contacts'
 import { johnDoeContact } from './testData'
 
@@ -103,6 +105,7 @@ describe('normalizeFields', () => {
           {
             city: 'Port Easter',
             country: 'Cocos (Keeling) Islands',
+            pobox: '2',
             postcode: '84573',
             street: '426 Runolfsson Knolls',
             type: 'Work'
@@ -304,5 +307,145 @@ describe('reworkContacts', () => {
         contactsWithNoIndexes
       )
     ).toEqual(expected)
+  })
+})
+
+describe('getFormattedAddress', () => {
+  describe('with connector address format', () => {
+    it('should return full formatted address', () => {
+      const addressMock = {
+        city: 'Cambridge',
+        country: 'Russian Federation',
+        postcode: '16862',
+        street: '38 Taylor Street'
+      }
+
+      const res = getFormattedAddress(
+        addressMock,
+        jest.fn(() => '38 Taylor Street, 16862 Cambridge, Russian Federation')
+      )
+
+      expect(res).toBe('38 Taylor Street, 16862 Cambridge, Russian Federation')
+    })
+    it('should return formatted address if only "postcode" & "city" values are defined', () => {
+      const addressMock = {
+        city: 'Cambridge',
+        country: undefined,
+        postcode: '16862',
+        street: undefined
+      }
+      const res = getFormattedAddress(
+        addressMock,
+        jest.fn(() => ' , 16862 Cambridge, ')
+      )
+
+      expect(res).toBe('16862 Cambridge')
+    })
+    it('should return formatted address if "postcode" & "city" values are undefined', () => {
+      const addressMock = {
+        city: 'Cambridge',
+        country: undefined,
+        postcode: undefined,
+        street: '38 Taylor Street'
+      }
+      const res = getFormattedAddress(
+        addressMock,
+        jest.fn(() => '38 Taylor Street,  , Cambridge')
+      )
+
+      expect(res).toBe('38 Taylor Street, Cambridge')
+    })
+    it('should return formatted address if "postcode" & "city" values are undefined', () => {
+      const addressMock = {
+        city: undefined,
+        country: undefined,
+        postcode: undefined,
+        street: undefined
+      }
+      const res = getFormattedAddress(
+        addressMock,
+        jest.fn(() => ' ,  , ')
+      )
+
+      expect(res).toBe('')
+    })
+  })
+
+  describe('with manual address format', () => {
+    it('should return full formatted address', () => {
+      const addressMock = {
+        formattedAddress: '38 Taylor Street 16862 Cambridge Russian Federation'
+      }
+
+      const res = getFormattedAddress(
+        addressMock,
+        jest.fn(() => '')
+      )
+
+      expect(res).toBe('38 Taylor Street 16862 Cambridge Russian Federation')
+    })
+  })
+})
+
+describe('makeFormattedAddressWithSubFields', () => {
+  it('should return full formatted address', () => {
+    const subFieldsStateMock = [
+      { name: 'address[0].addressnumber', value: '10' },
+      { name: 'address[0].addressstreet', value: 'rue du test' },
+      { name: 'address[0].addresscode', value: '75056' },
+      { name: 'address[0].addresscity', value: 'Paris' },
+      { name: 'address[0].addresscountry', value: 'France' }
+    ]
+    const res = makeFormattedAddressWithSubFields(
+      subFieldsStateMock,
+      jest.fn(() => '10 rue du test, 75056 Paris, France')
+    )
+
+    expect(res).toBe('10 rue du test, 75056 Paris, France')
+  })
+  it('should return formatted address if only "code" & "city" values are defined', () => {
+    const subFieldsStateMock = [
+      { name: 'address[0].addressnumber', value: undefined },
+      { name: 'address[0].addressstreet', value: undefined },
+      { name: 'address[0].addresscode', value: '75056' },
+      { name: 'address[0].addresscity', value: 'Paris' },
+      { name: 'address[0].addresscountry', value: undefined }
+    ]
+    const res = makeFormattedAddressWithSubFields(
+      subFieldsStateMock,
+      jest.fn(() => ' , 75056 Paris, ')
+    )
+
+    expect(res).toBe('75056 Paris')
+  })
+  it('should return formatted address if "code" & "city" values are undefined', () => {
+    const subFieldsStateMock = [
+      { name: 'address[0].addressnumber', value: '10' },
+      { name: 'address[0].addressstreet', value: 'rue du test' },
+      { name: 'address[0].addresscode', value: undefined },
+      { name: 'address[0].addresscity', value: undefined },
+      { name: 'address[0].addresscountry', value: 'France' }
+    ]
+    const res = makeFormattedAddressWithSubFields(
+      subFieldsStateMock,
+      jest.fn(() => '10 rue du test,  , France')
+    )
+
+    expect(res).toBe('10 rue du test, France')
+  })
+  it('should return formatted address if all values are undefined', () => {
+    const subFieldsStateMock = [
+      { name: 'address[0].addressnumber', value: undefined },
+      { name: 'address[0].addressstreet', value: undefined },
+      { name: 'address[0].addresscode', value: undefined },
+      { name: 'address[0].addresscity', value: undefined },
+      { name: 'address[0].addresscountry', value: undefined }
+    ]
+    const res = makeFormattedAddressWithSubFields(
+      subFieldsStateMock,
+      jest.fn(() => ' ,  , ')
+    )
+
+    expect(res).toBe('')
   })
 })
