@@ -7,12 +7,16 @@ import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
-import { buildContactsQueryById } from '../../queries/queries'
+import {
+  buildContactsQueryById,
+  buildIdentitiesQueryByContact
+} from '../../queries/queries'
 import SelectedGroupContext from '../../components/Contexts/SelectedGroup'
 import ContactForm, {
   getSubmitContactForm
 } from '../../components/ContactCard/ContactForm'
 import { createOrUpdateContact } from '../../connections/allContacts'
+import { makeContactWithIdentitiesAddresses } from '../../helpers/contacts'
 
 const ContactFormModal = () => {
   const navigate = useNavigate()
@@ -29,6 +33,16 @@ const ContactFormModal = () => {
   const { data: contact } = useQuery(
     contactsQueryById.definition,
     contactsQueryById.options
+  )
+
+  const isContactsQueryEnabled =
+    contact && contact.me && contact.address?.length === 0
+  const indentitiesContactsQueryById = buildIdentitiesQueryByContact(
+    isContactsQueryEnabled
+  )
+  const { data: identities } = useQuery(
+    indentitiesContactsQueryById.definition,
+    indentitiesContactsQueryById.options
   )
 
   const triggerFormSubmit = event => {
@@ -56,6 +70,11 @@ const ContactFormModal = () => {
     }
   }
 
+  const contactWithIdentitiesAddresses = makeContactWithIdentitiesAddresses(
+    contact,
+    identities
+  )
+
   return (
     <FixedDialog
       open
@@ -64,7 +83,7 @@ const ContactFormModal = () => {
       title={contact ? t('edit-contact') : t('create_contact')}
       content={
         <ContactForm
-          contact={contactWithNewData || contact}
+          contact={contactWithNewData || contactWithIdentitiesAddresses}
           onSubmit={handleFormSubmit}
         />
       }
