@@ -25,9 +25,7 @@ const ContactFormModal = () => {
   // Tip to avoid that, when submitting the form, the fields are filled with old information for a short time.
   const [contactWithNewData, setContactWithNewData] = useState(null)
 
-  // Tip while waiting for `getById` to be fixed
-  // There is this fix, but apparently doesn't work here https://github.com/cozy/cozy-client/commit/c5b602256f3e4cd747734fa213500191eeb2e3c9
-  const contactsQueryById = buildContactsQueryById(contactId || 'undefined')
+  const contactsQueryById = buildContactsQueryById(contactId)
   const { data: contact } = useQuery(
     contactsQueryById.definition,
     contactsQueryById.options
