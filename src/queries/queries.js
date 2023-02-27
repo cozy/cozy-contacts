@@ -2,6 +2,7 @@ import { Q, fetchPolicies } from 'cozy-client'
 import {
   DOCTYPE_CONTACTS,
   DOCTYPE_CONTACT_GROUPS,
+  DOCTYPE_IDENTITIES,
   DOCTYPE_TRIGGERS
 } from '../helpers/doctypes'
 
@@ -18,6 +19,15 @@ export const buildContactsQueryById = id => ({
     fetchPolicy: fetchPolicies.olderThan(older30s),
     singleDocData: true,
     enabled: Boolean(id)
+  }
+})
+
+export const buildIdentitiesQueryByContact = (enabled = false) => ({
+  definition: Q(DOCTYPE_IDENTITIES),
+  options: {
+    as: DOCTYPE_IDENTITIES,
+    fetchPolicy: fetchPolicies.olderThan(older30s),
+    enabled
   }
 })
 

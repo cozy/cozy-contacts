@@ -6,7 +6,8 @@ import {
   harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl,
   reworkContacts,
   makeFormattedAddressWithSubFields,
-  getFormattedAddress
+  getFormattedAddress,
+  makeContactWithIdentitiesAddresses
 } from './contacts'
 import { johnDoeContact } from './testData'
 
@@ -447,5 +448,102 @@ describe('makeFormattedAddressWithSubFields', () => {
     )
 
     expect(res).toBe('')
+  })
+})
+
+describe('makeContactWithIdentitiesAddresses', () => {
+  it('should return the same contact if it has at least one address', () => {
+    const contactMock = {
+      ...johnDoeContact,
+      me: true,
+      address: [
+        {
+          formattedAddress: '94 Hinton Road 05034 Fresno, Singapore',
+          postcode: '05034',
+          city: 'Singapore'
+        }
+      ]
+    }
+    const identitiesMock = [
+      { contact: { address: [{ city: 'Cambridge', postcode: '16862' }] } }
+    ]
+    const res = makeContactWithIdentitiesAddresses(contactMock, identitiesMock)
+
+    expect(res).toBe(contactMock)
+  })
+
+  it('should return the same contact if `identitites` param is falsy', () => {
+    const contactMock = {
+      ...johnDoeContact,
+      me: true,
+      address: [
+        {
+          formattedAddress: '94 Hinton Road 05034 Fresno, Singapore',
+          postcode: '05034',
+          city: 'Singapore'
+        }
+      ]
+    }
+    const identitiesMock = undefined
+    const res = makeContactWithIdentitiesAddresses(contactMock, identitiesMock)
+
+    expect(res).toBe(contactMock)
+  })
+
+  it('should return the contact with the addresses in "identities" if it does not have one itself', () => {
+    const contactMock = {
+      ...johnDoeContact,
+      me: true,
+      address: []
+    }
+    const identitiesMock = [
+      { contact: { address: [{ city: 'Cambridge', postcode: '16862' }] } }
+    ]
+
+    const expected = {
+      ...johnDoeContact,
+      me: true,
+      address: [{ city: 'Cambridge', postcode: '16862' }]
+    }
+
+    const res = makeContactWithIdentitiesAddresses(contactMock, identitiesMock)
+
+    expect(res).toStrictEqual(expected)
+  })
+
+  it('should return the same contact if has no addresses and the "me" attribut is falsy', () => {
+    const contactMock = {
+      ...johnDoeContact,
+      me: false,
+      address: []
+    }
+    const identitiesMock = [
+      { contact: { address: [{ city: 'Cambridge', postcode: '16862' }] } }
+    ]
+
+    const res = makeContactWithIdentitiesAddresses(contactMock, identitiesMock)
+
+    expect(res).toStrictEqual(contactMock)
+  })
+
+  it('should return the same contact if it has at least one address and the "me" attribut is falsy', () => {
+    const contactMock = {
+      ...johnDoeContact,
+      me: false,
+      address: [
+        {
+          formattedAddress: '94 Hinton Road 05034 Fresno, Singapore',
+          postcode: '05034',
+          city: 'Singapore'
+        }
+      ]
+    }
+    const identitiesMock = [
+      { contact: { address: [{ city: 'Cambridge', postcode: '16862' }] } }
+    ]
+
+    const res = makeContactWithIdentitiesAddresses(contactMock, identitiesMock)
+
+    expect(res).toStrictEqual(contactMock)
   })
 })

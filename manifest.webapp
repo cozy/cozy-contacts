@@ -37,6 +37,10 @@
       "type": "io.cozy.apps",
       "verbs": ["GET"]
     },
+    "identities": {
+      "type": "io.cozy.identities",
+      "verbs": ["GET"]
+    },
     "contacts": {
       "type": "io.cozy.contacts",
       "verbs": ["ALL"]
