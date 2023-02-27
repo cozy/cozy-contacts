@@ -9,8 +9,10 @@ const older30s = 30 * 1000
 
 // Contacts doctype -------------
 
+// When use of "getById", the definition must be wrap in a function,
+// so that it is not executed even if the "enabled" option is equal to "false"
 export const buildContactsQueryById = id => ({
-  definition: Q(DOCTYPE_CONTACTS).getById(id),
+  definition: () => Q(DOCTYPE_CONTACTS).getById(id),
   options: {
     as: `contactById-${id}`,
     fetchPolicy: fetchPolicies.olderThan(older30s),
