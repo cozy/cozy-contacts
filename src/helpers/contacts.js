@@ -224,3 +224,12 @@ export const makeFormattedAddressWithSubFields = (subFieldsState, t) => {
 
   return cleanFormattedAddress(t('formatted.address', normalizedAddress))
 }
+
+export const makeContactWithIdentitiesAddresses = (contact, identities) => {
+  if (!identities || !contact.me || contact.address?.length > 0) return contact
+
+  return {
+    ...contact,
+    address: identities[0]?.contact?.address || contact?.address || []
+  }
+}
