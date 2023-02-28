@@ -40,11 +40,12 @@ describe('ContactCardModal', () => {
       </AppLike>
     )
 
-    const { findByTestId } = render(jsx)
-    expect(await findByTestId('contactSpinner'))
+    render(jsx)
+
+    expect(screen.queryByTestId('contactSpinner')).not.toBeNull()
   })
 
-  it('should not display the spinner', async () => {
+  it('should not display the spinner', () => {
     useParams.mockReturnValue({
       contactId: 'ID'
     })
@@ -80,9 +81,8 @@ describe('ContactCardModal', () => {
       </AppLike>
     )
 
-    const { findByText } = render(jsx)
-    await findByText(/John/)
-    const contactSpinner = screen.queryByTestId('contactSpinner')
-    expect(contactSpinner).toBeNull()
+    render(jsx)
+
+    expect(screen.queryByTestId('contactSpinner')).toBeNull()
   })
 })

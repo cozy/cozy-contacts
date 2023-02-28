@@ -1,5 +1,5 @@
 import React from 'react'
-import { fireEvent, render } from '@testing-library/react'
+import { render, screen, fireEvent, act } from '@testing-library/react'
 
 import AppLike from '../../tests/Applike'
 import { DumbContactSelection } from './ContactSelection'
@@ -7,7 +7,7 @@ import { DumbContactSelection } from './ContactSelection'
 const toggleSelection = jest.fn()
 
 const setup = ({ selection = [] } = {}) => {
-  return render(
+  const root = render(
     <AppLike>
       <DumbContactSelection
         contact={{ _id: 'contactId' }}
@@ -16,6 +16,7 @@ const setup = ({ selection = [] } = {}) => {
       />
     </AppLike>
   )
+  return { root }
 }
 
 describe('ContactSelection', () => {
@@ -24,26 +25,33 @@ describe('ContactSelection', () => {
   })
 
   it('should not be checked if contact is not selected', () => {
-    const { getByRole } = setup({
+    setup({
       selection: [{ id: 'otherContactId' }]
     })
 
-    expect(getByRole('checkbox')).not.toHaveAttribute('checked')
+    const checkbox = screen.queryByRole('checkbox')
+    expect(checkbox).not.toBeNull()
+    expect(checkbox).not.toHaveAttribute('checked')
     expect(toggleSelection).not.toHaveBeenCalled()
   })
 
   it('should checked the checkbox if contact is selected', () => {
-    const { getByRole } = setup({
+    setup({
       selection: [{ id: 'contactId' }]
     })
 
-    expect(getByRole('checkbox')).toHaveAttribute('checked')
+    const checkbox = screen.queryByRole('checkbox')
+    expect(checkbox).not.toBeNull()
+    expect(checkbox).toHaveAttribute('checked')
   })
 
   it('should trigger toggleSelection on click', () => {
-    const { getByRole } = setup()
+    setup()
 
-    fireEvent.click(getByRole('checkbox'))
+    act(() => {
+      fireEvent.click(screen.getByRole('checkbox'))
+    })
+
     expect(toggleSelection).toHaveBeenCalled()
   })
 })

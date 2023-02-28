@@ -213,9 +213,9 @@ describe('formValuesToContact', () => {
       oldContact,
       t
     })
-    Object.keys(oldContact).map(key =>
+    for (const key of Object.keys(oldContact)) {
       expect(result[key]).toEqual(expected[key])
-    )
+    }
   })
 
   it('should not remove attributes not in the doctype if it was present in the contact', () => {

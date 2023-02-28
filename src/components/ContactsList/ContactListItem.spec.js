@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import { mount } from 'enzyme'
+import { render, screen } from '@testing-library/react'
 
 import AppLike from '../../tests/Applike'
 import ContactListItem, { hasDocBeenUpdated } from './ContactListItem'
@@ -13,10 +13,10 @@ describe('ContactListItem', () => {
         <ContactListItem contact={contact} />
       </AppLike>
     )
-    const contactListItem = mount(contactListItemInstance)
-    const contactListItemEmail = contactListItem.find('ContactEmail')
-    expect(contactListItemEmail).toBeDefined()
-    expect(contactListItemEmail.text()).toBe(contact.email[0].address)
+    render(contactListItemInstance)
+    const contactListItemEmail = screen.queryByTestId('ContactEmail')
+    expect(contactListItemEmail).not.toBeNull()
+    expect(contactListItemEmail.textContent).toBe(contact.email[0].address)
   })
 
   it('should display data', () => {
@@ -31,22 +31,22 @@ describe('ContactListItem', () => {
         <ContactListItem contact={contact} />
       </AppLike>
     )
-    const contactListItem = mount(ContactListItemInstance)
-    const contactListItemName = contactListItem.find('ContactName')
-    expect(contactListItemName).toBeDefined()
-    expect(contactListItemName.text()).toEqual(
+    render(ContactListItemInstance)
+    const contactListItemName = screen.queryByTestId('ContactName')
+    expect(contactListItemName).not.toBeNull()
+    expect(contactListItemName.textContent).toEqual(
       expect.stringContaining(contact.name.givenName)
     )
-    expect(contactListItemName.text()).toEqual(
+    expect(contactListItemName.textContent).toEqual(
       expect.stringContaining(contact.name.familyName)
     )
-    const contactListItemPhone = contactListItem.find('ContactPhone')
-    expect(contactListItemPhone).toBeDefined()
-    expect(contactListItemPhone.text()).toBe(contact.phone[0].number)
+    const contactListItemPhone = screen.queryByTestId('ContactPhone')
+    expect(contactListItemPhone).not.toBeNull()
+    expect(contactListItemPhone.textContent).toBe(contact.phone[0].number)
 
-    const contactListItemCozyurl = contactListItem.find('ContactCozy')
-    expect(contactListItemCozyurl).toBeDefined()
-    expect(contactListItemCozyurl.text()).toBe(contact.cozy[0].url)
+    const contactListItemCozyurl = screen.queryByTestId('ContactCozy')
+    expect(contactListItemCozyurl).not.toBeNull()
+    expect(contactListItemCozyurl.textContent).toBe(contact.cozy[0].url)
   })
 
   it('should display default value for missing information', () => {
@@ -56,16 +56,16 @@ describe('ContactListItem', () => {
         <ContactListItem contact={contact} />
       </AppLike>
     )
-    const contactListItem = mount(ContactListItemInstance)
-    const contactListItemName = contactListItem.find('ContactName')
-    expect(contactListItemName).toBeDefined()
-    expect(contactListItemName.text().trim()).toBe('')
-    const contactListItemPhone = contactListItem.find('ContactPhone')
-    expect(contactListItemPhone).toBeDefined()
-    expect(contactListItemPhone.text().trim()).toBe('—')
-    const contactListItemCozyurl = contactListItem.find('ContactCozy')
-    expect(contactListItemCozyurl).toBeDefined()
-    expect(contactListItemCozyurl.text().trim()).toBe('—')
+    render(ContactListItemInstance)
+    const contactListItemName = screen.queryByTestId('ContactName')
+    expect(contactListItemName).not.toBeNull()
+    expect(contactListItemName.textContent.trim()).toBe('')
+    const contactListItemPhone = screen.queryByTestId('ContactPhone')
+    expect(contactListItemPhone).not.toBeNull()
+    expect(contactListItemPhone.textContent.trim()).toBe('—')
+    const contactListItemCozyurl = screen.queryByTestId('ContactCozy')
+    expect(contactListItemCozyurl).not.toBeNull()
+    expect(contactListItemCozyurl.textContent.trim()).toBe('—')
   })
 
   it('should accept empty array', () => {
@@ -75,10 +75,10 @@ describe('ContactListItem', () => {
         <ContactListItem contact={contact} />
       </AppLike>
     )
-    const contactListItem = mount(ContactListItemInstance)
-    const contactListItemEmail = contactListItem.find('ContactEmail')
-    expect(contactListItemEmail).toBeDefined()
-    expect(contactListItemEmail.text()).toBe('—')
+    render(ContactListItemInstance)
+    const contactListItemEmail = screen.queryByTestId('ContactEmail')
+    expect(contactListItemEmail).not.toBeNull()
+    expect(contactListItemEmail.textContent).toBe('—')
   })
 
   it('should match the contact snapshot', () => {

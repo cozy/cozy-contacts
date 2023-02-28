@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { render, screen } from '@testing-library/react'
 import renderer from 'react-test-renderer'
 import { DOCTYPE_CONTACT_GROUPS } from '../../../helpers/doctypes'
 
@@ -21,17 +21,16 @@ describe('ContactGroupList', () => {
       { _id: 'c', name: 'The C Team' }
     ]
 
-    const app = mount(
+    render(
       <AppLike>
         <ContactGroupList contact={contactMock} allGroups={groupsMock} />
       </AppLike>
     )
 
-    const contactGroupTags = app.find('li')
-
+    const contactGroupTags = screen.queryAllByRole('listitem')
     expect(contactGroupTags.length).toEqual(2)
-    expect(contactGroupTags.at(0).text()).toEqual(groupsMock[0].name)
-    expect(contactGroupTags.at(1).text()).toEqual(groupsMock[1].name)
+    expect(contactGroupTags[0].textContent).toEqual(groupsMock[0].name)
+    expect(contactGroupTags[1].textContent).toEqual(groupsMock[1].name)
   })
   it('should match the contact snapshot', () => {
     const contactMock = {

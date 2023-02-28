@@ -1,6 +1,6 @@
 import React from 'react'
-import { render, fireEvent, waitFor } from '@testing-library/react'
-import { act } from 'react-dom/test-utils'
+import { render, screen, fireEvent, act, waitFor } from '@testing-library/react'
+
 import { useParams } from 'react-router-dom'
 
 import { useQuery } from 'cozy-client'
@@ -46,12 +46,14 @@ describe('ContactFormModal component', () => {
       </AppLike>
     )
 
-    const { getByRole } = render(jsx)
+    render(jsx)
 
     await waitFor(() => {
-      const firstNameInput = getByRole('textbox', { name: 'Firstname' })
-      const lastNameInput = getByRole('textbox', { name: 'Lastname' })
+      const firstNameInput = screen.queryByLabelText('Firstname')
+      expect(firstNameInput).not.toBeNull()
       expect(firstNameInput.value).toBe('Doe')
+      const lastNameInput = screen.queryByLabelText('Lastname')
+      expect(lastNameInput).not.toBeNull()
       expect(lastNameInput.value).toBe('John')
     })
   })
@@ -93,23 +95,23 @@ describe('ContactFormModal component', () => {
       relationships: { groups: { data: [] } }
     }
 
-    const { getByRole } = render(jsx)
+    render(jsx)
 
-    await waitFor(() => {
-      const companyInput = getByRole('textbox', { name: 'Company' })
-      fireEvent.change(companyInput, {
+    act(() => {
+      fireEvent.change(screen.getByLabelText('Company'), {
         target: { value: formData.company }
       })
+    })
 
-      const submitButton = getByRole('button', { name: 'Save' })
-      fireEvent.click(submitButton)
+    act(() => {
+      fireEvent.click(screen.getByText('Save'))
+    })
 
-      expect(createOrUpdateContact).toHaveBeenCalledWith({
-        client: expect.anything(),
-        oldContact: {},
-        formData: expected,
-        selectedGroup: expect.anything()
-      })
+    expect(createOrUpdateContact).toHaveBeenCalledWith({
+      client: expect.anything(),
+      oldContact: {},
+      formData: expected,
+      selectedGroup: expect.anything()
     })
   })
 
@@ -161,28 +163,25 @@ describe('ContactFormModal component', () => {
       </AppLike>
     )
 
-    const { getByRole } = render(jsx)
-
-    let companyInput
+    render(jsx)
 
     await waitFor(() => {
-      companyInput = getByRole('textbox', { name: 'Company' })
+      const firstNameInput = screen.queryByLabelText('Firstname')
+      expect(firstNameInput).not.toBeNull()
+      expect(firstNameInput.value).toBe('Doe')
+      const lastNameInput = screen.queryByLabelText('Lastname')
+      expect(lastNameInput).not.toBeNull()
+      expect(lastNameInput.value).toBe('John')
     })
 
-    await act(async () => {
-      fireEvent.change(companyInput, {
+    act(() => {
+      fireEvent.change(screen.getByLabelText('Company'), {
         target: { value: formData.company }
       })
     })
 
-    let submitButton
-
-    await waitFor(() => {
-      submitButton = getByRole('button', { name: 'Save' })
-    })
-
-    await act(async () => {
-      fireEvent.click(submitButton)
+    act(() => {
+      fireEvent.click(screen.getByText('Save'))
     })
 
     expect(createOrUpdateContact).toHaveBeenCalledWith({

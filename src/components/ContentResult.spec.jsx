@@ -1,12 +1,10 @@
 import React from 'react'
-import { render, fireEvent, act } from '@testing-library/react'
+import { render, screen, fireEvent, act, waitFor } from '@testing-library/react'
 
 import AppLike from '../tests/Applike'
 import ContentResult from './ContentResult'
 import { groups, contactWithGroup, johnDoeContact } from '../helpers/testData'
 import enLocale from '../locales/en.json'
-
-const sleep = duration => new Promise(resolve => setTimeout(resolve, duration))
 
 const mockedContacts = {
   withoutGroup: [johnDoeContact],
@@ -27,109 +25,126 @@ const setup = ({
 
 describe('ContentResult - groups', () => {
   it('should show only filtered contacts after selecting a group filter', () => {
-    const { root } = setup({
+    setup({
       contacts: [mockedContacts.withoutGroup[0], mockedContacts.withGroup[0]]
     })
 
     const contactWithGroup = mockedContacts.withGroup[0].name.familyName
     const contactWithoutGroup = mockedContacts.withoutGroup[0].name.familyName
 
-    const { getByText, queryByText } = root
-
     // contacts with and without group should be present
-    expect(getByText(contactWithGroup))
-    expect(getByText(contactWithoutGroup))
+    expect(screen.queryByText(contactWithGroup)).not.toBeNull()
+    expect(screen.queryByText(contactWithoutGroup)).not.toBeNull()
 
-    // open the group filter and select first group
-    fireEvent.click(getByText(enLocale.filter['all-groups']))
-    fireEvent.click(getByText(groups[0].name))
+    act(() => {
+      // open the group filter and select first group
+      fireEvent.click(screen.getByText(enLocale.filter['all-groups']))
+    })
+
+    act(() => {
+      fireEvent.click(screen.getByText(groups[0].name))
+    })
 
     // should not return an empty contact list
-    expect(queryByText(enLocale.importation.available_soon)).toBeNull()
+    expect(screen.queryByText(enLocale.importation.available_soon)).toBeNull()
 
     // contacts without group should not be present
-    expect(getByText(contactWithGroup))
-    expect(queryByText(contactWithoutGroup)).toBeNull()
+    expect(screen.queryByText(contactWithGroup)).not.toBeNull()
+    expect(screen.queryByText(contactWithoutGroup)).toBeNull()
   })
 
   it('should show empty list after filtering contacts with no group', () => {
-    const { root } = setup()
+    setup()
 
-    const { getByText } = root
+    act(() => {
+      // open the group filter and select first group
+      fireEvent.click(screen.getByText(enLocale.filter['all-groups']))
+    })
 
-    // open the group filter and select first group
-    fireEvent.click(getByText(enLocale.filter['all-groups']))
-    fireEvent.click(getByText(groups[0].name))
+    act(() => {
+      fireEvent.click(screen.getByText(groups[0].name))
+    })
 
     // should return an empty contact list
-    expect(getByText(enLocale.importation.available_soon))
+    expect(
+      screen.queryByText(enLocale.importation.available_soon)
+    ).not.toBeNull()
   })
 
   it('should show empty message in group filter if no group to filter on', () => {
-    const { root } = setup({ allGroups: [] })
+    setup({ allGroups: [] })
 
-    const { getByText, getAllByText } = root
-
-    // open the group filter
-    fireEvent.click(getByText(enLocale.filter['all-groups']))
+    act(() => {
+      // open the group filter
+      fireEvent.click(screen.getByText(enLocale.filter['all-groups']))
+    })
 
     // should be all-groups only once, and show the empty groups message
-    expect(getAllByText(enLocale.filter['all-groups']).length).toBe(1)
-    expect(getByText(enLocale.filter['no-group']))
+    expect(screen.queryByText(enLocale.filter['all-groups'])).not.toBeNull()
+    expect(screen.queryByText(enLocale.filter['no-group'])).not.toBeNull()
   })
 
   it('should show correct entry after selecting an option', () => {
-    const { root } = setup()
+    setup()
 
-    const { queryByText, getByText, getByTestId } = root
+    let selectBox = screen.queryByTestId('selectBox-controlDefault')
+    expect(selectBox).not.toBeNull()
+    expect(selectBox.textContent).toBe(enLocale.filter['all-groups'])
 
-    expect(getByTestId('selectBox-controlDefault').textContent).toBe(
-      enLocale.filter['all-groups']
-    )
+    act(() => {
+      // open the group filter and select first group
+      fireEvent.click(screen.getByText(enLocale.filter['all-groups']))
+    })
 
-    // open the group filter and select first group
-    fireEvent.click(getByText(enLocale.filter['all-groups']))
-    fireEvent.click(getByText(groups[0].name))
+    act(() => {
+      fireEvent.click(screen.getByText(groups[0].name))
+    })
 
     // should close the menu after selecting an option
-    expect(queryByText(groups[1].name)).toBeNull()
+    expect(screen.queryByText(groups[1].name)).toBeNull()
 
     // should show group name instead of default option
-    expect(getByTestId('selectBox-controlDefault').textContent).toBe(
-      groups[0].name
-    )
+    selectBox = screen.queryByTestId('selectBox-controlDefault')
+    expect(selectBox).not.toBeNull()
+    expect(selectBox.textContent).toBe(groups[0].name)
 
-    // should show default option again after selecting it
-    fireEvent.click(getByTestId('selectBox-controlDefault'))
-    fireEvent.click(getByText(enLocale.filter['all-groups']))
-    expect(getByTestId('selectBox-controlDefault').textContent).toBe(
-      enLocale.filter['all-groups']
-    )
+    act(() => {
+      // should show default option again after selecting it
+      fireEvent.click(screen.getByTestId('selectBox-controlDefault'))
+    })
+
+    act(() => {
+      fireEvent.click(screen.getByText(enLocale.filter['all-groups']))
+    })
+
+    selectBox = screen.queryByTestId('selectBox-controlDefault')
+    expect(selectBox).not.toBeNull()
+    expect(selectBox.textContent).toBe(enLocale.filter['all-groups'])
   })
 })
 
 describe('ContentResult - search', () => {
   // put search value and awaits the search completion
-  const search = async (searchValue, getByPlaceholderText) => {
-    const searchInput = getByPlaceholderText('Search')
-    fireEvent.change(searchInput, { target: { value: searchValue } })
-    await act(async () => {
-      await sleep(1000)
+  const search = searchValue => {
+    fireEvent.change(screen.getByPlaceholderText('Search'), {
+      target: { value: searchValue }
     })
   }
 
   it('should not show any category when using search input', async () => {
-    const { root } = setup()
+    setup()
     const searchValue = 'John'
 
-    const { queryByText, getByText, getByPlaceholderText } = root
-
     // category of the contact
-    expect(getByText('EMPTY')).toBeTruthy()
+    expect(screen.queryByText('EMPTY')).not.toBeNull()
 
-    await search(searchValue, getByPlaceholderText)
+    act(() => {
+      search(searchValue)
+    })
 
-    expect(queryByText('EMPTY')).toBeNull()
+    await waitFor(() => {
+      expect(screen.queryByText('EMPTY')).toBeNull()
+    })
   })
 
   it('should show contacts in correct order when using search input', async () => {
@@ -146,17 +161,18 @@ describe('ContentResult - search', () => {
       }
     ]
     const searchValue = 'John'
-    const { root } = setup({ contacts })
+    setup({ contacts })
 
-    const { getAllByTestId, getByPlaceholderText } = root
+    act(() => {
+      search(searchValue)
+    })
 
-    await search(searchValue, getByPlaceholderText)
-
-    const contactListItems = getAllByTestId('contact-listItem')
-
-    expect(contactListItems.length).toBe(2)
-    expect(contactListItems[0].textContent).toMatch('John')
-    expect(contactListItems[1].textContent).toMatch('Matt')
+    await waitFor(() => {
+      const contactListItems = screen.queryAllByTestId('contact-listItem')
+      expect(contactListItems.length).toBe(2)
+      expect(contactListItems[0].textContent).toMatch('John')
+      expect(contactListItems[1].textContent).toMatch('Matt')
+    })
   })
 
   it('should sort contacts by groups and search', async () => {
@@ -176,18 +192,25 @@ describe('ContentResult - search', () => {
       }
     ]
     const searchValue = 'Doe'
-    const { root } = setup({ contacts })
+    setup({ contacts })
 
-    const { getByText, queryByText, getByPlaceholderText } = root
+    act(() => {
+      // open the group filter and select the first group
+      fireEvent.click(screen.getByText(enLocale.filter['all-groups']))
+    })
 
-    // open the group filter and select the first group
-    fireEvent.click(getByText(enLocale.filter['all-groups']))
-    fireEvent.click(getByText(groups[0].name))
+    act(() => {
+      fireEvent.click(screen.getByText(groups[0].name))
+    })
 
-    await search(searchValue, getByPlaceholderText)
+    act(() => {
+      search(searchValue)
+    })
 
-    expect(getByText('John')).toBeTruthy()
-    expect(queryByText('Matt')).toBeNull()
-    expect(queryByText('Jane')).toBeNull()
+    await waitFor(() => {
+      expect(screen.queryByText('John')).not.toBeNull()
+      expect(screen.queryByText('Matt')).toBeNull()
+      expect(screen.queryByText('Jane')).toBeNull()
+    })
   })
 })
