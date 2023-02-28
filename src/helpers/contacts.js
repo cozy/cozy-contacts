@@ -22,15 +22,20 @@ export const filterFieldList = fields =>
   fields.filter(
     field =>
       [
+        'attributes',
         'gender',
         'birthplace',
         'name',
         'fullname',
         '_id',
         '_rev',
+        'type',
         '_type',
+        'meta',
+        'maritalStatus',
         'cozyMetadata',
         'id',
+        'links',
         'metadata',
         'relationships',
         'groups',
