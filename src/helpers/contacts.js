@@ -22,27 +22,27 @@ export const filterFieldList = fields =>
   fields.filter(
     field =>
       [
-        'attributes',
-        'gender',
-        'birthplace',
-        'name',
-        'fullname',
         '_id',
         '_rev',
-        'type',
         '_type',
-        'meta',
-        'maritalStatus',
-        'cozyMetadata',
-        'id',
-        'links',
-        'metadata',
-        'relationships',
-        'groups',
         'accounts',
-        'me',
+        'attributes',
+        'birthplace',
+        'cozyMetadata',
         'displayName',
-        'indexes'
+        'fullname',
+        'gender',
+        'groups',
+        'id',
+        'indexes',
+        'links',
+        'maritalStatus',
+        'me',
+        'meta',
+        'metadata',
+        'name',
+        'relationships',
+        'type'
       ].includes(field.type) === false && field.values
   )
 
