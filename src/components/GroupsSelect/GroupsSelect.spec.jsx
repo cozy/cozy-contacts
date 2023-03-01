@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, act } from '@testing-library/react'
 
 import { createGroup, updateGroup } from '../../connections/allGroups'
 import { groups } from '../../helpers/testData'
@@ -28,50 +28,103 @@ const setup = () => {
 
 describe('GroupsSelect', () => {
   it('should display every groups and group creation button', () => {
-    const { root } = setup()
-    const { getByText } = root
+    setup()
 
-    fireEvent.click(getByText('Manage groups'))
-    groups.map(group => expect(getByText(group.name)).toBeTruthy())
-    expect(getByText('Create a group')).toBeTruthy()
+    act(() => {
+      fireEvent.click(screen.getByText('Manage groups'))
+    })
+
+    for (const group of groups) {
+      expect(screen.queryByText(group.name)).not.toBeNull()
+    }
+    expect(screen.queryByText('Create a group')).not.toBeNull()
   })
 
   it('should be able to create a new group', () => {
-    const { root } = setup()
-    const { getByRole, getByText } = root
+    setup()
 
-    fireEvent.click(getByText('Manage groups'))
-    fireEvent.click(getByText('Create a group'))
+    act(() => {
+      fireEvent.click(screen.getByText('Manage groups'))
+    })
+
+    act(() => {
+      fireEvent.click(screen.getByText('Create a group'))
+    })
 
     // it should replace the button by an empty input
-    const createGroupInput = getByRole('textbox', { id: 'createGroupInput' })
+    let createGroupInput = screen.queryByRole('textbox', {
+      id: 'createGroupInput'
+    })
+    expect(createGroupInput).not.toBeNull()
     expect(createGroupInput.value).toBe('')
 
-    // it should trigger creation function by pressing Enter key, and clear the input
-    fireEvent.change(createGroupInput, { target: { value: 'new group' } })
+    act(() => {
+      // it should trigger creation function by pressing Enter key, and clear the input
+      fireEvent.change(
+        screen.getByRole('textbox', {
+          id: 'createGroupInput'
+        }),
+        { target: { value: 'new group' } }
+      )
+    })
+
+    createGroupInput = screen.queryByRole('textbox', {
+      id: 'createGroupInput'
+    })
+    expect(createGroupInput).not.toBeNull()
     expect(createGroupInput.value).toBe('new group')
-    fireEvent.keyDown(createGroupInput, { key: 'Enter', keyCode: '13' })
+
+    act(() => {
+      fireEvent.keyDown(
+        screen.getByRole('textbox', {
+          id: 'createGroupInput'
+        }),
+        { key: 'Enter', keyCode: '13' }
+      )
+    })
 
     expect(createGroup).toHaveBeenCalled()
+    createGroupInput = screen.queryByRole('textbox', {
+      id: 'createGroupInput'
+    })
+    expect(createGroupInput).not.toBeNull()
     expect(createGroupInput.value).toBe('')
   })
 
-  it('should be able to rename a group', async () => {
-    const { root } = setup()
-    const { getByRole, getByText, queryByRole, getByTestId } = root
+  it('should be able to rename a group', () => {
+    setup()
 
-    fireEvent.click(getByText('Manage groups'))
+    act(() => {
+      // it should replace the field by input with group name as value
+      fireEvent.click(screen.getByText('Manage groups'))
+    })
 
-    // it should replace the field by input with group name as value
-    const editIcon = getByTestId(`ActionsOption_${groups[0].name}-icon_pen`)
-    fireEvent.click(editIcon)
-    const editGroupInput = getByRole('textbox', { id: 'editGroupInput' })
+    act(() => {
+      fireEvent.click(
+        screen.getByTestId(`ActionsOption_${groups[0].name}-icon_pen`)
+      )
+    })
+
+    let editGroupInput = screen.queryByRole('textbox', {
+      id: 'editGroupInput'
+    })
+    expect(editGroupInput).not.toBeNull()
     expect(editGroupInput.value).toBe(groups[0].name)
 
-    // it should trigger rename function by pressing Enter key, and remove input
-    fireEvent.keyDown(editGroupInput, { key: 'Enter', keyCode: '13' })
+    act(() => {
+      // it should trigger rename function by pressing Enter key, and remove input
+      fireEvent.keyDown(
+        screen.getByRole('textbox', {
+          id: 'editGroupInput'
+        }),
+        { key: 'Enter', keyCode: '13' }
+      )
+    })
 
     expect(updateGroup).toHaveBeenCalled()
-    expect(queryByRole('textbox', { id: 'editGroupInput' })).toBeNull()
+    editGroupInput = screen.queryByRole('textbox', {
+      id: 'editGroupInput'
+    })
+    expect(editGroupInput).toBeNull()
   })
 })

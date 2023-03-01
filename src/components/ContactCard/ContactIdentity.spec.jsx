@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { render, screen } from '@testing-library/react'
 import { DOCTYPE_CONTACT_GROUPS } from '../../helpers/doctypes'
 
 import ContactIdentity from './ContactIdentity'
@@ -22,13 +22,14 @@ describe('ContactIdentity', () => {
       { _id: 'c', name: 'The C Team' }
     ]
 
-    const app = mount(
+    render(
       <AppLike>
         <ContactIdentity contact={contactWithoutName} groups={groupsMock} />
       </AppLike>
     )
-    const avatar = app.find('Avatar')
-    expect(avatar.prop('text')).toEqual('SF')
+    const avatar = screen.queryByTestId('Avatar')
+    expect(avatar).not.toBeNull()
+    expect(avatar.textContent).toEqual('SF')
   })
 
   it('should have the right informations even if the contact does not have a name', () => {
@@ -47,13 +48,14 @@ describe('ContactIdentity', () => {
       { _id: 'c', name: 'The C Team' }
     ]
 
-    const app = mount(
+    render(
       <AppLike>
         <ContactIdentity contact={contactWithoutName} groups={groupsMock} />
       </AppLike>
     )
-    const avatar = app.find('Avatar')
-    expect(avatar.prop('text')).toEqual('S')
+    const avatar = screen.queryByTestId('Avatar')
+    expect(avatar).not.toBeNull()
+    expect(avatar.textContent).toEqual('S')
   })
 
   it('should have the right informations even if the contact does not have a name or email', () => {
@@ -71,12 +73,13 @@ describe('ContactIdentity', () => {
       { _id: 'c', name: 'The C Team' }
     ]
 
-    const app = mount(
+    render(
       <AppLike>
         <ContactIdentity contact={contactWithoutName} groups={groupsMock} />
       </AppLike>
     )
-    const avatar = app.find('Avatar')
-    expect(avatar.prop('text')).toEqual('')
+    const avatar = screen.queryByTestId('Avatar')
+    expect(avatar).not.toBeNull()
+    expect(avatar.textContent).toEqual('')
   })
 })

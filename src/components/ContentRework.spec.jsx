@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import AppLike from '../tests/Applike'
 import ContentRework from './ContentRework'
@@ -55,7 +55,7 @@ const setup = ({
 
 describe('ContentRework', () => {
   it('should show a spinner if data has not been loaded', () => {
-    const { root } = setup({
+    setup({
       hasServiceBeenLaunched: false,
       contactsWithIndexesResult: {
         data: [{}],
@@ -70,12 +70,11 @@ describe('ContentRework', () => {
         fetchMore: jest.fn()
       }
     })
-    const { getByTestId } = root
-    expect(getByTestId('contactSpinner'))
+    expect(screen.queryByTestId('contactSpinner')).not.toBeNull()
   })
 
   it('should show a spinner if one query is still loading', () => {
-    const { root } = setup({
+    setup({
       hasServiceBeenLaunched: false,
       contactsWithIndexesResult: {
         data: mockedContacts.withIndexes,
@@ -90,12 +89,11 @@ describe('ContentRework', () => {
         fetchMore: jest.fn()
       }
     })
-    const { getByTestId } = root
-    expect(getByTestId('contactSpinner'))
+    expect(screen.queryByTestId('contactSpinner')).not.toBeNull()
   })
 
   it('should show a spinner if queries are both loaded but still with more data to fetch', () => {
-    const { root } = setup({
+    setup({
       hasServiceBeenLaunched: false,
       contactsWithIndexesResult: {
         data: mockedContacts.withIndexes,
@@ -110,21 +108,18 @@ describe('ContentRework', () => {
         fetchMore: jest.fn()
       }
     })
-    const { getByTestId } = root
-    expect(getByTestId('contactSpinner'))
+    expect(screen.queryByTestId('contactSpinner')).not.toBeNull()
   })
 
   it('should have empty section (for contacts without indexes) if service has been launched', () => {
-    const { root } = setup()
-    const { getByText } = root
-    expect(getByText('EMPTY'))
+    setup()
+    expect(screen.queryByText('EMPTY')).not.toBeNull()
   })
 
   it('should not have empty section (for contacts without indexes) if service has not been launched', () => {
-    const { root } = setup({
+    setup({
       hasServiceBeenLaunched: false
     })
-    const { queryByText } = root
-    expect(queryByText('EMPTY')).toBeNull()
+    expect(screen.queryByText('EMPTY')).toBeNull()
   })
 })

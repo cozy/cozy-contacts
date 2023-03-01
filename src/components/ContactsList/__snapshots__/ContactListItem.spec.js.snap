@@ -9,7 +9,7 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
 >
   <span
     aria-disabled={false}
-    className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+    className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-17 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
     onBlur={[Function]}
     onClick={[Function]}
     onDragLeave={[Function]}
@@ -30,7 +30,7 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
       <input
         aria-checked=""
         checked={false}
-        className="PrivateSwitchBase-input-4"
+        className="PrivateSwitchBase-input-20"
         data-indeterminate={false}
         onChange={[Function]}
         readOnly={true}
@@ -51,9 +51,11 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
   </span>
   <div
     className="styles__TableCell___yJCq7 styles__contact-identity___mL3IJ u-flex u-flex-items-center u-ellipsis"
+    data-testid="ContactIdentity"
   >
     <div
       className="styles__c-avatar___PpDI- styles__c-avatar--text___2dvna"
+      data-testid="Avatar"
       style={
         Object {
           "--circleSize": "32px",
@@ -61,7 +63,6 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
         }
       }
     >
-      
       <span
         className="styles__c-avatar-initials___310qC"
       >
@@ -70,6 +71,7 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
     </div>
     <p
       className="MuiTypography-root u-ml-1 MuiTypography-body1 MuiTypography-colorTextPrimary MuiTypography-noWrap MuiTypography-gutterBottom MuiTypography-displayInline"
+      data-testid="ContactName"
     >
       <span
         className=""
@@ -87,16 +89,19 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
   </div>
   <div
     className="styles__TableCell___yJCq7 styles__contact-email___3n3q2 u-ellipsis"
+    data-testid="ContactEmail"
   >
     johndoe@localhost
   </div>
   <div
     className="styles__TableCell___yJCq7 styles__contact-phone___1sA_m u-ellipsis"
+    data-testid="ContactPhone"
   >
     0123456789
   </div>
   <div
     className="styles__TableCell___yJCq7 styles__contact-cozyurl___3kBp5 u-ellipsis"
+    data-testid="ContactCozy"
   >
     http://johndoe.mycozy.cloud
   </div>

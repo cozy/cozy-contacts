@@ -7,8 +7,8 @@ import { schema } from './doctypes'
  * @returns {object} cozy client instance
  */
 export const getClient = () => {
-  const root = document.querySelector('[role=application]')
-  const data = JSON.parse(root.dataset.cozy)
+  const container = document.querySelector('[role=application]')
+  const data = JSON.parse(container.dataset.cozy)
   const protocol = window.location.protocol
   const cozyUrl = `${protocol}//${data.domain}`
 

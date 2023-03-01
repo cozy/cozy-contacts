@@ -1,8 +1,7 @@
 import React from 'react'
-import { mount } from 'enzyme'
 import ContactForm from './index'
 
-import { render, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, act } from '@testing-library/react'
 import { createMockClient } from 'cozy-client'
 import AppLike from '../../../tests/Applike'
 
@@ -38,10 +37,10 @@ describe('ContactForm', () => {
         <ContactForm {...props} />
       </AppLike>
     )
-    const { getByLabelText } = render(jsx)
-    labels.map(label => {
-      expect(getByLabelText(label)).toBeTruthy()
-    })
+    render(jsx)
+    for (const label of labels) {
+      expect(screen.queryByLabelText(label)).not.toBeNull()
+    }
   })
 
   it('should fill form with contact data', () => {
@@ -51,28 +50,35 @@ describe('ContactForm', () => {
         <ContactForm {...props} />
       </AppLike>
     )
-    const { getByDisplayValue } = render(jsx)
-    expect(getByDisplayValue(contact.name.givenName)).toBeTruthy()
-    expect(getByDisplayValue(contact.name.familyName)).toBeTruthy()
-    expect(getByDisplayValue(contact.phone[0].number)).toBeTruthy()
-    expect(getByDisplayValue(contact.email[0].address)).toBeTruthy()
-    expect(getByDisplayValue(contact.address[0].formattedAddress)).toBeTruthy()
-    expect(getByDisplayValue(contact.cozy[0].url)).toBeTruthy()
-    expect(getByDisplayValue(contact.company)).toBeTruthy()
-    expect(getByDisplayValue(contact.jobTitle)).toBeTruthy()
-    expect(getByDisplayValue(contact.note)).toBeTruthy()
+    render(jsx)
+    expect(screen.queryByDisplayValue(contact.name.givenName)).not.toBeNull()
+    expect(screen.queryByDisplayValue(contact.name.familyName)).not.toBeNull()
+    expect(screen.queryByDisplayValue(contact.phone[0].number)).not.toBeNull()
+    expect(screen.queryByDisplayValue(contact.email[0].address)).not.toBeNull()
+    expect(
+      screen.queryByDisplayValue(contact.address[0].formattedAddress)
+    ).not.toBeNull()
+    expect(screen.queryByDisplayValue(contact.cozy[0].url)).not.toBeNull()
+    expect(screen.queryByDisplayValue(contact.company)).not.toBeNull()
+    expect(screen.queryByDisplayValue(contact.jobTitle)).not.toBeNull()
+    expect(screen.queryByDisplayValue(contact.note)).not.toBeNull()
   })
 
   it('should submit a well formatted contact', () => {
     const expected = {
       address: [
         {
+          city: undefined,
+          code: undefined,
+          country: undefined,
           formattedAddress: '18 rue des fleurs, Pecado',
+          number: undefined,
           primary: true,
+          street: '18 rue des fleurs, Pecado',
           type: undefined
         }
       ],
-      birthday: '31/12/2015',
+      birthday: '2015-12-31',
       birthplace: 'somewhere',
       gender: 'male',
       company: 'Cozy CLoud',
@@ -93,11 +99,13 @@ describe('ContactForm', () => {
       phone: [{ number: '+33678987654', primary: true, type: undefined }],
       relationships: { groups: { data: [] } }
     }
+
+    let received = null
     const onSubmit = contact => {
-      expect(contact).toEqual(expected)
+      received = contact
     }
 
-    const form = mount(
+    render(
       <AppLike client={client}>
         <ContactForm onSubmit={onSubmit} onCancel={() => {}} />
       </AppLike>
@@ -109,25 +117,48 @@ describe('ContactForm', () => {
       familyName: 'Van Cozy',
       'phone[0].phone': '+33678987654',
       'email[0].email': 'jcvc@cozy.cloud',
-      'address[0].address': '18 rue des fleurs, Pecado',
       cozy: 'https://jcvd.cozy.cloud',
       company: 'Cozy CLoud',
       jobTitle: 'Dreamer',
-      birthday: '31/12/2015',
+      birthday: '2015-12-31',
       birthplace: 'somewhere',
       note: 'Whatever.'
     }
 
-    Object.keys(fields).forEach(fieldName => {
-      const candidates = form.find(`ForwardRef(TextField)[name='${fieldName}']`)
-      const field = candidates.length === 1 ? candidates : candidates.first()
-      field.props().onChange({ target: { value: fields[fieldName] } })
+    const form = screen.getByRole('form')
+    for (const fieldName of Object.keys(fields)) {
+      act(() => {
+        const field = form.querySelector(`[name='${fieldName}']`)
+        expect(field).not.toBeNull()
+        fireEvent.change(field, { target: { value: fields[fieldName] } })
+      })
+    }
+
+    const addressBtn = form.querySelector('[name="address[0].address"]')
+    fireEvent.click(addressBtn)
+
+    const addressStreet = screen
+      .getAllByRole('textbox')
+      .find(t => t.name == 'address[0].addressstreet')
+
+    act(() => {
+      fireEvent.change(addressStreet, {
+        target: { value: '18 rue des fleurs, Pecado' }
+      })
     })
 
-    form.find('form').simulate('submit')
+    act(() => {
+      fireEvent.click(screen.getByText('Ok'))
+    })
+
+    act(() => {
+      fireEvent.submit(screen.getByRole('form'))
+    })
+
+    expect(received).toEqual(expected)
   })
 
-  it('should change inputs value', async () => {
+  it('should change inputs value', () => {
     const testFields = {
       Firstname: 'Jean-Claude',
       Lastname: 'Van Cozy',
@@ -147,16 +178,18 @@ describe('ContactForm', () => {
         <ContactForm {...props} />
       </AppLike>
     )
-    const { findByDisplayValue, getByLabelText } = render(jsx)
+    render(jsx)
 
-    labels.map(label => {
-      fireEvent.change(getByLabelText(label), {
-        target: { value: testFields[label] }
+    for (const label of labels) {
+      act(() => {
+        fireEvent.change(screen.getByLabelText(label), {
+          target: { value: testFields[label] }
+        })
       })
-    })
+    }
 
-    expect(await findByDisplayValue(testFields['Firstname'])).toBeTruthy()
-    expect(await findByDisplayValue(testFields['Notes'])).toBeTruthy()
+    expect(screen.queryByDisplayValue(testFields['Firstname'])).not.toBeNull()
+    expect(screen.queryByDisplayValue(testFields['Notes'])).not.toBeNull()
   })
 
   it('should submit empty fields', () => {
@@ -179,16 +212,21 @@ describe('ContactForm', () => {
       relationships: { groups: { data: [] } }
     }
 
+    let received = null
     const onSubmit = contact => {
-      expect(contact).toEqual(expected)
+      received = contact
     }
 
-    const form = mount(
+    render(
       <AppLike client={client}>
         <ContactForm onSubmit={onSubmit} onCancel={() => {}} />
       </AppLike>
     )
 
-    form.find('form').simulate('submit')
+    act(() => {
+      fireEvent.submit(screen.getByRole('form'))
+    })
+
+    expect(received).toEqual(expected)
   })
 })

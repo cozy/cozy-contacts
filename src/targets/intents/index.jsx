@@ -5,18 +5,18 @@ import 'styles'
 import 'styles/intent'
 
 import React from 'react'
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { I18n } from 'cozy-ui/transpiled/react/I18n'
 import cozyClient, { CozyProvider } from 'cozy-client'
 import { Intents } from 'cozy-interapp'
 import { RealtimePlugin } from 'cozy-realtime'
 
-const renderApp = function (client, appLocale, appData) {
+const renderApp = function (root, client, appLocale, appData) {
   const IntentHandler = require('components/Intents/IntentHandler').default
   const PickContacts = require('components/Intents/PickContacts').default
   const CreateContact = require('components/Intents/CreateContact').default
   const intents = new Intents({ client: client })
-  render(
+  root.render(
     <I18n
       lang={appLocale}
       dictRequire={appLocale => require(`locales/${appLocale}`)}
@@ -27,8 +27,7 @@ const renderApp = function (client, appLocale, appData) {
           <CreateContact action="CREATE" type="io.cozy.contacts" />
         </IntentHandler>
       </CozyProvider>
-    </I18n>,
-    document.querySelector('[role=application]')
+    </I18n>
   )
 }
 
@@ -45,8 +44,9 @@ const getDataOrDefault = function (toTest, defaultData) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const root = document.querySelector('[role=application]')
-  const data = JSON.parse(root.dataset.cozy)
+  const container = document.querySelector('[role=application]')
+  const root = createRoot(container)
+  const data = JSON.parse(container.dataset.cozy)
 
   const appLocale = getDataOrDefault(data.locale, 'en')
 
@@ -59,5 +59,5 @@ document.addEventListener('DOMContentLoaded', () => {
   })
   client.registerPlugin(RealtimePlugin)
 
-  renderApp(client, appLocale, data)
+  renderApp(root, client, appLocale, data)
 })

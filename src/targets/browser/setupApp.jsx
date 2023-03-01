@@ -1,4 +1,6 @@
+import { createRoot } from 'react-dom/client'
 import memoize from 'lodash/memoize'
+
 import { RealtimePlugin } from 'cozy-realtime'
 
 import configureStore from 'store/configureStore'
@@ -11,8 +13,9 @@ import { getValues, initBar } from '../../helpers/bar'
  * Memoize this function in its own file so that it is correctly memoized
  */
 const setupApp = memoize(() => {
-  const root = document.querySelector('[role=application]')
-  const { lang, appName } = getValues(JSON.parse(root.dataset.cozy))
+  const container = document.querySelector('[role=application]')
+  const root = createRoot(container)
+  const { lang, appName } = getValues(JSON.parse(container.dataset.cozy))
   const polyglot = initTranslation(lang, lang => require(`locales/${lang}`))
   const client = getClient()
   client.registerPlugin(RealtimePlugin)
@@ -26,7 +29,7 @@ const setupApp = memoize(() => {
   )
   client.setStore(store)
 
-  initBar({ client, root, lang, appName })
+  initBar({ client, container, lang, appName })
 
   return { root, store, client, lang, polyglot }
 })
