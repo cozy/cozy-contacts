@@ -1,0 +1,158 @@
+{
+  "associated_accounts": "Account collegato a questo contatto |||| Account collegati a questo contatto",
+  "menu": "Menu",
+  "create_contact": "Crea un contatto",
+  "cancel": "Annulla",
+  "confirm": "Conferma",
+  "edit": "Modifica",
+  "edit-contact": "Modifica contatto",
+  "save": "Salva",
+  "ok": "Ok",
+  "delete": "Elimina",
+  "selected_contacts": "%{smart_count} contatto selezionato |||| %{smart_count} contatti selezionati",
+  "select-all": "Seleziona tutto",
+  "unselect-all": "Deseleziona tutto",
+  "contact_info": "Informazioni contatto",
+  "contact_group": "Gruppi",
+  "me": "Io",
+  "empty-list": "VUOTO",
+  "search": "Cerca",
+  "empty": {
+    "title": "Importa i tuoi contatti",
+    "title_filtered": "Nessun contatto corrisponde alla tua ricerca.",
+    "description": "Fare clic sul pulsante \"Crea un contatto\" per iniziare a utilizzare l'applicazione.",
+    "import_store": "Importazione da altre fonti",
+    "import_vcard": "Importazione da un file vCard",
+    "after": "L'importazione dei contatti potrebbe richiedere qualche minuto, il tempo di godersi una meritata pausa caffè ☕️"
+  },
+  "import": {
+    "title": "Importa contatti",
+    "store": "Da altre fonti",
+    "vcard": "Da un file vCard"
+  },
+  "error": {
+    "save": "Si è verificato un errore durante il salvataggio del contatto, riprovare.",
+    "group_selected": "Si è verificato un problema durante la selezione di un gruppo, riprovare."
+  },
+  "formatted": {
+    "date": "AAAA-MM-GG",
+    "address": "%{number} %{street}, %{code} %{city}, %{country}"
+  },
+  "fields": {
+    "gender": "Educazione",
+    "givenName": "Nome",
+    "familyName": "Cognome",
+    "phone": "Numero di Telefono",
+    "email": "Email",
+    "address": "Indirizzo",
+    "cozy": "URL Cozy",
+    "company": "Compagnia",
+    "jobTitle": "Titolo di lavoro",
+    "birthday": "Compleanno",
+    "birthplace": "Luogo di Nascita",
+    "note": "Note",
+    "label": "Etichetta",
+    "number": "Numero della strada",
+    "street": "Indirizzo postale",
+    "code": "Codice Postale",
+    "city": "Città",
+    "country": "Paese",
+    "locality": "località",
+    "building": "Edificio",
+    "stairs": "Scale",
+    "floor": "Piano",
+    "apartment": "Appartamento",
+    "entrycode": "Codice di ingresso"
+  },
+  "gender": {
+    "man": "Uomo",
+    "woman": "Donna"
+  },
+  "importation": {
+    "cancel": "Annulla",
+    "complete_failure": "Importazione fallita.",
+    "complete_success": "Congratulazioni!",
+    "creation": "è stato creato un contatto |||| %{smart_count} sono stati creati dei contatti",
+    "update": "un contatto è stato aggiornato |||| %{smart_count} i contatti sono stati aggiornati",
+    "empty_file": "Questo file è vuoto.",
+    "export_steps_intro": "Per ottenere i contatti da un altro programma, è necessario prima esportare l'intero elenco:",
+    "export_to_vcard_step": "Esporta i tuoi contatti in un file in formato vCard (*.vcf)",
+    "invalid_file_type": "Questo tipo di file non è supportato.",
+    "no_file": "Seleziona qui il tuo file",
+    "open_contact_manager_step": "Apri il tuo gestore di contatti preferito",
+    "partial_success": "È stato importato %{smart_count} su %{totale} contatti. |||| Sono stati importati %{smart_count} contatti sun totale di %{totale}.",
+    "ready": "Pronto per importare",
+    "retry": "Riprova",
+    "retry_hint": "Riprovare per completare l'importazione.",
+    "retry_or_select_another_hint": "Prova di nuovo o scegli un altro file",
+    "run": "Importa",
+    "running": "Trasferimento file...",
+    "title": "Importa contatti",
+    "transfer_file": "Trasferisci un file",
+    "available_soon": "Presto sarà possibile importare i contatti da altri servizi (iCloud, Facebook...)."
+  },
+  "addLabel": {
+    "address": "Aggiungi indirizzo",
+    "email": "Aggiungi email",
+    "phone": "Aggiungi telefono"
+  },
+  "SelectionBar": {
+    "close": "Chiuso",
+    "selected_count": "contatto selezionato |||| contatti selezionati",
+    "trash": "Elimina"
+  },
+  "groups": {
+    "none": "Non c'è nessun gruppo esistente.",
+    "manage": "Gestisci gruppi",
+    "create": "Crea un gruppo",
+    "created": {
+      "success": "Il gruppo è stato creato correttamente.",
+      "error": "Il gruppo non è stato creato."
+    },
+    "name": "Nome del gruppo",
+    "removed": "Il gruppo %{nome} è stato rimosso.",
+    "remove_canceled": "Il gruppo %{nome} è stato ripristinato. I contatti sono ancora collegati.",
+    "already_exists": "Il gruppo %{nome} esiste già.",
+    "renamed": {
+      "success": "Il gruppo è stato rinominato correttamente.",
+      "error": "Il gruppo non è stato rinominato."
+    }
+  },
+  "filter": {
+    "no-group": "Crea gruppi di contatto per facilitare l'archiviazione e la condivisione!",
+    "all-groups": "Tutti i gruppi"
+  },
+  "delete-confirmation": {
+    "title": "Cancellare questo contatto? |||| Cancellare questi contatti?",
+    "description-simple": "Questo contatto verrà rimosso definitivamente dal tuo Cozy. |||| Questi contatti saranno rimossi definitivamente dal tuo Cozy.",
+    "description-google": "Questo contatto verrà eliminato anche dalla rubrica di Google. |||| Questi contatti verranno eliminati anche dalla rubrica di Google.",
+    "description-mixed": "Questi contatti saranno rimossi definitivamente dal tuo Cozy, i contatti collegati al tuo account Google saranno eliminati anche dalla tua rubrica Google."
+  },
+  "intent": {
+    "creation_error": "Si è verificato un errore nel tentativo di contattare l'altra applicazione. Riprovare più tardi?"
+  },
+  "manifest": {
+    "short_description": "Cozy Contacts ti aiuta a salvare, proteggere e gestire tutti i tuoi contatti dal tuo Cozy.",
+    "long_description": "Con Cozy Contacts è possibile:\n\n* Aggiungere, modificare e ordinare i contatti.\n* Gestire i gruppi di contatti.\n* Semplificare la condivisione di Cozy Drive con i propri contatti.\n* Sincronizzare i contatti da Google.\n* E presto, sincronizzare i contatti dal cellulare e da altri servizi online (iCloud, Facebook...).",
+    "permissions": {
+      "apps": {
+        "description": "Richiesto dal menu principale per visualizzare le icone delle applicazioni"
+      },
+      "contacts": {
+        "description": "Necessario per gestire i contatti"
+      },
+      "contactsgroups": {
+        "description": "Richiesto per gestire gruppi di contatti"
+      },
+      "contactsAccounts": {
+        "description": "Necessario per collegare i contatti con gli account remoti"
+      },
+      "triggers": {
+        "description": "Utilizzato per ordinare i contatti"
+      }
+    }
+  },
+  "loading": {
+    "fetching_contacts": "Caricamento dei contatti, attendere."
+  }
+}
