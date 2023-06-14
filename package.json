@@ -61,6 +61,7 @@
     "stylint": "2.0.0"
   },
   "dependencies": {
+    "@sentry/react": "7.54.0",
     "classnames": "2.3.1",
     "cozy-bar": "7.17.9",
     "cozy-client": "^35.2.0",
