@@ -7,6 +7,7 @@ import { RealtimePlugin } from 'cozy-realtime'
 
 import configureStore from 'store/configureStore'
 import { initTranslation } from 'cozy-ui/transpiled/react/I18n'
+import flag from 'cozy-flags'
 
 import manifest from '../../../manifest.webapp'
 import { getClient } from '../../helpers/client'
@@ -22,6 +23,11 @@ const setupApp = memoize(() => {
   const polyglot = initTranslation(lang, lang => require(`locales/${lang}`))
   const client = getClient()
   client.registerPlugin(RealtimePlugin)
+  client.registerPlugin(flag.plugin)
+
+  if (process.env.NODE_ENV !== 'production' && flag('switcher') === null) {
+    flag('switcher', true)
+  }
 
   const persistedState = {}
 
