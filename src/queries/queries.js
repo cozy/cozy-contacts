@@ -23,12 +23,12 @@ export const buildContactsQueryById = id => ({
   }
 })
 
-export const buildIdentitiesQueryByContact = (enabled = false) => ({
+export const buildIdentitiesQueryByContact = enabled => ({
   definition: Q(DOCTYPE_IDENTITIES),
   options: {
     as: DOCTYPE_IDENTITIES,
     fetchPolicy: fetchPolicies.olderThan(older30s),
-    enabled
+    enabled: Boolean(enabled)
   }
 })
 
