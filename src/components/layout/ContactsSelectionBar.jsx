@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import flow from 'lodash/flow'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 
 import { withClient } from 'cozy-client'
-import SelectionBar from 'cozy-ui/transpiled/react/SelectionBar'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-
-import withSelection from '../Selection/selectionContainer'
-import withModalContainer from '../HOCs/withModal'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
-import { getConnectedAccounts } from '../../helpers/contacts'
+import SelectionBar from 'cozy-ui/transpiled/react/SelectionBar'
+
 import { deleteContact } from '../../connections/allContacts'
+import { getConnectedAccounts } from '../../helpers/contacts'
 import ConfirmDeleteActions from '../Common/ConfirmDeleteActions'
+import withModalContainer from '../HOCs/withModal'
+import withSelection from '../Selection/selectionContainer'
 
 class ContactsSelectionBar extends Component {
   render() {

@@ -1,9 +1,9 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
+import React from 'react'
 import renderer from 'react-test-renderer'
-import { DOCTYPE_CONTACT_GROUPS } from '../../../helpers/doctypes'
 
 import ContactGroupList from './ContactGroupList'
+import { DOCTYPE_CONTACT_GROUPS } from '../../../helpers/doctypes'
 import AppLike from '../../../tests/Applike'
 describe('ContactGroupList', () => {
   it('should display groups', () => {

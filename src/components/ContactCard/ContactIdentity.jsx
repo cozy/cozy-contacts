@@ -1,8 +1,10 @@
 import React from 'react'
+
+import { models } from 'cozy-client'
 import Avatar from 'cozy-ui/transpiled/react/Avatar'
 import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
+
 import { fullContactPropTypes } from '../ContactPropTypes'
-import { models } from 'cozy-client'
 const { getInitials, getFullname } = models.contact
 
 const ContactIdentity = ({ contact, breakpoints: { isMobile } }) => {

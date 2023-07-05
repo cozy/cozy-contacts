@@ -1,4 +1,5 @@
 import CozyClient from 'cozy-client'
+
 import { DOCTYPE_CONTACTS, DOCTYPE_CONTACT_GROUPS } from '../helpers/doctypes'
 
 const defaultOptions = {

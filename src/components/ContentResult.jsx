@@ -1,20 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+import React, { useContext, useEffect, useState } from 'react'
 
-import { Content } from 'cozy-ui/transpiled/react/Layout'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
-import { ControlDefault } from 'cozy-ui/transpiled/react/SelectBox'
-import Input from 'cozy-ui/transpiled/react/Input'
 import flag from 'cozy-flags'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import Input from 'cozy-ui/transpiled/react/Input'
+import { Content } from 'cozy-ui/transpiled/react/Layout'
+import { ControlDefault } from 'cozy-ui/transpiled/react/SelectBox'
+import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
-import SelectedGroupContext from './Contexts/SelectedGroup'
-import SearchContext from './Contexts/Search'
-import Header from './Header'
-import Toolbar from './Toolbar'
 import ContactsList from './ContactsList/ContactsList.jsx'
+import SearchContext from './Contexts/Search'
+import SelectedGroupContext from './Contexts/SelectedGroup'
 import GroupsSelect from './GroupsSelect/GroupsSelect'
+import Header from './Header'
 import SearchInput from './Search/SearchInput'
+import Toolbar from './Toolbar'
 import {
   filterContactsByGroup,
   translatedDefaultSelectedGroup

@@ -1,16 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { FieldArray } from 'react-final-form-arrays'
 import uniqueId from 'lodash/uniqueId'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { FieldArray } from 'react-final-form-arrays'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
-import Icon from 'cozy-ui/transpiled/react/Icon'
-import palette from 'cozy-ui/transpiled/react/palette'
-import { Media, Img, Bd } from 'cozy-ui/transpiled/react/deprecated/Media'
-import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import CrossSmall from 'cozy-ui/transpiled/react/Icons/CrossSmall'
+import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
+import CrossSmall from 'cozy-ui/transpiled/react/Icons/CrossSmall'
+import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
+import { Media, Img, Bd } from 'cozy-ui/transpiled/react/deprecated/Media'
+import palette from 'cozy-ui/transpiled/react/palette'
+
 import { addField, removeField } from '../../../helpers/fields'
 
 const ContactFormField = ({ name, icon, isArray, renderInput }) => {

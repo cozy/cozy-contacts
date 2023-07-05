@@ -1,26 +1,25 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import cx from 'classnames'
 import flow from 'lodash/flow'
 import get from 'lodash/get'
-import cx from 'classnames'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 import { withClient } from 'cozy-client'
-import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
-import Overlay from 'cozy-ui/transpiled/react/deprecated/Overlay'
 import SelectBox from 'cozy-ui/transpiled/react/SelectBox'
+import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
+import Overlay from 'cozy-ui/transpiled/react/deprecated/Overlay'
 
-import SelectedGroupContext from '../Contexts/SelectedGroup'
+import CustomMenu from './SelectBox/Menu'
+import CustomOption from './SelectBox/Option'
+import CustomSelectContainer from './SelectBox/SelectContainer'
 import { createGroup, updateGroup } from '../../connections/allGroups'
 import {
   translatedDefaultSelectedGroup,
   isExistingGroup
 } from '../../helpers/groups'
 import container from '../ContactCard/ContactGroupsContainer'
-
-import CustomMenu from './SelectBox/Menu'
-import CustomOption from './SelectBox/Option'
-import CustomSelectContainer from './SelectBox/SelectContainer'
+import SelectedGroupContext from '../Contexts/SelectedGroup'
 
 const captureEscapeEvent = e => {
   if (e.key === 'Escape') {

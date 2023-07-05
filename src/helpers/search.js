@@ -1,5 +1,5 @@
-import debounce from 'lodash/debounce'
 import Fuse from 'fuse.js'
+import debounce from 'lodash/debounce'
 
 import flag from 'cozy-flags'
 

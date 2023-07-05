@@ -1,8 +1,8 @@
+import { DOCTYPE_CONTACTS } from '../helpers/doctypes'
 import {
   buildContactGroupsTrashedQuery,
   buildContactsQueryByGroupId
 } from '../queries/queries'
-import { DOCTYPE_CONTACTS } from '../helpers/doctypes'
 
 const cleanTrashedGroups = () => {
   return async (dispatch, getState, { client }) => {

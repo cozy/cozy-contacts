@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react'
 import flow from 'lodash/flow'
+import React, { useEffect } from 'react'
 
 import { RealTimeQueries } from 'cozy-client'
 
 import container from './AppContainer'
 import SpinnerContact from './Common/Spinner'
 import ContentWrapper from './ContentWrapper'
-
 import useService from './Hooks/useService'
 
 const ContactsApp = ({ cleanTrashedGroups }) => {

@@ -1,16 +1,15 @@
 import React from 'react'
-
-import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import { useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
+
+import ContactInfoContent from './ContactInfoContent'
+import ContactInfoTitle from './ContactInfoTitle'
 import {
   buildContactsQueryById,
   buildContactGroupsQuery
 } from '../../queries/queries'
-
-import ContactInfoTitle from './ContactInfoTitle'
-import ContactInfoContent from './ContactInfoContent'
 import SpinnerContact from '../Common/Spinner'
 
 const ContactInfoModal = () => {

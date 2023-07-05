@@ -1,16 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Form } from 'react-final-form'
 import arrayMutators from 'final-form-arrays'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { Form } from 'react-final-form'
+
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
-import FieldsetTitle from '../../Common/FieldsetTitle'
 import ContactFormField from './ContactFormField'
-import ContactFieldInput from '../ContactFieldInput'
-import { fullContactPropTypes } from '../../ContactPropTypes'
 import contactToFormValues from './contactToFormValues'
-import formValuesToContact from './formValuesToContact'
 import { fields } from './fieldsConfig'
+import formValuesToContact from './formValuesToContact'
+import FieldsetTitle from '../../Common/FieldsetTitle'
+import { fullContactPropTypes } from '../../ContactPropTypes'
+import ContactFieldInput from '../ContactFieldInput'
 
 // this variable will be set in the form's render prop
 // and used by the submit button in ContactFormModal

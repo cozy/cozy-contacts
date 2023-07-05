@@ -1,12 +1,12 @@
 import get from 'lodash/get'
-import uniqWith from 'lodash/uniqWith'
 import isEqual from 'lodash/isEqual'
+import uniqWith from 'lodash/uniqWith'
 
-import { mergeContact } from '../helpers/mergeContact'
-import { DOCTYPE_CONTACTS } from '../helpers/doctypes'
-import { buildContactsQueryByEmailAdressOrPhoneNumber } from '../queries/queries'
-import { hasSelectedGroup } from '../helpers/groups'
 import { addGroupToContact } from '../helpers/contacts'
+import { DOCTYPE_CONTACTS } from '../helpers/doctypes'
+import { hasSelectedGroup } from '../helpers/groups'
+import { mergeContact } from '../helpers/mergeContact'
+import { buildContactsQueryByEmailAdressOrPhoneNumber } from '../queries/queries'
 
 export const importContact = async (client, attributes) => {
   const addresses = (attributes['email'] || []).map(email => email.address)

@@ -1,11 +1,11 @@
-import { useState, useCallback, useEffect } from 'react'
 import get from 'lodash/get'
+import { useState, useCallback, useEffect } from 'react'
 
 import { useClient } from 'cozy-client'
 import log from 'cozy-logger'
 
-import { fetchNormalizedServiceByName } from '../../helpers/fetches'
 import { DOCTYPE_TRIGGERS } from '../../helpers/doctypes'
+import { fetchNormalizedServiceByName } from '../../helpers/fetches'
 
 const hasServiceBeenLaunched = service => {
   return get(service, 'current_state.last_success', '').length > 0

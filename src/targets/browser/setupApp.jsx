@@ -1,17 +1,16 @@
 /* global __DEVELOPMENT__ */
-import { createRoot } from 'react-dom/client'
 import * as Sentry from '@sentry/react'
 import memoize from 'lodash/memoize'
-
-import { RealtimePlugin } from 'cozy-realtime'
-
+import { createRoot } from 'react-dom/client'
 import configureStore from 'store/configureStore'
-import { initTranslation } from 'cozy-ui/transpiled/react/I18n'
+
 import flag from 'cozy-flags'
+import { RealtimePlugin } from 'cozy-realtime'
+import { initTranslation } from 'cozy-ui/transpiled/react/I18n'
 
 import manifest from '../../../manifest.webapp'
-import { getClient } from '../../helpers/client'
 import { getValues, initBar } from '../../helpers/bar'
+import { getClient } from '../../helpers/client'
 
 /**
  * Memoize this function in its own file so that it is correctly memoized

@@ -1,6 +1,8 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
+
 import { translate } from 'cozy-ui/transpiled/react/I18n'
+
 import ContactImportationCardWrapper from './ContactImportationCardWrapper'
 import ContactImportationFile from './ContactImportationFile'
 import ContactImportationMessage from './ContactImportationMessage'

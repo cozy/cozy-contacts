@@ -1,9 +1,9 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 
-import FieldsetTitle from '../../Common/FieldsetTitle'
-import Fieldset from '../../Common/Fieldset'
 import ContactField from './ContactField'
+import Fieldset from '../../Common/Fieldset'
+import FieldsetTitle from '../../Common/FieldsetTitle'
 
 const ContactFields = ({ fields, title }) => (
   <div>

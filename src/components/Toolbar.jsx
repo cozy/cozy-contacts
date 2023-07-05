@@ -1,10 +1,10 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
-import { useNavigate } from 'react-router-dom'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
 import Icon from 'cozy-ui/transpiled/react/Icon'
+import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
 
 import ImportDropdown from './Common/ImportDropdown'
 

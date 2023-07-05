@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react'
+
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
+
 import '../../styles/spinner.styl'
 class SpinnerContact extends PureComponent {
   render() {

@@ -1,8 +1,8 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { DOCTYPE_CONTACT_GROUPS } from '../../helpers/doctypes'
+import React from 'react'
 
 import ContactIdentity from './ContactIdentity'
+import { DOCTYPE_CONTACT_GROUPS } from '../../helpers/doctypes'
 import AppLike from '../../tests/Applike'
 describe('ContactIdentity', () => {
   it('should have the right informations', () => {

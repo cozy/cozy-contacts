@@ -1,4 +1,5 @@
 import { Q, fetchPolicies } from 'cozy-client'
+
 import {
   DOCTYPE_CONTACTS,
   DOCTYPE_CONTACT_GROUPS,

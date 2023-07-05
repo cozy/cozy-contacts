@@ -2,8 +2,8 @@
   Wrapper for react-final-form field that renders it children only if the field
   with the given name has a truthy value or if the other condition is fulfilled
 */
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 import { Field } from 'react-final-form'
 
 const HasValueCondition = ({ children, otherCondition, name }) => {

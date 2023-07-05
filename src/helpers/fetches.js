@@ -1,8 +1,8 @@
 import isEqual from 'lodash/isEqual'
+
 import log from 'cozy-logger'
 
 import { updateIndexFullNameAndDisplayName } from './contacts'
-
 import {
   buildTriggersQueryByName,
   buildTriggersQueryById,

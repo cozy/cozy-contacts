@@ -1,11 +1,12 @@
-import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
-import Typography from 'cozy-ui/transpiled/react/Typography'
-import Icon from 'cozy-ui/transpiled/react/Icon'
+import React from 'react'
 
-import FieldsetTitle from '../Common/FieldsetTitle'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import Typography from 'cozy-ui/transpiled/react/Typography'
+
 import Fieldset from '../Common/Fieldset'
+import FieldsetTitle from '../Common/FieldsetTitle'
 
 const ACCOUNTS_MAPPING = {
   'konnector-google': {

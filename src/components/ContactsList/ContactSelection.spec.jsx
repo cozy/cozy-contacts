@@ -1,8 +1,8 @@
-import React from 'react'
 import { render, screen, fireEvent, act } from '@testing-library/react'
+import React from 'react'
 
-import AppLike from '../../tests/Applike'
 import { DumbContactSelection } from './ContactSelection'
+import AppLike from '../../tests/Applike'
 
 const toggleSelection = jest.fn()
 

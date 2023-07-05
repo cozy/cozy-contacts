@@ -1,4 +1,5 @@
 import sortBy from 'lodash/sortBy'
+
 import { models, HasMany } from 'cozy-client'
 
 const { makeFullname, makeDefaultSortIndexValue, makeDisplayName } =

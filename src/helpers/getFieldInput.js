@@ -1,7 +1,7 @@
 import TextField from 'cozy-ui/transpiled/react/TextField'
 
-import FieldInputTextarea from '../components/Form/FieldInputTextarea'
 import FieldInputSelect from '../components/Form/FieldInputSelect'
+import FieldInputTextarea from '../components/Form/FieldInputTextarea'
 
 export const getFieldInput = attributes => {
   if (attributes.isMultiline) {

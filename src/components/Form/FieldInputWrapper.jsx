@@ -1,8 +1,8 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 
-import { fieldInputAttributes } from '../ContactCard/ContactFields/ContactFieldsProptypes'
 import { getFieldInput } from '../../helpers/getFieldInput'
+import { fieldInputAttributes } from '../ContactCard/ContactFields/ContactFieldsProptypes'
 
 const FieldInputWrapper = ({ input, attributes, ...props }) => {
   const { labelProps, ...restOfAttributes } = attributes || {}

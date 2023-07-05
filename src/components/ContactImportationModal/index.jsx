@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { useClient } from 'cozy-client'
-import { useNavigate } from 'react-router-dom'
-import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 
-import { importContact } from '../../connections/allContacts'
-import ExportStepsExplanation from './ExportStepsExplanation'
 import ContactImportationActions from './ContactImportationActions'
 import ContactImportationCard from './ContactImportationCard'
+import ExportStepsExplanation from './ExportStepsExplanation'
+import { importContact } from '../../connections/allContacts'
 import Importation from '../../importation'
 import Status from '../../importation/status'
 

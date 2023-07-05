@@ -1,14 +1,14 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 import { Field, useForm } from 'react-final-form'
 
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import { FixedDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Button from 'cozy-ui/transpiled/react/Buttons'
+import { FixedDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
-import FieldInputWrapper from '../Form/FieldInputWrapper'
-import { fieldInputAttributes } from '../ContactCard/ContactFields/ContactFieldsProptypes'
 import { makeFormattedAddressWithSubFields } from '../../helpers/contacts'
+import { fieldInputAttributes } from '../ContactCard/ContactFields/ContactFieldsProptypes'
+import FieldInputWrapper from '../Form/FieldInputWrapper'
 
 const ContactAddressModal = ({ onClose, name, subFields }) => {
   const { t } = useI18n()

@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 const ExportStepsExplanation = ({ t }) => {

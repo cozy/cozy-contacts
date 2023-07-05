@@ -1,7 +1,8 @@
 /* global __DEVELOPMENT__ */
 import { compose, createStore, applyMiddleware, combineReducers } from 'redux'
-import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
+import thunkMiddleware from 'redux-thunk'
+
 import flag from 'cozy-flags'
 import {
   shouldEnableTracking,

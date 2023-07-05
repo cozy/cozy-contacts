@@ -1,15 +1,15 @@
-import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
+import React, { useContext } from 'react'
 
 import flag from 'cozy-flags'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
-import ContactsEmptyList from './ContactsEmptyList'
 import CategorizedList from './CategorizedList'
+import ContactsEmptyList from './ContactsEmptyList'
 import UncategorizedList from './UncategorizedList'
-import withSelection from '../Selection/selectionContainer'
 import SearchContext from '../Contexts/Search'
+import withSelection from '../Selection/selectionContainer'
 
 const ContactsList = ({ contacts, clearSelection, selection, selectAll }) => {
   const { t } = useI18n()

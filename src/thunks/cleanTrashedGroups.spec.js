@@ -1,5 +1,6 @@
 jest.mock('cozy-client')
 import { Q } from 'cozy-client'
+
 import generateCleanTrashedGroupsFn from './cleanTrashedGroups'
 import { DOCTYPE_CONTACT_GROUPS, DOCTYPE_CONTACTS } from '../helpers/doctypes'
 

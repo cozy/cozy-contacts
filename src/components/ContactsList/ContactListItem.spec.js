@@ -1,9 +1,9 @@
+import { render, screen } from '@testing-library/react'
 import React from 'react'
 import renderer from 'react-test-renderer'
-import { render, screen } from '@testing-library/react'
 
-import AppLike from '../../tests/Applike'
 import ContactListItem, { hasDocBeenUpdated } from './ContactListItem'
+import AppLike from '../../tests/Applike'
 
 describe('ContactListItem', () => {
   it('should accept the strict minimum', () => {

@@ -1,10 +1,10 @@
-import React from 'react'
 import { render, screen, fireEvent, act, waitFor } from '@testing-library/react'
+import React from 'react'
 
-import AppLike from '../tests/Applike'
 import ContentResult from './ContentResult'
 import { groups, contactWithGroup, johnDoeContact } from '../helpers/testData'
 import enLocale from '../locales/en.json'
+import AppLike from '../tests/Applike'
 
 const mockedContacts = {
   withoutGroup: [johnDoeContact],
