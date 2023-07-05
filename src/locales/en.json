@@ -99,7 +99,8 @@
   "SelectionBar": {
     "close": "Close",
     "selected_count": "contact selected |||| contacts selected",
-    "trash_action": "delete"
+    "trash_action": "delete",
+    "select_all_action": "Select all"
   },
   "groups": {
     "none": "There is no existing group.",
