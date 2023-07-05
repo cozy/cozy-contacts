@@ -99,7 +99,7 @@
   "SelectionBar": {
     "close": "Sluiten",
     "selected_count": "contactpersoon geselecteerd |||| contactpersonen geselecteerd",
-    "trash": "verwijderen"
+    "trash_action": "verwijderen"
   },
   "groups": {
     "none": "Er is nog geen groep.",
