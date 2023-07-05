@@ -1,26 +1,31 @@
 import flow from 'lodash/flow'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { useClient } from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import SelectionBar from 'cozy-ui/transpiled/react/SelectionBar'
 
-import { trash as trashAction } from '../Actions'
+import { trash as trashAction, selectAll as selectAllAction } from '../Actions'
 import { makeActions } from '../Actions/helpers'
+import ContactsDiplayedContext from '../Contexts/ContactsDiplayed'
 import withModalContainer from '../HOCs/withModal'
 import withSelection from '../Selection/selectionContainer'
 
 const ContactsSelectionBar = ({
   selection,
   clearSelection,
+  selectAll,
   showModal,
   hideModal
 }) => {
   const client = useClient()
   const { t } = useI18n()
+  const { contactsDisplayed } = useContext(ContactsDiplayedContext)
 
-  const actions = makeActions([trashAction], {
+  const actions = makeActions([selectAllAction, trashAction], {
+    contactsDisplayed,
+    selectAll,
     selection,
     clearSelection,
     showModal,
@@ -41,6 +46,7 @@ const ContactsSelectionBar = ({
 ContactsSelectionBar.propTypes = {
   selection: PropTypes.array.isRequired,
   clearSelection: PropTypes.func.isRequired,
+  selectAll: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired
 }
