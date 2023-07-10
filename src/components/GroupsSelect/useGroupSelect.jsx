@@ -8,15 +8,10 @@ import {
   translatedDefaultSelectedGroup,
   isExistingGroup
 } from '../../helpers/groups'
+import cleanTrashedGroupsAndATrashedContacts from '../../thunks/cleanTrashedGroupsAndATrashedContacts'
 import SelectedGroupContext from '../Contexts/SelectedGroup'
 
-const useGroupsSelect = ({
-  allGroups,
-  onGroupCreated,
-  client,
-  t,
-  cleanTrashedGroups
-}) => {
+const useGroupsSelect = ({ allGroups, onGroupCreated, client, t }) => {
   const { selectedGroup, setSelectedGroup } = useContext(SelectedGroupContext)
 
   const createGroupSelf = async group => {
@@ -51,7 +46,7 @@ const useGroupsSelect = ({
     const alertDuration = 3 * 1000
 
     const alertTimeout = setTimeout(() => {
-      cleanTrashedGroups()
+      cleanTrashedGroupsAndATrashedContacts(client)
     }, alertDuration)
 
     Alerter.info('groups.removed', {

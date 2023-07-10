@@ -1,17 +1,17 @@
-import flow from 'lodash/flow'
 import React, { useEffect } from 'react'
 
-import { RealTimeQueries } from 'cozy-client'
+import { RealTimeQueries, useClient } from 'cozy-client'
 
-import container from './AppContainer'
 import SpinnerContact from './Common/Spinner'
 import ContentWrapper from './ContentWrapper'
 import useService from './Hooks/useService'
+import cleanTrashedGroupsAndATrashedContacts from '../thunks/cleanTrashedGroupsAndATrashedContacts'
 
-const ContactsApp = ({ cleanTrashedGroups }) => {
+const ContactsApp = () => {
+  const client = useClient()
   useEffect(() => {
-    cleanTrashedGroups()
-  }, [cleanTrashedGroups])
+    cleanTrashedGroupsAndATrashedContacts(client)
+  }, [client])
 
   const hasServiceBeenLaunched = useService(
     'keepIndexFullNameAndDisplayNameUpToDate'
@@ -29,4 +29,4 @@ const ContactsApp = ({ cleanTrashedGroups }) => {
   )
 }
 
-export default flow(container)(ContactsApp)
+export default ContactsApp

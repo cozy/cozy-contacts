@@ -11,7 +11,6 @@ import CustomMenu from './SelectBox/Menu'
 import CustomOption from './SelectBox/Option'
 import CustomSelectContainer from './SelectBox/SelectContainer'
 import useGroupsSelect from './useGroupSelect'
-import contactGroupConnect from '../ContactCard/ContactGroupsContainer'
 
 const captureEscapeEvent = e => {
   if (e.key === 'Escape') {
@@ -23,7 +22,6 @@ const captureEscapeEvent = e => {
 export const GroupsSelect = ({
   allGroups,
   onGroupCreated,
-  cleanTrashedGroups,
   onChange,
   closeMenuOnSelect,
   value,
@@ -45,8 +43,7 @@ export const GroupsSelect = ({
     allGroups,
     onGroupCreated,
     client,
-    t,
-    cleanTrashedGroups
+    t
   })
 
   const toggleMenu = () => {
@@ -113,7 +110,6 @@ export const GroupsSelect = ({
 }
 
 GroupsSelect.propTypes = {
-  cleanTrashedGroups: PropTypes.func.isRequired,
   allGroups: PropTypes.array.isRequired,
   styles: PropTypes.object,
   onChange: PropTypes.func.isRequired,
@@ -144,4 +140,4 @@ GroupsSelect.propTypes = {
   allGroups: PropTypes.array.isRequired
 }
 
-export default contactGroupConnect(GroupsSelect)
+export default GroupsSelect
