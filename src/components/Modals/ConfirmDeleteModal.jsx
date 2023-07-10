@@ -31,10 +31,10 @@ const ConfirmDeleteModal = () => {
     }
   }, [contact, resultContactsQueryById])
 
-  const onClose = () => navigate(`/${contactId}`)
+  const onClose = () => navigate(`/${contactId}`, { replace: true })
 
   const onDeleteContact = async (contactParam = null) => {
-    navigate('/')
+    navigate('/', { replace: true })
     await deleteContact(client, contactParam ? contactParam : contact)
     onDeleteContact && onDeleteContact(contactParam ? contactParam : contact)
   }
