@@ -1,3 +1,4 @@
+import { removeGroupFromAllContacts } from '../connections/allContacts'
 import { DOCTYPE_CONTACTS } from '../helpers/doctypes'
 import {
   buildContactGroupsTrashedQuery,
@@ -23,22 +24,6 @@ const cleanTrashedGroups = () => {
   }
 }
 
-const removeGroupFromAllContacts = async (client, groupId) => {
-  const contactQueryByGroupId = buildContactsQueryByGroupId(groupId)
 
-  const { data, next: hasMore } = await client.query(
-    contactQueryByGroupId.definition
-  )
-
-  const contacts = client.hydrateDocuments(DOCTYPE_CONTACTS, data)
-
-  const groupRemovals = contacts.map(contact => {
-    return contact.groups.removeById(groupId)
-  })
-
-  await Promise.all(groupRemovals)
-
-  if (hasMore) return removeGroupFromAllContacts(client, groupId)
-}
 
 export default cleanTrashedGroups

@@ -66,3 +66,26 @@ export const createOrUpdateContact = async ({
 
   await createOrUpdate(client, updatedContact)
 }
+
+/**
+ * Remove a group from all contacts
+ *
+ * @param {Object} client - CozyClient
+ * @param {string} groupId - Group id
+ */
+export const removeGroupFromAllContacts = async (client, groupId) => {
+  const contactQueryByGroupId = buildContactsQueryByGroupId(groupId)
+
+  const contacts = await client.queryAll(
+    contactQueryByGroupId.definition(),
+    contactQueryByGroupId.options
+  )
+
+  const contactsHydrated = client.hydrateDocuments(DOCTYPE_CONTACTS, contacts)
+
+  const groupRemovals = contactsHydrated.map(contact => {
+    return contact.groups.removeById(groupId)
+  })
+
+  await Promise.all(groupRemovals)
+}
