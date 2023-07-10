@@ -7,6 +7,7 @@ import I18n from 'cozy-ui/transpiled/react/I18n'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 import getCozyClient from './client'
+import { ContactsDiplayedProvider } from '../components/Contexts/ContactsDiplayed'
 import { SearchProvider } from '../components/Contexts/Search'
 import { SelectedGroupProvider } from '../components/Contexts/SelectedGroup'
 import langEn from '../locales/en.json'
@@ -19,11 +20,13 @@ const AppLike = ({ children, client }) => (
     <Provider store={store}>
       <CozyProvider client={client || getCozyClient()}>
         <I18n lang="en" dictRequire={() => langEn}>
-          <SelectedGroupProvider>
-            <SearchProvider>
-              <HashRouter>{children}</HashRouter>
-            </SearchProvider>
-          </SelectedGroupProvider>
+          <ContactsDiplayedProvider>
+            <SelectedGroupProvider>
+              <SearchProvider>
+                <HashRouter>{children}</HashRouter>
+              </SearchProvider>
+            </SelectedGroupProvider>
+          </ContactsDiplayedProvider>
         </I18n>
       </CozyProvider>
     </Provider>

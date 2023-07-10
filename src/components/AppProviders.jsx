@@ -11,6 +11,7 @@ import {
   createGenerateClassName
 } from 'cozy-ui/transpiled/react/styles'
 
+import { ContactsDiplayedProvider } from './Contexts/ContactsDiplayed'
 import { SearchProvider } from './Contexts/Search'
 import { SelectedGroupProvider } from './Contexts/SelectedGroup'
 
@@ -34,9 +35,11 @@ const AppProviders = ({ store, client, lang, polyglot, children }) => {
             <I18n lang={lang} polyglot={polyglot}>
               <MuiCozyTheme>
                 <BreakpointsProvider>
-                  <SelectedGroupProvider>
-                    <SearchProvider>{children}</SearchProvider>
-                  </SelectedGroupProvider>
+                  <ContactsDiplayedProvider>
+                    <SelectedGroupProvider>
+                      <SearchProvider>{children}</SearchProvider>
+                    </SelectedGroupProvider>
+                  </ContactsDiplayedProvider>
                 </BreakpointsProvider>
               </MuiCozyTheme>
             </I18n>
