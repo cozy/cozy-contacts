@@ -1,11 +1,13 @@
 import React, { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import ActionMenu, { ActionMenuItem } from 'cozy-ui/transpiled/react/ActionMenu'
+import ActionMenu, {
+  ActionMenuItem
+} from 'cozy-ui/transpiled/react/deprecated/ActionMenu'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import AppLinker from 'cozy-ui/transpiled/react/AppLinker'
 import BottomIcon from 'cozy-ui/transpiled/react/Icons/Bottom'
-import Button from 'cozy-ui/transpiled/react/Button'
+import Button from 'cozy-ui/transpiled/react/deprecated/Button'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import Link from 'cozy-ui/transpiled/react/Link'
 import TeamIcon from 'cozy-ui/transpiled/react/Icons/Team'

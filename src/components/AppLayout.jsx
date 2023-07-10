@@ -8,7 +8,7 @@ import FlagSwitcher from 'cozy-flags/dist/FlagSwitcher'
 import { useI18n, useBreakpoints } from 'cozy-ui/transpiled/react'
 import { Main, Layout } from 'cozy-ui/transpiled/react/Layout'
 import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
-import Alerter from 'cozy-ui/transpiled/react/Alerter'
+import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
 

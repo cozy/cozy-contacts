@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { Table } from 'cozy-ui/transpiled/react/Table'
-import ListSubheader from 'cozy-ui/transpiled/react/MuiCozyTheme/ListSubheader'
-import List from 'cozy-ui/transpiled/react/MuiCozyTheme/List'
+import ListSubheader from 'cozy-ui/transpiled/react/ListSubheader'
+import List from 'cozy-ui/transpiled/react/List'
 
 import ContactsSubList from './ContactsSubList'
 import { categorizeContacts } from '../../helpers/contactList'

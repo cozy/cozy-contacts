@@ -5,7 +5,7 @@ import get from 'lodash/get'
 import log from 'cozy-logger'
 import { useNavigate } from 'react-router-dom'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import Alerter from 'cozy-ui/transpiled/react/Alerter'
+import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 import RenameIcon from 'cozy-ui/transpiled/react/Icons/Rename'
 import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
 
@@ -16,7 +16,7 @@ import GroupsSelect from '../GroupsSelect/GroupsSelect'
 import Control from '../GroupsSelect/SelectBox/Control'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import Icon from 'cozy-ui/transpiled/react/Icon'
-import Grid from 'cozy-ui/transpiled/react/MuiCozyTheme/Grid'
+import Grid from 'cozy-ui/transpiled/react/Grid'
 
 const customStyles = {
   container: base => ({

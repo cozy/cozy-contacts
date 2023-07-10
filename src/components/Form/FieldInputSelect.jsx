@@ -1,7 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
 
-import TextField from 'cozy-ui/transpiled/react/MuiCozyTheme/TextField'
+import TextField from 'cozy-ui/transpiled/react/TextField'
 import { makeStyles } from 'cozy-ui/transpiled/react/styles'
 import MenuItem from 'cozy-ui/transpiled/react/MenuItem'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'

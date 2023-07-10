@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { useClient } from 'cozy-client'
 import { useNavigate } from 'react-router-dom'
-import Alerter from 'cozy-ui/transpiled/react/Alerter'
+import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 

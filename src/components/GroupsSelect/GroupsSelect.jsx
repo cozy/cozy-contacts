@@ -5,9 +5,9 @@ import get from 'lodash/get'
 import cx from 'classnames'
 
 import { withClient } from 'cozy-client'
-import Alerter from 'cozy-ui/transpiled/react/Alerter'
+import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
-import Overlay from 'cozy-ui/transpiled/react/Overlay'
+import Overlay from 'cozy-ui/transpiled/react/deprecated/Overlay'
 import SelectBox from 'cozy-ui/transpiled/react/SelectBox'
 
 import SelectedGroupContext from '../Contexts/SelectedGroup'

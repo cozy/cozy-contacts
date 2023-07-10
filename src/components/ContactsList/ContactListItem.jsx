@@ -5,7 +5,7 @@ import get from 'lodash/get'
 
 import { models } from 'cozy-client'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
-import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
+import ListItem from 'cozy-ui/transpiled/react/ListItem'
 import ContactCozy from 'cozy-ui/transpiled/react/ContactsList/Contacts/ContactCozy'
 import ContactEmail from 'cozy-ui/transpiled/react/ContactsList/Contacts/ContactEmail'
 import ContactIdentity from 'cozy-ui/transpiled/react/ContactsList/Contacts/ContactIdentity'
