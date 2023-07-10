@@ -7,6 +7,7 @@ import ContactImportationModal from './ContactImportationModal'
 import ConfirmDeleteModal from './Modals/ConfirmDeleteModal'
 import ContactFormModal from './Modals/ContactFormModal'
 import ContactInfoModal from './Modals/ContactInfoModal'
+import GroupDeleteConfirmationModal from './Modals/GroupDeleteConfirmationModal'
 
 const OutletWrapper = ({ Component }) => (
   <>
@@ -26,6 +27,10 @@ const AppRouter = () => {
             <Route path=":contactId" element={<ContactInfoModal />} />
             <Route path=":contactId/edit" element={<ContactFormModal />} />
             <Route path=":contactId/delete" element={<ConfirmDeleteModal />} />
+            <Route
+              path="group/:groupId/delete/:groupName"
+              element={<GroupDeleteConfirmationModal />}
+            />
           </Route>
         </Route>
       </Routes>

@@ -4,14 +4,10 @@ import { useContext } from 'react'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 
 import { createGroup, updateGroup } from '../../connections/allGroups'
-import {
-  translatedDefaultSelectedGroup,
-  isExistingGroup
-} from '../../helpers/groups'
-import cleanTrashedGroupsAndATrashedContacts from '../../thunks/cleanTrashedGroupsAndATrashedContacts'
+import { isExistingGroup } from '../../helpers/groups'
 import SelectedGroupContext from '../Contexts/SelectedGroup'
 
-const useGroupsSelect = ({ allGroups, onGroupCreated, client, t }) => {
+const useGroupsSelect = ({ allGroups, onGroupCreated, client }) => {
   const { selectedGroup, setSelectedGroup } = useContext(SelectedGroupContext)
 
   const createGroupSelf = async group => {
@@ -27,40 +23,6 @@ const useGroupsSelect = ({ allGroups, onGroupCreated, client, t }) => {
       return Alerter.success('groups.created.success')
     } catch {
       return Alerter.error('groups.created.error')
-    }
-  }
-
-  const cancelGroupDelete = async group => {
-    delete group.trashed
-    await updateGroup(client, group)
-    Alerter.info('groups.remove_canceled', { name: group.name })
-  }
-
-  const deleteGroupSelf = async group => {
-    const isDeletedGroupSelected =
-      get(group, '_id') === get(selectedGroup, '_id')
-    const { data: flaggedGroup } = await updateGroup(client, {
-      ...group,
-      trashed: true
-    })
-    const alertDuration = 3 * 1000
-
-    const alertTimeout = setTimeout(() => {
-      cleanTrashedGroupsAndATrashedContacts(client)
-    }, alertDuration)
-
-    Alerter.info('groups.removed', {
-      name: flaggedGroup.name,
-      buttonText: t('cancel'),
-      buttonAction: () => {
-        clearTimeout(alertTimeout)
-        cancelGroupDelete(flaggedGroup)
-      },
-      duration: alertDuration
-    })
-
-    if (isDeletedGroupSelected) {
-      setSelectedGroup(translatedDefaultSelectedGroup(t))
     }
   }
 
@@ -87,7 +49,6 @@ const useGroupsSelect = ({ allGroups, onGroupCreated, client, t }) => {
 
   return {
     createGroup: createGroupSelf,
-    deleteGroup: deleteGroupSelf,
     renameGroup: renameGroupSelf
   }
 }

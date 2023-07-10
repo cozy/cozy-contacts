@@ -1,9 +1,9 @@
 import cx from 'classnames'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { useClient } from 'cozy-client'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import SelectBox from 'cozy-ui/transpiled/react/SelectBox'
 import Overlay from 'cozy-ui/transpiled/react/deprecated/Overlay'
 
@@ -33,17 +33,16 @@ export const GroupsSelect = ({
   className,
   menuPosition
 }) => {
-  const { t } = useI18n()
   const client = useClient()
+  const navigate = useNavigate()
   const [{ menuIsOpen, editedGroupId }, setState] = useState({
     menuIsOpen: false,
     editedGroupId: ''
   })
-  const { createGroup, deleteGroup, renameGroup } = useGroupsSelect({
+  const { createGroup, renameGroup } = useGroupsSelect({
     allGroups,
     onGroupCreated,
-    client,
-    t
+    client
   })
 
   const toggleMenu = () => {
@@ -64,6 +63,11 @@ export const GroupsSelect = ({
     }
 
     onChange(props)
+  }
+
+  const handleDelete = group => {
+    closeMenu()
+    navigate(`group/${group._id}/delete/${group.name}`)
   }
 
   const defaultComponents = {
@@ -97,7 +101,7 @@ export const GroupsSelect = ({
         getOptionValue={group => group._id}
         components={{ ...defaultComponents, ...components }}
         createGroup={createGroup}
-        deleteGroup={deleteGroup}
+        deleteGroup={handleDelete}
         renameGroup={renameGroup}
         styles={styles}
         onControlClicked={toggleMenu}
