@@ -129,6 +129,11 @@
     "description-google": "This contact will also be deleted from your Google address book. |||| These contacts will also be deleted from your Google address book.",
     "description-mixed": "These contacts will be removed permanently from your Cozy, the contacts linked to your Google account will also be deleted from your Google address book."
   },
+  "delete_group_confirmation": {
+    "title": "Delete this group",
+    "content": "Delete group <b>\"%{name}\"</b>, associated contacts will not be deleted.",
+    "checkbox": "Delete associated contacts"
+  },
   "intent": {
     "creation_error": "An error occured while trying to contact the other app. Please try again later?"
   },

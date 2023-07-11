@@ -129,6 +129,11 @@
     "description-google": "Ce contact sera également supprimé de votre carnet d'adresses Google. |||| Ces contacts seront également supprimés de votre carnet d'adresses Google.",
     "description-mixed": "Ces contacts seront supprimés définitivement de votre Cozy, les contacts associés à votre compte Google seront aussi supprimés dans votre carnet d'adresses Google."
   },
+  "delete_group_confirmation": {
+    "title": "Supprimer le groupe",
+    "content": "En supprimer le groupe <b>\"%{name}\"</b>, les contacts associés ne seront pas supprimés.",
+    "checkbox": "Supprimer les contacts associés"
+  },
   "intent": {
     "creation_error": "Une erreur est survenue lors de la communication avec l'autre application. Merci de réessayer ultérieurement."
   },
