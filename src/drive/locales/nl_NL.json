@@ -99,7 +99,8 @@
   "SelectionBar": {
     "close": "Sluiten",
     "selected_count": "contactpersoon geselecteerd |||| contactpersonen geselecteerd",
-    "trash": "verwijderen"
+    "trash_action": "Verwĳderen",
+    "select_all_action": "Alles selecteren"
   },
   "groups": {
     "none": "Er is nog geen groep.",
@@ -127,6 +128,11 @@
     "description-simple": "Deze contactpersoon wordt permanent verwijderd uit je Cozy. |||| Deze contactpersonen worden permanent verwijderd uit je Cozy.",
     "description-google": "Deze contactpersoon wordt permanent verwijderd uit je Google-adresboek. |||| Deze contactpersonen worden permanent verwijderd uit je Google-adresboek.",
     "description-mixed": "Deze contactpersonen worden permanent verwijderd uit je Cozy. De personen die gekoppeld zijn aan je Google-account worden tevens verwijderd uit je Google-adresboek."
+  },
+  "delete_group_confirmation": {
+    "title": "Groep verwĳderen",
+    "content": "Hierdoor wordt de groep <b>%{name}</b> verwĳderd. Bĳbehorende contactpersonen worden niet verwĳderd.",
+    "checkbox": "Bĳbehorende contactpersonen verwĳderen"
   },
   "intent": {
     "creation_error": "Er is een fout opgetreden tijdens het communiceren met de andere app. Probeer het later opnieuw."
