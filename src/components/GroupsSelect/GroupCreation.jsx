@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
 import classNames from 'classnames'
+import React, { Component } from 'react'
 
-import Icon from 'cozy-ui/transpiled/react/Icon'
-import Input from 'cozy-ui/transpiled/react/Input'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
+import Icon from 'cozy-ui/transpiled/react/Icon'
 import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
+import Input from 'cozy-ui/transpiled/react/Input'
 
 const normalizeGroupData = name => {
   return {

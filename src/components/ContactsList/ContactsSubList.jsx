@@ -1,8 +1,8 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import ContactListItem from './ContactListItem'
-import { useNavigate } from 'react-router-dom'
 
 const ContactsSubList = ({ contacts }) => {
   const navigate = useNavigate()

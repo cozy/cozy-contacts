@@ -1,21 +1,21 @@
 import React, { useContext } from 'react'
-
 import { useNavigate } from 'react-router-dom'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
-import Empty from 'cozy-ui/transpiled/react/Empty'
-import Button from 'cozy-ui/transpiled/react/Button'
-import Infos from 'cozy-ui/transpiled/react/Infos'
-import Stack from 'cozy-ui/transpiled/react/Stack'
-import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
-import InfoIcon from 'cozy-ui/transpiled/react/Icons/Info'
-import TeamIcon from 'cozy-ui/transpiled/react/Icons/Team'
 
-import StoreButton from '../Common/StoreButton'
+import Empty from 'cozy-ui/transpiled/react/Empty'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import InfoIcon from 'cozy-ui/transpiled/react/Icons/Info'
+import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
+import TeamIcon from 'cozy-ui/transpiled/react/Icons/Team'
+import Stack from 'cozy-ui/transpiled/react/Stack'
+import Button from 'cozy-ui/transpiled/react/deprecated/Button'
+import Infos from 'cozy-ui/transpiled/react/deprecated/Infos'
+import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+
 import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
+import { hasSelectedGroup } from '../../helpers/groups'
+import StoreButton from '../Common/StoreButton'
 import SearchContext from '../Contexts/Search'
 import SelectedGroupContext from '../Contexts/SelectedGroup'
-import { hasSelectedGroup } from '../../helpers/groups'
 
 const style = { pointerEvents: 'all' }
 

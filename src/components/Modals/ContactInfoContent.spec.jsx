@@ -1,11 +1,12 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
+
 import ContactInfoContent from './ContactInfoContent'
-import AppLike from '../../tests/Applike'
 import {
   DOCTYPE_CONTACT_GROUPS,
   DOCTYPE_CONTACT_ACCOUNTS
 } from '../../helpers/doctypes'
+import AppLike from '../../tests/Applike'
 
 describe('ContactInfoContent', () => {
   it('should match snapshot when groups are available but no one is linked to the specified contact', () => {

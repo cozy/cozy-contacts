@@ -1,13 +1,12 @@
-import React from 'react'
 import { render, screen, fireEvent, act, waitFor } from '@testing-library/react'
-
+import React from 'react'
 import { useParams } from 'react-router-dom'
 
 import { useQuery } from 'cozy-client'
 
-import AppLike from '../../tests/Applike'
 import ContactFormModal from './ContactFormModal'
 import { createOrUpdateContact } from '../../connections/allContacts'
+import AppLike from '../../tests/Applike'
 
 jest.mock('../../connections/allContacts', () => ({
   createContact: jest.fn().mockResolvedValue({ data: 'created' }),

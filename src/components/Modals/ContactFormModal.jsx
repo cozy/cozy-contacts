@@ -2,21 +2,21 @@ import React, { useState, useContext } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { useClient, useQuery } from 'cozy-client'
-import { FixedDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import Button from 'cozy-ui/transpiled/react/Buttons'
+import { FixedDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 
+import ContactForm, {
+  getSubmitContactForm
+} from '../../components/ContactCard/ContactForm'
+import SelectedGroupContext from '../../components/Contexts/SelectedGroup'
+import { createOrUpdateContact } from '../../connections/allContacts'
+import { makeContactWithIdentitiesAddresses } from '../../helpers/contacts'
 import {
   buildContactsQueryById,
   buildIdentitiesQueryByContact
 } from '../../queries/queries'
-import SelectedGroupContext from '../../components/Contexts/SelectedGroup'
-import ContactForm, {
-  getSubmitContactForm
-} from '../../components/ContactCard/ContactForm'
-import { createOrUpdateContact } from '../../connections/allContacts'
-import { makeContactWithIdentitiesAddresses } from '../../helpers/contacts'
 
 const ContactFormModal = () => {
   const navigate = useNavigate()

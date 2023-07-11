@@ -1,11 +1,11 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
-
-import { useQuery } from 'cozy-client'
+import React from 'react'
 import { useParams } from 'react-router-dom'
 
-import AppLike from '../../tests/Applike'
+import { useQuery } from 'cozy-client'
+
 import ContactInfoModal from './ContactInfoModal'
+import AppLike from '../../tests/Applike'
 
 jest.mock('cozy-client/dist/hooks/useQuery', () => jest.fn())
 

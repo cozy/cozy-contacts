@@ -1,15 +1,16 @@
 import '@babel/polyfill'
+
 import 'cozy-ui/transpiled/react/stylesheet.css'
 
 import 'styles'
 import 'styles/intent'
-
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { I18n } from 'cozy-ui/transpiled/react/I18n'
+
 import cozyClient, { CozyProvider } from 'cozy-client'
 import { Intents } from 'cozy-interapp'
 import { RealtimePlugin } from 'cozy-realtime'
+import { I18n } from 'cozy-ui/transpiled/react/I18n'
 
 const renderApp = function (root, client, appLocale, appData) {
   const IntentHandler = require('components/Intents/IntentHandler').default

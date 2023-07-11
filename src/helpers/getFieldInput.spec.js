@@ -1,9 +1,9 @@
-import TextField from 'cozy-ui/transpiled/react/MuiCozyTheme/TextField'
+import TextField from 'cozy-ui/transpiled/react/TextField'
 
+import { getFieldInput } from './getFieldInput'
+import { fields } from '../components/ContactCard/ContactForm/fieldsConfig'
 import FieldInputSelect from '../components/Form/FieldInputSelect'
 import FieldInputTextarea from '../components/Form/FieldInputTextarea'
-import { fields } from '../components/ContactCard/ContactForm/fieldsConfig'
-import { getFieldInput } from './getFieldInput'
 
 describe('getFieldInput', () => {
   it('should return FieldInputSelect component if "select" attribute defined', () => {

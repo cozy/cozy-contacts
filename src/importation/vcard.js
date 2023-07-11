@@ -1,4 +1,5 @@
 import VCardParser from 'cozy-vcard'
+
 import readFile from './readFile'
 import v2to3 from './v2to3'
 const encoding = 'utf8'

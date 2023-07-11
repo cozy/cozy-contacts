@@ -1,6 +1,6 @@
 import React from 'react'
 
-import TextField from 'cozy-ui/transpiled/react/MuiCozyTheme/TextField'
+import TextField from 'cozy-ui/transpiled/react/TextField'
 
 import { FieldInputWrapperPropTypes } from './FieldInputWrapper'
 

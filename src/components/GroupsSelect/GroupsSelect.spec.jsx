@@ -1,11 +1,11 @@
-import React from 'react'
 import { render, screen, fireEvent, act } from '@testing-library/react'
+import React from 'react'
 
+import GroupsSelect from './GroupsSelect'
+import Control from './SelectBox/Control'
 import { createGroup, updateGroup } from '../../connections/allGroups'
 import { groups } from '../../helpers/testData'
-import GroupsSelect from './GroupsSelect'
 import AppLike from '../../tests/Applike'
-import Control from './SelectBox/Control'
 
 jest.mock('../../connections/allGroups', () => ({
   createGroup: jest.fn(),

@@ -1,13 +1,13 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
-import { fullContactPropTypes } from '../ContactPropTypes'
 import { normalizeFields, getConnectedAccounts } from '../../helpers/contacts'
-import ContactGroupsList from '../ContactCard/ContactGroups/ContactGroupList'
-import ContactFields from '../ContactCard/ContactFields/ContactFields'
 import ContactAccounts from '../ContactCard/ContactAccounts'
+import ContactFields from '../ContactCard/ContactFields/ContactFields'
+import ContactGroupsList from '../ContactCard/ContactGroups/ContactGroupList'
+import { fullContactPropTypes } from '../ContactPropTypes'
 
 const ContactInfoContent = ({ contact, allGroups }) => {
   const { t } = useI18n()

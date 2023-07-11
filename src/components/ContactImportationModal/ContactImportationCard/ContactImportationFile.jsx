@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import palette from 'cozy-ui/transpiled/react/palette'
 
+import IconFileFailImport from '../../../assets/icons/file-fail-import.svg'
+import IconFilePartialImport from '../../../assets/icons/file-partial-import.svg'
 import IconFileVcf from '../../../assets/icons/file-vcf.svg'
 import IconFileWrongFormat from '../../../assets/icons/file-wrong-format.svg'
-import IconFilePartialImport from '../../../assets/icons/file-partial-import.svg'
-import IconFileFailImport from '../../../assets/icons/file-fail-import.svg'
-
 import Status from '../../../importation/status'
 
 function fileIcon(status) {

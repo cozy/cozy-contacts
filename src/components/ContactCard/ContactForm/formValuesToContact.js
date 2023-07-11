@@ -1,7 +1,7 @@
 import isEqual from 'lodash/isEqual'
 
-import { updateIndexFullNameAndDisplayName } from '../../../helpers/contacts'
 import contactToFormValues from './contactToFormValues'
+import { updateIndexFullNameAndDisplayName } from '../../../helpers/contacts'
 
 const hasExtendedAddress = addressField => {
   if (!addressField) return false

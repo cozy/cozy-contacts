@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import React, { useState } from 'react'
 import { Field } from 'react-final-form'
 
-import HasValueCondition from '../Form/HasValueCondition'
-import FieldInputWrapper from '../Form/FieldInputWrapper'
 import { fieldInputAttributes } from './ContactFields/ContactFieldsProptypes'
+import FieldInputWrapper from '../Form/FieldInputWrapper'
+import HasValueCondition from '../Form/HasValueCondition'
 import ContactAddressModal from '../Modals/ContactAddressModal'
 
 const isAddressField = ({ subFields, type }) => {

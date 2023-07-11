@@ -1,14 +1,15 @@
 import omit from 'lodash/omit'
+import fetch from 'node-fetch'
+
 import CozyClient from 'cozy-client'
 import log from 'cozy-logger'
 
+import { updateIndexFullNameAndDisplayName } from '../../helpers/contacts'
 import { schema, DOCTYPE_CONTACTS } from '../../helpers/doctypes'
 import {
   fetchContactsToUpdate,
   fetchNormalizedServiceByName
 } from '../../helpers/fetches'
-import { updateIndexFullNameAndDisplayName } from '../../helpers/contacts'
-import fetch from 'node-fetch'
 
 global.fetch = fetch
 

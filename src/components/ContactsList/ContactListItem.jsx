@@ -1,18 +1,17 @@
-import React, { memo } from 'react'
-import PropTypes from 'prop-types'
-
 import get from 'lodash/get'
+import PropTypes from 'prop-types'
+import React, { memo } from 'react'
 
 import { models } from 'cozy-client'
-import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
-import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import ContactCozy from 'cozy-ui/transpiled/react/ContactsList/Contacts/ContactCozy'
 import ContactEmail from 'cozy-ui/transpiled/react/ContactsList/Contacts/ContactEmail'
 import ContactIdentity from 'cozy-ui/transpiled/react/ContactsList/Contacts/ContactIdentity'
 import ContactPhone from 'cozy-ui/transpiled/react/ContactsList/Contacts/ContactPhone'
+import ListItem from 'cozy-ui/transpiled/react/ListItem'
+import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
-import { fullContactPropTypes } from '../ContactPropTypes'
 import ContactWithSelection from './ContactSelection'
+import { fullContactPropTypes } from '../ContactPropTypes'
 
 const { getPrimaryCozy, getPrimaryPhone, getPrimaryEmail } = models.contact
 

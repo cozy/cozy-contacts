@@ -1,12 +1,13 @@
 import React from 'react'
 import { HashRouter, Routes, Route, Outlet } from 'react-router-dom'
 
-import App from 'components/App'
-import ContactImportationModal from 'components/ContactImportationModal'
-import ContactFormModal from 'components/Modals/ContactFormModal'
-import ContactInfoModal from 'components/Modals/ContactInfoModal'
-import ConfirmDeleteModal from 'components/Modals/ConfirmDeleteModal'
+import App from './App'
 import AppLayout from './AppLayout'
+import ContactImportationModal from './ContactImportationModal'
+import ConfirmDeleteModal from './Modals/ConfirmDeleteModal'
+import ContactFormModal from './Modals/ContactFormModal'
+import ContactInfoModal from './Modals/ContactInfoModal'
+import GroupDeleteConfirmationModal from './Modals/GroupDeleteConfirmationModal'
 
 const OutletWrapper = ({ Component }) => (
   <>
@@ -26,6 +27,10 @@ const AppRouter = () => {
             <Route path=":contactId" element={<ContactInfoModal />} />
             <Route path=":contactId/edit" element={<ContactFormModal />} />
             <Route path=":contactId/delete" element={<ConfirmDeleteModal />} />
+            <Route
+              path="group/:groupId/delete/:groupName"
+              element={<GroupDeleteConfirmationModal />}
+            />
           </Route>
         </Route>
       </Routes>

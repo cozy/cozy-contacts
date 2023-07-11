@@ -2,6 +2,7 @@
 // "Importation" because "import" is a reserved keyword.
 
 import PropTypes from 'prop-types'
+
 import Report from './report'
 import Status from './status'
 import vcard from './vcard'

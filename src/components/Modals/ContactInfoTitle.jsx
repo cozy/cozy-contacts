@@ -1,22 +1,22 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import get from 'lodash/get'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import log from 'cozy-logger'
-import { useNavigate } from 'react-router-dom'
+import Button from 'cozy-ui/transpiled/react/Buttons'
+import Grid from 'cozy-ui/transpiled/react/Grid'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import Alerter from 'cozy-ui/transpiled/react/Alerter'
+import Icon from 'cozy-ui/transpiled/react/Icon'
 import RenameIcon from 'cozy-ui/transpiled/react/Icons/Rename'
 import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
+import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 
 import { updateContactGroups } from '../../helpers/groups'
-import { fullContactPropTypes } from '../ContactPropTypes'
 import ContactIdentity from '../ContactCard/ContactIdentity'
+import { fullContactPropTypes } from '../ContactPropTypes'
 import GroupsSelect from '../GroupsSelect/GroupsSelect'
 import Control from '../GroupsSelect/SelectBox/Control'
-import Button from 'cozy-ui/transpiled/react/Buttons'
-import Icon from 'cozy-ui/transpiled/react/Icon'
-import Grid from 'cozy-ui/transpiled/react/MuiCozyTheme/Grid'
 
 const customStyles = {
   container: base => ({

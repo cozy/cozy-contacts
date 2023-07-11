@@ -1,20 +1,21 @@
-import React, { useContext, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+import React, { useContext, useEffect, useState } from 'react'
 
-import { Content } from 'cozy-ui/transpiled/react/Layout'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
-import { ControlDefault } from 'cozy-ui/transpiled/react/SelectBox'
-import Input from 'cozy-ui/transpiled/react/Input'
 import flag from 'cozy-flags'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import Input from 'cozy-ui/transpiled/react/Input'
+import { Content } from 'cozy-ui/transpiled/react/Layout'
+import { ControlDefault } from 'cozy-ui/transpiled/react/SelectBox'
+import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
-import SelectedGroupContext from './Contexts/SelectedGroup'
-import SearchContext from './Contexts/Search'
-import Header from './Header'
-import Toolbar from './Toolbar'
 import ContactsList from './ContactsList/ContactsList.jsx'
+import ContactsDiplayedContext from './Contexts/ContactsDiplayed'
+import SearchContext from './Contexts/Search'
+import SelectedGroupContext from './Contexts/SelectedGroup'
 import GroupsSelect from './GroupsSelect/GroupsSelect'
+import Header from './Header'
 import SearchInput from './Search/SearchInput'
+import Toolbar from './Toolbar'
 import {
   filterContactsByGroup,
   translatedDefaultSelectedGroup
@@ -48,6 +49,7 @@ export const ContentResult = ({ contacts, allGroups }) => {
   const { t } = useI18n()
   const { selectedGroup, setSelectedGroup } = useContext(SelectedGroupContext)
   const { searchValue } = useContext(SearchContext)
+  const { setContactsDisplayed } = useContext(ContactsDiplayedContext)
   const [filteredContacts, setFilteredContacts] = useState(contacts)
   const { isMobile } = useBreakpoints()
 
@@ -72,7 +74,8 @@ export const ContentResult = ({ contacts, allGroups }) => {
       searchValue
     )
     setFilteredContacts(filteredContactsBySearch)
-  }, [contacts, searchValue, selectedGroup, setFilteredContacts])
+    setContactsDisplayed(filteredContactsBySearch)
+  }, [contacts, searchValue, selectedGroup, setContactsDisplayed])
 
   return (
     <>

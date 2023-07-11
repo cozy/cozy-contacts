@@ -1,8 +1,10 @@
 import 'cozy-ui/transpiled/react/stylesheet.css'
+import 'cozy-ui/dist/cozy-ui.utils.min.css'
 
-import React from 'react'
 import AppProviders from 'components/AppProviders'
 import AppRouter from 'components/AppRouter'
+import React from 'react'
+
 import setupApp from './setupApp'
 import '../../styles/index.styl'
 

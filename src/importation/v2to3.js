@@ -9,6 +9,7 @@
 //   (e.g. address), prefix function name with `single*`.
 
 import _ from 'lodash'
+
 import { isBlank, trimObject } from './utils'
 
 export default {

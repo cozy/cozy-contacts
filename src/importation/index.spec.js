@@ -1,8 +1,8 @@
 jest.mock('./readFile')
 
 import Importation from '.'
-import Status from './status'
 import fixture from './__helpers__/fixture'
+import Status from './status'
 
 describe('importation', () => {
   describe('init', () => {

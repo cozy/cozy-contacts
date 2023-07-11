@@ -1,4 +1,5 @@
 import { Q, fetchPolicies } from 'cozy-client'
+
 import {
   DOCTYPE_CONTACTS,
   DOCTYPE_CONTACT_GROUPS,
@@ -22,12 +23,12 @@ export const buildContactsQueryById = id => ({
   }
 })
 
-export const buildIdentitiesQueryByContact = (enabled = false) => ({
+export const buildIdentitiesQueryByContact = enabled => ({
   definition: Q(DOCTYPE_IDENTITIES),
   options: {
     as: DOCTYPE_IDENTITIES,
     fetchPolicy: fetchPolicies.olderThan(older30s),
-    enabled
+    enabled: Boolean(enabled)
   }
 })
 
@@ -163,23 +164,43 @@ export const buildContactsQueryByEmailAdressOrPhoneNumber = (
 }
 
 export const buildContactsQueryByGroupId = groupId => ({
-  definition: Q(DOCTYPE_CONTACTS)
-    .where({
-      relationships: {
-        groups: {
-          data: {
-            $elemMatch: {
-              _id: groupId,
-              _type: DOCTYPE_CONTACT_GROUPS
+  definition: () =>
+    Q(DOCTYPE_CONTACTS)
+      .where({
+        relationships: {
+          groups: {
+            data: {
+              $elemMatch: {
+                _id: groupId,
+                _type: DOCTYPE_CONTACT_GROUPS
+              }
             }
           }
         }
-      }
-    })
-    .indexFields(['relationships.groups.data'])
+      })
+      .indexFields(['relationships.groups.data'])
+      .limitBy(1000),
+  options: {
+    as: `${DOCTYPE_CONTACTS}/byGroupId/${groupId}`
+  }
+})
+
+export const buildContactsTrashedQuery = () => ({
+  definition: () => Q(DOCTYPE_CONTACTS).partialIndex({ trashed: true }),
+  options: {
+    as: `${DOCTYPE_CONTACTS}/trashed`
+  }
 })
 
 // Contact groups doctype -------------
+
+export const buildGroupQueryById = id => ({
+  definition: () => Q(DOCTYPE_CONTACT_GROUPS).getById(id),
+  options: {
+    as: `${DOCTYPE_CONTACT_GROUPS}/${id}`,
+    singleDocData: true
+  }
+})
 
 export const buildContactGroupsQuery = () => ({
   definition: Q(DOCTYPE_CONTACT_GROUPS)
@@ -204,7 +225,10 @@ export const buildContactGroupsQuery = () => ({
 })
 
 export const buildContactGroupsTrashedQuery = () => ({
-  definition: Q(DOCTYPE_CONTACT_GROUPS).partialIndex({ trashed: true })
+  definition: () => Q(DOCTYPE_CONTACT_GROUPS).partialIndex({ trashed: true }),
+  options: {
+    as: `${DOCTYPE_CONTACT_GROUPS}/trashed`
+  }
 })
 
 // Triggers doctype -------------

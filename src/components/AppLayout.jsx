@@ -3,20 +3,19 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 
 import { useClient } from 'cozy-client'
+import flag from 'cozy-flags'
 import FlagSwitcher from 'cozy-flags/dist/FlagSwitcher'
 import { useI18n, useBreakpoints } from 'cozy-ui/transpiled/react'
+import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
 import { Main, Layout } from 'cozy-ui/transpiled/react/Layout'
 import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
-import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
+import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
 import { ModalManager } from '../helpers/modalManager'
-import useFlags from './Hooks/useFlags'
 
 const AppLayout = () => {
-  useFlags()
   const client = useClient()
   const { t } = useI18n()
   const { isMobile } = useBreakpoints()
@@ -32,7 +31,7 @@ const AppLayout = () => {
         </BarCenter>
       )}
       <Main>
-        <FlagSwitcher />
+        {flag('switcher') && <FlagSwitcher />}
         <ContactsSelectionBar />
         <Outlet />
         <Alerter t={t} />

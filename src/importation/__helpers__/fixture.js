@@ -1,5 +1,6 @@
 import fs from 'fs'
 import { basename } from 'path'
+
 import vcard from '../vcard'
 
 export default {

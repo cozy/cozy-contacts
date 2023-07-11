@@ -1,16 +1,18 @@
 import React, { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import ActionMenu, { ActionMenuItem } from 'cozy-ui/transpiled/react/ActionMenu'
+import { useClient } from 'cozy-client'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import AppLinker from 'cozy-ui/transpiled/react/AppLinker'
-import BottomIcon from 'cozy-ui/transpiled/react/Icons/Bottom'
-import Button from 'cozy-ui/transpiled/react/Button'
-import Icon from 'cozy-ui/transpiled/react/Icon'
-import Link from 'cozy-ui/transpiled/react/Link'
-import TeamIcon from 'cozy-ui/transpiled/react/Icons/Team'
-import { useClient } from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import BottomIcon from 'cozy-ui/transpiled/react/Icons/Bottom'
+import TeamIcon from 'cozy-ui/transpiled/react/Icons/Team'
+import Link from 'cozy-ui/transpiled/react/Link'
+import ActionMenu, {
+  ActionMenuItem
+} from 'cozy-ui/transpiled/react/deprecated/ActionMenu'
+import Button from 'cozy-ui/transpiled/react/deprecated/Button'
 
 import { getFilteredStoreUrl } from '../../helpers/store'
 

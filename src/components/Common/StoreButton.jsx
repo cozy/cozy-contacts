@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { useClient } from 'cozy-client'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import { ButtonLink } from 'cozy-ui/transpiled/react/Button'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { ButtonLink } from 'cozy-ui/transpiled/react/deprecated/Button'
 
 import { getFilteredStoreUrl } from '../../helpers/store'
 

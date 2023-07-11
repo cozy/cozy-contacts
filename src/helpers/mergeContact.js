@@ -1,8 +1,8 @@
-import mergeWith from 'lodash/mergeWith'
-import merge from 'lodash/merge'
 import concat from 'lodash/concat'
 import groupBy from 'lodash/groupBy'
 import map from 'lodash/map'
+import merge from 'lodash/merge'
+import mergeWith from 'lodash/mergeWith'
 
 export function mergeContact(contact, attributes) {
   return mergeWith({}, contact, attributes, customizer)

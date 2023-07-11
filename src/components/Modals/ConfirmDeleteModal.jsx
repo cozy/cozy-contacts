@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import { useClient, useQuery } from 'cozy-client'
-import { useNavigate, useParams } from 'react-router-dom'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import { buildContactsQueryById } from '../../queries/queries'
 
-import { getConnectedAccounts } from '../../helpers/contacts'
-import ConfirmDeleteActions from '../Common/ConfirmDeleteActions'
 import { deleteContact } from '../../connections/allContacts'
-import { useEffect } from 'react'
+import { getConnectedAccounts } from '../../helpers/contacts'
+import { buildContactsQueryById } from '../../queries/queries'
+import ConfirmDeleteActions from '../Common/ConfirmDeleteActions'
 
 const ConfirmDeleteModal = () => {
   const navigate = useNavigate()
@@ -31,10 +31,10 @@ const ConfirmDeleteModal = () => {
     }
   }, [contact, resultContactsQueryById])
 
-  const onClose = () => navigate(`/${contactId}`)
+  const onClose = () => navigate(`/${contactId}`, { replace: true })
 
   const onDeleteContact = async (contactParam = null) => {
-    navigate('/')
+    navigate('/', { replace: true })
     await deleteContact(client, contactParam ? contactParam : contact)
     onDeleteContact && onDeleteContact(contactParam ? contactParam : contact)
   }

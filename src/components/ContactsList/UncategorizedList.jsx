@@ -1,8 +1,8 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 
+import List from 'cozy-ui/transpiled/react/List'
 import { Table } from 'cozy-ui/transpiled/react/Table'
-import List from 'cozy-ui/transpiled/react/MuiCozyTheme/List'
 
 import ContactsSubList from './ContactsSubList'
 

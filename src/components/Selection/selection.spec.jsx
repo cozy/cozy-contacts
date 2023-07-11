@@ -1,9 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import { render, screen, act } from '@testing-library/react'
+import PropTypes from 'prop-types'
+import React from 'react'
+
 import selectionContainer from './selectionContainer'
-import AppLike from '../../tests/Applike'
 import configureStore from '../../store/configureStore'
+import AppLike from '../../tests/Applike'
 import getCozyClient from '../../tests/client'
 
 let props

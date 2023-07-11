@@ -1,17 +1,19 @@
 import React from 'react'
+import { Provider } from 'react-redux'
 
+import { CozyProvider } from 'cozy-client'
+import { WebviewIntentProvider } from 'cozy-intent'
+import { I18n } from 'cozy-ui/transpiled/react/I18n'
+import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
+import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import {
   StylesProvider,
   createGenerateClassName
 } from 'cozy-ui/transpiled/react/styles'
-import { WebviewIntentProvider } from 'cozy-intent'
-import { Provider } from 'react-redux'
-import { CozyProvider } from 'cozy-client'
-import { I18n } from 'cozy-ui/transpiled/react/I18n'
-import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
-import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
-import { SelectedGroupProvider } from 'components/Contexts/SelectedGroup'
-import { SearchProvider } from 'components/Contexts/Search'
+
+import { ContactsDiplayedProvider } from './Contexts/ContactsDiplayed'
+import { SearchProvider } from './Contexts/Search'
+import { SelectedGroupProvider } from './Contexts/SelectedGroup'
 
 const AppProviders = ({ store, client, lang, polyglot, children }) => {
   /*
@@ -33,9 +35,11 @@ const AppProviders = ({ store, client, lang, polyglot, children }) => {
             <I18n lang={lang} polyglot={polyglot}>
               <MuiCozyTheme>
                 <BreakpointsProvider>
-                  <SelectedGroupProvider>
-                    <SearchProvider>{children}</SearchProvider>
-                  </SelectedGroupProvider>
+                  <ContactsDiplayedProvider>
+                    <SelectedGroupProvider>
+                      <SearchProvider>{children}</SearchProvider>
+                    </SelectedGroupProvider>
+                  </ContactsDiplayedProvider>
                 </BreakpointsProvider>
               </MuiCozyTheme>
             </I18n>

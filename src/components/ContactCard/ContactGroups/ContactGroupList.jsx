@@ -1,9 +1,9 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 
-import { fullContactPropTypes } from '../../ContactPropTypes'
 import FieldsetTitle from '../../Common/FieldsetTitle'
 import GroupItem from '../../Common/GroupItem'
+import { fullContactPropTypes } from '../../ContactPropTypes'
 
 export const ContactGroupsList = ({ contact, allGroups, title }) => {
   const userGroups = contact.groups.data

@@ -1,8 +1,9 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
+import React from 'react'
+
+import { I18n } from 'cozy-ui/transpiled/react/I18n'
 
 import ContactFields from './ContactFields'
-import { I18n } from 'cozy-ui/transpiled/react/I18n'
 
 describe('ContactFields', () => {
   it('should accept the strict minimum', () => {

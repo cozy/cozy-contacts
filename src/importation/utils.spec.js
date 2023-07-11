@@ -1,4 +1,5 @@
 import _ from 'lodash'
+
 import { isBlank, trimObject } from './utils'
 
 describe('vcard/utils', () => {

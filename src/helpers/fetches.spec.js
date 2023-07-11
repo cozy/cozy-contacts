@@ -1,7 +1,7 @@
 import CozyClient from 'cozy-client'
 
-import { fetchContactsToUpdate, fetchNormalizedServiceByName } from './fetches'
 import { updateIndexFullNameAndDisplayName } from './contacts'
+import { fetchContactsToUpdate, fetchNormalizedServiceByName } from './fetches'
 import { johnDoeContact } from './testData'
 
 const client = new CozyClient({})

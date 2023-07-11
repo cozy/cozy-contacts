@@ -1,11 +1,11 @@
-import React from 'react'
-import ContactForm from './index'
-
 import { render, screen, fireEvent, act } from '@testing-library/react'
-import { createMockClient } from 'cozy-client'
-import AppLike from '../../../tests/Applike'
+import React from 'react'
 
+import { createMockClient } from 'cozy-client'
+
+import ContactForm from './index'
 import { johnDoeContact as contact } from '../../../helpers/testData'
+import AppLike from '../../../tests/Applike'
 
 const client = createMockClient({})
 const setup = ({ contact }) => {
