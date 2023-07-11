@@ -6,7 +6,11 @@ import { addGroupToContact } from '../helpers/contacts'
 import { DOCTYPE_CONTACTS } from '../helpers/doctypes'
 import { hasSelectedGroup } from '../helpers/groups'
 import { mergeContact } from '../helpers/mergeContact'
-import { buildContactsQueryByEmailAdressOrPhoneNumber } from '../queries/queries'
+import {
+  buildContactsQueryByEmailAdressOrPhoneNumber,
+  buildContactsQueryByGroupId,
+  buildContactsTrashedQuery
+} from '../queries/queries'
 
 export const importContact = async (client, attributes) => {
   const addresses = (attributes['email'] || []).map(email => email.address)
@@ -34,6 +38,37 @@ export const createContact = (client, attributes) =>
   client.create(DOCTYPE_CONTACTS, attributes)
 
 export const updateContact = (client, contact) => client.save(contact)
+
+const isContactSynced = contact => {
+  return Object.keys(contact.cozyMetadata?.sync || {}).length > 0
+}
+
+const getGroupRelationshipLength = contact => {
+  return contact.relationships?.groups?.data.length
+}
+
+/**
+ * Delete trashed contacts without linked to an account
+ *
+ * @param {Object} client - CozyClient
+ */
+export const deleteTrashedContacts = async client => {
+  const contactContactsTrashedQuery = buildContactsTrashedQuery()
+
+  const trashedContacts = await client.queryAll(
+    contactContactsTrashedQuery.definition(),
+    contactContactsTrashedQuery.options
+  )
+
+  const trashedContactsNotLinkedToAccounts = trashedContacts.filter(
+    contact => !isContactSynced(contact)
+  )
+
+  if (trashedContactsNotLinkedToAccounts.length > 0) {
+    const contactCollection = client.collection(DOCTYPE_CONTACTS)
+    await contactCollection.destroyAll(trashedContactsNotLinkedToAccounts)
+  }
+}
 
 export const deleteContact = (client, contact) => {
   const syncData = get(contact, 'cozyMetadata.sync', {})
@@ -68,6 +103,24 @@ export const createOrUpdateContact = async ({
 }
 
 /**
+ * Get contacts by group id
+ *
+ * @param {Object} client - CozyClient
+ * @param {string} groupId - Group id
+ * @returns {Promise<Object[]>} - Array of contacts
+ */
+export const getContactsByGroupId = async (client, groupId) => {
+  const contactQueryByGroupId = buildContactsQueryByGroupId(groupId)
+
+  const contacts = await client.queryAll(
+    contactQueryByGroupId.definition(),
+    contactQueryByGroupId.options
+  )
+
+  return contacts
+}
+
+/**
  * Remove a group from all contacts
  *
  * @param {Object} client - CozyClient
@@ -88,4 +141,50 @@ export const removeGroupFromAllContacts = async (client, groupId) => {
   })
 
   await Promise.all(groupRemovals)
+}
+
+/**
+ * Cancel trash contacts from a group
+ *
+ * @param {Object} client - CozyClient
+ * @param {String} groupId - Group id
+ */
+export const cancelTrashContactsByGroupId = async (client, groupId) => {
+  const contactQueryByGroupId = buildContactsQueryByGroupId(groupId)
+  const contactsTrashed = await client.queryAll(
+    contactQueryByGroupId.definition(),
+    contactQueryByGroupId.options
+  )
+
+  const contacts = contactsTrashed.map(contact => {
+    if (getGroupRelationshipLength(contact) === 1) {
+      return {
+        ...contact,
+        trashed: false
+      }
+    }
+    return contact
+  })
+  await client.saveAll(contacts)
+}
+
+/**
+ * Update all contacts from a group to trash them
+ *
+ * @param {Object} client - CozyClient
+ * @param {Object[]} groupId - Group id
+ */
+export const trashedAllContactsByGroupId = async (client, groupId) => {
+  const contacts = await getContactsByGroupId(client, groupId)
+  const contactsTrashed = contacts.map(contact => {
+    if (getGroupRelationshipLength(contact) === 1) {
+      return {
+        ...contact,
+        trashed: true
+      }
+    }
+    return contact
+  })
+
+  await client.saveAll(contactsTrashed)
 }
