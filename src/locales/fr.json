@@ -131,7 +131,7 @@
   },
   "delete_group_confirmation": {
     "title": "Supprimer le groupe",
-    "content": "En supprimer le groupe <b>\"%{name}\"</b>, les contacts associés ne seront pas supprimés.",
+    "content": "En supprimant le groupe <b>\"%{name}\"</b>, les contacts associés ne seront pas supprimés.",
     "checkbox": "Supprimer les contacts associés"
   },
   "intent": {
