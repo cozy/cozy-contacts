@@ -11,6 +11,8 @@ const useGroupsSelect = ({ allGroups, onGroupCreated, client }) => {
   const { selectedGroup, setSelectedGroup } = useContext(SelectedGroupContext)
 
   const createGroupSelf = async group => {
+    if (!group.name) return
+
     if (isExistingGroup(allGroups, group)) {
       return Alerter.error('groups.already_exists', { name: group.name })
     }

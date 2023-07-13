@@ -27,6 +27,9 @@ const setup = () => {
 }
 
 describe('GroupsSelect', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
   it('should display every groups and group creation button', () => {
     setup()
 
@@ -84,6 +87,57 @@ describe('GroupsSelect', () => {
     })
 
     expect(createGroup).toHaveBeenCalled()
+    createGroupInput = screen.queryByRole('textbox', {
+      id: 'createGroupInput'
+    })
+    expect(createGroupInput).not.toBeNull()
+    expect(createGroupInput.value).toBe('')
+  })
+
+  it("shouldn't be able to create a new group", () => {
+    setup()
+
+    act(() => {
+      fireEvent.click(screen.getByText('Manage groups'))
+    })
+
+    act(() => {
+      fireEvent.click(screen.getByText('Create a group'))
+    })
+
+    // it should replace the button by an empty input
+    let createGroupInput = screen.queryByRole('textbox', {
+      id: 'createGroupInput'
+    })
+    expect(createGroupInput).not.toBeNull()
+    expect(createGroupInput.value).toBe('')
+
+    act(() => {
+      // it should trigger creation function by pressing Enter key, and clear the input
+      fireEvent.change(
+        screen.getByRole('textbox', {
+          id: 'createGroupInput'
+        }),
+        { target: { value: '' } }
+      )
+    })
+
+    createGroupInput = screen.queryByRole('textbox', {
+      id: 'createGroupInput'
+    })
+    expect(createGroupInput).not.toBeNull()
+    expect(createGroupInput.value).toBe('')
+
+    act(() => {
+      fireEvent.keyDown(
+        screen.getByRole('textbox', {
+          id: 'createGroupInput'
+        }),
+        { key: 'Enter', keyCode: '13' }
+      )
+    })
+
+    expect(createGroup).not.toHaveBeenCalled()
     createGroupInput = screen.queryByRole('textbox', {
       id: 'createGroupInput'
     })
