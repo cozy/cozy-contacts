@@ -41,7 +41,12 @@ const ContactsEmptyList = () => {
 
   return (
     <div className="u-flex u-flex-column u-flex-items-center">
-      <Empty className="contacts-empty" icon={EmptyIcon} title={emptyTitle}>
+      <Empty
+        className="contacts-empty"
+        icon={EmptyIcon}
+        title={emptyTitle}
+        iconSize="large"
+      >
         <Stack spacing="xs" className="u-mt-1">
           <div>
             <Button
