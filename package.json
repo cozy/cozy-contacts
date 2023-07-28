@@ -78,7 +78,7 @@
     "@sentry/react": "7.54.0",
     "classnames": "2.3.1",
     "cozy-bar": "7.17.9",
-    "cozy-client": "^35.2.0",
+    "cozy-client": "^40.0.1",
     "cozy-device-helper": "^2.7.0",
     "cozy-doctypes": "^1.88.0",
     "cozy-flags": "^2.11.0",
