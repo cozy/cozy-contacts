@@ -37,17 +37,32 @@ const GroupDeleteConfirmationModal = () => {
       cleanTrashedGroupsAndATrashedContacts(client)
     }, alertDuration)
 
+    let contactsTrashCount = 0
     if (deleteAssociatedContacts) {
-      await trashedAllContactsByGroupId(client, groupId)
+      const contacts = await trashedAllContactsByGroupId(client, groupId)
+      contactsTrashCount = contacts.length
     }
     await trashedGroupById(client, groupId)
 
-    Alerter.info('groups.removed', {
+    const translationKey = deleteAssociatedContacts
+      ? contactsTrashCount > 0
+        ? 'groups.removed_with_contacts'
+        : 'groups.removed_without_contacts'
+      : 'groups.removed'
+
+    Alerter.info(translationKey, {
       name: groupName,
+      smart_count: contactsTrashCount,
       buttonText: t('cancel'),
       buttonAction: () => {
         clearTimeout(timeout)
-        cancelTrashGroupById(client, groupId)
+
+        cancelTrashGroupById(
+          client,
+          groupId,
+          deleteAssociatedContacts,
+          contactsTrashCount
+        )
         if (deleteAssociatedContacts) {
           cancelTrashContactsByGroupId(client, groupId)
         }

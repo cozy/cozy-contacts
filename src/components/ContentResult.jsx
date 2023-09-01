@@ -18,6 +18,7 @@ import SearchInput from './Search/SearchInput'
 import Toolbar from './Toolbar'
 import {
   filterContactsByGroup,
+  hasSelectedGroup,
   translatedDefaultSelectedGroup
 } from '../helpers/groups'
 import { filterContactsBySearch, delayedSetThreshold } from '../helpers/search'
@@ -63,6 +64,13 @@ export const ContentResult = ({ contacts, allGroups }) => {
     const thresholdValue = parseFloat(ev.target.value)
     delayedSetThreshold(thresholdValue)
   }
+
+  // If the currently selected group is deleted, the default filter is set.
+  useEffect(() => {
+    if (hasSelectedGroup(selectedGroup) && !allGroups.includes(selectedGroup)) {
+      setSelectedGroup(translatedDefaultSelectedGroup(t))
+    }
+  }, [allGroups, selectedGroup, setSelectedGroup, t])
 
   useEffect(() => {
     const filteredContactsByGroup = filterContactsByGroup(

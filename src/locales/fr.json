@@ -112,7 +112,10 @@
     },
     "name": "Nom du groupe",
     "removed": "Le groupe %{name} a bien été supprimé.",
-    "remove_canceled": "Le groupe %{name} n'a pas été supprimé. Vous n'avez pas perdu la liaison avec ses contacts.",
+    "remove_canceled": "Le groupe %{name} n'a pas été supprimé",
+    "remove_cancel_with_contacts": "Le groupe %{name} n'a pas été supprimé. Vous n'avez pas perdu la liaison avec son contact. |||| Le groupe %{name} n'a pas été supprimé. Vous n'avez pas perdu la liaison avec ses contacts.",
+    "removed_without_contacts": "Le groupe %{name} a bien été supprimé. Il n'avait aucun contact associé.",
+    "removed_with_contacts": "Le groupe %{name} et son contact associé ont bien été supprimés. |||| Le groupe %{name} et ses contacts associés ont bien été supprimés.",
     "already_exists": "Le groupe %{name} existe déjà.",
     "renamed": {
       "success": "Le groupe a bien été renommé.",

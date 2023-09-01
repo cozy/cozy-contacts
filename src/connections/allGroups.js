@@ -57,7 +57,12 @@ export const trashedGroupById = async (client, groupId) => {
  * @param {Object} client - CozyClient
  * @param {String} groupId - Group id
  */
-export const cancelTrashGroupById = async (client, groupId) => {
+export const cancelTrashGroupById = async (
+  client,
+  groupId,
+  deleteAssociatedContacts,
+  contactsTrashCount
+) => {
   const groupQueryById = buildGroupQueryById(groupId)
   const { data: group } = await client.query(
     groupQueryById.definition(),
@@ -69,7 +74,14 @@ export const cancelTrashGroupById = async (client, groupId) => {
     trashed: false
   })
 
-  Alerter.info('groups.remove_canceled', {
-    name: group.name
+  const translationKey = deleteAssociatedContacts
+    ? contactsTrashCount > 0
+      ? 'groups.remove_cancel_with_contacts'
+      : 'groups.remove_cancel_without_contacts'
+    : 'groups.remove_canceled'
+
+  Alerter.info(translationKey, {
+    name: group.name,
+    smart_count: contactsTrashCount
   })
 }

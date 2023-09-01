@@ -112,7 +112,10 @@
     },
     "name": "Name of the group",
     "removed": "The group %{name} has been removed.",
-    "remove_canceled": "The group %{name} has been restored. Contacts are still linked.",
+    "remove_canceled": "The group %{name} has been restored.",
+    "remove_cancel_with_contacts": "The group %{name} has been restored. Contact are still linked. |||| The group %{name} has been restored. Contacts are still linked.",
+    "removed_without_contacts": "The group %{name} has been removed. It had no associated contacts.",
+    "removed_with_contacts": "The group %{name} and its associated contact have been successfully removed. |||| The group %{name} and its associated contacts have been successfully removed.",
     "already_exists": "The group %{name} already exists.",
     "renamed": {
       "success": "The group has been renamed correctly.",
