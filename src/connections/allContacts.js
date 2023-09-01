@@ -189,12 +189,13 @@ export const trashedAllContactsByGroupId = async (client, groupId) => {
   })
 
   try {
-    await client.saveAll(contactsTrashed)
-  } catch (error) {
-    if (contactsTrashed.length === 0) {
-      log('info', 'No contacts to trash')
-    } else {
-      log('error', `Error saving contact to trash: ${error}`)
+    if (contactsTrashed.length > 0) {
+      const result = await client.saveAll(contactsTrashed)
+      return result.data
     }
+    log('info', 'No contacts to trash')
+    return []
+  } catch (error) {
+    log('error', `Error saving contact to trash: ${error}`)
   }
 }
