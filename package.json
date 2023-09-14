@@ -2,8 +2,7 @@
   "name": "cozy-contacts",
   "version": "1.7.0",
   "engine": {
-    "node": "~12",
-    "npm": "~6"
+    "node": "~20"
   },
   "scripts": {
     "lint": "yarn lint:js && yarn lint:styles",
@@ -50,7 +49,7 @@
     "bundlemon": "2.0.1",
     "cozy-app-publish": "^0.33.0",
     "cozy-jobs-cli": "^2.0.3",
-    "cozy-scripts": "^8.1.1",
+    "cozy-scripts": "^8.1.2",
     "eslint": "^8.35.0",
     "eslint-config-cozy-app": "^6.1.0",
     "eslint-config-prettier": "^8.6.0",
