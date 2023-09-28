@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { useClient } from 'cozy-client'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import AppLinker from 'cozy-ui/transpiled/react/AppLinker'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import BottomIcon from 'cozy-ui/transpiled/react/Icons/Bottom'
 import TeamIcon from 'cozy-ui/transpiled/react/Icons/Team'
@@ -13,6 +12,7 @@ import ActionMenu, {
   ActionMenuItem
 } from 'cozy-ui/transpiled/react/deprecated/ActionMenu'
 import Button from 'cozy-ui/transpiled/react/deprecated/Button'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { getFilteredStoreUrl } from '../../helpers/store'
 

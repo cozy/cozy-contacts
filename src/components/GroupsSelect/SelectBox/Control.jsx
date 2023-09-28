@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import BottomSelectIcon from 'cozy-ui/transpiled/react/Icons/BottomSelect'
 import Button from 'cozy-ui/transpiled/react/deprecated/Button'
 import palette from 'cozy-ui/transpiled/react/palette'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 const Control = ({
   innerRef,

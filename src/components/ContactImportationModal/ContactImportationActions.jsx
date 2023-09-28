@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { translate } from 'cozy-ui/transpiled/react/I18n'
 import Button from 'cozy-ui/transpiled/react/deprecated/Button'
+import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import Importation from '../../importation'
 import Status from '../../importation/status'

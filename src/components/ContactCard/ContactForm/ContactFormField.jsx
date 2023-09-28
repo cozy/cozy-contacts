@@ -4,13 +4,13 @@ import React from 'react'
 import { FieldArray } from 'react-final-form-arrays'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import CrossSmall from 'cozy-ui/transpiled/react/Icons/CrossSmall'
 import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
 import { Media, Img, Bd } from 'cozy-ui/transpiled/react/deprecated/Media'
 import palette from 'cozy-ui/transpiled/react/palette'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { addField, removeField } from '../../../helpers/fields'
 

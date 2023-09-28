@@ -4,10 +4,10 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useClient } from 'cozy-client'
 import Checkbox from 'cozy-ui/transpiled/react/Checkbox'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import {
   cancelTrashContactsByGroupId,

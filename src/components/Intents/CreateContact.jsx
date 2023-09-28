@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import { withClient } from 'cozy-client'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
 import IntentHeader from 'cozy-ui/transpiled/react/IntentHeader'
+import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import IntentMain from './IntentMain'
 import { createContact as createContactWithClient } from '../../connections/allContacts'

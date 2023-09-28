@@ -4,8 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useClient, useQuery } from 'cozy-client'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import { FixedDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import ContactForm, {
   getSubmitContactForm
