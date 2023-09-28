@@ -30,6 +30,7 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
     >
       <input
         aria-checked=""
+        aria-label=""
         checked={false}
         className="PrivateSwitchBase-input-40"
         data-indeterminate={false}

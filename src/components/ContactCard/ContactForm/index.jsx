@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { Form } from 'react-final-form'
 
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import ContactFormField from './ContactFormField'
 import contactToFormValues from './contactToFormValues'

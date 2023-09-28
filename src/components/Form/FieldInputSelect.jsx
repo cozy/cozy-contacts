@@ -1,11 +1,11 @@
 import cx from 'classnames'
 import React from 'react'
 
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import BottomIcon from 'cozy-ui/transpiled/react/Icons/Bottom'
 import MenuItem from 'cozy-ui/transpiled/react/MenuItem'
 import TextField from 'cozy-ui/transpiled/react/TextField'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { makeStyles } from 'cozy-ui/transpiled/react/styles'
 
 import { FieldInputWrapperPropTypes } from './FieldInputWrapper'

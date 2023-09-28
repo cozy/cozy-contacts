@@ -2,11 +2,11 @@ import PropTypes from 'prop-types'
 import React, { useContext, useEffect, useState } from 'react'
 
 import flag from 'cozy-flags'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Input from 'cozy-ui/transpiled/react/Input'
 import { Content } from 'cozy-ui/transpiled/react/Layout'
 import { ControlDefault } from 'cozy-ui/transpiled/react/SelectBox'
-import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import ContactsList from './ContactsList/ContactsList.jsx'
 import ContactsDiplayedContext from './Contexts/ContactsDiplayed'

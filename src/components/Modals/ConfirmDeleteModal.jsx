@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 import { useClient, useQuery } from 'cozy-client'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { deleteContact } from '../../connections/allContacts'
 import { getConnectedAccounts } from '../../helpers/contacts'

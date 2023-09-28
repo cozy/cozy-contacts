@@ -8,7 +8,7 @@ import ContactEmail from 'cozy-ui/transpiled/react/ContactsList/Contacts/Contact
 import ContactIdentity from 'cozy-ui/transpiled/react/ContactsList/Contacts/ContactIdentity'
 import ContactPhone from 'cozy-ui/transpiled/react/ContactsList/Contacts/ContactPhone'
 import ListItem from 'cozy-ui/transpiled/react/ListItem'
-import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
 import ContactWithSelection from './ContactSelection'
 import { fullContactPropTypes } from '../ContactPropTypes'

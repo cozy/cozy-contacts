@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import React, { useContext } from 'react'
 
 import { useClient } from 'cozy-client'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import SelectionBar from 'cozy-ui/transpiled/react/SelectionBar'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { trash as trashAction, selectAll as selectAllAction } from '../Actions'
 import { makeActions } from '../Actions/helpers'

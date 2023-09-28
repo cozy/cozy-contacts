@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { translate } from 'cozy-ui/transpiled/react/I18n'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import Typography from 'cozy-ui/transpiled/react/Typography'
+import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import Fieldset from '../Common/Fieldset'
 import FieldsetTitle from '../Common/FieldsetTitle'

@@ -4,7 +4,7 @@ import { Field, useForm } from 'react-final-form'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import { FixedDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { makeFormattedAddressWithSubFields } from '../../helpers/contacts'
 import { fieldInputAttributes } from '../ContactCard/ContactFields/ContactFieldsProptypes'

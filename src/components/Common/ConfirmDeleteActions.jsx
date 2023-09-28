@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 const ConfirmDeleteActions = ({ onCancel, onDelete, isBusy }) => {
   const { t } = useI18n()
