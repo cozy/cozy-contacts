@@ -5470,10 +5470,10 @@ cozy-ui@22.3.1:
     react-pdf "^4.0.5"
     react-select "2.2.0"
 
-cozy-ui@^93.2.0:
-  version "93.2.0"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-93.2.0.tgz#295114fae533e444f6d1dc3c367531a67aed92c3"
-  integrity sha512-Xjum9V3KvBR/6RrjrH+sMBVe/J1IZaM/WsHi98p9cnCvfDC5IXEsWZQ4wjtB101iAiKDRdPWjY4uUuffHzrqdQ==
+cozy-ui@^95.1.0:
+  version "95.1.0"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-95.1.0.tgz#07789fd4c7c4e491c3ea773f97cbd8f9cb19d374"
+  integrity sha512-ZFpbd3qtkitm9sA4/+qEs4TrZORYsWCMFiUC0tSjPRfzgMI9F+QohyJ4khXs1tIkkSBO1f7YyKpEJwVFoqLUsg==
   dependencies:
     "@babel/runtime" "^7.3.4"
     "@material-ui/core" "4.12.3"
