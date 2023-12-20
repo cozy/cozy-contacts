@@ -2,7 +2,7 @@ import get from 'lodash/get'
 import isEqual from 'lodash/isEqual'
 import uniqWith from 'lodash/uniqWith'
 
-import log from 'cozy-logger'
+import minilog from 'cozy-minilog'
 
 import { addGroupToContact } from '../helpers/contacts'
 import { DOCTYPE_CONTACTS } from '../helpers/doctypes'
@@ -13,6 +13,8 @@ import {
   buildContactsQueryByGroupId,
   buildContactsTrashedQuery
 } from '../queries/queries'
+
+const log = minilog('connections/allContacts')
 
 export const importContact = async (client, attributes) => {
   const addresses = (attributes['email'] || []).map(email => email.address)
@@ -193,9 +195,9 @@ export const trashedAllContactsByGroupId = async (client, groupId) => {
       const result = await client.saveAll(contactsTrashed)
       return result.data
     }
-    log('info', 'No contacts to trash')
+    log.info('No contacts to trash')
     return []
   } catch (error) {
-    log('error', `Error saving contact to trash: ${error}`)
+    log.error('Error saving contact to trash', error)
   }
 }

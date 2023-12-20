@@ -1,6 +1,6 @@
 import isEqual from 'lodash/isEqual'
 
-import log from 'cozy-logger'
+import minilog from 'cozy-minilog'
 
 import { updateIndexFullNameAndDisplayName } from './contacts'
 import {
@@ -8,6 +8,8 @@ import {
   buildTriggersQueryById,
   buildContactsQueryByUpdatedAtGT
 } from '../queries/queries'
+
+const log = minilog('helpers/fetches')
 
 /**
  * Fetches and returns a promise of contacts to update according to this :
@@ -33,7 +35,7 @@ export const fetchContactsToUpdate = async (client, date) => {
       if (!isEqual(contact, expected[index])) return contacts.push(contact)
     })
 
-    log('info', `found ${contacts.length} contact(s) to update`)
+    log.info(`found ${contacts.length} contact(s) to update`)
 
     return contacts
   } catch (e) {
@@ -65,7 +67,7 @@ export const fetchNormalizedServiceByName = async (client, serviceName) => {
 
     return normalizedTrigger.data
   } catch (e) {
-    log('error', `Can't find ${serviceName}: ${e}`)
+    log.error("Can't find:", serviceName, e)
     return null
   }
 }
