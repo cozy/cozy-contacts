@@ -1,4 +1,4 @@
-/* global __DEVELOPMENT__ */
+import { CaptureConsole } from '@sentry/integrations'
 import * as Sentry from '@sentry/react'
 import memoize from 'lodash/memoize'
 import { createRoot } from 'react-dom/client'
@@ -39,10 +39,15 @@ const setupApp = memoize(() => {
 
   Sentry.init({
     dsn: 'https://0db57f6ff6384bb3af8102f76bc01262@errors.cozycloud.cc/62',
-    environment: __DEVELOPMENT__,
+    environment: process.env.NODE_ENV,
     release: manifest.version,
-    integrations: [new Sentry.BrowserTracing()],
-    tracesSampleRate: 0.35
+    integrations: [
+      new CaptureConsole({ levels: ['error'] }), // We also want to capture the `console.error` to, among other things, report the logs present in the `try/catch`
+      new Sentry.BrowserTracing()
+    ],
+    tracesSampleRate: 1,
+    // React log these warnings(bad Proptypes), in a console.error, it is not relevant to report this type of information to Sentry
+    ignoreErrors: [/^Warning: /]
   })
 
   initBar({ client, container, lang, appName })
