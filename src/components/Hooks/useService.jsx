@@ -2,10 +2,12 @@ import get from 'lodash/get'
 import { useState, useCallback, useEffect } from 'react'
 
 import { useClient } from 'cozy-client'
-import log from 'cozy-logger'
+import minilog from 'cozy-minilog'
 
 import { DOCTYPE_TRIGGERS } from '../../helpers/doctypes'
 import { fetchNormalizedServiceByName } from '../../helpers/fetches'
+
+const log = minilog('useService')
 
 const hasServiceBeenLaunched = service => {
   return get(service, 'current_state.last_success', '').length > 0
@@ -28,7 +30,7 @@ const useService = name => {
   useEffect(() => {
     // start service if it has never been launched before
     if (service && hasBeenLaunched === false) {
-      log('info', `Executing ${name} service by Contacts app`)
+      log.info(`Executing ${name} service by Contacts app`)
       client.collection(DOCTYPE_TRIGGERS).launch(service)
     }
   }, [service, client, hasBeenLaunched, name])

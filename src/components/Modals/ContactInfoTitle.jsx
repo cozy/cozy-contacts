@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import log from 'cozy-logger'
+import minilog from 'cozy-minilog'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import Grid from 'cozy-ui/transpiled/react/Grid'
 import Icon from 'cozy-ui/transpiled/react/Icon'
@@ -17,6 +17,8 @@ import ContactIdentity from '../ContactCard/ContactIdentity'
 import { fullContactPropTypes } from '../ContactPropTypes'
 import GroupsSelect from '../GroupsSelect/GroupsSelect'
 import Control from '../GroupsSelect/SelectBox/Control'
+
+const log = minilog('ContactInfoTitle')
 
 const customStyles = {
   container: base => ({
@@ -46,7 +48,7 @@ const ContactInfoTitle = ({ contact, allGroups }) => {
       await updateContactGroups(contact, nextGroups)
     } catch (error) {
       Alerter.success('error.group_selected')
-      log('error', `There was a problem when selecting a group : ${error}`)
+      log.error('There was a problem when selecting a group', error)
     }
   }
 
