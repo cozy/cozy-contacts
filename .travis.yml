@@ -1,8 +1,6 @@
 dist: jammy
 language: node_js
-node_js:
-  - 16
-  - 20
+node_js: 20
 env:
   global:
     - MATTERMOST_CHANNEL='{"dev":"contacts","beta":"contacts,publication","stable":"contacts,publication"}'
@@ -26,13 +24,11 @@ jobs:
       script: yarn lint
     - name: 'Unit tests node 16'
       stage: 'prebuild'
-      node_js:
-        - 16
+      node_js: 16
       script: yarn test
     - name: 'Unit tests node 20'
       stage: 'prebuild'
-      node_js:
-        - 20
+      node_js: 20
       script: yarn test
     - name: Build
       stage: build
