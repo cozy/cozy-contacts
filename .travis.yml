@@ -1,6 +1,8 @@
 dist: jammy
 language: node_js
 node_js: 20
+cache:
+  npm: false
 env:
   global:
     - MATTERMOST_CHANNEL='{"dev":"contacts","beta":"contacts,publication","stable":"contacts,publication"}'
