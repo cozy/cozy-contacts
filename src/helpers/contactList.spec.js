@@ -1,6 +1,7 @@
 import { categorizeContacts } from './contactList'
 
 describe('categorizeContacts', () => {
+  const t = jest.fn(() => 'EMPTY')
   it('should categorize contacts by indexes.byFamilyNameGivenNameEmailCozyUrl', () => {
     const contacts = [
       { name: 'Alex', indexes: { byFamilyNameGivenNameEmailCozyUrl: 'A' } },
@@ -15,7 +16,7 @@ describe('categorizeContacts', () => {
       { name: 'Àlbert', indexes: { byFamilyNameGivenNameEmailCozyUrl: 'À' } },
       { name: 'Èllen', indexes: { byFamilyNameGivenNameEmailCozyUrl: 'È' } }
     ]
-    const categorizedContacts = categorizeContacts(contacts, 'EMPTY')
+    const categorizedContacts = categorizeContacts(contacts, t)
     expect(categorizedContacts).toEqual({
       A: [
         { indexes: { byFamilyNameGivenNameEmailCozyUrl: 'A' }, name: 'Alex' },

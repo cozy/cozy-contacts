@@ -11,7 +11,7 @@ import { categorizeContacts } from '../../helpers/contactList'
 
 const CategorizedList = ({ contacts }) => {
   const { t } = useI18n()
-  const categorizedContacts = categorizeContacts(contacts, t('empty-list'))
+  const categorizedContacts = categorizeContacts(contacts, t)
 
   return (
     <Table>

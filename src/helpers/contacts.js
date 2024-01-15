@@ -2,6 +2,8 @@ import sortBy from 'lodash/sortBy'
 
 import { models, HasMany } from 'cozy-client'
 
+import { filterWithRemaining } from './filterWithRemaining'
+
 const { makeFullname, makeDefaultSortIndexValue, makeDisplayName } =
   models.contact
 
@@ -125,9 +127,15 @@ export const harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl = (
     updateIndexFullNameAndDisplayName(contact)
   )
   const concatedContacts = contactsWithIndexes.concat(updatedContacts)
-  const sortedContacts = sortBy(concatedContacts, [
+  const {
+    itemsFound: [mySelf],
+    remainingItems: contactsWithoutMySelf
+  } = filterWithRemaining(concatedContacts, contact => contact.me)
+  const sortedContacts = sortBy(contactsWithoutMySelf, [
     'indexes.byFamilyNameGivenNameEmailCozyUrl'
   ])
+  if (mySelf) sortedContacts.unshift(mySelf)
+
   return sortedContacts
 }
 
