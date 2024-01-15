@@ -156,7 +156,7 @@ describe('updateIndexFullNameAndDisplayName', () => {
 })
 
 describe('harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl', () => {
-  it('should returns contacts with indexes and sorted by indexes.byFamilyNameGivenNameEmailCozyUrl', () => {
+  it('should returns contacts with indexes and sorted by indexes.byFamilyNameGivenNameEmailCozyUrl & mySelf first', () => {
     const contactsWithIndexes = [
       {
         name: {
@@ -175,6 +175,16 @@ describe('harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl', () => {
         indexes: {
           byFamilyNameGivenNameEmailCozyUrl: 'johndoe'
         }
+      },
+      {
+        name: {
+          givenName: 'Max',
+          familyName: 'Payne'
+        },
+        indexes: {
+          byFamilyNameGivenNameEmailCozyUrl: 'maxpayne'
+        },
+        me: true
       }
     ]
 
@@ -194,6 +204,11 @@ describe('harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl', () => {
     ]
 
     const expected = [
+      {
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'maxpayne' },
+        me: true,
+        name: { familyName: 'Payne', givenName: 'Max' }
+      },
       {
         displayName: 'Anton Bradbury',
         fullname: 'Anton Bradbury',
