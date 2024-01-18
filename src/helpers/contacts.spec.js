@@ -164,7 +164,7 @@ describe('harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl', () => {
           familyName: 'Damon'
         },
         indexes: {
-          byFamilyNameGivenNameEmailCozyUrl: 'mattdamon'
+          byFamilyNameGivenNameEmailCozyUrl: 'damonmatt'
         }
       },
       {
@@ -173,16 +173,16 @@ describe('harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl', () => {
           familyName: 'Doe'
         },
         indexes: {
-          byFamilyNameGivenNameEmailCozyUrl: 'johndoe'
+          byFamilyNameGivenNameEmailCozyUrl: 'doejohn'
         }
       },
       {
         name: {
           givenName: 'Max',
-          familyName: 'Payne'
+          familyName: 'Abe'
         },
         indexes: {
-          byFamilyNameGivenNameEmailCozyUrl: 'maxpayne'
+          byFamilyNameGivenNameEmailCozyUrl: 'abemax'
         },
         me: true
       }
@@ -205,9 +205,9 @@ describe('harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl', () => {
 
     const expected = [
       {
-        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'maxpayne' },
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'abemax' },
         me: true,
-        name: { familyName: 'Payne', givenName: 'Max' }
+        name: { familyName: 'Abe', givenName: 'Max' }
       },
       {
         displayName: 'Anton Bradbury',
@@ -216,12 +216,12 @@ describe('harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl', () => {
         indexes: { byFamilyNameGivenNameEmailCozyUrl: 'bradburyanton' }
       },
       {
-        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'johndoe' },
-        name: { familyName: 'Doe', givenName: 'John' }
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'damonmatt' },
+        name: { familyName: 'Damon', givenName: 'Matt' }
       },
       {
-        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'mattdamon' },
-        name: { familyName: 'Damon', givenName: 'Matt' }
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'doejohn' },
+        name: { familyName: 'Doe', givenName: 'John' }
       },
       {
         displayName: 'William Wallace',
@@ -252,6 +252,16 @@ describe('reworkContacts', () => {
         indexes: {
           byFamilyNameGivenNameEmailCozyUrl: 'mattdamon'
         }
+      },
+      {
+        name: {
+          givenName: 'Max',
+          familyName: 'Abe'
+        },
+        indexes: {
+          byFamilyNameGivenNameEmailCozyUrl: 'maxabe'
+        },
+        me: true
       }
     ]
 
@@ -265,6 +275,16 @@ describe('reworkContacts', () => {
     ]
 
     const expected = [
+      {
+        name: {
+          givenName: 'Max',
+          familyName: 'Abe'
+        },
+        indexes: {
+          byFamilyNameGivenNameEmailCozyUrl: 'maxabe'
+        },
+        me: true
+      },
       {
         displayName: 'Anton Bradbury',
         fullname: 'Anton Bradbury',
@@ -297,6 +317,16 @@ describe('reworkContacts', () => {
         indexes: {
           byFamilyNameGivenNameEmailCozyUrl: 'mattdamon'
         }
+      },
+      {
+        name: {
+          givenName: 'Max',
+          familyName: 'Abe'
+        },
+        indexes: {
+          byFamilyNameGivenNameEmailCozyUrl: 'maxabe'
+        },
+        me: true
       }
     ]
 
@@ -310,6 +340,11 @@ describe('reworkContacts', () => {
     ]
 
     const expected = [
+      {
+        indexes: { byFamilyNameGivenNameEmailCozyUrl: 'maxabe' },
+        me: true,
+        name: { familyName: 'Abe', givenName: 'Max' }
+      },
       {
         indexes: { byFamilyNameGivenNameEmailCozyUrl: 'mattdamon' },
         name: { familyName: 'Damon', givenName: 'Matt' }
