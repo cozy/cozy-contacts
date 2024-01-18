@@ -127,24 +127,35 @@ export const harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl = (
     updateIndexFullNameAndDisplayName(contact)
   )
   const concatedContacts = contactsWithIndexes.concat(updatedContacts)
-  const {
-    itemsFound: [mySelf],
-    remainingItems: contactsWithoutMySelf
-  } = filterWithRemaining(concatedContacts, contact => contact.me)
-  const sortedContacts = sortBy(contactsWithoutMySelf, [
+  const sortedContacts = sortBy(concatedContacts, [
     'indexes.byFamilyNameGivenNameEmailCozyUrl'
   ])
-  if (mySelf) sortedContacts.unshift(mySelf)
 
   return sortedContacts
 }
 
 /**
+ * Move myself to first position in contacts list
+ * @param {object[]} contacts - contacts list
+ * @returns {object[]}
+ */
+const moveMyselfToFirstPosition = contacts => {
+  const {
+    itemsFound: [mySelf],
+    remainingItems: contactsWithoutMySelf
+  } = filterWithRemaining(contacts, contact => contact.me)
+
+  if (mySelf) return [mySelf, ...contactsWithoutMySelf]
+
+  return contacts
+}
+
+/**
  * Sort and rework contacts according to 'keepIndexFullNameAndDisplayNameUpToDate' service status
  * @param {bool} hasServiceBeenLaunched - 'keepIndexFullNameAndDisplayNameUpToDate' service launch status
- * @param {array} contactsWithIndexes - Contacts with indexes
- * @param {array} contactsWithNoIndexes - Contacts without indexes
- * @returns {array} Sorted and harmonized contacts
+ * @param {object[]} contactsWithIndexes - Contacts with indexes
+ * @param {object[]} contactsWithNoIndexes - Contacts without indexes
+ * @returns {object[]} Sorted and harmonized contacts
  */
 export const reworkContacts = (
   hasServiceBeenLaunched,
@@ -152,11 +163,16 @@ export const reworkContacts = (
   contactsWithNoIndexes
 ) => {
   const reworkedContacts = hasServiceBeenLaunched
-    ? contactsWithIndexes.concat(contactsWithNoIndexes)
-    : harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl(
-        contactsWithIndexes,
-        contactsWithNoIndexes
+    ? moveMyselfToFirstPosition(
+        contactsWithIndexes.concat(contactsWithNoIndexes)
       )
+    : moveMyselfToFirstPosition(
+        harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl(
+          contactsWithIndexes,
+          contactsWithNoIndexes
+        )
+      )
+
   return reworkedContacts
 }
 
