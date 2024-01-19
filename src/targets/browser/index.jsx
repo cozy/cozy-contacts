@@ -13,7 +13,7 @@ const init = () => {
 
   root.render(
     <AppProviders store={store} client={client} lang={lang} polyglot={polyglot}>
-      <AppRouter />
+      <AppRouter client={client} />
     </AppProviders>
   )
 }

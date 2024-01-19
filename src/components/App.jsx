@@ -7,6 +7,7 @@ import ContentWrapper from './ContentWrapper'
 import useService from './Hooks/useService'
 import cleanTrashedGroupsAndATrashedContacts from '../thunks/cleanTrashedGroupsAndATrashedContacts'
 
+let countApp = 0
 const ContactsApp = () => {
   const client = useClient()
   useEffect(() => {
@@ -17,6 +18,8 @@ const ContactsApp = () => {
     'keepIndexFullNameAndDisplayNameUpToDate'
   )
 
+  countApp++
+  console.log('App render', countApp)
   return (
     <>
       <RealTimeQueries doctype="io.cozy.contacts" />
