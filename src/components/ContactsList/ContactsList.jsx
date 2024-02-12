@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import React, { useContext } from 'react'
 
+import { default as Toto } from 'cozy-ui/transpiled/react/ContactsList'
+
 import CategorizedList from './CategorizedList'
 import ContactsEmptyList from './ContactsEmptyList'
 import UncategorizedList from './UncategorizedList'

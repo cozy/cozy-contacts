@@ -8,9 +8,9 @@ import FlagSwitcher from 'cozy-flags/dist/FlagSwitcher'
 import { useI18n, useBreakpoints } from 'cozy-ui/transpiled/react'
 import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
 import { Main, Layout } from 'cozy-ui/transpiled/react/Layout'
-import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
+import CozyTheme from 'cozy-ui/transpiled/react/providers/CozyTheme'
 
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
 import { ModalManager } from '../helpers/modalManager'
@@ -25,9 +25,9 @@ const AppLayout = () => {
     <Layout monocolumn="true">
       {isMobile && (
         <BarCenter>
-          <MuiCozyTheme>
+          <CozyTheme>
             <Typography variant="h4">{client.appMetadata.slug}</Typography>
-          </MuiCozyTheme>
+          </CozyTheme>
         </BarCenter>
       )}
       <Main>

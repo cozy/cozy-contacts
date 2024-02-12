@@ -49,7 +49,7 @@
     "bundlemon": "2.0.1",
     "cozy-app-publish": "^0.33.0",
     "cozy-jobs-cli": "^2.0.3",
-    "cozy-scripts": "^8.1.2",
+    "cozy-scripts": "^8.3.0",
     "eslint": "^8.35.0",
     "eslint-config-cozy-app": "^6.1.0",
     "eslint-config-prettier": "^8.6.0",
@@ -69,6 +69,7 @@
     "prop-types": "15.8.1",
     "react-dom": "18.2.0",
     "react-test-renderer": "18.2.0",
+    "remove-accents": "^0.5.0",
     "replace": "1.2.1",
     "stylint": "2.0.0",
     "typescript": "^4.9.5"
@@ -78,7 +79,7 @@
     "@sentry/react": "7.88.0",
     "classnames": "2.3.1",
     "cozy-bar": "7.17.9",
-    "cozy-client": "^40.0.1",
+    "cozy-client": "^45.8.1",
     "cozy-device-helper": "^2.7.0",
     "cozy-doctypes": "^1.88.0",
     "cozy-flags": "^2.11.0",
@@ -87,7 +88,7 @@
     "cozy-minilog": "^3.3.1",
     "cozy-realtime": "^4.3.0",
     "cozy-sharing": "^6.0.3",
-    "cozy-ui": "^95.1.0",
+    "cozy-ui": "^103.1.1",
     "cozy-vcard": "^0.2.18",
     "final-form": "4.20.9",
     "final-form-arrays": "3.1.0",
@@ -103,7 +104,6 @@
     "redux": "4.1.2",
     "redux-logger": "3.0.6",
     "redux-thunk": "2.4.1",
-    "remove-accents": "0.4.2",
     "yarn-run-all": "3.1.1"
   },
   "resolutions": {

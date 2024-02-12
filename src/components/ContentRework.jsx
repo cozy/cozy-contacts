@@ -30,6 +30,11 @@ const ContentRework = ({
     contactsWithNoIndexesResult.data
   )
 
+  console.info(' ')
+  console.info('WithIndexes ', contactsWithIndexesResult.data)
+  console.info('WithNoIndexes ', contactsWithNoIndexesResult.data)
+  console.info(' ')
+
   return <ContentResult contacts={contacts} allGroups={allGroupsResult.data} />
 }
 

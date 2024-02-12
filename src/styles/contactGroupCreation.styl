@@ -1,15 +1,14 @@
 @require 'cozy-ui'
-@require 'settings/palette.styl'
 
 .container
     height rem(48)
     display flex
     align-items center
-    color charcoalGrey
+    color var(--charcoalGrey)
 
 .contact-group-creation-divider
     width 100%
-    border-top 1px solid silver
+    border-top 1px solid var(--silver)
 
 .overlay-creation-group
     opacity 0
@@ -35,7 +34,7 @@ it overrides nothing so there's no need for
 
 
 .react-select__menu-notice--no-options
-    color coolGrey
+    color var(--coolGrey)
     margin-left .5rem !important
     height rem(48)
     display flex
