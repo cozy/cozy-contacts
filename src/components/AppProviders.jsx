@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 
 import { CozyProvider } from 'cozy-client'
 import { WebviewIntentProvider } from 'cozy-intent'
-import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
+import CozyTheme from 'cozy-ui/transpiled/react/providers/CozyTheme'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { I18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import {
@@ -33,7 +33,7 @@ const AppProviders = ({ store, client, lang, polyglot, children }) => {
         <Provider store={store}>
           <CozyProvider client={client}>
             <I18n lang={lang} polyglot={polyglot}>
-              <MuiCozyTheme>
+              <CozyTheme>
                 <BreakpointsProvider>
                   <ContactsDiplayedProvider>
                     <SelectedGroupProvider>
@@ -41,7 +41,7 @@ const AppProviders = ({ store, client, lang, polyglot, children }) => {
                     </SelectedGroupProvider>
                   </ContactsDiplayedProvider>
                 </BreakpointsProvider>
-              </MuiCozyTheme>
+              </CozyTheme>
             </I18n>
           </CozyProvider>
         </Provider>
