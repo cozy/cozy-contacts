@@ -1,10 +1,11 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 
+import { BarProvider } from 'cozy-bar'
 import { CozyProvider } from 'cozy-client'
 import { WebviewIntentProvider } from 'cozy-intent'
-import CozyTheme from 'cozy-ui/transpiled/react/providers/CozyTheme'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
+import CozyTheme from 'cozy-ui/transpiled/react/providers/CozyTheme'
 import { I18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import {
   StylesProvider,
@@ -35,11 +36,13 @@ const AppProviders = ({ store, client, lang, polyglot, children }) => {
             <I18n lang={lang} polyglot={polyglot}>
               <CozyTheme>
                 <BreakpointsProvider>
-                  <ContactsDiplayedProvider>
-                    <SelectedGroupProvider>
-                      <SearchProvider>{children}</SearchProvider>
-                    </SelectedGroupProvider>
-                  </ContactsDiplayedProvider>
+                  <BarProvider>
+                    <ContactsDiplayedProvider>
+                      <SelectedGroupProvider>
+                        <SearchProvider>{children}</SearchProvider>
+                      </SelectedGroupProvider>
+                    </ContactsDiplayedProvider>
+                  </BarProvider>
                 </BreakpointsProvider>
               </CozyTheme>
             </I18n>

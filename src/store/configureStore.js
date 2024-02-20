@@ -3,6 +3,7 @@ import { compose, createStore, applyMiddleware, combineReducers } from 'redux'
 import { createLogger } from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 
+import { barReducers } from 'cozy-bar'
 import flag from 'cozy-flags'
 import {
   shouldEnableTracking,
@@ -35,6 +36,7 @@ const configureStore = (client, t, persistedState) => {
   const store = createStore(
     combineReducers({
       appReducers,
+      ...barReducers,
       cozy: client.reducer(),
       persistedState
     }),
