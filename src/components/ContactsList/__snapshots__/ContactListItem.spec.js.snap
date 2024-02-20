@@ -1,111 +1,115 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContactListItem should match the contact snapshot 1`] = `
-<li
-  className="MuiListItem-root u-c-pointer medium MuiListItem-gutters makeStyles-gutters-33 makeStyles-gutters-35"
-  data-testid="contact-listItem"
-  disabled={false}
-  onClick={[Function]}
-  size="medium"
+<div
+  className="CozyTheme--light-normal u-dc"
 >
-  <span
-    aria-disabled={false}
-    className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-37 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
-    onBlur={[Function]}
+  <li
+    className="MuiListItem-root u-c-pointer medium MuiListItem-gutters makeStyles-gutters-33 makeStyles-gutters-35"
+    data-testid="contact-listItem"
+    disabled={false}
     onClick={[Function]}
-    onDragLeave={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    tabIndex={null}
+    size="medium"
   >
     <span
-      className="MuiIconButton-label"
+      aria-disabled={false}
+      className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-37 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={null}
     >
-      <input
-        aria-checked=""
-        aria-label=""
-        checked={false}
-        className="PrivateSwitchBase-input-40"
-        data-indeterminate={false}
-        onChange={[Function]}
-        readOnly={true}
-        type="checkbox"
-        value=""
-      />
-      <svg
-        aria-hidden={true}
-        className="MuiSvgIcon-root"
-        focusable="false"
-        viewBox="0 0 24 24"
+      <span
+        className="MuiIconButton-label"
       >
-        <path
-          d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+        <input
+          aria-checked=""
+          aria-label=""
+          checked={false}
+          className="PrivateSwitchBase-input-40"
+          data-indeterminate={false}
+          onChange={[Function]}
+          readOnly={true}
+          type="checkbox"
+          value=""
         />
-      </svg>
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+          />
+        </svg>
+      </span>
     </span>
-  </span>
-  <div
-    className="styles__TableCell___yJCq7 styles__contact-identity___mL3IJ u-flex u-flex-items-center u-ellipsis u-p-0"
-    data-testid="ContactIdentity"
-  >
     <div
-      className="styles__c-avatar___PpDI- styles__c-avatar--text___2dvna"
-      data-testid="Avatar"
-      style={
-        Object {
-          "--circleSize": "32px",
-          "backgroundColor": "#FFC644",
+      className="styles__TableCell___yJCq7 styles__contact-identity___mL3IJ u-flex u-flex-items-center u-ellipsis u-p-0"
+      data-testid="ContactIdentity"
+    >
+      <div
+        className="styles__c-avatar___PpDI- styles__c-avatar--text___2dvna"
+        data-testid="Avatar"
+        style={
+          Object {
+            "--circleSize": "32px",
+            "backgroundColor": "#FFC644",
+          }
         }
-      }
-    >
-      <span
-        className="styles__c-avatar-initials___310qC"
       >
-        JD
-      </span>
+        <span
+          className="styles__c-avatar-initials___310qC"
+        >
+          JD
+        </span>
+      </div>
+      <p
+        className="MuiTypography-root u-ml-1 MuiTypography-body1 MuiTypography-colorTextPrimary MuiTypography-noWrap MuiTypography-gutterBottom MuiTypography-displayInline"
+        data-testid="ContactName"
+      >
+        <span
+          className=""
+        >
+          John
+           
+        </span>
+        <span
+          className="u-fw-bold"
+        >
+          Doe
+           
+        </span>
+      </p>
     </div>
-    <p
-      className="MuiTypography-root u-ml-1 MuiTypography-body1 MuiTypography-colorTextPrimary MuiTypography-noWrap MuiTypography-gutterBottom MuiTypography-displayInline"
-      data-testid="ContactName"
+    <div
+      className="styles__TableCell___yJCq7 styles__contact-email___3n3q2 u-ellipsis u-p-0"
+      data-testid="ContactEmail"
     >
-      <span
-        className=""
-      >
-        John
-         
-      </span>
-      <span
-        className="u-fw-bold"
-      >
-        Doe
-         
-      </span>
-    </p>
-  </div>
-  <div
-    className="styles__TableCell___yJCq7 styles__contact-email___3n3q2 u-ellipsis u-p-0"
-    data-testid="ContactEmail"
-  >
-    johndoe@localhost
-  </div>
-  <div
-    className="styles__TableCell___yJCq7 styles__contact-phone___1sA_m u-ellipsis u-p-0"
-    data-testid="ContactPhone"
-  >
-    0123456789
-  </div>
-  <div
-    className="styles__TableCell___yJCq7 styles__contact-cozyurl___3kBp5 u-ellipsis u-p-0"
-    data-testid="ContactCozy"
-  >
-    http://johndoe.mycozy.cloud
-  </div>
-</li>
+      johndoe@localhost
+    </div>
+    <div
+      className="styles__TableCell___yJCq7 styles__contact-phone___1sA_m u-ellipsis u-p-0"
+      data-testid="ContactPhone"
+    >
+      0123456789
+    </div>
+    <div
+      className="styles__TableCell___yJCq7 styles__contact-cozyurl___3kBp5 u-ellipsis u-p-0"
+      data-testid="ContactCozy"
+    >
+      http://johndoe.mycozy.cloud
+    </div>
+  </li>
+</div>
 `;
