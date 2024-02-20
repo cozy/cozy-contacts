@@ -1,10 +1,8 @@
-@require 'settings/palette.styl'
-
 .importation-section
     margin 0
     margin-bottom 24px
     line-height 1.5
-    color charcoalGrey
+    color var(--charcoalGrey)
 
 .importation-step-list
     padding-left 1.75rem
@@ -20,7 +18,7 @@
     max-width 384px
     width 100%
     border-radius 4px
-    border 1px dashed silver
+    border 1px dashed var(--silver)
     padding-bottom 24px
 
 .importation-file
@@ -59,13 +57,13 @@
     width 20px
     height 20px
     background-color white
-    border solid 1px silver
+    border solid 1px var(--silver)
     border-radius 50%
     padding 0
-    color coolGrey
+    color var(--coolGrey)
 
 .importation-file-oval:hover
-    background-color paleGrey
+    background-color var(--paleGrey)
     cursor pointer
 
 .importation-file-cross
@@ -86,7 +84,7 @@
     font-size 14px
     text-transform uppercase
     text-align center
-    color coolGrey
+    color var(--coolGrey)
     padding .2rem 1rem
 
 .importation-file-selection-input
@@ -103,12 +101,12 @@
 
 .importation-file-selection-button,
 .importation-file-selection-icon
-    color coolGrey
+    color var(--coolGrey)
 
 .importation-card-clickable:hover
     &,
     .importation-file-selection-button,
     .importation-file-selection-button:hover,
     .importation-file-selection-icon
-        background-color paleGrey
+        background-color var(--paleGrey)
         cursor pointer

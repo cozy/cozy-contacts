@@ -1,5 +1,3 @@
-/* global cozy */
-
 import manifest from '../../manifest.webapp'
 
 const getDataOrDefault = (data, defaultData) =>
@@ -26,23 +24,4 @@ export const getValues = ({ app, locale }) => {
     iconPath: getDataOrDefault(app.icon, defaultValues.appIconDefault),
     lang: getDataOrDefault(locale, defaultValues.appLocaleDefault)
   }
-}
-
-/**
- * Cozy bar initialization
- * @param {object} client - cozy client
- */
-export const initBar = ({ client, container, lang, appName }) => {
-  const { appNamePrefix, iconPath } = getValues(
-    JSON.parse(container.dataset.cozy)
-  )
-
-  cozy.bar.init({
-    appName,
-    appNamePrefix,
-    cozyClient: client,
-    iconPath,
-    lang,
-    replaceTitleOnMobile: false
-  })
 }

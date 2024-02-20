@@ -9,7 +9,7 @@ import { RealtimePlugin } from 'cozy-realtime'
 import { initTranslation } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import manifest from '../../../manifest.webapp'
-import { getValues, initBar } from '../../helpers/bar'
+import { getValues } from '../../helpers/bar'
 import { getClient } from '../../helpers/client'
 
 /**
@@ -18,15 +18,11 @@ import { getClient } from '../../helpers/client'
 const setupApp = memoize(() => {
   const container = document.querySelector('[role=application]')
   const root = createRoot(container)
-  const { lang, appName } = getValues(JSON.parse(container.dataset.cozy))
+  const { lang } = getValues(JSON.parse(container.dataset.cozy))
   const polyglot = initTranslation(lang, lang => require(`locales/${lang}`))
   const client = getClient()
   client.registerPlugin(RealtimePlugin)
   client.registerPlugin(flag.plugin)
-
-  if (process.env.NODE_ENV !== 'production' && flag('switcher') === null) {
-    flag('switcher', true)
-  }
 
   const persistedState = {}
 
@@ -49,8 +45,6 @@ const setupApp = memoize(() => {
     // React log these warnings(bad Proptypes), in a console.error, it is not relevant to report this type of information to Sentry
     ignoreErrors: [/^Warning: /]
   })
-
-  initBar({ client, container, lang, appName })
 
   return { root, store, client, lang, polyglot }
 })

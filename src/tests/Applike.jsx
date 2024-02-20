@@ -4,6 +4,7 @@ import { HashRouter } from 'react-router-dom'
 
 import { CozyProvider } from 'cozy-client'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
+import CozyTheme from 'cozy-ui/transpiled/react/providers/CozyTheme'
 import I18n from 'cozy-ui/transpiled/react/providers/I18n'
 
 import getCozyClient from './client'
@@ -20,13 +21,15 @@ const AppLike = ({ children, client }) => (
     <Provider store={store}>
       <CozyProvider client={client || getCozyClient()}>
         <I18n lang="en" dictRequire={() => langEn}>
-          <ContactsDiplayedProvider>
-            <SelectedGroupProvider>
-              <SearchProvider>
-                <HashRouter>{children}</HashRouter>
-              </SearchProvider>
-            </SelectedGroupProvider>
-          </ContactsDiplayedProvider>
+          <CozyTheme>
+            <ContactsDiplayedProvider>
+              <SelectedGroupProvider>
+                <SearchProvider>
+                  <HashRouter>{children}</HashRouter>
+                </SearchProvider>
+              </SelectedGroupProvider>
+            </ContactsDiplayedProvider>
+          </CozyTheme>
         </I18n>
       </CozyProvider>
     </Provider>
