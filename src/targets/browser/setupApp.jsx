@@ -24,10 +24,6 @@ const setupApp = memoize(() => {
   client.registerPlugin(RealtimePlugin)
   client.registerPlugin(flag.plugin)
 
-  if (process.env.NODE_ENV !== 'production' && flag('switcher') === null) {
-    flag('switcher', true)
-  }
-
   const persistedState = {}
 
   const store = configureStore(
