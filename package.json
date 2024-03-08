@@ -42,7 +42,7 @@
     "browser-resolve": "^2.0.0",
     "bundlemon": "2.0.1",
     "cozy-app-publish": "^0.33.0",
-    "cozy-jobs-cli": "^2.3.1",
+    "cozy-jobs-cli": "^2.3.2",
     "cozy-scripts": "^8.3.0",
     "eslint": "^8.35.0",
     "eslint-config-cozy-app": "^6.1.0",
