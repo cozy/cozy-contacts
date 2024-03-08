@@ -5380,10 +5380,10 @@ cozy-stack-client@^45.2.0:
     mime "^2.4.0"
     qs "^6.7.0"
 
-cozy-ui@^103.6.1:
-  version "103.6.1"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-103.6.1.tgz#e49ce2ec51f895fbde8504fbbbc22c6c2f705283"
-  integrity sha512-kFuFq9uME0GMi6SuGSGk4K1x5zyRLZwd7I5QLLBhW8lHELWtkn1zviLBO0clGtVSZ2SOYQoRl31GJ6SVDLKtjA==
+cozy-ui@^103.12.0:
+  version "103.12.0"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-103.12.0.tgz#111aec19c38ec7899532def34430c8033ab5d9c7"
+  integrity sha512-izwOiTja/S2JpAgB2dt6GgdSgqlVIghcYPw7Hx7uhWRQ/1334Ng0X2iGqasxOtcQRN/7IycNv0/FDuh9acH+CQ==
   dependencies:
     "@babel/runtime" "^7.3.4"
     "@material-ui/core" "4.12.3"
@@ -5398,14 +5398,13 @@ cozy-ui@^103.6.1:
     hammerjs "^2.0.8"
     intersection-observer "0.11.0"
     mime-types "2.1.35"
-    mui-bottom-sheet "https://github.com/cozy/mui-bottom-sheet.git#v1.0.9"
+    mui-bottom-sheet "git+https://github.com/cozy/mui-bottom-sheet.git#v1.0.9"
     node-polyglot "^2.2.2"
     normalize.css "^8.0.0"
     pdf-lib "1.17.1"
     piwik-react-router "0.12.1"
     react-chartjs-2 "4.1.0"
     react-markdown "^4.0.8"
-    react-middle-ellipsis "1.2.2"
     react-pdf "^5.7.2"
     react-popper "^2.2.3"
     react-remove-scroll "^2.4.0"
@@ -10905,9 +10904,10 @@ msgpack5@^4.0.2:
     readable-stream "^2.3.6"
     safe-buffer "^5.1.2"
 
-"mui-bottom-sheet@https://github.com/cozy/mui-bottom-sheet.git#v1.0.9":
+"mui-bottom-sheet@git+https://github.com/cozy/mui-bottom-sheet.git#v1.0.9":
   version "1.0.8"
-  resolved "https://github.com/cozy/mui-bottom-sheet.git#3dc4c2a245ab39079bc2f73546bccf80847be14c"
+  uid "3dc4c2a245ab39079bc2f73546bccf80847be14c"
+  resolved "git+https://github.com/cozy/mui-bottom-sheet.git#3dc4c2a245ab39079bc2f73546bccf80847be14c"
   dependencies:
     "@juggle/resize-observer" "^3.1.3"
     jest-environment-jsdom-sixteen "^1.0.3"
@@ -12751,11 +12751,6 @@ react-markdown@^4.0.8, react-markdown@^4.2.2:
     unified "^6.1.5"
     unist-util-visit "^1.3.0"
     xtend "^4.0.1"
-
-react-middle-ellipsis@1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/react-middle-ellipsis/-/react-middle-ellipsis-1.2.2.tgz#e1676fe2fbc864ea7e2fc25bedc53db2635bb2a9"
-  integrity sha512-tTsyS/hOjT3C5WjpueAx1/WsYUVnNlUnDRCKSffGT1ns7b0NbSi6FGVVPDLTxn207B0sVjNTbMnk1HFGWd5hzA==
 
 react-pdf@^5.7.2:
   version "5.7.2"
