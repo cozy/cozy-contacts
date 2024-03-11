@@ -192,30 +192,8 @@ describe('ContactForm', () => {
     expect(screen.queryByDisplayValue(testFields['Notes'])).not.toBeNull()
   })
 
-  it('should submit empty fields', () => {
-    const expected = {
-      address: [],
-      birthday: '',
-      birthplace: '',
-      gender: '',
-      company: '',
-      cozy: [],
-      displayName: '',
-      email: [],
-      fullname: '',
-      indexes: { byFamilyNameGivenNameEmailCozyUrl: null },
-      jobTitle: '',
-      metadata: { cozy: true, version: 1 },
-      name: { familyName: '', givenName: '' },
-      note: '',
-      phone: [],
-      relationships: { groups: { data: [] } }
-    }
-
-    let received = null
-    const onSubmit = contact => {
-      received = contact
-    }
+  it('should not submit empty fields', () => {
+    const onSubmit = jest.fn()
 
     render(
       <AppLike client={client}>
@@ -227,6 +205,6 @@ describe('ContactForm', () => {
       fireEvent.submit(screen.getByRole('form'))
     })
 
-    expect(received).toEqual(expected)
+    expect(onSubmit).not.toBeCalled()
   })
 })
