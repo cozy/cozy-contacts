@@ -57,48 +57,76 @@ describe('ContactFormModal component', () => {
     })
   })
 
-  it('should pass a new contact to the creation function', async () => {
+  it('should not call the create function if any of the required fields are missing', async () => {
     const formData = {
       company: 'Cozy Cloud'
     }
     useQuery.mockReturnValue({
       data: {}
     })
-
     useParams.mockReturnValue({
       contactId: 'ID'
     })
 
-    const jsx = (
+    render(
       <AppLike>
         <ContactFormModal />
       </AppLike>
     )
+
+    act(() => {
+      fireEvent.change(screen.getByLabelText('Company'), {
+        target: { value: formData.company }
+      })
+    })
+    expect(screen.getByLabelText('Company').value).toBe('Cozy Cloud')
+
+    act(() => {
+      fireEvent.click(screen.getByText('Save'))
+    })
+
+    expect(createOrUpdateContact).not.toBeCalled()
+  })
+
+  it('should pass a new contact to the creation function', async () => {
+    const formData = {
+      firstname: 'bob'
+    }
+    useQuery.mockReturnValue({
+      data: {}
+    })
+    useParams.mockReturnValue({
+      contactId: 'ID'
+    })
 
     const expected = {
       address: [],
       birthday: '',
       birthplace: '',
       gender: '',
-      company: 'Cozy Cloud',
+      company: '',
       cozy: [],
-      displayName: '',
+      displayName: 'bob',
       email: [],
-      fullname: '',
-      indexes: { byFamilyNameGivenNameEmailCozyUrl: null },
+      fullname: 'bob',
+      indexes: { byFamilyNameGivenNameEmailCozyUrl: 'bob' },
       jobTitle: '',
       metadata: { cozy: true, version: 1 },
-      name: { familyName: '', givenName: '' },
+      name: { familyName: '', givenName: 'bob' },
       note: '',
       phone: [],
       relationships: { groups: { data: [] } }
     }
 
-    render(jsx)
+    render(
+      <AppLike>
+        <ContactFormModal />
+      </AppLike>
+    )
 
     act(() => {
-      fireEvent.change(screen.getByLabelText('Company'), {
-        target: { value: formData.company }
+      fireEvent.change(screen.getByLabelText('Firstname'), {
+        target: { value: formData.firstname }
       })
     })
 

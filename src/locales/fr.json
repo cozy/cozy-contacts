@@ -62,7 +62,8 @@
     "stairs": "Escalier",
     "floor": "Etage",
     "apartment": "Appartement",
-    "entrycode": "Code d'entrée"
+    "entrycode": "Code d'entrée",
+    "required": "Un de ces champs doit être renseigné"
   },
   "gender": {
     "man": "Homme",

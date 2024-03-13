@@ -1,4 +1,5 @@
 import arrayMutators from 'final-form-arrays'
+import get from 'lodash/get'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Form } from 'react-final-form'
@@ -27,16 +28,32 @@ export function getSubmitContactForm() {
   return _submitContactForm
 }
 
+const oneOfMandatoryFields = [
+  'givenName',
+  'familyName',
+  'email[0].email',
+  'cozy'
+]
+
 const ContactForm = ({ contact, onSubmit }) => {
   const { t } = useI18n()
   return (
     <Form
       mutators={{ ...arrayMutators }}
+      validate={values => {
+        const errors = {}
+        if (oneOfMandatoryFields.every(field => !get(values, field))) {
+          oneOfMandatoryFields.forEach(field => {
+            errors[field] = t('fields.required')
+          })
+        }
+        return errors
+      }}
       onSubmit={formValues =>
         onSubmit(formValuesToContact({ formValues, oldContact: contact, t }))
       }
       initialValues={contactToFormValues(contact, t)}
-      render={({ handleSubmit }) => {
+      render={({ handleSubmit, valid, submitFailed, errors }) => {
         setSubmitContactForm(handleSubmit)
         return (
           <div>
@@ -53,16 +70,23 @@ const ContactForm = ({ contact, onSubmit }) => {
                     name={name}
                     icon={icon}
                     isArray={isArray}
-                    renderInput={(inputName, id) => (
-                      <ContactFieldInput
-                        attributes={attributes}
-                        id={id}
-                        name={inputName}
-                        label={t(`fields.${name}`)}
-                        withLabel={hasLabel}
-                        labelPlaceholder={t('fields.label')}
-                      />
-                    )}
+                    renderInput={(inputName, id) => {
+                      const isOneOfFields =
+                        oneOfMandatoryFields.includes(inputName)
+                      const isError = isOneOfFields && !valid && submitFailed
+                      return (
+                        <ContactFieldInput
+                          attributes={attributes}
+                          error={isError}
+                          helperText={isError ? errors[inputName] : null}
+                          id={id}
+                          name={inputName}
+                          label={t(`fields.${name}`)}
+                          withLabel={hasLabel}
+                          labelPlaceholder={t('fields.label')}
+                        />
+                      )
+                    }}
                   />
                 )
               )}
