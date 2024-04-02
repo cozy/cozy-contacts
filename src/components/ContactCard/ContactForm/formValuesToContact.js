@@ -46,6 +46,7 @@ const createAddress = ({ address, oldContact, t }) => {
               code: addressField.addresscode,
               city: addressField.addresscity,
               country: addressField.addresscountry,
+              region: addressField.addressregion,
               ...(hasExtendedAddress(addressField) && {
                 extendedAddress: {
                   ...oldContactAddressCleaned.extendedAddress,
@@ -70,7 +71,9 @@ const formValuesToContact = ({ formValues, oldContact, t }) => {
   const {
     gender,
     givenName,
+    additionalName,
     familyName,
+    surname,
     phone,
     email,
     address,
@@ -88,7 +91,9 @@ const formValuesToContact = ({ formValues, oldContact, t }) => {
     name: {
       ...oldContact?.name,
       givenName: givenName || '',
-      familyName: familyName || ''
+      additionalName: additionalName || '',
+      familyName: familyName || '',
+      surname: surname || ''
     },
     email: email
       ? email

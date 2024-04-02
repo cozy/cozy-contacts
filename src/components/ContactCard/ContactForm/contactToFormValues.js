@@ -41,6 +41,7 @@ const contactToFormValues = (contact, t) => {
             addresscode: addressInfo.postcode || addressInfo.code,
             addresscity: addressInfo.city,
             addresscountry: addressInfo.country,
+            addressregion: addressInfo.region,
             addresslocality: addressInfo.extendedAddress?.locality,
             addressbuilding: addressInfo.extendedAddress?.building,
             addressstairs: addressInfo.extendedAddress?.stairs,
@@ -71,7 +72,9 @@ const contactToFormValues = (contact, t) => {
     return {
       gender,
       givenName: name ? name.givenName : undefined,
+      additionalName: name ? name.additionalName : undefined,
       familyName: name ? name.familyName : undefined,
+      surname: name ? name.surname : undefined,
       phone: phoneValue,
       email: emailValue,
       address: addressValue,

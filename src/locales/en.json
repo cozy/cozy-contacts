@@ -41,7 +41,9 @@
   "fields": {
     "gender": "Civility",
     "givenName": "Firstname",
+    "additionalName": "2nd firstname",
     "familyName": "Lastname",
+    "surname": "Surname",
     "phone": "Phone",
     "email": "Email",
     "address": "Address",
@@ -57,6 +59,7 @@
     "code": "Postal code",
     "city": "City",
     "country": "Country",
+    "region": "Region",
     "locality": "locality",
     "building": "Building",
     "stairs": "Stairs",

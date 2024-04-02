@@ -41,7 +41,9 @@
   "fields": {
     "gender": "Civilité",
     "givenName": "Prénom",
+    "additionalName": "2e prénom",
     "familyName": "Nom",
+    "surname": "Nom d'usage",
     "phone": "Téléphone",
     "email": "Email",
     "address": "Adresse",
@@ -57,6 +59,7 @@
     "code": "Code postal",
     "city": "Ville",
     "country": "Pays",
+    "region": "Région",
     "locality": "Lieu-dit",
     "building": "Bâtiment",
     "stairs": "Escalier",

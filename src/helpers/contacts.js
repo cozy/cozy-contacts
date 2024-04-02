@@ -1,11 +1,13 @@
 import sortBy from 'lodash/sortBy'
 
-import { models, HasMany } from 'cozy-client'
+import { HasMany } from 'cozy-client'
+import {
+  makeDisplayName,
+  makeFullname,
+  makeDefaultSortIndexValue
+} from 'cozy-client/dist/models/contact'
 
 import { filterWithRemaining } from './filterWithRemaining'
-
-const { makeFullname, makeDefaultSortIndexValue, makeDisplayName } =
-  models.contact
 
 export const supportedFieldsInOrder = [
   'phone',
@@ -104,7 +106,9 @@ export const updateIndexFullNameAndDisplayName = contact => {
   return {
     ...contact,
     fullname: makeFullname(contact),
-    displayName: makeDisplayName(contact),
+    displayName: makeDisplayName(contact, {
+      attributesFullname: ['givenName', 'familyName']
+    }),
     indexes: {
       byFamilyNameGivenNameEmailCozyUrl: makeDefaultSortIndexValue(contact)
     }
