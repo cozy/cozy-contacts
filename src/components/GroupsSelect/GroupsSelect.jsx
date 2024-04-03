@@ -4,8 +4,8 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { useClient } from 'cozy-client'
+import ClickAwayListener from 'cozy-ui/transpiled/react/ClickAwayListener'
 import SelectBox from 'cozy-ui/transpiled/react/SelectBox'
-import Overlay from 'cozy-ui/transpiled/react/deprecated/Overlay'
 
 import CustomMenu from './SelectBox/Menu'
 import CustomOption from './SelectBox/Option'
@@ -78,37 +78,36 @@ export const GroupsSelect = ({
 
   return (
     <div className={cx('u-flex-auto u-w-100', className)}>
-      {menuIsOpen && (
-        <Overlay className="overlay-creation-group" onClick={toggleMenu} />
-      )}
-      <SelectBox
-        classNamePrefix="react-select"
-        isMulti={isMulti}
-        withCheckbox={withCheckbox}
-        menuIsOpen={menuIsOpen}
-        blurInputOnSelect={true}
-        hideSelectedOptions={false}
-        isSearchable={false}
-        isClearable={false}
-        closeMenuOnSelect={closeMenuOnSelect}
-        tabSelectsValue={false}
-        onKeyDown={captureEscapeEvent}
-        noOptionsMessage={noOptionsMessage}
-        options={allGroups}
-        value={value}
-        onChange={handleChange}
-        getOptionLabel={group => group.name}
-        getOptionValue={group => group._id}
-        components={{ ...defaultComponents, ...components }}
-        createGroup={createGroup}
-        deleteGroup={handleDelete}
-        renameGroup={renameGroup}
-        styles={styles}
-        onControlClicked={toggleMenu}
-        setEditedGroupId={setEditedGroupId}
-        editedGroupId={editedGroupId}
-        menuPosition={menuPosition}
-      />
+      <ClickAwayListener onClickAway={menuIsOpen ? closeMenu : undefined}>
+        <SelectBox
+          classNamePrefix="react-select"
+          isMulti={isMulti}
+          withCheckbox={withCheckbox}
+          menuIsOpen={menuIsOpen}
+          blurInputOnSelect={true}
+          hideSelectedOptions={false}
+          isSearchable={false}
+          isClearable={false}
+          closeMenuOnSelect={closeMenuOnSelect}
+          tabSelectsValue={false}
+          onKeyDown={captureEscapeEvent}
+          noOptionsMessage={noOptionsMessage}
+          options={allGroups}
+          value={value}
+          onChange={handleChange}
+          getOptionLabel={group => group.name}
+          getOptionValue={group => group._id}
+          components={{ ...defaultComponents, ...components }}
+          createGroup={createGroup}
+          deleteGroup={handleDelete}
+          renameGroup={renameGroup}
+          styles={styles}
+          onControlClicked={toggleMenu}
+          setEditedGroupId={setEditedGroupId}
+          editedGroupId={editedGroupId}
+          menuPosition={menuPosition}
+        />
+      </ClickAwayListener>
     </div>
   )
 }
