@@ -24,8 +24,7 @@ const customStyles = {
   container: base => ({
     ...base,
     display: 'inline-block',
-    verticalAlign: 'middle',
-    zIndex: 100000
+    verticalAlign: 'middle'
   }),
   menu: base => ({
     ...base
