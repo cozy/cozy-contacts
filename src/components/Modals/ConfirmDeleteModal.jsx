@@ -6,7 +6,6 @@ import { useClient, useQuery } from 'cozy-client'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import { deleteContact } from '../../connections/allContacts'
 import { getConnectedAccounts } from '../../helpers/contacts'
 import { buildContactsQueryById } from '../../queries/queries'
 import ConfirmDeleteActions from '../Common/ConfirmDeleteActions'
@@ -35,7 +34,7 @@ const ConfirmDeleteModal = () => {
 
   const onDeleteContact = async (contactParam = null) => {
     navigate('/', { replace: true })
-    await deleteContact(client, contactParam ? contactParam : contact)
+    await client.destroy(contactParam ? contactParam : contact)
     onDeleteContact && onDeleteContact(contactParam ? contactParam : contact)
   }
 

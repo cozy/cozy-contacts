@@ -1,8 +1,6 @@
-/* eslint-disable jest/no-focused-tests */
 import { waitFor } from '@testing-library/react'
 
 import {
-  deleteContact,
   deleteTrashedContacts,
   trashedAllContactsByGroupId,
   cancelTrashContactsByGroupId
@@ -31,54 +29,6 @@ const setup = ({
 }
 
 describe('allContacts', () => {
-  describe('deleteContact', () => {
-    beforeEach(() => {
-      jest.clearAllMocks()
-    })
-
-    it('should delete a contact with no sources', () => {
-      const mockDestroy = jest.fn()
-      const client = setup({ mockDestroy })
-      const contact = {
-        _id: '123',
-        cozyMetadata: {
-          sync: {}
-        }
-      }
-
-      deleteContact(client, contact)
-      expect(mockDestroy).toHaveBeenCalledWith(contact)
-
-      const contactWithoutMetadata = {
-        _id: '456'
-      }
-      deleteContact(client, contactWithoutMetadata)
-      expect(mockDestroy).toHaveBeenCalledWith(contactWithoutMetadata)
-    })
-
-    it('should flag a contact with sources as trashed', () => {
-      const mockSave = jest.fn()
-      const mockDestroy = jest.fn()
-      const client = setup({ mockDestroy, mockSave })
-      const contact = {
-        _id: '123',
-        cozyMetadata: {
-          sync: {
-            456: {
-              id: 'people/657623'
-            }
-          }
-        }
-      }
-
-      deleteContact(client, contact)
-      expect(mockDestroy).not.toHaveBeenCalled()
-      expect(mockSave).toHaveBeenCalledWith({
-        ...contact,
-        trashed: true
-      })
-    })
-  })
   describe('deleteTrashedContacts', () => {
     it('should destroy contact trashed if they have no source', async () => {
       const mockDestroyAll = jest.fn()
