@@ -1,4 +1,3 @@
-import get from 'lodash/get'
 import isEqual from 'lodash/isEqual'
 import uniqWith from 'lodash/uniqWith'
 
@@ -71,19 +70,6 @@ export const deleteTrashedContacts = async client => {
   if (trashedContactsNotLinkedToAccounts.length > 0) {
     const contactCollection = client.collection(DOCTYPE_CONTACTS)
     await contactCollection.destroyAll(trashedContactsNotLinkedToAccounts)
-  }
-}
-
-export const deleteContact = (client, contact) => {
-  const syncData = get(contact, 'cozyMetadata.sync', {})
-  const isLinkedToAccounts = Object.keys(syncData).length > 0
-  if (isLinkedToAccounts) {
-    return client.save({
-      ...contact,
-      trashed: true
-    })
-  } else {
-    return client.destroy(contact)
   }
 }
 

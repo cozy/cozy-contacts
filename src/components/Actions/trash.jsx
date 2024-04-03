@@ -2,7 +2,6 @@ import React from 'react'
 
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 
-import { deleteContact } from '../../connections/allContacts'
 import { getConnectedAccounts } from '../../helpers/contacts'
 import ConfirmDeleteActions from '../Common/ConfirmDeleteActions'
 
@@ -44,9 +43,7 @@ export const trash = ({
         description = 'delete-confirmation.description-mixed'
 
       const handleDelete = async () => {
-        await Promise.all(
-          selection.map(contact => deleteContact(client, contact))
-        )
+        await Promise.all(selection.map(contact => client.destroy(contact)))
         clearSelection()
         hideModal()
       }
