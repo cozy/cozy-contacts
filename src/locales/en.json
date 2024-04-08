@@ -65,7 +65,8 @@
     "floor": "Floor",
     "apartment": "Apartment",
     "region": "Region",
-    "entrycode": "Entry code"
+    "entrycode": "Entry code",
+    "required": "One of these fields must be filled in"
   },
   "gender": {
     "man": "Man",

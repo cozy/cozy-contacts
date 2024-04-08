@@ -65,7 +65,8 @@
     "floor": "Escenario",
     "apartment": "Apartamento",
     "region": "región",
-    "entrycode": "Código de entrada"
+    "entrycode": "Código de entrada",
+    "required": "One of these fields must be filled in"
   },
   "gender": {
     "man": "Hombre",

@@ -65,7 +65,8 @@
     "floor": "Fase",
     "apartment": "Appartement",
     "region": "Regio",
-    "entrycode": "Toegangscode"
+    "entrycode": "Toegangscode",
+    "required": "Een van deze velden moet worden ingevuld"
   },
   "gender": {
     "man": "Mannelijk",

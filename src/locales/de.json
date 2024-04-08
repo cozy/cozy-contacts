@@ -65,7 +65,8 @@
     "floor": "Bühne",
     "apartment": "Wohnung",
     "region": "Region",
-    "entrycode": "Zugangscode"
+    "entrycode": "Zugangscode",
+    "required": "One of these fields must be filled in"
   },
   "gender": {
     "man": "Männlich",
