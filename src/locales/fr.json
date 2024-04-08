@@ -64,6 +64,7 @@
     "stairs": "Escalier",
     "floor": "Etage",
     "apartment": "Appartement",
+    "region": "Région",
     "entrycode": "Code d'entrée",
     "required": "Un de ces champs doit être renseigné"
   },

@@ -64,6 +64,7 @@
     "stairs": "Trap",
     "floor": "Fase",
     "apartment": "Appartement",
+    "region": "Regio",
     "entrycode": "Toegangscode"
   },
   "gender": {

@@ -117,6 +117,11 @@ export const fields = [
         type: 'text'
       },
       {
+        name: 'region',
+        icon: null,
+        type: 'text'
+      },
+      {
         name: 'country',
         icon: null,
         type: 'text'

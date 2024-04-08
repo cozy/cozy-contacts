@@ -64,6 +64,7 @@
     "stairs": "Stufen",
     "floor": "Bühne",
     "apartment": "Wohnung",
+    "region": "Region",
     "entrycode": "Zugangscode"
   },
   "gender": {

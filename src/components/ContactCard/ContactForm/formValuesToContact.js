@@ -45,6 +45,7 @@ const createAddress = ({ address, oldContact, t }) => {
               street: addressField.addressstreet,
               code: addressField.addresscode,
               city: addressField.addresscity,
+              region: addressField.addressregion,
               country: addressField.addresscountry,
               ...(hasExtendedAddress(addressField) && {
                 extendedAddress: {
