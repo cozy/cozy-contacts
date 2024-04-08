@@ -67,32 +67,12 @@ export const fields = [
     type: 'button',
     subFields: [
       {
-        name: 'number',
-        icon: null,
-        type: 'text'
-      },
-      {
         name: 'street',
         icon: null,
         type: 'text'
       },
       {
-        name: 'code',
-        icon: null,
-        type: 'text'
-      },
-      {
-        name: 'city',
-        icon: null,
-        type: 'text'
-      },
-      {
-        name: 'country',
-        icon: null,
-        type: 'text'
-      },
-      {
-        name: 'locality',
+        name: 'number',
         icon: null,
         type: 'text'
       },
@@ -118,6 +98,26 @@ export const fields = [
       },
       {
         name: 'entrycode',
+        icon: null,
+        type: 'text'
+      },
+      {
+        name: 'locality',
+        icon: null,
+        type: 'text'
+      },
+      {
+        name: 'code',
+        icon: null,
+        type: 'text'
+      },
+      {
+        name: 'city',
+        icon: null,
+        type: 'text'
+      },
+      {
+        name: 'country',
         icon: null,
         type: 'text'
       }
