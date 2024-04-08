@@ -3,7 +3,7 @@ import React from 'react'
 
 import List from 'cozy-ui/transpiled/react/List'
 import ListSubheader from 'cozy-ui/transpiled/react/ListSubheader'
-import { Table } from 'cozy-ui/transpiled/react/Table'
+import { Table } from 'cozy-ui/transpiled/react/deprecated/Table'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import ContactsSubList from './ContactsSubList'
