@@ -26,19 +26,18 @@ const CustomSelectIcon = ({ className, ...props }) => {
     />
   )
 }
-const FieldInputSelect = props => {
+const FieldInputSelect = ({ options, ...props }) => {
   const { t } = useI18n()
-  const { selectValue, ...rest } = props
 
   return (
     <TextField
-      {...rest}
+      {...props}
       select
       SelectProps={{ IconComponent: CustomSelectIcon }}
     >
-      {selectValue.map(option => (
+      {options.map(option => (
         <MenuItem key={option.value} value={option.value}>
-          {t(`gender.${option.label}`)}
+          {t(option.label)}
         </MenuItem>
       ))}
     </TextField>

@@ -14,7 +14,7 @@ export const fieldInputAttributes = PropTypes.shape({
     })
   ),
   select: PropTypes.bool,
-  selectValue: PropTypes.arrayOf(
+  options: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string,
       label: PropTypes.string
