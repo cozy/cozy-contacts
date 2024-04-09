@@ -2,8 +2,6 @@ export const fields = [
   {
     name: 'gender',
     icon: 'people',
-    type: 'text',
-    select: true,
     options: [
       {
         value: 'male',

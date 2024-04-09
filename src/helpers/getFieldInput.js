@@ -7,8 +7,10 @@ export const getFieldInput = attributes => {
   if (attributes.isMultiline) {
     return FieldInputTextarea
   }
-  if (attributes.select) {
+
+  if (attributes.options) {
     return FieldInputSelect
   }
+
   return TextField
 }

@@ -6,8 +6,8 @@ import FieldInputSelect from '../components/Form/FieldInputSelect'
 import FieldInputTextarea from '../components/Form/FieldInputTextarea'
 
 describe('getFieldInput', () => {
-  it('should return FieldInputSelect component if "select" attribute defined', () => {
-    const attributesWithSelect = fields.filter(f => f.select)
+  it('should return FieldInputSelect component if "options" attribute defined', () => {
+    const attributesWithSelect = fields.filter(f => f.options)
 
     expect(attributesWithSelect).not.toHaveLength(0)
 
@@ -26,8 +26,10 @@ describe('getFieldInput', () => {
       expect(fieldInput).toEqual(FieldInputTextarea)
     }
   })
-  it('should return TextField component if "isMultiline" and "select" attributes is undefined', () => {
-    const attributesWithSelect = fields.filter(f => !f.isMultiline && !f.select)
+  it('should return TextField component if "isMultiline" and "options" attributes is undefined', () => {
+    const attributesWithSelect = fields.filter(
+      f => !f.isMultiline && !f.options
+    )
 
     expect(attributesWithSelect).not.toHaveLength(0)
 
