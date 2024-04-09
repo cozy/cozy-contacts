@@ -220,6 +220,7 @@ export const getFormattedAddress = (address, t) => {
     street: address.street || '',
     code: address.postcode || '',
     city: address.city || '',
+    region: address.region || '',
     country: address.country || ''
   }
 

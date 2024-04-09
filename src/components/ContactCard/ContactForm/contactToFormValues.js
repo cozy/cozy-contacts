@@ -40,6 +40,7 @@ const contactToFormValues = (contact, t) => {
               addressInfo.street || getFormattedAddress(addressInfo, t),
             addresscode: addressInfo.postcode || addressInfo.code,
             addresscity: addressInfo.city,
+            addressregion: addressInfo.region,
             addresscountry: addressInfo.country,
             addresslocality: addressInfo.extendedAddress?.locality,
             addressbuilding: addressInfo.extendedAddress?.building,
@@ -70,8 +71,10 @@ const contactToFormValues = (contact, t) => {
 
     return {
       gender,
-      givenName: name ? name.givenName : undefined,
-      familyName: name ? name.familyName : undefined,
+      givenName: name?.givenName,
+      additionalName: name?.additionalName,
+      surname: name?.surname,
+      familyName: name?.familyName,
       phone: phoneValue,
       email: emailValue,
       address: addressValue,

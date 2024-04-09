@@ -41,6 +41,8 @@
   "fields": {
     "gender": "Civilidad",
     "givenName": "Nombre",
+    "additionalName": "2º nombre",
+    "surname": "Nombre en uso",
     "familyName": "Apellido",
     "phone": "Teléfono",
     "email": "Email",
@@ -62,7 +64,9 @@
     "stairs": "Escaleras",
     "floor": "Escenario",
     "apartment": "Apartamento",
-    "entrycode": "Código de entrada"
+    "region": "región",
+    "entrycode": "Código de entrada",
+    "required": "One of these fields must be filled in"
   },
   "gender": {
     "man": "Hombre",

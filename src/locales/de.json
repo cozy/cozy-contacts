@@ -41,6 +41,8 @@
   "fields": {
     "gender": "Höflichkeit",
     "givenName": "Vorname",
+    "additionalName": "Zweiter Vorname",
+    "surname": "Gebrauchsname",
     "familyName": "Nachname",
     "phone": "Telefon",
     "email": "E-Mail",
@@ -62,7 +64,9 @@
     "stairs": "Stufen",
     "floor": "Bühne",
     "apartment": "Wohnung",
-    "entrycode": "Zugangscode"
+    "region": "Region",
+    "entrycode": "Zugangscode",
+    "required": "One of these fields must be filled in"
   },
   "gender": {
     "man": "Männlich",

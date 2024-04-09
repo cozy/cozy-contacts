@@ -17,6 +17,7 @@ describe('formValuesToContact', () => {
           formattedAddress: '94 Hinton Road 05034 Fresno, Singapore',
           city: undefined,
           code: undefined,
+          region: undefined,
           country: undefined,
           extendedAddress: {
             apartment: undefined,
@@ -58,19 +59,24 @@ describe('formValuesToContact', () => {
       cozy: [
         { label: 'MyCozy', primary: true, url: 'https://johndoe.mycozy.cloud' }
       ],
-      displayName: 'John Doe',
+      displayName: 'John J. Doe',
       email: [
         { address: 'john.doe@cozycloud.cc', primary: true, type: undefined },
         { address: 'john.doe@posteo.net', primary: false, type: 'personal' }
       ],
-      fullname: 'John Doe',
+      fullname: 'John J. Doe',
       indexes: {
         byFamilyNameGivenNameEmailCozyUrl:
           'doejohnjohn.doe@cozycloud.ccjohndoe.mycozy.cloud'
       },
       jobTitle: 'Dreamer',
       metadata: { cozy: true, version: 1 },
-      name: { familyName: 'Doe', givenName: 'John' },
+      name: {
+        familyName: 'Doe',
+        givenName: 'John',
+        additionalName: 'J.',
+        surname: undefined
+      },
       note: 'Atque cupiditate saepe omnis quos ut molestiae labore voluptates omnis.',
       phone: [
         { number: '+33 (2)0 90 00 54 04', primary: true, type: undefined },
@@ -213,6 +219,7 @@ describe('formValuesToContact', () => {
       oldContact,
       t
     })
+
     for (const key of Object.keys(oldContact)) {
       expect(result[key]).toEqual(expected[key])
     }
@@ -322,6 +329,7 @@ describe('formValuesToContact', () => {
           addressnumber: undefined,
           addressstreet: 'Hinton Road',
           addresscode: '05034',
+          addressregion: undefined,
           addresscity: 'Fresno',
           addresscountry: 'Singapore',
           addresslocality: undefined,

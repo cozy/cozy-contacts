@@ -71,6 +71,7 @@ describe('ContactForm', () => {
           city: undefined,
           code: undefined,
           country: undefined,
+          region: undefined,
           formattedAddress: '18 rue des fleurs, Pecado',
           number: undefined,
           primary: true,
@@ -94,7 +95,12 @@ describe('ContactForm', () => {
       },
       jobTitle: 'Dreamer',
       metadata: { cozy: true, version: 1 },
-      name: { familyName: 'Van Cozy', givenName: 'Jean-Claude' },
+      name: {
+        familyName: 'Van Cozy',
+        givenName: 'Jean-Claude',
+        additionalName: undefined,
+        surname: undefined
+      },
       note: 'Whatever.',
       phone: [{ number: '+33678987654', primary: true, type: undefined }],
       relationships: { groups: { data: [] } }
@@ -115,6 +121,8 @@ describe('ContactForm', () => {
       gender: 'male',
       givenName: 'Jean-Claude',
       familyName: 'Van Cozy',
+      surname: '',
+      additionalName: '',
       'phone[0].phone': '+33678987654',
       'email[0].email': 'jcvc@cozy.cloud',
       cozy: 'https://jcvd.cozy.cloud',

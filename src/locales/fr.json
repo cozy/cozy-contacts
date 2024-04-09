@@ -41,6 +41,8 @@
   "fields": {
     "gender": "Civilité",
     "givenName": "Prénom",
+    "additionalName": "2e prénom",
+    "surname": "Nom d'usage",
     "familyName": "Nom",
     "phone": "Téléphone",
     "email": "Email",
@@ -62,6 +64,7 @@
     "stairs": "Escalier",
     "floor": "Etage",
     "apartment": "Appartement",
+    "region": "Région",
     "entrycode": "Code d'entrée",
     "required": "Un de ces champs doit être renseigné"
   },

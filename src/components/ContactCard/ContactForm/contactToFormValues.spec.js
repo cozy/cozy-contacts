@@ -38,6 +38,7 @@ describe('contactToFormValues function', () => {
       code: '84573',
       number: '',
       city: 'Port Easter',
+      region: '',
       country: 'Cocos (Keeling) Islands'
     })
   })

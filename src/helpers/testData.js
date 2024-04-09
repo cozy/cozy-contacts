@@ -13,6 +13,7 @@ export const johnDoeContact = {
       pobox: '2',
       street: '426 Runolfsson Knolls',
       city: 'Port Easter',
+      region: undefined,
       country: 'Cocos (Keeling) Islands',
       postcode: '84573',
       type: 'Work'
@@ -44,7 +45,8 @@ export const johnDoeContact = {
   fullname: 'John Doe',
   name: {
     givenName: 'John',
-    familyName: 'Doe'
+    familyName: 'Doe',
+    additionalName: 'J.'
   },
   metadata: {
     cozy: true,
@@ -77,6 +79,7 @@ export const johnDoeFormValues = {
       addressbuilding: undefined,
       addresscity: undefined,
       addresscode: undefined,
+      addressregion: undefined,
       addresscountry: undefined,
       addressentrycode: undefined,
       addressfloor: undefined,
@@ -92,6 +95,7 @@ export const johnDoeFormValues = {
       addressapartment: undefined,
       addressbuilding: undefined,
       addresscity: 'Port Easter',
+      addressregion: undefined,
       addresscode: '84573',
       addresscountry: 'Cocos (Keeling) Islands',
       addressentrycode: undefined,
@@ -123,6 +127,7 @@ export const johnDoeFormValues = {
     }
   ],
   givenName: 'John',
+  additionalName: 'J.',
   familyName: 'Doe',
   company: 'Cozy cloud',
   jobTitle: 'Dreamer',
