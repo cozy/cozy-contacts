@@ -70,8 +70,10 @@ const contactToFormValues = (contact, t) => {
 
     return {
       gender,
-      givenName: name ? name.givenName : undefined,
-      familyName: name ? name.familyName : undefined,
+      givenName: name?.givenName,
+      additionalName: name?.additionalName,
+      surname: name?.surname,
+      familyName: name?.familyName,
       phone: phoneValue,
       email: emailValue,
       address: addressValue,

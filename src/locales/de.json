@@ -41,6 +41,8 @@
   "fields": {
     "gender": "Höflichkeit",
     "givenName": "Vorname",
+    "additionalName": "Zweiter Vorname",
+    "surname": "Gebrauchsname",
     "familyName": "Nachname",
     "phone": "Telefon",
     "email": "E-Mail",

@@ -41,6 +41,8 @@
   "fields": {
     "gender": "Civilité",
     "givenName": "Prénom",
+    "additionalName": "2e prénom",
+    "surname": "Nom d'usage",
     "familyName": "Nom",
     "phone": "Téléphone",
     "email": "Email",

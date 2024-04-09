@@ -70,6 +70,8 @@ const formValuesToContact = ({ formValues, oldContact, t }) => {
   const {
     gender,
     givenName,
+    additionalName,
+    surname,
     familyName,
     phone,
     email,
@@ -88,6 +90,8 @@ const formValuesToContact = ({ formValues, oldContact, t }) => {
     name: {
       ...oldContact?.name,
       givenName: givenName || '',
+      additionalName: additionalName,
+      surname: surname,
       familyName: familyName || ''
     },
     email: email

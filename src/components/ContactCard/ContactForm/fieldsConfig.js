@@ -23,7 +23,17 @@ export const fields = [
     type: 'text'
   },
   {
+    name: 'additionalName',
+    icon: null,
+    type: 'text'
+  },
+  {
     name: 'familyName',
+    icon: null,
+    type: 'text'
+  },
+  {
+    name: 'surname',
     icon: null,
     type: 'text'
   },

@@ -41,6 +41,8 @@
   "fields": {
     "gender": "Beleefdheid",
     "givenName": "Voornaam",
+    "additionalName": "2e voornaam",
+    "surname": "Naam in gebruik",
     "familyName": "Achternaam",
     "phone": "Telefoonnummer",
     "email": "E-mailadres",
