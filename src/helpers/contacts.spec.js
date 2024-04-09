@@ -144,8 +144,8 @@ describe('updateIndexFullNameAndDisplayName', () => {
   it('should returns a contact with new attributes', () => {
     const expected = {
       ...johnDoeContact,
-      displayName: 'John Doe',
-      fullname: 'John Doe',
+      displayName: 'John J. Doe',
+      fullname: 'John J. Doe',
       indexes: {
         byFamilyNameGivenNameEmailCozyUrl:
           'doejohnjohn.doe@cozycloud.ccjohndoe.mycozy.cloud'
