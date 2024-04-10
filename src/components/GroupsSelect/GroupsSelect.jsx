@@ -78,7 +78,7 @@ export const GroupsSelect = ({
 
   return (
     <div className={cx('u-flex-auto u-w-100', className)}>
-      <ClickAwayListener onClickAway={menuIsOpen ? closeMenu : undefined}>
+      <ClickAwayListener onClickAway={menuIsOpen ? closeMenu : () => {}}>
         <SelectBox
           classNamePrefix="react-select"
           isMulti={isMulti}
