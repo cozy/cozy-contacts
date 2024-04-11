@@ -9,19 +9,19 @@ import FieldByType from './FieldByType'
 import { makeTLabel } from './helpers'
 
 const FieldWrapper = ({ type, value }) => {
-  const { t } = useI18n()
+  const { t, polyglot } = useI18n()
   const { isMobile } = useBreakpoints()
 
-  const label = value.label || null
+  const tLabel = makeTLabel({ type, value, t, polyglot })
 
   return (
     <div className="u-mb-half u-breakword u-fz-medium">
       <FieldByType value={value} type={type} />
-      {label && (
+      {tLabel && (
         <>
           <span className="u-ph-half u-dn-s">·</span>
           <Typography display={isMobile ? 'block' : 'inline'} variant="body2">
-            {makeTLabel({ type, value, t })}
+            {tLabel}
           </Typography>
         </>
       )}

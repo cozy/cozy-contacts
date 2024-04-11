@@ -8,6 +8,7 @@
   "edit-contact": "Edit contact",
   "save": "Save",
   "ok": "Ok",
+  "custom": "Customised",
   "delete": "Delete",
   "selected_contacts": "%{smart_count} selected contact |||| %{smart_count} selected contacts",
   "select-all": "Select all",
@@ -72,7 +73,7 @@
     "none": "None",
     "home": "Personal",
     "work": "Pro",
-    "add": "Add a label",
+    "custom": "Customised label",
     "phone": {
       "cell-home": "Cell (personal)",
       "cell-work": "Cell (pro)",

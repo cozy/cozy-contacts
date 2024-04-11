@@ -1,22 +1,35 @@
-export const makeTLabel = ({ type, value, t }) => {
-  const hasPrefix = ['phone', 'address'].includes(type)
-  const label = value.label || null
+import { makeCustomLabel } from '../../Form/helpers'
 
-  if (!label) return null
+const makeCustomOrSupportedLabel = ({ type, value, hasPrefix, t }) => {
+  if (value.type) {
+    return makeCustomLabel(JSON.stringify(value), t)
+  }
+
+  if (value.label) {
+    return hasPrefix
+      ? t(`label.${type}.${value.label}`)
+      : t(`label.${value.label}`)
+  }
+
+  return null
+}
+
+export const makeTLabel = ({ type, value, t, polyglot }) => {
+  const hasPrefix = ['phone', 'address'].includes(type)
 
   if (hasPrefix) {
     if (type === 'phone') {
-      if (!value.type) {
-        return null
-      }
+      const keyToTranslate = `label.${type}.${value.type}-${value.label}`
 
-      return t(`label.${type}.${value.type}-${label}`)
+      return polyglot.has(keyToTranslate)
+        ? t(keyToTranslate)
+        : makeCustomLabel(JSON.stringify(value), t)
     }
 
     // has prefix but is not phone
-    return t(`label.${type}.${label}`)
+    return makeCustomOrSupportedLabel({ type, value, hasPrefix, t })
   }
 
   // has no prefix
-  return t(`label.${label}`)
+  return makeCustomOrSupportedLabel({ type, value, hasPrefix, t })
 }

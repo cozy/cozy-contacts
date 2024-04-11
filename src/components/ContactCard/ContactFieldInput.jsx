@@ -56,6 +56,7 @@ const ContactFieldInput = ({
             <Field
               style={{ minWidth: '200px' }}
               attributes={labelProps}
+              withAddLabel={name !== 'gender'}
               name={`${name}Label`}
               label={labelPlaceholder}
               component={FieldInputWrapper}

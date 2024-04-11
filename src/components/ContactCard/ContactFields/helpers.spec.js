@@ -1,44 +1,68 @@
 import { makeTLabel } from './helpers'
 
 const t = x => x
+const polyglot = { has: jest.fn() }
 
 describe('makeTLabel', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
   describe('for phone', () => {
     it('should return correct label with prefix', () => {
+      polyglot.has.mockReturnValue(true)
+
       const res = makeTLabel({
         type: 'phone',
         value: { label: 'home', type: 'cell' },
-        t
+        t,
+        polyglot
       })
 
       expect(res).toBe('label.phone.cell-home')
     })
 
-    it('should return null if no label', () => {
+    it('should return correct label with prefix', () => {
+      polyglot.has.mockReturnValue(false)
+
+      const res = makeTLabel({
+        type: 'phone',
+        value: { type: 'custom', label: 'home' },
+        t,
+        polyglot
+      })
+
+      expect(res).toBe('custom (label.home)')
+    })
+
+    it('should return type if no label', () => {
       const res = makeTLabel({
         type: 'phone',
         value: { label: undefined, type: 'cell' },
-        t
+        t,
+        polyglot
       })
 
-      expect(res).toBe(null)
+      expect(res).toBe('cell')
     })
 
-    it('should return null if no type', () => {
+    it('should return only the label if no type', () => {
       const res = makeTLabel({
         type: 'phone',
         value: { label: 'home', type: undefined },
-        t
+        t,
+        polyglot
       })
 
-      expect(res).toBe(null)
+      expect(res).toBe('label.home')
     })
 
     it('should return null if no type and label', () => {
       const res = makeTLabel({
         type: 'phone',
         value: { label: undefined, type: undefined },
-        t
+        t,
+        polyglot
       })
 
       expect(res).toBe(null)
@@ -50,27 +74,30 @@ describe('makeTLabel', () => {
       const res = makeTLabel({
         type: 'address',
         value: { label: 'home', type: 'custom' },
-        t
+        t,
+        polyglot
       })
 
-      expect(res).toBe('label.address.home')
+      expect(res).toBe('custom (label.home)')
     })
 
-    it('should return null if no label', () => {
+    it('should return the type if no label', () => {
       const res = makeTLabel({
         type: 'address',
-        value: { label: undefined, type: 'custom' },
-        t
+        value: { type: 'custom', label: undefined },
+        t,
+        polyglot
       })
 
-      expect(res).toBe(null)
+      expect(res).toBe('custom')
     })
 
     it('should return correct label with previx even with no type', () => {
       const res = makeTLabel({
         type: 'address',
         value: { label: 'home', type: undefined },
-        t
+        t,
+        polyglot
       })
 
       expect(res).toBe('label.address.home')
@@ -80,7 +107,8 @@ describe('makeTLabel', () => {
       const res = makeTLabel({
         type: 'address',
         value: { label: undefined, type: undefined },
-        t
+        t,
+        polyglot
       })
 
       expect(res).toBe(null)
@@ -88,31 +116,34 @@ describe('makeTLabel', () => {
   })
 
   describe('for email and cozy url', () => {
-    it('should return correct label', () => {
+    it('should return correct type and label', () => {
       const res = makeTLabel({
         type: 'email',
         value: { label: 'home', type: 'custom' },
-        t
+        t,
+        polyglot
       })
 
-      expect(res).toBe('label.home')
+      expect(res).toBe('custom (label.home)')
     })
 
-    it('should return null if no label', () => {
+    it('should return type if no label', () => {
       const res = makeTLabel({
         type: 'email',
         value: { label: undefined, type: 'custom' },
-        t
+        t,
+        polyglot
       })
 
-      expect(res).toBe(null)
+      expect(res).toBe('custom')
     })
 
-    it('should return correct label even if no type', () => {
+    it('should return label even if no type', () => {
       const res = makeTLabel({
         type: 'email',
         value: { label: 'home', type: undefined },
-        t
+        t,
+        polyglot
       })
 
       expect(res).toBe('label.home')
@@ -122,7 +153,8 @@ describe('makeTLabel', () => {
       const res = makeTLabel({
         type: 'email',
         value: { label: undefined, type: undefined },
-        t
+        t,
+        polyglot
       })
 
       expect(res).toBe(null)
