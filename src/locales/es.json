@@ -68,6 +68,24 @@
     "entrycode": "Código de entrada",
     "required": "One of these fields must be filled in"
   },
+  "label": {
+    "none": "No",
+    "home": "Personal",
+    "work": "Pro",
+    "add": "Añadir una etiqueta",
+    "phone": {
+      "cell-home": "Móvil (personal)",
+      "cell-work": "Móvil (pro)",
+      "voice-home": "Fijo (personal)",
+      "voice-work": "Fijo (pro)",
+      "fax-home": "Fax (personal)",
+      "fax-work": "Fax (pro)"
+    },
+    "address": {
+      "home": "Inicio (personal)",
+      "work" : "Trabajo (pro)"
+    }
+  },
   "gender": {
     "man": "Hombre",
     "woman": "Mujer"

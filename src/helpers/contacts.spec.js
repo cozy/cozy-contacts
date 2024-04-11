@@ -118,7 +118,7 @@ describe('normalizeFields', () => {
         type: 'cozy',
         values: [
           {
-            label: 'MyCozy',
+            type: 'MyCozy',
             primary: true,
             url: 'https://johndoe.mycozy.cloud'
           }

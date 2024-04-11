@@ -1,9 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 
-import { I18n } from 'cozy-ui/transpiled/react/providers/I18n'
-
 import ContactFields from './ContactFields'
+import AppLike from '../../../tests/Applike'
 
 describe('ContactFields', () => {
   it('should accept the strict minimum', () => {
@@ -36,9 +35,9 @@ describe('ContactFields', () => {
       { type: 'other', values: [{ text: 'something' }] }
     ]
     const contactFieldsInstance = (
-      <I18n lang="en" dictRequire={() => ''}>
+      <AppLike>
         <ContactFields fields={fields} />
-      </I18n>
+      </AppLike>
     )
     render(contactFieldsInstance)
     const fieldsNodes = screen.queryAllByRole('listitem')

@@ -35,11 +35,13 @@ const FieldInputSelect = ({ options, ...props }) => {
       select
       SelectProps={{ IconComponent: CustomSelectIcon }}
     >
-      {options.map(option => (
-        <MenuItem key={option.value} value={option.value}>
-          {t(option.label)}
-        </MenuItem>
-      ))}
+      {options.map((option, index) => {
+        return (
+          <MenuItem key={`${props.name}-${index}`} value={option.value}>
+            {t(option.label)}
+          </MenuItem>
+        )
+      })}
     </TextField>
   )
 }

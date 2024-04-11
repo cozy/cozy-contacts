@@ -68,6 +68,24 @@
     "entrycode": "Code d'entrée",
     "required": "Un de ces champs doit être renseigné"
   },
+  "label": {
+    "none": "Aucun",
+    "home": "Perso",
+    "work": "Pro",
+    "add": "Ajouter un libellé",
+    "phone": {
+      "cell-home": "Mobile (perso)",
+      "cell-work": "Mobile (pro)",
+      "voice-home": "Fixe (perso)",
+      "voice-work": "Fixe (pro)",
+      "fax-home": "Fax (perso)",
+      "fax-work": "Fax (pro)"
+    },
+    "address": {
+      "home": "Domicile (perso)",
+      "work" : "Travail (pro)"
+    }
+  },
   "gender": {
     "man": "Homme",
     "woman": "Femme"

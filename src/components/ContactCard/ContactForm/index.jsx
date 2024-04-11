@@ -63,33 +63,31 @@ const ContactForm = ({ contact, onSubmit }) => {
               className="u-flex u-flex-column"
             >
               <FieldsetTitle title={t('contact_info')} />
-              {fields.map(
-                ({ name, icon, hasLabel, isArray, ...attributes }) => (
-                  <ContactFormField
-                    key={name}
-                    name={name}
-                    icon={icon}
-                    isArray={isArray}
-                    renderInput={(inputName, id) => {
-                      const isOneOfFields =
-                        oneOfMandatoryFields.includes(inputName)
-                      const isError = isOneOfFields && !valid && submitFailed
-                      return (
-                        <ContactFieldInput
-                          attributes={attributes}
-                          error={isError}
-                          helperText={isError ? errors[inputName] : null}
-                          id={id}
-                          name={inputName}
-                          label={t(`fields.${name}`)}
-                          withLabel={hasLabel}
-                          labelPlaceholder={t('fields.label')}
-                        />
-                      )
-                    }}
-                  />
-                )
-              )}
+              {fields.map(({ name, icon, label, isArray, ...attributes }) => (
+                <ContactFormField
+                  key={name}
+                  name={name}
+                  icon={icon}
+                  isArray={isArray}
+                  renderInput={(inputName, id) => {
+                    const isOneOfFields =
+                      oneOfMandatoryFields.includes(inputName)
+                    const isError = isOneOfFields && !valid && submitFailed
+                    return (
+                      <ContactFieldInput
+                        attributes={attributes}
+                        error={isError}
+                        helperText={isError ? errors[inputName] : null}
+                        id={id}
+                        name={inputName}
+                        label={t(`fields.${name}`)}
+                        labelProps={label}
+                        labelPlaceholder={t('fields.label')}
+                      />
+                    )
+                  }}
+                />
+              ))}
             </form>
           </div>
         )

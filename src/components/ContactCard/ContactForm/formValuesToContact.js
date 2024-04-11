@@ -18,6 +18,23 @@ const hasExtendedAddress = addressField => {
   )
 }
 
+/**
+ *
+ * @param {string|undefined} itemLabel - Value of the label for a contact attribute
+ * @returns {object}
+ */
+export const makeTypeAndLabel = itemLabel => {
+  if (!itemLabel) {
+    return { type: undefined, label: undefined }
+  }
+
+  const itemLabelObj = JSON.parse(itemLabel)
+
+  const res = { type: itemLabelObj.type, label: itemLabelObj.label }
+
+  return res
+}
+
 const createAddress = ({ address, oldContact, t }) => {
   return address
     ? address
@@ -58,7 +75,7 @@ const createAddress = ({ address, oldContact, t }) => {
                   entrycode: addressField.addressentrycode
                 }
               }),
-              type: addressField.addressLabel,
+              ...makeTypeAndLabel(addressField.addressLabel),
               primary: index === 0
             }
           }
@@ -100,7 +117,7 @@ const formValuesToContact = ({ formValues, oldContact, t }) => {
           .filter(val => val && val.email)
           .map(({ email, emailLabel }, index) => ({
             address: email,
-            type: emailLabel,
+            ...makeTypeAndLabel(emailLabel),
             primary: index === 0
           }))
       : [],
@@ -110,7 +127,7 @@ const formValuesToContact = ({ formValues, oldContact, t }) => {
           .filter(val => val && val.phone)
           .map(({ phone, phoneLabel }, index) => ({
             number: phone,
-            type: phoneLabel,
+            ...makeTypeAndLabel(phoneLabel),
             primary: index === 0
           }))
       : [],
@@ -118,7 +135,7 @@ const formValuesToContact = ({ formValues, oldContact, t }) => {
       ? [
           {
             url: cozy,
-            label: formValues['cozyLabel'],
+            ...makeTypeAndLabel(formValues['cozyLabel']),
             primary: true
           }
         ]

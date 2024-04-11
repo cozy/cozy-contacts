@@ -6,6 +6,22 @@ export const moveToHead = shouldBeHead => items =>
 
 const movePrimaryToHead = moveToHead(v => v.primary)
 
+/**
+ *
+ * @param {object|undefined} item - Contact attribute
+ * @returns {string} Stringified object
+ */
+export const makeItemLabel = item => {
+  if (!item) return undefined
+
+  const res =
+    item.label || item.type
+      ? JSON.stringify({ type: item.type, label: item.label })
+      : undefined
+
+  return res
+}
+
 const contactToFormValues = (contact, t) => {
   // initialize the form values, required so that array fields start with at least one editable field
   const initialFieldValues = fields.reduce(
@@ -33,7 +49,7 @@ const contactToFormValues = (contact, t) => {
 
     const addressValue =
       address && address.length > 0
-        ? movePrimaryToHead(address).map(({ type, ...addressInfo }) => ({
+        ? movePrimaryToHead(address).map(addressInfo => ({
             address: getFormattedAddress(addressInfo, t),
             addressnumber: addressInfo.number,
             addressstreet:
@@ -48,24 +64,24 @@ const contactToFormValues = (contact, t) => {
             addressfloor: addressInfo.extendedAddress?.floor,
             addressapartment: addressInfo.extendedAddress?.apartment,
             addressentrycode: addressInfo.extendedAddress?.entrycode,
-            addressLabel: type
+            addressLabel: makeItemLabel(addressInfo)
           }))
         : [undefined]
     const cozyValue = cozy && cozy.length > 0 ? cozy[0].url : undefined
     const cozyLabel =
-      cozy && cozy.length > 0 && cozy[0].label ? cozy[0].label : undefined
+      cozy && cozy.length > 0 ? makeItemLabel(cozy[0]) : undefined
     const emailValue =
       email && email.length > 0
         ? movePrimaryToHead(email).map(item => ({
             email: item.address,
-            emailLabel: item.type
+            emailLabel: makeItemLabel(item)
           }))
         : [undefined]
     const phoneValue =
       phone && phone.length > 0
         ? movePrimaryToHead(phone).map(item => ({
             phone: item.number,
-            phoneLabel: item.type
+            phoneLabel: makeItemLabel(item)
           }))
         : [undefined]
 
