@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
@@ -84,6 +85,13 @@ const CustomLabelDialog = ({
       onClose={onClose}
     />
   )
+}
+
+CustomLabelDialog.propTypes = {
+  customValue: PropTypes.string,
+  setCustomValue: PropTypes.func,
+  onSubmit: PropTypes.func,
+  onClose: PropTypes.func
 }
 
 export default CustomLabelDialog

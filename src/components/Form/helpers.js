@@ -1,3 +1,9 @@
+/**
+ *
+ * @param {string} value
+ * @param {func} t
+ * @returns {string}
+ */
 export const makeCustomLabel = (value, t) => {
   const { type, label } = JSON.parse(value)
 
@@ -11,6 +17,12 @@ export const makeCustomLabel = (value, t) => {
   return firstString + secondString || null
 }
 
+/**
+ *
+ * @param {string} name
+ * @param {string} value
+ * @returns {string}
+ */
 export const makeInitialCustomValue = (name, value) => {
   // gender input doesn't support custom label
   if (!name || !value || name === 'gender') return undefined

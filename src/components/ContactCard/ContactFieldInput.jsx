@@ -2,7 +2,10 @@ import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { Field } from 'react-final-form'
 
-import { fieldInputAttributes } from './ContactFields/ContactFieldsProptypes'
+import {
+  fieldInputAttributes,
+  labelPropTypes
+} from './ContactFields/ContactFieldsProptypes'
 import FieldInputWrapper from '../Form/FieldInputWrapper'
 import HasValueCondition from '../Form/HasValueCondition'
 import ContactAddressModal from '../Modals/ContactAddressModal'
@@ -72,7 +75,7 @@ const ContactFieldInput = ({
 ContactFieldInput.propTypes = {
   name: PropTypes.string.isRequired,
   labelPlaceholder: PropTypes.string,
-  labelProps: PropTypes.object,
+  labelProps: labelPropTypes,
   attributes: fieldInputAttributes,
   // Destructuring props
   id: PropTypes.string,

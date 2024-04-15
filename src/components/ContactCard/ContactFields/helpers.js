@@ -14,6 +14,15 @@ const makeCustomOrSupportedLabel = ({ type, value, hasPrefix, t }) => {
   return null
 }
 
+/**
+ * Returns a tranlated label
+ * @param {object} params
+ * @param {string} params.type
+ * @param {{type:string, label?:string}} params.value - Values of a contact attribute
+ * @param {func} params.t
+ * @param {func} params.polyglot
+ * @returns {string|null}
+ */
 export const makeTLabel = ({ type, value, t, polyglot }) => {
   const hasPrefix = ['phone', 'address'].includes(type)
 

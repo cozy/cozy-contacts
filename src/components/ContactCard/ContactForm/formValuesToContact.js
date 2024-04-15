@@ -20,8 +20,8 @@ const hasExtendedAddress = addressField => {
 
 /**
  *
- * @param {string|undefined} itemLabel - Value of the label for a contact attribute
- * @returns {object}
+ * @param {string} [itemLabel] - Value of the label for a contact attribute
+ * @returns {{ type?: string, label?: string }}
  */
 export const makeTypeAndLabel = itemLabel => {
   if (!itemLabel) {

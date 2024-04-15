@@ -8,7 +8,7 @@ const movePrimaryToHead = moveToHead(v => v.primary)
 
 /**
  *
- * @param {object|undefined} item - Contact attribute
+ * @param {object} [item] - Contact attribute
  * @returns {string} Stringified object
  */
 export const makeItemLabel = item => {
