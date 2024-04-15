@@ -37,7 +37,7 @@ export const johnDoeContact = {
   jobTitle: 'Dreamer',
   cozy: [
     {
-      label: 'MyCozy',
+      type: 'MyCozy',
       primary: true,
       url: 'https://johndoe.mycozy.cloud'
     }
@@ -70,11 +70,11 @@ export const johnDoeFormValues = {
   birthplace: 'somewhere',
   gender: 'male',
   cozy: 'https://johndoe.mycozy.cloud',
-  cozyLabel: 'MyCozy',
+  cozyLabel: '{"type":"MyCozy"}',
   address: [
     {
       address: '94 Hinton Road 05034 Fresno, Singapore',
-      addressLabel: 'Home',
+      addressLabel: '{"type":"Home"}',
       addressapartment: undefined,
       addressbuilding: undefined,
       addresscity: undefined,
@@ -91,7 +91,7 @@ export const johnDoeFormValues = {
     {
       address:
         '426 Runolfsson Knolls 84573 Port Easter Cocos (Keeling) Islands',
-      addressLabel: 'Work',
+      addressLabel: '{"type":"Work"}',
       addressapartment: undefined,
       addressbuilding: undefined,
       addresscity: 'Port Easter',
@@ -113,7 +113,7 @@ export const johnDoeFormValues = {
     },
     {
       email: 'john.doe@posteo.net',
-      emailLabel: 'personal'
+      emailLabel: '{"type":"personal"}'
     }
   ],
   phone: [

@@ -1,21 +1,17 @@
-const gender = [
-  {
-    value: 'male',
-    label: 'man'
-  },
-  {
-    value: 'female',
-    label: 'woman'
-  }
-]
-
 export const fields = [
   {
     name: 'gender',
     icon: 'people',
-    type: 'text',
-    select: true,
-    selectValue: gender
+    options: [
+      {
+        value: 'male',
+        label: 'gender.man'
+      },
+      {
+        value: 'female',
+        label: 'gender.woman'
+      }
+    ]
   },
   {
     name: 'givenName',
@@ -51,14 +47,60 @@ export const fields = [
     name: 'phone',
     icon: 'telephone',
     type: 'tel',
-    hasLabel: true,
+    label: {
+      options: [
+        {
+          value: undefined,
+          label: 'label.none'
+        },
+        {
+          value: '{"type":"cell","label":"home"}',
+          label: 'label.phone.cell-home'
+        },
+        {
+          value: '{"type":"cell","label":"work"}',
+          label: 'label.phone.cell-work'
+        },
+        {
+          value: '{"type":"voice","label":"home"}',
+          label: 'label.phone.voice-home'
+        },
+        {
+          value: '{"type":"voice","label":"work"}',
+          label: 'label.phone.voice-work'
+        },
+        {
+          value: '{"type":"fax","label":"home"}',
+          label: 'label.phone.fax-home'
+        },
+        {
+          value: '{"type":"fax","label":"work"}',
+          label: 'label.phone.fax-work'
+        }
+      ]
+    },
     isArray: true
   },
   {
     name: 'email',
     icon: 'email',
     type: 'email',
-    hasLabel: true,
+    label: {
+      options: [
+        {
+          value: undefined,
+          label: 'label.none'
+        },
+        {
+          value: '{"label":"home"}',
+          label: 'label.home'
+        },
+        {
+          value: '{"label":"work"}',
+          label: 'label.work'
+        }
+      ]
+    },
     isArray: true
   },
   {
@@ -127,14 +169,44 @@ export const fields = [
         type: 'text'
       }
     ],
-    hasLabel: true,
+    label: {
+      options: [
+        {
+          value: undefined,
+          label: 'label.none'
+        },
+        {
+          value: '{"label":"home"}',
+          label: 'label.address.home'
+        },
+        {
+          value: '{"label":"work"}',
+          label: 'label.address.work'
+        }
+      ]
+    },
     isArray: true
   },
   {
     name: 'cozy',
     icon: 'cloud',
     type: 'url',
-    hasLabel: true
+    label: {
+      options: [
+        {
+          value: undefined,
+          label: 'label.none'
+        },
+        {
+          value: '{"label":"home"}',
+          label: 'label.home'
+        },
+        {
+          value: '{"label":"work"}',
+          label: 'label.work'
+        }
+      ]
+    }
   },
   {
     name: 'birthday',

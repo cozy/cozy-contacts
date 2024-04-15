@@ -2,7 +2,10 @@ import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { Field } from 'react-final-form'
 
-import { fieldInputAttributes } from './ContactFields/ContactFieldsProptypes'
+import {
+  fieldInputAttributes,
+  labelPropTypes
+} from './ContactFields/ContactFieldsProptypes'
 import FieldInputWrapper from '../Form/FieldInputWrapper'
 import HasValueCondition from '../Form/HasValueCondition'
 import ContactAddressModal from '../Modals/ContactAddressModal'
@@ -13,8 +16,8 @@ const isAddressField = ({ subFields, type }) => {
 
 const ContactFieldInput = ({
   name,
-  withLabel,
   labelPlaceholder,
+  labelProps,
   attributes,
   ...props
 }) => {
@@ -50,15 +53,17 @@ const ContactFieldInput = ({
           subFields={subFields}
         />
       )}
-      {withLabel && (
+      {labelProps && (
         <HasValueCondition name={name} otherCondition={hasBeenFocused}>
           <div className="u-mt-half-s u-ml-half u-ml-0-s u-flex-shrink-0 u-w-auto">
             <Field
-              attributes={{ ...restAttributes, type: 'text' }}
+              style={{ minWidth: '200px' }}
+              attributes={labelProps}
+              withAddLabel={name !== 'gender'}
               name={`${name}Label`}
               label={labelPlaceholder}
-              onFocus={onFocus}
               component={FieldInputWrapper}
+              onFocus={onFocus}
             />
           </div>
         </HasValueCondition>
@@ -69,8 +74,8 @@ const ContactFieldInput = ({
 
 ContactFieldInput.propTypes = {
   name: PropTypes.string.isRequired,
-  withLabel: PropTypes.bool,
   labelPlaceholder: PropTypes.string,
+  labelProps: labelPropTypes,
   attributes: fieldInputAttributes,
   // Destructuring props
   id: PropTypes.string,
@@ -79,7 +84,7 @@ ContactFieldInput.propTypes = {
 }
 
 ContactFieldInput.defaultProps = {
-  withLabel: false,
+  labelProps: null,
   required: false,
   labelPlaceholder: ''
 }

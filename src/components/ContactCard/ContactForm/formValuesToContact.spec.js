@@ -1,6 +1,6 @@
 import Polyglot from 'node-polyglot'
 
-import formValuesToContact from './formValuesToContact'
+import formValuesToContact, { makeTypeAndLabel } from './formValuesToContact'
 import { updateIndexFullNameAndDisplayName } from '../../../helpers/contacts'
 import { johnDoeFormValues, johnDoeContact } from '../../../helpers/testData'
 import en from '../../../locales/en.json'
@@ -30,7 +30,8 @@ describe('formValuesToContact', () => {
           number: undefined,
           street: '94 Hinton Road 05034 Fresno, Singapore',
           primary: true,
-          type: 'Home'
+          type: 'Home',
+          label: undefined
         },
         {
           formattedAddress:
@@ -49,7 +50,8 @@ describe('formValuesToContact', () => {
           number: undefined,
           street: '426 Runolfsson Knolls',
           primary: false,
-          type: 'Work'
+          type: 'Work',
+          label: undefined
         }
       ],
       birthday: '1999-5-1',
@@ -57,12 +59,27 @@ describe('formValuesToContact', () => {
       gender: 'male',
       company: 'Cozy cloud',
       cozy: [
-        { label: 'MyCozy', primary: true, url: 'https://johndoe.mycozy.cloud' }
+        {
+          type: 'MyCozy',
+          label: undefined,
+          primary: true,
+          url: 'https://johndoe.mycozy.cloud'
+        }
       ],
       displayName: 'John J. Doe',
       email: [
-        { address: 'john.doe@cozycloud.cc', primary: true, type: undefined },
-        { address: 'john.doe@posteo.net', primary: false, type: 'personal' }
+        {
+          address: 'john.doe@cozycloud.cc',
+          primary: true,
+          type: undefined,
+          label: undefined
+        },
+        {
+          address: 'john.doe@posteo.net',
+          primary: false,
+          type: 'personal',
+          label: undefined
+        }
       ],
       fullname: 'John J. Doe',
       indexes: {
@@ -79,8 +96,18 @@ describe('formValuesToContact', () => {
       },
       note: 'Atque cupiditate saepe omnis quos ut molestiae labore voluptates omnis.',
       phone: [
-        { number: '+33 (2)0 90 00 54 04', primary: true, type: undefined },
-        { number: '+33 6 77 11 22 33', primary: false, type: undefined }
+        {
+          number: '+33 (2)0 90 00 54 04',
+          primary: true,
+          type: undefined,
+          label: undefined
+        },
+        {
+          number: '+33 6 77 11 22 33',
+          primary: false,
+          type: undefined,
+          label: undefined
+        }
       ],
       relationships: {
         groups: {
@@ -103,7 +130,8 @@ describe('formValuesToContact', () => {
         {
           formattedAddress: undefined,
           primary: true,
-          type: undefined
+          type: undefined,
+          label: undefined
         }
       ],
       birthday: undefined,
@@ -338,7 +366,7 @@ describe('formValuesToContact', () => {
           addressfloor: undefined,
           addressapartment: undefined,
           addressentrycode: undefined,
-          addressLabel: 'Work'
+          addressLabel: '{"type":"Work"}'
         }
       ]
     }
@@ -442,5 +470,31 @@ describe('formValuesToContact', () => {
     expect(result.fullname).toEqual(expected.fullname)
     expect(result.displayName).toEqual(expected.displayName)
     expect(result.indexes).toEqual(expected.indexes)
+  })
+})
+
+describe('makeTypeAndLabel', () => {
+  it('should return undefined if no arg', () => {
+    const res = makeTypeAndLabel()
+
+    expect(res).toStrictEqual({ type: undefined, label: undefined })
+  })
+
+  it('should return correct type and label', () => {
+    const res = makeTypeAndLabel('{"type":"cell","label":"work"}')
+
+    expect(res).toStrictEqual({ type: 'cell', label: 'work' })
+  })
+
+  it('should return only label', () => {
+    const res = makeTypeAndLabel('{"label":"work"}')
+
+    expect(res).toStrictEqual({ type: undefined, label: 'work' })
+  })
+
+  it('should return only type', () => {
+    const res = makeTypeAndLabel('{"type":"cell"}')
+
+    expect(res).toStrictEqual({ type: 'cell', label: undefined })
   })
 })

@@ -1,15 +1,21 @@
 import PropTypes from 'prop-types'
 
+const contactAttrPropTypes = {
+  label: PropTypes.oneOf(['home', 'work'])
+}
+
 const contactPropTypes = {
   phone: PropTypes.shape({
     number: PropTypes.string.isRequired,
     type: PropTypes.string,
+    label: contactAttrPropTypes.label,
     primary: PropTypes.bool
   }),
   email: PropTypes.shape({
     address: PropTypes.string.isRequired,
     primary: PropTypes.bool,
-    type: PropTypes.string
+    type: PropTypes.string,
+    label: contactAttrPropTypes.label
   }),
   name: PropTypes.shape({
     familyName: PropTypes.string,
@@ -33,12 +39,14 @@ const contactPropTypes = {
     apartment: PropTypes.string,
     entrycode: PropTypes.string,
     type: PropTypes.string,
+    label: contactAttrPropTypes.label,
     primary: PropTypes.bool,
     formattedAddress: PropTypes.string
   }),
   cozy: PropTypes.shape({
     url: PropTypes.string,
-    label: PropTypes.string,
+    type: PropTypes.string,
+    label: contactAttrPropTypes.label,
     primary: PropTypes.bool
   }),
   birthday: PropTypes.string,

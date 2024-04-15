@@ -8,6 +8,7 @@
   "edit-contact": "Editar un contacto",
   "save": "Guardar",
   "ok": "Ok",
+  "custom": "Personalizado",
   "delete": "Borrar",
   "selected_contacts": "%{smart_count} contacto seleccionado |||| %{smart_count} contactos seleccionados",
   "select-all": "Seleccionarlos todos",
@@ -67,6 +68,24 @@
     "region": "región",
     "entrycode": "Código de entrada",
     "required": "One of these fields must be filled in"
+  },
+  "label": {
+    "none": "No",
+    "home": "Personal",
+    "work": "Pro",
+    "custom": "Texto personalizado",
+    "phone": {
+      "cell-home": "Móvil (personal)",
+      "cell-work": "Móvil (pro)",
+      "voice-home": "Fijo (personal)",
+      "voice-work": "Fijo (pro)",
+      "fax-home": "Fax (personal)",
+      "fax-work": "Fax (pro)"
+    },
+    "address": {
+      "home": "Inicio (personal)",
+      "work" : "Trabajo (pro)"
+    }
   },
   "gender": {
     "man": "Hombre",

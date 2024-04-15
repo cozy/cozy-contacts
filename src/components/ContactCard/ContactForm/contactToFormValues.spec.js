@@ -1,4 +1,7 @@
-import contactToFormValues, { moveToHead } from './contactToFormValues'
+import contactToFormValues, {
+  moveToHead,
+  makeItemLabel
+} from './contactToFormValues'
 import { johnDoeContact, johnDoeFormValues } from '../../../helpers/testData'
 
 describe('contactToFormValues function', () => {
@@ -130,5 +133,37 @@ describe('moveToHead function', () => {
     const expected = [42, 1, 5, 657, 3, 27, 88, 3, 4]
     const actual = moveToHead(shouldBeHead)(items)
     expect(actual).toEqual(expected)
+  })
+})
+
+describe('makeItemLabel', () => {
+  it('should return undefined if no arg', () => {
+    const res = makeItemLabel()
+
+    expect(res).toBe(undefined)
+  })
+
+  it('should return undefined if nothing defined', () => {
+    const res = makeItemLabel({ type: undefined, label: undefined })
+
+    expect(res).toBe(undefined)
+  })
+
+  it('should return correct type and label', () => {
+    const res = makeItemLabel({ type: 'cell', label: 'work' })
+
+    expect(res).toBe('{"type":"cell","label":"work"}')
+  })
+
+  it('should return only label if no type', () => {
+    const res = makeItemLabel({ type: undefined, label: 'work' })
+
+    expect(res).toBe('{"label":"work"}')
+  })
+
+  it('should return only type if no label', () => {
+    const res = makeItemLabel({ type: 'cell', label: undefined })
+
+    expect(res).toBe('{"type":"cell"}')
   })
 })
