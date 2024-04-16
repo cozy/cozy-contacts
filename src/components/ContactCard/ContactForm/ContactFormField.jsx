@@ -33,10 +33,10 @@ const ContactFormField = ({ name, icon, isArray, renderInput }) => {
 
         {hasValue && (
           <IconButton
-            onClick={() => removeField(fields, index)}
-            className="contact-form-field__delete-icon u-top-0 u-right-0 u-mt-1"
+            className="contact-form-field__delete-icon u-top-0 u-right-0 u-mt-half"
             aria-label="delete"
-            size="small"
+            size="medium"
+            onClick={() => removeField(fields, index)}
           >
             <Icon icon={CrossSmall} />
           </IconButton>
