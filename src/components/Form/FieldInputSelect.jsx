@@ -1,34 +1,12 @@
-import cx from 'classnames'
 import React, { useState } from 'react'
 
-import Icon from 'cozy-ui/transpiled/react/Icon'
-import BottomIcon from 'cozy-ui/transpiled/react/Icons/Bottom'
 import MenuItem from 'cozy-ui/transpiled/react/MenuItem'
 import TextField from 'cozy-ui/transpiled/react/TextField'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import { makeStyles } from 'cozy-ui/transpiled/react/styles'
 
 import CustomLabelDialog from './CustomLabelDialog'
 import { FieldInputWrapperPropTypes } from './FieldInputWrapper'
 import { makeCustomLabel, makeInitialCustomValue } from './helpers'
-
-const styles = makeStyles({
-  selectIcon: {
-    top: 'auto',
-    marginRight: '0.5rem'
-  }
-})
-
-const CustomSelectIcon = ({ className, ...props }) => {
-  const classes = styles()
-  return (
-    <Icon
-      className={cx(className, classes.selectIcon)}
-      {...props}
-      icon={BottomIcon}
-    />
-  )
-}
 
 const FieldInputSelect = ({
   options,
@@ -44,14 +22,24 @@ const FieldInputSelect = ({
     makeInitialCustomValue(name, value)
   )
 
+  const _options = [
+    ...options.map(option => ({
+      value: option.value,
+      label: t(option.label)
+    })),
+    ...(customValue
+      ? [{ value: customValue, label: makeCustomLabel(customValue, t) }]
+      : [])
+  ]
+
   return (
     <>
       <TextField
         {...props}
         select
-        SelectProps={{ IconComponent: CustomSelectIcon }}
         name={name}
         value={value}
+        options={_options}
         onChange={ev => {
           if (ev.target.value === 'skip') {
             return
@@ -60,18 +48,13 @@ const FieldInputSelect = ({
           onChange(ev)
         }}
       >
-        {options.map((option, index) => {
+        {_options.map((option, index) => {
           return (
             <MenuItem key={`${props.name}-${index}`} value={option.value}>
-              {t(option.label)}
+              {option.label}
             </MenuItem>
           )
         })}
-        {customValue && (
-          <MenuItem value={customValue}>
-            {makeCustomLabel(customValue, t)}
-          </MenuItem>
-        )}
         {withAddLabel && (
           <MenuItem
             value="skip"

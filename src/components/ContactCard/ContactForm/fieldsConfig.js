@@ -50,7 +50,7 @@ export const fields = [
     label: {
       options: [
         {
-          value: undefined,
+          value: '',
           label: 'label.none'
         },
         {
@@ -88,7 +88,7 @@ export const fields = [
     label: {
       options: [
         {
-          value: undefined,
+          value: '',
           label: 'label.none'
         },
         {
@@ -172,7 +172,7 @@ export const fields = [
     label: {
       options: [
         {
-          value: undefined,
+          value: '',
           label: 'label.none'
         },
         {
@@ -194,7 +194,7 @@ export const fields = [
     label: {
       options: [
         {
-          value: undefined,
+          value: '',
           label: 'label.none'
         },
         {
