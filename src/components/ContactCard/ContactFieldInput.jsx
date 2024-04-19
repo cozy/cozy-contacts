@@ -6,13 +6,10 @@ import {
   fieldInputAttributes,
   labelPropTypes
 } from './ContactFields/ContactFieldsProptypes'
+import { handleContactFieldInputProps } from './helpers'
 import FieldInputWrapper from '../Form/FieldInputWrapper'
 import HasValueCondition from '../Form/HasValueCondition'
 import ContactAddressModal from '../Modals/ContactAddressModal'
-
-const isAddressField = ({ subFields, type }) => {
-  return Boolean(subFields) && type === 'button'
-}
 
 const ContactFieldInput = ({
   name,
@@ -22,16 +19,13 @@ const ContactFieldInput = ({
   ...props
 }) => {
   const [hasBeenFocused, setHasBeenFocused] = useState(false)
-  const [isOpen, setIsOpen] = useState(false)
+  const [isAddressDialogOpen, setIsAddressDialogOpen] = useState(false)
   const { subFields, ...restAttributes } = attributes
 
-  const propsUpdated = isAddressField(attributes)
-    ? {
-        ...props,
-        onClick: () => setIsOpen(true),
-        inputProps: { className: 'u-ta-left u-spacellipsis u-h-100' }
-      }
-    : props
+  const propsUpdated = handleContactFieldInputProps(props, {
+    attributes,
+    setIsAddressDialogOpen
+  })
 
   const onFocus = () => {
     setHasBeenFocused(true)
@@ -46,9 +40,9 @@ const ContactFieldInput = ({
         onFocus={onFocus}
         component={FieldInputWrapper}
       />
-      {isAddressField(attributes) && isOpen && (
+      {isAddressDialogOpen && (
         <ContactAddressModal
-          onClose={() => setIsOpen(false)}
+          onClose={() => setIsAddressDialogOpen(false)}
           name={name}
           subFields={subFields}
         />
