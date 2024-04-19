@@ -1,3 +1,6 @@
+/**
+ * @type {import('../../../types').Field[]}
+ */
 export const fields = [
   {
     name: 'gender',
