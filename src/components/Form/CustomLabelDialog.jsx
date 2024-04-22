@@ -22,7 +22,7 @@ const CustomLabelDialog = ({
   const { isMobile } = useBreakpoints()
   const [type, setType] = useState(customValueObj.type || '')
   const [label, setLabel] = useState(
-    customValueObj.type ? customValueObj.label || '' : 'home'
+    customValueObj.label || (customValueObj.type ? 'home' : '')
   )
 
   const handleSubmit = () => {
