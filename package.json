@@ -17,6 +17,7 @@
     "stack:docker:prod": "docker run --rm -it -p 8080:8080 -p 5984:5984 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev",
     "cozyPublish": "git fetch origin ${DEPLOY_BRANCH:-build}:${DEPLOY_BRANCH:-build} && cozy-scripts publish --token $REGISTRY_TOKEN --build-commit $(git rev-parse ${DEPLOY_BRANCH:-build})",
     "fixtures": "ACH import fixtures/contacts.json",
+    "fixtures:drop": "ACH drop io.cozy.contacts io.cozy.contacts.groups",
     "fixtures:massive": "ACH import fixtures/massiveContacts.json",
     "services:keepIndexFullNameAndDisplayNameUpToDate": "cozy-konnector-dev -m manifest.webapp build/services/keepIndexFullNameAndDisplayNameUpToDate/contacts.js"
   },
@@ -83,6 +84,7 @@
     "cozy-intent": "^2.19.2",
     "cozy-interapp": "^0.9.0",
     "cozy-keys-lib": "^6.0.0",
+    "cozy-logger": "^1.10.4",
     "cozy-minilog": "^3.3.1",
     "cozy-realtime": "^5.0.0",
     "cozy-sharing": "^10.2.0",
