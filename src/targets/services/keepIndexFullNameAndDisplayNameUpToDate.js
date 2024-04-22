@@ -24,7 +24,7 @@ export const keepIndexFullNameAndDisplayNameUpToDate = async () => {
   )
   const contactsToUpdate = await fetchContactsToUpdate(
     client,
-    normalizedService.current_state.last_success
+    normalizedService?.current_state?.last_success
   )
   const updatedContactsToUpload = contactsToUpdate.map(
     // omit is to prevent updateAll error : Bad special document member: _type
