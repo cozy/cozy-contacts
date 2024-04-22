@@ -4,7 +4,7 @@ describe('handleContactFieldInputProps', () => {
   it('should return original props when isAddressField is false', () => {
     const props = { prop1: 'value1', prop2: 'value2' }
     const opts = {
-      attributes: { type: 'text' },
+      name: 'email',
       setIsAddressDialogOpen: jest.fn()
     }
 
@@ -17,10 +17,7 @@ describe('handleContactFieldInputProps', () => {
     const props = { prop1: 'value1', prop2: 'value2' }
     const setIsAddressDialogOpen = jest.fn()
     const opts = {
-      attributes: {
-        type: 'button',
-        subFields: []
-      },
+      name: 'address',
       setIsAddressDialogOpen
     }
 

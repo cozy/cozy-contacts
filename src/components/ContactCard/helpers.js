@@ -1,14 +1,11 @@
-const isAddressField = ({ subFields, type }) => {
-  return Boolean(subFields) && type === 'button'
-}
-
 /**
  * @param {object} props
  * @param {{ name: string, setIsAddressDialogOpen: import('react').Dispatch<import('react').SetStateAction<boolean>> }} opts
+ * @returns {object}
  */
 export const handleContactFieldInputProps = (props, opts) => {
-  const { attributes, setIsAddressDialogOpen } = opts
-  if (isAddressField(attributes)) {
+  const { name, setIsAddressDialogOpen } = opts
+  if (name.includes('address')) {
     return {
       ...props,
       onClick: () => setIsAddressDialogOpen(true),
