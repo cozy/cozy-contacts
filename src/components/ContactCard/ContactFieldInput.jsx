@@ -23,7 +23,7 @@ const ContactFieldInput = ({
   const { subFields, ...restAttributes } = attributes
 
   const propsUpdated = handleContactFieldInputProps(props, {
-    attributes,
+    name,
     setIsAddressDialogOpen
   })
 
