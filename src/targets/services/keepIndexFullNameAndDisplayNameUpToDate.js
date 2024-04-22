@@ -2,7 +2,7 @@ import omit from 'lodash/omit'
 import fetch from 'node-fetch'
 
 import CozyClient from 'cozy-client'
-import minilog from 'cozy-minilog'
+import logger from 'cozy-logger'
 
 import { updateIndexFullNameAndDisplayName } from '../../helpers/contacts'
 import { schema, DOCTYPE_CONTACTS } from '../../helpers/doctypes'
@@ -12,10 +12,10 @@ import {
 } from '../../helpers/fetches'
 
 global.fetch = fetch
-const log = minilog('services/keepIndexFullNameAndDisplayNameUpToDate')
+const log = logger.namespace('services/keepIndexFullNameAndDisplayNameUpToDate')
 
 export const keepIndexFullNameAndDisplayNameUpToDate = async () => {
-  log.info(`Executing keepIndexFullNameAndDisplayNameUpToDate service`)
+  log('info', `Executing keepIndexFullNameAndDisplayNameUpToDate service`)
   const client = CozyClient.fromEnv(process.env, { schema })
 
   const normalizedService = await fetchNormalizedServiceByName(
@@ -34,10 +34,10 @@ export const keepIndexFullNameAndDisplayNameUpToDate = async () => {
   )
   await client.collection(DOCTYPE_CONTACTS).updateAll(updatedContactsToUpload)
   updatedContactsToUpload.length &&
-    log.info('All contacts successfully updated')
+    log('info', 'All contacts successfully updated')
 }
 
 keepIndexFullNameAndDisplayNameUpToDate().catch(e => {
-  log.error(e)
+  log('error', e)
   process.exit(1)
 })
