@@ -21,9 +21,7 @@ const CustomLabelDialog = ({
   const { t } = useI18n()
   const { isMobile } = useBreakpoints()
   const [type, setType] = useState(customValueObj.type || '')
-  const [label, setLabel] = useState(
-    customValueObj.label || (customValueObj.type ? 'home' : '')
-  )
+  const [label, setLabel] = useState(customValueObj.label || 'home')
 
   const handleSubmit = () => {
     setCustomValue(JSON.stringify({ type, label }))
