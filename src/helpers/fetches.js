@@ -1,43 +1,62 @@
 import isEqual from 'lodash/isEqual'
 
-import minilog from 'cozy-minilog'
+import logger from 'cozy-logger'
 
-import { updateIndexFullNameAndDisplayName } from './contacts'
 import {
   buildTriggersQueryByName,
   buildTriggersQueryById,
   buildContactsQueryByUpdatedAtGT
 } from '../queries/queries'
 
-const log = minilog('helpers/fetches')
-
 /**
- * Fetches and returns a promise of contacts to update according to this :
- * The update date of the contact is more recent than the 'date'
- * @param {object} client - cozyClient
- * @param {string} date - date of comparison
- * @returns {promise<Array>} contacts to update
+ * Fetches and returns updated contacts according to this :
+ * The update date of the contact is more recent than the `date` arg.
+ * The method to update contacts is passed as callback
+ * @param {object} params
+ * @param {import('cozy-client/types/CozyClient').default} params.client - The cozy client
+ * @param {func} params.log - cozy-logger with its namespace
+ * @param {string} params.date - Date of comparison
+ * @param {string} params.callback - Function triggered to update contacts
+ * @returns {promise<Array>} Updated contacts
  */
-export const fetchContactsToUpdate = async (client, date) => {
+export const fetchContactsToUpdateAndUpdateWith = async ({
+  client,
+  log,
+  date,
+  callback
+}) => {
   try {
+    log('info', `will fetch contacts and update them if necessary...`)
+
     const minimumUpdateTime = date || '0000-01-01T00:00:00.00Z'
     const dateUTCForced = new Date(minimumUpdateTime).toISOString()
-    const contacts = []
+    const updatedContacts = []
+
+    log('info', `fetching contacts from ${dateUTCForced}`)
 
     const contactsQueryByUpdatedAtGT =
       buildContactsQueryByUpdatedAtGT(dateUTCForced)
 
-    const result = await client.queryAll(contactsQueryByUpdatedAtGT.definition)
-    const expected = result.map(contact =>
-      updateIndexFullNameAndDisplayName(contact)
+    const contacts = await client.queryAll(
+      contactsQueryByUpdatedAtGT.definition
     )
-    result.map((contact, index) => {
-      if (!isEqual(contact, expected[index])) return contacts.push(contact)
+
+    const expected = contacts.map(callback)
+
+    contacts.map((contact, index) => {
+      const updatedContact = expected[index]
+
+      if (!isEqual(contact, updatedContact)) {
+        return updatedContacts.push(updatedContact)
+      }
     })
 
-    log.info(`found ${contacts.length} contact(s) to update`)
+    log(
+      'info',
+      `among ${contacts.length} contact(s) found, returns ${updatedContacts.length} updated contact(s)`
+    )
 
-    return contacts
+    return updatedContacts
   } catch (e) {
     throw new Error(`Can't find elements : ${e}`)
   }
@@ -50,6 +69,8 @@ export const fetchContactsToUpdate = async (client, date) => {
  * @returns {promise<Object>} normalized service
  */
 export const fetchNormalizedServiceByName = async (client, serviceName) => {
+  const log = logger.namespace(`services/${serviceName}`)
+
   try {
     const triggersQueryByName = buildTriggersQueryByName(serviceName)
     const triggersByName = await client.query(triggersQueryByName.definition)
@@ -67,7 +88,7 @@ export const fetchNormalizedServiceByName = async (client, serviceName) => {
 
     return normalizedTrigger.data
   } catch (e) {
-    log.error("Can't find:", serviceName, e)
+    log('error', "Can't find:", serviceName, e)
     return null
   }
 }

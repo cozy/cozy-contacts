@@ -1,4 +1,3 @@
-import omit from 'lodash/omit'
 import fetch from 'node-fetch'
 
 import CozyClient from 'cozy-client'
@@ -7,7 +6,7 @@ import logger from 'cozy-logger'
 import { updateIndexFullNameAndDisplayName } from '../../helpers/contacts'
 import { schema, DOCTYPE_CONTACTS } from '../../helpers/doctypes'
 import {
-  fetchContactsToUpdate,
+  fetchContactsToUpdateAndUpdateWith,
   fetchNormalizedServiceByName
 } from '../../helpers/fetches'
 
@@ -22,19 +21,19 @@ export const keepIndexFullNameAndDisplayNameUpToDate = async () => {
     client,
     'keepIndexFullNameAndDisplayNameUpToDate'
   )
-  const contactsToUpdate = await fetchContactsToUpdate(
+
+  const updatedContactsToUpload = await fetchContactsToUpdateAndUpdateWith({
     client,
-    normalizedService?.current_state?.last_success
-  )
-  const updatedContactsToUpload = contactsToUpdate.map(
-    // omit is to prevent updateAll error : Bad special document member: _type
-    // issue here : https://github.com/cozy/cozy-client/issues/758
-    // to be removed when issue is fixed
-    contact => updateIndexFullNameAndDisplayName(omit(contact, '_type'))
-  )
+    log,
+    date: normalizedService?.current_state?.last_success,
+    callback: contact => updateIndexFullNameAndDisplayName(contact)
+  })
+
   await client.collection(DOCTYPE_CONTACTS).updateAll(updatedContactsToUpload)
-  updatedContactsToUpload.length &&
+
+  if (updatedContactsToUpload.length) {
     log('info', 'All contacts successfully updated')
+  }
 }
 
 keepIndexFullNameAndDisplayNameUpToDate().catch(e => {
