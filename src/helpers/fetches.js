@@ -41,6 +41,11 @@ export const fetchContactsToUpdateAndUpdateWith = async ({
       contactsQueryByUpdatedAtGT.definition
     )
 
+    if (!contacts || contacts.length < 1) {
+      log('info', 'No contact found, exiting')
+      return null
+    }
+
     const expected = contacts.map(callback)
 
     contacts.map((contact, index) => {

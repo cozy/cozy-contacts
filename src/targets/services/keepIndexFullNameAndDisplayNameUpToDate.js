@@ -29,9 +29,9 @@ export const keepIndexFullNameAndDisplayNameUpToDate = async () => {
     callback: contact => updateIndexFullNameAndDisplayName(contact)
   })
 
-  await client.collection(DOCTYPE_CONTACTS).updateAll(updatedContactsToUpload)
+  if (updatedContactsToUpload?.length > 0) {
+    await client.collection(DOCTYPE_CONTACTS).updateAll(updatedContactsToUpload)
 
-  if (updatedContactsToUpload.length) {
     log('info', 'All contacts successfully updated')
   }
 }
