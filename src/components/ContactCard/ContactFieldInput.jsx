@@ -50,7 +50,6 @@ const ContactFieldInput = ({ name, labelProps, attributes, ...props }) => {
             <Field
               style={{ minWidth: '200px' }}
               attributes={labelProps}
-              withAddLabel={name !== 'gender'}
               name={`${name}Label`}
               label={t('fields.label')}
               component={FieldInputWrapper}

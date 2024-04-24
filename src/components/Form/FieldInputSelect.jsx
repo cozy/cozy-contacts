@@ -8,14 +8,8 @@ import CustomLabelDialog from './CustomLabelDialog'
 import { FieldInputWrapperPropTypes } from './FieldInputWrapper'
 import { makeCustomLabel, makeInitialCustomValue } from './helpers'
 
-const FieldInputSelect = ({
-  options,
-  withAddLabel,
-  name,
-  value,
-  onChange,
-  ...props
-}) => {
+const FieldInputSelect = ({ options, name, value, onChange, ...props }) => {
+  const { customLabelOptions, ...restProps } = props
   const { t } = useI18n()
   const [openModal, setOpenModal] = useState(false)
   const [customValue, setCustomValue] = useState(() =>
@@ -35,7 +29,7 @@ const FieldInputSelect = ({
   return (
     <>
       <TextField
-        {...props}
+        {...restProps}
         select
         name={name}
         value={value}
@@ -55,7 +49,7 @@ const FieldInputSelect = ({
             </MenuItem>
           )
         })}
-        {withAddLabel && (
+        {!!customLabelOptions && (
           <MenuItem
             value="skip"
             onClick={() => {
@@ -69,6 +63,7 @@ const FieldInputSelect = ({
       {openModal && (
         <CustomLabelDialog
           customValue={customValue}
+          customLabelOptions={customLabelOptions}
           setCustomValue={setCustomValue}
           onSubmit={onChange}
           onClose={() => setOpenModal(false)}

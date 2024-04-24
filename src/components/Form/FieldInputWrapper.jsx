@@ -32,7 +32,11 @@ export const FieldInputWrapperPropTypes = {
   label: PropTypes.string,
   required: PropTypes.bool,
   variant: PropTypes.string,
-  withAddLabel: PropTypes.bool,
+  customLabelOptions: PropTypes.shape({
+    hide: PropTypes.bool,
+    defaultType: PropTypes.string.isRequired,
+    defaultLabel: PropTypes.string.isRequired
+  }),
   fullWidth: PropTypes.bool
 }
 

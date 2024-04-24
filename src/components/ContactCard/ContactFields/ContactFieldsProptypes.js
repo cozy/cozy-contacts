@@ -7,7 +7,12 @@ export const labelPropTypes = PropTypes.shape({
       value: PropTypes.string,
       label: PropTypes.string
     })
-  )
+  ),
+  customLabelOptions: PropTypes.shape({
+    hide: PropTypes.bool,
+    defaultType: PropTypes.string,
+    defaultLabel: PropTypes.string
+  })
 })
 
 export const fieldInputAttributes = PropTypes.shape({
