@@ -13,6 +13,7 @@ import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 const CustomLabelDialog = ({
   customValue,
   setCustomValue,
+  customLabelOptions,
   onSubmit,
   onClose
 }) => {
@@ -20,8 +21,12 @@ const CustomLabelDialog = ({
 
   const { t } = useI18n()
   const { isMobile } = useBreakpoints()
-  const [type, setType] = useState(customValueObj.type || '')
-  const [label, setLabel] = useState(customValueObj.label || 'home')
+  const [type, setType] = useState(
+    customValueObj.type || customLabelOptions.defaultType
+  )
+  const [label, setLabel] = useState(
+    customValueObj.label || customLabelOptions.defaultLabel
+  )
 
   const handleSubmit = () => {
     setCustomValue(JSON.stringify({ type, label }))
@@ -43,25 +48,27 @@ const CustomLabelDialog = ({
             value={type}
             onChange={ev => setType(ev.target.value)}
           />
-          <RadioGroup
-            style={{ flexDirection: 'row' }}
-            className="u-mt-half u-ml-half"
-            aria-label="radio"
-            name="label"
-            value={label}
-            onChange={ev => setLabel(ev.target.value)}
-          >
-            <FormControlLabel
-              value="home"
-              label={t('label.home')}
-              control={<Radio />}
-            />
-            <FormControlLabel
-              value="work"
-              label={t('label.work')}
-              control={<Radio />}
-            />
-          </RadioGroup>
+          {!customLabelOptions.hide && (
+            <RadioGroup
+              style={{ flexDirection: 'row' }}
+              className="u-mt-half u-ml-half"
+              aria-label="radio"
+              name="label"
+              value={label}
+              onChange={ev => setLabel(ev.target.value)}
+            >
+              <FormControlLabel
+                value="home"
+                label={t('label.home')}
+                control={<Radio />}
+              />
+              <FormControlLabel
+                value="work"
+                label={t('label.work')}
+                control={<Radio />}
+              />
+            </RadioGroup>
+          )}
         </>
       }
       actions={
@@ -75,7 +82,7 @@ const CustomLabelDialog = ({
           <Button
             label={t('ok')}
             fullWidth={isMobile}
-            disabled={!type || !label}
+            disabled={!type}
             onClick={handleSubmit}
           />
         </>
@@ -88,6 +95,11 @@ const CustomLabelDialog = ({
 CustomLabelDialog.propTypes = {
   customValue: PropTypes.string,
   setCustomValue: PropTypes.func,
+  customLabelOptions: PropTypes.shape({
+    hide: PropTypes.bool,
+    defaultType: PropTypes.string,
+    defaultLabel: PropTypes.string
+  }),
   onSubmit: PropTypes.func,
   onClose: PropTypes.func
 }

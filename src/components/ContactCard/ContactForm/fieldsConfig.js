@@ -49,6 +49,10 @@ export const fields = [
     type: 'tel',
     label: {
       name: 'phoneLabel',
+      customLabelOptions: {
+        defaultType: '',
+        defaultLabel: 'home'
+      },
       options: [
         {
           value: '',
@@ -88,6 +92,10 @@ export const fields = [
     type: 'email',
     label: {
       name: 'emailLabel',
+      customLabelOptions: {
+        defaultType: '',
+        defaultLabel: 'home'
+      },
       options: [
         {
           value: '',
@@ -173,6 +181,10 @@ export const fields = [
     ],
     label: {
       name: 'addressLabel',
+      customLabelOptions: {
+        defaultType: '',
+        defaultLabel: 'home'
+      },
       options: [
         {
           value: '',
@@ -196,6 +208,10 @@ export const fields = [
     type: 'url',
     label: {
       name: 'cozyLabel',
+      customLabelOptions: {
+        defaultType: '',
+        defaultLabel: 'home'
+      },
       options: [
         {
           value: '',
