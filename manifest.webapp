@@ -82,6 +82,12 @@
       "file": "services/keepIndexFullNameAndDisplayNameUpToDate/contacts.js",
       "trigger": "@event io.cozy.contacts:CREATED,UPDATED",
       "debounce": "5s"
+    },
+    "autoDefineLabels": {
+      "type": "node",
+      "file": "services/autoDefineLabels/contacts.js",
+      "trigger": "@event io.cozy.contacts:CREATED,UPDATED",
+      "debounce": "5s"
     }
   }
 }
