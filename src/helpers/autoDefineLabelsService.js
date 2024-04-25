@@ -33,18 +33,16 @@ export const updateAttributeWithLabel = (contact, attributeName) => {
   }
 
   const updatedAttr = values.map(el => {
-    if (!el.label) {
-      if (el.type) {
-        const normalizedType = el.type
-          ?.normalize('NFD')
-          .replace(/[\u0300-\u036f]/g, '')
-          .toLowerCase()
+    if (!el.label && el.type) {
+      const normalizedType = el.type
+        ?.normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
 
-        el.label = PRO_KEYWORDS[lang].includes(normalizedType) ? 'work' : 'home'
-      }
-
-      return el
+      el.label = PRO_KEYWORDS[lang].includes(normalizedType) ? 'work' : 'home'
     }
+
+    return el
   })
 
   return updatedAttr

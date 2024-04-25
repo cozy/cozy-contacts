@@ -6,6 +6,26 @@ import {
 
 describe('updateAttributeWithLabel', () => {
   describe('for one value', () => {
+    it('should not modify anything if already have type and label', () => {
+      const res = updateAttributeWithLabel(
+        { address: [{ primary: true, type: 'custom', label: 'home' }] },
+        'address'
+      )
+
+      expect(res).toStrictEqual([
+        { primary: true, type: 'custom', label: 'home' }
+      ])
+    })
+
+    it('should not modify anything if already have label', () => {
+      const res = updateAttributeWithLabel(
+        { address: [{ primary: true, label: 'home' }] },
+        'address'
+      )
+
+      expect(res).toStrictEqual([{ primary: true, label: 'home' }])
+    })
+
     it('should not add the label if no type', () => {
       const res = updateAttributeWithLabel(
         { address: [{ primary: true }] },
