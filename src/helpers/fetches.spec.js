@@ -1,32 +1,53 @@
 import CozyClient from 'cozy-client'
 
 import { updateIndexFullNameAndDisplayName } from './contacts'
-import { fetchContactsToUpdate, fetchNormalizedServiceByName } from './fetches'
+import {
+  fetchContactsToUpdateAndUpdateWith,
+  fetchNormalizedServiceByName
+} from './fetches'
 import { johnDoeContact } from './testData'
+
+const log = (type, message) => message
 
 const client = new CozyClient({})
 
-describe('fetchContactsToUpdate', () => {
-  it('should returns only contact to update', async () => {
+describe('fetchContactsToUpdateAndUpdateWith', () => {
+  it('should returns only the updated contact', async () => {
     const lastSuccess = new Date()
     const contactToUpdate = johnDoeContact
     const contactUpToDate = updateIndexFullNameAndDisplayName(johnDoeContact)
+    const callback = contact => updateIndexFullNameAndDisplayName(contact)
     const queryResult = [contactToUpdate, contactUpToDate]
     client.queryAll = jest.fn().mockResolvedValue(queryResult)
 
-    const expected = [contactToUpdate]
-    expect(await fetchContactsToUpdate(client, lastSuccess)).toEqual(expected)
+    const expected = [contactUpToDate]
+    expect(
+      await fetchContactsToUpdateAndUpdateWith({
+        client,
+        log,
+        date: lastSuccess,
+        callback
+      })
+    ).toEqual(expected)
   })
 
-  it('should returns contact to update even if lastSuccess is undefined', async () => {
+  it('should returns updated contact even if lastSuccess is undefined', async () => {
     const lastSuccess = undefined
     const contactToUpdate = johnDoeContact
     const contactUpToDate = updateIndexFullNameAndDisplayName(johnDoeContact)
+    const callback = contact => updateIndexFullNameAndDisplayName(contact)
     const queryResult = [contactToUpdate, contactUpToDate]
     client.queryAll = jest.fn().mockResolvedValue(queryResult)
 
-    const expected = [contactToUpdate]
-    expect(await fetchContactsToUpdate(client, lastSuccess)).toEqual(expected)
+    const expected = [contactUpToDate]
+    expect(
+      await fetchContactsToUpdateAndUpdateWith({
+        client,
+        log,
+        date: lastSuccess,
+        callback
+      })
+    ).toEqual(expected)
   })
 })
 

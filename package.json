@@ -19,6 +19,7 @@
     "fixtures": "ACH import fixtures/contacts.json",
     "fixtures:drop": "ACH drop io.cozy.contacts io.cozy.contacts.groups",
     "fixtures:massive": "ACH import fixtures/massiveContacts.json",
+    "services:autoDefineLabels": "cozy-konnector-dev -m manifest.webapp build/services/autoDefineLabels/contacts.js",
     "services:keepIndexFullNameAndDisplayNameUpToDate": "cozy-konnector-dev -m manifest.webapp build/services/keepIndexFullNameAndDisplayNameUpToDate/contacts.js"
   },
   "repository": {
