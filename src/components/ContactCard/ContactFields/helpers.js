@@ -1,6 +1,8 @@
 import { makeCustomLabel } from '../../Form/helpers'
 
 const makeCustomOrSupportedLabel = ({ type, value, hasPrefix, t }) => {
+  if (!value) return null
+
   if (value.type) {
     return makeCustomLabel(JSON.stringify(value), t)
   }

@@ -4,7 +4,7 @@ import { getFormattedAddress } from '../../../helpers/contacts'
 export const moveToHead = shouldBeHead => items =>
   items.reduce((arr, v) => (shouldBeHead(v) ? [v, ...arr] : [...arr, v]), [])
 
-const movePrimaryToHead = moveToHead(v => v.primary)
+const movePrimaryToHead = moveToHead(v => v?.primary)
 
 /**
  *
@@ -73,14 +73,14 @@ const contactToFormValues = (contact, t) => {
     const emailValue =
       email && email.length > 0
         ? movePrimaryToHead(email).map(item => ({
-            email: item.address,
+            email: item?.address,
             emailLabel: makeItemLabel(item)
           }))
         : [undefined]
     const phoneValue =
       phone && phone.length > 0
         ? movePrimaryToHead(phone).map(item => ({
-            phone: item.number,
+            phone: item?.number,
             phoneLabel: makeItemLabel(item)
           }))
         : [undefined]
