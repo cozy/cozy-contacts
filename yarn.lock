@@ -4958,10 +4958,10 @@ cozy-app-publish@^0.27.2:
     request "^2.88.0"
     tar "^4.4.13"
 
-cozy-app-publish@^0.33.0:
-  version "0.33.0"
-  resolved "https://registry.yarnpkg.com/cozy-app-publish/-/cozy-app-publish-0.33.0.tgz#889f68b9fe0b88db01c141c706ba7570e41f373c"
-  integrity sha512-qNl517FBbXznnxrcdSuslt1Gj/E2SzHhxGk6xBOQjoqUbZ7+y460/GrTSi1krsOqxN1ev/aMeDmcTK706OFA2g==
+cozy-app-publish@^0.34.0:
+  version "0.34.0"
+  resolved "https://registry.yarnpkg.com/cozy-app-publish/-/cozy-app-publish-0.34.0.tgz#daea1c7b0573808bcb960e39f8ecbeba9bfbaf92"
+  integrity sha512-7uDDN6O8fm8OnFChIfYjPWesXuqsp0MYzSK7ANyox2ib8/e/PFDhIz91rSJNRdv4L4qIEyZg35sfSSz9+HunvA==
   dependencies:
     argparse "^2.0.1"
     chalk "^2.4.2"
