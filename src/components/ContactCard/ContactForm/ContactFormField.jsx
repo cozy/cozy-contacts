@@ -27,6 +27,7 @@ const ContactFormField = ({ name, icon, isArray, renderInput }) => {
     renderInput
   ) => {
     const hasValue = fields.value[index] && fields.value[index][name]
+
     return (
       <div key={nameWithIndex} className="u-mt-1 u-flex u-pos-relative">
         {renderInput(`${nameWithIndex}.${name}`, fieldID)}
