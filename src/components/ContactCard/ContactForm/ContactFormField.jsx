@@ -6,7 +6,7 @@ import { FieldArray } from 'react-final-form-arrays'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
-import CrossSmall from 'cozy-ui/transpiled/react/Icons/CrossSmall'
+import CrossCircleIcon from 'cozy-ui/transpiled/react/Icons/CrossCircle'
 import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
 import { Media, Img, Bd } from 'cozy-ui/transpiled/react/deprecated/Media'
 import palette from 'cozy-ui/transpiled/react/palette'
@@ -35,10 +35,11 @@ const ContactFormField = ({ name, icon, isArray, renderInput }) => {
           <IconButton
             className="contact-form-field__delete-icon u-top-0 u-right-0 u-mt-half"
             aria-label="delete"
+            color="error"
             size="medium"
             onClick={() => removeField(fields, index)}
           >
-            <Icon icon={CrossSmall} />
+            <Icon icon={CrossCircleIcon} />
           </IconButton>
         )}
       </div>
