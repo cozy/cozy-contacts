@@ -2,6 +2,8 @@ import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { Field } from 'react-final-form'
 
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+
 import {
   fieldInputAttributes,
   labelPropTypes
@@ -11,15 +13,10 @@ import FieldInputWrapper from '../Form/FieldInputWrapper'
 import HasValueCondition from '../Form/HasValueCondition'
 import ContactAddressModal from '../Modals/ContactAddressModal'
 
-const ContactFieldInput = ({
-  name,
-  labelPlaceholder,
-  labelProps,
-  attributes,
-  ...props
-}) => {
+const ContactFieldInput = ({ name, labelProps, attributes, ...props }) => {
   const [hasBeenFocused, setHasBeenFocused] = useState(false)
   const [isAddressDialogOpen, setIsAddressDialogOpen] = useState(false)
+  const { t } = useI18n()
   const { subFields, ...restAttributes } = attributes
 
   const propsUpdated = handleContactFieldInputProps(props, {
@@ -55,7 +52,7 @@ const ContactFieldInput = ({
               attributes={labelProps}
               withAddLabel={name !== 'gender'}
               name={`${name}Label`}
-              label={labelPlaceholder}
+              label={t('fields.label')}
               component={FieldInputWrapper}
               onFocus={onFocus}
             />
@@ -68,7 +65,6 @@ const ContactFieldInput = ({
 
 ContactFieldInput.propTypes = {
   name: PropTypes.string.isRequired,
-  labelPlaceholder: PropTypes.string,
   labelProps: labelPropTypes,
   attributes: fieldInputAttributes,
   // Destructuring props
@@ -79,8 +75,7 @@ ContactFieldInput.propTypes = {
 
 ContactFieldInput.defaultProps = {
   labelProps: null,
-  required: false,
-  labelPlaceholder: ''
+  required: false
 }
 
 export default ContactFieldInput

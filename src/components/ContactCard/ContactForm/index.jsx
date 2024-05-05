@@ -82,7 +82,6 @@ const ContactForm = ({ contact, onSubmit }) => {
                         name={inputName}
                         label={t(`fields.${name}`)}
                         labelProps={label}
-                        labelPlaceholder={t('fields.label')}
                       />
                     )
                   }}

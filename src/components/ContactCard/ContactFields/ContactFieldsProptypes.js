@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 
 export const labelPropTypes = PropTypes.shape({
+  name: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string,
