@@ -48,6 +48,7 @@ export const fields = [
     icon: 'telephone',
     type: 'tel',
     label: {
+      name: 'phoneLabel',
       options: [
         {
           value: '',
@@ -86,6 +87,7 @@ export const fields = [
     icon: 'email',
     type: 'email',
     label: {
+      name: 'emailLabel',
       options: [
         {
           value: '',
@@ -170,6 +172,7 @@ export const fields = [
       }
     ],
     label: {
+      name: 'addressLabel',
       options: [
         {
           value: '',
@@ -192,6 +195,7 @@ export const fields = [
     icon: 'cloud',
     type: 'url',
     label: {
+      name: 'cozyLabel',
       options: [
         {
           value: '',
