@@ -53,12 +53,12 @@ const ContactFormModal = () => {
   const onClose = () => (contactId ? navigate(`/${contactId}`) : navigate('/'))
 
   const handleFormSubmit = async formData => {
-    setContactWithNewData({ ...contact, ...formData })
+    setContactWithNewData(formData)
     setIsFormBeingSubmitted(true)
     try {
       await createOrUpdateContact({
         client,
-        oldContact: contact,
+        isUpdated: !!contact,
         formData,
         selectedGroup
       })

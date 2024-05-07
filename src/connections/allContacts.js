@@ -1,4 +1,5 @@
 import isEqual from 'lodash/isEqual'
+import merge from 'lodash/merge'
 import uniqWith from 'lodash/uniqWith'
 
 import minilog from 'cozy-minilog'
@@ -73,23 +74,28 @@ export const deleteTrashedContacts = async client => {
   }
 }
 
+/**
+ * @param {Object} params
+ * @param {import('cozy-client/types/CozyClient').default} params.client - CozyClient
+ * @param {boolean} params.isUpdated - Is the contact updated
+ * @param {Object} params.formData - Contact data
+ * @param {Object} params.selectedGroup - Selected group
+ * @returns {Promise<import('cozy-client/types/types').IOCozyContact>} - Contact
+ */
 export const createOrUpdateContact = async ({
   client,
-  oldContact,
+  isUpdated,
   formData,
   selectedGroup
 }) => {
-  const createOrUpdate = oldContact ? updateContact : createContact
-  let updatedContact = {
-    ...oldContact,
-    ...formData
-  }
+  const createOrUpdate = isUpdated ? updateContact : createContact
+  let updatedContact = merge({}, formData)
 
   if (hasSelectedGroup(selectedGroup)) {
     updatedContact = addGroupToContact(updatedContact, selectedGroup)
   }
 
-  await createOrUpdate(client, updatedContact)
+  return createOrUpdate(client, updatedContact)
 }
 
 /**
