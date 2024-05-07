@@ -154,7 +154,7 @@ export const getRelatedContactRelationships = relatedContact => {
  * @returns {import('cozy-client/types/types').IOCozyContact} - The contact object without the related contacts relationships
  */
 export const cleanRelatedContactRelationships = contact => {
-  if (!contact?.relationships) return {}
+  if (!contact?.relationships) return contact
   const updatedContact = merge({}, contact)
 
   const relationshipsWithoutRelatedContact = Object.entries(

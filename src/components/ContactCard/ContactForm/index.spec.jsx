@@ -103,7 +103,7 @@ describe('ContactForm', () => {
       },
       note: 'Whatever.',
       phone: [{ number: '+33678987654', primary: true, type: undefined }],
-      relationships: { groups: { data: [] } }
+      relationships: { groups: { data: [] }, related: { data: [] } }
     }
 
     let received = null
