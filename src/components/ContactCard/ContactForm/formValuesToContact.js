@@ -1,4 +1,8 @@
-import { createAddress, makeTypeAndLabel } from './helpers'
+import {
+  cleanAsscociatedData,
+  createAddress,
+  makeTypeAndLabel
+} from './helpers'
 import { updateIndexFullNameAndDisplayName } from '../../../helpers/contacts'
 
 const formValuesToContact = ({ formValues, oldContact, t }) => {
@@ -18,6 +22,14 @@ const formValuesToContact = ({ formValues, oldContact, t }) => {
     birthplace,
     note
   } = formValues
+
+  const relationshipsFormValues = {
+    ...cleanAsscociatedData(oldContact),
+    // If we don't create the relationships field manually, cozy-client doesn't create it automatically when needed (eg. b56ea9dd308c31555aa1433514fa3481adb92f31)
+    groups: {
+      data: []
+    }
+  }
 
   const contactWithFormValues = {
     ...oldContact,
@@ -62,13 +74,7 @@ const formValuesToContact = ({ formValues, oldContact, t }) => {
     birthday: birthday || '',
     birthplace: birthplace || '',
     note: note || '',
-    // If we don't create the relationships field manually, cozy-client doesn't create it automatically when needed
-    relationships: {
-      ...oldContact?.relationships,
-      groups: {
-        data: []
-      }
-    },
+    relationships: relationshipsFormValues,
     metadata: {
       ...oldContact?.metadata,
       version: 1,

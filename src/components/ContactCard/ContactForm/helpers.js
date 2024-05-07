@@ -1,5 +1,7 @@
 import isEqual from 'lodash/isEqual'
 
+import { Association } from 'cozy-client'
+
 import contactToFormValues from './contactToFormValues'
 
 /**
@@ -105,4 +107,23 @@ export const createAddress = ({ address, oldContact, t }) => {
           return oldContactAddress
         })
     : []
+}
+
+// TODO : Update dehydrate function to HasMany class in cozy-client
+/**
+ * This function is used to clean the contact object from the associated data
+ * cozy-client dehydrates the document before saving it (via the `HasMany` method), but by doing it manually, we ensure that all hydrated relationships in the document (and without data of course) are not saved in the `relationships` of the document, which adds unnecessary data.
+ *
+ * @param {import('cozy-client/types/types').IOCozyContact} contact - The contact object with associated data
+ * @returns {import('cozy-client/types/types').IOCozyContact} - The contact object without associated data
+ */
+export const cleanAsscociatedData = contact => {
+  if (!contact) return {}
+  return Object.entries(contact).reduce((cleanedContact, [key, value]) => {
+    // Add `groups` condition to keep the old implementation functional, see formValuesToContact
+    if (!(value instanceof Association) || key === 'groups') {
+      cleanedContact[key] = value
+    }
+    return cleanedContact
+  }, {})
 }
