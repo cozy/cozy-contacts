@@ -1,26 +1,6 @@
 import { fields } from './fieldsConfig'
+import { makeItemLabel, movePrimaryToHead } from './helpers'
 import { getFormattedAddress } from '../../../helpers/contacts'
-
-export const moveToHead = shouldBeHead => items =>
-  items.reduce((arr, v) => (shouldBeHead(v) ? [v, ...arr] : [...arr, v]), [])
-
-const movePrimaryToHead = moveToHead(v => v?.primary)
-
-/**
- *
- * @param {object} [item] - Contact attribute
- * @returns {string} Stringified object
- */
-export const makeItemLabel = item => {
-  if (!item) return undefined
-
-  const res =
-    item.label || item.type
-      ? JSON.stringify({ type: item.type, label: item.label })
-      : undefined
-
-  return res
-}
 
 const contactToFormValues = (contact, t) => {
   // initialize the form values, required so that array fields start with at least one editable field

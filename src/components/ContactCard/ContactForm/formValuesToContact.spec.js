@@ -1,6 +1,6 @@
 import Polyglot from 'node-polyglot'
 
-import formValuesToContact, { makeTypeAndLabel } from './formValuesToContact'
+import formValuesToContact from './formValuesToContact'
 import { updateIndexFullNameAndDisplayName } from '../../../helpers/contacts'
 import { johnDoeFormValues, johnDoeContact } from '../../../helpers/testData'
 import en from '../../../locales/en.json'
@@ -470,31 +470,5 @@ describe('formValuesToContact', () => {
     expect(result.fullname).toEqual(expected.fullname)
     expect(result.displayName).toEqual(expected.displayName)
     expect(result.indexes).toEqual(expected.indexes)
-  })
-})
-
-describe('makeTypeAndLabel', () => {
-  it('should return undefined if no arg', () => {
-    const res = makeTypeAndLabel()
-
-    expect(res).toStrictEqual({ type: undefined, label: undefined })
-  })
-
-  it('should return correct type and label', () => {
-    const res = makeTypeAndLabel('{"type":"cell","label":"work"}')
-
-    expect(res).toStrictEqual({ type: 'cell', label: 'work' })
-  })
-
-  it('should return only label', () => {
-    const res = makeTypeAndLabel('{"label":"work"}')
-
-    expect(res).toStrictEqual({ type: undefined, label: 'work' })
-  })
-
-  it('should return only type', () => {
-    const res = makeTypeAndLabel('{"type":"cell"}')
-
-    expect(res).toStrictEqual({ type: 'cell', label: undefined })
   })
 })
