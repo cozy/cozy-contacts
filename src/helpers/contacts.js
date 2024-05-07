@@ -2,6 +2,7 @@ import sortBy from 'lodash/sortBy'
 
 import { models, HasMany } from 'cozy-client'
 
+import { relatedContactTypes } from './doctypes'
 import { filterWithRemaining } from './filterWithRemaining'
 
 const { makeFullname, makeDefaultSortIndexValue, makeDisplayName } =
@@ -45,7 +46,8 @@ export const filterFieldList = fields =>
         'metadata',
         'name',
         'relationships',
-        'type'
+        'type',
+        ...relatedContactTypes
       ].includes(field.type) === false && field.values
   )
 

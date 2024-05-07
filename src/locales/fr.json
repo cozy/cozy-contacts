@@ -53,6 +53,8 @@
     "jobTitle": "Fonction",
     "birthday": "Anniversaire",
     "birthplace": "Lieu de naissance",
+    "relatedContact": "Contact lié",
+    "relationship": "Relation",
     "note": "Notes",
     "label": "Libellé",
     "number": "Numéro de voie",
@@ -85,6 +87,18 @@
     "address": {
       "home": "Domicile (perso)",
       "work" : "Travail (pro)"
+    },
+    "relationship": {
+      "parent": "Parent",
+      "child": "Enfant",
+      "sibling": "Frère/Soeur",
+      "spouse": "conjoint(e)",
+      "coResident": "colocataire",
+      "friend": "ami(e)",
+      "colleague": "collègue",
+      "coWorker": "associé(e)",
+      "agent": "responsable",
+      "acquaintance": "assistance"
     }
   },
   "gender": {
@@ -117,7 +131,8 @@
   "addLabel": {
     "address": "Ajouter une adresse",
     "email": "Ajouter un email",
-    "phone": "Ajouter un téléphone"
+    "phone": "Ajouter un téléphone",
+    "relatedContact": "Ajouter un contact lié"
   },
   "SelectionBar": {
     "close": "Fermer",

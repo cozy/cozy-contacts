@@ -39,4 +39,11 @@
  * @property {boolean} [isMultiline] - Whether the field is multiline
  */
 
+/**
+ * @typedef {Object} RelatedContact
+ * @property {string} relatedContactId - The id of the related contact
+ * @property {string} relatedContact - The displayName of the related contact
+ * @property {string} relatedContactLabel - Object with the type of the related contact stringified (e.g. '{\"type\":\"spouse\"}')
+ */
+
 export default {}

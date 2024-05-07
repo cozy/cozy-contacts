@@ -8,20 +8,30 @@ import {
   fieldInputAttributes,
   labelPropTypes
 } from './ContactFields/ContactFieldsProptypes'
+import { RelatedContactList } from './ContactForm/RelatedContactList'
 import { handleContactFieldInputProps } from './helpers'
 import FieldInputWrapper from '../Form/FieldInputWrapper'
 import HasValueCondition from '../Form/HasValueCondition'
 import ContactAddressModal from '../Modals/ContactAddressModal'
 
-const ContactFieldInput = ({ name, labelProps, attributes, ...props }) => {
+const ContactFieldInput = ({
+  name,
+  labelProps,
+  attributes,
+  contacts,
+  ...props
+}) => {
   const [hasBeenFocused, setHasBeenFocused] = useState(false)
   const [isAddressDialogOpen, setIsAddressDialogOpen] = useState(false)
+  const [isRelatedContactDialogOpen, setIsRelatedContactDialogOpen] =
+    useState(false)
   const { t } = useI18n()
   const { subFields, ...restAttributes } = attributes
 
   const propsUpdated = handleContactFieldInputProps(props, {
     name,
-    setIsAddressDialogOpen
+    setIsAddressDialogOpen,
+    setIsRelatedContactDialogOpen
   })
 
   const onFocus = () => {
@@ -42,6 +52,13 @@ const ContactFieldInput = ({ name, labelProps, attributes, ...props }) => {
           onClose={() => setIsAddressDialogOpen(false)}
           name={name}
           subFields={subFields}
+        />
+      )}
+      {isRelatedContactDialogOpen && (
+        <RelatedContactList
+          onClose={() => setIsRelatedContactDialogOpen(false)}
+          name={name}
+          contacts={contacts}
         />
       )}
       {labelProps && (
@@ -66,6 +83,9 @@ ContactFieldInput.propTypes = {
   name: PropTypes.string.isRequired,
   labelProps: labelPropTypes,
   attributes: fieldInputAttributes,
+  contacts: PropTypes.shape({
+    data: PropTypes.arrayOf(PropTypes.object)
+  }),
   // Destructuring props
   id: PropTypes.string,
   label: PropTypes.string,

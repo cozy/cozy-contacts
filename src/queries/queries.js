@@ -4,7 +4,8 @@ import {
   DOCTYPE_CONTACTS,
   DOCTYPE_CONTACT_GROUPS,
   DOCTYPE_IDENTITIES,
-  DOCTYPE_TRIGGERS
+  DOCTYPE_TRIGGERS,
+  relatedContactTypes
 } from '../helpers/doctypes'
 
 const defaultFetchPolicy = fetchPolicies.olderThan(86400000) // 24 hours
@@ -34,7 +35,7 @@ export const buildIdentitiesQueryByContact = enabled => ({
 
 export const buildContactsQueryByFamilyNameGivenNameEmailCozyUrl = () => ({
   definition: Q(DOCTYPE_CONTACTS)
-    .include(['accounts'])
+    .include(['accounts', ...relatedContactTypes])
     .where({
       'indexes.byFamilyNameGivenNameEmailCozyUrl': {
         $gt: null
@@ -66,7 +67,7 @@ export const buildContactsQueryByFamilyNameGivenNameEmailCozyUrl = () => ({
 
 export const buildContactsQueryWithoutIndexes = () => ({
   definition: Q(DOCTYPE_CONTACTS)
-    .include(['accounts'])
+    .include(['accounts', ...relatedContactTypes])
     .where({
       _id: {
         $gt: null

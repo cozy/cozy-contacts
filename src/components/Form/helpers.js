@@ -1,3 +1,5 @@
+import { relatedContactTypes } from '../../helpers/doctypes'
+
 /**
  *
  * @param {string} value
@@ -28,6 +30,14 @@ export const makeInitialCustomValue = (name, value) => {
   if (!name || !value || name === 'gender') return undefined
 
   const valueObj = JSON.parse(value)
+
+  // Voluntarily before the "backwards compatibility" condition
+  if (name.includes('relatedContactLabel')) {
+    if (!relatedContactTypes.includes(valueObj.type)) {
+      return JSON.stringify({ type: valueObj.type })
+    }
+    return undefined
+  }
 
   // for backwards compatiblity - historically there is only type and no label
   if (valueObj.type && !valueObj.label) {

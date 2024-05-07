@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { useClient, useQuery } from 'cozy-client'
+import { useClient, useQuery, useQueryAll } from 'cozy-client'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import { FixedDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
@@ -14,7 +14,7 @@ import SelectedGroupContext from '../../components/Contexts/SelectedGroup'
 import { createOrUpdateContact } from '../../connections/allContacts'
 import { makeContactWithIdentitiesAddresses } from '../../helpers/contacts'
 import {
-  buildContactsQueryById,
+  buildContactsQueryByFamilyNameGivenNameEmailCozyUrl,
   buildIdentitiesQueryByContact
 } from '../../queries/queries'
 
@@ -29,14 +29,19 @@ const ContactFormModal = () => {
   // Tip to avoid that, when submitting the form, the fields are filled with old information for a short time.
   const [contactWithNewData, setContactWithNewData] = useState(null)
 
-  const contactsQueryById = buildContactsQueryById(contactId)
-  const { data: contact } = useQuery(
-    contactsQueryById.definition,
-    contactsQueryById.options
+  const contactsQueryByFamilyNameGivenNameEmailCozyUrl =
+    buildContactsQueryByFamilyNameGivenNameEmailCozyUrl()
+
+  const contacts = useQueryAll(
+    contactsQueryByFamilyNameGivenNameEmailCozyUrl.definition,
+    contactsQueryByFamilyNameGivenNameEmailCozyUrl.options
+  )
+  const currentContact = contacts?.data?.find(
+    contact => contact._id === contactId
   )
 
   const isContactsQueryEnabled =
-    contact && contact.me && contact.address?.length === 0
+    currentContact && currentContact.me && currentContact.address?.length === 0
   const indentitiesContactsQueryById = buildIdentitiesQueryByContact(
     isContactsQueryEnabled
   )
@@ -52,13 +57,16 @@ const ContactFormModal = () => {
 
   const onClose = () => (contactId ? navigate(`/${contactId}`) : navigate('/'))
 
+  /**
+   * @param {import('cozy-client/types/types').IOCozyContact} formData - Contact document (except _id, _rev & _type attrs to create a new contact)
+   */
   const handleFormSubmit = async formData => {
     setContactWithNewData(formData)
     setIsFormBeingSubmitted(true)
     try {
       await createOrUpdateContact({
         client,
-        isUpdated: !!contact,
+        isUpdated: !!currentContact,
         formData,
         selectedGroup
       })
@@ -71,7 +79,7 @@ const ContactFormModal = () => {
   }
 
   const contactWithIdentitiesAddresses = makeContactWithIdentitiesAddresses(
-    contact,
+    currentContact,
     identities
   )
 
@@ -80,11 +88,12 @@ const ContactFormModal = () => {
       open
       onClose={onClose}
       size="large"
-      title={contact ? t('edit-contact') : t('create_contact')}
+      title={currentContact ? t('edit-contact') : t('create_contact')}
       content={
         <ContactForm
           contact={contactWithNewData || contactWithIdentitiesAddresses}
           onSubmit={handleFormSubmit}
+          contacts={contacts}
         />
       }
       actions={
