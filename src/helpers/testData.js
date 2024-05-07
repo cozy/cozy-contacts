@@ -131,7 +131,13 @@ export const johnDoeFormValues = {
   familyName: 'Doe',
   company: 'Cozy cloud',
   jobTitle: 'Dreamer',
-  note: 'Atque cupiditate saepe omnis quos ut molestiae labore voluptates omnis.'
+  note: 'Atque cupiditate saepe omnis quos ut molestiae labore voluptates omnis.',
+  relatedContact: [
+    {
+      relatedContactId: 'relatedContactID',
+      relatedContactLabel: '{"type":"related"}'
+    }
+  ]
 }
 
 export const contactWithGroup = {

@@ -1,3 +1,4 @@
+/* eslint-disable jest/no-focused-tests */
 import contactToFormValues from './contactToFormValues'
 import { johnDoeContact, johnDoeFormValues } from '../../../helpers/testData'
 
@@ -18,7 +19,8 @@ describe('contactToFormValues function', () => {
       familyName: undefined,
       givenName: undefined,
       note: undefined,
-      phone: [undefined]
+      phone: [undefined],
+      relatedContact: [undefined]
     }
 
     const result = contactToFormValues(null, tSpy)
@@ -26,7 +28,7 @@ describe('contactToFormValues function', () => {
   })
 
   it('should return initial values when a contact is given (edit)', () => {
-    const expected = johnDoeFormValues
+    const expected = { ...johnDoeFormValues, relatedContact: [undefined] }
     tSpy.mockReturnValue(
       '426 Runolfsson Knolls 84573 Port Easter Cocos (Keeling) Islands'
     )
@@ -77,7 +79,8 @@ describe('contactToFormValues function', () => {
       givenName: 'Jane',
       familyName: 'Doe',
       note: undefined,
-      phone: [undefined]
+      phone: [undefined],
+      relatedContact: [undefined]
     }
 
     const result = contactToFormValues(contact, tSpy)
@@ -115,7 +118,8 @@ describe('contactToFormValues function', () => {
       givenName: undefined,
       familyName: undefined,
       note: 'Eligendi velit eos ab libero molestiae consequatur autem sed.',
-      phone: [undefined]
+      phone: [undefined],
+      relatedContact: [undefined]
     }
 
     const result = contactToFormValues(contact, tSpy)

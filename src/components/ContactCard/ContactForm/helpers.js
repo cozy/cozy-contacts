@@ -147,7 +147,7 @@ export const getRelatedContactRelationships = relatedContact => {
  * @returns {import('cozy-client/types/types').IOCozyContact} - The contact object without the related contacts relationships
  */
 export const cleanRelatedContactRelationships = contact => {
-  if (!contact?.relationships) return {}
+  if (!contact?.relationships) return contact
   const updatedContact = merge({}, contact)
 
   const relationshipsWithoutRelatedContact = Object.entries(
@@ -190,7 +190,7 @@ export const cleanAsscociatedData = contact => {
 export const makeRelatedContact = contact => {
   const res = Object.entries(contact).reduce((acc, [attr, value]) => {
     if (
-      relatedContactTypes.includes(value.name) &&
+      relatedContactTypes.includes(value?.name) &&
       value instanceof Association
     ) {
       for (const relContact of value.data) {

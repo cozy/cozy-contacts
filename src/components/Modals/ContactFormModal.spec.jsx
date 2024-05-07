@@ -2,7 +2,7 @@ import { render, screen, fireEvent, act, waitFor } from '@testing-library/react'
 import React from 'react'
 import { useParams } from 'react-router-dom'
 
-import { useQuery } from 'cozy-client'
+import { useQueryAll, useQuery } from 'cozy-client'
 
 import ContactFormModal from './ContactFormModal'
 import { createOrUpdateContact } from '../../connections/allContacts'
@@ -15,6 +15,7 @@ jest.mock('../../connections/allContacts', () => ({
 }))
 jest.mock('cozy-client/dist/hooks', () => ({
   ...jest.requireActual('cozy-client/dist/hooks'),
+  useQueryAll: jest.fn(),
   useQuery: jest.fn()
 }))
 jest.mock('react-router-dom', () => ({
@@ -25,6 +26,7 @@ jest.mock('react-router-dom', () => ({
 describe('ContactFormModal component', () => {
   it('should render a contact form in a modal', async () => {
     const contact = {
+      _id: 'ID',
       name: {
         familyName: 'John',
         givenName: 'Doe'
@@ -33,6 +35,9 @@ describe('ContactFormModal component', () => {
 
     useQuery.mockReturnValue({
       data: contact
+    })
+    useQueryAll.mockReturnValue({
+      data: [contact]
     })
 
     useParams.mockReturnValue({
@@ -62,7 +67,10 @@ describe('ContactFormModal component', () => {
       company: 'Cozy Cloud'
     }
     useQuery.mockReturnValue({
-      data: {}
+      data: undefined
+    })
+    useQueryAll.mockReturnValue({
+      data: []
     })
     useParams.mockReturnValue({
       contactId: 'ID'
@@ -93,7 +101,10 @@ describe('ContactFormModal component', () => {
       firstname: 'bob'
     }
     useQuery.mockReturnValue({
-      data: {}
+      data: undefined
+    })
+    useQueryAll.mockReturnValue({
+      data: []
     })
     useParams.mockReturnValue({
       contactId: 'ID'
@@ -124,19 +135,15 @@ describe('ContactFormModal component', () => {
       </AppLike>
     )
 
-    act(() => {
-      fireEvent.change(screen.getByLabelText('Firstname'), {
-        target: { value: formData.firstname }
-      })
+    fireEvent.change(screen.getByLabelText('Firstname'), {
+      target: { value: formData.firstname }
     })
 
-    act(() => {
-      fireEvent.click(screen.getByText('Save'))
-    })
+    fireEvent.click(screen.getByText('Save'))
 
-    expect(createOrUpdateContact).toHaveBeenCalledWith({
+    expect(createOrUpdateContact).toBeCalledWith({
       client: expect.anything(),
-      oldContact: {},
+      isUpdated: false,
       formData: expected,
       selectedGroup: expect.anything()
     })
@@ -144,6 +151,7 @@ describe('ContactFormModal component', () => {
 
   it('should pass previous contact data to the update function', async () => {
     const contact = {
+      _id: 'ID',
       name: {
         familyName: 'John',
         givenName: 'Doe'
@@ -153,16 +161,21 @@ describe('ContactFormModal component', () => {
     useQuery.mockReturnValue({
       data: contact
     })
+    useQueryAll.mockReturnValue({
+      data: [contact]
+    })
 
     useParams.mockReturnValue({
       contactId: 'ID'
     })
 
     const formData = {
-      company: 'Cozy Cloud'
+      company: 'Cozy Cloud',
+      relatedContact: []
     }
 
     const expected = {
+      _id: 'ID',
       address: [],
       birthday: '',
       birthplace: '',
@@ -213,7 +226,7 @@ describe('ContactFormModal component', () => {
 
     expect(createOrUpdateContact).toHaveBeenCalledWith({
       client: expect.anything(),
-      oldContact: contact,
+      isUpdated: true,
       formData: expected,
       selectedGroup: expect.anything()
     })

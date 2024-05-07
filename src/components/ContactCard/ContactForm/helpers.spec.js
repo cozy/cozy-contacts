@@ -1,5 +1,4 @@
-import { moveToHead, makeItemLabel } from './contactToFormValues'
-import { makeTypeAndLabel } from './helpers'
+import { moveToHead, makeItemLabel, makeTypeAndLabel } from './helpers'
 
 describe('moveToHead function', () => {
   it('should move an item to head of the array', () => {

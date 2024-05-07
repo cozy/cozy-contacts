@@ -49,6 +49,7 @@ describe('formValuesToContact', () => {
           },
           number: undefined,
           street: '426 Runolfsson Knolls',
+          region: undefined,
           primary: false,
           type: 'Work',
           label: undefined
@@ -112,6 +113,14 @@ describe('formValuesToContact', () => {
       relationships: {
         groups: {
           data: []
+        },
+        related: {
+          data: [
+            {
+              _id: 'relatedContactID',
+              _type: 'io.cozy.contacts'
+            }
+          ]
         }
       }
     }
@@ -150,6 +159,7 @@ describe('formValuesToContact', () => {
       familyName: 'Doe',
       givenName: 'Jane',
       note: undefined,
+      relatedContact: [],
       phone: [
         {
           number: undefined,
@@ -282,7 +292,8 @@ describe('formValuesToContact', () => {
       address: [undefined],
       email: [undefined],
       phone: [undefined],
-      cozy: undefined
+      cozy: undefined,
+      relatedContact: [undefined]
     }
 
     const expected = updateIndexFullNameAndDisplayName({
@@ -322,7 +333,8 @@ describe('formValuesToContact', () => {
       address: [{}],
       email: [{}],
       phone: [{}],
-      cozy: ''
+      cozy: '',
+      relatedContact: []
     }
 
     const expected = updateIndexFullNameAndDisplayName({
@@ -368,7 +380,8 @@ describe('formValuesToContact', () => {
           addressentrycode: undefined,
           addressLabel: '{"type":"Work"}'
         }
-      ]
+      ],
+      relatedContact: []
     }
 
     const oldContact = {
@@ -403,7 +416,8 @@ describe('formValuesToContact', () => {
 
   it('should replace contact unformatted address by formatted one if something change', () => {
     const formValues = {
-      address: [{ address: '01 Hinton Road 05034 Fresno, Singapore' }]
+      address: [{ address: '01 Hinton Road 05034 Fresno, Singapore' }],
+      relatedContact: []
     }
 
     const oldContact = {
@@ -442,7 +456,8 @@ describe('formValuesToContact', () => {
   it('should replace name, index, fullname and displayName properly to name change', () => {
     const formValues = {
       givenName: 'Jane',
-      familyName: 'Doe'
+      familyName: 'Doe',
+      relatedContact: []
     }
 
     const oldContact = {
