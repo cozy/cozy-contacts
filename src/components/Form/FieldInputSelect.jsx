@@ -26,6 +26,18 @@ const FieldInputSelect = ({ options, name, value, onChange, ...props }) => {
       : [])
   ]
 
+  const handleOptionClick = ev => {
+    const inputValue = ev.target.dataset?.value || ev.target.value
+
+    // when clicking the same option as previously selected
+    if (value === inputValue) {
+      if (value === customValue) {
+        return setOpenModal(true)
+      }
+      return
+    }
+  }
+
   return (
     <>
       <TextField
@@ -44,18 +56,17 @@ const FieldInputSelect = ({ options, name, value, onChange, ...props }) => {
       >
         {_options.map((option, index) => {
           return (
-            <MenuItem key={`${props.name}-${index}`} value={option.value}>
+            <MenuItem
+              key={`${props.name}-${index}`}
+              value={option.value}
+              onClick={handleOptionClick}
+            >
               {option.label}
             </MenuItem>
           )
         })}
-        {!!customLabelOptions && (
-          <MenuItem
-            value="skip"
-            onClick={() => {
-              setOpenModal(true)
-            }}
-          >
+        {!!customLabelOptions && !customValue && (
+          <MenuItem value="skip" onClick={() => setOpenModal(true)}>
             {t('custom')}
           </MenuItem>
         )}
