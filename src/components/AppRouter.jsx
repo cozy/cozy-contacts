@@ -1,5 +1,5 @@
 import React from 'react'
-import { HashRouter, Routes, Route, Outlet } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom'
 
 import App from './App'
 import AppLayout from './AppLayout'
@@ -32,6 +32,7 @@ const AppRouter = () => {
               element={<GroupDeleteConfirmationModal />}
             />
           </Route>
+          <Route path="*" element={<Navigate replace to="/" />} />
         </Route>
       </Routes>
     </HashRouter>
