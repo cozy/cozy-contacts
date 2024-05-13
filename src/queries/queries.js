@@ -7,7 +7,7 @@ import {
   DOCTYPE_TRIGGERS
 } from '../helpers/doctypes'
 
-const older30s = 30 * 1000
+const defaultFetchPolicy = fetchPolicies.olderThan(86400000) // 24 hours
 
 // Contacts doctype -------------
 
@@ -16,8 +16,8 @@ const older30s = 30 * 1000
 export const buildContactsQueryById = id => ({
   definition: () => Q(DOCTYPE_CONTACTS).getById(id),
   options: {
-    as: `contactById-${id}`,
-    fetchPolicy: fetchPolicies.olderThan(older30s),
+    as: `${DOCTYPE_CONTACTS}/${id}`,
+    fetchPolicy: defaultFetchPolicy,
     singleDocData: true,
     enabled: Boolean(id)
   }
@@ -27,14 +27,14 @@ export const buildIdentitiesQueryByContact = enabled => ({
   definition: Q(DOCTYPE_IDENTITIES),
   options: {
     as: DOCTYPE_IDENTITIES,
-    fetchPolicy: fetchPolicies.olderThan(older30s),
+    fetchPolicy: defaultFetchPolicy,
     enabled: Boolean(enabled)
   }
 })
 
 export const buildContactsQueryByFamilyNameGivenNameEmailCozyUrl = () => ({
   definition: Q(DOCTYPE_CONTACTS)
-    .include(['accounts'])
+    .include(['accounts', 'related'])
     .where({
       'indexes.byFamilyNameGivenNameEmailCozyUrl': {
         $gt: null
@@ -59,13 +59,14 @@ export const buildContactsQueryByFamilyNameGivenNameEmailCozyUrl = () => ({
     .sortBy([{ 'indexes.byFamilyNameGivenNameEmailCozyUrl': 'asc' }])
     .limitBy(1000),
   options: {
-    as: 'contactsByFamilyNameGivenNameEmailCozyUrl'
+    as: `${DOCTYPE_CONTACTS}/ByFamilyNameGivenNameEmailCozyUrl`,
+    fetchPolicy: defaultFetchPolicy
   }
 })
 
 export const buildContactsQueryWithoutIndexes = () => ({
   definition: Q(DOCTYPE_CONTACTS)
-    .include(['accounts'])
+    .include(['accounts', 'related'])
     .where({
       _id: {
         $gt: null
@@ -89,29 +90,9 @@ export const buildContactsQueryWithoutIndexes = () => ({
     .indexFields(['_id'])
     .limitBy(1000),
   options: {
-    as: 'contactsWithoutIndexes'
+    as: `${DOCTYPE_CONTACTS}/WithoutIndexes`,
+    fetchPolicy: defaultFetchPolicy
   }
-})
-
-export const buildContactsQueryByUpdatedAtGT = date => ({
-  definition: Q(DOCTYPE_CONTACTS)
-    .where({
-      $or: [
-        {
-          cozyMetadata: { $exists: false }
-        },
-        {
-          'cozyMetadata.updatedAt': { $gt: date }
-        }
-      ]
-    })
-    .partialIndex({
-      trashed: {
-        $exists: false
-      }
-    })
-    .indexFields(['_id'])
-    .limitBy(1000)
 })
 
 export const buildContactsQueryByEmailAdressOrPhoneNumber = (
@@ -159,7 +140,13 @@ export const buildContactsQueryByEmailAdressOrPhoneNumber = (
           }
         ]
       })
-      .indexFields(['_id'])
+      .indexFields(['_id']),
+    options: {
+      as: `${DOCTYPE_CONTACTS}/ByEmailAdressOrPhoneNumber${
+        addresses ? `/${addresses.join(',')}` : ''
+      }${numbers ? `/${numbers.join(',')}` : ''}`,
+      fetchPolicy: defaultFetchPolicy
+    }
   }
 }
 
@@ -181,14 +168,16 @@ export const buildContactsQueryByGroupId = groupId => ({
       .indexFields(['relationships.groups.data'])
       .limitBy(1000),
   options: {
-    as: `${DOCTYPE_CONTACTS}/byGroupId/${groupId}`
+    as: `${DOCTYPE_CONTACTS}/byGroupId/${groupId}`,
+    fetchPolicy: defaultFetchPolicy
   }
 })
 
 export const buildContactsTrashedQuery = () => ({
   definition: () => Q(DOCTYPE_CONTACTS).partialIndex({ trashed: true }),
   options: {
-    as: `${DOCTYPE_CONTACTS}/trashed`
+    as: `${DOCTYPE_CONTACTS}/trashed`,
+    fetchPolicy: defaultFetchPolicy
   }
 })
 
@@ -198,7 +187,8 @@ export const buildGroupQueryById = id => ({
   definition: () => Q(DOCTYPE_CONTACT_GROUPS).getById(id),
   options: {
     as: `${DOCTYPE_CONTACT_GROUPS}/${id}`,
-    singleDocData: true
+    singleDocData: true,
+    fetchPolicy: defaultFetchPolicy
   }
 })
 
@@ -219,15 +209,16 @@ export const buildContactGroupsQuery = () => ({
     .sortBy([{ name: 'asc' }])
     .indexFields(['name']),
   options: {
-    as: 'allGroups',
-    fetchPolicy: fetchPolicies.olderThan(older30s)
+    as: `${DOCTYPE_CONTACT_GROUPS}/withoutTrashed`,
+    fetchPolicy: defaultFetchPolicy
   }
 })
 
 export const buildContactGroupsTrashedQuery = () => ({
   definition: () => Q(DOCTYPE_CONTACT_GROUPS).partialIndex({ trashed: true }),
   options: {
-    as: `${DOCTYPE_CONTACT_GROUPS}/trashed`
+    as: `${DOCTYPE_CONTACT_GROUPS}/trashed`,
+    fetchPolicy: defaultFetchPolicy
   }
 })
 
@@ -244,3 +235,26 @@ export const buildTriggersQueryByName = name => ({
 export const buildTriggersQueryById = id => ({
   definition: Q(DOCTYPE_TRIGGERS).getById(id)
 })
+
+// #region Service queries
+export const buildContactsQueryByUpdatedAtGT = date => ({
+  definition: Q(DOCTYPE_CONTACTS)
+    .where({
+      $or: [
+        {
+          cozyMetadata: { $exists: false }
+        },
+        {
+          'cozyMetadata.updatedAt': { $gt: date }
+        }
+      ]
+    })
+    .partialIndex({
+      trashed: {
+        $exists: false
+      }
+    })
+    .indexFields(['_id'])
+    .limitBy(1000)
+})
+// #endregion Service Queries

@@ -35,7 +35,7 @@ const oneOfMandatoryFields = [
   'cozy'
 ]
 
-const ContactForm = ({ contact, onSubmit }) => {
+const ContactForm = ({ contact, onSubmit, contacts }) => {
   const { t } = useI18n()
   return (
     <Form
@@ -76,13 +76,13 @@ const ContactForm = ({ contact, onSubmit }) => {
                     return (
                       <ContactFieldInput
                         attributes={attributes}
+                        contacts={contacts}
                         error={isError}
                         helperText={isError ? errors[inputName] : null}
                         id={id}
                         name={inputName}
                         label={t(`fields.${name}`)}
                         labelProps={label}
-                        labelPlaceholder={t('fields.label')}
                       />
                     )
                   }}
@@ -98,7 +98,10 @@ const ContactForm = ({ contact, onSubmit }) => {
 
 ContactForm.propTypes = {
   contact: fullContactPropTypes,
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  contacts: PropTypes.shape({
+    data: PropTypes.arrayOf(PropTypes.object)
+  })
 }
 
 export default ContactForm

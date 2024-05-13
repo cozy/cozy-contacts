@@ -1,7 +1,5 @@
-import contactToFormValues, {
-  moveToHead,
-  makeItemLabel
-} from './contactToFormValues'
+/* eslint-disable jest/no-focused-tests */
+import contactToFormValues from './contactToFormValues'
 import { johnDoeContact, johnDoeFormValues } from '../../../helpers/testData'
 
 describe('contactToFormValues function', () => {
@@ -21,7 +19,8 @@ describe('contactToFormValues function', () => {
       familyName: undefined,
       givenName: undefined,
       note: undefined,
-      phone: [undefined]
+      phone: [undefined],
+      relatedContact: [undefined]
     }
 
     const result = contactToFormValues(null, tSpy)
@@ -29,7 +28,7 @@ describe('contactToFormValues function', () => {
   })
 
   it('should return initial values when a contact is given (edit)', () => {
-    const expected = johnDoeFormValues
+    const expected = { ...johnDoeFormValues, relatedContact: [undefined] }
     tSpy.mockReturnValue(
       '426 Runolfsson Knolls 84573 Port Easter Cocos (Keeling) Islands'
     )
@@ -80,7 +79,8 @@ describe('contactToFormValues function', () => {
       givenName: 'Jane',
       familyName: 'Doe',
       note: undefined,
-      phone: [undefined]
+      phone: [undefined],
+      relatedContact: [undefined]
     }
 
     const result = contactToFormValues(contact, tSpy)
@@ -118,52 +118,11 @@ describe('contactToFormValues function', () => {
       givenName: undefined,
       familyName: undefined,
       note: 'Eligendi velit eos ab libero molestiae consequatur autem sed.',
-      phone: [undefined]
+      phone: [undefined],
+      relatedContact: [undefined]
     }
 
     const result = contactToFormValues(contact, tSpy)
     expect(result).toEqual(expected)
-  })
-})
-
-describe('moveToHead function', () => {
-  it('should move an item to head of the array', () => {
-    const items = [1, 5, 657, 42, 3, 27, 88, 3, 4]
-    const shouldBeHead = v => v === 42
-    const expected = [42, 1, 5, 657, 3, 27, 88, 3, 4]
-    const actual = moveToHead(shouldBeHead)(items)
-    expect(actual).toEqual(expected)
-  })
-})
-
-describe('makeItemLabel', () => {
-  it('should return undefined if no arg', () => {
-    const res = makeItemLabel()
-
-    expect(res).toBe(undefined)
-  })
-
-  it('should return undefined if nothing defined', () => {
-    const res = makeItemLabel({ type: undefined, label: undefined })
-
-    expect(res).toBe(undefined)
-  })
-
-  it('should return correct type and label', () => {
-    const res = makeItemLabel({ type: 'cell', label: 'work' })
-
-    expect(res).toBe('{"type":"cell","label":"work"}')
-  })
-
-  it('should return only label if no type', () => {
-    const res = makeItemLabel({ type: undefined, label: 'work' })
-
-    expect(res).toBe('{"label":"work"}')
-  })
-
-  it('should return only type if no label', () => {
-    const res = makeItemLabel({ type: 'cell', label: undefined })
-
-    expect(res).toBe('{"type":"cell"}')
   })
 })

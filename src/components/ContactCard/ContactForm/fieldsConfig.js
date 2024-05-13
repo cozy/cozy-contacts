@@ -1,3 +1,6 @@
+/**
+ * @type {import('../../../types').Field[]}
+ */
 export const fields = [
   {
     name: 'gender',
@@ -48,6 +51,11 @@ export const fields = [
     icon: 'telephone',
     type: 'tel',
     label: {
+      name: 'phoneLabel',
+      customLabelOptions: {
+        defaultType: '',
+        defaultLabel: 'home'
+      },
       options: [
         {
           value: '',
@@ -86,6 +94,11 @@ export const fields = [
     icon: 'email',
     type: 'email',
     label: {
+      name: 'emailLabel',
+      customLabelOptions: {
+        defaultType: '',
+        defaultLabel: 'home'
+      },
       options: [
         {
           value: '',
@@ -170,6 +183,11 @@ export const fields = [
       }
     ],
     label: {
+      name: 'addressLabel',
+      customLabelOptions: {
+        defaultType: '',
+        defaultLabel: 'home'
+      },
       options: [
         {
           value: '',
@@ -192,6 +210,11 @@ export const fields = [
     icon: 'cloud',
     type: 'url',
     label: {
+      name: 'cozyLabel',
+      customLabelOptions: {
+        defaultType: '',
+        defaultLabel: 'home'
+      },
       options: [
         {
           value: '',
@@ -218,6 +241,61 @@ export const fields = [
     name: 'birthplace',
     icon: null,
     type: 'text'
+  },
+  {
+    name: 'relatedContact',
+    icon: 'relationship',
+    type: 'button',
+    label: {
+      name: 'relatedContactLabel',
+      options: [
+        {
+          value: '',
+          label: 'label.none'
+        },
+        {
+          value: '{"type":"parent"}',
+          label: 'label.relationship.parent'
+        },
+        {
+          value: '{"type":"child"}',
+          label: 'label.relationship.child'
+        },
+        {
+          value: '{"type":"sibling"}',
+          label: 'label.relationship.sibling'
+        },
+        {
+          value: '{"type":"spouse"}',
+          label: 'label.relationship.spouse'
+        },
+        {
+          value: '{"type":"coResident"}',
+          label: 'label.relationship.coResident'
+        },
+        {
+          value: '{"type":"friend"}',
+          label: 'label.relationship.friend'
+        },
+        {
+          value: '{"type":"colleague"}',
+          label: 'label.relationship.colleague'
+        },
+        {
+          value: '{"type":"coWorker"}',
+          label: 'label.relationship.coWorker'
+        },
+        {
+          value: '{"type":"agent"}',
+          label: 'label.relationship.agent'
+        },
+        {
+          value: '{"type":"acquaintance"}',
+          label: 'label.relationship.acquaintance'
+        }
+      ]
+    },
+    isArray: true
   },
   {
     name: 'note',

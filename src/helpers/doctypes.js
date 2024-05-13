@@ -4,6 +4,7 @@ export const DOCTYPE_CONTACT_GROUPS = 'io.cozy.contacts.groups'
 export const DOCTYPE_CONTACT_ACCOUNTS = 'io.cozy.contacts.accounts'
 export const DOCTYPE_TRIGGERS = 'io.cozy.triggers'
 export const DOCTYPE_IDENTITIES = 'io.cozy.identities'
+
 export const schema = {
   contacts: {
     doctype: DOCTYPE_CONTACTS,
@@ -14,6 +15,10 @@ export const schema = {
         doctype: DOCTYPE_CONTACT_GROUPS
       },
       accounts: {
+        type: 'has-many',
+        doctype: DOCTYPE_CONTACT_ACCOUNTS
+      },
+      related: {
         type: 'has-many',
         doctype: DOCTYPE_CONTACT_ACCOUNTS
       }

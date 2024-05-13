@@ -53,6 +53,8 @@
     "jobTitle": "Job title",
     "birthday": "Birthday",
     "birthplace": "Birthplace",
+    "relatedContact": "Related contact",
+    "relationship": "Relationship",
     "note": "Notes",
     "label": "Label",
     "number": "Lane number",
@@ -85,6 +87,18 @@
     "address": {
       "home": "Home (personal)",
       "work" : "Work (pro)"
+    },
+    "relationship": {
+      "parent": "Parent",
+      "child": "Child",
+      "sibling": "Sibling",
+      "spouse": "Spouse",
+      "coResident": "Co-resident",
+      "friend": "Friend",
+      "colleague": "Colleague",
+      "coWorker": "Co-worker",
+      "agent": "Agent",
+      "acquaintance": "Acquaintance"
     }
   },
   "gender": {
@@ -117,7 +131,8 @@
   "addLabel": {
     "address": "Add an address",
     "email": "Add an email",
-    "phone": "Add a phone"
+    "phone": "Add a phone",
+    "relatedContact": "Add a related contact"
   },
   "SelectionBar": {
     "close": "Close",

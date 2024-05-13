@@ -45,7 +45,8 @@ export const filterFieldList = fields =>
         'metadata',
         'name',
         'relationships',
-        'type'
+        'type',
+        'related'
       ].includes(field.type) === false && field.values
   )
 

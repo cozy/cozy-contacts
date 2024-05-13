@@ -29,6 +29,14 @@ export const makeInitialCustomValue = (name, value) => {
 
   const valueObj = JSON.parse(value)
 
+  // Voluntarily before the "backwards compatibility" condition
+  if (name.includes('relatedContactLabel')) {
+    if (!'related' === valueObj.type) {
+      return JSON.stringify({ type: valueObj.type })
+    }
+    return undefined
+  }
+
   // for backwards compatiblity - historically there is only type and no label
   if (valueObj.type && !valueObj.label) {
     return JSON.stringify({ type: valueObj.type })

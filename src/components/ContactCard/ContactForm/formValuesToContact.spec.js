@@ -1,6 +1,6 @@
 import Polyglot from 'node-polyglot'
 
-import formValuesToContact, { makeTypeAndLabel } from './formValuesToContact'
+import formValuesToContact from './formValuesToContact'
 import { updateIndexFullNameAndDisplayName } from '../../../helpers/contacts'
 import { johnDoeFormValues, johnDoeContact } from '../../../helpers/testData'
 import en from '../../../locales/en.json'
@@ -49,6 +49,7 @@ describe('formValuesToContact', () => {
           },
           number: undefined,
           street: '426 Runolfsson Knolls',
+          region: undefined,
           primary: false,
           type: 'Work',
           label: undefined
@@ -112,6 +113,17 @@ describe('formValuesToContact', () => {
       relationships: {
         groups: {
           data: []
+        },
+        related: {
+          data: [
+            {
+              _id: 'relatedContactID',
+              _type: 'io.cozy.contacts',
+              metadata: {
+                relationTypes: ['related']
+              }
+            }
+          ]
         }
       }
     }
@@ -150,6 +162,7 @@ describe('formValuesToContact', () => {
       familyName: 'Doe',
       givenName: 'Jane',
       note: undefined,
+      relatedContact: [],
       phone: [
         {
           number: undefined,
@@ -175,7 +188,7 @@ describe('formValuesToContact', () => {
       name: { familyName: 'Doe', givenName: 'Jane' },
       note: '',
       phone: [],
-      relationships: { groups: { data: [] } }
+      relationships: { groups: { data: [] }, related: { data: [] } }
     }
 
     const result = formValuesToContact({ formValues, oldContact: null, t })
@@ -282,7 +295,8 @@ describe('formValuesToContact', () => {
       address: [undefined],
       email: [undefined],
       phone: [undefined],
-      cozy: undefined
+      cozy: undefined,
+      relatedContact: [undefined]
     }
 
     const expected = updateIndexFullNameAndDisplayName({
@@ -298,7 +312,7 @@ describe('formValuesToContact', () => {
       birthplace: '',
       gender: '',
       note: '',
-      relationships: { groups: { data: [] } }
+      relationships: { groups: { data: [] }, related: { data: [] } }
     })
 
     const result = formValuesToContact({
@@ -322,7 +336,8 @@ describe('formValuesToContact', () => {
       address: [{}],
       email: [{}],
       phone: [{}],
-      cozy: ''
+      cozy: '',
+      relatedContact: []
     }
 
     const expected = updateIndexFullNameAndDisplayName({
@@ -338,7 +353,7 @@ describe('formValuesToContact', () => {
       birthplace: '',
       gender: '',
       note: '',
-      relationships: { groups: { data: [] } }
+      relationships: { groups: { data: [] }, related: { data: [] } }
     })
 
     const result = formValuesToContact({
@@ -368,7 +383,8 @@ describe('formValuesToContact', () => {
           addressentrycode: undefined,
           addressLabel: '{"type":"Work"}'
         }
-      ]
+      ],
+      relatedContact: []
     }
 
     const oldContact = {
@@ -403,7 +419,8 @@ describe('formValuesToContact', () => {
 
   it('should replace contact unformatted address by formatted one if something change', () => {
     const formValues = {
-      address: [{ address: '01 Hinton Road 05034 Fresno, Singapore' }]
+      address: [{ address: '01 Hinton Road 05034 Fresno, Singapore' }],
+      relatedContact: []
     }
 
     const oldContact = {
@@ -442,7 +459,8 @@ describe('formValuesToContact', () => {
   it('should replace name, index, fullname and displayName properly to name change', () => {
     const formValues = {
       givenName: 'Jane',
-      familyName: 'Doe'
+      familyName: 'Doe',
+      relatedContact: []
     }
 
     const oldContact = {
@@ -470,31 +488,5 @@ describe('formValuesToContact', () => {
     expect(result.fullname).toEqual(expected.fullname)
     expect(result.displayName).toEqual(expected.displayName)
     expect(result.indexes).toEqual(expected.indexes)
-  })
-})
-
-describe('makeTypeAndLabel', () => {
-  it('should return undefined if no arg', () => {
-    const res = makeTypeAndLabel()
-
-    expect(res).toStrictEqual({ type: undefined, label: undefined })
-  })
-
-  it('should return correct type and label', () => {
-    const res = makeTypeAndLabel('{"type":"cell","label":"work"}')
-
-    expect(res).toStrictEqual({ type: 'cell', label: 'work' })
-  })
-
-  it('should return only label', () => {
-    const res = makeTypeAndLabel('{"label":"work"}')
-
-    expect(res).toStrictEqual({ type: undefined, label: 'work' })
-  })
-
-  it('should return only type', () => {
-    const res = makeTypeAndLabel('{"type":"cell"}')
-
-    expect(res).toStrictEqual({ type: 'cell', label: undefined })
   })
 })

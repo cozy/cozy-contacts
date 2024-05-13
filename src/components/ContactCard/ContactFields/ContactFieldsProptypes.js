@@ -1,12 +1,18 @@
 import PropTypes from 'prop-types'
 
 export const labelPropTypes = PropTypes.shape({
+  name: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string,
       label: PropTypes.string
     })
-  )
+  ),
+  customLabelOptions: PropTypes.shape({
+    hide: PropTypes.bool,
+    defaultType: PropTypes.string,
+    defaultLabel: PropTypes.string
+  })
 })
 
 export const fieldInputAttributes = PropTypes.shape({
