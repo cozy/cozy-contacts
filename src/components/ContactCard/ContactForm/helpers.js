@@ -153,7 +153,7 @@ export const getRelatedContactRelationships = relatedContact => {
  * @param {import('cozy-client/types/types').IOCozyContact} contact - The contact object with all relationships
  * @returns {import('cozy-client/types/types').IOCozyContact} - The contact object without the related contacts relationships
  */
-export const cleanRelatedContactRelationships = contact => {
+export const removeRelatedContactRelationships = contact => {
   if (!contact?.relationships) return contact
   const updatedContact = merge({}, contact)
 
@@ -179,7 +179,7 @@ export const cleanRelatedContactRelationships = contact => {
  * @param {import('cozy-client/types/types').IOCozyContact} contact - The contact object with associated data
  * @returns {import('cozy-client/types/types').IOCozyContact} - The contact object without associated data
  */
-export const cleanAsscociatedData = contact => {
+export const removeAsscociatedData = contact => {
   if (!contact) return {}
   return Object.entries(contact).reduce((cleanedContact, [key, value]) => {
     // Add `groups` condition to keep the old implementation functional, see below

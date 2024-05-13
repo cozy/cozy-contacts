@@ -1,6 +1,6 @@
 import {
-  cleanAsscociatedData,
-  cleanRelatedContactRelationships,
+  removeAsscociatedData,
+  removeRelatedContactRelationships,
   createAddress,
   getRelatedContactRelationships,
   makeTypeAndLabel
@@ -29,8 +29,8 @@ const formValuesToContact = ({ formValues, oldContact, t }) => {
   const relatedContactRelationships =
     getRelatedContactRelationships(relatedContact)
 
-  const oldContactCleaned = cleanRelatedContactRelationships(
-    cleanAsscociatedData(oldContact)
+  const oldContactCleaned = removeRelatedContactRelationships(
+    removeAsscociatedData(oldContact)
   )
 
   const relationshipsFormValues = {

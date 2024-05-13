@@ -65,9 +65,7 @@ const contactToFormValues = (contact, t) => {
           }))
         : [undefined]
 
-    const relatedContactValue = contact
-      ? makeRelatedContact(contact)
-      : [undefined]
+    const relatedContactValue = makeRelatedContact(contact)
 
     return {
       gender,
