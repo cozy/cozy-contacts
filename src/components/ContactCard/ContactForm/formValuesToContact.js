@@ -1,6 +1,8 @@
 import {
   cleanAsscociatedData,
+  cleanRelatedContactRelationships,
   createAddress,
+  getRelatedContactRelationships,
   makeTypeAndLabel
 } from './helpers'
 import { updateIndexFullNameAndDisplayName } from '../../../helpers/contacts'
@@ -20,11 +22,20 @@ const formValuesToContact = ({ formValues, oldContact, t }) => {
     jobTitle,
     birthday,
     birthplace,
-    note
+    note,
+    relatedContact
   } = formValues
 
+  const relatedContactRelationships =
+    getRelatedContactRelationships(relatedContact)
+
+  const oldContactCleaned = cleanRelatedContactRelationships(
+    cleanAsscociatedData(oldContact)
+  )
+
   const relationshipsFormValues = {
-    ...cleanAsscociatedData(oldContact),
+    ...oldContactCleaned?.relationships,
+    ...relatedContactRelationships,
     // If we don't create the relationships field manually, cozy-client doesn't create it automatically when needed (eg. b56ea9dd308c31555aa1433514fa3481adb92f31)
     groups: {
       data: []
@@ -32,10 +43,10 @@ const formValuesToContact = ({ formValues, oldContact, t }) => {
   }
 
   const contactWithFormValues = {
-    ...oldContact,
+    ...oldContactCleaned,
     gender: gender || '',
     name: {
-      ...oldContact?.name,
+      ...oldContactCleaned?.name,
       givenName: givenName || '',
       additionalName: additionalName,
       surname: surname,
@@ -50,7 +61,7 @@ const formValuesToContact = ({ formValues, oldContact, t }) => {
             primary: index === 0
           }))
       : [],
-    address: createAddress({ address, oldContact, t }),
+    address: createAddress({ address, oldContact: oldContactCleaned, t }),
     phone: phone
       ? phone
           .filter(val => val && val.phone)
@@ -76,7 +87,7 @@ const formValuesToContact = ({ formValues, oldContact, t }) => {
     note: note || '',
     relationships: relationshipsFormValues,
     metadata: {
-      ...oldContact?.metadata,
+      ...oldContactCleaned?.metadata,
       version: 1,
       cozy: true
     }

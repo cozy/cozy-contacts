@@ -34,7 +34,7 @@ export const buildIdentitiesQueryByContact = enabled => ({
 
 export const buildContactsQueryByFamilyNameGivenNameEmailCozyUrl = () => ({
   definition: Q(DOCTYPE_CONTACTS)
-    .include(['accounts'])
+    .include(['accounts', 'related'])
     .where({
       'indexes.byFamilyNameGivenNameEmailCozyUrl': {
         $gt: null
@@ -66,7 +66,7 @@ export const buildContactsQueryByFamilyNameGivenNameEmailCozyUrl = () => ({
 
 export const buildContactsQueryWithoutIndexes = () => ({
   definition: Q(DOCTYPE_CONTACTS)
-    .include(['accounts'])
+    .include(['accounts', 'related'])
     .where({
       _id: {
         $gt: null

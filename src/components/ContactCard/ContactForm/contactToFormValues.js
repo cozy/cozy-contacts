@@ -1,5 +1,5 @@
 import { fields } from './fieldsConfig'
-import { makeItemLabel, movePrimaryToHead } from './helpers'
+import { makeItemLabel, makeRelatedContact, movePrimaryToHead } from './helpers'
 import { getFormattedAddress } from '../../../helpers/contacts'
 
 const contactToFormValues = (contact, t) => {
@@ -65,6 +65,10 @@ const contactToFormValues = (contact, t) => {
           }))
         : [undefined]
 
+    const relatedContactValue = contact
+      ? makeRelatedContact(contact)
+      : [undefined]
+
     return {
       gender,
       givenName: name?.givenName,
@@ -80,7 +84,8 @@ const contactToFormValues = (contact, t) => {
       jobTitle,
       birthday,
       birthplace,
-      note
+      note,
+      relatedContact: relatedContactValue
     }
   }
 
