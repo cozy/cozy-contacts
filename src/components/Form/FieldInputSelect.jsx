@@ -1,3 +1,4 @@
+import cx from 'classnames'
 import React, { useState } from 'react'
 
 import MenuItem from 'cozy-ui/transpiled/react/MenuItem'
@@ -42,6 +43,10 @@ const FieldInputSelect = ({ options, name, value, onChange, ...props }) => {
     <>
       <TextField
         {...restProps}
+        className={cx('contact-form-field__label', {
+          ['contact-form-field__label-nofullwidth']: name !== 'gender'
+        })}
+        fullWidth={false}
         select
         name={name}
         value={value}
