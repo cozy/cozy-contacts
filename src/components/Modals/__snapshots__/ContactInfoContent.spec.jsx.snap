@@ -25,7 +25,7 @@ exports[`ContactInfoContent should match snapshot when groups are available but 
               height="16"
               style={
                 Object {
-                  "fill": "var(--coolGrey)",
+                  "fill": "var(--iconTextColor)",
                 }
               }
               width="16"
@@ -71,7 +71,7 @@ exports[`ContactInfoContent should match snapshot when groups are available but 
               height="16"
               style={
                 Object {
-                  "fill": "var(--coolGrey)",
+                  "fill": "var(--iconTextColor)",
                 }
               }
               width="16"
@@ -117,7 +117,7 @@ exports[`ContactInfoContent should match snapshot when groups are available but 
               height="16"
               style={
                 Object {
-                  "fill": "var(--coolGrey)",
+                  "fill": "var(--iconTextColor)",
                 }
               }
               width="16"
@@ -155,7 +155,7 @@ exports[`ContactInfoContent should match snapshot when groups are available but 
               height="16"
               style={
                 Object {
-                  "fill": "var(--coolGrey)",
+                  "fill": "var(--iconTextColor)",
                 }
               }
               width="16"
@@ -186,7 +186,7 @@ exports[`ContactInfoContent should match snapshot when groups are available but 
               height="16"
               style={
                 Object {
-                  "fill": "var(--coolGrey)",
+                  "fill": "var(--iconTextColor)",
                 }
               }
               width="16"
@@ -253,7 +253,7 @@ exports[`ContactInfoContent should match snapshot with accounts and groups 1`] =
               height="16"
               style={
                 Object {
-                  "fill": "var(--coolGrey)",
+                  "fill": "var(--iconTextColor)",
                 }
               }
               width="16"
@@ -289,7 +289,7 @@ exports[`ContactInfoContent should match snapshot with accounts and groups 1`] =
               height="16"
               style={
                 Object {
-                  "fill": "var(--coolGrey)",
+                  "fill": "var(--iconTextColor)",
                 }
               }
               width="16"
@@ -320,7 +320,7 @@ exports[`ContactInfoContent should match snapshot with accounts and groups 1`] =
               height="16"
               style={
                 Object {
-                  "fill": "var(--coolGrey)",
+                  "fill": "var(--iconTextColor)",
                 }
               }
               width="16"
@@ -414,7 +414,7 @@ exports[`ContactInfoContent should match snapshot with accounts without groups 1
               height="16"
               style={
                 Object {
-                  "fill": "var(--coolGrey)",
+                  "fill": "var(--iconTextColor)",
                 }
               }
               width="16"
@@ -450,7 +450,7 @@ exports[`ContactInfoContent should match snapshot with accounts without groups 1
               height="16"
               style={
                 Object {
-                  "fill": "var(--coolGrey)",
+                  "fill": "var(--iconTextColor)",
                 }
               }
               width="16"
@@ -481,7 +481,7 @@ exports[`ContactInfoContent should match snapshot with accounts without groups 1
               height="16"
               style={
                 Object {
-                  "fill": "var(--coolGrey)",
+                  "fill": "var(--iconTextColor)",
                 }
               }
               width="16"
