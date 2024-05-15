@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
+import Button from 'cozy-ui/transpiled/react/Buttons'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import BottomSelectIcon from 'cozy-ui/transpiled/react/Icons/BottomSelect'
-import Button from 'cozy-ui/transpiled/react/deprecated/Button'
-import palette from 'cozy-ui/transpiled/react/palette'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 const Control = ({
@@ -17,19 +16,12 @@ const Control = ({
   return (
     <div ref={innerRef} {...innerProps}>
       <Button
-        theme="secondary"
+        variant="secondary"
         size="small"
         onClick={onControlClicked}
         onTouchStart={onControlClicked}
         label={t('groups.manage')}
-        icon={
-          <Icon
-            icon={BottomSelectIcon}
-            color={palette['coolGrey']}
-            width="12"
-            className="group-manager__indicator"
-          />
-        }
+        startIcon={<Icon icon={BottomSelectIcon} width="12" />}
       />
     </div>
   )

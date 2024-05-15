@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
+import Button from 'cozy-ui/transpiled/react/Buttons'
 import IntentHeader from 'cozy-ui/transpiled/react/IntentHeader'
-import Button from 'cozy-ui/transpiled/react/deprecated/Button'
 import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import IntentMain from './IntentMain'
@@ -27,7 +27,7 @@ const ConnectedContactsList = ContactAppWithLoading
 const IntentFooter = ({ label, onSubmit, onCancel, t }) => (
   <div className="intent-footer">
     <div className="intent-footer-label">{label}</div>
-    <Button theme="secondary" label={t('cancel')} onClick={onCancel} />
+    <Button variant="secondary" label={t('cancel')} onClick={onCancel} />
     <Button label={t('confirm')} onClick={onSubmit} />
   </div>
 )

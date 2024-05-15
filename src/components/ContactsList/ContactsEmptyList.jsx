@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import Button from 'cozy-ui/transpiled/react/Buttons'
 import Empty from 'cozy-ui/transpiled/react/Empty'
+import Icon from 'cozy-ui/transpiled/react/Icon'
 import InfoIcon from 'cozy-ui/transpiled/react/Icons/Info'
 import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
 import TeamIcon from 'cozy-ui/transpiled/react/Icons/Team'
 import Stack from 'cozy-ui/transpiled/react/Stack'
-import Button from 'cozy-ui/transpiled/react/deprecated/Button'
 import Infos from 'cozy-ui/transpiled/react/deprecated/Infos'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
@@ -52,10 +53,10 @@ const ContactsEmptyList = () => {
             <Button
               onClick={() => navigate('/import')}
               label={t('empty.import_vcard')}
-              theme="secondary"
-              icon={TeamIcon}
+              variant="secondary"
+              startIcon={<Icon icon={TeamIcon} />}
               style={style}
-              extension="full"
+              fullWidth
             />
           </div>
           <div>
@@ -64,10 +65,9 @@ const ContactsEmptyList = () => {
         </Stack>
         <Button
           className="u-mt-1-half"
-          subtle
-          theme="secondary"
+          variant="text"
           onClick={() => navigate('/new')}
-          icon={PlusIcon}
+          startIcon={<Icon icon={PlusIcon} />}
           label={t('create_contact')}
           style={style}
         />
