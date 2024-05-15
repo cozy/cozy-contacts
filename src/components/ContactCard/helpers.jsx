@@ -1,7 +1,6 @@
 import React from 'react'
 
 import Icon from 'cozy-ui/transpiled/react/Icon'
-import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import BottomIcon from 'cozy-ui/transpiled/react/Icons/Bottom'
 import InputAdornment from 'cozy-ui/transpiled/react/InputAdornment'
 
@@ -27,9 +26,7 @@ export const handleContactFieldInputProps = (props, opts) => {
       InputProps: {
         endAdornment: (
           <InputAdornment position="end">
-            <IconButton>
-              <Icon icon={BottomIcon} />
-            </IconButton>
+            <Icon icon={BottomIcon} color="var(--iconTextColor)" />
           </InputAdornment>
         )
       }
