@@ -8,8 +8,8 @@ import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import CrossCircleIcon from 'cozy-ui/transpiled/react/Icons/CrossCircle'
 import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
+import ListItemIcon from 'cozy-ui/transpiled/react/ListItemIcon'
 import { Media, Img, Bd } from 'cozy-ui/transpiled/react/deprecated/Media'
-import palette from 'cozy-ui/transpiled/react/palette'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { addField, removeField } from '../../../helpers/fields'
@@ -26,22 +26,23 @@ const ContactFormField = ({ name, icon, isArray, renderInput }) => {
     name,
     renderInput
   ) => {
-    const hasValue = fields.value[index] && fields.value[index][name]
+    const showRemove = fields.length > 1
 
     return (
       <div key={nameWithIndex} className="u-mt-1 u-flex u-pos-relative">
         {renderInput(`${nameWithIndex}.${name}`, fieldID)}
 
-        {hasValue && (
-          <IconButton
-            className="contact-form-field__delete-icon u-top-0 u-right-0 u-mt-half"
-            aria-label="delete"
-            color="error"
-            size="medium"
-            onClick={() => removeField(fields, index)}
-          >
-            <Icon icon={CrossCircleIcon} />
-          </IconButton>
+        {showRemove && (
+          <ListItemIcon className="contact-form-field__delete-icon">
+            <IconButton
+              aria-label="delete"
+              color="error"
+              size="medium"
+              onClick={() => removeField(fields, index)}
+            >
+              <Icon icon={CrossCircleIcon} />
+            </IconButton>
+          </ListItemIcon>
         )}
       </div>
     )
@@ -53,8 +54,8 @@ const ContactFormField = ({ name, icon, isArray, renderInput }) => {
         {icon ? (
           <Icon
             icon={icon}
-            color={palette['coolGrey']}
-            className="contact-form-field__icon u-mr-2"
+            color="var(--iconTextColor)"
+            className="contact-form-field__icon"
           />
         ) : (
           <div className="u-w-1 u-mr-2" />

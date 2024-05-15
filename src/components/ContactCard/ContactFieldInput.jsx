@@ -39,7 +39,7 @@ const ContactFieldInput = ({
   }
 
   return (
-    <div className="u-flex u-flex-column-s u-flex-grow-1 u-pr-3">
+    <div className="contact-form-field__wrapper u-flex u-flex-column-s">
       <Field
         {...propsUpdated}
         attributes={restAttributes}
@@ -65,7 +65,6 @@ const ContactFieldInput = ({
         <HasValueCondition name={name} otherCondition={hasBeenFocused}>
           <div className="u-mt-half-s u-ml-half u-ml-0-s u-flex-shrink-0 u-w-auto">
             <Field
-              style={{ minWidth: '200px' }}
               attributes={labelProps}
               name={`${name}Label`}
               label={t('fields.label')}
