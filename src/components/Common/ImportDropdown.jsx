@@ -56,7 +56,11 @@ const ImportDropdown = () => {
                 left={<AppIcon app="store" className="u-h-1 u-w-1" />}
                 onClick={onClick}
               >
-                <Link className="u-p-0" href={href}>
+                <Link
+                  className="u-p-0"
+                  href={href}
+                  style={{ color: 'var(--primaryTextColor)' }}
+                >
                   {t('import.store')}
                 </Link>
               </ActionMenuItem>
