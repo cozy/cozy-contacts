@@ -5,7 +5,6 @@ import Icon from 'cozy-ui/transpiled/react/Icon'
 import MagnifierIcon from 'cozy-ui/transpiled/react/Icons/Magnifier'
 import Input from 'cozy-ui/transpiled/react/Input'
 import InputGroup from 'cozy-ui/transpiled/react/InputGroup'
-import palette from 'cozy-ui/transpiled/react/palette'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import SearchContext from '../Contexts/Search'
@@ -30,7 +29,7 @@ const SearchInput = () => {
         <Icon
           className="u-pl-1"
           icon={MagnifierIcon}
-          color={palette['coolGrey']}
+          color="var(--iconTextColor)"
         />
       }
     >

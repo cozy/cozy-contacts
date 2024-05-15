@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import Icon from 'cozy-ui/transpiled/react/Icon'
-import palette from 'cozy-ui/transpiled/react/palette'
 
 import IconFileFailImport from '../../../assets/icons/file-fail-import.svg'
 import IconFilePartialImport from '../../../assets/icons/file-partial-import.svg'
@@ -42,7 +41,7 @@ export default function ImportationFile({ status, name, unselectAction }) {
             >
               <Icon
                 icon="cross"
-                color={palette['coolGrey']}
+                color="var(--iconTextColor)"
                 width="10"
                 height="10"
               />
