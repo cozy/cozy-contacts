@@ -26,7 +26,7 @@ const ContactFormField = ({ name, icon, isArray, renderInput }) => {
     name,
     renderInput
   ) => {
-    const showRemove = fields.length > 1
+    const showRemove = fields.value[index]?.[name]
 
     return (
       <div key={nameWithIndex} className="u-mt-1 u-flex u-pos-relative">
