@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import Icon from 'cozy-ui/transpiled/react/Icon'
-import palette from 'cozy-ui/transpiled/react/palette'
 
 import FieldWrapper from './FieldWrapper'
 
@@ -22,7 +21,7 @@ const getIcon = fieldType => iconsByType[fieldType] || 'flag'
 const ContactField = ({ type, values }) => (
   <div className="u-flex u-mt-half">
     <div className="u-mr-1 u-fz-large">
-      <Icon icon={getIcon(type)} color={palette['coolGrey']} />
+      <Icon icon={getIcon(type)} color="var(--iconTextColor)" />
     </div>
     <div>
       {values.map((value, index) => (

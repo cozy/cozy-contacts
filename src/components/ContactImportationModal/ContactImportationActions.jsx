@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import Button from 'cozy-ui/transpiled/react/deprecated/Button'
+import Button from 'cozy-ui/transpiled/react/Buttons'
 import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import Importation from '../../importation'
@@ -12,7 +12,7 @@ const ImportationActions = ({ cancelAction, importAction, importation, t }) => {
     <>
       <Button
         label={t('importation.cancel')}
-        theme="secondary"
+        variant="secondary"
         onClick={cancelAction}
       />
       {Importation.canRetry(importation) ? (
