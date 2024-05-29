@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <title><%= htmlWebpackPlugin.options.title %></title>
-    {{.ThemeCSS}}
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link
       rel="icon"
@@ -32,6 +31,7 @@
     <link rel="stylesheet" href="<%- file %>" />
     <% }); %>
     {{.CozyClientJS}}
+    {{.ThemeCSS}}
   </head>
   <div
     role="application"

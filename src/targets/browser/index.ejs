@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <title><%= htmlWebpackPlugin.options.title %></title>
-    {{.ThemeCSS}}
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link
       rel="icon"
@@ -39,6 +38,7 @@
       href="//{{.Domain}}/assets/fonts/fonts.css"
     />
     <% } %>
+    {{.ThemeCSS}}
   </head>
   <div
     role="application"
