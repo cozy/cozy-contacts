@@ -26,9 +26,6 @@ const customStyles = {
     display: 'inline-block',
     verticalAlign: 'middle'
   }),
-  menu: base => ({
-    ...base
-  }),
   noOptionsMessage: () => ({}),
   option: base => ({
     ...base,

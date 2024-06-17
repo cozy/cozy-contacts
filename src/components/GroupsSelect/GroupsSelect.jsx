@@ -67,7 +67,7 @@ export const GroupsSelect = ({
 
   const handleDelete = group => {
     closeMenu()
-    navigate(`group/${group._id}/delete/${group.name}`)
+    navigate(`/group/${group._id}/delete/${group.name}`)
   }
 
   const defaultComponents = {
