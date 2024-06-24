@@ -5,7 +5,11 @@ import { RealTimeQueries, useClient } from 'cozy-client'
 import SpinnerContact from './Common/Spinner'
 import ContentWrapper from './ContentWrapper'
 import useService from './Hooks/useService'
-import { DOCTYPE_CONTACTS, DOCTYPE_CONTACT_GROUPS } from '../helpers/doctypes'
+import {
+  DOCTYPE_CONTACTS,
+  DOCTYPE_SETTINGS,
+  DOCTYPE_CONTACT_GROUPS
+} from '../helpers/doctypes'
 import cleanTrashedGroupsAndATrashedContacts from '../thunks/cleanTrashedGroupsAndATrashedContacts'
 
 const ContactsApp = () => {
@@ -22,6 +26,7 @@ const ContactsApp = () => {
     <>
       <RealTimeQueries doctype={DOCTYPE_CONTACTS} />
       <RealTimeQueries doctype={DOCTYPE_CONTACT_GROUPS} />
+      <RealTimeQueries doctype={DOCTYPE_SETTINGS} />
       {hasServiceBeenLaunched === null ? (
         <SpinnerContact size="xxlarge" loadingType="fetching_contacts" />
       ) : (
