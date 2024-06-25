@@ -24,7 +24,7 @@ const SearchInput = () => {
 
   return (
     <InputGroup
-      className="u-mb-half-s u-mr-0-s u-mr-1"
+      className="u-mb-half-s"
       prepend={
         <Icon
           className="u-pl-1"

@@ -14,6 +14,7 @@ main
 .topbar
     display flex
     margin 1rem 0
+    gap 1rem
 
     +small-screen()
         flex-direction column
@@ -23,23 +24,27 @@ main
 
     &__left
         display flex
-        flex 1 1 auto
+        flex 1 1 67%
         justify-content center
         align-items center
-        padding-right 1rem
+        gap 1rem
 
         +small-screen()
             flex-direction column
-            padding-right 0
-            margin-bottom 1rem
+            gap 0
+
 
     &__right
         display flex
+        flex 1 1 33%
         justify-content center
         align-items center
 
-.actions
-    display flex
+        button
+            // inputs in __left have maxWidth 32rem
+            // we have here 2 buttons, so 16rem
+            // but also a gap of 0.5rem, so 15.75rem
+            max-width 15.75rem
 
 // TODO: Find a better way to set the .empty icon size
 .contacts-empty

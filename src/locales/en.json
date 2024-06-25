@@ -2,6 +2,7 @@
   "associated_accounts": "Account linked to this contact |||| Accounts linked to this contact",
   "menu": "Menu",
   "create_contact": "Create a contact",
+  "create": "Create",
   "cancel": "Cancel",
   "confirm": "Confirm",
   "edit": "Edit",
@@ -27,7 +28,7 @@
     "after": "Importing your contacts might take a few minutes, time to enjoy a well deserved coffee break ☕️"
   },
   "import": {
-    "title": "Import contacts",
+    "title": "Import",
     "store": "From other sources",
     "vcard": "From a vCard file"
   },
