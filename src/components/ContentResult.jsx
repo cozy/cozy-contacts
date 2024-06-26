@@ -5,7 +5,6 @@ import flag from 'cozy-flags'
 import Input from 'cozy-ui/transpiled/react/Input'
 import { Content } from 'cozy-ui/transpiled/react/Layout'
 import { ControlDefault } from 'cozy-ui/transpiled/react/SelectBox'
-import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import ContactsList from './ContactsList/ContactsList.jsx'
@@ -23,13 +22,13 @@ import {
 } from '../helpers/groups'
 import { filterContactsBySearch, delayedSetThreshold } from '../helpers/search'
 
-const setGroupsSelectCustomStyles = isMobile => ({
+const groupsSelectCustomStyles = {
   container: base => ({
     ...base,
-    ...(!isMobile && { maxWidth: '24rem' })
+    width: '100%'
   }),
   noOptionsMessage: base => ({ ...base, textAlign: 'left' })
-})
+}
 
 const setGroupsSelectOptions = (allGroups, defaultSelectedGroup) =>
   allGroups.length > 0 ? [defaultSelectedGroup].concat(allGroups) : allGroups
@@ -52,9 +51,7 @@ export const ContentResult = ({ contacts, allGroups }) => {
   const { searchValue } = useContext(SearchContext)
   const { setContactsDisplayed } = useContext(ContactsDiplayedContext)
   const [filteredContacts, setFilteredContacts] = useState(contacts)
-  const { isMobile } = useBreakpoints()
 
-  const groupsSelectCustomStyles = setGroupsSelectCustomStyles(isMobile)
   const groupsSelectOptions = setGroupsSelectOptions(
     allGroups,
     translatedDefaultSelectedGroup(t)
@@ -98,7 +95,6 @@ export const ContentResult = ({ contacts, allGroups }) => {
               )}
               <SearchInput />
               <GroupsSelect
-                className="u-w-100 u-maw-6"
                 allGroups={groupsSelectOptions}
                 value={selectedGroup}
                 onChange={setSelectedGroup}

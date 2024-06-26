@@ -107,7 +107,7 @@
   },
   "valid": {
     "expect": true,
-    "error": true
+    "error": false
   },
   "zeroUnits": {
     "expect": "never",

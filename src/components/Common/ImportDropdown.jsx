@@ -8,6 +8,7 @@ import Button from 'cozy-ui/transpiled/react/Buttons'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import BottomIcon from 'cozy-ui/transpiled/react/Icons/Bottom'
 import TeamIcon from 'cozy-ui/transpiled/react/Icons/Team'
+import UploadIcon from 'cozy-ui/transpiled/react/Icons/Upload'
 import Link from 'cozy-ui/transpiled/react/Link'
 import ActionMenu, {
   ActionMenuItem
@@ -21,27 +22,25 @@ const ImportDropdown = () => {
   const client = useClient()
   const navigate = useNavigate()
   const anchorRef = useRef()
-  const [menuDisplayed, setMenuDisplayed] = useState(false)
-  const showMenu = () => setMenuDisplayed(true)
-  const hideMenu = () => setMenuDisplayed(false)
+  const [showMenu, setShowMenu] = useState(false)
 
   return (
     <>
-      <span ref={anchorRef}>
-        <Button
-          onClick={showMenu}
-          label={t('import.title')}
-          variant="secondary"
-          className="u-m-0"
-          startIcon={<Icon icon={TeamIcon} />}
-          endIcon={<Icon className="u-ml-half" icon={BottomIcon} />}
-        />
-      </span>
-      {menuDisplayed && (
+      <Button
+        ref={anchorRef}
+        variant="secondary"
+        label={t('import.title')}
+        startIcon={<Icon icon={UploadIcon} />}
+        endIcon={<Icon icon={BottomIcon} />}
+        fullWidth
+        onClick={() => setShowMenu(v => !v)}
+      />
+
+      {showMenu && (
         <ActionMenu
           anchorElRef={anchorRef}
-          popperOptions={{ placement: 'bottom' }}
-          onClose={hideMenu}
+          popperOptions={{ placement: 'bottom-end' }}
+          onClose={() => setShowMenu(false)}
         >
           <ActionMenuItem
             left={<Icon icon={TeamIcon} />}

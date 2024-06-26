@@ -1,4 +1,3 @@
-import cx from 'classnames'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -30,7 +29,6 @@ export const GroupsSelect = ({
   noOptionsMessage,
   withCheckbox,
   components,
-  className,
   menuPosition
 }) => {
   const client = useClient()
@@ -77,7 +75,7 @@ export const GroupsSelect = ({
   }
 
   return (
-    <div className={cx('u-flex-auto u-w-100', className)}>
+    <>
       <ClickAwayListener onClickAway={menuIsOpen ? closeMenu : () => {}}>
         <SelectBox
           classNamePrefix="react-select"
@@ -108,7 +106,7 @@ export const GroupsSelect = ({
           menuPosition={menuPosition}
         />
       </ClickAwayListener>
-    </div>
+    </>
   )
 }
 
@@ -128,7 +126,6 @@ GroupsSelect.propTypes = {
   withCheckbox: PropTypes.bool,
   // function to be triggered after creating a group
   onGroupCreated: PropTypes.func,
-  className: PropTypes.string,
   closeMenuOnSelect: PropTypes.bool,
   menuPosition: PropTypes.oneOf(['fixed', 'absolute'])
 }
