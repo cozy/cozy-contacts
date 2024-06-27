@@ -3,9 +3,13 @@ import debounce from 'lodash/debounce'
 
 import flag from 'cozy-flags'
 
+// See https://www.fusejs.io/api/options.html#threshold
+// 0.0 is exact-matching, 1.0 is *
+const DEFAULT_FUZZY_THRESHOLD = 0.1
+
 const fuseOptions = {
   findAllMatches: true,
-  threshold: 0.3,
+  threshold: DEFAULT_FUZZY_THRESHOLD,
   ignoreLocation: true,
   ignoreFieldNorm: true,
   keys: [
