@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import { HashRouter } from 'react-router-dom'
 
 import { CozyProvider } from 'cozy-client'
+import AlertProvider from 'cozy-ui/transpiled/react/providers/Alert'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import CozyTheme from 'cozy-ui/transpiled/react/providers/CozyTheme'
 import I18n from 'cozy-ui/transpiled/react/providers/I18n'
@@ -22,13 +23,15 @@ const AppLike = ({ children, client }) => (
       <CozyProvider client={client || getCozyClient()}>
         <I18n lang="en" dictRequire={() => langEn}>
           <CozyTheme>
-            <ContactsDiplayedProvider>
-              <SelectedGroupProvider>
-                <SearchProvider>
-                  <HashRouter>{children}</HashRouter>
-                </SearchProvider>
-              </SelectedGroupProvider>
-            </ContactsDiplayedProvider>
+            <AlertProvider>
+              <ContactsDiplayedProvider>
+                <SelectedGroupProvider>
+                  <SearchProvider>
+                    <HashRouter>{children}</HashRouter>
+                  </SearchProvider>
+                </SelectedGroupProvider>
+              </ContactsDiplayedProvider>
+            </AlertProvider>
           </CozyTheme>
         </I18n>
       </CozyProvider>

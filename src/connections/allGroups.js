@@ -1,5 +1,3 @@
-import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
-
 import { DOCTYPE_CONTACT_GROUPS } from '../helpers/doctypes'
 import { buildGroupQueryById } from '../queries/queries'
 
@@ -57,12 +55,14 @@ export const trashedGroupById = async (client, groupId) => {
  * @param {Object} client - CozyClient
  * @param {String} groupId - Group id
  */
-export const cancelTrashGroupById = async (
+export const cancelTrashGroupById = async ({
   client,
   groupId,
   deleteAssociatedContacts,
+  showAlert,
+  t,
   contactsTrashCount
-) => {
+}) => {
   const groupQueryById = buildGroupQueryById(groupId)
   const { data: group } = await client.query(
     groupQueryById.definition(),
@@ -80,8 +80,11 @@ export const cancelTrashGroupById = async (
       : 'groups.remove_cancel_without_contacts'
     : 'groups.remove_canceled'
 
-  Alerter.info(translationKey, {
-    name: group.name,
-    smart_count: contactsTrashCount
+  showAlert({
+    severity: 'secondary',
+    message: t(translationKey, {
+      name: group.name,
+      smart_count: contactsTrashCount
+    })
   })
 }
