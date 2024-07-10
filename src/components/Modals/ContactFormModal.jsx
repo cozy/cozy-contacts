@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useClient, useQuery, useQueryAll } from 'cozy-client'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import { FixedDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
+import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import ContactForm, {
@@ -23,6 +23,7 @@ const ContactFormModal = () => {
   const { t } = useI18n()
   const client = useClient()
   const { contactId } = useParams()
+  const { showAlert } = useAlert()
 
   const { selectedGroup } = useContext(SelectedGroupContext)
   const [isFormBeingSubmitted, setIsFormBeingSubmitted] = useState(false)
@@ -74,7 +75,7 @@ const ContactFormModal = () => {
     } catch (err) {
       setIsFormBeingSubmitted(false)
       console.warn(err) // eslint-disable-line no-console
-      Alerter.error('error.save')
+      showAlert({ severity: 'error', message: t('error.save') })
     }
   }
 

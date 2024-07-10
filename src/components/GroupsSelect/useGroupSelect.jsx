@@ -1,7 +1,8 @@
 import get from 'lodash/get'
 import { useContext } from 'react'
 
-import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
+import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { createGroup, updateGroup } from '../../connections/allGroups'
 import { isExistingGroup } from '../../helpers/groups'
@@ -9,12 +10,17 @@ import SelectedGroupContext from '../Contexts/SelectedGroup'
 
 const useGroupsSelect = ({ allGroups, onGroupCreated, client }) => {
   const { selectedGroup, setSelectedGroup } = useContext(SelectedGroupContext)
+  const { showAlert } = useAlert()
+  const { t } = useI18n()
 
   const createGroupSelf = async group => {
     if (!group.name) return
 
     if (isExistingGroup(allGroups, group)) {
-      return Alerter.error('groups.already_exists', { name: group.name })
+      return showAlert({
+        severity: 'error',
+        message: t('groups.already_exists', { name: group.name })
+      })
     }
 
     try {
@@ -22,9 +28,15 @@ const useGroupsSelect = ({ allGroups, onGroupCreated, client }) => {
       if (onGroupCreated) {
         onGroupCreated(createdGroup)
       }
-      return Alerter.success('groups.created.success')
+      return showAlert({
+        severity: 'success',
+        message: t('groups.created.success')
+      })
     } catch {
-      return Alerter.error('groups.created.error')
+      return showAlert({
+        severity: 'error',
+        message: t('groups.created.error')
+      })
     }
   }
 
@@ -35,7 +47,10 @@ const useGroupsSelect = ({ allGroups, onGroupCreated, client }) => {
       get(group, '_id') === get(selectedGroup, '_id')
 
     if (isExistingGroup(allOtherGroups, { name: newName })) {
-      return Alerter.error('groups.already_exists', { name: newName })
+      return showAlert({
+        severity: 'error',
+        message: t('groups.already_exists', { name: newName })
+      })
     }
 
     try {
@@ -43,9 +58,15 @@ const useGroupsSelect = ({ allGroups, onGroupCreated, client }) => {
       if (isRenamedGroupSelected) {
         setSelectedGroup(data)
       }
-      return Alerter.success('groups.renamed.success')
+      return showAlert({
+        severity: 'success',
+        message: t('groups.renamed.success')
+      })
     } catch {
-      return Alerter.error('groups.renamed.error')
+      return showAlert({
+        severity: 'error',
+        message: t('groups.renamed.error')
+      })
     }
   }
 

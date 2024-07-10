@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { useClient } from 'cozy-client'
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
+import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import ContactImportationActions from './ContactImportationActions'
@@ -18,6 +18,7 @@ const ContactImportationModal = () => {
   const client = useClient()
   const navigate = useNavigate()
   const closeAction = () => navigate('/')
+  const { showAlert } = useAlert()
 
   const [progress, setProgress] = useState(null)
   const [importation, setImportation] = useState(Importation.INIT)
@@ -53,9 +54,12 @@ const ContactImportationModal = () => {
             ? `, ${t('importation.update', updated)}`
             : `${t('importation.update', updated)}`
           : ''
-      Alerter.success(
-        `${t('importation.complete_success')} ${stringCreated}${stringUpdated}`
-      )
+      showAlert({
+        severity: 'success',
+        message: `${t(
+          'importation.complete_success'
+        )} ${stringCreated}${stringUpdated}`
+      })
       closeAction()
     } else {
       setProgress(null)

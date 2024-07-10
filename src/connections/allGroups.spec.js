@@ -7,6 +7,8 @@ import {
   trashedGroupById
 } from './allGroups'
 
+const t = x => x
+
 const setup = ({
   mockDestroy = jest.fn(),
   mockSave = jest.fn(),
@@ -39,6 +41,7 @@ describe('allGroups', () => {
       })
     })
   })
+
   describe('trashedGroupById', () => {
     it('should trash group', async () => {
       const group = { _id: 'group0' }
@@ -55,13 +58,19 @@ describe('allGroups', () => {
       })
     })
   })
+
   describe('cancelTrashGroupById', () => {
     it('should cancel trash a group', async () => {
       const mockSave = jest.fn()
       const group = { _id: 'group0', trashed: true }
       const client = setup({ mockSave, group })
 
-      await cancelTrashGroupById(client, 'group0')
+      await cancelTrashGroupById({
+        client,
+        groupId: 'group0',
+        t,
+        showAlert: () => {}
+      })
 
       await waitFor(() => {
         expect(mockSave).toHaveBeenCalledWith({ _id: 'group0', trashed: false })

@@ -9,16 +9,13 @@ import flag from 'cozy-flags'
 import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
 import { Main, Layout } from 'cozy-ui/transpiled/react/Layout'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
 import { ModalManager } from '../helpers/modalManager'
 
 const AppLayout = () => {
   const client = useClient()
-  const { t } = useI18n()
   const { isMobile } = useBreakpoints()
 
   return (
@@ -33,7 +30,6 @@ const AppLayout = () => {
       <Main>
         <ContactsSelectionBar />
         <Outlet />
-        <Alerter t={t} />
         <ModalManager />
       </Main>
       <Sprite />

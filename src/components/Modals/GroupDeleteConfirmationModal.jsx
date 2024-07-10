@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { useClient } from 'cozy-client'
+import Button from 'cozy-ui/transpiled/react/Buttons'
 import Checkbox from 'cozy-ui/transpiled/react/Checkbox'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
+import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import {
@@ -24,11 +25,11 @@ const GroupDeleteConfirmationModal = () => {
   const [deleteAssociatedContacts, setDeleteAssociatedContacts] =
     useState(false)
   const [isBusy, setIsBusy] = useState(false)
-
   const navigate = useNavigate()
   const { groupId, groupName } = useParams()
   const client = useClient()
   const { t } = useI18n()
+  const { showAlert } = useAlert()
 
   const handleDeleteGroup = async () => {
     setIsBusy(true)
@@ -50,24 +51,36 @@ const GroupDeleteConfirmationModal = () => {
         : 'groups.removed_without_contacts'
       : 'groups.removed'
 
-    Alerter.info(translationKey, {
-      name: groupName,
-      smart_count: contactsTrashCount,
-      buttonText: t('cancel'),
-      buttonAction: () => {
-        clearTimeout(timeout)
+    showAlert({
+      severity: 'secondary',
+      duration: alertDuration,
+      message: t(translationKey, {
+        name: groupName,
+        smart_count: contactsTrashCount
+      }),
+      action: (
+        <Button
+          variant="text"
+          size="small"
+          label={t('cancel')}
+          style={{ color: 'var(--secondaryContrastTextColor)' }}
+          onClick={() => {
+            clearTimeout(timeout)
 
-        cancelTrashGroupById(
-          client,
-          groupId,
-          deleteAssociatedContacts,
-          contactsTrashCount
-        )
-        if (deleteAssociatedContacts) {
-          cancelTrashContactsByGroupId(client, groupId)
-        }
-      },
-      duration: alertDuration
+            cancelTrashGroupById({
+              client,
+              groupId,
+              deleteAssociatedContacts,
+              showAlert,
+              t,
+              contactsTrashCount
+            })
+            if (deleteAssociatedContacts) {
+              cancelTrashContactsByGroupId(client, groupId)
+            }
+          }}
+        />
+      )
     })
 
     handleClose()

@@ -9,7 +9,7 @@ import Grid from 'cozy-ui/transpiled/react/Grid'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import RenameIcon from 'cozy-ui/transpiled/react/Icons/Rename'
 import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
-import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
+import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { updateContactGroups } from '../../helpers/groups'
@@ -38,12 +38,13 @@ const customStyles = {
 const ContactInfoTitle = ({ contact, allGroups }) => {
   const navigate = useNavigate()
   const { t } = useI18n()
+  const { showAlert } = useAlert()
 
   const handleChange = async nextGroups => {
     try {
       await updateContactGroups(contact, nextGroups)
     } catch (error) {
-      Alerter.success('error.group_selected')
+      showAlert({ severity: 'error', message: t('error.group_selected') })
       log.error('There was a problem when selecting a group', error)
     }
   }
