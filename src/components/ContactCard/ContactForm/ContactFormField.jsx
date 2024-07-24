@@ -1,4 +1,3 @@
-import uniqueId from 'lodash/uniqueId'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { FieldArray } from 'react-final-form-arrays'
@@ -14,7 +13,6 @@ import { addField } from '../../../helpers/fields'
 
 const ContactFormField = ({ name, icon, isArray, renderInput }) => {
   const { t } = useI18n()
-  const fieldID = uniqueId('field_')
 
   return (
     <Media align="top" className="contact-form-field">
@@ -38,7 +36,6 @@ const ContactFormField = ({ name, icon, isArray, renderInput }) => {
                   <ContactFormFieldArrayItem
                     key={nameWithIndex}
                     fields={fields}
-                    fieldID={fieldID}
                     index={index}
                     nameWithIndex={nameWithIndex}
                     name={name}
@@ -55,7 +52,7 @@ const ContactFormField = ({ name, icon, isArray, renderInput }) => {
             )}
           </FieldArray>
         ) : (
-          <div className="u-mt-1">{renderInput(name, fieldID)}</div>
+          <div className="u-mt-1">{renderInput(name)}</div>
         )}
       </Bd>
     </Media>

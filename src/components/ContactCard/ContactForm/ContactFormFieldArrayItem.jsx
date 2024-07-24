@@ -9,7 +9,6 @@ import { removeField } from '../../../helpers/fields'
 
 const ContactFormFieldArrayItem = ({
   fields,
-  fieldID,
   index,
   nameWithIndex,
   name,
@@ -19,7 +18,7 @@ const ContactFormFieldArrayItem = ({
 
   return (
     <div className="u-mt-1 u-flex u-pos-relative">
-      {renderInput(`${nameWithIndex}.${name}`, fieldID)}
+      {renderInput(`${nameWithIndex}.${name}`)}
 
       {showRemove && (
         <ListItemIcon className="contact-form-field__delete-icon">
