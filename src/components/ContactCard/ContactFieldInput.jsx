@@ -1,3 +1,4 @@
+import uniqueId from 'lodash/uniqueId'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { Field } from 'react-final-form'
@@ -21,6 +22,7 @@ const ContactFieldInput = ({
   contacts,
   ...props
 }) => {
+  const [id] = useState(uniqueId('field_')) // state only use to generate id once and not at each render
   const [hasBeenFocused, setHasBeenFocused] = useState(false)
   const [isAddressDialogOpen, setIsAddressDialogOpen] = useState(false)
   const [isRelatedContactDialogOpen, setIsRelatedContactDialogOpen] =
@@ -42,6 +44,7 @@ const ContactFieldInput = ({
     <div className="contact-form-field__wrapper u-flex u-flex-column-s">
       <Field
         {...propsUpdated}
+        id={id}
         attributes={restAttributes}
         name={name}
         onFocus={onFocus}

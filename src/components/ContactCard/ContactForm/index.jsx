@@ -69,17 +69,17 @@ const ContactForm = ({ contact, onSubmit, contacts }) => {
                   name={name}
                   icon={icon}
                   isArray={isArray}
-                  renderInput={(inputName, id) => {
+                  renderInput={inputName => {
                     const isOneOfFields =
                       oneOfMandatoryFields.includes(inputName)
                     const isError = isOneOfFields && !valid && submitFailed
+
                     return (
                       <ContactFieldInput
                         attributes={attributes}
                         contacts={contacts}
                         error={isError}
                         helperText={isError ? errors[inputName] : null}
-                        id={id}
                         name={inputName}
                         label={t(`fields.${name}`)}
                         labelProps={label}
