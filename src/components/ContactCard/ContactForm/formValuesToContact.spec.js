@@ -368,6 +368,7 @@ describe('formValuesToContact', () => {
     const formValues = {
       address: [
         {
+          fieldId: 'fieldId_1',
           address: 'Hinton Road, 05034 Fresno, Singapore',
           addressnumber: undefined,
           addressstreet: 'Hinton Road',

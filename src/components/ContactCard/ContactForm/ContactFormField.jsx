@@ -32,16 +32,20 @@ const ContactFormField = ({ name, icon, isArray, renderInput }) => {
           <FieldArray name={name}>
             {({ fields }) => (
               <div className="u-mt-1 u-mb-half">
-                {fields.map((nameWithIndex, index) => (
-                  <ContactFormFieldArrayItem
-                    key={nameWithIndex}
-                    fields={fields}
-                    index={index}
-                    nameWithIndex={nameWithIndex}
-                    name={name}
-                    renderInput={renderInput}
-                  />
-                ))}
+                {fields.map((nameWithIndex, index) => {
+                  const key = fields.value[index]?.fieldId || nameWithIndex
+
+                  return (
+                    <ContactFormFieldArrayItem
+                      key={key}
+                      fields={fields}
+                      index={index}
+                      nameWithIndex={nameWithIndex}
+                      name={name}
+                      renderInput={renderInput}
+                    />
+                  )
+                })}
                 <Button
                   variant="text"
                   startIcon={<Icon icon={PlusIcon} />}

@@ -73,6 +73,7 @@ export const johnDoeFormValues = {
   cozyLabel: '{"type":"MyCozy"}',
   address: [
     {
+      fieldId: 'fieldId_1',
       address: '94 Hinton Road 05034 Fresno, Singapore',
       addressLabel: '{"type":"Home"}',
       addressapartment: undefined,
@@ -89,6 +90,7 @@ export const johnDoeFormValues = {
       addressstreet: '94 Hinton Road 05034 Fresno, Singapore'
     },
     {
+      fieldId: 'fieldId_2',
       address:
         '426 Runolfsson Knolls 84573 Port Easter Cocos (Keeling) Islands',
       addressLabel: '{"type":"Work"}',
@@ -108,20 +110,24 @@ export const johnDoeFormValues = {
   ],
   email: [
     {
+      fieldId: 'fieldId_3',
       email: 'john.doe@cozycloud.cc',
       emailLabel: undefined
     },
     {
+      fieldId: 'fieldId_4',
       email: 'john.doe@posteo.net',
       emailLabel: '{"type":"personal"}'
     }
   ],
   phone: [
     {
+      fieldId: 'fieldId_5',
       phone: '+33 (2)0 90 00 54 04',
       phoneLabel: undefined
     },
     {
+      fieldId: 'fieldId_6',
       phone: '+33 6 77 11 22 33',
       phoneLabel: undefined
     }

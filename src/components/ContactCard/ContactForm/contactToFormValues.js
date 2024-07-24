@@ -1,3 +1,5 @@
+import uniqueId from 'lodash/uniqueId'
+
 import { fields } from './fieldsConfig'
 import { makeItemLabel, makeRelatedContact, movePrimaryToHead } from './helpers'
 import { getFormattedAddress } from '../../../helpers/contacts'
@@ -30,6 +32,7 @@ const contactToFormValues = (contact, t) => {
     const addressValue =
       address && address.length > 0
         ? movePrimaryToHead(address).map(addressInfo => ({
+            fieldId: uniqueId('fieldId_'),
             address: getFormattedAddress(addressInfo, t),
             addressnumber: addressInfo.number,
             addressstreet:
@@ -53,6 +56,7 @@ const contactToFormValues = (contact, t) => {
     const emailValue =
       email && email.length > 0
         ? movePrimaryToHead(email).map(item => ({
+            fieldId: uniqueId('fieldId_'),
             email: item?.address,
             emailLabel: makeItemLabel(item)
           }))
@@ -60,6 +64,7 @@ const contactToFormValues = (contact, t) => {
     const phoneValue =
       phone && phone.length > 0
         ? movePrimaryToHead(phone).map(item => ({
+            fieldId: uniqueId('fieldId_'),
             phone: item?.number,
             phoneLabel: makeItemLabel(item)
           }))
