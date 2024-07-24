@@ -17,19 +17,13 @@ branches:
     - master
      # detect also tag like x.y.z or x.y.z-beta.n as travis consider them to be branches
     - /^\d+\.\d+\.\d+(\-beta.\d+)?$/
-stages:
-  - prebuild
-  - build
 jobs:
   include:
     - name: 'Lint'
-      stage: 'prebuild'
       script: yarn lint
     - name: 'Unit tests'
-      stage: 'prebuild'
       script: yarn test
     - name: Build
-      stage: build
       before_install:
         - if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then openssl aes-256-cbc -K $encrypted_e51c23250372_key -iv $encrypted_e51c23250372_iv -in id_rsa_downcloud_contacts.enc -out /tmp/id_rsa_downcloud_contacts -d; fi
         - if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then eval "$(ssh-agent -s)"; fi
