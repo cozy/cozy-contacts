@@ -11,7 +11,6 @@ const extraPluginsConfig = {
         'cozy-device-helper',
         'cozy-doctypes',
         'cozy-flags',
-        'cozy-harvest-lib',
         'cozy-intent',
         'cozy-interapp',
         'cozy-keys-lib',
