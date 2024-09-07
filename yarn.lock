@@ -5183,10 +5183,10 @@ cozy-minilog@^3.3.1:
   dependencies:
     microee "0.0.6"
 
-cozy-realtime@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/cozy-realtime/-/cozy-realtime-5.0.0.tgz#247887700bd8fb1079c29271cf367ac6876a1517"
-  integrity sha512-nNUxHAYsfz3ZTKNNOm5AT6Hc5dr7qthei1/u0GWRn6plnPy6me69J0lxle1tMq/9QZ9DNSxSbHCCz3UVHuGamg==
+cozy-realtime@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/cozy-realtime/-/cozy-realtime-5.0.1.tgz#402d15a79e1b83b1e5e6a468e1cc95508fe2ebec"
+  integrity sha512-3mtZwTnqpVOvauQDUOYa8F5qKnOXBQbs4syBqGrNbMehowPLXJEy6B4xGcT/HGUZwpXRr7p5NFPV7zD8D6el1Q==
   dependencies:
     "@cozy/minilog" "^1.0.0"
     cozy-device-helper "^3.0.0"
