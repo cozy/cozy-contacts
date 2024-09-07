@@ -5030,10 +5030,10 @@ cozy-doctypes@^1.83.8:
     lodash "^4.17.19"
     prop-types "^15.7.2"
 
-cozy-doctypes@^1.89.4:
-  version "1.89.4"
-  resolved "https://registry.yarnpkg.com/cozy-doctypes/-/cozy-doctypes-1.89.4.tgz#3d9d2c796bf666293cb7702593cb9961a5fe7018"
-  integrity sha512-TEbM0FRY3uFoL+vez5eFB/RDXlJ6zEf4o6Wi/P85kCJnBOUtSTl767bjjmFZ/x764vBfkn3VaLE1ct5qkyLkcQ==
+cozy-doctypes@^1.90.0:
+  version "1.90.0"
+  resolved "https://registry.yarnpkg.com/cozy-doctypes/-/cozy-doctypes-1.90.0.tgz#6ac69043d45be910c27cb0793a3e45e1a96b91de"
+  integrity sha512-H/T+FD6ufD3YC/L22GBcDBd3C5j5POBuwHO860AjcVSWNDaKwFIat/LyDKjqDhPXEzo7ZgXgLEFw3KQzpC7yVw==
   dependencies:
     cozy-logger "^1.10.4"
     date-fns "^1.30.1"
@@ -5041,10 +5041,10 @@ cozy-doctypes@^1.89.4:
     lodash "^4.17.19"
     prop-types "^15.7.2"
 
-cozy-doctypes@^1.90.0:
-  version "1.90.0"
-  resolved "https://registry.yarnpkg.com/cozy-doctypes/-/cozy-doctypes-1.90.0.tgz#6ac69043d45be910c27cb0793a3e45e1a96b91de"
-  integrity sha512-H/T+FD6ufD3YC/L22GBcDBd3C5j5POBuwHO860AjcVSWNDaKwFIat/LyDKjqDhPXEzo7ZgXgLEFw3KQzpC7yVw==
+cozy-doctypes@^1.91.1:
+  version "1.91.1"
+  resolved "https://registry.yarnpkg.com/cozy-doctypes/-/cozy-doctypes-1.91.1.tgz#cf22ce27a751228009f662f1166c3deaf479b7d6"
+  integrity sha512-lP1nHZE9JIWtTbeSS3kGvtDGZsoY2wVMY2Smfv7QF9PJG2OFs1EKa02XSeJZhQGYGfXeVnvm6jLN4IIpkMAl0A==
   dependencies:
     cozy-logger "^1.10.4"
     date-fns "^1.30.1"
