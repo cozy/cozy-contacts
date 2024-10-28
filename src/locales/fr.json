@@ -143,7 +143,7 @@
   },
   "groups": {
     "none": "Il n'y a pas encore de groupes.",
-    "manage": "Gérer les groupes",
+    "manage": "Groupes",
     "create": "Créer un groupe",
     "created": {
       "success": "Le groupe a bien été créé.",

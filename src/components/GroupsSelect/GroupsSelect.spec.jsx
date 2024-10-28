@@ -34,7 +34,7 @@ describe('GroupsSelect', () => {
     setup()
 
     act(() => {
-      fireEvent.click(screen.getByText('Manage groups'))
+      fireEvent.click(screen.getByText('Groups'))
     })
 
     for (const group of groups) {
@@ -47,7 +47,7 @@ describe('GroupsSelect', () => {
     setup()
 
     act(() => {
-      fireEvent.click(screen.getByText('Manage groups'))
+      fireEvent.click(screen.getByText('Groups'))
     })
 
     act(() => {
@@ -98,7 +98,7 @@ describe('GroupsSelect', () => {
     setup()
 
     act(() => {
-      fireEvent.click(screen.getByText('Manage groups'))
+      fireEvent.click(screen.getByText('Groups'))
     })
 
     act(() => {
@@ -150,7 +150,7 @@ describe('GroupsSelect', () => {
 
     act(() => {
       // it should replace the field by input with group name as value
-      fireEvent.click(screen.getByText('Manage groups'))
+      fireEvent.click(screen.getByText('Groups'))
     })
 
     act(() => {

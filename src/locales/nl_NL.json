@@ -107,7 +107,7 @@
   },
   "groups": {
     "none": "Er is nog geen groep.",
-    "manage": "Groepen beheren",
+    "manage": "Groepen",
     "create": "Groep samenstellen",
     "created": {
       "success": "De groep is samengesteld.",
