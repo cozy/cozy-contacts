@@ -38,11 +38,6 @@ export const importContact = async (client, attributes) => {
   return client.create(DOCTYPE_CONTACTS, attributes, null)
 }
 
-export const createContact = (client, attributes) =>
-  client.create(DOCTYPE_CONTACTS, attributes)
-
-export const updateContact = (client, contact) => client.save(contact)
-
 const isContactSynced = contact => {
   return Object.keys(contact.cozyMetadata?.sync || {}).length > 0
 }
@@ -88,7 +83,7 @@ export const createOrUpdateContact = async ({
   formData,
   selectedGroup
 }) => {
-  const createOrUpdate = isUpdated ? updateContact : createContact
+  const createOrUpdate = isUpdated ? client.save : client.create
   let updatedContact = merge({}, formData)
 
   if (hasSelectedGroup(selectedGroup)) {

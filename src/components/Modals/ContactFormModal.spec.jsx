@@ -9,8 +9,6 @@ import { createOrUpdateContact } from '../../connections/allContacts'
 import AppLike from '../../tests/Applike'
 
 jest.mock('../../connections/allContacts', () => ({
-  createContact: jest.fn().mockResolvedValue({ data: 'created' }),
-  updateContact: jest.fn().mockResolvedValue({ data: 'updated' }),
   createOrUpdateContact: jest.fn()
 }))
 jest.mock('cozy-client/dist/hooks', () => ({
