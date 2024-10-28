@@ -1,17 +1,22 @@
 import get from 'lodash/get'
+import throttle from 'lodash/throttle'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { useClient } from 'cozy-client'
 import minilog from 'cozy-minilog'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import Grid from 'cozy-ui/transpiled/react/Grid'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import RenameIcon from 'cozy-ui/transpiled/react/Icons/Rename'
+import StarIcon from 'cozy-ui/transpiled/react/Icons/Star'
+import StarOutlineIcon from 'cozy-ui/transpiled/react/Icons/StarOutline'
 import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
 import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
+import { updateContact } from '../../connections/allContacts'
 import { updateContactGroups } from '../../helpers/groups'
 import ContactIdentity from '../ContactCard/ContactIdentity'
 import { fullContactPropTypes } from '../ContactPropTypes'
@@ -39,6 +44,7 @@ const ContactInfoTitle = ({ contact, allGroups }) => {
   const navigate = useNavigate()
   const { t } = useI18n()
   const { showAlert } = useAlert()
+  const client = useClient()
 
   const handleChange = async nextGroups => {
     try {
@@ -52,6 +58,23 @@ const ContactInfoTitle = ({ contact, allGroups }) => {
   const handleOnGroupCreated = async createdGroup => {
     await contact.groups.addById(createdGroup._id)
   }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const throttledUpdateContact = useCallback(throttle(updateContact, 500), [])
+
+  const handleFavorite = () => {
+    throttledUpdateContact({
+      client,
+      contact,
+      attributes: {
+        cozyMetadata: {
+          favorite: !contact.cozyMetadata?.favorite
+        }
+      }
+    })
+  }
+  const isFavorite = contact.cozyMetadata?.favorite ?? false
+  const favoriteIcon = isFavorite ? StarIcon : StarOutlineIcon
 
   const handleValue = get(contact, 'relationships.groups.data', [])
 
@@ -72,6 +95,16 @@ const ContactInfoTitle = ({ contact, allGroups }) => {
             noOptionsMessage={() => t('groups.none')}
             withCheckbox
             menuPosition="fixed"
+          />
+        </Grid>
+        <Grid item>
+          <Button
+            className="u-miw-auto"
+            variant="secondary"
+            label={<Icon icon={favoriteIcon} size={12} />}
+            size="small"
+            onClick={handleFavorite}
+            aria-label={t('edit')}
           />
         </Grid>
         <Grid item>
