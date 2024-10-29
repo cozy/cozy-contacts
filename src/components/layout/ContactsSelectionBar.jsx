@@ -7,6 +7,7 @@ import ActionsBar from 'cozy-ui/transpiled/react/ActionsBar'
 import { makeActions } from 'cozy-ui/transpiled/react/ActionsMenu/Actions'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
+import { favorite as favoriteAction } from '../Actions/favorite'
 import { selectAll as selectAllAction } from '../Actions/selectAll'
 import { trash as trashAction } from '../Actions/trash'
 import ContactsDiplayedContext from '../Contexts/ContactsDiplayed'
@@ -24,7 +25,7 @@ const ContactsSelectionBar = ({
   const { t } = useI18n()
   const { contactsDisplayed } = useContext(ContactsDiplayedContext)
 
-  const actions = makeActions([selectAllAction, trashAction], {
+  const actions = makeActions([selectAllAction, trashAction, favoriteAction], {
     contactsDisplayed,
     selectAll,
     selection,
