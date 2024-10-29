@@ -126,7 +126,7 @@
   },
   "groups": {
     "none": "No existe un grupo.",
-    "manage": "Administrar grupos",
+    "manage": "Grupos",
     "create": "Crear un grupo",
     "created": {
       "success": "El grupo ha sido creado correctamente.",

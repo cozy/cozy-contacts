@@ -3,11 +3,13 @@ import PropTypes from 'prop-types'
 import React, { useContext } from 'react'
 
 import { useClient } from 'cozy-client'
-import SelectionBar from 'cozy-ui/transpiled/react/SelectionBar'
+import ActionsBar from 'cozy-ui/transpiled/react/ActionsBar'
+import { makeActions } from 'cozy-ui/transpiled/react/ActionsMenu/Actions'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import { trash as trashAction, selectAll as selectAllAction } from '../Actions'
-import { makeActions } from '../Actions/helpers'
+import { favorite as favoriteAction } from '../Actions/favorite'
+import { selectAll as selectAllAction } from '../Actions/selectAll'
+import { trash as trashAction } from '../Actions/trash'
 import ContactsDiplayedContext from '../Contexts/ContactsDiplayed'
 import withModalContainer from '../HOCs/withModal'
 import withSelection from '../Selection/selectionContainer'
@@ -23,7 +25,7 @@ const ContactsSelectionBar = ({
   const { t } = useI18n()
   const { contactsDisplayed } = useContext(ContactsDiplayedContext)
 
-  const actions = makeActions([selectAllAction, trashAction], {
+  const actions = makeActions([selectAllAction, trashAction, favoriteAction], {
     contactsDisplayed,
     selectAll,
     selection,
@@ -35,11 +37,7 @@ const ContactsSelectionBar = ({
   })
 
   return selection.length > 0 ? (
-    <SelectionBar
-      selected={selection}
-      hideSelectionBar={clearSelection}
-      actions={actions}
-    />
+    <ActionsBar docs={selection} actions={actions} />
   ) : null
 }
 

@@ -1,13 +1,13 @@
 import flow from 'lodash/flow'
 import PropTypes from 'prop-types'
 import React from 'react'
+import { DOCTYPE_CONTACTS } from 'src/helpers/doctypes'
 
 import { withClient } from 'cozy-client'
 import IntentHeader from 'cozy-ui/transpiled/react/IntentHeader'
 import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import IntentMain from './IntentMain'
-import { createContact as createContactWithClient } from '../../connections/allContacts'
 import ContactForm from '../ContactCard/ContactForm'
 
 const CreateContact = ({ client, data, onTerminate, onError, onCancel }) => {
@@ -15,7 +15,7 @@ const CreateContact = ({ client, data, onTerminate, onError, onCancel }) => {
     try {
       const me = !!data.me
       if (me) contact.metadata.me = true
-      const resp = await createContactWithClient(client, contact)
+      const resp = await client.create(DOCTYPE_CONTACTS, contact)
       onTerminate(resp.data)
     } catch (e) {
       onError('Could not create contact')

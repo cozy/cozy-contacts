@@ -139,11 +139,13 @@
     "close": "Close",
     "selected_count": "contact selected |||| contacts selected",
     "trash_action": "delete",
-    "select_all_action": "Select all"
+    "select_all_action": "Select all",
+    "add_favorite": "Add to favorites",
+    "remove_favorite": "Remove favorites"
   },
   "groups": {
     "none": "There is no existing group.",
-    "manage": "Manage groups",
+    "manage": "Groups",
     "create": "Create a group",
     "created": {
       "success": "The group has been created correctly.",
