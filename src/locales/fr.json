@@ -139,7 +139,9 @@
     "close": "Fermer",
     "selected_count": "contact sélectionné |||| contacts sélectionnés",
     "trash_action": "Supprimer",
-    "select_all_action": "Sélectionner tout"
+    "select_all_action": "Sélectionner tout",
+    "add_favorite": "Ajouter aux favoris",
+    "remove_favorite": "Retirer des favoris"
   },
   "groups": {
     "none": "Il n'y a pas encore de groupes.",
