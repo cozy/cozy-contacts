@@ -25,8 +25,11 @@ export const trash = ({
   client,
   t
 }) => {
+  const label = t('SelectionBar.trash_action')
+
   return {
-    name: 'trash_action',
+    name: 'trash',
+    label,
     icon: 'trash',
     action: () => {
       const hasConnectedAccounts = contact =>

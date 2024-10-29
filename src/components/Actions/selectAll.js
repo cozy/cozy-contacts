@@ -7,9 +7,12 @@
  * @param {Function} options.selectAll - Function to select all contacts
  * @returns {Object} - Object with action
  */
-export const selectAll = ({ contactsDisplayed, selection, selectAll }) => {
+export const selectAll = ({ contactsDisplayed, selection, selectAll, t }) => {
+  const label = t('SelectionBar.select_all_action')
+
   return {
-    name: 'select_all_action',
+    name: 'selectAll',
+    label,
     icon: 'select-all',
     action: () => {
       const isAllContactsSelected =
