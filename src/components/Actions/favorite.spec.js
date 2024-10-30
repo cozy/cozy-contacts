@@ -1,12 +1,10 @@
 import { favorite } from './favorite'
-import { updateContact } from '../../connections/allContacts'
-
-jest.mock('../../connections/allContacts', () => ({
-  updateContact: jest.fn()
-}))
 
 describe('favorite', () => {
   const clearSelection = jest.fn()
+  const client = {
+    saveAll: jest.fn()
+  }
 
   const favoriteSelection = [
     {
@@ -22,7 +20,7 @@ describe('favorite', () => {
       }
     }
   ]
-  const unfavoriteSelection = [
+  const notfavoriteSelection = [
     {
       _id: '100',
       cozyMetadata: {
@@ -36,11 +34,17 @@ describe('favorite', () => {
       }
     }
   ]
-  const mixedSelection = [favoriteSelection[0], unfavoriteSelection[0]]
+  const mixedFavoriteSelection = [favoriteSelection[0], notfavoriteSelection[0]]
+
+  beforeEach(() => {
+    clearSelection.mockClear()
+    client.saveAll.mockClear()
+  })
 
   it('should return action with "add_favorite" label & "star-outline" icon', async () => {
     const action = favorite({
-      selection: unfavoriteSelection,
+      client,
+      selection: notfavoriteSelection,
       clearSelection,
       t: jest.fn(k => k)
     })
@@ -49,7 +53,8 @@ describe('favorite', () => {
     expect(action.icon).toBe('star-outline')
 
     const action2 = favorite({
-      selection: mixedSelection,
+      client,
+      selection: mixedFavoriteSelection,
       clearSelection,
       t: jest.fn(k => k)
     })
@@ -60,6 +65,7 @@ describe('favorite', () => {
 
   it('should return action with "remove_favorite" label & "star" icon', async () => {
     const action = favorite({
+      client,
       selection: favoriteSelection,
       clearSelection,
       t: jest.fn(k => k)
@@ -69,17 +75,29 @@ describe('favorite', () => {
     expect(action.icon).toBe('star')
   })
 
-  it('Should only update not favorite contacts', async () => {
+  it('Should call "saveAll" & "clearSelection" one time with "mixedFavoriteSelection"', async () => {
     const action = favorite({
-      selection: mixedSelection,
+      client,
+      selection: mixedFavoriteSelection,
       clearSelection,
       t: jest.fn(k => k)
     })
 
-    expect(action.label).toBe('SelectionBar.add_favorite')
-    expect(action.icon).toBe('star-outline')
     await action.action()
-    expect(updateContact).toHaveBeenCalledTimes(1)
+    expect(client.saveAll).toHaveBeenCalledTimes(1)
+    expect(clearSelection).toHaveBeenCalledTimes(1)
+  })
+
+  it('Should call "saveAll" & "clearSelection" one time with "notfavoriteSelection"', async () => {
+    const action = favorite({
+      client,
+      selection: notfavoriteSelection,
+      clearSelection,
+      t: jest.fn(k => k)
+    })
+
+    await action.action()
+    expect(client.saveAll).toHaveBeenCalledTimes(1)
     expect(clearSelection).toHaveBeenCalledTimes(1)
   })
 })

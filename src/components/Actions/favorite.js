@@ -1,6 +1,6 @@
 import minilog from 'cozy-minilog'
 
-import { updateContact } from '../../connections/allContacts'
+import { mergeContact } from '../../helpers/mergeContact'
 
 const log = minilog('connections/allContacts')
 
@@ -27,19 +27,14 @@ export const favorite = ({ client, selection, clearSelection, t }) => {
     action: async () => {
       const contactToUpdate = isAllFavorite ? selection : noFavoriteSelected
       const favorite = isAllFavorite ? false : true
+      const contactsToSave = contactToUpdate.map(contact =>
+        mergeContact(contact, {
+          cozyMetadata: { favorite }
+        })
+      )
 
       try {
-        await Promise.all(
-          contactToUpdate.map(contact =>
-            updateContact({
-              client,
-              contact,
-              attributes: {
-                cozyMetadata: { favorite }
-              }
-            })
-          )
-        )
+        await client.saveAll(contactsToSave)
       } catch (error) {
         log.error('Error updating contact', error)
       } finally {
