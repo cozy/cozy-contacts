@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { Form } from 'react-final-form'
 
+import { getHasManyItems } from 'cozy-client/dist/associations/HasMany'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import ContactFormField from './ContactFormField'
@@ -104,4 +105,31 @@ ContactForm.propTypes = {
   })
 }
 
-export default ContactForm
+// Used to avoid unnecessary multiple rendering of ContactForm when creating a new contact in another way.
+// These unnecessary renderings prevented the addition of a newly created linked contact. (Creation of a contact when selecting a linked contact)
+export const isSameContactProp = (prevProps, nextProps) => {
+  if (!prevProps.contact?.relationships || !nextProps.contact?.relationships) {
+    return false
+  }
+
+  const prevContactIdsRelated = getHasManyItems(
+    prevProps.contact,
+    'related'
+  ).map(r => r._id)
+  const nextContactIdsRelated = getHasManyItems(
+    nextProps.contact,
+    'related'
+  ).map(r => r._id)
+
+  if (
+    prevContactIdsRelated.length !== nextContactIdsRelated.length ||
+    !prevContactIdsRelated.every(id => nextContactIdsRelated.includes(id))
+  ) {
+    return false
+  }
+
+  return true
+}
+
+// export default ContactForm
+export default React.memo(ContactForm, isSameContactProp)

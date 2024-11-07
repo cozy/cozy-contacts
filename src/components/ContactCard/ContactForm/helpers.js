@@ -2,6 +2,7 @@ import isEqual from 'lodash/isEqual'
 import merge from 'lodash/merge'
 
 import { Association } from 'cozy-client'
+import { makeDisplayName } from 'cozy-client/dist/models/contact'
 
 import contactToFormValues from './contactToFormValues'
 import { DOCTYPE_CONTACTS } from '../../../helpers/doctypes'
@@ -203,7 +204,8 @@ export const makeRelatedContact = contact => {
   }
 
   const relatedData = contact.related.data.reduce((acc, curr) => {
-    acc[curr._id] = curr.displayName
+    // Use `makeDisplayName` because if the contact is newly created, it has no `displayName` attribute. (Creation of a contact when selecting a linked contact)
+    acc[curr._id] = curr.displayName || makeDisplayName(curr)
     return acc
   }, {})
 
