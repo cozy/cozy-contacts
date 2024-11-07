@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { useForm } from 'react-final-form'
 
+import { makeDisplayName } from 'cozy-client/dist/models/contact'
 import ContactsListModal from 'cozy-ui/transpiled/react/ContactsListModal'
 
 export const RelatedContactList = ({ name, onClose, contacts }) => {
@@ -11,7 +12,8 @@ export const RelatedContactList = ({ name, onClose, contacts }) => {
    * @param {import('cozy-client/types/types').IOCozyContact} contact
    */
   const onClickContactsListModal = contact => {
-    change(name, contact.displayName)
+    // Use `makeDisplayName` because if the contact is newly created, it has no `displayName` attribute. (Creation of a contact when selecting a linked contact)
+    change(name, makeDisplayName(contact))
     change(`${name}Id`, contact._id)
     onClose()
   }

@@ -3,7 +3,7 @@ import React from 'react'
 
 import { createMockClient } from 'cozy-client'
 
-import ContactForm from './index'
+import ContactForm, { isSameContactProp } from './index'
 import { johnDoeContact as contact } from '../../../helpers/testData'
 import AppLike from '../../../tests/Applike'
 
@@ -214,5 +214,77 @@ describe('ContactForm', () => {
     })
 
     expect(onSubmit).not.toBeCalled()
+  })
+
+  describe('isSameContactProp', () => {
+    it('should return true if contacts have the same "related" relationships', () => {
+      const prevProps = {
+        contact: {
+          relationships: {
+            related: {
+              data: [{ _id: '1' }, { _id: '2' }]
+            }
+          }
+        }
+      }
+      const nextProps = {
+        contact: {
+          relationships: {
+            related: {
+              data: [{ _id: '2' }, { _id: '1' }]
+            }
+          }
+        }
+      }
+      expect(isSameContactProp(prevProps, nextProps)).toBe(true)
+    })
+
+    it('should return false if contacts have different "related" relationships', () => {
+      const prevProps = {
+        contact: {
+          relationships: {
+            related: {
+              data: [{ _id: '1' }, { _id: '2' }]
+            }
+          }
+        }
+      }
+      const nextProps = {
+        contact: {
+          relationships: {
+            related: {
+              data: [{ _id: '1' }, { _id: '3' }]
+            }
+          }
+        }
+      }
+      expect(isSameContactProp(prevProps, nextProps)).toBe(false)
+    })
+
+    it('should return false if one of the contacts has no "related" relationships', () => {
+      const prevProps = {
+        contact: {
+          relationships: {
+            related: {
+              data: [{ _id: '1' }, { _id: '2' }]
+            }
+          }
+        }
+      }
+      const nextProps = {
+        contact: {}
+      }
+      expect(isSameContactProp(prevProps, nextProps)).toBe(false)
+    })
+
+    it('should return false if both contacts have no "related" relationships', () => {
+      const prevProps = {
+        contact: {}
+      }
+      const nextProps = {
+        contact: {}
+      }
+      expect(isSameContactProp(prevProps, nextProps)).toBe(false)
+    })
   })
 })
