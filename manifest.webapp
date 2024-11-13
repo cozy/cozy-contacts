@@ -88,6 +88,11 @@
       "file": "services/autoDefineLabels/contacts.js",
       "trigger": "@event io.cozy.contacts:CREATED,UPDATED",
       "debounce": "5s"
+    },
+    "cleanRelatedContacts": {
+      "type": "node",
+      "file": "services/cleanRelatedContacts/contacts.js",
+      "trigger": "@event io.cozy.contacts:DELETED"
     }
   }
 }
