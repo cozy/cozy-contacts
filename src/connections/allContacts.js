@@ -4,6 +4,10 @@ import uniqWith from 'lodash/uniqWith'
 
 import minilog from 'cozy-minilog'
 
+import {
+  getRelatedRelationshipsToUpdate,
+  updateRelatedRelationships
+} from './relatedRelationships'
 import { addGroupToContact } from '../helpers/contacts'
 import { DOCTYPE_CONTACTS } from '../helpers/doctypes'
 import { hasSelectedGroup } from '../helpers/groups'
@@ -77,14 +81,14 @@ export const deleteTrashedContacts = async client => {
 /**
  * @param {Object} params
  * @param {import('cozy-client/types/CozyClient').default} params.client - CozyClient
- * @param {boolean} params.isUpdated - Is the contact updated
+ * @param {import('cozy-client/types/types').ContactDocument} params.oldContact - Is the contact updated
  * @param {Object} params.formData - Contact data
  * @param {Object} params.selectedGroup - Selected group
  * @returns {Promise<import('cozy-client/types/types').IOCozyContact>} - Contact
  */
 export const createOrUpdateContact = async ({
   client,
-  isUpdated,
+  oldContact,
   formData,
   selectedGroup
 }) => {
@@ -93,9 +97,31 @@ export const createOrUpdateContact = async ({
   if (hasSelectedGroup(selectedGroup)) {
     updatedContact = addGroupToContact(updatedContact, selectedGroup)
   }
-  return isUpdated
-    ? client.save(updatedContact)
-    : client.create(DOCTYPE_CONTACTS, updatedContact)
+
+  const { data: originalContact } = oldContact
+    ? await client.save(updatedContact)
+    : await client.create(DOCTYPE_CONTACTS, updatedContact)
+
+  const relatedRelationships = getRelatedRelationshipsToUpdate(
+    oldContact,
+    updatedContact
+  )
+
+  if (relatedRelationships) {
+    try {
+      const relatedContactsToSaved = await updateRelatedRelationships({
+        client,
+        relatedRelationships,
+        originalContactId: originalContact._id
+      })
+
+      client.saveAll(relatedContactsToSaved)
+    } catch (error) {
+      log.error('Error updating related contacts', error)
+    }
+  }
+
+  return originalContact
 }
 
 /**

@@ -141,7 +141,7 @@ describe('ContactFormModal component', () => {
 
     expect(createOrUpdateContact).toBeCalledWith({
       client: expect.anything(),
-      isUpdated: false,
+      oldContact: undefined,
       formData: expected,
       selectedGroup: expect.anything()
     })
@@ -224,7 +224,13 @@ describe('ContactFormModal component', () => {
 
     expect(createOrUpdateContact).toHaveBeenCalledWith({
       client: expect.anything(),
-      isUpdated: true,
+      oldContact: {
+        _id: 'ID',
+        name: {
+          familyName: 'John',
+          givenName: 'Doe'
+        }
+      },
       formData: expected,
       selectedGroup: expect.anything()
     })

@@ -46,4 +46,22 @@
  * @property {string} relatedContactLabel - Object with the type of the related contact stringified (e.g. '{\"type\":\"spouse\"}')
  */
 
+/**
+ * @typedef {Object} RelatedRelationshipsMetadata
+ * @property {string[]} relationTypes - The relation types of the related contact
+ */
+
+/**
+ * @typedef {Object} RelatedRelationships
+ * @property {string} _id - The id of the related contact
+ * @property {string} _type - The doctype of the related contact
+ * @property {relatedRelationshipsMetadata} metadata - The metadata of the related contact
+ */
+
+/**
+ * @typedef {Object} RelatedRelationshipsToUpdate
+ * @property {'CREATE'|'UPDATE'|'DELETE'} type - The action to update the related relationships
+ * @property {RelatedRelationships} relation - The doctype of the related contact
+ */
+
 export default {}
