@@ -98,8 +98,9 @@
       "friend": "Friend",
       "colleague": "Colleague",
       "coWorker": "Co-worker",
-      "agent": "Agent",
-      "acquaintance": "Acquaintance"
+      "acquaintance": "Acquaintance",
+      "helper": "Helper",
+      "recipient": "Recipient"
     }
   },
   "gender": {

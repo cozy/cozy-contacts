@@ -93,13 +93,14 @@
       "parent": "Parent",
       "child": "Enfant",
       "sibling": "Frère/Soeur",
-      "spouse": "Conjoint(e)",
+      "spouse": "Conjoint",
       "coResident": "Colocataire",
-      "friend": "Ami(e)",
-      "colleague": "Collègue",
-      "coWorker": "Associé(e)",
-      "agent": "Responsable",
-      "acquaintance": "Assistance"
+      "friend": "Ami",
+      "colleague": "Collègue/Collaborateur",
+      "coWorker": "Associé/Partenaire",
+      "acquaintance": "Connaissance",
+      "helper": "Assistant/Aidant",
+      "recipient": "Bénéficiaire/Aidé"
     }
   },
   "gender": {

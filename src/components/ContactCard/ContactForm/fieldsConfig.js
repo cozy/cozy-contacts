@@ -286,12 +286,16 @@ export const fields = [
           label: 'label.relationship.coWorker'
         },
         {
-          value: '{"type":"agent"}',
-          label: 'label.relationship.agent'
-        },
-        {
           value: '{"type":"acquaintance"}',
           label: 'label.relationship.acquaintance'
+        },
+        {
+          value: '{"type":"helper"}',
+          label: 'label.relationship.helper'
+        },
+        {
+          value: '{"type":"recipient"}',
+          label: 'label.relationship.recipient'
         }
       ]
     },
