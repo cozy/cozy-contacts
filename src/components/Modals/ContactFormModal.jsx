@@ -67,7 +67,7 @@ const ContactFormModal = () => {
     try {
       await createOrUpdateContact({
         client,
-        isUpdated: !!currentContact,
+        oldContact: currentContact,
         formData,
         selectedGroup
       })
