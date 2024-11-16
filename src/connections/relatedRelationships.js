@@ -166,6 +166,31 @@ export const createRelatedContact = async ({
 }
 
 /**
+ * setHasManyItem/updateHasManyItem do not work when remove one or many metadata.relationTypes
+ * @param {Object} params
+ * @param {import('cozy-client/types/types').IOCozyContact} params.relatedContact - Related contact
+ * @param {string} params.originalContactId - Original contact id
+ * @param {import('../types').RelatedRelationships} params.relation - Relation to update
+ */
+const updateRelatedRelationshipsWithoutMerge = ({
+  relatedContact,
+  originalContactId,
+  relation
+}) => {
+  const updatedRelatedContact = structuredClone(relatedContact)
+  const relatedIndex =
+    updatedRelatedContact.relationships.related.data.findIndex(
+      el => el._id === originalContactId
+    )
+
+  if (relatedIndex >= 0) {
+    updatedRelatedContact.relationships.related.data[relatedIndex] = relation
+  }
+
+  return updatedRelatedContact
+}
+
+/**
  * @param {Object} params
  * @param {import('cozy-client/types/CozyClient').default} params.client - CozyClient
  * @param {import('../types').RelatedRelationships} params.relation - Related relationships to update
@@ -183,12 +208,12 @@ export const updateRelatedContact = async ({
       contactsQueryById.definition()
     )
     const relationConverted = makeRelationMapping(relation, originalContactId)
-    const updatedRelatedContact = setHasManyItem(
+
+    const updatedRelatedContact = updateRelatedRelationshipsWithoutMerge({
       relatedContact,
-      'related',
       originalContactId,
-      relationConverted
-    )
+      relation: relationConverted
+    })
 
     return updatedRelatedContact
   } catch (error) {

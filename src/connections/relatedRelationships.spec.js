@@ -108,6 +108,79 @@ describe('relatedRelationships', () => {
       ])
     })
 
+    it('should return updated related relationships when adding relationTypes', () => {
+      const oldContact = {
+        relationships: {
+          related: {
+            data: [{ _id: 'related0', metadata: { relationTypes: ['friend'] } }]
+          }
+        }
+      }
+      const updatedContact = {
+        relationships: {
+          related: {
+            data: [
+              {
+                _id: 'related0',
+                metadata: { relationTypes: ['friend', 'spouse'] }
+              }
+            ]
+          }
+        }
+      }
+
+      expect(
+        getRelatedRelationshipsToUpdate(oldContact, updatedContact)
+      ).toEqual([
+        {
+          relation: {
+            _id: 'related0',
+            metadata: { relationTypes: ['friend', 'spouse'] }
+          },
+          type: 'UPDATE'
+        }
+      ])
+    })
+
+    it('should return updated related relationships when deleting relationTypes', () => {
+      const oldContact = {
+        relationships: {
+          related: {
+            data: [
+              {
+                _id: 'related0',
+                metadata: { relationTypes: ['friend', 'spouse'] }
+              }
+            ]
+          }
+        }
+      }
+      const updatedContact = {
+        relationships: {
+          related: {
+            data: [
+              {
+                _id: 'related0',
+                metadata: { relationTypes: ['friend'] }
+              }
+            ]
+          }
+        }
+      }
+
+      expect(
+        getRelatedRelationshipsToUpdate(oldContact, updatedContact)
+      ).toEqual([
+        {
+          relation: {
+            _id: 'related0',
+            metadata: { relationTypes: ['friend'] }
+          },
+          type: 'UPDATE'
+        }
+      ])
+    })
+
     it('should return removed related relationships to update', () => {
       const oldContact = {
         relationships: {
