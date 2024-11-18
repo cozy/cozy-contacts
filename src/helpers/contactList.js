@@ -3,6 +3,7 @@ import removeAccents from 'remove-accents'
 
 const makeHeader = (contact, t) => {
   if (contact.me) return t('me')
+  if (contact.cozyMetadata?.favorite) return t('favorite')
 
   const index = get(contact, 'indexes.byFamilyNameGivenNameEmailCozyUrl', '')
   const hasIndex = index !== null && index.length > 0
