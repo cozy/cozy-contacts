@@ -3,7 +3,15 @@ import React from 'react'
 
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import { Birthday, Location, Email, Phone, Cozy, Default } from './FieldTypes'
+import {
+  Birthday,
+  Location,
+  Email,
+  Phone,
+  Cozy,
+  Default,
+  Relationship
+} from './FieldTypes'
 
 const FieldByType = ({ value, type }) => {
   const { t, f } = useI18n()
@@ -20,6 +28,8 @@ const FieldByType = ({ value, type }) => {
       return <Phone number={value.number} />
     case 'cozy':
       return <Cozy url={value.url} />
+    case 'relationship':
+      return <Relationship name={value.name} id={value.id} />
     default:
       return <Default value={value} />
   }

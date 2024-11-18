@@ -10,7 +10,7 @@ import {
   getFormattedAddress,
   makeContactWithIdentitiesAddresses
 } from './contacts'
-import { johnDoeContact } from './testData'
+import { johnDoeContact, johnDoeContactWithRelated } from './testData'
 
 const MOCKED_DATE = '2018-01-01T12:00:00.210Z'
 
@@ -128,6 +128,16 @@ describe('normalizeFields', () => {
       { type: 'jobTitle', values: ['Dreamer'] },
       { type: 'birthday', values: ['1999-5-1'] },
       {
+        type: 'relationship',
+        values: [
+          {
+            name: 'Alice Doe',
+            label: 'spouse',
+            id: '5b49553c5916cf7b5b2a5f48600078a8'
+          }
+        ]
+      },
+      {
         type: 'note',
         values: [
           'Atque cupiditate saepe omnis quos ut molestiae labore voluptates omnis.'
@@ -136,7 +146,7 @@ describe('normalizeFields', () => {
       { type: 'other', values: [] }
     ]
 
-    expect(normalizeFields(johnDoeContact)).toEqual(expected)
+    expect(normalizeFields(johnDoeContactWithRelated)).toEqual(expected)
   })
 })
 

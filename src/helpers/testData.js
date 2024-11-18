@@ -146,6 +146,108 @@ export const johnDoeFormValues = {
   ]
 }
 
+export const johnDoeContactWithRelated = {
+  id: '9ecfbf4b-20e7-4bac-87f1-eea53350857d',
+  _id: '9ecfbf4b-20e7-4bac-87f1-eea53350857d',
+  _type: 'io.cozy.contacts',
+  _rev: '1-19c313536e8b27473aa26bf105b03269',
+  address: [
+    {
+      formattedAddress: '94 Hinton Road 05034 Fresno, Singapore',
+      type: 'Home',
+      primary: true
+    },
+    {
+      pobox: '2',
+      street: '426 Runolfsson Knolls',
+      city: 'Port Easter',
+      region: undefined,
+      country: 'Cocos (Keeling) Islands',
+      postcode: '84573',
+      type: 'Work'
+    }
+  ],
+  email: [
+    {
+      address: 'john.doe@posteo.net',
+      type: 'personal',
+      primary: false
+    },
+    {
+      address: 'john.doe@cozycloud.cc',
+      primary: true
+    }
+  ],
+  birthday: '1999-5-1',
+  birthplace: 'somewhere',
+  gender: 'male',
+  company: 'Cozy cloud',
+  jobTitle: 'Dreamer',
+  cozy: [
+    {
+      type: 'MyCozy',
+      primary: true,
+      url: 'https://johndoe.mycozy.cloud'
+    }
+  ],
+  fullname: 'John Doe',
+  name: {
+    givenName: 'John',
+    familyName: 'Doe',
+    additionalName: 'J.'
+  },
+  metadata: {
+    cozy: true,
+    version: 1
+  },
+  note: 'Atque cupiditate saepe omnis quos ut molestiae labore voluptates omnis.',
+  phone: [
+    {
+      number: '+33 (2)0 90 00 54 04',
+      primary: true
+    },
+    {
+      number: '+33 6 77 11 22 33',
+      primary: false
+    }
+  ],
+
+  relationships: {
+    accounts: { data: [] },
+    groups: { data: [] },
+    related: {
+      data: [
+        {
+          metadata: { relationTypes: ['spouse'] },
+          _id: '5b49553c5916cf7b5b2a5f48600078a8',
+          _type: 'io.cozy.contacts'
+        }
+      ]
+    }
+  },
+  related: {
+    target: {
+      id: '4e33fd27e1d8e55a34742bac6d16d3bd',
+      _id: '4e33fd27e1d8e55a34742bac6d16d3bd',
+      _type: 'io.cozy.contacts',
+      _rev: '6-57f4ab78b1fb97bb90ea273ec881f196',
+      company: '',
+      fullname: 'John Doe',
+      me: true,
+      note: ''
+    },
+    name: 'related',
+    doctype: 'io.cozy.contacts',
+    data: [
+      {
+        displayName: 'Alice Doe',
+        _id: '5b49553c5916cf7b5b2a5f48600078a8',
+        _type: 'io.cozy.contacts'
+      }
+    ]
+  }
+}
+
 export const contactWithGroup = {
   id: '4e33fd27e1d8e55a34742bac6d16d3bd',
   _id: '4e33fd27e1d8e55a34742bac6d16d3bd',

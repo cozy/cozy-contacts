@@ -9,6 +9,7 @@ const iconsByType = {
   birthday: 'calendar',
   note: 'comment',
   company: 'company',
+  relationship: 'relationship',
   jobTitle: 'people',
   cozy: 'cloud',
   email: 'email',
