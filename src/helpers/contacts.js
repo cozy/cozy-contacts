@@ -1,6 +1,7 @@
 import sortBy from 'lodash/sortBy'
 
 import { models, HasMany } from 'cozy-client'
+import { getHasManyItem } from 'cozy-client/dist/associations/HasMany'
 
 const { makeFullname, makeDefaultSortIndexValue, makeDisplayName } =
   models.contact
@@ -13,6 +14,7 @@ export const supportedFieldsInOrder = [
   'company',
   'jobTitle',
   'birthday',
+  'relationship',
   'note'
 ]
 
@@ -63,6 +65,26 @@ export const groupUnsupportedFields = (fields, supportedFieldTypes) => {
   ])
 }
 
+export const makeRelatedContactField = contact => {
+  if (!contact.related) return null
+
+  const relatedFieldValues = contact.related.data.flatMap(related => {
+    const relatedRelationships = getHasManyItem(contact, 'related', related._id)
+    return relatedRelationships.metadata.relationTypes.map(type => {
+      return {
+        label: type,
+        name: related.displayName,
+        id: related._id
+      }
+    })
+  })
+
+  return {
+    type: 'relationship', // To match the translation key already in place
+    values: relatedFieldValues
+  }
+}
+
 export const orderFieldList = (fields, fieldsInOrder) =>
   fields.slice().sort((a, b) => {
     const indexA = fieldsInOrder.includes(a.type)
@@ -85,7 +107,11 @@ export const getConnectedAccounts = contact =>
 
 export const normalizeFields = contact => {
   const fields = getFieldListFrom(contact)
-  const filteredFields = filterFieldList(fields)
+  const filteredFields = filterFieldList(fields, contact)
+  const relatedField = makeRelatedContactField(contact)
+  if (relatedField) {
+    filteredFields.push(relatedField)
+  }
   const groupedFields = groupUnsupportedFields(
     filteredFields,
     supportedFieldsInOrder

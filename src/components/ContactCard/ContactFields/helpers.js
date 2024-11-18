@@ -7,6 +7,11 @@ const makeCustomOrSupportedLabel = ({ type, value, hasPrefix, t }) => {
     return makeCustomLabel(JSON.stringify(value), t)
   }
 
+  // If contact has a related contact, but no relation type
+  if (value.label === 'related') {
+    return ''
+  }
+
   if (value.label) {
     return hasPrefix
       ? t(`label.${type}.${value.label}`)
@@ -26,7 +31,7 @@ const makeCustomOrSupportedLabel = ({ type, value, hasPrefix, t }) => {
  * @returns {string|null}
  */
 export const makeTLabel = ({ type, value, t, polyglot }) => {
-  const hasPrefix = ['phone', 'address'].includes(type)
+  const hasPrefix = ['phone', 'address', 'relationship'].includes(type)
 
   if (hasPrefix) {
     if (type === 'phone') {

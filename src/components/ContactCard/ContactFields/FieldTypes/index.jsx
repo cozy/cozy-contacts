@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { generateWebLink, useClient } from 'cozy-client'
+
 import { getFormattedAddress } from '../../../../helpers/contacts'
 
 export const Location = ({ value, t }) => {
@@ -33,6 +35,23 @@ export const Cozy = ({ url }) => {
   return (
     <a href={url} className="u-link">
       {url}
+    </a>
+  )
+}
+
+export const Relationship = ({ name, id }) => {
+  const client = useClient()
+  const link = generateWebLink({
+    slug: 'contacts',
+    cozyUrl: client.getStackClient().uri,
+    subDomainType: client.getInstanceOptions().subdomain,
+    pathname: '/',
+    hash: id
+  })
+
+  return (
+    <a href={link} className="u-link" target="_blank" rel="noreferrer">
+      {name}
     </a>
   )
 }
