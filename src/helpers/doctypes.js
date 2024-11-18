@@ -21,7 +21,7 @@ export const schema = {
       },
       related: {
         type: 'has-many',
-        doctype: DOCTYPE_CONTACT_ACCOUNTS
+        doctype: DOCTYPE_CONTACTS
       }
     }
   },
