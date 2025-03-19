@@ -1,0 +1,12 @@
+{
+  "extends": "cozy-tsconfig",
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "emitDeclarationOnly": false,
+    "noEmit": true,
+    "jsx": "react",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}

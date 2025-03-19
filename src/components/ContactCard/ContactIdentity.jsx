@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { models } from 'cozy-client'
-import Avatar from 'cozy-ui/transpiled/react/Avatar'
 import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
+import Avatar from 'cozy-ui/transpiled/react/legacy/Avatar'
 
 import { fullContactPropTypes } from '../ContactPropTypes'
 const { getInitials, getFullname } = models.contact
