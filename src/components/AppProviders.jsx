@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 
 import { BarProvider } from 'cozy-bar'
 import { CozyProvider } from 'cozy-client'
+import { DataProxyProvider } from 'cozy-dataproxy-lib'
 import { WebviewIntentProvider } from 'cozy-intent'
 import AlertProvider from 'cozy-ui/transpiled/react/providers/Alert'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
@@ -16,6 +17,10 @@ import {
 import { ContactsDiplayedProvider } from './Contexts/ContactsDiplayed'
 import { SearchProvider } from './Contexts/Search'
 import { SelectedGroupProvider } from './Contexts/SelectedGroup'
+
+const dataProxyProviderOptions = {
+  doctypes: ['io.cozy.files', 'io.cozy.contacts', 'io.cozy.apps']
+}
 
 const AppProviders = ({ store, client, lang, polyglot, children }) => {
   /*
@@ -34,21 +39,23 @@ const AppProviders = ({ store, client, lang, polyglot, children }) => {
       <StylesProvider generateClassName={generateClassName}>
         <Provider store={store}>
           <CozyProvider client={client}>
-            <I18n lang={lang} polyglot={polyglot}>
-              <CozyTheme>
-                <BreakpointsProvider>
-                  <AlertProvider>
-                    <BarProvider>
-                      <ContactsDiplayedProvider>
-                        <SelectedGroupProvider>
-                          <SearchProvider>{children}</SearchProvider>
-                        </SelectedGroupProvider>
-                      </ContactsDiplayedProvider>
-                    </BarProvider>
-                  </AlertProvider>
-                </BreakpointsProvider>
-              </CozyTheme>
-            </I18n>
+            <DataProxyProvider options={dataProxyProviderOptions}>
+              <I18n lang={lang} polyglot={polyglot}>
+                <CozyTheme>
+                  <BreakpointsProvider>
+                    <AlertProvider>
+                      <BarProvider>
+                        <ContactsDiplayedProvider>
+                          <SelectedGroupProvider>
+                            <SearchProvider>{children}</SearchProvider>
+                          </SelectedGroupProvider>
+                        </ContactsDiplayedProvider>
+                      </BarProvider>
+                    </AlertProvider>
+                  </BreakpointsProvider>
+                </CozyTheme>
+              </I18n>
+            </DataProxyProvider>
           </CozyProvider>
         </Provider>
       </StylesProvider>
