@@ -62,6 +62,16 @@
       "description": "Used to sort contacts",
       "type": "io.cozy.triggers",
       "verbs": ["GET", "POST"]
+    },
+    "chatConversations": {
+      "description": "Required by the cozy Assistant",
+      "type": "io.cozy.ai.chat.conversations",
+      "verbs": ["GET", "POST"]
+    },
+    "chatEvents": {
+      "description": "Required by the cozy Assistant",
+      "type": "io.cozy.ai.chat.events",
+      "verbs": ["GET"]
     }
   },
   "intents": [

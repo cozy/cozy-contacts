@@ -1,6 +1,8 @@
 import React from 'react'
 import { HashRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom'
 
+import { BarRoutes } from 'cozy-bar'
+
 import App from './App'
 import AppLayout from './AppLayout'
 import ContactImportationModal from './ContactImportationModal'
@@ -31,6 +33,7 @@ const AppRouter = () => {
               path="group/:groupId/delete/:groupName"
               element={<GroupDeleteConfirmationModal />}
             />
+            {BarRoutes.map(BarRoute => BarRoute)}
           </Route>
           <Route path="*" element={<Navigate replace to="/" />} />
         </Route>
