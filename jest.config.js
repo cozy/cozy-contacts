@@ -6,6 +6,7 @@ module.exports = {
     '.(png|gif|jpe?g)$': '<rootDir>/jestHelpers/mocks/fileMock.js',
     '.svg$': '<rootDir>/jestHelpers/mocks/iconMock.js',
     '.styl$': 'identity-obj-proxy',
+    '.css$': 'identity-obj-proxy',
     '\\.worker.entry.js': '<rootDir>/jestHelpers/mocks/workerMock.js'
   },
   transform: {

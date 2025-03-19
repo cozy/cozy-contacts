@@ -36,7 +36,7 @@
     "group_selected": "Hubo un problema al seleccionar un grupo, inténtelo de nuevo."
   },
   "formatted": {
-    "date": "YYYY-MM-DD",
+    "date": "yyyy-LL-dd",
     "address": "%{number} %{street}, %{code} %{city}, %{country}"
   },
   "fields": {

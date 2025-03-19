@@ -35,7 +35,7 @@
     "group_selected": "Er is een fout opgetreden tijdens het selecteren. Probeer het opnieuw."
   },
   "formatted": {
-    "date": "YYYY-MM-DD",
+    "date": "yyyy-LL-dd",
     "address": "%{number} %{street}, %{code} %{city}, %{country}"
   },
   "fields": {

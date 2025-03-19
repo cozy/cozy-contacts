@@ -59,7 +59,7 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
       data-testid="ContactIdentity"
     >
       <div
-        className="styles__c-avatar___PpDI- styles__c-avatar--text___2dvna"
+        className="styles__c-avatar___3jjlO styles__c-avatar--text___3Xssl"
         data-testid="Avatar"
         style={
           Object {
@@ -69,7 +69,7 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
         }
       >
         <span
-          className="styles__c-avatar-initials___310qC"
+          className="styles__c-avatar-initials___2dEdT"
         >
           JD
         </span>
