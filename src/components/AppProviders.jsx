@@ -19,7 +19,7 @@ import { SearchProvider } from './Contexts/Search'
 import { SelectedGroupProvider } from './Contexts/SelectedGroup'
 
 const dataProxyProviderOptions = {
-  doctypes: ['io.cozy.files', 'io.cozy.contacts', 'io.cozy.apps']
+  doctypes: ['io.cozy.contacts', 'io.cozy.files', 'io.cozy.apps']
 }
 
 const AppProviders = ({ store, client, lang, polyglot, children }) => {
