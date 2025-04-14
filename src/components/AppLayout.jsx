@@ -21,7 +21,7 @@ const AppLayout = () => {
   return (
     <Layout monocolumn="true">
       {flag('debug') && <CozyDevTools />}
-      <BarComponent searchOptions={{ enabled: true }} />
+      <BarComponent />
       {isMobile && (
         <BarCenter>
           <Typography variant="h4">{client.appMetadata.slug}</Typography>
