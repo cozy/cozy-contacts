@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Fuse from 'fuse.js'
 import debounce from 'lodash/debounce'
 
@@ -67,9 +68,10 @@ const fuse = new Fuse([], fuseOptions)
 export const filterContactsBySearch = (contacts, searchValue) => {
   if (searchValue.length === 0) return contacts
 
+  // we probably can remove all stuff related to flag('search-threshold')
   if (flag('search-threshold')) {
     fuse.options.threshold = flag.store.get('search-threshold')
-    console.info('fuse threshold :', fuse.options.threshold)
+    console.info('fuse threshold :', fuse.options.threshold) // for testing purpose only
   }
 
   fuse.setCollection(contacts)
@@ -79,8 +81,8 @@ export const filterContactsBySearch = (contacts, searchValue) => {
 
 const setThreshold = value => {
   if (!isNaN(value)) {
-    console.info('changing fuse threshold to', value)
-    console.info('please change the search value')
+    console.info('changing fuse threshold to', value) // for testing purpose only
+    console.info('please change the search value') // for testing purpose only
     flag.store.set('search-threshold', value)
   }
 }
