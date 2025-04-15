@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 import '@babel/polyfill'
 
 import 'cozy-ui/transpiled/react/stylesheet.css'
