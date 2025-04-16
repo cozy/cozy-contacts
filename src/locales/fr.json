@@ -142,6 +142,8 @@
     "selected_count": "contact sélectionné |||| contacts sélectionnés",
     "trash_action": "Supprimer",
     "select_all_action": "Sélectionner tout",
+    "select": "Sélectionner",
+    "favorites": "Favoris",
     "add_favorite": "Ajouter aux favoris",
     "remove_favorite": "Retirer des favoris"
   },

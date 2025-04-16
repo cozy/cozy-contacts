@@ -5,6 +5,7 @@ import React, { useContext } from 'react'
 import { useClient } from 'cozy-client'
 import ActionsBar from 'cozy-ui/transpiled/react/ActionsBar'
 import { makeActions } from 'cozy-ui/transpiled/react/ActionsMenu/Actions'
+import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { favorite as favoriteAction } from '../Actions/favorite'
@@ -24,6 +25,7 @@ const ContactsSelectionBar = ({
   const client = useClient()
   const { t } = useI18n()
   const { contactsDisplayed } = useContext(ContactsDiplayedContext)
+  const { isMobile } = useBreakpoints()
 
   const actions = makeActions([selectAllAction, trashAction, favoriteAction], {
     contactsDisplayed,
@@ -33,6 +35,7 @@ const ContactsSelectionBar = ({
     showModal,
     hideModal,
     client,
+    isMobile,
     t
   })
 
