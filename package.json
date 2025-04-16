@@ -93,7 +93,7 @@
     "cozy-search": "^0.5.0",
     "cozy-sharing": "^25.1.1",
     "cozy-tsconfig": "^1.8.1",
-    "cozy-ui": "^122.8.0",
+    "cozy-ui": "^122.10.0",
     "cozy-vcard": "^0.2.18",
     "final-form": "4.20.9",
     "final-form-arrays": "3.1.0",
