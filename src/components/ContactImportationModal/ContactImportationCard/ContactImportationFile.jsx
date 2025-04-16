@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import Icon from 'cozy-ui/transpiled/react/Icon'
+import CrossIcon from 'cozy-ui/transpiled/react/Icons/Cross'
 
 import IconFileFailImport from '../../../assets/icons/file-fail-import.svg'
 import IconFilePartialImport from '../../../assets/icons/file-partial-import.svg'
@@ -40,7 +41,7 @@ export default function ImportationFile({ status, name, unselectAction }) {
               onClick={e => unselectAction(e)}
             >
               <Icon
-                icon="cross"
+                icon={CrossIcon}
                 color="var(--iconTextColor)"
                 width="10"
                 height="10"
