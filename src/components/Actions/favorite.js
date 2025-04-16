@@ -10,13 +10,21 @@ const log = minilog('connections/allContacts')
  * @param  {array} options.selection - Array of selected contacts
  * @param  {object} options.t - Translation function
  */
-export const favorite = ({ client, selection, clearSelection, t }) => {
+export const favorite = ({
+  client,
+  selection,
+  clearSelection,
+  isMobile,
+  t
+}) => {
   const noFavoriteSelected = selection.filter(
     contact => !contact.cozyMetadata?.favorite
   )
   const isAllFavorite = noFavoriteSelected.length === 0
   const icon = isAllFavorite ? 'star' : 'star-outline'
-  const label = isAllFavorite
+  const label = isMobile
+    ? t('SelectionBar.favorites')
+    : isAllFavorite
     ? t('SelectionBar.remove_favorite')
     : t('SelectionBar.add_favorite')
 
