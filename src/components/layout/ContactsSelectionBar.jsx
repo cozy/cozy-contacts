@@ -37,7 +37,7 @@ const ContactsSelectionBar = ({
   })
 
   return selection.length > 0 ? (
-    <ActionsBar docs={selection} actions={actions} />
+    <ActionsBar docs={selection} actions={actions} onClose={clearSelection} />
   ) : null
 }
 
