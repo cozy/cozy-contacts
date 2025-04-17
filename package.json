@@ -90,7 +90,7 @@
     "cozy-minilog": "^3.10.0",
     "cozy-pouch-link": "^54.0.0",
     "cozy-realtime": "^5.0.0",
-    "cozy-search": "^0.5.0",
+    "cozy-search": "^0.5.1",
     "cozy-sharing": "^25.1.1",
     "cozy-tsconfig": "^1.8.1",
     "cozy-ui": "^122.10.0",
