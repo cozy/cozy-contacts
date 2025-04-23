@@ -45,7 +45,7 @@
     "phone": "Numero di Telefono",
     "email": "Email",
     "address": "Indirizzo",
-    "cozy": "URL Cozy",
+    "cozy": "URL Twake",
     "company": "Compagnia",
     "jobTitle": "Titolo di lavoro",
     "birthday": "Compleanno",
@@ -124,16 +124,16 @@
   },
   "delete-confirmation": {
     "title": "Cancellare questo contatto? |||| Cancellare questi contatti?",
-    "description-simple": "Questo contatto verrà rimosso definitivamente dal tuo Cozy. |||| Questi contatti saranno rimossi definitivamente dal tuo Cozy.",
+    "description-simple": "Questo contatto verrà rimosso definitivamente dal tuo Twake. |||| Questi contatti saranno rimossi definitivamente dal tuo Twake.",
     "description-google": "Questo contatto verrà eliminato anche dalla rubrica di Google. |||| Questi contatti verranno eliminati anche dalla rubrica di Google.",
-    "description-mixed": "Questi contatti saranno rimossi definitivamente dal tuo Cozy, i contatti collegati al tuo account Google saranno eliminati anche dalla tua rubrica Google."
+    "description-mixed": "Questi contatti saranno rimossi definitivamente dal tuo Twake, i contatti collegati al tuo account Google saranno eliminati anche dalla tua rubrica Google."
   },
   "intent": {
     "creation_error": "Si è verificato un errore nel tentativo di contattare l'altra applicazione. Riprovare più tardi?"
   },
   "manifest": {
-    "short_description": "Cozy Contacts ti aiuta a salvare, proteggere e gestire tutti i tuoi contatti dal tuo Cozy.",
-    "long_description": "Con Cozy Contacts è possibile:\n\n* Aggiungere, modificare e ordinare i contatti.\n* Gestire i gruppi di contatti.\n* Semplificare la condivisione di Cozy Drive con i propri contatti.\n* Sincronizzare i contatti da Google.\n* E presto, sincronizzare i contatti dal cellulare e da altri servizi online (iCloud, Facebook...).",
+    "short_description": "Twake Contacts ti aiuta a salvare, proteggere e gestire tutti i tuoi contatti dal tuo Twake.",
+    "long_description": "Con Twake Contacts è possibile:\n\n* Aggiungere, modificare e ordinare i contatti.\n* Gestire i gruppi di contatti.\n* Semplificare la condivisione di Twake Drive con i propri contatti.\n* Sincronizzare i contatti da Google.\n* E presto, sincronizzare i contatti dal cellulare e da altri servizi online (iCloud, Facebook...).",
     "permissions": {
       "apps": {
         "description": "Richiesto dal menu principale per visualizzare le icone delle applicazioni"
