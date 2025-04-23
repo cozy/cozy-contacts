@@ -155,8 +155,8 @@
     "creation_error": "Se ha producido un error al intentar contactar con la otra aplicación. Por favor, inténtelo de nuevo más tarde."
   },
   "manifest": {
-    "short_description": "Cozy Contacts le ayuda a guardar, proteger y administrar todos sus contactos desde su Cozy",
-    "long_description": "Con Cozy Contacts usted puede:\n\n* Añadir, editar y ordenar sus contactos,\n* Administrar sus grupos de contactos,\n* Compartir con sus contactos desde Cozy Drive,\n* Sincronizar sus contactos desde Google,\n* Y pronto, sincronizar sus contactos desde su móvil y otros servicios online (iCloud, Facebook...)",
+    "short_description": "Twake Contacts le ayuda a guardar, proteger y administrar todos sus contactos desde su Twake",
+    "long_description": "Con Twake Contacts usted puede:\n\n* Añadir, editar y ordenar sus contactos,\n* Administrar sus grupos de contactos,\n* Compartir con sus contactos desde Twake Drive,\n* Sincronizar sus contactos desde Google,\n* Y pronto, sincronizar sus contactos desde su móvil y otros servicios online (iCloud, Facebook...)",
     "permissions": {
       "apps": {
         "description": "Requerido por el menú principal para mostrar los iconos de las aplicaciones"

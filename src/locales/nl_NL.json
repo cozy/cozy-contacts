@@ -136,8 +136,8 @@
     "creation_error": "Er is een fout opgetreden tijdens het communiceren met de andere app. Probeer het later opnieuw."
   },
   "manifest": {
-    "short_description": "Cozy Contactpersonen helpt je bij het opslaan en beheren van contactpersonen op je Cozy.",
-    "long_description": "Met Cozy Contactpersonen kun je:\n\n* Contactpersonen toevoegen, bewerken en sorteren\n* Groepen beheren\n* Het delen vanuit Cozy Schijf vereenvoudigen\n* Je Google-contactpersonen synchroniseren\n* En binnenkort kun je ook contactpersonen synchroniseren van je telefoon en andere online-diensten (iCloud, Facebook, etc.)",
+    "short_description": "Twake Contactpersonen helpt je bij het opslaan en beheren van contactpersonen op je Twake.",
+    "long_description": "Met Twake Contactpersonen kun je:\n\n* Contactpersonen toevoegen, bewerken en sorteren\n* Groepen beheren\n* Het delen vanuit Twake Schijf vereenvoudigen\n* Je Google-contactpersonen synchroniseren\n* En binnenkort kun je ook contactpersonen synchroniseren van je telefoon en andere online-diensten (iCloud, Facebook, etc.)",
     "permissions": {
       "apps": {
         "description": "Vereist door het hoofdmenu om app-pictogrammen te tonen"

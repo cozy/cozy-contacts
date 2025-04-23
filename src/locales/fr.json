@@ -186,8 +186,8 @@
     "creation_error": "Une erreur est survenue lors de la communication avec l'autre application. Merci de réessayer ultérieurement."
   },
   "manifest": {
-    "short_description": "Cozy Contacts est l’application de sauvegarde, de sécurisation et de gestion centralisée de tous vos contacts depuis votre Cozy.",
-    "long_description": "Avec Cozy Contacts vous pouvez : \n\n* Ajouter, modifier et trier vos contacts, \n* Gérer vos groupes de contacts,\n* Faciliter vos partages depuis Cozy Drive avec vos contacts\n* Synchroniser vos contacts depuis Google,\n* Et bientôt, synchroniser vos contacts depuis votre mobile ou d'autres services en ligne (iCloud, Facebook...)",
+    "short_description": "Twake Contacts est l’application de sauvegarde, de sécurisation et de gestion centralisée de tous vos contacts depuis votre Twake.",
+    "long_description": "Avec Twake Contacts vous pouvez : \n\n* Ajouter, modifier et trier vos contacts, \n* Gérer vos groupes de contacts,\n* Faciliter vos partages depuis Twake Drive avec vos contacts\n* Synchroniser vos contacts depuis Google,\n* Et bientôt, synchroniser vos contacts depuis votre mobile ou d'autres services en ligne (iCloud, Facebook...)",
     "permissions": {
       "apps": {
         "description": "Utilisé pour afficher la liste des applications dans le menu principal"
