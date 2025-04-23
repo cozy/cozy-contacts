@@ -1,18 +1,18 @@
 {
   "name": "Contacts",
   "editor": "Cozy",
-  "name_prefix": "Cozy",
+  "name_prefix": "Twake",
   "slug": "contacts",
   "icon": "icon.svg",
   "type": "webapp",
-  "description": "Contact manager for Cozy Cloud",
+  "description": "Contact manager for Twake Workplace",
   "category": "cozy",
   "version": "1.13.0",
   "licence": "AGPL-3.0",
   "source": "https://github.com/cozy/cozy-contacts.git@build",
   "developer": {
-    "name": "Cozy Cloud",
-    "url": "https://cozy.io"
+    "name": "Twake Workplace",
+    "url": "https://twake.app"
   },
   "default_locale": "en",
   "screenshots": [

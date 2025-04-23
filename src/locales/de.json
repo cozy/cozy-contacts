@@ -136,8 +136,8 @@
     "creation_error": "Beim Kontaktieren der anderen App ist ein Fehler aufgetreten. Bitte versuch' es später noch einmal!"
   },
   "manifest": {
-    "short_description": "Cozy Kontakte hilft dir, all deine Kontakte aus deinem Cozy zu speichern, zu sichern und zu verwalten.",
-    "long_description": "Mit Cozy Kontakte kannst du :\n\n* deine Kontakte hinzufügen, bearbeiten und sortieren,\n* deine Gruppen von Kontakten verwalten,\n* dein Teilen aus Cozy Drive mit deinen Kontakten erleichtern,\n* deine Google Kontakte synchronisieren,\n* und bald deine Kontakte von deinem Handy und anderen Online-Diensten (iCloud, Facebook, ...) synchronisieren",
+    "short_description": "Twake Kontakte hilft dir, all deine Kontakte aus deinem Twake zu speichern, zu sichern und zu verwalten.",
+    "long_description": "Mit Twake Kontakte kannst du :\n\n* deine Kontakte hinzufügen, bearbeiten und sortieren,\n* deine Gruppen von Kontakten verwalten,\n* dein Teilen aus Twake Drive mit deinen Kontakten erleichtern,\n* deine Google Kontakte synchronisieren,\n* und bald deine Kontakte von deinem Handy und anderen Online-Diensten (iCloud, Facebook, ...) synchronisieren",
     "permissions": {
       "apps": {
         "description": "Benötigt vom Hauptmenü, um die Symbole der Anwendungen anzuzeigen"
