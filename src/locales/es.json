@@ -147,9 +147,9 @@
   },
   "delete-confirmation": {
     "title": "¿Borrar este contacto? |||| ¿Borrar estos contactos?",
-    "description-simple": "Este contacto será removido permanentemente de su Cozy. |||| Estos contactos serán removidos permanentemente de su Cozy.",
+    "description-simple": "Este contacto será removido permanentemente de su Twake. |||| Estos contactos serán removidos permanentemente de su Twake.",
     "description-google": "Este contacto también se eliminará del directorio de Google. |||| Estos contactos también se eliminarán del directorio de Google.",
-    "description-mixed": "Estos contactos se eliminarán permanentemente de su Cozy, y los contactos vinculados a su cuenta de Google también se eliminarán de su directorio de Google."
+    "description-mixed": "Estos contactos se eliminarán permanentemente de su Twake, y los contactos vinculados a su cuenta de Google también se eliminarán de su directorio de Google."
   },
   "intent": {
     "creation_error": "Se ha producido un error al intentar contactar con la otra aplicación. Por favor, inténtelo de nuevo más tarde."
