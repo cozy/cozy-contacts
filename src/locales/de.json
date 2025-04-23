@@ -128,9 +128,9 @@
   },
   "delete-confirmation": {
     "title": "Diesen Kontakt löschen? |||| Diese Kontakte löschen?",
-    "description-simple": "Dieser Kontakt wird dauerhaft aus Cozy entfernt. |||| Diese Kontakte werden dauerhaft aus Cozy entfernt.",
+    "description-simple": "Dieser Kontakt wird dauerhaft aus Twake entfernt. |||| Diese Kontakte werden dauerhaft aus Twake entfernt.",
     "description-google": "Dieser Kontakt wird auch aus deinem Google Adressbuch gelöscht. |||| Diese Kontakte werden auch aus deinem Google Adressbuch gelöscht.",
-    "description-mixed": "Diese Kontakte werden dauerhaft aus deinem Cozy entfernt. Die Kontakte, die mit deinem Google-Konto verknüpft sind, werden auch aus deinem Google Adressbuch gelöscht."
+    "description-mixed": "Diese Kontakte werden dauerhaft aus deinem Twake entfernt. Die Kontakte, die mit deinem Google-Konto verknüpft sind, werden auch aus deinem Google Adressbuch gelöscht."
   },
   "intent": {
     "creation_error": "Beim Kontaktieren der anderen App ist ein Fehler aufgetreten. Bitte versuch' es später noch einmal!"

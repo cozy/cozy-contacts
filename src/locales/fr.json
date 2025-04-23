@@ -173,9 +173,9 @@
   },
   "delete-confirmation": {
     "title": "Supprimer ce contact ? |||| Supprimer ces contacts ?",
-    "description-simple": "Ce contact sera définitivement supprimé de votre Cozy. |||| Ces contacts seront supprimés définitivement de votre Cozy.",
+    "description-simple": "Ce contact sera définitivement supprimé de votre Twake. |||| Ces contacts seront supprimés définitivement de votre Twake.",
     "description-google": "Ce contact sera également supprimé de votre carnet d'adresses Google. |||| Ces contacts seront également supprimés de votre carnet d'adresses Google.",
-    "description-mixed": "Ces contacts seront supprimés définitivement de votre Cozy, les contacts associés à votre compte Google seront aussi supprimés dans votre carnet d'adresses Google."
+    "description-mixed": "Ces contacts seront supprimés définitivement de votre Twake, les contacts associés à votre compte Google seront aussi supprimés dans votre carnet d'adresses Google."
   },
   "delete_group_confirmation": {
     "title": "Supprimer le groupe",

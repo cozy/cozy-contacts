@@ -128,9 +128,9 @@
   },
   "delete-confirmation": {
     "title": "Wil je deze contactpersoon verwijderen? |||| Wil je deze contactpersonen verwijderen?",
-    "description-simple": "Deze contactpersoon wordt permanent verwijderd uit je Cozy. |||| Deze contactpersonen worden permanent verwijderd uit je Cozy.",
+    "description-simple": "Deze contactpersoon wordt permanent verwijderd uit je Twake. |||| Deze contactpersonen worden permanent verwijderd uit je Twake.",
     "description-google": "Deze contactpersoon wordt permanent verwijderd uit je Google-adresboek. |||| Deze contactpersonen worden permanent verwijderd uit je Google-adresboek.",
-    "description-mixed": "Deze contactpersonen worden permanent verwijderd uit je Cozy. De personen die gekoppeld zijn aan je Google-account worden tevens verwijderd uit je Google-adresboek."
+    "description-mixed": "Deze contactpersonen worden permanent verwijderd uit je Twake. De personen die gekoppeld zijn aan je Google-account worden tevens verwijderd uit je Google-adresboek."
   },
   "intent": {
     "creation_error": "Er is een fout opgetreden tijdens het communiceren met de andere app. Probeer het later opnieuw."
