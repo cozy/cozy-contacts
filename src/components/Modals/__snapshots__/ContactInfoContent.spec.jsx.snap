@@ -2,7 +2,7 @@
 
 exports[`ContactInfoContent should match snapshot when groups are available but no one is linked to the specified contact 1`] = `
 <div
-  className="CozyTheme--light-normal u-dc"
+  className="TwakeTheme--light-normal u-dc"
 >
   <div>
     <h3
@@ -212,7 +212,7 @@ exports[`ContactInfoContent should match snapshot when groups are available but 
 
 exports[`ContactInfoContent should match snapshot with accounts and groups 1`] = `
 <div
-  className="CozyTheme--light-normal u-dc"
+  className="TwakeTheme--light-normal u-dc"
 >
   <div
     className="u-mb-2"
@@ -391,7 +391,7 @@ exports[`ContactInfoContent should match snapshot with accounts and groups 1`] =
 
 exports[`ContactInfoContent should match snapshot with accounts without groups 1`] = `
 <div
-  className="CozyTheme--light-normal u-dc"
+  className="TwakeTheme--light-normal u-dc"
 >
   <div>
     <h3

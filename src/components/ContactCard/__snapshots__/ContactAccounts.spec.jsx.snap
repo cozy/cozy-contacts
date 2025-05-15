@@ -2,7 +2,7 @@
 
 exports[`ContactAccounts component should render a list of contact accounts 1`] = `
 <div
-  className="CozyTheme--light-normal u-dc"
+  className="TwakeTheme--light-normal u-dc"
 >
   <h3
     className="u-title-h2 u-mt-1-half u-mb-1"
