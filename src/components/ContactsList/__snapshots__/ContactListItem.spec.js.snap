@@ -2,7 +2,7 @@
 
 exports[`ContactListItem should match the contact snapshot 1`] = `
 <div
-  className="CozyTheme--light-normal u-dc"
+  className="TwakeTheme--light-normal u-dc"
 >
   <li
     className="MuiListItem-root u-c-pointer medium MuiListItem-gutters makeStyles-gutters-33 makeStyles-gutters-35"
@@ -63,8 +63,8 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
         data-testid="Avatar"
         style={
           Object {
-            "--circleSize": "32px",
-            "backgroundColor": "#FFC644",
+            "--circleSize": "24px",
+            "background": "linear-gradient(136deg, #6DCFFF 14.84%, #3D88F8 96.03%)",
           }
         }
       >

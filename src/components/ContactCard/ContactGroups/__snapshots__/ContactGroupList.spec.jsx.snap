@@ -2,7 +2,7 @@
 
 exports[`ContactGroupList should match the contact snapshot 1`] = `
 <div
-  className="CozyTheme--light-normal u-dc"
+  className="TwakeTheme--light-normal u-dc"
 >
   <div
     className="u-mb-2"
