@@ -2,64 +2,42 @@
 import '@babel/polyfill'
 
 import 'cozy-ui/transpiled/react/stylesheet.css'
-
 import 'styles'
 import 'styles/intent'
+
 import React from 'react'
-import { createRoot } from 'react-dom/client'
 
-import cozyClient, { CozyProvider } from 'cozy-client'
 import { Intents } from 'cozy-interapp'
-import { RealtimePlugin } from 'cozy-realtime'
-import { I18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import AppProviders from 'components/AppProviders'
+import setupApp from '../browser/setupApp'
 
-const renderApp = function (root, client, appLocale, appData) {
-  const IntentHandler = require('components/Intents/IntentHandler').default
-  const PickContacts = require('components/Intents/PickContacts').default
-  const CreateContact = require('components/Intents/CreateContact').default
+import IntentHandler from 'components/Intents/IntentHandler'
+import PickContacts from 'components/Intents/PickContacts'
+import CreateContact from 'components/Intents/CreateContact'
+import ListContacts from 'components/Intents/ListContacts'
+
+const init = function () {
+  const { root, store, client, lang, polyglot, appData } = setupApp()
+
   const intents = new Intents({ client: client })
+
   root.render(
-    <I18n
-      lang={appLocale}
-      dictRequire={appLocale => require(`locales/${appLocale}`)}
-    >
-      <CozyProvider client={client}>
-        <IntentHandler appData={appData} intents={intents}>
-          <PickContacts action="PICK" type="io.cozy.contacts" />
-          <CreateContact action="CREATE" type="io.cozy.contacts" />
-        </IntentHandler>
-      </CozyProvider>
-    </I18n>
+    <AppProviders store={store} client={client} lang={lang} polyglot={polyglot}>
+      <IntentHandler appData={appData} intents={intents}>
+        <PickContacts action="PICK" type="io.cozy.contacts" />
+        <CreateContact action="CREATE" type="io.cozy.contacts" />
+        <ListContacts action="LIST" type="io.cozy.contacts" />
+      </IntentHandler>
+    </AppProviders>
   )
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  init()
+})
+
 if (module.hot) {
   module.hot.accept('components/App', function () {
-    renderApp()
+    init()
   })
 }
-
-// return a defaultData if the template hasn't been replaced by cozy-stack
-const getDataOrDefault = function (toTest, defaultData) {
-  const templateRegex = /^\{\{\.[a-zA-Z]*\}\}$/ // {{.Example}}
-  return templateRegex.test(toTest) ? defaultData : toTest
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const container = document.querySelector('[role=application]')
-  const root = createRoot(container)
-  const data = JSON.parse(container.dataset.cozy)
-
-  const appLocale = getDataOrDefault(data.locale, 'en')
-
-  const protocol = window.location ? window.location.protocol : 'https:'
-
-  const client = new cozyClient({
-    uri: `${protocol}//${data.domain}`,
-    token: data.token,
-    store: false
-  })
-  client.registerPlugin(RealtimePlugin)
-
-  renderApp(root, client, appLocale, data)
-})
