@@ -14,15 +14,15 @@ import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
 import { ModalManager } from '../helpers/modalManager'
 
-const AppLayout = () => {
+const AppLayout = ({ withTopBar }) => {
   const client = useClient()
   const { isMobile } = useBreakpoints()
 
   return (
-    <Layout monocolumn="true">
+    <Layout monoColumn withTopBar={withTopBar}>
       {flag('debug') && <CozyDevTools />}
-      <BarComponent />
-      {isMobile && (
+      {withTopBar && <BarComponent />}
+      {isMobile && withTopBar && (
         <BarCenter>
           <Typography variant="h4">{client.appMetadata.slug}</Typography>
         </BarCenter>
