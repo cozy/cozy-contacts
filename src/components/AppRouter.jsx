@@ -18,11 +18,11 @@ const OutletWrapper = ({ Component }) => (
   </>
 )
 
-const AppRouter = () => {
+const AppRouter = ({ withTopBar }) => {
   return (
     <HashRouter>
       <Routes>
-        <Route element={<AppLayout />}>
+        <Route element={<AppLayout withTopBar={withTopBar} />}>
           <Route path="/" element={<OutletWrapper Component={App} />}>
             <Route path="import" element={<ContactImportationModal />} />
             <Route path="new" element={<ContactFormModal />} />
@@ -40,6 +40,10 @@ const AppRouter = () => {
       </Routes>
     </HashRouter>
   )
+}
+
+AppRouter.defaultProps = {
+  withTopBar: true
 }
 
 export default AppRouter
