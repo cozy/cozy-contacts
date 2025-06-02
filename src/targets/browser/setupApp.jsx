@@ -18,7 +18,8 @@ import { getClient } from '../../helpers/client'
 const setupApp = memoize(() => {
   const container = document.querySelector('[role=application]')
   const root = createRoot(container)
-  const { lang } = getValues(JSON.parse(container.dataset.cozy))
+  const data = JSON.parse(container.dataset.cozy)
+  const { lang } = getValues(data)
   const polyglot = initTranslation(lang, lang => require(`locales/${lang}`))
   const client = getClient()
   client.registerPlugin(RealtimePlugin)
@@ -46,7 +47,7 @@ const setupApp = memoize(() => {
     ignoreErrors: [/^Warning: /]
   })
 
-  return { root, store, client, lang, polyglot }
+  return { root, store, client, lang, polyglot, appData: data }
 })
 
 export default setupApp
