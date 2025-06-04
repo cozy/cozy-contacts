@@ -1,0 +1,275 @@
+{
+  "name": "Contacts",
+  "editor": "Cozy",
+  "name_prefix": "Twake",
+  "slug": "contacts",
+  "icon": "icon.svg",
+  "type": "webapp",
+  "description": "Contact manager for Twake Workplace",
+  "category": "cozy",
+  "version": "1.14.0",
+  "licence": "AGPL-3.0",
+  "source": "https://github.com/cozy/cozy-contacts.git@build",
+  "developer": {
+    "name": "Twake Workplace",
+    "url": "https://twake.app"
+  },
+  "default_locale": "en",
+  "screenshots": [
+    "screenshots/fr/screenshot01.png",
+    "screenshots/fr/screenshot02.png",
+    "screenshots/fr/screenshot03.png"
+  ],
+  "routes": {
+    "/": {
+      "folder": "/",
+      "index": "index.html",
+      "public": false
+    },
+    "/services": {
+      "folder": "/intents",
+      "index": "index.html",
+      "public": false
+    }
+  },
+  "permissions": {
+    "apps": {
+      "type": "io.cozy.apps",
+      "verbs": [
+        "GET"
+      ]
+    },
+    "identities": {
+      "type": "io.cozy.identities",
+      "verbs": [
+        "GET"
+      ]
+    },
+    "contacts": {
+      "type": "io.cozy.contacts",
+      "verbs": [
+        "ALL"
+      ]
+    },
+    "contactsgroups": {
+      "type": "io.cozy.contacts.groups",
+      "verbs": [
+        "ALL"
+      ]
+    },
+    "contactsAccounts": {
+      "type": "io.cozy.contacts.accounts",
+      "verbs": [
+        "ALL"
+      ]
+    },
+    "settings": {
+      "description": "Required by the cozy-bar to display Claudy and know which applications are coming soon",
+      "type": "io.cozy.settings",
+      "verbs": [
+        "GET"
+      ]
+    },
+    "triggers": {
+      "description": "Used to sort contacts",
+      "type": "io.cozy.triggers",
+      "verbs": [
+        "GET",
+        "POST"
+      ]
+    },
+    "chatConversations": {
+      "description": "Required by the cozy Assistant",
+      "type": "io.cozy.ai.chat.conversations",
+      "verbs": [
+        "GET",
+        "POST"
+      ]
+    },
+    "chatEvents": {
+      "description": "Required by the cozy Assistant",
+      "type": "io.cozy.ai.chat.events",
+      "verbs": [
+        "GET"
+      ]
+    }
+  },
+  "intents": [
+    {
+      "action": "PICK",
+      "type": [
+        "io.cozy.contacts"
+      ],
+      "href": "/services"
+    },
+    {
+      "action": "CREATE",
+      "type": [
+        "io.cozy.contacts"
+      ],
+      "href": "/services"
+    },
+    {
+      "action": "LIST",
+      "type": [
+        "io.cozy.contacts"
+      ],
+      "href": "/services"
+    }
+  ],
+  "services": {
+    "keepIndexFullNameAndDisplayNameUpToDate": {
+      "type": "node",
+      "file": "services/keepIndexFullNameAndDisplayNameUpToDate/contacts.js",
+      "trigger": "@event io.cozy.contacts:CREATED,UPDATED",
+      "debounce": "5s"
+    },
+    "autoDefineLabels": {
+      "type": "node",
+      "file": "services/autoDefineLabels/contacts.js",
+      "trigger": "@event io.cozy.contacts:CREATED,UPDATED",
+      "debounce": "5s"
+    },
+    "cleanRelatedContacts": {
+      "type": "node",
+      "file": "services/cleanRelatedContacts/contacts.js",
+      "trigger": "@event io.cozy.contacts:DELETED"
+    }
+  },
+  "locales": {
+    "de": {
+      "short_description": "Twake Kontakte hilft dir, all deine Kontakte aus deinem Twake zu speichern, zu sichern und zu verwalten.",
+      "long_description": "Mit Twake Kontakte kannst du :\n\n* deine Kontakte hinzufügen, bearbeiten und sortieren,\n* deine Gruppen von Kontakten verwalten,\n* dein Teilen aus Twake Drive mit deinen Kontakten erleichtern,\n* deine Google Kontakte synchronisieren,\n* und bald deine Kontakte von deinem Handy und anderen Online-Diensten (iCloud, Facebook, ...) synchronisieren",
+      "permissions": {
+        "apps": {
+          "description": "Benötigt vom Hauptmenü, um die Symbole der Anwendungen anzuzeigen"
+        },
+        "contacts": {
+          "description": "Benötigt, um deine Kontakte zu verwalten"
+        },
+        "contactsgroups": {
+          "description": "Benötigt, um Kontaktgruppen zu verwalten"
+        },
+        "contactsAccounts": {
+          "description": "Benötigt, um deine Kontakte mit deinen Remote-Konten zu verbinden"
+        },
+        "triggers": {
+          "description": "Benutzt um Kontakte zu sortieren"
+        }
+      }
+    },
+    "en": {
+      "short_description": "Twake Contacts helps you to save, secure and manage all your contacts from your Twake.",
+      "long_description": "With Twake Contacts you can:\n\n* Add, edit and sort your contacts,\n* Manage your groups of contacts,\n* Make your sharing easier from Twake Drive with your contacts,\n* Synchronise your contacts from Google,\n* And soon, synchronise your contacts from your mobile and other online services (iCloud, Facebook...)",
+      "permissions": {
+        "apps": {
+          "description": "Required by the main menu to display the icons of the apps"
+        },
+        "contacts": {
+          "description": "Required to manage your contacts"
+        },
+        "contactsgroups": {
+          "description": "Required to manage groups of contacts"
+        },
+        "contactsAccounts": {
+          "description": "Required to link your contacts with your remote accounts"
+        },
+        "triggers": {
+          "description": "Used to sort contacts"
+        }
+      }
+    },
+    "es": {
+      "short_description": "Twake Contacts le ayuda a guardar, proteger y administrar todos sus contactos desde su Twake",
+      "long_description": "Con Twake Contacts usted puede:\n\n* Añadir, editar y ordenar sus contactos,\n* Administrar sus grupos de contactos,\n* Compartir con sus contactos desde Twake Drive,\n* Sincronizar sus contactos desde Google,\n* Y pronto, sincronizar sus contactos desde su móvil y otros servicios online (iCloud, Facebook...)",
+      "permissions": {
+        "apps": {
+          "description": "Requerido por el menú principal para mostrar los iconos de las aplicaciones"
+        },
+        "contacts": {
+          "description": "Necesario para administrar sus contactos"
+        },
+        "contactsgroups": {
+          "description": "Necesario para administrar grupo de contactos"
+        },
+        "contactsAccounts": {
+          "description": "Necesario para vincular sus contactos con sus cuentas remotas"
+        },
+        "triggers": {
+          "description": "Necesario para clasificar los contactos"
+        }
+      }
+    },
+    "fr": {
+      "short_description": "Twake Contacts est l’application de sauvegarde, de sécurisation et de gestion centralisée de tous vos contacts depuis votre Twake.",
+      "long_description": "Avec Twake Contacts vous pouvez : \n\n* Ajouter, modifier et trier vos contacts, \n* Gérer vos groupes de contacts,\n* Faciliter vos partages depuis Twake Drive avec vos contacts\n* Synchroniser vos contacts depuis Google,\n* Et bientôt, synchroniser vos contacts depuis votre mobile ou d'autres services en ligne (iCloud, Facebook...)",
+      "permissions": {
+        "apps": {
+          "description": "Utilisé pour afficher la liste des applications dans le menu principal"
+        },
+        "contacts": {
+          "description": "Utilisé pour gérer vos contacts"
+        },
+        "contactsgroups": {
+          "description": "Utilisé pour gérer vos groupes de contacts"
+        },
+        "contactsAccounts": {
+          "description": "Utilisé pour faire les associations entre vos contacts et vos comptes distants"
+        },
+        "triggers": {
+          "description": "Utilisé pour trier les contacts"
+        }
+      }
+    },
+    "it_IT": {
+      "short_description": "Twake Contacts ti aiuta a salvare, proteggere e gestire tutti i tuoi contatti dal tuo Twake.",
+      "long_description": "Con Twake Contacts è possibile:\n\n* Aggiungere, modificare e ordinare i contatti.\n* Gestire i gruppi di contatti.\n* Semplificare la condivisione di Twake Drive con i propri contatti.\n* Sincronizzare i contatti da Google.\n* E presto, sincronizzare i contatti dal cellulare e da altri servizi online (iCloud, Facebook...).",
+      "permissions": {
+        "apps": {
+          "description": "Richiesto dal menu principale per visualizzare le icone delle applicazioni"
+        },
+        "contacts": {
+          "description": "Necessario per gestire i contatti"
+        },
+        "contactsgroups": {
+          "description": "Richiesto per gestire gruppi di contatti"
+        },
+        "contactsAccounts": {
+          "description": "Necessario per collegare i contatti con gli account remoti"
+        },
+        "triggers": {
+          "description": "Utilizzato per ordinare i contatti"
+        }
+      }
+    },
+    "nl_NL": {
+      "short_description": "Twake Contactpersonen helpt je bij het opslaan en beheren van contactpersonen op je Twake.",
+      "long_description": "Met Twake Contactpersonen kun je:\n\n* Contactpersonen toevoegen, bewerken en sorteren\n* Groepen beheren\n* Het delen vanuit Twake Schijf vereenvoudigen\n* Je Google-contactpersonen synchroniseren\n* En binnenkort kun je ook contactpersonen synchroniseren van je telefoon en andere online-diensten (iCloud, Facebook, etc.)",
+      "permissions": {
+        "apps": {
+          "description": "Vereist door het hoofdmenu om app-pictogrammen te tonen"
+        },
+        "contacts": {
+          "description": "Vereist om je contactpersonen te kunnen beheren"
+        },
+        "contactsgroups": {
+          "description": "Vereist om groepen te beheren"
+        },
+        "contactsAccounts": {
+          "description": "Vereist om je contactpersonen te koppelen aan online-accounts"
+        },
+        "triggers": {
+          "description": "Wordt gebruikt om contactpersonen te sorteren"
+        }
+      }
+    }
+  },
+  "langs": [
+    "de",
+    "en",
+    "es",
+    "fr",
+    "it_IT",
+    "nl_NL"
+  ]
+}
