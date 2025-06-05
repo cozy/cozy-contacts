@@ -4,50 +4,54 @@ exports[`ContactAccounts component should render a list of contact accounts 1`] 
 <div
   className="TwakeTheme--light-normal u-dc"
 >
-  <h3
-    className="u-title-h2 u-mt-1-half u-mb-1"
+  <div
+    className="styles__o-layout___3TSz9 styles__o-layout-2panes___1CDQw styles__o-layout-topbar___2SHWi"
   >
-    Account linked to this contact
-  </h3>
-  <ol
-    className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s"
-  >
-    <li>
-      <div
-        className="u-flex u-mt-1 u-mb-half"
-      >
+    <h3
+      className="u-title-h2 u-mt-1-half u-mb-1"
+    >
+      Account linked to this contact
+    </h3>
+    <ol
+      className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s"
+    >
+      <li>
         <div
-          className="u-mr-1"
+          className="u-flex u-mt-1 u-mb-half"
         >
-          <svg
-            className="styles__icon___23x3R"
-            height="16"
-            style={Object {}}
-            width="16"
-          >
-            <use
-              xlinkHref="#google"
-            />
-          </svg>
-        </div>
-        <div>
           <div
-            className="u-mb-half u-breakword"
+            className="u-mr-1"
           >
-            <p
-              className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
+            <svg
+              className="styles__icon___23x3R"
+              height="16"
+              style={Object {}}
+              width="16"
             >
-              Google
-            </p>
-            <span
-              className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary"
+              <use
+                xlinkHref="#google"
+              />
+            </svg>
+          </div>
+          <div>
+            <div
+              className="u-mb-half u-breakword"
             >
-              john.doe@gmail.com
-            </span>
+              <p
+                className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
+              >
+                Google
+              </p>
+              <span
+                className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary"
+              >
+                john.doe@gmail.com
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-    </li>
-  </ol>
+      </li>
+    </ol>
+  </div>
 </div>
 `;
