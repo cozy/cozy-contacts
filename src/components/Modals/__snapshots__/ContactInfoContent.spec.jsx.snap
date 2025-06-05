@@ -4,208 +4,212 @@ exports[`ContactInfoContent should match snapshot when groups are available but 
 <div
   className="TwakeTheme--light-normal u-dc"
 >
-  <div>
-    <h3
-      className="u-title-h2 u-mt-1-half u-mb-1"
-    >
-      Contact informations
-    </h3>
-    <ol
-      className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s"
-    >
-      <li>
-        <div
-          className="u-flex u-mt-half"
-        >
+  <div
+    className="styles__o-layout___3TSz9 styles__o-layout-2panes___1CDQw styles__o-layout-topbar___2SHWi"
+  >
+    <div>
+      <h3
+        className="u-title-h2 u-mt-1-half u-mb-1"
+      >
+        Contact informations
+      </h3>
+      <ol
+        className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s"
+      >
+        <li>
           <div
-            className="u-mr-1 u-fz-large"
+            className="u-flex u-mt-half"
           >
-            <svg
-              className="styles__icon___23x3R"
-              height="16"
-              style={
-                Object {
-                  "fill": "var(--iconTextColor)",
+            <div
+              className="u-mr-1 u-fz-large"
+            >
+              <svg
+                className="styles__icon___23x3R"
+                height="16"
+                style={
+                  Object {
+                    "fill": "var(--iconTextColor)",
+                  }
                 }
-              }
-              width="16"
-            >
-              <use
-                xlinkHref="#telephone"
-              />
-            </svg>
-          </div>
-          <div>
-            <div
-              className="u-mb-half u-breakword u-fz-medium"
-            >
-              <a
-                className="u-link"
-                href="tel:+33 (1)9 14 02 28 31"
+                width="16"
               >
-                +33 (1)9 14 02 28 31
-              </a>
+                <use
+                  xlinkHref="#telephone"
+                />
+              </svg>
             </div>
-            <div
-              className="u-mb-half u-breakword u-fz-medium"
-            >
-              <a
-                className="u-link"
-                href="tel:+33 (2)3 99 53 65 21"
+            <div>
+              <div
+                className="u-mb-half u-breakword u-fz-medium"
               >
-                +33 (2)3 99 53 65 21
-              </a>
+                <a
+                  className="u-link"
+                  href="tel:+33 (1)9 14 02 28 31"
+                >
+                  +33 (1)9 14 02 28 31
+                </a>
+              </div>
+              <div
+                className="u-mb-half u-breakword u-fz-medium"
+              >
+                <a
+                  className="u-link"
+                  href="tel:+33 (2)3 99 53 65 21"
+                >
+                  +33 (2)3 99 53 65 21
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </li>
-      <li>
-        <div
-          className="u-flex u-mt-half"
-        >
+        </li>
+        <li>
           <div
-            className="u-mr-1 u-fz-large"
+            className="u-flex u-mt-half"
           >
-            <svg
-              className="styles__icon___23x3R"
-              height="16"
-              style={
-                Object {
-                  "fill": "var(--iconTextColor)",
-                }
-              }
-              width="16"
-            >
-              <use
-                xlinkHref="#email"
-              />
-            </svg>
-          </div>
-          <div>
             <div
-              className="u-mb-half u-breakword u-fz-medium"
+              className="u-mr-1 u-fz-large"
             >
-              <a
-                className="u-link"
-                href="mailto:rikki.white@celmax.name"
+              <svg
+                className="styles__icon___23x3R"
+                height="16"
+                style={
+                  Object {
+                    "fill": "var(--iconTextColor)",
+                  }
+                }
+                width="16"
               >
-                rikki.white@celmax.name
-              </a>
+                <use
+                  xlinkHref="#email"
+                />
+              </svg>
             </div>
-            <div
-              className="u-mb-half u-breakword u-fz-medium"
-            >
-              <a
-                className="u-link"
-                href="mailto:eleanore.fennell@thermolock.name"
+            <div>
+              <div
+                className="u-mb-half u-breakword u-fz-medium"
               >
-                eleanore.fennell@thermolock.name
-              </a>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div
-          className="u-flex u-mt-half"
-        >
-          <div
-            className="u-mr-1 u-fz-large"
-          >
-            <svg
-              className="styles__icon___23x3R"
-              height="16"
-              style={
-                Object {
-                  "fill": "var(--iconTextColor)",
-                }
-              }
-              width="16"
-            >
-              <use
-                xlinkHref="#location"
-              />
-            </svg>
-          </div>
-          <div>
-            <div
-              className="u-mb-half u-breakword u-fz-medium"
-            >
-              <a
-                className="u-link"
-                href="https://nominatim.openstreetmap.org/search?format=html&q=48%20Fuller%20Road,%2006635%20Stafford,%20Solomon%20Islands"
-                rel="noopener noreferrer"
-                target="_blank"
+                <a
+                  className="u-link"
+                  href="mailto:rikki.white@celmax.name"
+                >
+                  rikki.white@celmax.name
+                </a>
+              </div>
+              <div
+                className="u-mb-half u-breakword u-fz-medium"
               >
-                48 Fuller Road, 06635 Stafford, Solomon Islands
-              </a>
+                <a
+                  className="u-link"
+                  href="mailto:eleanore.fennell@thermolock.name"
+                >
+                  eleanore.fennell@thermolock.name
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </li>
-      <li>
-        <div
-          className="u-flex u-mt-half"
-        >
+        </li>
+        <li>
           <div
-            className="u-mr-1 u-fz-large"
+            className="u-flex u-mt-half"
           >
-            <svg
-              className="styles__icon___23x3R"
-              height="16"
-              style={
-                Object {
-                  "fill": "var(--iconTextColor)",
-                }
-              }
-              width="16"
-            >
-              <use
-                xlinkHref="#calendar"
-              />
-            </svg>
-          </div>
-          <div>
             <div
-              className="u-mb-half u-breakword u-fz-medium"
+              className="u-mr-1 u-fz-large"
             >
-              1998-06-03
+              <svg
+                className="styles__icon___23x3R"
+                height="16"
+                style={
+                  Object {
+                    "fill": "var(--iconTextColor)",
+                  }
+                }
+                width="16"
+              >
+                <use
+                  xlinkHref="#location"
+                />
+              </svg>
+            </div>
+            <div>
+              <div
+                className="u-mb-half u-breakword u-fz-medium"
+              >
+                <a
+                  className="u-link"
+                  href="https://nominatim.openstreetmap.org/search?format=html&q=48%20Fuller%20Road,%2006635%20Stafford,%20Solomon%20Islands"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  48 Fuller Road, 06635 Stafford, Solomon Islands
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </li>
-      <li>
-        <div
-          className="u-flex u-mt-half"
-        >
+        </li>
+        <li>
           <div
-            className="u-mr-1 u-fz-large"
+            className="u-flex u-mt-half"
           >
-            <svg
-              className="styles__icon___23x3R"
-              height="16"
-              style={
-                Object {
-                  "fill": "var(--iconTextColor)",
-                }
-              }
-              width="16"
-            >
-              <use
-                xlinkHref="#flag"
-              />
-            </svg>
-          </div>
-          <div>
             <div
-              className="u-mb-half u-breakword u-fz-medium"
+              className="u-mr-1 u-fz-large"
             >
-              unsupportedField
+              <svg
+                className="styles__icon___23x3R"
+                height="16"
+                style={
+                  Object {
+                    "fill": "var(--iconTextColor)",
+                  }
+                }
+                width="16"
+              >
+                <use
+                  xlinkHref="#calendar"
+                />
+              </svg>
+            </div>
+            <div>
+              <div
+                className="u-mb-half u-breakword u-fz-medium"
+              >
+                1998-06-03
+              </div>
             </div>
           </div>
-        </div>
-      </li>
-    </ol>
+        </li>
+        <li>
+          <div
+            className="u-flex u-mt-half"
+          >
+            <div
+              className="u-mr-1 u-fz-large"
+            >
+              <svg
+                className="styles__icon___23x3R"
+                height="16"
+                style={
+                  Object {
+                    "fill": "var(--iconTextColor)",
+                  }
+                }
+                width="16"
+              >
+                <use
+                  xlinkHref="#flag"
+                />
+              </svg>
+            </div>
+            <div>
+              <div
+                className="u-mb-half u-breakword u-fz-medium"
+              >
+                unsupportedField
+              </div>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
   </div>
 </div>
 `;
@@ -215,177 +219,181 @@ exports[`ContactInfoContent should match snapshot with accounts and groups 1`] =
   className="TwakeTheme--light-normal u-dc"
 >
   <div
-    className="u-mb-2"
+    className="styles__o-layout___3TSz9 styles__o-layout-2panes___1CDQw styles__o-layout-topbar___2SHWi"
   >
-    <h3
-      className="u-title-h2 u-mt-1-half u-mb-1"
+    <div
+      className="u-mb-2"
     >
-      Groups
-    </h3>
-    <ol
-      className="u-nolist u-m-0 u-p-0"
-    >
-      <li
-        className="u-dib u-slateGrey u-fz-small u-p-half u-mr-half u-w-auto u-maw-6 u-bg-paleGrey u-ellipsis"
+      <h3
+        className="u-title-h2 u-mt-1-half u-mb-1"
       >
-        toto
-      </li>
-    </ol>
-  </div>
-  <div>
+        Groups
+      </h3>
+      <ol
+        className="u-nolist u-m-0 u-p-0"
+      >
+        <li
+          className="u-dib u-slateGrey u-fz-small u-p-half u-mr-half u-w-auto u-maw-6 u-bg-paleGrey u-ellipsis"
+        >
+          toto
+        </li>
+      </ol>
+    </div>
+    <div>
+      <h3
+        className="u-title-h2 u-mt-1-half u-mb-1"
+      >
+        Contact informations
+      </h3>
+      <ol
+        className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s"
+      >
+        <li>
+          <div
+            className="u-flex u-mt-half"
+          >
+            <div
+              className="u-mr-1 u-fz-large"
+            >
+              <svg
+                className="styles__icon___23x3R"
+                height="16"
+                style={
+                  Object {
+                    "fill": "var(--iconTextColor)",
+                  }
+                }
+                width="16"
+              >
+                <use
+                  xlinkHref="#email"
+                />
+              </svg>
+            </div>
+            <div>
+              <div
+                className="u-mb-half u-breakword u-fz-medium"
+              >
+                <a
+                  className="u-link"
+                  href="mailto:rikki.white@celmax.name"
+                >
+                  rikki.white@celmax.name
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div
+            className="u-flex u-mt-half"
+          >
+            <div
+              className="u-mr-1 u-fz-large"
+            >
+              <svg
+                className="styles__icon___23x3R"
+                height="16"
+                style={
+                  Object {
+                    "fill": "var(--iconTextColor)",
+                  }
+                }
+                width="16"
+              >
+                <use
+                  xlinkHref="#calendar"
+                />
+              </svg>
+            </div>
+            <div>
+              <div
+                className="u-mb-half u-breakword u-fz-medium"
+              >
+                1998-06-03
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div
+            className="u-flex u-mt-half"
+          >
+            <div
+              className="u-mr-1 u-fz-large"
+            >
+              <svg
+                className="styles__icon___23x3R"
+                height="16"
+                style={
+                  Object {
+                    "fill": "var(--iconTextColor)",
+                  }
+                }
+                width="16"
+              >
+                <use
+                  xlinkHref="#flag"
+                />
+              </svg>
+            </div>
+            <div>
+              <div
+                className="u-mb-half u-breakword u-fz-medium"
+              >
+                unsupportedField
+              </div>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
     <h3
       className="u-title-h2 u-mt-1-half u-mb-1"
     >
-      Contact informations
+      Account linked to this contact
     </h3>
     <ol
       className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s"
     >
       <li>
         <div
-          className="u-flex u-mt-half"
+          className="u-flex u-mt-1 u-mb-half"
         >
           <div
-            className="u-mr-1 u-fz-large"
+            className="u-mr-1"
           >
             <svg
               className="styles__icon___23x3R"
               height="16"
-              style={
-                Object {
-                  "fill": "var(--iconTextColor)",
-                }
-              }
+              style={Object {}}
               width="16"
             >
               <use
-                xlinkHref="#email"
+                xlinkHref="#google"
               />
             </svg>
           </div>
           <div>
             <div
-              className="u-mb-half u-breakword u-fz-medium"
+              className="u-mb-half u-breakword"
             >
-              <a
-                className="u-link"
-                href="mailto:rikki.white@celmax.name"
+              <p
+                className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
               >
-                rikki.white@celmax.name
-              </a>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div
-          className="u-flex u-mt-half"
-        >
-          <div
-            className="u-mr-1 u-fz-large"
-          >
-            <svg
-              className="styles__icon___23x3R"
-              height="16"
-              style={
-                Object {
-                  "fill": "var(--iconTextColor)",
-                }
-              }
-              width="16"
-            >
-              <use
-                xlinkHref="#calendar"
-              />
-            </svg>
-          </div>
-          <div>
-            <div
-              className="u-mb-half u-breakword u-fz-medium"
-            >
-              1998-06-03
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div
-          className="u-flex u-mt-half"
-        >
-          <div
-            className="u-mr-1 u-fz-large"
-          >
-            <svg
-              className="styles__icon___23x3R"
-              height="16"
-              style={
-                Object {
-                  "fill": "var(--iconTextColor)",
-                }
-              }
-              width="16"
-            >
-              <use
-                xlinkHref="#flag"
-              />
-            </svg>
-          </div>
-          <div>
-            <div
-              className="u-mb-half u-breakword u-fz-medium"
-            >
-              unsupportedField
+                Google
+              </p>
+              <span
+                className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary"
+              >
+                john.doe@gmail.com
+              </span>
             </div>
           </div>
         </div>
       </li>
     </ol>
   </div>
-  <h3
-    className="u-title-h2 u-mt-1-half u-mb-1"
-  >
-    Account linked to this contact
-  </h3>
-  <ol
-    className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s"
-  >
-    <li>
-      <div
-        className="u-flex u-mt-1 u-mb-half"
-      >
-        <div
-          className="u-mr-1"
-        >
-          <svg
-            className="styles__icon___23x3R"
-            height="16"
-            style={Object {}}
-            width="16"
-          >
-            <use
-              xlinkHref="#google"
-            />
-          </svg>
-        </div>
-        <div>
-          <div
-            className="u-mb-half u-breakword"
-          >
-            <p
-              className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
-            >
-              Google
-            </p>
-            <span
-              className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary"
-            >
-              john.doe@gmail.com
-            </span>
-          </div>
-        </div>
-      </div>
-    </li>
-  </ol>
 </div>
 `;
 
@@ -393,159 +401,163 @@ exports[`ContactInfoContent should match snapshot with accounts without groups 1
 <div
   className="TwakeTheme--light-normal u-dc"
 >
-  <div>
+  <div
+    className="styles__o-layout___3TSz9 styles__o-layout-2panes___1CDQw styles__o-layout-topbar___2SHWi"
+  >
+    <div>
+      <h3
+        className="u-title-h2 u-mt-1-half u-mb-1"
+      >
+        Contact informations
+      </h3>
+      <ol
+        className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s"
+      >
+        <li>
+          <div
+            className="u-flex u-mt-half"
+          >
+            <div
+              className="u-mr-1 u-fz-large"
+            >
+              <svg
+                className="styles__icon___23x3R"
+                height="16"
+                style={
+                  Object {
+                    "fill": "var(--iconTextColor)",
+                  }
+                }
+                width="16"
+              >
+                <use
+                  xlinkHref="#email"
+                />
+              </svg>
+            </div>
+            <div>
+              <div
+                className="u-mb-half u-breakword u-fz-medium"
+              >
+                <a
+                  className="u-link"
+                  href="mailto:rikki.white@celmax.name"
+                >
+                  rikki.white@celmax.name
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div
+            className="u-flex u-mt-half"
+          >
+            <div
+              className="u-mr-1 u-fz-large"
+            >
+              <svg
+                className="styles__icon___23x3R"
+                height="16"
+                style={
+                  Object {
+                    "fill": "var(--iconTextColor)",
+                  }
+                }
+                width="16"
+              >
+                <use
+                  xlinkHref="#calendar"
+                />
+              </svg>
+            </div>
+            <div>
+              <div
+                className="u-mb-half u-breakword u-fz-medium"
+              >
+                1998-06-03
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div
+            className="u-flex u-mt-half"
+          >
+            <div
+              className="u-mr-1 u-fz-large"
+            >
+              <svg
+                className="styles__icon___23x3R"
+                height="16"
+                style={
+                  Object {
+                    "fill": "var(--iconTextColor)",
+                  }
+                }
+                width="16"
+              >
+                <use
+                  xlinkHref="#flag"
+                />
+              </svg>
+            </div>
+            <div>
+              <div
+                className="u-mb-half u-breakword u-fz-medium"
+              >
+                unsupportedField
+              </div>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
     <h3
       className="u-title-h2 u-mt-1-half u-mb-1"
     >
-      Contact informations
+      Account linked to this contact
     </h3>
     <ol
       className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s"
     >
       <li>
         <div
-          className="u-flex u-mt-half"
+          className="u-flex u-mt-1 u-mb-half"
         >
           <div
-            className="u-mr-1 u-fz-large"
+            className="u-mr-1"
           >
             <svg
               className="styles__icon___23x3R"
               height="16"
-              style={
-                Object {
-                  "fill": "var(--iconTextColor)",
-                }
-              }
+              style={Object {}}
               width="16"
             >
               <use
-                xlinkHref="#email"
+                xlinkHref="#google"
               />
             </svg>
           </div>
           <div>
             <div
-              className="u-mb-half u-breakword u-fz-medium"
+              className="u-mb-half u-breakword"
             >
-              <a
-                className="u-link"
-                href="mailto:rikki.white@celmax.name"
+              <p
+                className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
               >
-                rikki.white@celmax.name
-              </a>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div
-          className="u-flex u-mt-half"
-        >
-          <div
-            className="u-mr-1 u-fz-large"
-          >
-            <svg
-              className="styles__icon___23x3R"
-              height="16"
-              style={
-                Object {
-                  "fill": "var(--iconTextColor)",
-                }
-              }
-              width="16"
-            >
-              <use
-                xlinkHref="#calendar"
-              />
-            </svg>
-          </div>
-          <div>
-            <div
-              className="u-mb-half u-breakword u-fz-medium"
-            >
-              1998-06-03
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div
-          className="u-flex u-mt-half"
-        >
-          <div
-            className="u-mr-1 u-fz-large"
-          >
-            <svg
-              className="styles__icon___23x3R"
-              height="16"
-              style={
-                Object {
-                  "fill": "var(--iconTextColor)",
-                }
-              }
-              width="16"
-            >
-              <use
-                xlinkHref="#flag"
-              />
-            </svg>
-          </div>
-          <div>
-            <div
-              className="u-mb-half u-breakword u-fz-medium"
-            >
-              unsupportedField
+                Google
+              </p>
+              <span
+                className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary"
+              >
+                john.doe@gmail.com
+              </span>
             </div>
           </div>
         </div>
       </li>
     </ol>
   </div>
-  <h3
-    className="u-title-h2 u-mt-1-half u-mb-1"
-  >
-    Account linked to this contact
-  </h3>
-  <ol
-    className="u-nolist u-m-0 u-p-0 u-pl-1-half u-pl-0-s"
-  >
-    <li>
-      <div
-        className="u-flex u-mt-1 u-mb-half"
-      >
-        <div
-          className="u-mr-1"
-        >
-          <svg
-            className="styles__icon___23x3R"
-            height="16"
-            style={Object {}}
-            width="16"
-          >
-            <use
-              xlinkHref="#google"
-            />
-          </svg>
-        </div>
-        <div>
-          <div
-            className="u-mb-half u-breakword"
-          >
-            <p
-              className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
-            >
-              Google
-            </p>
-            <span
-              className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary"
-            >
-              john.doe@gmail.com
-            </span>
-          </div>
-        </div>
-      </div>
-    </li>
-  </ol>
 </div>
 `;
