@@ -1,5 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
+import { useIntentBackdrop } from 'src/components/Hooks/useIntentBackdrop'
 
 import { BarCenter } from 'cozy-bar'
 import { BarComponent } from 'cozy-bar'
@@ -17,6 +18,7 @@ import { ModalManager } from '../helpers/modalManager'
 const AppLayout = ({ withTopBar }) => {
   const client = useClient()
   const { isMobile } = useBreakpoints()
+  useIntentBackdrop()
 
   return (
     <Layout monoColumn withTopBar={withTopBar}>
