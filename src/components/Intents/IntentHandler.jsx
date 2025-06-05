@@ -53,7 +53,7 @@ class IntentHandler extends Component {
 
     return (
       <div className="app-wrapper">
-        <main className="app-content">
+        <div className="app-content">
           {status === 'creating' && (
             <div className="intent-loader">
               <Spinner size="xxlarge" />
@@ -77,7 +77,7 @@ class IntentHandler extends Component {
               onError: error => service.throw(error),
               onTerminate: app => service.terminate(app)
             })}
-        </main>
+        </div>
       </div>
     )
   }
