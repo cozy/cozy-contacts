@@ -27,7 +27,7 @@ exports[`ContactInfoContent should match snapshot when groups are available but 
                 className="styles__icon___23x3R"
                 height="16"
                 style={
-                  Object {
+                  {
                     "fill": "var(--iconTextColor)",
                   }
                 }
@@ -73,7 +73,7 @@ exports[`ContactInfoContent should match snapshot when groups are available but 
                 className="styles__icon___23x3R"
                 height="16"
                 style={
-                  Object {
+                  {
                     "fill": "var(--iconTextColor)",
                   }
                 }
@@ -119,7 +119,7 @@ exports[`ContactInfoContent should match snapshot when groups are available but 
                 className="styles__icon___23x3R"
                 height="16"
                 style={
-                  Object {
+                  {
                     "fill": "var(--iconTextColor)",
                   }
                 }
@@ -157,7 +157,7 @@ exports[`ContactInfoContent should match snapshot when groups are available but 
                 className="styles__icon___23x3R"
                 height="16"
                 style={
-                  Object {
+                  {
                     "fill": "var(--iconTextColor)",
                   }
                 }
@@ -188,7 +188,7 @@ exports[`ContactInfoContent should match snapshot when groups are available but 
                 className="styles__icon___23x3R"
                 height="16"
                 style={
-                  Object {
+                  {
                     "fill": "var(--iconTextColor)",
                   }
                 }
@@ -259,7 +259,7 @@ exports[`ContactInfoContent should match snapshot with accounts and groups 1`] =
                 className="styles__icon___23x3R"
                 height="16"
                 style={
-                  Object {
+                  {
                     "fill": "var(--iconTextColor)",
                   }
                 }
@@ -295,7 +295,7 @@ exports[`ContactInfoContent should match snapshot with accounts and groups 1`] =
                 className="styles__icon___23x3R"
                 height="16"
                 style={
-                  Object {
+                  {
                     "fill": "var(--iconTextColor)",
                   }
                 }
@@ -326,7 +326,7 @@ exports[`ContactInfoContent should match snapshot with accounts and groups 1`] =
                 className="styles__icon___23x3R"
                 height="16"
                 style={
-                  Object {
+                  {
                     "fill": "var(--iconTextColor)",
                   }
                 }
@@ -366,7 +366,7 @@ exports[`ContactInfoContent should match snapshot with accounts and groups 1`] =
             <svg
               className="styles__icon___23x3R"
               height="16"
-              style={Object {}}
+              style={{}}
               width="16"
             >
               <use
@@ -424,7 +424,7 @@ exports[`ContactInfoContent should match snapshot with accounts without groups 1
                 className="styles__icon___23x3R"
                 height="16"
                 style={
-                  Object {
+                  {
                     "fill": "var(--iconTextColor)",
                   }
                 }
@@ -460,7 +460,7 @@ exports[`ContactInfoContent should match snapshot with accounts without groups 1
                 className="styles__icon___23x3R"
                 height="16"
                 style={
-                  Object {
+                  {
                     "fill": "var(--iconTextColor)",
                   }
                 }
@@ -491,7 +491,7 @@ exports[`ContactInfoContent should match snapshot with accounts without groups 1
                 className="styles__icon___23x3R"
                 height="16"
                 style={
-                  Object {
+                  {
                     "fill": "var(--iconTextColor)",
                   }
                 }
@@ -531,7 +531,7 @@ exports[`ContactInfoContent should match snapshot with accounts without groups 1
             <svg
               className="styles__icon___23x3R"
               height="16"
-              style={Object {}}
+              style={{}}
               width="16"
             >
               <use

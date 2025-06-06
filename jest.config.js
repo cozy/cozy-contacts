@@ -13,7 +13,7 @@ module.exports = {
     '^.+\\.jsx?$': 'babel-jest',
     '^.+\\.webapp$': '<rootDir>/json-transformer.js'
   },
-  testEnvironment: 'jest-environment-jsdom-sixteen',
+  testEnvironment: 'jsdom',
   resolver: '<rootDir>/resolver.js',
   testURL: 'http://localhost',
   globals: {

@@ -25,7 +25,7 @@ exports[`ContactAccounts component should render a list of contact accounts 1`] 
             <svg
               className="styles__icon___23x3R"
               height="16"
-              style={Object {}}
+              style={{}}
               width="16"
             >
               <use
