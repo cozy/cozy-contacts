@@ -1,6 +1,5 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import { useIntentBackdrop } from 'src/components/Hooks/useIntentBackdrop'
 
 import { BarCenter } from 'cozy-bar'
 import { BarComponent } from 'cozy-bar'
@@ -14,6 +13,8 @@ import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
 import { ModalManager } from '../helpers/modalManager'
+
+import { useIntentBackdrop } from '@/components/Hooks/useIntentBackdrop'
 
 const AppLayout = ({ withTopBar }) => {
   const client = useClient()

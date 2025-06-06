@@ -8,13 +8,13 @@ import 'styles/intent'
 import React from 'react'
 
 import { Intents } from 'cozy-interapp'
-import AppProviders from 'components/AppProviders'
+import AppProviders from '@/components/AppProviders'
 import setupApp from '../browser/setupApp'
 
-import IntentHandler from 'components/Intents/IntentHandler'
-import PickContacts from 'components/Intents/PickContacts'
-import CreateContact from 'components/Intents/CreateContact'
-import ListContacts from 'components/Intents/ListContacts'
+import IntentHandler from '@/components/Intents/IntentHandler'
+import PickContacts from '@/components/Intents/PickContacts'
+import CreateContact from '@/components/Intents/CreateContact'
+import ListContacts from '@/components/Intents/ListContacts'
 
 const init = function () {
   const { root, store, client, lang, polyglot, appData } = setupApp()
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 if (module.hot) {
-  module.hot.accept('components/App', function () {
+  module.hot.accept('@/components/App', function () {
     init()
   })
 }
