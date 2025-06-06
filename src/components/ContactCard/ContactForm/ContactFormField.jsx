@@ -11,17 +11,19 @@ import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import ContactFormFieldArrayItem from './ContactFormFieldArrayItem'
 import { addField } from '../../../helpers/fields'
 
+import styles from '@/styles/contactForm.styl'
+
 const ContactFormField = ({ name, icon, isArray, renderInput }) => {
   const { t } = useI18n()
 
   return (
-    <Media align="top" className="contact-form-field">
+    <Media align="top" className={styles['contact-form-field']}>
       <Img>
         {icon ? (
           <Icon
             icon={icon}
             color="var(--iconTextColor)"
-            className="contact-form-field__icon"
+            className={styles['contact-form-field__icon']}
           />
         ) : (
           <div className="u-w-1 u-mr-2" />

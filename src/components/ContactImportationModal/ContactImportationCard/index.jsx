@@ -10,6 +10,8 @@ import ImportationInput from './ImportationInput'
 import ImportationHelper from '../../../importation'
 import Status from '../../../importation/status'
 
+import styles from '@/styles/contactImportation.styl'
+
 const ContactImportationCard = props => {
   const { importation, progress, onFileSelected, onFileUnselected, t } = props
   const { status } = importation
@@ -29,7 +31,9 @@ const ContactImportationCard = props => {
         <ImportationInput fileAction={onFileSelected} />
       ) : (
         isStatusDisplayed(status) && (
-          <span className="importation-status">{t(statusKey(status))}</span>
+          <span className={styles['importation-status']}>
+            {t(statusKey(status))}
+          </span>
         )
       )}
       {progress && (

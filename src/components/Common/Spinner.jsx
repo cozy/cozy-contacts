@@ -2,12 +2,13 @@ import React, { PureComponent } from 'react'
 
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 
-import '../../styles/spinner.styl'
+import styles from '@/styles/spinner.styl'
+
 class SpinnerContact extends PureComponent {
   render() {
     const { size, loadingType } = this.props
     return (
-      <div className="spinner" data-testid="contactSpinner">
+      <div className={styles['spinner']} data-testid="contactSpinner">
         <Spinner size={size} loadingType={loadingType} middle={true} />
       </div>
     )
