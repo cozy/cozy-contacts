@@ -7,6 +7,8 @@ import ListItemIcon from 'cozy-ui/transpiled/react/ListItemIcon'
 
 import { removeField } from '../../../helpers/fields'
 
+import styles from '@/styles/contactForm.styl'
+
 const ContactFormFieldArrayItem = ({
   fields,
   index,
@@ -21,7 +23,7 @@ const ContactFormFieldArrayItem = ({
       {renderInput(`${nameWithIndex}.${name}`)}
 
       {showRemove && (
-        <ListItemIcon className="contact-form-field__delete-icon">
+        <ListItemIcon className={styles['contact-form-field__delete-icon']}>
           <IconButton
             aria-label="delete"
             color="error"
