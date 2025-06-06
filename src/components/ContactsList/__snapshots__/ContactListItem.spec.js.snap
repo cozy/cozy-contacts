@@ -65,7 +65,7 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
           className="styles__c-avatar___3jjlO styles__c-avatar--text___3Xssl"
           data-testid="Avatar"
           style={
-            Object {
+            {
               "--circleSize": "24px",
               "background": "linear-gradient(136deg, #6DCFFF 14.84%, #3D88F8 96.03%)",
             }
