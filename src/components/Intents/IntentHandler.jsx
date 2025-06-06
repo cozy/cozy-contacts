@@ -6,6 +6,9 @@ import CozyIcon from 'cozy-ui/transpiled/react/Icons/Cozy'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
+import contactsStyles from '@/styles/contacts.styl'
+import intentStyles from '@/styles/intent.styl'
+
 class IntentHandler extends Component {
   constructor(props) {
     super(props)
@@ -52,16 +55,16 @@ class IntentHandler extends Component {
       })
 
     return (
-      <div className="app-wrapper">
-        <div className="app-content">
+      <div className={intentStyles['app-wrapper']}>
+        <div className={intentStyles['app-content']}>
           {status === 'creating' && (
-            <div className="intent-loader">
+            <div className={intentStyles['intent-loader']}>
               <Spinner size="xxlarge" />
             </div>
           )}
           {error && (
             <Empty
-              className="contacts-empty"
+              className={contactsStyles['contacts-empty']}
               icon={CozyIcon}
               title={t('intent.service.creation.error.title')}
               text={error.message}
