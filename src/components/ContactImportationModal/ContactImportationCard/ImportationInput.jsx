@@ -1,3 +1,4 @@
+import cx from 'classnames'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 
@@ -6,6 +7,8 @@ import UploadIcon from 'cozy-ui/transpiled/react/Icons/Upload'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import Importation from '../../../importation'
+
+import styles from '@/styles/contactImportation.styl'
 
 const ImportationInput = ({ fileAction }) => {
   const { t } = useI18n()
@@ -20,22 +23,32 @@ const ImportationInput = ({ fileAction }) => {
   return (
     <span
       role="button"
-      className="c-btn c-btn--secondary c-btn--subtle importation-file-selection-button"
+      className={cx(
+        styles['importation-file-selection-button'],
+        'u-flex',
+        'u-flex-row',
+        'u-flex-justify-center'
+      )}
     >
-      <span>
-        <Icon
-          icon={UploadIcon}
-          className="importation-file-selection-icon u-mr-half"
-        />
-        {t('importation.transfer_file')}
-        <input
-          className="importation-file-selection-input"
-          type="file"
-          accept={Importation.VALID_FILE_TYPES.join(', ')}
-          onChange={handleOnChange}
-          value={value}
-        />
-      </span>
+      <Icon
+        icon={UploadIcon}
+        className={cx(
+          styles['importation-file-selection-icon'],
+          'u-mr-half',
+          'u-c-pointer'
+        )}
+      />
+      {t('importation.transfer_file')}
+      <input
+        className={cx(
+          styles['importation-file-selection-input'],
+          'u-c-pointer'
+        )}
+        type="file"
+        accept={Importation.VALID_FILE_TYPES.join(', ')}
+        onChange={handleOnChange}
+        value={value}
+      />
     </span>
   )
 }

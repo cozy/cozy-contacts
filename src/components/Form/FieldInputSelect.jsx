@@ -9,6 +9,8 @@ import CustomLabelDialog from './CustomLabelDialog'
 import { FieldInputWrapperPropTypes } from './fieldInputType'
 import { makeCustomLabel, makeInitialCustomValue } from './helpers'
 
+import styles from '@/styles/contactForm.styl'
+
 const FieldInputSelect = ({ options, name, value, onChange, ...props }) => {
   const { customLabelOptions, ...restProps } = props
   const { t } = useI18n()
@@ -43,8 +45,8 @@ const FieldInputSelect = ({ options, name, value, onChange, ...props }) => {
     <>
       <TextField
         {...restProps}
-        className={cx('contact-form-field__label', {
-          ['contact-form-field__label-nofullwidth']: name !== 'gender'
+        className={cx(styles['contact-form-field__label'], {
+          [styles['contact-form-field__label-nofullwidth']]: name !== 'gender'
         })}
         fullWidth={false}
         select

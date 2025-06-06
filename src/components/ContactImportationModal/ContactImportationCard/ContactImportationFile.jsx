@@ -10,6 +10,8 @@ import IconFileVcf from '../../../assets/icons/file-vcf.svg'
 import IconFileWrongFormat from '../../../assets/icons/file-wrong-format.svg'
 import Status from '../../../importation/status'
 
+import styles from '@/styles/contactImportation.styl'
+
 function fileIcon(status) {
   switch (status) {
     case Status.FILE_ISSUE:
@@ -30,14 +32,17 @@ const UNSELECTABLE_FILE_STATUS_SET = new Set([
 
 export default function ImportationFile({ status, name, unselectAction }) {
   return (
-    <div className="importation-file">
-      <Icon icon={fileIcon(status)} className="importation-file-icon" />
+    <div className={styles['importation-file']}>
+      <Icon
+        icon={fileIcon(status)}
+        className={styles['importation-file-icon']}
+      />
       {name && (
-        <span className="importation-file-name">
+        <span className={styles['importation-file-name']}>
           {name}
           {UNSELECTABLE_FILE_STATUS_SET.has(status) && (
             <button
-              className="importation-file-oval"
+              className={styles['importation-file-oval']}
               onClick={e => unselectAction(e)}
             >
               <Icon

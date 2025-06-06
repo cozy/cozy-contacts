@@ -2,8 +2,8 @@
 import '@babel/polyfill'
 
 import 'cozy-ui/transpiled/react/stylesheet.css'
-import 'styles'
-import 'styles/intent'
+import '../../styles/index.styl'
+import '../../styles/intent.styl'
 
 import React from 'react'
 
