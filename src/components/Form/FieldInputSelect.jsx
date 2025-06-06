@@ -6,7 +6,7 @@ import TextField from 'cozy-ui/transpiled/react/TextField'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import CustomLabelDialog from './CustomLabelDialog'
-import { FieldInputWrapperPropTypes } from './FieldInputWrapper'
+import { FieldInputWrapperPropTypes } from './fieldInputType'
 import { makeCustomLabel, makeInitialCustomValue } from './helpers'
 
 const FieldInputSelect = ({ options, name, value, onChange, ...props }) => {
