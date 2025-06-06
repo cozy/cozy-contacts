@@ -1,10 +1,11 @@
 import fetch from 'node-fetch'
-import { cleanRelatedContactsService } from 'src/helpers/cleanRelatedContactsService'
 
 import CozyClient from 'cozy-client'
 import logger from 'cozy-logger'
 
 import { schema } from '../../helpers/doctypes'
+
+import { cleanRelatedContactsService } from '@/helpers/cleanRelatedContactsService'
 
 const log = logger.namespace('services/cleanRelatedContacts')
 
