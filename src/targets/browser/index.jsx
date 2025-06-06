@@ -3,8 +3,8 @@ import 'cozy-ui/transpiled/react/stylesheet.css'
 import 'cozy-ui/dist/cozy-ui.utils.min.css'
 import 'cozy-bar/dist/stylesheet.css'
 
-import AppProviders from 'components/AppProviders'
-import AppRouter from 'components/AppRouter'
+import AppProviders from '@/components/AppProviders'
+import AppRouter from '@/components/AppRouter'
 import React from 'react'
 
 import setupApp from './setupApp'

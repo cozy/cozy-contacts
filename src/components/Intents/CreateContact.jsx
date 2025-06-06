@@ -1,7 +1,6 @@
 import flow from 'lodash/flow'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { DOCTYPE_CONTACTS } from 'src/helpers/doctypes'
 
 import { withClient } from 'cozy-client'
 import IntentHeader from 'cozy-ui/transpiled/react/IntentHeader'
@@ -9,6 +8,8 @@ import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import IntentMain from './IntentMain'
 import ContactForm from '../ContactCard/ContactForm'
+
+import { DOCTYPE_CONTACTS } from '@/helpers/doctypes'
 
 const CreateContact = ({ client, data, onTerminate, onError, onCancel }) => {
   const createContact = async contact => {

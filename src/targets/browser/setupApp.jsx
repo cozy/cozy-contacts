@@ -2,7 +2,6 @@ import { CaptureConsole } from '@sentry/integrations'
 import * as Sentry from '@sentry/react'
 import memoize from 'lodash/memoize'
 import { createRoot } from 'react-dom/client'
-import configureStore from 'store/configureStore'
 
 import flag from 'cozy-flags'
 import { RealtimePlugin } from 'cozy-realtime'
@@ -12,6 +11,8 @@ import manifest from '../../../manifest.webapp'
 import { getValues } from '../../helpers/bar'
 import { getClient } from '../../helpers/client'
 
+import configureStore from '@/store/configureStore'
+
 /**
  * Memoize this function in its own file so that it is correctly memoized
  */
@@ -20,7 +21,7 @@ const setupApp = memoize(() => {
   const root = createRoot(container)
   const data = JSON.parse(container.dataset.cozy)
   const { lang } = getValues(data)
-  const polyglot = initTranslation(lang, lang => require(`locales/${lang}`))
+  const polyglot = initTranslation(lang, lang => require(`@/locales/${lang}`))
   const client = getClient()
   client.registerPlugin(RealtimePlugin)
   client.registerPlugin(flag.plugin)
