@@ -10,8 +10,10 @@
     width 100%
     border-top 1px solid var(--dividerColor)
 
-.overlay-creation-group
-    opacity 0
+.contact-group-create-div-icon
+    display flex
+    align-items center
+    flex 1
 
 /*since we keep the existing style of
 react-select for the menu and we only
@@ -32,19 +34,12 @@ it overrides nothing so there's no need for
     display inline-block
     vertical-align middle
 
-
 :global(.react-select__menu-notice--no-options)
     color var(--primaryTextColor)
     margin-left .5rem !important
     height rem(48)
     display flex
     align-items center
-
-
-.contact-group-create-div-icon
-    display flex
-    align-items center
-    flex 1
 
 :global(.react-select__menu-list)
     text-align initial
