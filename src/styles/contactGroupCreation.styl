@@ -19,7 +19,7 @@ want to override width & zindex... important
 is important. Right positionning is just set,
 it overrides nothing so there's no need for
 !important */
-.react-select__menu
+:global(.react-select__menu)
     width rem(384) !important
     z-index 100000 !important
     right 0
@@ -28,12 +28,12 @@ it overrides nothing so there's no need for
         top auto !important
         width 100% !important
 
-.react-select__container
+:global(.react-select__container)
     display inline-block
     vertical-align middle
 
 
-.react-select__menu-notice--no-options
+:global(.react-select__menu-notice--no-options)
     color var(--primaryTextColor)
     margin-left .5rem !important
     height rem(48)
@@ -46,7 +46,7 @@ it overrides nothing so there's no need for
     align-items center
     flex 1
 
-.react-select__menu-list
+:global(.react-select__menu-list)
     text-align initial
     +small-screen()
         max-width inherit !important
