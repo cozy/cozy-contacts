@@ -1,23 +1,56 @@
 {
     "baseDir": "./build",
+    "pathLabels": {
+        "chunkId": "[\\d-]+"
+    },
     "files": [
         {
-            "path": "**/contacts.<hash>.js"
+            "path": "intent/static/js/<chunkId>.<hash>.js"
         },
         {
-            "path": "**/contacts.<hash>.min.css"
+            "path": "intent/static/js/cozy.<hash>.js"
         },
         {
-            "path": "app-contacts.<hash>.min.css"
+            "path": "intent/static/js/intents.<hash>.js"
+        },
+        {
+            "path": "intent/static/js/lib-router.<hash>.js"
+        },
+        {
+            "path": "intent/static/js/lib-react.<hash>.js"
+        },
+        {
+            "path": "intent/static/css/cozy.<hash>.css"
+        },
+        {
+            "path": "intent/static/css/intents.<hash>.css"
+        },
+        {
+            "path": "static/js/<chunkId>.<hash>.js"
+        },
+        {
+            "path": "static/js/cozy.<hash>.js"
+        },
+        {
+            "path": "static/js/main.<hash>.js"
+        },
+        {
+            "path": "static/js/lib-react.<hash>.js"
+        },
+        {
+            "path": "static/js/lib-router.<hash>.js"
+        },
+        {
+            "path": "static/css/cozy.<hash>.css"
+        },
+        {
+            "path": "static/css/main.<hash>.css"
+        },
+        {
+            "path": "static/svg/*.<hash>.svg"
         },
         {
             "path": "services/**/*.js"
-        },
-        {
-            "path": "vendors-contatcs.<hash>.<hash>.min.css"
-        },
-        {
-            "path": "img/icon.<hash>.svg"
         }
     ],
     "groups": [
@@ -28,7 +61,7 @@
             "path": "**/*.css"
         },
         {
-            "path": "img/*.*"
+            "path": "**/*.{png,svg,ico}"
         }
     ],
     "reportOutput": ["github"]
