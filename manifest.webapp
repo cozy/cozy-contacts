@@ -3,7 +3,7 @@
   "editor": "Cozy",
   "name_prefix": "Twake",
   "slug": "contacts",
-  "icon": "icon.svg",
+  "icon": "assets/icon.svg",
   "type": "webapp",
   "description": "Contact manager for Twake Workplace",
   "category": "cozy",
@@ -16,9 +16,9 @@
   },
   "default_locale": "en",
   "screenshots": [
-    "screenshots/fr/screenshot01.png",
-    "screenshots/fr/screenshot02.png",
-    "screenshots/fr/screenshot03.png"
+    "assets/screenshots/fr/screenshot01.png",
+    "assets/screenshots/fr/screenshot02.png",
+    "assets/screenshots/fr/screenshot03.png"
   ],
   "routes": {
     "/": {

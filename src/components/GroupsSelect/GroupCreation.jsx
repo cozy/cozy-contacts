@@ -6,6 +6,8 @@ import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
 import Input from 'cozy-ui/transpiled/react/Input'
 import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
+import styles from '@/styles/contactGroupCreation.styl'
+
 const normalizeGroupData = name => {
   return {
     name: name,
@@ -50,19 +52,19 @@ class GroupCreation extends Component {
     const { t } = this.props
     return (
       <div>
-        <div className={classNames('contact-group-creation-divider')} />
+        <div className={styles['contact-group-creation-divider']} />
         <div
           className={classNames(
             'u-ml-half',
             'u-mr-half',
             'u-c-pointer',
-            'container'
+            styles['container']
           )}
         >
           {!isInputDisplayed && (
             <div
               onClick={this.handleClick}
-              className={classNames('contact-group-create-div-icon')}
+              className={styles['contact-group-create-div-icon']}
             >
               <Icon icon={PlusIcon} />
               <span className="u-pl-half">{t('groups.create')}</span>

@@ -14,9 +14,12 @@ import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import ContactsSelectionBar from './layout/ContactsSelectionBar'
 import { ModalManager } from '../helpers/modalManager'
 
+import { useIntentBackdrop } from '@/components/Hooks/useIntentBackdrop'
+
 const AppLayout = ({ withTopBar }) => {
   const client = useClient()
   const { isMobile } = useBreakpoints()
+  useIntentBackdrop()
 
   return (
     <Layout monoColumn withTopBar={withTopBar}>

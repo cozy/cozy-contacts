@@ -1,3 +1,4 @@
+import cx from 'classnames'
 import uniqueId from 'lodash/uniqueId'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
@@ -14,6 +15,8 @@ import { handleContactFieldInputProps } from './helpers'
 import FieldInputWrapper from '../Form/FieldInputWrapper'
 import HasValueCondition from '../Form/HasValueCondition'
 import ContactAddressModal from '../Modals/ContactAddressModal'
+
+import styles from '@/styles/contactForm.styl'
 
 const ContactFieldInput = ({
   name,
@@ -41,7 +44,13 @@ const ContactFieldInput = ({
   }
 
   return (
-    <div className="contact-form-field__wrapper u-flex u-flex-column-s">
+    <div
+      className={cx(
+        styles['contact-form-field__wrapper'],
+        'u-flex',
+        'u-flex-column-s'
+      )}
+    >
       <Field
         {...propsUpdated}
         id={id}

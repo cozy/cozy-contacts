@@ -1,8 +1,9 @@
-import AppRouter from 'components/AppRouter'
 import PropTypes from 'prop-types'
 import React from 'react'
 
 import IntentMain from './IntentMain'
+
+import AppRouter from '@/components/AppRouter'
 
 const ListContacts = () => {
   return (

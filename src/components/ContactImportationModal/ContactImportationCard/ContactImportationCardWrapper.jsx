@@ -1,17 +1,23 @@
+import cx from 'classnames'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const WRAPPER_CLASS = 'importation-card'
+import styles from '@/styles/contactImportation.styl'
 
 export default function ContactImportationCardWrapper({ clickable, children }) {
   if (clickable) {
     return (
-      <label className={`${WRAPPER_CLASS} ${WRAPPER_CLASS}-clickable`}>
+      <label
+        className={cx(
+          styles['importation-card'],
+          styles['importation-card-clickable']
+        )}
+      >
         {children}
       </label>
     )
   } else {
-    return <div className={WRAPPER_CLASS}>{children}</div>
+    return <div className={styles['importation-card']}>{children}</div>
   }
 }
 ContactImportationCardWrapper.propTypes = {
