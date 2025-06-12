@@ -42,7 +42,7 @@ const AppProviders = ({ store, client, lang, polyglot, children }) => {
             <DataProxyProvider options={dataProxyProviderOptions}>
               <I18n lang={lang} polyglot={polyglot}>
                 <CozyTheme>
-                  <BreakpointsProvider>
+                  <BreakpointsProvider parentBasedIframe>
                     <AlertProvider>
                       <BarProvider>
                         <ContactsDiplayedProvider>
