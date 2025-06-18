@@ -94,19 +94,19 @@
   "services": {
     "keepIndexFullNameAndDisplayNameUpToDate": {
       "type": "node",
-      "file": "services/keepIndexFullNameAndDisplayNameUpToDate/contacts.js",
+      "file": "services/keepIndexFullNameAndDisplayNameUpToDate.js",
       "trigger": "@event io.cozy.contacts:CREATED,UPDATED",
       "debounce": "5s"
     },
     "autoDefineLabels": {
       "type": "node",
-      "file": "services/autoDefineLabels/contacts.js",
+      "file": "services/autoDefineLabels.js",
       "trigger": "@event io.cozy.contacts:CREATED,UPDATED",
       "debounce": "5s"
     },
     "cleanRelatedContacts": {
       "type": "node",
-      "file": "services/cleanRelatedContacts/contacts.js",
+      "file": "services/cleanRelatedContacts.js",
       "trigger": "@event io.cozy.contacts:DELETED"
     }
   }
