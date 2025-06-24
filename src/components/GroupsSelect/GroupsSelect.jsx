@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { useClient } from 'cozy-client'
 import ClickAwayListener from 'cozy-ui/transpiled/react/ClickAwayListener'
 import SelectBox from 'cozy-ui/transpiled/react/SelectBox'
+import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
 import CustomMenu from './SelectBox/Menu'
 import CustomOption from './SelectBox/Option'
@@ -33,6 +34,7 @@ export const GroupsSelect = ({
 }) => {
   const client = useClient()
   const navigate = useNavigate()
+  const { isMobile } = useBreakpoints()
   const [{ menuIsOpen, editedGroupId }, setState] = useState({
     menuIsOpen: false,
     editedGroupId: ''
@@ -78,6 +80,7 @@ export const GroupsSelect = ({
     <>
       <ClickAwayListener onClickAway={menuIsOpen ? closeMenu : () => {}}>
         <SelectBox
+          className={isMobile ? 'u-mb-half' : 'u-mr-half'}
           classNamePrefix="react-select"
           isMulti={isMulti}
           withCheckbox={withCheckbox}
@@ -104,6 +107,7 @@ export const GroupsSelect = ({
           setEditedGroupId={setEditedGroupId}
           editedGroupId={editedGroupId}
           menuPosition={menuPosition}
+          fullwidth
         />
       </ClickAwayListener>
     </>

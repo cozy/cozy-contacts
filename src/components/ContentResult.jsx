@@ -6,6 +6,7 @@ import Input from 'cozy-ui/transpiled/react/Input'
 import { Content } from 'cozy-ui/transpiled/react/Layout'
 import { ControlDefault } from 'cozy-ui/transpiled/react/SelectBox'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
 import ContactsList from './ContactsList/ContactsList.jsx'
 import ContactsDiplayedContext from './Contexts/ContactsDiplayed'
@@ -22,12 +23,16 @@ import {
 } from '../helpers/groups'
 import { filterContactsBySearch, delayedSetThreshold } from '../helpers/search'
 
-const groupsSelectCustomStyles = {
-  container: base => ({
-    ...base,
-    width: '100%'
-  }),
-  noOptionsMessage: base => ({ ...base, textAlign: 'left' })
+const useGroupsSelectCustomStyles = () => {
+  const { isMobile } = useBreakpoints()
+
+  return {
+    container: base => ({
+      ...base,
+      width: isMobile ? '100%' : '50%'
+    }),
+    noOptionsMessage: base => ({ ...base, textAlign: 'left' })
+  }
 }
 
 const setGroupsSelectOptions = (allGroups, defaultSelectedGroup) =>
@@ -39,7 +44,8 @@ const ControlDefaultWithTestId = ({ ...props }) => {
       {...props}
       innerProps={{
         ...props.innerProps,
-        'data-testid': 'selectBox-controlDefault'
+        'data-testid': 'selectBox-controlDefault',
+        className: 'u-bdrs-4'
       }}
     />
   )
@@ -51,6 +57,7 @@ export const ContentResult = ({ contacts, allGroups }) => {
   const { searchValue } = useContext(SearchContext)
   const { setContactsDisplayed } = useContext(ContactsDiplayedContext)
   const [filteredContacts, setFilteredContacts] = useState(contacts)
+  const groupsSelectCustomStyles = useGroupsSelectCustomStyles()
 
   const groupsSelectOptions = setGroupsSelectOptions(
     allGroups,
@@ -86,14 +93,9 @@ export const ContentResult = ({ contacts, allGroups }) => {
     <>
       {contacts.length >= 1 && (
         <Header
-          left={
+          left={<Toolbar />}
+          right={
             <>
-              {flag('search-threshold') && (
-                <div>
-                  <Input onChange={handleSearchThreshold} defaultValue="0.3" />
-                </div>
-              )}
-              <SearchInput />
               <GroupsSelect
                 allGroups={groupsSelectOptions}
                 value={selectedGroup}
@@ -105,9 +107,14 @@ export const ContentResult = ({ contacts, allGroups }) => {
                   Control: ControlDefaultWithTestId
                 }}
               />
+              {flag('search-threshold') && (
+                <div>
+                  <Input onChange={handleSearchThreshold} defaultValue="0.3" />
+                </div>
+              )}
+              <SearchInput />
             </>
           }
-          right={<Toolbar />}
         />
       )}
       <Content>
