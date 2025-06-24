@@ -3,6 +3,15 @@ const VersionPlugin = require('cozy-scripts/plugins/VersionPlugin')
 const config = [require('cozy-scripts/config/webpack.bundle.default.js')]
 
 const extraPluginsConfig = {
+  // module: {
+  //   rules: [
+  //     {
+  //       test: /\.mjs$/,
+  //       include: /node_modules/,
+  //       type: 'javascript/auto'
+  //     }
+  //   ]
+  // },
   plugins: [
     new VersionPlugin({
       packages: [

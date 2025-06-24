@@ -13,13 +13,10 @@ const ContactsList = ({ contacts }) => {
     return <ContactsEmptyList />
   }
 
-  const List = searchValue.length > 0 ? UncategorizedList : CategorizedList
+  // const List = searchValue.length > 0 ? UncategorizedList : CategorizedList
+  const List = searchValue.length > 0 ? UncategorizedList : UncategorizedList
 
-  return (
-    <div className="list-wrapper">
-      <List contacts={contacts} />
-    </div>
-  )
+  return <List contacts={contacts} />
 }
 
 ContactsList.propTypes = {
