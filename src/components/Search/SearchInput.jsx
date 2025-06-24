@@ -1,10 +1,7 @@
 import debounce from 'lodash/debounce'
 import React, { useMemo, useContext } from 'react'
 
-import Icon from 'cozy-ui/transpiled/react/Icon'
-import MagnifierIcon from 'cozy-ui/transpiled/react/Icons/Magnifier'
-import Input from 'cozy-ui/transpiled/react/Input'
-import InputGroup from 'cozy-ui/transpiled/react/InputGroup'
+import SearchBar from 'cozy-ui/transpiled/react/SearchBar'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import SearchContext from '../Contexts/Search'
@@ -23,18 +20,13 @@ const SearchInput = () => {
   }
 
   return (
-    <InputGroup
-      className="u-mb-half-s"
-      prepend={
-        <Icon
-          className="u-pl-1"
-          icon={MagnifierIcon}
-          color="var(--iconTextColor)"
-        />
-      }
-    >
-      <Input placeholder={t('search')} onChange={handleOnChange} />
-    </InputGroup>
+    <SearchBar
+      className="search-input u-w-100"
+      size="small"
+      elevation={0}
+      placeholder={t('search')}
+      onChange={handleOnChange}
+    />
   )
 }
 

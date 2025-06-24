@@ -24,27 +24,37 @@ main
 
     &__left
         display flex
-        flex 1 1 67%
-        justify-content center
+        flex 1 1 33%
+        justify-content flex-start
         align-items center
-        gap 1rem // @stylint ignore Not supported by stylint
 
         +small-screen()
-            flex-direction column
-            gap 0 // @stylint ignore Not supported by stylint
+            gap 0
+
+        button
+            max-width 120px
 
 
     &__right
         display flex
-        flex 1 1 33%
+        flex 1 1 67%
         justify-content center
         align-items center
+
+        +small-screen()
+            flex-direction column
 
         button
             // inputs in __left have maxWidth 32rem
             // we have here 2 buttons, so 16rem
             // but also a gap of 0.5rem, so 15.75rem
             max-width 15.75rem
+
+.search-input
+    width 50%
+
+    +small-screen()
+        width 100%
 
 // TODO: Find a better way to set the .empty icon size
 .contacts-empty

@@ -8,7 +8,6 @@ import Button from 'cozy-ui/transpiled/react/Buttons'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import BottomIcon from 'cozy-ui/transpiled/react/Icons/Bottom'
 import TeamIcon from 'cozy-ui/transpiled/react/Icons/Team'
-import UploadIcon from 'cozy-ui/transpiled/react/Icons/Upload'
 import Link from 'cozy-ui/transpiled/react/Link'
 import ActionMenu, {
   ActionMenuItem
@@ -30,7 +29,6 @@ const ImportDropdown = () => {
         ref={anchorRef}
         variant="secondary"
         label={t('import.title')}
-        startIcon={<Icon icon={UploadIcon} />}
         endIcon={<Icon icon={BottomIcon} />}
         fullWidth
         onClick={() => setShowMenu(v => !v)}

@@ -5,7 +5,7 @@ import Button from 'cozy-ui/transpiled/react/Buttons'
 import Empty from 'cozy-ui/transpiled/react/Empty'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import InfoIcon from 'cozy-ui/transpiled/react/Icons/Info'
-import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
+import PersonAddIcon from 'cozy-ui/transpiled/react/Icons/PersonAdd'
 import TeamIcon from 'cozy-ui/transpiled/react/Icons/Team'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import Infos from 'cozy-ui/transpiled/react/deprecated/Infos'
@@ -67,7 +67,7 @@ const ContactsEmptyList = () => {
           className="u-mt-1-half"
           variant="text"
           onClick={() => navigate('/new')}
-          startIcon={<Icon icon={PlusIcon} />}
+          startIcon={<Icon icon={PersonAddIcon} />}
           label={t('create_contact')}
           style={style}
         />
