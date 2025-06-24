@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import Icon from 'cozy-ui/transpiled/react/Icon'
-import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
+import PersonAddIcon from 'cozy-ui/transpiled/react/Icons/PersonAdd'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import ImportDropdown from './Common/ImportDropdown'
@@ -16,7 +16,8 @@ const Toolbar = () => {
     <>
       <Button
         className="u-mr-half"
-        startIcon={<Icon icon={PlusIcon} />}
+        variant="ghost"
+        startIcon={<Icon icon={PersonAddIcon} />}
         label={t('create')}
         fullWidth
         onClick={() => navigate('/new')}
