@@ -19,8 +19,8 @@
     "fixtures": "ACH import fixtures/contacts.json",
     "fixtures:drop": "ACH drop io.cozy.contacts io.cozy.contacts.groups",
     "fixtures:massive": "ACH import fixtures/massiveContacts.json",
-    "services:autoDefineLabels": "cozy-konnector-dev -m manifest.webapp build/services/autoDefineLabels/contacts.js",
-    "services:keepIndexFullNameAndDisplayNameUpToDate": "cozy-konnector-dev -m manifest.webapp build/services/keepIndexFullNameAndDisplayNameUpToDate/contacts.js"
+    "services:autoDefineLabels": "cozy-konnector-dev -m manifest.webapp build/services/autoDefineLabels.js",
+    "services:keepIndexFullNameAndDisplayNameUpToDate": "cozy-konnector-dev -m manifest.webapp build/services/keepIndexFullNameAndDisplayNameUpToDate.js"
   },
   "repository": {
     "type": "git",
@@ -94,7 +94,7 @@
     "cozy-search": "^0.6.0",
     "cozy-sharing": "^25.4.0",
     "cozy-tsconfig": "^1.8.1",
-    "cozy-ui": "^126.0.0",
+    "cozy-ui": "^127.0.0",
     "cozy-vcard": "^0.2.18",
     "final-form": "4.20.9",
     "final-form-arrays": "3.1.0",
