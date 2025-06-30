@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types'
 import React, { useContext } from 'react'
 
+import flag from 'cozy-flags'
+
 import CategorizedList from './CategorizedList'
 import ContactsEmptyList from './ContactsEmptyList'
 import UncategorizedList from './UncategorizedList'
+import VirtualizedList from './VirtualizedList'
 import SearchContext from '../Contexts/Search'
 
 const ContactsList = ({ contacts }) => {
@@ -13,13 +16,13 @@ const ContactsList = ({ contacts }) => {
     return <ContactsEmptyList />
   }
 
-  const List = searchValue.length > 0 ? UncategorizedList : CategorizedList
+  const List = flag('contacts.virtualization.enabled')
+    ? VirtualizedList
+    : searchValue.length > 0
+    ? UncategorizedList
+    : CategorizedList
 
-  return (
-    <div className="list-wrapper">
-      <List contacts={contacts} />
-    </div>
-  )
+  return <List contacts={contacts} />
 }
 
 ContactsList.propTypes = {
