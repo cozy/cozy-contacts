@@ -8,7 +8,7 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
     className="styles__o-layout___3TSz9 styles__o-layout-2panes___1CDQw styles__o-layout-topbar___2SHWi"
   >
     <li
-      className="MuiListItem-root u-c-pointer medium MuiListItem-gutters makeStyles-gutters-33 makeStyles-gutters-35"
+      className="MuiListItem-root u-c-pointer medium MuiListItem-gutters makeStyles-gutters-41 makeStyles-gutters-43"
       data-testid="contact-listItem"
       disabled={false}
       onClick={[Function]}
@@ -16,7 +16,7 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
     >
       <span
         aria-disabled={false}
-        className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-37 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+        className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-45 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
         onBlur={[Function]}
         onClick={[Function]}
         onDragLeave={[Function]}
@@ -38,7 +38,7 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
             aria-checked=""
             aria-label=""
             checked={false}
-            className="PrivateSwitchBase-input-40"
+            className="PrivateSwitchBase-input-48"
             data-indeterminate={false}
             onChange={[Function]}
             readOnly={true}
@@ -62,23 +62,12 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
         data-testid="ContactIdentity"
       >
         <div
-          className="styles__c-avatar___3jjlO styles__c-avatar--text___3Xssl"
-          data-testid="Avatar"
-          style={
-            {
-              "--circleSize": "24px",
-              "background": "linear-gradient(136deg, #6DCFFF 14.84%, #3D88F8 96.03%)",
-            }
-          }
+          className="MuiAvatar-root MuiAvatar-circular size-s displayInline MuiAvatar-colorDefault makeStyles-colorDefault-49 makeStyles-colorDefault-50"
         >
-          <span
-            className="styles__c-avatar-initials___2dEdT"
-          >
-            JD
-          </span>
+          JD
         </div>
         <p
-          className="MuiTypography-root u-ml-1 MuiTypography-body1 MuiTypography-colorTextPrimary MuiTypography-noWrap MuiTypography-gutterBottom MuiTypography-displayInline"
+          className="MuiTypography-root u-ml-1 MuiTypography-body1 MuiTypography-colorTextPrimary MuiTypography-noWrap MuiTypography-displayInline"
           data-testid="ContactName"
         >
           <span
@@ -91,7 +80,6 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
             className="u-fw-bold"
           >
             Doe
-             
           </span>
         </p>
       </div>
