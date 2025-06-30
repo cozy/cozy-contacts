@@ -7,6 +7,7 @@ module.exports = {
     '.svg$': '<rootDir>/jestHelpers/mocks/iconMock.js',
     '.styl$': 'identity-obj-proxy',
     '.css$': 'identity-obj-proxy',
+    '^@/(.*)$': '<rootDir>/src/$1',
     '\\.worker.entry.js': '<rootDir>/jestHelpers/mocks/workerMock.js'
   },
   transform: {
