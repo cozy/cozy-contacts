@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom'
 
 import ContactIdentity from 'cozy-ui/transpiled/react/ContactsList/Contacts/ContactIdentity'
 import VirtualizedTable from 'cozy-ui/transpiled/react/Table/Virtualized'
+import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import withSelection from '../Selection/selectionContainer'
-
-import { getAppI18n } from '@/locales'
 
 const Cell = ({ row, column, cell }) => {
   if (column.id === 'fullname') {
@@ -19,8 +19,18 @@ const Cell = ({ row, column, cell }) => {
 
 const CellMemo = React.memo(Cell)
 
-const makeColumns = () => {
-  const { t } = getAppI18n()
+const makeColumns = ({ t, isMobile }) => {
+  const mobileColumns = [
+    {
+      id: 'fullname',
+      label: t('fields.familyName'),
+      width: '100%'
+    }
+  ]
+
+  if (isMobile) {
+    return mobileColumns
+  }
 
   return [
     {
@@ -46,15 +56,17 @@ const makeColumns = () => {
   ]
 }
 
-const UncategorizedList = ({
+const VirtualizedList = ({
   contacts,
   selection,
   toggleSelection,
   selectAll
 }) => {
   const navigate = useNavigate()
+  const { isMobile } = useBreakpoints()
+  const { t } = useI18n()
 
-  const columns = makeColumns()
+  const columns = makeColumns({ t, isMobile })
 
   return (
     <VirtualizedTable
@@ -75,11 +87,11 @@ const UncategorizedList = ({
   )
 }
 
-UncategorizedList.propTypes = {
+VirtualizedList.propTypes = {
   contacts: PropTypes.array.isRequired,
   toggleSelection: PropTypes.func.isRequired,
   selection: PropTypes.array.isRequired,
   selectAll: PropTypes.func.isRequired
 }
 
-export default withSelection(UncategorizedList)
+export default withSelection(VirtualizedList)
