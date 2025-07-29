@@ -67,6 +67,7 @@ const VirtualizedList = ({
   const { t } = useI18n()
 
   const columns = makeColumns({ t, isMobile })
+  const isSelectionEnabled = selection.length > 0
 
   return (
     <VirtualizedTable
@@ -80,7 +81,11 @@ const VirtualizedList = ({
       componentsProps={{
         rowContent: {
           children: <CellMemo />,
-          onClick: contact => navigate(`/${contact._id}`)
+          onLongPress: contact => toggleSelection(contact),
+          onClick: contact =>
+            isSelectionEnabled
+              ? toggleSelection(contact)
+              : navigate(`/${contact._id}`)
         }
       }}
     />
