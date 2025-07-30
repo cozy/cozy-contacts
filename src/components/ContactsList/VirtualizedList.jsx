@@ -24,7 +24,8 @@ const makeColumns = ({ t, isMobile }) => {
     {
       id: 'fullname',
       label: t('fields.familyName'),
-      width: '100%'
+      width: '100%',
+      sortable: false
     }
   ]
 
@@ -37,21 +38,24 @@ const makeColumns = ({ t, isMobile }) => {
       id: 'fullname',
       disablePadding: true,
       label: t('fields.familyName'),
-      width: '45%'
+      width: '45%',
+      sortable: false
     },
     {
       id: 'email.[0].address',
       disablePadding: false,
       label: t('fields.email'),
       textAlign: 'left',
-      width: '30%'
+      width: '30%',
+      sortable: false
     },
     {
       id: 'phone.[0].number',
       disablePadding: false,
       label: t('fields.phone'),
       textAlign: 'left',
-      width: '25%'
+      width: '25%',
+      sortable: false
     }
   ]
 }
