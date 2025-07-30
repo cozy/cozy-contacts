@@ -5,7 +5,7 @@ exports[`ContactAccounts component should render a list of contact accounts 1`] 
   className="TwakeTheme--light-normal u-dc"
 >
   <div
-    className="styles__o-layout___3TSz9 styles__o-layout-2panes___1CDQw styles__o-layout-topbar___2SHWi"
+    className="styles__o-layout___3TSz9 styles__o-layout-main-2panes___3ickD"
   >
     <h3
       className="u-title-h2 u-mt-1-half u-mb-1"
