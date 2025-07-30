@@ -9,7 +9,7 @@ import {
 
 const defaultFetchPolicy = fetchPolicies.olderThan(86400000) // 24 hours
 
-// Contacts doctype -------------
+// #region Contact doctype
 
 // When use of "getById", the definition must be wrap in a function,
 // so that it is not executed even if the "enabled" option is equal to "false"
@@ -180,9 +180,9 @@ export const buildContactsTrashedQuery = () => ({
     fetchPolicy: defaultFetchPolicy
   }
 })
+// #endregion Contact doctype
 
-// Contact groups doctype -------------
-
+// #region Contact groups doctype
 export const buildGroupQueryById = id => ({
   definition: () => Q(DOCTYPE_CONTACT_GROUPS).getById(id),
   options: {
@@ -221,9 +221,9 @@ export const buildContactGroupsTrashedQuery = () => ({
     fetchPolicy: defaultFetchPolicy
   }
 })
+// #endregion Contact groups doctype
 
-// Triggers doctype -------------
-
+// #region Triggers doctype
 export const buildTriggersQueryByName = name => ({
   definition: Q(DOCTYPE_TRIGGERS)
     .where({
@@ -235,6 +235,7 @@ export const buildTriggersQueryByName = name => ({
 export const buildTriggersQueryById = id => ({
   definition: Q(DOCTYPE_TRIGGERS).getById(id)
 })
+// #endregion Triggers doctype
 
 // #region Service queries
 export const buildContactsQueryByUpdatedAtGT = date => ({
