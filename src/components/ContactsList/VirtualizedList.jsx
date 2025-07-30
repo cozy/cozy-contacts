@@ -7,7 +7,7 @@ import VirtualizedTable from 'cozy-ui/transpiled/react/Table/Virtualized'
 import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import withSelection from '../Selection/selectionContainer'
+import withSelection from '@/components/Selection/selectionContainer'
 
 const Cell = ({ row, column, cell }) => {
   if (column.id === 'fullname') {
@@ -73,7 +73,7 @@ const VirtualizedList = ({
     <VirtualizedTable
       rows={contacts}
       columns={columns}
-      defaultOrder={columns[0].id}
+      defaultOrder="indexes.byFamilyNameGivenNameEmailCozyUrl"
       selectedItems={selection}
       isSelectedItem={contact => selection.some(s => s.id === contact._id)}
       onSelect={toggleSelection}
