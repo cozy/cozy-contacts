@@ -1,28 +1,45 @@
+import flow from 'lodash/flow'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { useClient } from 'cozy-client'
+import { makeActions } from 'cozy-ui/transpiled/react/ActionsMenu/Actions'
+import { addToFavorites } from 'cozy-ui/transpiled/react/ActionsMenu/Actions/addToFavorites'
+import { removeFromFavorites } from 'cozy-ui/transpiled/react/ActionsMenu/Actions/removeFromFavorites'
 import VirtualizedTable from 'cozy-ui/transpiled/react/Table/Virtualized'
 import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
+import { edit } from '@/components/Actions/edit'
+import { trash } from '@/components/Actions/trash'
+import { view } from '@/components/Actions/view'
 import Cell from '@/components/ContactsList/Virtualized/Cell'
 import { makeColumns } from '@/components/ContactsList/Virtualized/helpers'
+import withModalContainer from '@/components/HOCs/withModal'
 import withSelection from '@/components/Selection/selectionContainer'
 import { makeGroupLabelsAndCounts } from '@/helpers/contactList'
 
 const VirtualizedList = ({
   contacts,
+  showModal,
+  hideModal,
   selection,
+  clearSelection,
   toggleSelection,
   selectAll
 }) => {
   const navigate = useNavigate()
   const { isMobile } = useBreakpoints()
   const { t } = useI18n()
+  const client = useClient()
 
   const columns = makeColumns({ t, isMobile })
   const isSelectionEnabled = selection.length > 0
+  const actions = makeActions(
+    [view, edit, addToFavorites, removeFromFavorites, trash],
+    { selection, clearSelection, showModal, hideModal, client, t, isMobile }
+  )
 
   return (
     <VirtualizedTable
@@ -36,7 +53,7 @@ const VirtualizedList = ({
       onSelectAll={selectAll}
       componentsProps={{
         rowContent: {
-          children: <Cell />,
+          children: <Cell actions={actions} />,
           onLongPress: contact => toggleSelection(contact),
           onClick: contact =>
             isSelectionEnabled
@@ -55,4 +72,4 @@ VirtualizedList.propTypes = {
   selectAll: PropTypes.func.isRequired
 }
 
-export default withSelection(VirtualizedList)
+export default flow(withModalContainer, withSelection)(VirtualizedList)
