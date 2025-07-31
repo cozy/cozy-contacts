@@ -5,6 +5,14 @@ export const makeColumns = ({ t, isMobile }) => {
       label: t('fields.familyName'),
       width: '100%',
       sortable: false
+    },
+    {
+      id: 'actions',
+      width: 40,
+      label: '',
+      textAlign: 'center',
+      disableClick: true,
+      sortable: false
     }
   ]
 
@@ -22,7 +30,6 @@ export const makeColumns = ({ t, isMobile }) => {
     },
     {
       id: 'email.[0].address',
-      disablePadding: false,
       label: t('fields.email'),
       textAlign: 'left',
       width: '30%',
@@ -30,10 +37,17 @@ export const makeColumns = ({ t, isMobile }) => {
     },
     {
       id: 'phone.[0].number',
-      disablePadding: false,
       label: t('fields.phone'),
       textAlign: 'left',
-      width: '25%',
+      width: 'auto',
+      sortable: false
+    },
+    {
+      id: 'actions',
+      width: 40,
+      label: '',
+      textAlign: 'center',
+      disableClick: true,
       sortable: false
     }
   ]

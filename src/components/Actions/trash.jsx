@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { makeAction } from 'cozy-ui/transpiled/react/ActionsMenu/Actions/makeAction'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
 
@@ -18,53 +19,47 @@ import ConfirmDeleteActions from '../Common/ConfirmDeleteActions'
  * @param  {object} options.t - Translation function
  * @returns {object} Object with action
  */
-export const trash = ({ clearSelection, showModal, hideModal, client, t }) => {
+export const trash = ({ clearSelection, showModal, hideModal, t }) => {
+  const name = 'trash'
   const label = t('SelectionBar.trash_action')
   const icon = TrashIcon
-
-  return {
-    name: 'trash',
-    label,
-    icon,
-    action: docs => {
-      const hasConnectedAccounts = doc => {
-        return getConnectedAccounts(doc).length > 0
-      }
-
-      const allContactsConnected = docs.every(hasConnectedAccounts)
-      const someContactsConnected = docs.some(hasConnectedAccounts)
-
-      let description = 'delete-confirmation.description-simple'
-
-      if (allContactsConnected)
-        description = 'delete-confirmation.description-google'
-      else if (someContactsConnected)
-        description = 'delete-confirmation.description-mixed'
-
-      const handleDelete = async () => {
-        await Promise.all(docs.map(contact => client.destroy(contact)))
-        clearSelection()
-        hideModal()
-      }
-
-      showModal(
-        <ConfirmDialog
-          open
-          onClose={hideModal}
-          title={t('delete-confirmation.title', {
-            smart_count: docs.length
-          })}
-          content={t(description, {
-            smart_count: docs.length
-          })}
-          actions={
-            <ConfirmDeleteActions
-              onCancel={hideModal}
-              onDelete={handleDelete}
-            />
-          }
-        />
-      )
+  const action = (docs, { client }) => {
+    const hasConnectedAccounts = doc => {
+      return getConnectedAccounts(doc).length > 0
     }
+
+    const allContactsConnected = docs.every(hasConnectedAccounts)
+    const someContactsConnected = docs.some(hasConnectedAccounts)
+
+    let description = 'delete-confirmation.description-simple'
+
+    if (allContactsConnected)
+      description = 'delete-confirmation.description-google'
+    else if (someContactsConnected)
+      description = 'delete-confirmation.description-mixed'
+
+    const handleDelete = async () => {
+      await Promise.all(docs.map(contact => client.destroy(contact)))
+      clearSelection()
+      hideModal()
+    }
+
+    showModal(
+      <ConfirmDialog
+        open
+        onClose={hideModal}
+        title={t('delete-confirmation.title', {
+          smart_count: docs.length
+        })}
+        content={t(description, {
+          smart_count: docs.length
+        })}
+        actions={
+          <ConfirmDeleteActions onCancel={hideModal} onDelete={handleDelete} />
+        }
+      />
+    )
   }
+
+  return makeAction({ name, label, icon, action })
 }
