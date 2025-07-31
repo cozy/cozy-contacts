@@ -2,64 +2,14 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import ContactIdentity from 'cozy-ui/transpiled/react/ContactsList/Contacts/ContactIdentity'
 import VirtualizedTable from 'cozy-ui/transpiled/react/Table/Virtualized'
 import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
+import Cell from '@/components/ContactsList/Virtualized/Cell'
+import { makeColumns } from '@/components/ContactsList/Virtualized/helpers'
 import withSelection from '@/components/Selection/selectionContainer'
 import { makeGroupLabelsAndCounts } from '@/helpers/contactList'
-
-const Cell = ({ row, column, cell }) => {
-  if (column.id === 'fullname') {
-    return <ContactIdentity contact={row} noWrapper />
-  }
-
-  return cell
-}
-
-const CellMemo = React.memo(Cell)
-
-const makeColumns = ({ t, isMobile }) => {
-  const mobileColumns = [
-    {
-      id: 'fullname',
-      label: t('fields.familyName'),
-      width: '100%',
-      sortable: false
-    }
-  ]
-
-  if (isMobile) {
-    return mobileColumns
-  }
-
-  return [
-    {
-      id: 'fullname',
-      disablePadding: true,
-      label: t('fields.familyName'),
-      width: '45%',
-      sortable: false
-    },
-    {
-      id: 'email.[0].address',
-      disablePadding: false,
-      label: t('fields.email'),
-      textAlign: 'left',
-      width: '30%',
-      sortable: false
-    },
-    {
-      id: 'phone.[0].number',
-      disablePadding: false,
-      label: t('fields.phone'),
-      textAlign: 'left',
-      width: '25%',
-      sortable: false
-    }
-  ]
-}
 
 const VirtualizedList = ({
   contacts,
@@ -86,7 +36,7 @@ const VirtualizedList = ({
       onSelectAll={selectAll}
       componentsProps={{
         rowContent: {
-          children: <CellMemo />,
+          children: <Cell />,
           onLongPress: contact => toggleSelection(contact),
           onClick: contact =>
             isSelectionEnabled

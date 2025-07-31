@@ -6,7 +6,7 @@ import flag from 'cozy-flags'
 import CategorizedList from './CategorizedList'
 import ContactsEmptyList from './ContactsEmptyList'
 import UncategorizedList from './UncategorizedList'
-import VirtualizedList from './VirtualizedList'
+import VirtualizedList from './Virtualized/VirtualizedList'
 import SearchContext from '../Contexts/Search'
 
 const ContactsList = ({ contacts }) => {
