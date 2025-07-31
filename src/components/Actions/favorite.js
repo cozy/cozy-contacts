@@ -1,4 +1,6 @@
 import minilog from 'cozy-minilog'
+import StarIcon from 'cozy-ui/transpiled/react/Icons/Star'
+import StarOutlineIcon from 'cozy-ui/transpiled/react/Icons/StarOutline'
 
 import { mergeContact } from '../../helpers/mergeContact'
 
@@ -21,7 +23,7 @@ export const favorite = ({
     contact => !contact.cozyMetadata?.favorite
   )
   const isAllFavorite = noFavoriteSelected.length === 0
-  const icon = isAllFavorite ? 'star' : 'star-outline'
+  const icon = isAllFavorite ? StarIcon : StarOutlineIcon
   const label = isMobile
     ? t('SelectionBar.favorites')
     : isAllFavorite
@@ -32,8 +34,8 @@ export const favorite = ({
     name: 'favorite',
     label,
     icon,
-    action: async () => {
-      const contactToUpdate = isAllFavorite ? selection : noFavoriteSelected
+    action: async docs => {
+      const contactToUpdate = isAllFavorite ? docs : noFavoriteSelected
       const favorite = isAllFavorite ? false : true
       const contactsToSave = contactToUpdate.map(contact =>
         mergeContact(contact, {

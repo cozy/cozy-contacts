@@ -1,3 +1,5 @@
+import SelectAllIcon from 'cozy-ui/transpiled/react/Icons/SelectAll'
+
 /**
  * Select all contacts
  *
@@ -7,24 +9,18 @@
  * @param {Function} options.selectAll - Function to select all contacts
  * @returns {Object} - Object with action
  */
-export const selectAll = ({
-  contactsDisplayed,
-  selection,
-  selectAll,
-  isMobile,
-  t
-}) => {
+export const selectAll = ({ contactsDisplayed, selectAll, isMobile, t }) => {
   const label = isMobile
     ? t('SelectionBar.select')
     : t('SelectionBar.select_all_action')
+  const icon = SelectAllIcon
 
   return {
     name: 'selectAll',
     label,
-    icon: 'select-all',
-    action: () => {
-      const isAllContactsSelected =
-        contactsDisplayed.length === selection.length
+    icon,
+    action: docs => {
+      const isAllContactsSelected = contactsDisplayed.length === docs.length
 
       !isAllContactsSelected ? selectAll(contactsDisplayed) : null
     }

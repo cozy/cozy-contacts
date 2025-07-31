@@ -1,3 +1,6 @@
+import StarIcon from 'cozy-ui/transpiled/react/Icons/Star'
+import StarOutlineIcon from 'cozy-ui/transpiled/react/Icons/StarOutline'
+
 import { favorite } from './favorite'
 
 describe('favorite', () => {
@@ -50,7 +53,7 @@ describe('favorite', () => {
     })
 
     expect(action.label).toBe('SelectionBar.add_favorite')
-    expect(action.icon).toBe('star-outline')
+    expect(action.icon).toStrictEqual(StarOutlineIcon)
 
     const action2 = favorite({
       client,
@@ -60,7 +63,7 @@ describe('favorite', () => {
     })
 
     expect(action2.label).toBe('SelectionBar.add_favorite')
-    expect(action2.icon).toBe('star-outline')
+    expect(action2.icon).toStrictEqual(StarOutlineIcon)
   })
 
   it('should return action with "remove_favorite" label & "star" icon', async () => {
@@ -72,7 +75,7 @@ describe('favorite', () => {
     })
 
     expect(action.label).toBe('SelectionBar.remove_favorite')
-    expect(action.icon).toBe('star')
+    expect(action.icon).toStrictEqual(StarIcon)
   })
 
   it('Should call "saveAll" & "clearSelection" one time with "mixedFavoriteSelection"', async () => {
