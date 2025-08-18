@@ -1,23 +1,108 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+import Button from 'cozy-ui/transpiled/react/Buttons'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import PersonAddIcon from 'cozy-ui/transpiled/react/Icons/PersonAdd'
+import { ControlDefault } from 'cozy-ui/transpiled/react/SelectBox'
+import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+
+import ImportDropdown from './Common/ImportDropdown'
+import SelectedGroupContext from './Contexts/SelectedGroup'
+import GroupsSelect from './GroupsSelect/GroupsSelect'
+import SearchInput from './Search/SearchInput'
+import {
+  hasSelectedGroup,
+  translatedDefaultSelectedGroup
+} from '../helpers/groups'
 
 import styles from '@/styles/contacts.styl'
 
-const Header = ({ left, right }) => (
-  <div className={styles['topbar']}>
-    <div className={styles['topbar__left']}>{left}</div>
-    <div className={styles['topbar__right']}>{right}</div>
-  </div>
-)
+const setGroupsSelectOptions = (allGroups, defaultSelectedGroup) =>
+  allGroups.length > 0 ? [defaultSelectedGroup].concat(allGroups) : allGroups
+
+const useGroupsSelectCustomStyles = () => {
+  const { isMobile } = useBreakpoints()
+
+  return {
+    container: base => ({
+      ...base,
+      width: isMobile ? '100%' : '50%'
+    }),
+    noOptionsMessage: base => ({ ...base, textAlign: 'left' })
+  }
+}
+
+const ControlDefaultWithTestId = ({ ...props }) => {
+  return (
+    <ControlDefault
+      {...props}
+      innerProps={{
+        ...props.innerProps,
+        'data-testid': 'selectBox-controlDefault',
+        className: 'u-bdrs-4'
+      }}
+    />
+  )
+}
+
+const Header = ({ allGroups }) => {
+  const navigate = useNavigate()
+  const { t } = useI18n()
+  const { selectedGroup, setSelectedGroup } = useContext(SelectedGroupContext)
+
+  const groupsSelectOptions = setGroupsSelectOptions(
+    allGroups,
+    translatedDefaultSelectedGroup(t)
+  )
+  const groupsSelectCustomStyles = useGroupsSelectCustomStyles()
+
+  // If the currently selected group is deleted, the default filter is set.
+  useEffect(() => {
+    if (hasSelectedGroup(selectedGroup) && !allGroups.includes(selectedGroup)) {
+      setSelectedGroup(translatedDefaultSelectedGroup(t))
+    }
+  }, [allGroups, selectedGroup, setSelectedGroup, t])
+
+  return (
+    <div className={styles['topbar']}>
+      <div className={styles['topbar__left']}>
+        <Button
+          className="u-mr-half"
+          variant="ghost"
+          startIcon={<Icon icon={PersonAddIcon} />}
+          label={t('create')}
+          fullWidth
+          onClick={() => navigate('/new')}
+        />
+        <ImportDropdown />
+      </div>
+      <div className={styles['topbar__right']}>
+        <GroupsSelect
+          allGroups={groupsSelectOptions}
+          value={selectedGroup}
+          onChange={setSelectedGroup}
+          noOptionsMessage={() => t('filter.no-group')}
+          styles={groupsSelectCustomStyles}
+          closeMenuOnSelect={true}
+          components={{
+            Control: ControlDefaultWithTestId
+          }}
+        />
+        <SearchInput />
+      </div>
+    </div>
+  )
+}
 
 Header.propTypes = {
-  left: PropTypes.element,
-  right: PropTypes.element
+  allGroups: PropTypes.array
 }
 
 Header.defaultProps = {
-  left: <div />,
-  right: <div />
+  allGroups: []
 }
 
 export default Header
