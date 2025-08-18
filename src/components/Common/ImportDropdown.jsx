@@ -2,11 +2,11 @@ import React, { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { useClient } from 'cozy-client'
-import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import AppLinker from 'cozy-ui/transpiled/react/AppLinker'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import BottomIcon from 'cozy-ui/transpiled/react/Icons/Bottom'
+import StoreIcon from 'cozy-ui/transpiled/react/Icons/Store'
 import TeamIcon from 'cozy-ui/transpiled/react/Icons/Team'
 import Link from 'cozy-ui/transpiled/react/Link'
 import ActionMenu, {
@@ -50,7 +50,7 @@ const ImportDropdown = () => {
           <AppLinker app={{ slug: 'store' }} href={getFilteredStoreUrl(client)}>
             {({ onClick, href }) => (
               <ActionMenuItem
-                left={<AppIcon app="store" className="u-h-1 u-w-1" />}
+                left={<Icon icon={StoreIcon} className="u-h-1 u-w-1" />}
                 onClick={onClick}
               >
                 <Link
