@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { useContext, useEffect, useState } from 'react'
 
-import flag from 'cozy-flags'
-import Input from 'cozy-ui/transpiled/react/Input'
 import { Content } from 'cozy-ui/transpiled/react/Layout'
 import { ControlDefault } from 'cozy-ui/transpiled/react/SelectBox'
 import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
@@ -21,7 +19,7 @@ import {
   hasSelectedGroup,
   translatedDefaultSelectedGroup
 } from '../helpers/groups'
-import { filterContactsBySearch, delayedSetThreshold } from '../helpers/search'
+import { filterContactsBySearch } from '../helpers/search'
 
 const useGroupsSelectCustomStyles = () => {
   const { isMobile } = useBreakpoints()
@@ -64,11 +62,6 @@ export const ContentResult = ({ contacts, allGroups }) => {
     translatedDefaultSelectedGroup(t)
   )
 
-  const handleSearchThreshold = ev => {
-    const thresholdValue = parseFloat(ev.target.value)
-    delayedSetThreshold(thresholdValue)
-  }
-
   // If the currently selected group is deleted, the default filter is set.
   useEffect(() => {
     if (hasSelectedGroup(selectedGroup) && !allGroups.includes(selectedGroup)) {
@@ -107,11 +100,6 @@ export const ContentResult = ({ contacts, allGroups }) => {
                   Control: ControlDefaultWithTestId
                 }}
               />
-              {flag('search-threshold') && (
-                <div>
-                  <Input onChange={handleSearchThreshold} defaultValue="0.3" />
-                </div>
-              )}
               <SearchInput />
             </>
           }
