@@ -11,6 +11,8 @@ import Header from './Header'
 import { filterContactsByGroup } from '../helpers/groups'
 import { filterContactsBySearch } from '../helpers/search'
 
+import styles from '@/styles/contacts.styl'
+
 export const ContentResult = ({ contacts, allGroups }) => {
   const { selectedGroup } = useContext(SelectedGroupContext)
   const { searchValue } = useContext(SearchContext)
@@ -31,12 +33,14 @@ export const ContentResult = ({ contacts, allGroups }) => {
   }, [contacts, searchValue, selectedGroup, setContactsDisplayed])
 
   return (
-    <>
-      {contacts.length >= 1 && <Header allGroups={allGroups} />}
-      <Content>
-        <ContactsList contacts={filteredContacts} />
-      </Content>
-    </>
+    <Content>
+      {contacts.length >= 1 && (
+        <div className={styles['topbar']}>
+          <Header allGroups={allGroups} />
+        </div>
+      )}
+      <ContactsList contacts={filteredContacts} />
+    </Content>
   )
 }
 

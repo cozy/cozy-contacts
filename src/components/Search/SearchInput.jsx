@@ -21,7 +21,6 @@ const SearchInput = () => {
 
   return (
     <SearchBar
-      className="search-input u-w-100"
       size="small"
       elevation={0}
       placeholder={t('search')}
