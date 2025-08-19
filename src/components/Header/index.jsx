@@ -14,12 +14,10 @@ import ImportDropdown from './ImportDropdown'
 import SearchInput from './SearchInput'
 
 import { useSearch } from '@/components/Contexts/Search'
-import { useSelectedGroup } from '@/components/Contexts/SelectedGroup'
 import GroupsSelect from '@/components/GroupsSelect/GroupsSelect'
-import {
-  hasSelectedGroup,
-  translatedDefaultSelectedGroup
-} from '@/helpers/groups'
+import { useSelectedGroup } from '@/components/GroupsSelect/GroupsSelectProvider'
+import { translatedDefaultSelectedGroup } from '@/components/GroupsSelect/helpers'
+import { hasSelectedGroup } from '@/helpers/groups'
 
 const setGroupsSelectOptions = (allGroups, defaultSelectedGroup) =>
   allGroups.length > 0 ? [defaultSelectedGroup].concat(allGroups) : allGroups

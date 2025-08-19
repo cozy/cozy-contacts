@@ -6,7 +6,7 @@ import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
 import Input from 'cozy-ui/transpiled/react/Input'
 import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import styles from '@/styles/contactGroupCreation.styl'
+import styles from './styles.styl'
 
 const normalizeGroupData = name => {
   return {

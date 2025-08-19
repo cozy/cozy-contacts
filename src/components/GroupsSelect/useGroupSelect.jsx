@@ -3,9 +3,9 @@ import get from 'lodash/get'
 import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
+import { useSelectedGroup } from './GroupsSelectProvider'
+import { isExistingGroup } from './helpers'
 import { createGroup, updateGroup } from '../../connections/allGroups'
-import { isExistingGroup } from '../../helpers/groups'
-import { useSelectedGroup } from '../Contexts/SelectedGroup'
 
 const useGroupsSelect = ({ allGroups, onGroupCreated, client }) => {
   const { selectedGroup, setSelectedGroup } = useSelectedGroup()

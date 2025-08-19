@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import { translatedDefaultSelectedGroup } from '../../helpers/groups'
+import { translatedDefaultSelectedGroup } from './helpers'
 
 const SelectedGroupContext = React.createContext()
 

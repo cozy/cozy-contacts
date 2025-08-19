@@ -10,13 +10,14 @@ import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import ContactForm, {
   getSubmitContactForm
 } from '../../components/ContactCard/ContactForm'
-import { useSelectedGroup } from '../../components/Contexts/SelectedGroup'
 import { createOrUpdateContact } from '../../connections/allContacts'
 import { makeContactWithIdentitiesAddresses } from '../../helpers/contacts'
 import {
   buildContactsQueryByFamilyNameGivenNameEmailCozyUrl,
   buildIdentitiesQueryByContact
 } from '../../queries/queries'
+
+import { useSelectedGroup } from '@/components/GroupsSelect/GroupsSelectProvider'
 
 const ContactFormModal = () => {
   const navigate = useNavigate()

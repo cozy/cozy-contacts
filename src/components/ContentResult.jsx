@@ -6,11 +6,11 @@ import { Content } from 'cozy-ui/transpiled/react/Layout'
 import ContactsList from './ContactsList/ContactsList.jsx'
 import ContactsDiplayedContext from './Contexts/ContactsDiplayed'
 import { useSearch } from './Contexts/Search'
-import { useSelectedGroup } from './Contexts/SelectedGroup'
 import Header from './Header'
 import { filterContactsByGroup } from '../helpers/groups'
 import { filterContactsBySearch } from '../helpers/search'
 
+import { useSelectedGroup } from '@/components/GroupsSelect/GroupsSelectProvider'
 import styles from '@/styles/contacts.styl'
 
 export const ContentResult = ({ contacts, allGroups }) => {

@@ -16,7 +16,8 @@ import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
 import { hasSelectedGroup } from '../../helpers/groups'
 import StoreButton from '../Common/StoreButton'
 import { useSearch } from '../Contexts/Search'
-import { useSelectedGroup } from '../Contexts/SelectedGroup'
+
+import { useSelectedGroup } from '@/components/GroupsSelect/GroupsSelectProvider'
 
 const style = { pointerEvents: 'all' }
 
