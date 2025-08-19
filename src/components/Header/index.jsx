@@ -1,6 +1,6 @@
 import cx from 'classnames'
 import PropTypes from 'prop-types'
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
@@ -14,7 +14,7 @@ import ImportDropdown from './ImportDropdown'
 import SearchInput from './SearchInput'
 
 import { useSearch } from '@/components/Contexts/Search'
-import SelectedGroupContext from '@/components/Contexts/SelectedGroup'
+import { useSelectedGroup } from '@/components/Contexts/SelectedGroup'
 import GroupsSelect from '@/components/GroupsSelect/GroupsSelect'
 import {
   hasSelectedGroup,
@@ -53,7 +53,7 @@ const Header = ({ allGroups }) => {
   const navigate = useNavigate()
   const { t } = useI18n()
   const { isMobile } = useBreakpoints()
-  const { selectedGroup, setSelectedGroup } = useContext(SelectedGroupContext)
+  const { selectedGroup, setSelectedGroup } = useSelectedGroup()
   const { setSearchValue } = useSearch()
 
   const groupsSelectOptions = setGroupsSelectOptions(

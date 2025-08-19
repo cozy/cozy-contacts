@@ -6,7 +6,7 @@ import { Content } from 'cozy-ui/transpiled/react/Layout'
 import ContactsList from './ContactsList/ContactsList.jsx'
 import ContactsDiplayedContext from './Contexts/ContactsDiplayed'
 import { useSearch } from './Contexts/Search'
-import SelectedGroupContext from './Contexts/SelectedGroup'
+import { useSelectedGroup } from './Contexts/SelectedGroup'
 import Header from './Header'
 import { filterContactsByGroup } from '../helpers/groups'
 import { filterContactsBySearch } from '../helpers/search'
@@ -14,7 +14,7 @@ import { filterContactsBySearch } from '../helpers/search'
 import styles from '@/styles/contacts.styl'
 
 export const ContentResult = ({ contacts, allGroups }) => {
-  const { selectedGroup } = useContext(SelectedGroupContext)
+  const { selectedGroup } = useSelectedGroup()
   const { searchValue } = useSearch()
   const { setContactsDisplayed } = useContext(ContactsDiplayedContext)
   const [filteredContacts, setFilteredContacts] = useState(contacts)

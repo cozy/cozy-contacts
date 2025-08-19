@@ -12,7 +12,7 @@ import I18n from 'cozy-ui/transpiled/react/providers/I18n'
 import getCozyClient from './client'
 import { ContactsDiplayedProvider } from '../components/Contexts/ContactsDiplayed'
 import SearchProvider from '../components/Contexts/Search'
-import { SelectedGroupProvider } from '../components/Contexts/SelectedGroup'
+import SelectedGroupProvider from '../components/Contexts/SelectedGroup'
 import langEn from '../locales/en.json'
 import configureStore from '../store/configureStore'
 

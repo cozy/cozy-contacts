@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
@@ -16,7 +16,7 @@ import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
 import { hasSelectedGroup } from '../../helpers/groups'
 import StoreButton from '../Common/StoreButton'
 import { useSearch } from '../Contexts/Search'
-import SelectedGroupContext from '../Contexts/SelectedGroup'
+import { useSelectedGroup } from '../Contexts/SelectedGroup'
 
 const style = { pointerEvents: 'all' }
 
@@ -31,7 +31,7 @@ const ContactsEmptyList = () => {
   const { t } = useI18n()
   const { isDesktop } = useBreakpoints()
   const { searchValue } = useSearch()
-  const { selectedGroup } = useContext(SelectedGroupContext)
+  const { selectedGroup } = useSelectedGroup()
 
   const isContactsFiltered =
     searchValue.length > 0 || hasSelectedGroup(selectedGroup)
