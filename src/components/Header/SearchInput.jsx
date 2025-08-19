@@ -4,11 +4,8 @@ import React, { useMemo } from 'react'
 import SearchBar from 'cozy-ui/transpiled/react/SearchBar'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import { useSearch } from '@/components/Contexts/Search'
-
-const SearchInput = () => {
+const SearchInput = ({ setSearchValue }) => {
   const { t } = useI18n()
-  const { setSearchValue } = useSearch()
 
   const delayedSetSearchValue = useMemo(
     () => debounce(searchValue => setSearchValue(searchValue), 375),
