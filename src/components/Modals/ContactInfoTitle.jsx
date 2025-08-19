@@ -84,7 +84,6 @@ const ContactInfoTitle = ({ contact, allGroups }) => {
       <Grid container spacing={1} className="u-w-auto u-ml-0-s u-mr-3 u-mr-0-s">
         <Grid item>
           <GroupsSelect
-            contact={contact}
             allGroups={allGroups}
             styles={customStyles}
             onChange={handleChange}
