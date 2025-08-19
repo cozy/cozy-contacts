@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { useClient } from 'cozy-client'
+import { useClient, generateWebLink } from 'cozy-client'
+import { CONTACTS_DOCTYPE } from 'cozy-client/dist/models/contact'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import AppLinker from 'cozy-ui/transpiled/react/AppLinker'
 import Button from 'cozy-ui/transpiled/react/Buttons'
@@ -14,14 +15,20 @@ import ActionMenu, {
 } from 'cozy-ui/transpiled/react/deprecated/ActionMenu'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import { getFilteredStoreUrl } from '../../helpers/store'
-
 const ImportDropdown = () => {
   const { t } = useI18n()
   const client = useClient()
   const navigate = useNavigate()
   const anchorRef = useRef()
   const [showMenu, setShowMenu] = useState(false)
+
+  const storeURL = generateWebLink({
+    cozyUrl: client.getStackClient().uri,
+    hash: `discover/?type=konnector&doctype=${CONTACTS_DOCTYPE}`,
+    pathname: '/',
+    slug: 'store',
+    subDomainType: client.getInstanceOptions().subdomain
+  })
 
   return (
     <>
@@ -47,7 +54,7 @@ const ImportDropdown = () => {
             {t('import.vcard')}
           </ActionMenuItem>
 
-          <AppLinker app={{ slug: 'store' }} href={getFilteredStoreUrl(client)}>
+          <AppLinker app={{ slug: 'store' }} href={storeURL}>
             {({ onClick, href }) => (
               <ActionMenuItem
                 left={<AppIcon app="store" className="u-h-1 u-w-1" />}
