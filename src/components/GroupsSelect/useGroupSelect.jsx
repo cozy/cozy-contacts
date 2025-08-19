@@ -5,9 +5,14 @@ import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { useSelectedGroup } from './GroupsSelectProvider'
 import { isExistingGroup } from './helpers'
-import { createGroup, updateGroup } from '../../connections/allGroups'
 
-const useGroupsSelect = ({ allGroups, onGroupCreated, client }) => {
+const useGroupsSelect = ({
+  allGroups,
+  onGroupCreated,
+  client,
+  onGroupCreate,
+  onGroupUpdate
+}) => {
   const { selectedGroup, setSelectedGroup } = useSelectedGroup()
   const { showAlert } = useAlert()
   const { t } = useI18n()
@@ -23,7 +28,7 @@ const useGroupsSelect = ({ allGroups, onGroupCreated, client }) => {
     }
 
     try {
-      const { data: createdGroup } = await createGroup(client, group)
+      const { data: createdGroup } = await onGroupCreate(client, group)
       if (onGroupCreated) {
         onGroupCreated(createdGroup)
       }
@@ -53,7 +58,7 @@ const useGroupsSelect = ({ allGroups, onGroupCreated, client }) => {
     }
 
     try {
-      const { data } = await updateGroup(client, { ...group, name: newName })
+      const { data } = await onGroupUpdate(client, { ...group, name: newName })
       if (isRenamedGroupSelected) {
         setSelectedGroup(data)
       }

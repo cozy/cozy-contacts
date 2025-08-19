@@ -17,6 +17,7 @@ import { useSearch } from '@/components/Contexts/Search'
 import GroupsSelect from '@/components/GroupsSelect/GroupsSelect'
 import { useSelectedGroup } from '@/components/GroupsSelect/GroupsSelectProvider'
 import { translatedDefaultSelectedGroup } from '@/components/GroupsSelect/helpers'
+import { createGroup, updateGroup } from '@/connections/allGroups'
 import { hasSelectedGroup } from '@/helpers/groups'
 
 const setGroupsSelectOptions = (allGroups, defaultSelectedGroup) =>
@@ -98,13 +99,15 @@ const Header = ({ allGroups }) => {
         <GroupsSelect
           allGroups={groupsSelectOptions}
           value={selectedGroup}
-          onChange={setSelectedGroup}
           noOptionsMessage={() => t('filter.no-group')}
           styles={groupsSelectCustomStyles}
           closeMenuOnSelect={true}
           components={{
             Control: ControlDefaultWithTestId
           }}
+          onChange={setSelectedGroup}
+          onGroupCreate={createGroup}
+          onGroupUpdate={updateGroup}
         />
         <SearchInput setSearchValue={setSearchValue} />
       </div>
