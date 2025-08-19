@@ -1,18 +1,24 @@
-import React, { createContext, useState } from 'react'
+import React, { useState, useContext } from 'react'
 
-const SearchContext = createContext()
+const SearchContext = React.createContext()
+
+export const useSearch = () => {
+  const context = useContext(SearchContext)
+
+  if (!context) {
+    throw new Error('useSearch must be used within a SearchProvider')
+  }
+  return context
+}
 
 const SearchProvider = ({ children }) => {
   const [searchValue, setSearchValue] = useState('')
-  const contextValue = { searchValue, setSearchValue }
 
   return (
-    <SearchContext.Provider value={contextValue}>
+    <SearchContext.Provider value={{ searchValue, setSearchValue }}>
       {children}
     </SearchContext.Provider>
   )
 }
 
-export default SearchContext
-
-export { SearchProvider }
+export default React.memo(SearchProvider)

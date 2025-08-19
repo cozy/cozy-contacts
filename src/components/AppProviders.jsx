@@ -15,7 +15,7 @@ import {
 } from 'cozy-ui/transpiled/react/styles'
 
 import { ContactsDiplayedProvider } from './Contexts/ContactsDiplayed'
-import { SearchProvider } from './Contexts/Search'
+import SearchProvider from './Contexts/Search'
 import { SelectedGroupProvider } from './Contexts/SelectedGroup'
 
 const dataProxyProviderOptions = {

@@ -15,7 +15,7 @@ import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
 import { hasSelectedGroup } from '../../helpers/groups'
 import StoreButton from '../Common/StoreButton'
-import SearchContext from '../Contexts/Search'
+import { useSearch } from '../Contexts/Search'
 import SelectedGroupContext from '../Contexts/SelectedGroup'
 
 const style = { pointerEvents: 'all' }
@@ -30,7 +30,7 @@ const ContactsEmptyList = () => {
   const navigate = useNavigate()
   const { t } = useI18n()
   const { isDesktop } = useBreakpoints()
-  const { searchValue } = useContext(SearchContext)
+  const { searchValue } = useSearch()
   const { selectedGroup } = useContext(SelectedGroupContext)
 
   const isContactsFiltered =

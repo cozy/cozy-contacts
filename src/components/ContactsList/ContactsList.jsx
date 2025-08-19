@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useContext } from 'react'
+import React from 'react'
 
 import flag from 'cozy-flags'
 
@@ -7,10 +7,10 @@ import CategorizedList from './CategorizedList'
 import ContactsEmptyList from './ContactsEmptyList'
 import UncategorizedList from './UncategorizedList'
 import VirtualizedList from './Virtualized/VirtualizedList'
-import SearchContext from '../Contexts/Search'
+import { useSearch } from '../Contexts/Search'
 
 const ContactsList = ({ contacts }) => {
-  const { searchValue } = useContext(SearchContext)
+  const { searchValue } = useSearch()
 
   if (contacts.length === 0) {
     return <ContactsEmptyList />
