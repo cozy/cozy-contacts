@@ -1,3 +1,4 @@
+import cx from 'classnames'
 import PropTypes from 'prop-types'
 import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -17,8 +18,6 @@ import {
   hasSelectedGroup,
   translatedDefaultSelectedGroup
 } from '../helpers/groups'
-
-import styles from '@/styles/contacts.styl'
 
 const setGroupsSelectOptions = (allGroups, defaultSelectedGroup) =>
   allGroups.length > 0 ? [defaultSelectedGroup].concat(allGroups) : allGroups
@@ -51,6 +50,7 @@ const ControlDefaultWithTestId = ({ ...props }) => {
 const Header = ({ allGroups }) => {
   const navigate = useNavigate()
   const { t } = useI18n()
+  const { isMobile } = useBreakpoints()
   const { selectedGroup, setSelectedGroup } = useContext(SelectedGroupContext)
 
   const groupsSelectOptions = setGroupsSelectOptions(
@@ -67,8 +67,17 @@ const Header = ({ allGroups }) => {
   }, [allGroups, selectedGroup, setSelectedGroup, t])
 
   return (
-    <div className={styles['topbar']}>
-      <div className={styles['topbar__left']}>
+    <div
+      className={cx({
+        'u-flex u-flex-justify-between': !isMobile
+      })}
+    >
+      <div
+        className={cx('u-flex u-flex-items-center u-w-auto-s u-w-5 u-maw-6', {
+          'u-mb-1': isMobile,
+          'u-mr-1': !isMobile
+        })}
+      >
         <Button
           className="u-mr-half"
           variant="ghost"
@@ -79,7 +88,12 @@ const Header = ({ allGroups }) => {
         />
         <ImportDropdown />
       </div>
-      <div className={styles['topbar__right']}>
+      <div
+        className={cx({
+          'u-flex u-flex-items-center u-flex-justify-end u-flex-grow-1 u-maw-7':
+            !isMobile
+        })}
+      >
         <GroupsSelect
           allGroups={groupsSelectOptions}
           value={selectedGroup}
