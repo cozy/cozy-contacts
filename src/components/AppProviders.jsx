@@ -16,7 +16,7 @@ import {
 
 import { ContactsDiplayedProvider } from './Contexts/ContactsDiplayed'
 import SearchProvider from './Contexts/Search'
-import { SelectedGroupProvider } from './Contexts/SelectedGroup'
+import SelectedGroupProvider from './Contexts/SelectedGroup'
 
 const dataProxyProviderOptions = {
   doctypes: ['io.cozy.contacts', 'io.cozy.files', 'io.cozy.apps']

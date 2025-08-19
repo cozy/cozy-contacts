@@ -1,15 +1,14 @@
 import get from 'lodash/get'
-import { useContext } from 'react'
 
 import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { createGroup, updateGroup } from '../../connections/allGroups'
 import { isExistingGroup } from '../../helpers/groups'
-import SelectedGroupContext from '../Contexts/SelectedGroup'
+import { useSelectedGroup } from '../Contexts/SelectedGroup'
 
 const useGroupsSelect = ({ allGroups, onGroupCreated, client }) => {
-  const { selectedGroup, setSelectedGroup } = useContext(SelectedGroupContext)
+  const { selectedGroup, setSelectedGroup } = useSelectedGroup()
   const { showAlert } = useAlert()
   const { t } = useI18n()
 

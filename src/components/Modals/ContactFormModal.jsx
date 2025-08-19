@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { useClient, useQuery, useQueryAll } from 'cozy-client'
@@ -10,7 +10,7 @@ import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import ContactForm, {
   getSubmitContactForm
 } from '../../components/ContactCard/ContactForm'
-import SelectedGroupContext from '../../components/Contexts/SelectedGroup'
+import { useSelectedGroup } from '../../components/Contexts/SelectedGroup'
 import { createOrUpdateContact } from '../../connections/allContacts'
 import { makeContactWithIdentitiesAddresses } from '../../helpers/contacts'
 import {
@@ -25,7 +25,7 @@ const ContactFormModal = () => {
   const { contactId } = useParams()
   const { showAlert } = useAlert()
 
-  const { selectedGroup } = useContext(SelectedGroupContext)
+  const { selectedGroup } = useSelectedGroup()
   const [isFormBeingSubmitted, setIsFormBeingSubmitted] = useState(false)
   // Tip to avoid that, when submitting the form, the fields are filled with old information for a short time.
   const [contactWithNewData, setContactWithNewData] = useState(null)

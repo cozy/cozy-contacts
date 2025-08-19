@@ -1,10 +1,21 @@
-import React, { createContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { translatedDefaultSelectedGroup } from '../../helpers/groups'
 
-const SelectedGroupContext = createContext()
+const SelectedGroupContext = React.createContext()
+
+export const useSelectedGroup = () => {
+  const context = useContext(SelectedGroupContext)
+
+  if (!context) {
+    throw new Error(
+      'useSelectedGroup must be used within a SelectedGroupProvider'
+    )
+  }
+  return context
+}
 
 const SelectedGroupProvider = ({ children }) => {
   const { t } = useI18n()
@@ -24,6 +35,4 @@ const SelectedGroupProvider = ({ children }) => {
   )
 }
 
-export default SelectedGroupContext
-
-export { SelectedGroupProvider }
+export default SelectedGroupProvider
