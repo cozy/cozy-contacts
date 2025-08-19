@@ -3,14 +3,11 @@ import React from 'react'
 
 import GroupsSelect from './GroupsSelect'
 import Control from './SelectBox/Control'
-import { createGroup, updateGroup } from '../../connections/allGroups'
 import { groups } from '../../helpers/testData'
 import AppLike from '../../tests/Applike'
 
-jest.mock('../../connections/allGroups', () => ({
-  createGroup: jest.fn(),
-  updateGroup: jest.fn()
-}))
+const createGroup = jest.fn()
+const updateGroup = jest.fn()
 
 const setup = () => {
   const root = render(
@@ -19,6 +16,8 @@ const setup = () => {
         value={[groups[0]]}
         allGroups={groups}
         onChange={() => {}}
+        onGroupCreate={createGroup}
+        onGroupUpdate={updateGroup}
         components={{ Control }}
       />
     </AppLike>

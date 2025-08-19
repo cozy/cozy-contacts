@@ -23,6 +23,8 @@ import { fullContactPropTypes } from '../ContactPropTypes'
 import GroupsSelect from '../GroupsSelect/GroupsSelect'
 import Control from '../GroupsSelect/SelectBox/Control'
 
+import { createGroup, updateGroup } from '@/connections/allGroups'
+
 const log = minilog('ContactInfoTitle')
 
 const customStyles = {
@@ -86,14 +88,16 @@ const ContactInfoTitle = ({ contact, allGroups }) => {
           <GroupsSelect
             allGroups={allGroups}
             styles={customStyles}
-            onChange={handleChange}
             value={handleValue}
             components={{ Control }}
             isMulti
-            onGroupCreated={handleOnGroupCreated}
             noOptionsMessage={() => t('groups.none')}
             withCheckbox
             menuPosition="fixed"
+            onChange={handleChange}
+            onGroupCreated={handleOnGroupCreated}
+            onGroupCreate={createGroup}
+            onGroupUpdate={updateGroup}
           />
         </Grid>
         <Grid item>

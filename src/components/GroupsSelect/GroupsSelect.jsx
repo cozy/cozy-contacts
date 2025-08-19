@@ -21,8 +21,6 @@ const captureEscapeEvent = e => {
 
 export const GroupsSelect = ({
   allGroups,
-  onGroupCreated,
-  onChange,
   closeMenuOnSelect,
   value,
   styles,
@@ -30,6 +28,10 @@ export const GroupsSelect = ({
   noOptionsMessage,
   withCheckbox,
   components,
+  onGroupCreated,
+  onChange,
+  onGroupCreate,
+  onGroupUpdate,
   menuPosition
 }) => {
   const client = useClient()
@@ -42,7 +44,9 @@ export const GroupsSelect = ({
   const { createGroup, renameGroup } = useGroupsSelect({
     allGroups,
     onGroupCreated,
-    client
+    client,
+    onGroupCreate,
+    onGroupUpdate
   })
 
   const toggleMenu = () => {
