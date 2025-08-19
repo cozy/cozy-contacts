@@ -10,14 +10,15 @@ import { ControlDefault } from 'cozy-ui/transpiled/react/SelectBox'
 import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import ImportDropdown from './Common/ImportDropdown'
-import SelectedGroupContext from './Contexts/SelectedGroup'
-import GroupsSelect from './GroupsSelect/GroupsSelect'
-import SearchInput from './Search/SearchInput'
+import ImportDropdown from './ImportDropdown'
+import SearchInput from './SearchInput'
+
+import SelectedGroupContext from '@/components/Contexts/SelectedGroup'
+import GroupsSelect from '@/components/GroupsSelect/GroupsSelect'
 import {
   hasSelectedGroup,
   translatedDefaultSelectedGroup
-} from '../helpers/groups'
+} from '@/helpers/groups'
 
 const setGroupsSelectOptions = (allGroups, defaultSelectedGroup) =>
   allGroups.length > 0 ? [defaultSelectedGroup].concat(allGroups) : allGroups
