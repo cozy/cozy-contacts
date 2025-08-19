@@ -2,14 +2,7 @@ import differenceBy from 'lodash/differenceBy'
 import filter from 'lodash/filter'
 import get from 'lodash/get'
 
-export const isExistingGroup = (groupsAlreadyCreated, groupToCreate) => {
-  const isNameAlreadyUsed =
-    groupsAlreadyCreated.find(
-      group => group.name.toLowerCase() === groupToCreate.name.toLowerCase()
-    ) !== undefined
-
-  return isNameAlreadyUsed
-}
+import { defaultSelectedGroup } from '@/components/GroupsSelect/helpers'
 
 export const updateContactGroups = (contact, nextGroups) => {
   const currentGroups = contact.groups.data
@@ -42,23 +35,6 @@ export const filterContactsByGroup = (contacts, selectedGroup) => {
 
   return filter(contacts, filterRule)
 }
-
-/**
- * Returns the group defined as default in the group filter
- */
-export const defaultSelectedGroup = {
-  name: 'filter.all-groups',
-  withNoAction: true
-}
-
-/**
- * Returns the translated group defined as default in the group filter
- * @param {function} t - Translate
- */
-export const translatedDefaultSelectedGroup = t => ({
-  ...defaultSelectedGroup,
-  name: t(defaultSelectedGroup.name)
-})
 
 /**
  * Returns whether a group is selected in group filter
