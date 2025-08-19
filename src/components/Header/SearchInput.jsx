@@ -4,7 +4,7 @@ import React, { useMemo, useContext } from 'react'
 import SearchBar from 'cozy-ui/transpiled/react/SearchBar'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import SearchContext from '../Contexts/Search'
+import SearchContext from '@/components/Contexts/Search'
 
 const SearchInput = () => {
   const { t } = useI18n()
