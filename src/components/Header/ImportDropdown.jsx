@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import { useClient, generateWebLink } from 'cozy-client'
 import { CONTACTS_DOCTYPE } from 'cozy-client/dist/models/contact'
@@ -15,10 +14,9 @@ import ActionMenu, {
 } from 'cozy-ui/transpiled/react/deprecated/ActionMenu'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-const ImportDropdown = () => {
+const ImportDropdown = ({ onContactImport }) => {
   const { t } = useI18n()
   const client = useClient()
-  const navigate = useNavigate()
   const anchorRef = useRef()
   const [showMenu, setShowMenu] = useState(false)
 
@@ -49,7 +47,7 @@ const ImportDropdown = () => {
         >
           <ActionMenuItem
             left={<Icon icon={TeamIcon} />}
-            onClick={() => navigate('/import')}
+            onClick={onContactImport}
           >
             {t('import.vcard')}
           </ActionMenuItem>
