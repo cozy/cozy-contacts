@@ -13,6 +13,7 @@ import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import ImportDropdown from './ImportDropdown'
 import SearchInput from './SearchInput'
 
+import { useSearch } from '@/components/Contexts/Search'
 import SelectedGroupContext from '@/components/Contexts/SelectedGroup'
 import GroupsSelect from '@/components/GroupsSelect/GroupsSelect'
 import {
@@ -53,6 +54,7 @@ const Header = ({ allGroups }) => {
   const { t } = useI18n()
   const { isMobile } = useBreakpoints()
   const { selectedGroup, setSelectedGroup } = useContext(SelectedGroupContext)
+  const { setSearchValue } = useSearch()
 
   const groupsSelectOptions = setGroupsSelectOptions(
     allGroups,
@@ -106,7 +108,7 @@ const Header = ({ allGroups }) => {
             Control: ControlDefaultWithTestId
           }}
         />
-        <SearchInput />
+        <SearchInput setSearchValue={setSearchValue} />
       </div>
     </div>
   )
