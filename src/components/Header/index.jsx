@@ -89,7 +89,7 @@ const Header = ({ allGroups }) => {
           fullWidth
           onClick={() => navigate('/new')}
         />
-        <ImportDropdown />
+        <ImportDropdown onContactImport={() => navigate('/import')} />
       </div>
       <div
         className={cx({
