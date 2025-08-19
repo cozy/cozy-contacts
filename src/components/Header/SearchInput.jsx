@@ -1,14 +1,14 @@
 import debounce from 'lodash/debounce'
-import React, { useMemo, useContext } from 'react'
+import React, { useMemo } from 'react'
 
 import SearchBar from 'cozy-ui/transpiled/react/SearchBar'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import SearchContext from '@/components/Contexts/Search'
+import { useSearch } from '@/components/Contexts/Search'
 
 const SearchInput = () => {
   const { t } = useI18n()
-  const { setSearchValue } = useContext(SearchContext)
+  const { setSearchValue } = useSearch()
 
   const delayedSetSearchValue = useMemo(
     () => debounce(searchValue => setSearchValue(searchValue), 375),

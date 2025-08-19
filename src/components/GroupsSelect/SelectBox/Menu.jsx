@@ -4,9 +4,8 @@ import React from 'react'
 import { components } from 'cozy-ui/transpiled/react/SelectBox'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 
+import styles from './styles.styl'
 import GroupCreation from '../GroupCreation'
-
-import styles from '@/components/GroupsSelect/SelectBox/styles.styl'
 
 const Menu = ({ children, selectProps, className, ...props }) => {
   const { createGroup, ...restSelectProps } = selectProps
