@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import { useClient } from 'cozy-client'
 import ClickAwayListener from 'cozy-ui/transpiled/react/ClickAwayListener'
@@ -32,10 +31,10 @@ export const GroupsSelect = ({
   onChange,
   onGroupCreate,
   onGroupUpdate,
+  onGroupDelete,
   menuPosition
 }) => {
   const client = useClient()
-  const navigate = useNavigate()
   const { isMobile } = useBreakpoints()
   const [{ menuIsOpen, editedGroupId }, setState] = useState({
     menuIsOpen: false,
@@ -71,7 +70,7 @@ export const GroupsSelect = ({
 
   const handleDelete = group => {
     closeMenu()
-    navigate(`/group/${group._id}/delete/${group.name}`)
+    onGroupDelete(group)
   }
 
   const defaultComponents = {
@@ -121,7 +120,6 @@ export const GroupsSelect = ({
 GroupsSelect.propTypes = {
   allGroups: PropTypes.array.isRequired,
   styles: PropTypes.object,
-  onChange: PropTypes.func.isRequired,
   // for multiple selections, value can be an array
   value: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   // to customize react-select elements
@@ -132,8 +130,15 @@ GroupsSelect.propTypes = {
   noOptionsMessage: PropTypes.func,
   // hide/show checkbox besides menu list options
   withCheckbox: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
   // function to be triggered after creating a group
   onGroupCreated: PropTypes.func,
+  // function to be triggered when creating a group
+  onGroupCreate: PropTypes.func,
+  // function to be triggered when updating a group
+  onGroupUpdate: PropTypes.func,
+  // function to be triggered when deleting a group
+  onGroupDelete: PropTypes.func,
   closeMenuOnSelect: PropTypes.bool,
   menuPosition: PropTypes.oneOf(['fixed', 'absolute'])
 }
@@ -145,7 +150,10 @@ GroupsSelect.defaultProps = {
 }
 
 GroupsSelect.propTypes = {
-  allGroups: PropTypes.array.isRequired
+  allGroups: PropTypes.array.isRequired,
+  onGroupCreate: PropTypes.func.isRequired,
+  onGroupUpdate: PropTypes.func.isRequired,
+  onGroupDelete: PropTypes.func.isRequired
 }
 
 export default GroupsSelect

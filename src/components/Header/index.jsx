@@ -107,6 +107,9 @@ const Header = ({ allGroups }) => {
           }}
           onChange={setSelectedGroup}
           onGroupCreate={createGroup}
+          onGroupDelete={group =>
+            navigate(`/group/${group._id}/delete/${group.name}`)
+          }
           onGroupUpdate={updateGroup}
         />
         <SearchInput setSearchValue={setSearchValue} />
