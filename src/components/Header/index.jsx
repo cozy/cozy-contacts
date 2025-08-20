@@ -1,71 +1,31 @@
 import cx from 'classnames'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import PersonAddIcon from 'cozy-ui/transpiled/react/Icons/PersonAdd'
-import { ControlDefault } from 'cozy-ui/transpiled/react/SelectBox'
 import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
+import GroupsSelection from './GroupsSelection'
 import ImportDropdown from './ImportDropdown'
 import SearchInput from './SearchInput'
 
-import { useSearch } from '@/components/Contexts/Search'
-import GroupsSelect from '@/components/GroupsSelect/GroupsSelect'
-import { useSelectedGroup } from '@/components/GroupsSelect/GroupsSelectProvider'
-import { translatedDefaultSelectedGroup } from '@/components/GroupsSelect/helpers'
-import { createGroup, updateGroup } from '@/connections/allGroups'
-
-const setGroupsSelectOptions = (allGroups, defaultSelectedGroup) =>
-  allGroups.length > 0 ? [defaultSelectedGroup].concat(allGroups) : allGroups
-
-const useGroupsSelectCustomStyles = () => {
-  const { isMobile } = useBreakpoints()
-
-  return {
-    container: base => ({
-      ...base,
-      width: isMobile ? '100%' : '50%'
-    }),
-    noOptionsMessage: base => ({ ...base, textAlign: 'left' })
-  }
-}
-
-const ControlDefaultWithTestId = ({ ...props }) => {
-  return (
-    <ControlDefault
-      {...props}
-      innerProps={{
-        ...props.innerProps,
-        'data-testid': 'selectBox-controlDefault',
-        className: 'u-bdrs-4'
-      }}
-    />
-  )
-}
-
-const Header = ({ allGroups }) => {
-  const navigate = useNavigate()
+const Header = ({
+  allGroups,
+  onContactCreate,
+  onContactImport,
+  onSearch,
+  onGroupCreate,
+  onGroupDelete,
+  onGroupUpdate
+}) => {
   const { t } = useI18n()
   const { isMobile } = useBreakpoints()
-  const { selectedGroup, setSelectedGroup } = useSelectedGroup()
-  const { setSearchValue } = useSearch()
-
-  const groupsSelectOptions = setGroupsSelectOptions(
-    allGroups,
-    translatedDefaultSelectedGroup(t)
-  )
-  const groupsSelectCustomStyles = useGroupsSelectCustomStyles()
 
   return (
-    <div
-      className={cx({
-        'u-flex u-flex-justify-between': !isMobile
-      })}
-    >
+    <div className={!isMobile ? 'u-flex u-flex-justify-between' : undefined}>
       <div
         className={cx('u-flex u-flex-items-center u-w-auto-s u-w-5 u-maw-6', {
           'u-mb-1': isMobile,
@@ -78,40 +38,37 @@ const Header = ({ allGroups }) => {
           startIcon={<Icon icon={PersonAddIcon} />}
           label={t('create')}
           fullWidth
-          onClick={() => navigate('/new')}
+          onClick={onContactCreate}
         />
-        <ImportDropdown onContactImport={() => navigate('/import')} />
+        <ImportDropdown onContactImport={onContactImport} />
       </div>
       <div
-        className={cx({
-          'u-flex u-flex-items-center u-flex-justify-end u-flex-grow-1 u-maw-7':
-            !isMobile
-        })}
+        className={
+          !isMobile
+            ? 'u-flex u-flex-items-center u-flex-justify-end u-flex-grow-1 u-maw-7'
+            : undefined
+        }
       >
-        <GroupsSelect
-          allGroups={groupsSelectOptions}
-          value={selectedGroup}
-          noOptionsMessage={() => t('filter.no-group')}
-          styles={groupsSelectCustomStyles}
-          closeMenuOnSelect={true}
-          components={{
-            Control: ControlDefaultWithTestId
-          }}
-          onChange={setSelectedGroup}
-          onGroupCreate={createGroup}
-          onGroupDelete={group =>
-            navigate(`/group/${group._id}/delete/${group.name}`)
-          }
-          onGroupUpdate={updateGroup}
+        <GroupsSelection
+          allGroups={allGroups}
+          onGroupCreate={onGroupCreate}
+          onGroupUpdate={onGroupUpdate}
+          onGroupDelete={onGroupDelete}
         />
-        <SearchInput setSearchValue={setSearchValue} />
+        <SearchInput setSearchValue={onSearch} />
       </div>
     </div>
   )
 }
 
 Header.propTypes = {
-  allGroups: PropTypes.array
+  allGroups: PropTypes.array,
+  onContactCreate: PropTypes.func,
+  onContactImport: PropTypes.func,
+  onSearch: PropTypes.func,
+  onGroupCreate: PropTypes.func,
+  onGroupUpdate: PropTypes.func,
+  onGroupDelete: PropTypes.func
 }
 
 Header.defaultProps = {
