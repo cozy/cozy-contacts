@@ -21,7 +21,11 @@ import {
 import cleanTrashedGroupsAndATrashedContacts from '../../thunks/cleanTrashedGroupsAndATrashedContacts'
 import ConfirmDeleteActions from '../Common/ConfirmDeleteActions'
 
+import { useSelectedGroup } from '@/components/GroupsSelect/GroupsSelectProvider'
+import { translatedDefaultSelectedGroup } from '@/components/GroupsSelect/helpers'
+
 const GroupDeleteConfirmationModal = () => {
+  const { selectedGroup, setSelectedGroup } = useSelectedGroup()
   const [deleteAssociatedContacts, setDeleteAssociatedContacts] =
     useState(false)
   const [isBusy, setIsBusy] = useState(false)
@@ -44,6 +48,11 @@ const GroupDeleteConfirmationModal = () => {
       contactsTrashCount = contacts.length
     }
     await trashedGroupById(client, groupId)
+
+    // If the currently selected group is deleted, the default filter is set.
+    if (groupId === selectedGroup._id) {
+      setSelectedGroup(translatedDefaultSelectedGroup(t))
+    }
 
     const translationKey = deleteAssociatedContacts
       ? contactsTrashCount > 0

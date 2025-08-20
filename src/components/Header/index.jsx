@@ -1,6 +1,6 @@
 import cx from 'classnames'
 import PropTypes from 'prop-types'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
@@ -18,7 +18,6 @@ import GroupsSelect from '@/components/GroupsSelect/GroupsSelect'
 import { useSelectedGroup } from '@/components/GroupsSelect/GroupsSelectProvider'
 import { translatedDefaultSelectedGroup } from '@/components/GroupsSelect/helpers'
 import { createGroup, updateGroup } from '@/connections/allGroups'
-import { hasSelectedGroup } from '@/helpers/groups'
 
 const setGroupsSelectOptions = (allGroups, defaultSelectedGroup) =>
   allGroups.length > 0 ? [defaultSelectedGroup].concat(allGroups) : allGroups
@@ -60,13 +59,6 @@ const Header = ({ allGroups }) => {
     translatedDefaultSelectedGroup(t)
   )
   const groupsSelectCustomStyles = useGroupsSelectCustomStyles()
-
-  // If the currently selected group is deleted, the default filter is set.
-  useEffect(() => {
-    if (hasSelectedGroup(selectedGroup) && !allGroups.includes(selectedGroup)) {
-      setSelectedGroup(translatedDefaultSelectedGroup(t))
-    }
-  }, [allGroups, selectedGroup, setSelectedGroup, t])
 
   return (
     <div
