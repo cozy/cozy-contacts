@@ -4,9 +4,9 @@ import { ControlDefault } from 'cozy-ui/transpiled/react/SelectBox'
 import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import GroupsSelect from '@/components/GroupsSelect/GroupsSelect'
-import { useSelectedGroup } from '@/components/GroupsSelect/GroupsSelectProvider'
-import { translatedDefaultSelectedGroup } from '@/components/GroupsSelect/helpers'
+import GroupsSelect from '../GroupsSelect/GroupsSelect'
+import { useSelectedGroup } from '../GroupsSelect/GroupsSelectProvider'
+import { translatedDefaultSelectedGroup } from '../GroupsSelect/helpers'
 
 const setGroupsSelectOptions = (allGroups, defaultSelectedGroup) =>
   allGroups.length > 0 ? [defaultSelectedGroup].concat(allGroups) : allGroups
