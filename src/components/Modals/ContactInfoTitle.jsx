@@ -97,6 +97,9 @@ const ContactInfoTitle = ({ contact, allGroups }) => {
             onChange={handleChange}
             onGroupCreated={handleOnGroupCreated}
             onGroupCreate={createGroup}
+            onGroupDelete={group =>
+              navigate(`/group/${group._id}/delete/${group.name}`)
+            }
             onGroupUpdate={updateGroup}
           />
         </Grid>
