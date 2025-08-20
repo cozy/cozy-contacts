@@ -18,6 +18,14 @@ export const updateContactGroups = (contact, nextGroups) => {
 }
 
 /**
+ * Returns whether a group is selected in group filter
+ * @param {object} selectedGroup - Group selected in group filter
+ * @param {function} t - Translate
+ */
+export const hasSelectedGroup = selectedGroup =>
+  get(selectedGroup, '_id') !== get(defaultSelectedGroup, '_id')
+
+/**
  * Filter contacts by group
  * @param {array} contacts - Array of io.cozy.contact documents
  * @param {object} selectedGroup - Group to filter on
@@ -35,11 +43,3 @@ export const filterContactsByGroup = (contacts, selectedGroup) => {
 
   return filter(contacts, filterRule)
 }
-
-/**
- * Returns whether a group is selected in group filter
- * @param {object} selectedGroup - Group selected in group filter
- * @param {function} t - Translate
- */
-export const hasSelectedGroup = selectedGroup =>
-  get(selectedGroup, '_id') !== get(defaultSelectedGroup, '_id')
