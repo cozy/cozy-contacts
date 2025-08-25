@@ -2,7 +2,7 @@ import differenceBy from 'lodash/differenceBy'
 import filter from 'lodash/filter'
 import get from 'lodash/get'
 
-import { defaultSelectedGroup } from '@/components/GroupsSelect/helpers'
+import { defaultSelectedGroup } from 'cozy-ui/transpiled/react/Contacts/GroupsSelect/helpers'
 
 export const updateContactGroups = (contact, nextGroups) => {
   const currentGroups = contact.groups.data

@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import { HashRouter } from 'react-router-dom'
 
 import { CozyProvider } from 'cozy-client'
+import SelectedGroupProvider from 'cozy-ui/transpiled/react/Contacts/GroupsSelect/GroupsSelectProvider'
 import { Layout } from 'cozy-ui/transpiled/react/Layout'
 import AlertProvider from 'cozy-ui/transpiled/react/providers/Alert'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
@@ -14,8 +15,6 @@ import { ContactsDiplayedProvider } from '../components/Contexts/ContactsDiplaye
 import SearchProvider from '../components/Contexts/Search'
 import langEn from '../locales/en.json'
 import configureStore from '../store/configureStore'
-
-import SelectedGroupProvider from '@/components/GroupsSelect/GroupsSelectProvider'
 
 const store = configureStore(getCozyClient(), null, {})
 

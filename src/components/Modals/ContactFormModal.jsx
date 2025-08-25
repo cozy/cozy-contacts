@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 import { useClient, useQuery, useQueryAll } from 'cozy-client'
 import Button from 'cozy-ui/transpiled/react/Buttons'
+import { useSelectedGroup } from 'cozy-ui/transpiled/react/Contacts/GroupsSelect/GroupsSelectProvider'
 import { FixedDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
@@ -16,8 +17,6 @@ import {
   buildContactsQueryByFamilyNameGivenNameEmailCozyUrl,
   buildIdentitiesQueryByContact
 } from '../../queries/queries'
-
-import { useSelectedGroup } from '@/components/GroupsSelect/GroupsSelectProvider'
 
 const ContactFormModal = () => {
   const navigate = useNavigate()

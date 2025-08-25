@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
+import { useSelectedGroup } from 'cozy-ui/transpiled/react/Contacts/GroupsSelect/GroupsSelectProvider'
 import Empty from 'cozy-ui/transpiled/react/Empty'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import InfoIcon from 'cozy-ui/transpiled/react/Icons/Info'
@@ -16,8 +17,6 @@ import EmptyIcon from '../../assets/icons/empty-contact-list.svg'
 import { hasSelectedGroup } from '../../helpers/groups'
 import StoreButton from '../Common/StoreButton'
 import { useSearch } from '../Contexts/Search'
-
-import { useSelectedGroup } from '@/components/GroupsSelect/GroupsSelectProvider'
 
 const style = { pointerEvents: 'all' }
 
