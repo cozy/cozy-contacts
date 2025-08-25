@@ -11,7 +11,6 @@ import ContactFormField from './ContactFormField'
 import contactToFormValues from './contactToFormValues'
 import { fields } from './fieldsConfig'
 import formValuesToContact from './formValuesToContact'
-import FieldsetTitle from '../../Common/FieldsetTitle'
 import { fullContactPropTypes } from '../../ContactPropTypes'
 import ContactFieldInput from '../ContactFieldInput'
 
@@ -63,7 +62,6 @@ const ContactForm = ({ contact, onSubmit, contacts }) => {
               onSubmit={handleSubmit}
               className="u-flex u-flex-column"
             >
-              <FieldsetTitle title={t('contact_info')} />
               {fields.map(({ name, icon, label, isArray, ...attributes }) => (
                 <ContactFormField
                   key={name}
