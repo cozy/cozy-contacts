@@ -4,6 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useClient } from 'cozy-client'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import Checkbox from 'cozy-ui/transpiled/react/Checkbox'
+import { useSelectedGroup } from 'cozy-ui/transpiled/react/Contacts/GroupsSelect/GroupsSelectProvider'
+import { translatedDefaultSelectedGroup } from 'cozy-ui/transpiled/react/Contacts/GroupsSelect/helpers'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import Typography from 'cozy-ui/transpiled/react/Typography'
@@ -20,9 +22,6 @@ import {
 } from '../../connections/allGroups'
 import cleanTrashedGroupsAndATrashedContacts from '../../thunks/cleanTrashedGroupsAndATrashedContacts'
 import ConfirmDeleteActions from '../Common/ConfirmDeleteActions'
-
-import { useSelectedGroup } from '@/components/GroupsSelect/GroupsSelectProvider'
-import { translatedDefaultSelectedGroup } from '@/components/GroupsSelect/helpers'
 
 const GroupDeleteConfirmationModal = () => {
   const { selectedGroup, setSelectedGroup } = useSelectedGroup()

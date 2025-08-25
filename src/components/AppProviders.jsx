@@ -5,6 +5,7 @@ import { BarProvider } from 'cozy-bar'
 import { CozyProvider } from 'cozy-client'
 import { DataProxyProvider } from 'cozy-dataproxy-lib'
 import { WebviewIntentProvider } from 'cozy-intent'
+import SelectedGroupProvider from 'cozy-ui/transpiled/react/Contacts/GroupsSelect/GroupsSelectProvider'
 import AlertProvider from 'cozy-ui/transpiled/react/providers/Alert'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import CozyTheme from 'cozy-ui/transpiled/react/providers/CozyTheme'
@@ -16,8 +17,6 @@ import {
 
 import { ContactsDiplayedProvider } from './Contexts/ContactsDiplayed'
 import SearchProvider from './Contexts/Search'
-
-import SelectedGroupProvider from '@/components/GroupsSelect/GroupsSelectProvider'
 
 const dataProxyProviderOptions = {
   doctypes: ['io.cozy.contacts', 'io.cozy.files', 'io.cozy.apps']

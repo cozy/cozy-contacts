@@ -2,16 +2,16 @@ import PropTypes from 'prop-types'
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { useSelectedGroup } from 'cozy-ui/transpiled/react/Contacts/GroupsSelect/GroupsSelectProvider'
+import Header from 'cozy-ui/transpiled/react/Contacts/Header'
 import { Content } from 'cozy-ui/transpiled/react/Layout'
 
 import ContactsList from './ContactsList/ContactsList.jsx'
 import ContactsDiplayedContext from './Contexts/ContactsDiplayed'
 import { useSearch } from './Contexts/Search'
-import Header from './Header'
 import { filterContactsByGroup } from '../helpers/groups'
 import { filterContactsBySearch } from '../helpers/search'
 
-import { useSelectedGroup } from '@/components/GroupsSelect/GroupsSelectProvider'
 import { createGroup, updateGroup } from '@/connections/allGroups'
 import styles from '@/styles/contacts.styl'
 
@@ -41,8 +41,8 @@ export const ContentResult = ({ contacts, allGroups }) => {
         <div className={styles['topbar']}>
           <Header
             allGroups={allGroups}
-            onCreateContact={() => navigate('/new')}
-            onImportContact={() => navigate('/import')}
+            onContactCreate={() => navigate('/new')}
+            onContactImport={() => navigate('/import')}
             onGroupCreate={createGroup}
             onGroupUpdate={updateGroup}
             onGroupDelete={group =>
