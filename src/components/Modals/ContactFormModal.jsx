@@ -113,6 +113,4 @@ const ContactFormModal = () => {
   )
 }
 
-export { ContactFormModal as DumbContactFormModal }
-
 export default ContactFormModal
