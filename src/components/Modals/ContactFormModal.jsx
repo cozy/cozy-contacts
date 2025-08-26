@@ -18,71 +18,35 @@ import {
   buildIdentitiesQueryByContact
 } from '../../queries/queries'
 
-const ContactFormModal = () => {
-  const navigate = useNavigate()
+const ContactFormModal = ({
+  contacts,
+  currentContact,
+  contactWithIdentitiesAddresses,
+  onSubmit,
+  onClick,
+  onClose
+}) => {
   const { t } = useI18n()
-  const client = useClient()
-  const { contactId } = useParams()
   const { showAlert } = useAlert()
-
-  const { selectedGroup } = useSelectedGroup()
-  const [isFormBeingSubmitted, setIsFormBeingSubmitted] = useState(false)
-  // Tip to avoid that, when submitting the form, the fields are filled with old information for a short time.
+  const [isBusy, setIsBusy] = useState(false)
+  // Tip to prevent fields from being filled with old information for a short period of time during form submission.
   const [contactWithNewData, setContactWithNewData] = useState(null)
-
-  const contactsQueryByFamilyNameGivenNameEmailCozyUrl =
-    buildContactsQueryByFamilyNameGivenNameEmailCozyUrl()
-
-  const contacts = useQueryAll(
-    contactsQueryByFamilyNameGivenNameEmailCozyUrl.definition,
-    contactsQueryByFamilyNameGivenNameEmailCozyUrl.options
-  )
-  const currentContact = contacts?.data?.find(
-    contact => contact._id === contactId
-  )
-
-  const isContactsQueryEnabled =
-    currentContact && currentContact.me && currentContact.address?.length === 0
-  const indentitiesContactsQueryById = buildIdentitiesQueryByContact(
-    isContactsQueryEnabled
-  )
-  const { data: identities } = useQuery(
-    indentitiesContactsQueryById.definition,
-    indentitiesContactsQueryById.options
-  )
-
-  const triggerFormSubmit = event => {
-    const submitContactForm = getSubmitContactForm()
-    submitContactForm(event)
-  }
-
-  const onClose = () => (contactId ? navigate(`/${contactId}`) : navigate('/'))
 
   /**
    * @param {import('cozy-client/types/types').IOCozyContact} formData - Contact document (except _id, _rev & _type attrs to create a new contact)
    */
   const handleFormSubmit = async formData => {
     setContactWithNewData(formData)
-    setIsFormBeingSubmitted(true)
+    setIsBusy(true)
     try {
-      await createOrUpdateContact({
-        client,
-        oldContact: currentContact,
-        formData,
-        selectedGroup
-      })
+      await onSubmit(formData)
       onClose()
     } catch (err) {
-      setIsFormBeingSubmitted(false)
+      setIsBusy(false)
       console.warn(err) // eslint-disable-line no-console
       showAlert({ severity: 'error', message: t('error.save') })
     }
   }
-
-  const contactWithIdentitiesAddresses = makeContactWithIdentitiesAddresses(
-    currentContact,
-    identities
-  )
 
   return (
     <FixedDialog
@@ -92,9 +56,9 @@ const ContactFormModal = () => {
       title={currentContact ? t('edit-contact') : t('create_contact')}
       content={
         <ContactForm
+          contacts={contacts}
           contact={contactWithNewData || contactWithIdentitiesAddresses}
           onSubmit={handleFormSubmit}
-          contacts={contacts}
         />
       }
       actions={
@@ -104,8 +68,8 @@ const ContactFormModal = () => {
             className="u-ml-half"
             type="submit"
             label={t('save')}
-            busy={isFormBeingSubmitted}
-            onClick={triggerFormSubmit}
+            busy={isBusy}
+            onClick={onClick}
           />
         </>
       }
@@ -113,4 +77,65 @@ const ContactFormModal = () => {
   )
 }
 
-export default ContactFormModal
+const ContactFormModalWrapper = () => {
+  const navigate = useNavigate()
+  const { contactId } = useParams()
+  const client = useClient()
+  const { selectedGroup } = useSelectedGroup()
+
+  const contactsQueryByFamilyNameGivenNameEmailCozyUrl =
+    buildContactsQueryByFamilyNameGivenNameEmailCozyUrl()
+
+  const contacts = useQueryAll(
+    contactsQueryByFamilyNameGivenNameEmailCozyUrl.definition,
+    contactsQueryByFamilyNameGivenNameEmailCozyUrl.options
+  )
+
+  const currentContact = contacts?.data?.find(
+    contact => contact._id === contactId
+  )
+
+  const isContactsQueryEnabled =
+    currentContact && currentContact.me && currentContact.address?.length === 0
+
+  const indentitiesContactsQueryById = buildIdentitiesQueryByContact(
+    isContactsQueryEnabled
+  )
+  const { data: identities } = useQuery(
+    indentitiesContactsQueryById.definition,
+    indentitiesContactsQueryById.options
+  )
+
+  const contactWithIdentitiesAddresses = makeContactWithIdentitiesAddresses(
+    currentContact,
+    identities
+  )
+
+  const onSubmit = async formData =>
+    await createOrUpdateContact({
+      client,
+      oldContact: currentContact,
+      formData,
+      selectedGroup
+    })
+
+  const triggerFormSubmit = event => {
+    const submitContactForm = getSubmitContactForm()
+    submitContactForm(event)
+  }
+
+  const onClose = () => (contactId ? navigate(`/${contactId}`) : navigate('/'))
+
+  return (
+    <ContactFormModal
+      contacts={contacts}
+      currentContact={currentContact}
+      contactWithIdentitiesAddresses={contactWithIdentitiesAddresses}
+      onSubmit={onSubmit}
+      onClick={triggerFormSubmit}
+      onClose={onClose}
+    />
+  )
+}
+
+export default ContactFormModalWrapper
