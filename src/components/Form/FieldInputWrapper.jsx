@@ -4,13 +4,13 @@ import TextField from 'cozy-ui/transpiled/react/TextField'
 
 import { FieldInputWrapperPropTypes } from './fieldInputType'
 
-import FieldInputSelect from '@/components/Form/FieldInputSelect'
+import TextFieldSelect from '@/components/Form/TextFieldSelect'
 
 const FieldInputWrapper = ({ input, attributes, ...props }) => {
   const { labelProps, options, multiline, ...restOfAttributes } =
     attributes || {}
 
-  const Component = options ? FieldInputSelect : TextField
+  const Component = options ? TextFieldSelect : TextField
 
   return (
     <Component
