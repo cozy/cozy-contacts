@@ -20,8 +20,7 @@ import {
 
 const ContactFormModal = ({
   contacts,
-  currentContact,
-  contactWithIdentitiesAddresses,
+  contact,
   onSubmit,
   onClick,
   onClose
@@ -30,13 +29,13 @@ const ContactFormModal = ({
   const { showAlert } = useAlert()
   const [isBusy, setIsBusy] = useState(false)
   // Tip to prevent fields from being filled with old information for a short period of time during form submission.
-  const [contactWithNewData, setContactWithNewData] = useState(null)
+  const [selfContact, setSelfContact] = useState(contact)
 
   /**
    * @param {import('cozy-client/types/types').IOCozyContact} formData - Contact document (except _id, _rev & _type attrs to create a new contact)
    */
   const handleFormSubmit = async formData => {
-    setContactWithNewData(formData)
+    setSelfContact(formData)
     setIsBusy(true)
     try {
       await onSubmit(formData)
@@ -53,11 +52,11 @@ const ContactFormModal = ({
       open
       onClose={onClose}
       size="large"
-      title={currentContact ? t('edit-contact') : t('create_contact')}
+      title={contact ? t('edit-contact') : t('create_contact')}
       content={
         <ContactForm
           contacts={contacts}
-          contact={contactWithNewData || contactWithIdentitiesAddresses}
+          contact={selfContact}
           onSubmit={handleFormSubmit}
         />
       }
@@ -91,12 +90,10 @@ const ContactFormModalWrapper = () => {
     contactsQueryByFamilyNameGivenNameEmailCozyUrl.options
   )
 
-  const currentContact = contacts?.data?.find(
-    contact => contact._id === contactId
-  )
+  const contact = contacts?.data?.find(contact => contact._id === contactId)
 
   const isContactsQueryEnabled =
-    currentContact && currentContact.me && currentContact.address?.length === 0
+    contact && contact.me && contact.address?.length === 0
 
   const indentitiesContactsQueryById = buildIdentitiesQueryByContact(
     isContactsQueryEnabled
@@ -107,14 +104,14 @@ const ContactFormModalWrapper = () => {
   )
 
   const contactWithIdentitiesAddresses = makeContactWithIdentitiesAddresses(
-    currentContact,
+    contact,
     identities
   )
 
   const onSubmit = async formData =>
     await createOrUpdateContact({
       client,
-      oldContact: currentContact,
+      oldContact: contact,
       formData,
       selectedGroup
     })
@@ -129,8 +126,7 @@ const ContactFormModalWrapper = () => {
   return (
     <ContactFormModal
       contacts={contacts}
-      currentContact={currentContact}
-      contactWithIdentitiesAddresses={contactWithIdentitiesAddresses}
+      contact={contactWithIdentitiesAddresses}
       onSubmit={onSubmit}
       onClick={triggerFormSubmit}
       onClose={onClose}
