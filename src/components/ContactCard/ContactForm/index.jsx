@@ -35,20 +35,23 @@ const oneOfMandatoryFields = [
   'cozy'
 ]
 
+const validateFields = (values, t) => {
+  const errors = {}
+  if (oneOfMandatoryFields.every(field => !get(values, field))) {
+    oneOfMandatoryFields.forEach(field => {
+      errors[field] = t('fields.required')
+    })
+  }
+  return errors
+}
+
 const ContactForm = ({ contact, onSubmit, contacts }) => {
   const { t } = useI18n()
+
   return (
     <Form
       mutators={{ ...arrayMutators }}
-      validate={values => {
-        const errors = {}
-        if (oneOfMandatoryFields.every(field => !get(values, field))) {
-          oneOfMandatoryFields.forEach(field => {
-            errors[field] = t('fields.required')
-          })
-        }
-        return errors
-      }}
+      validate={values => validateFields(values, t)}
       onSubmit={formValues =>
         onSubmit(formValuesToContact({ formValues, oldContact: contact, t }))
       }
