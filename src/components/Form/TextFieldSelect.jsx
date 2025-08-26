@@ -11,7 +11,7 @@ import { makeCustomLabel, makeInitialCustomValue } from './helpers'
 
 import styles from '@/styles/contactForm.styl'
 
-const FieldInputSelect = ({ options, name, value, onChange, ...props }) => {
+const TextFieldSelect = ({ options, name, value, onChange, ...props }) => {
   const { customLabelOptions, ...restProps } = props
   const { t } = useI18n()
   const [openModal, setOpenModal] = useState(false)
@@ -91,6 +91,6 @@ const FieldInputSelect = ({ options, name, value, onChange, ...props }) => {
   )
 }
 
-FieldInputSelect.prototype = FieldInputWrapperPropTypes
+TextFieldSelect.prototype = FieldInputWrapperPropTypes
 
-export default FieldInputSelect
+export default TextFieldSelect
