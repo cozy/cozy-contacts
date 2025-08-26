@@ -51,7 +51,6 @@ const ContactFormModal = ({
     <FixedDialog
       open
       onClose={onClose}
-      size="large"
       title={contact ? t('edit-contact') : t('create_contact')}
       content={
         <ContactForm

@@ -26,7 +26,7 @@ const ContactFormField = ({ name, icon, isArray, renderInput }) => {
             className={styles['contact-form-field__icon']}
           />
         ) : (
-          <div className="u-w-1 u-mr-2" />
+          <div className="u-w-1 u-mr-1-half" />
         )}
       </Img>
       <Bd>
