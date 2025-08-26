@@ -305,6 +305,6 @@ export const fields = [
     name: 'note',
     icon: 'comment',
     type: 'text',
-    isMultiline: true
+    multiline: true
   }
 ]
