@@ -6,13 +6,13 @@ import { Form } from 'react-final-form'
 import { getHasManyItems } from 'cozy-client/dist/associations/HasMany'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import ContactFormField from './ContactFormField'
+import FieldInputLayout from './FieldInputLayout'
 import contactToFormValues from './contactToFormValues'
 import { fields } from './fieldsConfig'
 import formValuesToContact from './formValuesToContact'
 import { validateFields, fieldsRequired } from './helpers'
 import { fullContactPropTypes } from '../../ContactPropTypes'
-import ContactFieldInput from '../ContactFieldInput'
+import FieldInput from '../FieldInput'
 
 // this variable will be set in the form's render prop
 // and used by the submit button in ContactFormModal
@@ -48,7 +48,7 @@ const ContactForm = ({ contact, onSubmit, contacts }) => {
             className="u-flex u-flex-column"
           >
             {fields.map(({ name, icon, label, isArray, ...attributes }) => (
-              <ContactFormField
+              <FieldInputLayout
                 key={name}
                 name={name}
                 icon={icon}
@@ -58,7 +58,7 @@ const ContactForm = ({ contact, onSubmit, contacts }) => {
                   const isError = isOneOfFields && !valid && submitFailed
 
                   return (
-                    <ContactFieldInput
+                    <FieldInput
                       attributes={attributes}
                       contacts={contacts}
                       error={isError}

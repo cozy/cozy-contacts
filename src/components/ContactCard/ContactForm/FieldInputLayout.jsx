@@ -13,7 +13,7 @@ import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { addField, removeField } from '../../../helpers/fields'
 
-const ContactFormField = ({ name, icon, isArray, renderInput }) => {
+const FieldInputLayout = ({ name, icon, isArray, renderInput }) => {
   const { t } = useI18n()
 
   if (isArray) {
@@ -79,16 +79,16 @@ const ContactFormField = ({ name, icon, isArray, renderInput }) => {
   )
 }
 
-ContactFormField.propTypes = {
+FieldInputLayout.propTypes = {
   name: PropTypes.string.isRequired,
   icon: PropTypes.any, // shall be a SVG prop type
   isArray: PropTypes.bool,
   renderInput: PropTypes.func.isRequired
 }
 
-ContactFormField.defaultProps = {
+FieldInputLayout.defaultProps = {
   icon: null,
   isArray: false
 }
 
-export default ContactFormField
+export default FieldInputLayout

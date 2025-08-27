@@ -17,7 +17,7 @@ import ContactAddressModal from '../Modals/ContactAddressModal'
 
 import styles from '@/styles/contactForm.styl'
 
-const ContactFieldInput = ({
+const FieldInput = ({
   name,
   labelProps,
   attributes: { subFields, ...restAttributes },
@@ -99,7 +99,7 @@ const ContactFieldInput = ({
   )
 }
 
-ContactFieldInput.propTypes = {
+FieldInput.propTypes = {
   name: PropTypes.string.isRequired,
   labelProps: labelPropTypes,
   attributes: fieldInputAttributes,
@@ -112,9 +112,9 @@ ContactFieldInput.propTypes = {
   required: PropTypes.bool
 }
 
-ContactFieldInput.defaultProps = {
+FieldInput.defaultProps = {
   labelProps: null,
   required: false
 }
 
-export default ContactFieldInput
+export default FieldInput
