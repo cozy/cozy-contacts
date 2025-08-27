@@ -1,3 +1,4 @@
+import get from 'lodash/get'
 import isEqual from 'lodash/isEqual'
 import merge from 'lodash/merge'
 
@@ -6,6 +7,29 @@ import { makeDisplayName } from 'cozy-client/dist/models/contact'
 
 import contactToFormValues from './contactToFormValues'
 import { DOCTYPE_CONTACTS } from '../../../helpers/doctypes'
+
+export const fieldsRequired = [
+  'givenName',
+  'familyName',
+  'email[0].email',
+  'cozy'
+]
+
+/**
+ * Returns errors if all required fields are empty
+ * @param {object} values - Fields values
+ * @param {func} t - Translation function
+ * @returns {object} Errors
+ */
+export const validateFields = (values, t) => {
+  const errors = {}
+  if (fieldsRequired.every(field => !get(values, field))) {
+    fieldsRequired.forEach(field => {
+      errors[field] = t('fields.required')
+    })
+  }
+  return errors
+}
 
 /**
  * @param {object} [item] - Contact attribute
