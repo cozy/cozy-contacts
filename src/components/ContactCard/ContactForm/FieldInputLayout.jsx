@@ -11,9 +11,15 @@ import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
 import ListItemIcon from 'cozy-ui/transpiled/react/ListItemIcon'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
+import { fieldsRequired } from './helpers'
 import { addField, removeField } from '../../../helpers/fields'
+import FieldInput from '../FieldInput'
 
-const FieldInputLayout = ({ name, icon, isArray, renderInput }) => {
+const FieldInputLayout = ({
+  attributes: { name, label, icon, isArray, ...restAttributes },
+  contacts,
+  formProps: { valid, submitFailed, errors }
+}) => {
   const { t } = useI18n()
 
   if (isArray) {
@@ -30,6 +36,11 @@ const FieldInputLayout = ({ name, icon, isArray, renderInput }) => {
                   {fields.map((nameWithIndex, index) => {
                     const key = fields.value[index]?.fieldId || nameWithIndex
                     const showRemove = fields.value[index]?.[name]
+                    const inputName = `${nameWithIndex}.${name}`
+                    const isError =
+                      fieldsRequired.includes(inputName) &&
+                      !valid &&
+                      submitFailed
 
                     return (
                       <div
@@ -38,7 +49,15 @@ const FieldInputLayout = ({ name, icon, isArray, renderInput }) => {
                           'u-mt-1': index !== 0
                         })}
                       >
-                        {renderInput(`${nameWithIndex}.${name}`)}
+                        <FieldInput
+                          attributes={restAttributes}
+                          contacts={contacts}
+                          error={isError}
+                          helperText={isError ? errors[inputName] : null}
+                          name={inputName}
+                          label={t(`fields.${name}`)}
+                          labelProps={label}
+                        />
                         {showRemove && (
                           <ListItemIcon className="u-ml-half">
                             <IconButton
@@ -69,26 +88,34 @@ const FieldInputLayout = ({ name, icon, isArray, renderInput }) => {
     )
   }
 
+  const isError = fieldsRequired.includes(name) && !valid && submitFailed
+
   return (
     <div className="u-flex u-flex-items-center u-mt-1">
       <div className="u-w-2-half">
         {icon && <Icon icon={icon} color="var(--iconTextColor)" />}
       </div>
-      <div className="u-w-100">{renderInput(name)}</div>
+      <div className="u-w-100">
+        <FieldInput
+          attributes={restAttributes}
+          contacts={contacts}
+          error={isError}
+          helperText={isError ? errors[name] : null}
+          name={name}
+          label={t(`fields.${name}`)}
+          labelProps={label}
+        />
+      </div>
     </div>
   )
 }
 
 FieldInputLayout.propTypes = {
-  name: PropTypes.string.isRequired,
-  icon: PropTypes.any, // shall be a SVG prop type
-  isArray: PropTypes.bool,
-  renderInput: PropTypes.func.isRequired
-}
-
-FieldInputLayout.defaultProps = {
-  icon: null,
-  isArray: false
+  attributes: PropTypes.object,
+  contacts: PropTypes.shape({
+    data: PropTypes.arrayOf(PropTypes.object)
+  }),
+  formProps: PropTypes.object
 }
 
 export default FieldInputLayout
