@@ -1,5 +1,4 @@
 import arrayMutators from 'final-form-arrays'
-import get from 'lodash/get'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Form } from 'react-final-form'
@@ -11,6 +10,7 @@ import ContactFormField from './ContactFormField'
 import contactToFormValues from './contactToFormValues'
 import { fields } from './fieldsConfig'
 import formValuesToContact from './formValuesToContact'
+import { validateFields, fieldsRequired } from './helpers'
 import { fullContactPropTypes } from '../../ContactPropTypes'
 import ContactFieldInput from '../ContactFieldInput'
 
@@ -26,23 +26,6 @@ function setSubmitContactForm(handleSubmit) {
 
 export function getSubmitContactForm() {
   return _submitContactForm
-}
-
-const oneOfMandatoryFields = [
-  'givenName',
-  'familyName',
-  'email[0].email',
-  'cozy'
-]
-
-const validateFields = (values, t) => {
-  const errors = {}
-  if (oneOfMandatoryFields.every(field => !get(values, field))) {
-    oneOfMandatoryFields.forEach(field => {
-      errors[field] = t('fields.required')
-    })
-  }
-  return errors
 }
 
 const ContactForm = ({ contact, onSubmit, contacts }) => {
@@ -72,8 +55,7 @@ const ContactForm = ({ contact, onSubmit, contacts }) => {
                   icon={icon}
                   isArray={isArray}
                   renderInput={inputName => {
-                    const isOneOfFields =
-                      oneOfMandatoryFields.includes(inputName)
+                    const isOneOfFields = fieldsRequired.includes(inputName)
                     const isError = isOneOfFields && !valid && submitFailed
 
                     return (
