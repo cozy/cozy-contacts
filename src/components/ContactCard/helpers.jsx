@@ -16,8 +16,7 @@ export const handleContactFieldInputProps = (
   if (name.includes('address')) {
     return {
       ...props,
-      onClick: () => setIsAddressDialogOpen(true),
-      inputProps: { className: 'u-ta-left u-spacellipsis u-h-100' }
+      onClick: () => setIsAddressDialogOpen(true)
     }
   }
 

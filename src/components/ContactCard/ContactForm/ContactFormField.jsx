@@ -1,67 +1,81 @@
+import cx from 'classnames'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { FieldArray } from 'react-final-form-arrays'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import Icon from 'cozy-ui/transpiled/react/Icon'
+import IconButton from 'cozy-ui/transpiled/react/IconButton'
+import CrossCircleIcon from 'cozy-ui/transpiled/react/Icons/CrossCircle'
 import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
-import { Media, Img, Bd } from 'cozy-ui/transpiled/react/deprecated/Media'
+import ListItemIcon from 'cozy-ui/transpiled/react/ListItemIcon'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import ContactFormFieldArrayItem from './ContactFormFieldArrayItem'
-import { addField } from '../../../helpers/fields'
-
-import styles from '@/styles/contactForm.styl'
+import { addField, removeField } from '../../../helpers/fields'
 
 const ContactFormField = ({ name, icon, isArray, renderInput }) => {
   const { t } = useI18n()
 
-  return (
-    <Media align="top" className={styles['contact-form-field']}>
-      <Img>
-        {icon ? (
-          <Icon
-            icon={icon}
-            color="var(--iconTextColor)"
-            className={styles['contact-form-field__icon']}
-          />
-        ) : (
-          <div className="u-w-1 u-mr-1-half" />
-        )}
-      </Img>
-      <Bd>
-        {isArray ? (
+  if (isArray) {
+    return (
+      <div className="u-flex u-mt-1 u-flex-items-baseline">
+        <div className="u-w-2-half">
+          {icon && <Icon icon={icon} color="var(--iconTextColor)" />}
+        </div>
+        <div className="u-w-100">
           <FieldArray name={name}>
-            {({ fields }) => (
-              <div className="u-mt-1 u-mb-half">
-                {fields.map((nameWithIndex, index) => {
-                  const key = fields.value[index]?.fieldId || nameWithIndex
+            {({ fields }) => {
+              return (
+                <>
+                  {fields.map((nameWithIndex, index) => {
+                    const key = fields.value[index]?.fieldId || nameWithIndex
+                    const showRemove = fields.value[index]?.[name]
 
-                  return (
-                    <ContactFormFieldArrayItem
-                      key={key}
-                      fields={fields}
-                      index={index}
-                      nameWithIndex={nameWithIndex}
-                      name={name}
-                      renderInput={renderInput}
-                    />
-                  )
-                })}
-                <Button
-                  variant="text"
-                  startIcon={<Icon icon={PlusIcon} />}
-                  onClick={() => addField(fields)}
-                  label={t(`addLabel.${name}`)}
-                />
-              </div>
-            )}
+                    return (
+                      <div
+                        key={key}
+                        className={cx('u-flex u-flex-items-center', {
+                          'u-mt-1': index !== 0
+                        })}
+                      >
+                        {renderInput(`${nameWithIndex}.${name}`)}
+                        {showRemove && (
+                          <ListItemIcon className="u-ml-half">
+                            <IconButton
+                              aria-label="delete"
+                              color="error"
+                              size="medium"
+                              onClick={() => removeField(fields, index)}
+                            >
+                              <Icon icon={CrossCircleIcon} />
+                            </IconButton>
+                          </ListItemIcon>
+                        )}
+                      </div>
+                    )
+                  })}
+                  <Button
+                    variant="text"
+                    startIcon={<Icon icon={PlusIcon} />}
+                    onClick={() => addField(fields)}
+                    label={t(`addLabel.${name}`)}
+                  />
+                </>
+              )
+            }}
           </FieldArray>
-        ) : (
-          <div className="u-mt-1">{renderInput(name)}</div>
-        )}
-      </Bd>
-    </Media>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="u-flex u-flex-items-center u-mt-1">
+      <div className="u-w-2-half">
+        {icon && <Icon icon={icon} color="var(--iconTextColor)" />}
+      </div>
+      <div className="u-w-100">{renderInput(name)}</div>
+    </div>
   )
 }
 
