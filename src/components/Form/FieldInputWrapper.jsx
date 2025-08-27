@@ -4,22 +4,31 @@ import TextField from 'cozy-ui/transpiled/react/TextField'
 
 import { FieldInputWrapperPropTypes } from './fieldInputType'
 
+import TextFieldCustomLabelSelect from '@/components/Form/TextFieldCustomLabelSelect'
 import TextFieldSelect from '@/components/Form/TextFieldSelect'
 
-const FieldInputWrapper = ({ input, attributes, ...props }) => {
-  const { labelProps, options, multiline, ...restOfAttributes } =
-    attributes || {}
-
-  const Component = options ? TextFieldSelect : TextField
+// component used to flatten props to ensure compatibility
+// between Field from react-final-form and TextField from Mui
+const FieldInputWrapper = ({
+  input,
+  attributes,
+  variant,
+  fullWidth,
+  ...props
+}) => {
+  const Component = attributes.customLabelOptions
+    ? TextFieldCustomLabelSelect
+    : attributes?.select
+    ? TextFieldSelect
+    : TextField
 
   return (
     <Component
+      {...attributes}
       {...input}
       {...props}
-      {...restOfAttributes}
-      options={options}
-      InputLabelProps={labelProps}
-      multiline={multiline}
+      variant={variant}
+      fullWidth={fullWidth}
       minRows="2"
     />
   )
