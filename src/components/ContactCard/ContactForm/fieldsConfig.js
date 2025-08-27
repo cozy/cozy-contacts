@@ -122,7 +122,10 @@ export const fields = [
   {
     name: 'address',
     icon: 'location',
-    type: 'button',
+    type: 'text',
+    InputProps: {
+      readOnly: true
+    },
     subFields: [
       {
         name: 'street',
@@ -250,7 +253,9 @@ export const fields = [
   {
     name: 'relatedContact',
     icon: 'relationship',
-    type: 'button',
+    InputProps: {
+      readOnly: true
+    },
     label: {
       name: 'relatedContactLabel',
       select: true,
