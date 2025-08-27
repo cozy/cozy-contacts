@@ -42,38 +42,36 @@ const ContactForm = ({ contact, onSubmit, contacts }) => {
       render={({ handleSubmit, valid, submitFailed, errors }) => {
         setSubmitContactForm(handleSubmit)
         return (
-          <div>
-            <form
-              role="form"
-              onSubmit={handleSubmit}
-              className="u-flex u-flex-column"
-            >
-              {fields.map(({ name, icon, label, isArray, ...attributes }) => (
-                <ContactFormField
-                  key={name}
-                  name={name}
-                  icon={icon}
-                  isArray={isArray}
-                  renderInput={inputName => {
-                    const isOneOfFields = fieldsRequired.includes(inputName)
-                    const isError = isOneOfFields && !valid && submitFailed
+          <form
+            role="form"
+            onSubmit={handleSubmit}
+            className="u-flex u-flex-column"
+          >
+            {fields.map(({ name, icon, label, isArray, ...attributes }) => (
+              <ContactFormField
+                key={name}
+                name={name}
+                icon={icon}
+                isArray={isArray}
+                renderInput={inputName => {
+                  const isOneOfFields = fieldsRequired.includes(inputName)
+                  const isError = isOneOfFields && !valid && submitFailed
 
-                    return (
-                      <ContactFieldInput
-                        attributes={attributes}
-                        contacts={contacts}
-                        error={isError}
-                        helperText={isError ? errors[inputName] : null}
-                        name={inputName}
-                        label={t(`fields.${name}`)}
-                        labelProps={label}
-                      />
-                    )
-                  }}
-                />
-              ))}
-            </form>
-          </div>
+                  return (
+                    <ContactFieldInput
+                      attributes={attributes}
+                      contacts={contacts}
+                      error={isError}
+                      helperText={isError ? errors[inputName] : null}
+                      name={inputName}
+                      label={t(`fields.${name}`)}
+                      labelProps={label}
+                    />
+                  )
+                }}
+              />
+            ))}
+          </form>
         )
       }}
     />
