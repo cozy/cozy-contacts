@@ -9,8 +9,10 @@ import InputAdornment from 'cozy-ui/transpiled/react/InputAdornment'
  * @param {{ name: string, setIsAddressDialogOpen: import('react').Dispatch<import('react').SetStateAction<boolean>> }} opts
  * @returns {object}
  */
-export const handleContactFieldInputProps = (props, opts) => {
-  const { name, setIsAddressDialogOpen, setIsRelatedContactDialogOpen } = opts
+export const handleContactFieldInputProps = (
+  props,
+  { name, setIsAddressDialogOpen, setIsRelatedContactDialogOpen }
+) => {
   if (name.includes('address')) {
     return {
       ...props,

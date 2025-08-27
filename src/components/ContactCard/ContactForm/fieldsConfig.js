@@ -5,6 +5,7 @@ export const fields = [
   {
     name: 'gender',
     icon: 'people',
+    select: true,
     options: [
       {
         value: 'male',
@@ -52,6 +53,7 @@ export const fields = [
     type: 'tel',
     label: {
       name: 'phoneLabel',
+      select: true,
       customLabelOptions: {
         defaultType: '',
         defaultLabel: 'home'
@@ -95,6 +97,7 @@ export const fields = [
     type: 'email',
     label: {
       name: 'emailLabel',
+      select: true,
       customLabelOptions: {
         defaultType: '',
         defaultLabel: 'home'
@@ -184,6 +187,7 @@ export const fields = [
     ],
     label: {
       name: 'addressLabel',
+      select: true,
       customLabelOptions: {
         defaultType: '',
         defaultLabel: 'home'
@@ -211,6 +215,7 @@ export const fields = [
     type: 'url',
     label: {
       name: 'cozyLabel',
+      select: true,
       customLabelOptions: {
         defaultType: '',
         defaultLabel: 'home'
@@ -235,7 +240,7 @@ export const fields = [
     name: 'birthday',
     icon: 'calendar',
     type: 'date',
-    labelProps: { shrink: true }
+    InputLabelProps: { shrink: true }
   },
   {
     name: 'birthplace',
@@ -248,6 +253,7 @@ export const fields = [
     type: 'button',
     label: {
       name: 'relatedContactLabel',
+      select: true,
       options: [
         {
           value: '',

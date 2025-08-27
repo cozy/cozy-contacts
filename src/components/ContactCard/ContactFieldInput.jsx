@@ -21,9 +21,12 @@ import styles from '@/styles/contactForm.styl'
 const ContactFieldInput = ({
   name,
   labelProps,
-  attributes,
+  attributes: { subFields, ...restAttributes },
   contacts,
-  ...props
+  error,
+  helperText,
+  label,
+  required
 }) => {
   const [id] = useState(uniqueId('field_')) // state only use to generate id once and not at each render
   const [hasBeenFocused, setHasBeenFocused] = useState(false)
@@ -31,13 +34,15 @@ const ContactFieldInput = ({
   const [isRelatedContactDialogOpen, setIsRelatedContactDialogOpen] =
     useState(false)
   const { t } = useI18n()
-  const { subFields, ...restAttributes } = attributes
 
-  const propsUpdated = handleContactFieldInputProps(props, {
-    name,
-    setIsAddressDialogOpen,
-    setIsRelatedContactDialogOpen
-  })
+  const { inputProps, InputProps, onClick } = handleContactFieldInputProps(
+    { error, helperText, label, required },
+    {
+      name,
+      setIsAddressDialogOpen,
+      setIsRelatedContactDialogOpen
+    }
+  )
 
   const onFocus = () => {
     setHasBeenFocused(true)
@@ -52,12 +57,18 @@ const ContactFieldInput = ({
       )}
     >
       <Field
-        {...propsUpdated}
+        inputProps={inputProps}
+        InputProps={InputProps}
+        required={required}
+        error={error}
+        helperText={helperText}
+        label={label}
         id={id}
         attributes={restAttributes}
         name={name}
-        onFocus={onFocus}
         component={FieldInputWrapper}
+        onFocus={onFocus}
+        onClick={onClick}
       />
       {isAddressDialogOpen && (
         <ContactAddressModal
