@@ -10,9 +10,8 @@ import FieldInputLayout from './FieldInputLayout'
 import contactToFormValues from './contactToFormValues'
 import { fields } from './fieldsConfig'
 import formValuesToContact from './formValuesToContact'
-import { validateFields, fieldsRequired } from './helpers'
+import { validateFields } from './helpers'
 import { fullContactPropTypes } from '../../ContactPropTypes'
-import FieldInput from '../FieldInput'
 
 // this variable will be set in the form's render prop
 // and used by the submit button in ContactFormModal
@@ -47,27 +46,15 @@ const ContactForm = ({ contact, onSubmit, contacts }) => {
             onSubmit={handleSubmit}
             className="u-flex u-flex-column"
           >
-            {fields.map(({ name, icon, label, isArray, ...attributes }) => (
+            {fields.map((attributes, index) => (
               <FieldInputLayout
-                key={name}
-                name={name}
-                icon={icon}
-                isArray={isArray}
-                renderInput={inputName => {
-                  const isOneOfFields = fieldsRequired.includes(inputName)
-                  const isError = isOneOfFields && !valid && submitFailed
-
-                  return (
-                    <FieldInput
-                      attributes={attributes}
-                      contacts={contacts}
-                      error={isError}
-                      helperText={isError ? errors[inputName] : null}
-                      name={inputName}
-                      label={t(`fields.${name}`)}
-                      labelProps={label}
-                    />
-                  )
+                key={index}
+                attributes={attributes}
+                contacts={contacts}
+                formProps={{
+                  valid,
+                  submitFailed,
+                  errors
                 }}
               />
             ))}
