@@ -11,7 +11,6 @@ import {
   labelPropTypes
 } from './ContactFields/ContactFieldsProptypes'
 import { RelatedContactList } from './ContactForm/RelatedContactList'
-import { handleContactFieldInputProps } from './helpers'
 import FieldInputWrapper from '../Form/FieldInputWrapper'
 import HasValueCondition from '../Form/HasValueCondition'
 import ContactAddressModal from '../Modals/ContactAddressModal'
@@ -35,14 +34,15 @@ const ContactFieldInput = ({
     useState(false)
   const { t } = useI18n()
 
-  const { inputProps, InputProps, onClick } = handleContactFieldInputProps(
-    { error, helperText, label, required },
-    {
-      name,
-      setIsAddressDialogOpen,
-      setIsRelatedContactDialogOpen
+  const handleClick = () => {
+    if (name.includes('address')) {
+      setIsAddressDialogOpen(true)
     }
-  )
+
+    if (name.includes('relatedContact')) {
+      setIsRelatedContactDialogOpen(true)
+    }
+  }
 
   const onFocus = () => {
     setHasBeenFocused(true)
@@ -57,8 +57,6 @@ const ContactFieldInput = ({
       )}
     >
       <Field
-        inputProps={inputProps}
-        InputProps={InputProps}
         required={required}
         error={error}
         helperText={helperText}
@@ -68,7 +66,7 @@ const ContactFieldInput = ({
         name={name}
         component={FieldInputWrapper}
         onFocus={onFocus}
-        onClick={onClick}
+        onClick={handleClick}
       />
       {isAddressDialogOpen && (
         <ContactAddressModal

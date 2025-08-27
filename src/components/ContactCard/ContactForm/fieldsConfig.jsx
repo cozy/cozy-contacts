@@ -1,3 +1,9 @@
+import React from 'react'
+
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import BottomIcon from 'cozy-ui/transpiled/react/Icons/Bottom'
+import InputAdornment from 'cozy-ui/transpiled/react/InputAdornment'
+
 /**
  * @type {import('../../../types').Field[]}
  */
@@ -254,7 +260,12 @@ export const fields = [
     name: 'relatedContact',
     icon: 'relationship',
     InputProps: {
-      readOnly: true
+      readOnly: true,
+      endAdornment: (
+        <InputAdornment position="end">
+          <Icon icon={BottomIcon} color="var(--iconTextColor)" />
+        </InputAdornment>
+      )
     },
     label: {
       name: 'relatedContactLabel',
