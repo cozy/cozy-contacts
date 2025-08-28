@@ -4,7 +4,7 @@ import MenuItem from 'cozy-ui/transpiled/react/MenuItem'
 import TextField from 'cozy-ui/transpiled/react/TextField'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import { FieldInputWrapperPropTypes } from './fieldInputType'
+import { FieldInputWrapperPropTypes } from '../types'
 
 const TextFieldSelect = ({ options, ...props }) => {
   const { t } = useI18n()

@@ -1,6 +1,7 @@
 import get from 'lodash/get'
 import isEqual from 'lodash/isEqual'
 import merge from 'lodash/merge'
+import uniqueId from 'lodash/uniqueId'
 
 import { Association } from 'cozy-client'
 import { makeDisplayName } from 'cozy-client/dist/models/contact'
@@ -247,4 +248,77 @@ export const makeRelatedContact = contact => {
 
   // Useful because a contact always has at least the `related` relationships (see `getRelatedContactRelationships`)
   return res.length > 0 ? res : [undefined]
+}
+
+export const addField = fields => fields.push({ fieldId: uniqueId('fieldId_') })
+
+export const removeField = (fields, index) => {
+  const isLastRemainingField = fields.length === 1
+
+  if (isLastRemainingField) {
+    fields.update(index, undefined)
+  } else {
+    fields.remove(index)
+  }
+}
+
+/**
+ *
+ * @param {string} value
+ * @param {func} t
+ * @returns {string}
+ */
+export const makeCustomLabel = (value, t) => {
+  const { type, label } = JSON.parse(value)
+
+  const firstString = type || ''
+  const secondString = label
+    ? type
+      ? ` (${t(`label.${label}`)})`.toLowerCase()
+      : `label.${label}`
+    : ''
+
+  return firstString + secondString || null
+}
+
+/**
+ *
+ * @param {string} name
+ * @param {string} value
+ * @returns {string}
+ */
+export const makeInitialCustomValue = (name, value) => {
+  // gender input doesn't support custom label
+  if (!name || !value || name === 'gender') return undefined
+
+  const valueObj = JSON.parse(value)
+
+  // Voluntarily before the "backwards compatibility" condition
+  if (name.includes('relatedContactLabel')) {
+    if (!'related' === valueObj.type) {
+      return JSON.stringify({ type: valueObj.type })
+    }
+    return undefined
+  }
+
+  // for backwards compatiblity - historically there is only type and no label
+  if (valueObj.type && !valueObj.label) {
+    return JSON.stringify({ type: valueObj.type })
+  }
+
+  // for phone label
+  if (name.includes('phoneLabel')) {
+    // but unsupported one
+    if (!['cell', 'voice', 'fax'].includes(valueObj.type)) {
+      return JSON.stringify({ type: valueObj.type, label: valueObj.label })
+    }
+
+    // we don't want to create a custom label if supported
+    return undefined
+  }
+
+  // at this point if label and type are both present, it's a custom label
+  if (valueObj.type && valueObj.label) {
+    return JSON.stringify({ type: valueObj.type, label: valueObj.label })
+  }
 }

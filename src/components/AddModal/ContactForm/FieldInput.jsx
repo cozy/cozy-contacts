@@ -6,16 +6,12 @@ import { Field } from 'react-final-form'
 
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import {
-  fieldInputAttributes,
-  labelPropTypes
-} from './ContactFields/ContactFieldsProptypes'
-import { RelatedContactList } from './ContactForm/RelatedContactList'
-import FieldInputWrapper from '../Form/FieldInputWrapper'
-import HasValueCondition from '../Form/HasValueCondition'
-import ContactAddressModal from '../Modals/ContactAddressModal'
-
-import styles from '@/styles/contactForm.styl'
+import FieldInputWrapper from './FieldInputWrapper'
+import HasValueCondition from './HasValueCondition'
+import { RelatedContactList } from './RelatedContactList'
+import styles from './styles.styl'
+import ContactAddressDialog from '../ContactAddressDialog'
+import { fieldInputAttributesTypes, labelPropTypes } from '../types'
 
 const FieldInput = ({
   name,
@@ -69,7 +65,7 @@ const FieldInput = ({
         onClick={handleClick}
       />
       {isAddressDialogOpen && (
-        <ContactAddressModal
+        <ContactAddressDialog
           onClose={() => setIsAddressDialogOpen(false)}
           name={name}
           subFields={subFields}
@@ -102,7 +98,7 @@ const FieldInput = ({
 FieldInput.propTypes = {
   name: PropTypes.string.isRequired,
   labelProps: labelPropTypes,
-  attributes: fieldInputAttributes,
+  attributes: fieldInputAttributesTypes,
   contacts: PropTypes.shape({
     data: PropTypes.arrayOf(PropTypes.object)
   }),

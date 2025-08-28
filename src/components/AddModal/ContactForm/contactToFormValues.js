@@ -1,8 +1,9 @@
 import uniqueId from 'lodash/uniqueId'
 
+import { getFormattedAddress } from 'cozy-client/dist/models/contact'
+
 import { fields } from './fieldsConfig'
 import { makeItemLabel, makeRelatedContact, movePrimaryToHead } from './helpers'
-import { getFormattedAddress } from '../../../helpers/contacts'
 
 const contactToFormValues = (contact, t) => {
   // initialize the form values, required so that array fields start with at least one editable field

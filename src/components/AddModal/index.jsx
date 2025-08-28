@@ -5,7 +5,7 @@ import { FixedDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import ContactForm from '../ContactCard/ContactForm'
+import ContactForm from './ContactForm'
 
 const AddModal = ({ contacts, contact, onSubmit, onClick, onClose }) => {
   const { t } = useI18n()
