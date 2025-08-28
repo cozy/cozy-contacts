@@ -1,6 +1,6 @@
 /* eslint-disable jest/no-focused-tests */
 import contactToFormValues from './contactToFormValues'
-import { johnDoeContact, johnDoeFormValues } from '../../../helpers/testData'
+import { johnDoeContact, johnDoeFormValues } from '../mocks'
 
 describe('contactToFormValues function', () => {
   const tSpy = jest.fn()

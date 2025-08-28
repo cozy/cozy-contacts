@@ -1,10 +1,8 @@
 import sortBy from 'lodash/sortBy'
 
-import { models, HasMany } from 'cozy-client'
+import { HasMany } from 'cozy-client'
 import { getHasManyItem } from 'cozy-client/dist/associations/HasMany'
-
-const { makeFullname, makeDefaultSortIndexValue, makeDisplayName } =
-  models.contact
+import { updateIndexFullNameAndDisplayName } from 'cozy-client/dist/models/contact'
 
 export const supportedFieldsInOrder = [
   'phone',
@@ -121,22 +119,6 @@ export const normalizeFields = contact => {
 }
 
 /**
- * Update fullname, displayName and Index values of a contact
- * @param {object} contact - an io.cozy.contact document
- * @returns {object} an io.cozy.contact document
- */
-export const updateIndexFullNameAndDisplayName = contact => {
-  return {
-    ...contact,
-    fullname: makeFullname(contact),
-    displayName: makeDisplayName(contact),
-    indexes: {
-      byFamilyNameGivenNameEmailCozyUrl: makeDefaultSortIndexValue(contact)
-    }
-  }
-}
-
-/**
  * Get contacts with indexes,
  * harmonize contacts without indexes and
  * sort them by indexes
@@ -197,57 +179,6 @@ export const reworkContacts = (
   return reworkedContacts
 }
 
-const cleanFormattedAddress = formattedAddress => {
-  // Replace all spaces by one space, to fix cases where there are multiple spaces
-  // Replace commas that have a space before
-  // And remove all spaces before & after the string
-  let formattedAddressClean = formattedAddress
-    .replace(/\s+/g, ' ')
-    .replace(/\s,/g, '')
-    .trim()
-
-  // Case where a comma is the last character
-  if (
-    formattedAddressClean.lastIndexOf(',') ===
-    formattedAddressClean.length - 1
-  ) {
-    formattedAddressClean = formattedAddressClean.slice(
-      0,
-      formattedAddressClean.length - 1
-    )
-  }
-
-  // Case where a comma is the first character
-  if (formattedAddressClean.indexOf(',') === 0) {
-    formattedAddressClean = formattedAddressClean.slice(1)
-  }
-
-  return formattedAddressClean
-}
-
-/**
- * Returns the contact's formatted address
- * @param {object} address - A contact address
- * @param {function} t - Translate function
- * @returns {string} - The contact's formatted address
- */
-export const getFormattedAddress = (address, t) => {
-  if (address && address.formattedAddress) {
-    return address.formattedAddress
-  }
-
-  const unformattedAddress = {
-    number: address.number || '',
-    street: address.street || '',
-    code: address.postcode || '',
-    city: address.city || '',
-    region: address.region || '',
-    country: address.country || ''
-  }
-
-  return cleanFormattedAddress(t('formatted.address', unformattedAddress))
-}
-
 /**
  * Add a group to a contact
  * @param {object} contact - An io.cozy.contact document
@@ -255,27 +186,6 @@ export const getFormattedAddress = (address, t) => {
  */
 export const addGroupToContact = (contact, group) =>
   HasMany.setHasManyItem(contact, 'groups', group._id, group)
-
-/**
- * Make formatted address
- * @param {{ name: string, value: string }[]} subFieldsState - State of address sub fields
- * @returns {string} - Formatted address
- */
-export const makeFormattedAddressWithSubFields = (subFieldsState, t) => {
-  const normalizedAddress = subFieldsState.reduce((acc, curr) => {
-    const key = curr.name
-      .split('.')
-      .pop()
-      .replace(/address/, '')
-
-    return {
-      ...acc,
-      [key]: curr.value || ''
-    }
-  }, {})
-
-  return cleanFormattedAddress(t('formatted.address', normalizedAddress))
-}
 
 export const makeContactWithIdentitiesAddresses = (contact, identities) => {
   if (!identities || !contact.me || contact.address?.length > 0) return contact

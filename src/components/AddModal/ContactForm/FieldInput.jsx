@@ -6,24 +6,22 @@ import { Field } from 'react-final-form'
 
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import {
-  fieldInputAttributes,
-  labelPropTypes
-} from './ContactFields/ContactFieldsProptypes'
-import { RelatedContactList } from './ContactForm/RelatedContactList'
-import { handleContactFieldInputProps } from './helpers'
-import FieldInputWrapper from '../Form/FieldInputWrapper'
-import HasValueCondition from '../Form/HasValueCondition'
-import ContactAddressModal from '../Modals/ContactAddressModal'
+import FieldInputWrapper from './FieldInputWrapper'
+import HasValueCondition from './HasValueCondition'
+import { RelatedContactList } from './RelatedContactList'
+import styles from './styles.styl'
+import ContactAddressDialog from '../ContactAddressDialog'
+import { fieldInputAttributesTypes, labelPropTypes } from '../types'
 
-import styles from '@/styles/contactForm.styl'
-
-const ContactFieldInput = ({
+const FieldInput = ({
   name,
   labelProps,
-  attributes,
+  attributes: { subFields, ...restAttributes },
   contacts,
-  ...props
+  error,
+  helperText,
+  label,
+  required
 }) => {
   const [id] = useState(uniqueId('field_')) // state only use to generate id once and not at each render
   const [hasBeenFocused, setHasBeenFocused] = useState(false)
@@ -31,13 +29,16 @@ const ContactFieldInput = ({
   const [isRelatedContactDialogOpen, setIsRelatedContactDialogOpen] =
     useState(false)
   const { t } = useI18n()
-  const { subFields, ...restAttributes } = attributes
 
-  const propsUpdated = handleContactFieldInputProps(props, {
-    name,
-    setIsAddressDialogOpen,
-    setIsRelatedContactDialogOpen
-  })
+  const handleClick = () => {
+    if (name.includes('address')) {
+      setIsAddressDialogOpen(true)
+    }
+
+    if (name.includes('relatedContact')) {
+      setIsRelatedContactDialogOpen(true)
+    }
+  }
 
   const onFocus = () => {
     setHasBeenFocused(true)
@@ -52,15 +53,19 @@ const ContactFieldInput = ({
       )}
     >
       <Field
-        {...propsUpdated}
+        required={required}
+        error={error}
+        helperText={helperText}
+        label={label}
         id={id}
         attributes={restAttributes}
         name={name}
-        onFocus={onFocus}
         component={FieldInputWrapper}
+        onFocus={onFocus}
+        onClick={handleClick}
       />
       {isAddressDialogOpen && (
-        <ContactAddressModal
+        <ContactAddressDialog
           onClose={() => setIsAddressDialogOpen(false)}
           name={name}
           subFields={subFields}
@@ -90,10 +95,10 @@ const ContactFieldInput = ({
   )
 }
 
-ContactFieldInput.propTypes = {
+FieldInput.propTypes = {
   name: PropTypes.string.isRequired,
   labelProps: labelPropTypes,
-  attributes: fieldInputAttributes,
+  attributes: fieldInputAttributesTypes,
   contacts: PropTypes.shape({
     data: PropTypes.arrayOf(PropTypes.object)
   }),
@@ -103,9 +108,9 @@ ContactFieldInput.propTypes = {
   required: PropTypes.bool
 }
 
-ContactFieldInput.defaultProps = {
+FieldInput.defaultProps = {
   labelProps: null,
   required: false
 }
 
-export default ContactFieldInput
+export default FieldInput

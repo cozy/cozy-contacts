@@ -1,3 +1,5 @@
+import { updateIndexFullNameAndDisplayName } from 'cozy-client/dist/models/contact'
+
 import {
   removeAsscociatedData,
   removeRelatedContactRelationships,
@@ -5,7 +7,6 @@ import {
   getRelatedContactRelationships,
   makeTypeAndLabel
 } from './helpers'
-import { updateIndexFullNameAndDisplayName } from '../../../helpers/contacts'
 
 const formValuesToContact = ({ formValues, oldContact, t }) => {
   const {

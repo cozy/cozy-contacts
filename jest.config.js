@@ -16,5 +16,7 @@ module.exports = {
   },
   testEnvironment: 'jsdom',
   resolver: '<rootDir>/resolver.js',
-  testURL: 'http://localhost'
+  testEnvironmentOptions: {
+    url: 'http://localhost'
+  }
 }

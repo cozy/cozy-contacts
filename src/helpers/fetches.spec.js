@@ -1,11 +1,11 @@
 import CozyClient from 'cozy-client'
+import { updateIndexFullNameAndDisplayName } from 'cozy-client/dist/models/contact'
 
-import { updateIndexFullNameAndDisplayName } from './contacts'
 import {
   fetchContactsToUpdateAndUpdateWith,
   fetchNormalizedServiceByName
 } from './fetches'
-import { johnDoeContact } from './testData'
+import { johnDoeContact } from '../components/AddModal/mocks'
 
 const log = (type, message) => message
 

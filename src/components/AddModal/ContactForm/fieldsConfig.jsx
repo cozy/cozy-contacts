@@ -1,3 +1,9 @@
+import React from 'react'
+
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import BottomIcon from 'cozy-ui/transpiled/react/Icons/Bottom'
+import InputAdornment from 'cozy-ui/transpiled/react/InputAdornment'
+
 /**
  * @type {import('../../../types').Field[]}
  */
@@ -5,6 +11,7 @@ export const fields = [
   {
     name: 'gender',
     icon: 'people',
+    select: true,
     options: [
       {
         value: 'male',
@@ -52,6 +59,7 @@ export const fields = [
     type: 'tel',
     label: {
       name: 'phoneLabel',
+      select: true,
       customLabelOptions: {
         defaultType: '',
         defaultLabel: 'home'
@@ -95,6 +103,7 @@ export const fields = [
     type: 'email',
     label: {
       name: 'emailLabel',
+      select: true,
       customLabelOptions: {
         defaultType: '',
         defaultLabel: 'home'
@@ -119,7 +128,10 @@ export const fields = [
   {
     name: 'address',
     icon: 'location',
-    type: 'button',
+    type: 'text',
+    InputProps: {
+      readOnly: true
+    },
     subFields: [
       {
         name: 'street',
@@ -184,6 +196,7 @@ export const fields = [
     ],
     label: {
       name: 'addressLabel',
+      select: true,
       customLabelOptions: {
         defaultType: '',
         defaultLabel: 'home'
@@ -211,6 +224,7 @@ export const fields = [
     type: 'url',
     label: {
       name: 'cozyLabel',
+      select: true,
       customLabelOptions: {
         defaultType: '',
         defaultLabel: 'home'
@@ -235,7 +249,7 @@ export const fields = [
     name: 'birthday',
     icon: 'calendar',
     type: 'date',
-    labelProps: { shrink: true }
+    InputLabelProps: { shrink: true }
   },
   {
     name: 'birthplace',
@@ -245,9 +259,17 @@ export const fields = [
   {
     name: 'relatedContact',
     icon: 'relationship',
-    type: 'button',
+    InputProps: {
+      readOnly: true,
+      endAdornment: (
+        <InputAdornment position="end">
+          <Icon icon={BottomIcon} color="var(--iconTextColor)" />
+        </InputAdornment>
+      )
+    },
     label: {
       name: 'relatedContactLabel',
+      select: true,
       options: [
         {
           value: '',
@@ -305,6 +327,6 @@ export const fields = [
     name: 'note',
     icon: 'comment',
     type: 'text',
-    isMultiline: true
+    multiline: true
   }
 ]

@@ -23,7 +23,8 @@ export const getCozyClient = ({ uri, token } = defaultOptions) => {
     },
     uri,
     token,
-    store: false
+    useCustomStore: true,
+    autoHydrate: true
   })
 
   return clientTest

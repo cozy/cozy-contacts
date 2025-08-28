@@ -1,19 +1,16 @@
 import arrayMutators from 'final-form-arrays'
-import get from 'lodash/get'
-import PropTypes from 'prop-types'
 import React from 'react'
 import { Form } from 'react-final-form'
 
 import { getHasManyItems } from 'cozy-client/dist/associations/HasMany'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import ContactFormField from './ContactFormField'
+import FieldInputLayout from './FieldInputLayout'
 import contactToFormValues from './contactToFormValues'
 import { fields } from './fieldsConfig'
 import formValuesToContact from './formValuesToContact'
-import FieldsetTitle from '../../Common/FieldsetTitle'
-import { fullContactPropTypes } from '../../ContactPropTypes'
-import ContactFieldInput from '../ContactFieldInput'
+import { validateFields } from './helpers'
+// import { fullContactPropTypes } from '../../ContactPropTypes' // !!
 
 // this variable will be set in the form's render prop
 // and used by the submit button in ContactFormModal
@@ -29,27 +26,21 @@ export function getSubmitContactForm() {
   return _submitContactForm
 }
 
-const oneOfMandatoryFields = [
-  'givenName',
-  'familyName',
-  'email[0].email',
-  'cozy'
-]
-
+/**
+ *
+ * @param {object} params
+ * @param {import('cozy-client/types/types').IOCozyContact} params.contact
+ * @param {func} params.onSubmit
+ * @param {{ data: Array<object> }} params.contacts
+ * @returns
+ */
 const ContactForm = ({ contact, onSubmit, contacts }) => {
   const { t } = useI18n()
+
   return (
     <Form
       mutators={{ ...arrayMutators }}
-      validate={values => {
-        const errors = {}
-        if (oneOfMandatoryFields.every(field => !get(values, field))) {
-          oneOfMandatoryFields.forEach(field => {
-            errors[field] = t('fields.required')
-          })
-        }
-        return errors
-      }}
+      validate={values => validateFields(values, t)}
       onSubmit={formValues =>
         onSubmit(formValuesToContact({ formValues, oldContact: contact, t }))
       }
@@ -57,52 +48,28 @@ const ContactForm = ({ contact, onSubmit, contacts }) => {
       render={({ handleSubmit, valid, submitFailed, errors }) => {
         setSubmitContactForm(handleSubmit)
         return (
-          <div>
-            <form
-              role="form"
-              onSubmit={handleSubmit}
-              className="u-flex u-flex-column"
-            >
-              <FieldsetTitle title={t('contact_info')} />
-              {fields.map(({ name, icon, label, isArray, ...attributes }) => (
-                <ContactFormField
-                  key={name}
-                  name={name}
-                  icon={icon}
-                  isArray={isArray}
-                  renderInput={inputName => {
-                    const isOneOfFields =
-                      oneOfMandatoryFields.includes(inputName)
-                    const isError = isOneOfFields && !valid && submitFailed
-
-                    return (
-                      <ContactFieldInput
-                        attributes={attributes}
-                        contacts={contacts}
-                        error={isError}
-                        helperText={isError ? errors[inputName] : null}
-                        name={inputName}
-                        label={t(`fields.${name}`)}
-                        labelProps={label}
-                      />
-                    )
-                  }}
-                />
-              ))}
-            </form>
-          </div>
+          <form
+            role="form"
+            onSubmit={handleSubmit}
+            className="u-flex u-flex-column"
+          >
+            {fields.map((attributes, index) => (
+              <FieldInputLayout
+                key={index}
+                attributes={attributes}
+                contacts={contacts}
+                formProps={{
+                  valid,
+                  submitFailed,
+                  errors
+                }}
+              />
+            ))}
+          </form>
         )
       }}
     />
   )
-}
-
-ContactForm.propTypes = {
-  contact: fullContactPropTypes,
-  onSubmit: PropTypes.func.isRequired,
-  contacts: PropTypes.shape({
-    data: PropTypes.arrayOf(PropTypes.object)
-  })
 }
 
 // Used to avoid unnecessary multiple rendering of ContactForm when creating a new contact in another way.

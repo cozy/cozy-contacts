@@ -1,4 +1,4 @@
-import { makeCustomLabel } from '../../Form/helpers'
+import { makeCustomLabel } from '@/components/AddModal/ContactForm/helpers'
 
 const makeCustomOrSupportedLabel = ({ type, value, hasPrefix, t }) => {
   if (!value) return null
