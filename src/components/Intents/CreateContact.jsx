@@ -7,8 +7,8 @@ import IntentHeader from 'cozy-ui/transpiled/react/IntentHeader'
 import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import IntentMain from './IntentMain'
-import ContactForm from '../ContactCard/ContactForm'
 
+import ContactForm from '@/components/AddModal/ContactForm'
 import { DOCTYPE_CONTACTS } from '@/helpers/doctypes'
 
 const CreateContact = ({ client, data, onTerminate, onError, onCancel }) => {

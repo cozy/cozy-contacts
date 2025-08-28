@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import CustomLabelDialog from './CustomLabelDialog'
 import TextFieldSelect from './TextFieldSelect'
-import { FieldInputWrapperPropTypes } from './fieldInputType'
 import { makeCustomLabel, makeInitialCustomValue } from './helpers'
+import CustomLabelDialog from '../CustomLabelDialog'
+import { FieldInputWrapperPropTypes } from '../types'
 
 const TextFieldCustomLabelSelect = ({
   name,

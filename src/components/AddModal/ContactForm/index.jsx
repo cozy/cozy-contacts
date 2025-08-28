@@ -1,5 +1,4 @@
 import arrayMutators from 'final-form-arrays'
-import PropTypes from 'prop-types'
 import React from 'react'
 import { Form } from 'react-final-form'
 
@@ -11,7 +10,7 @@ import contactToFormValues from './contactToFormValues'
 import { fields } from './fieldsConfig'
 import formValuesToContact from './formValuesToContact'
 import { validateFields } from './helpers'
-import { fullContactPropTypes } from '../../ContactPropTypes'
+// import { fullContactPropTypes } from '../../ContactPropTypes' // !!
 
 // this variable will be set in the form's render prop
 // and used by the submit button in ContactFormModal
@@ -27,6 +26,14 @@ export function getSubmitContactForm() {
   return _submitContactForm
 }
 
+/**
+ *
+ * @param {object} params
+ * @param {import('cozy-client/types/types').IOCozyContact} params.contact
+ * @param {func} params.onSubmit
+ * @param {{ data: Array<object> }} params.contacts
+ * @returns
+ */
 const ContactForm = ({ contact, onSubmit, contacts }) => {
   const { t } = useI18n()
 
@@ -63,14 +70,6 @@ const ContactForm = ({ contact, onSubmit, contacts }) => {
       }}
     />
   )
-}
-
-ContactForm.propTypes = {
-  contact: fullContactPropTypes,
-  onSubmit: PropTypes.func.isRequired,
-  contacts: PropTypes.shape({
-    data: PropTypes.arrayOf(PropTypes.object)
-  })
 }
 
 // Used to avoid unnecessary multiple rendering of ContactForm when creating a new contact in another way.

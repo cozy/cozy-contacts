@@ -4,8 +4,8 @@ import React from 'react'
 import { createMockClient } from 'cozy-client'
 
 import ContactForm, { isSameContactProp } from './index'
-import { johnDoeContact as contact } from '../../../helpers/testData'
 import AppLike from '../../../tests/Applike'
+import { johnDoeContact as contact } from '../mocks'
 
 const client = createMockClient({})
 const setup = ({ contact }) => {

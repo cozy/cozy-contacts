@@ -1,8 +1,7 @@
 import React from 'react'
 
 import { generateWebLink, useClient } from 'cozy-client'
-
-import { getFormattedAddress } from '../../../../helpers/contacts'
+import { getFormattedAddress } from 'cozy-client/dist/models/contact'
 
 export const Location = ({ value, t }) => {
   let location = getFormattedAddress(value, t)

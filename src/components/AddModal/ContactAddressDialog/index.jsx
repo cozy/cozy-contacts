@@ -6,9 +6,9 @@ import Button from 'cozy-ui/transpiled/react/Buttons'
 import { FixedDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import { makeFormattedAddressWithSubFields } from '../../helpers/contacts'
-import { fieldInputAttributes } from '../ContactCard/ContactFields/ContactFieldsProptypes'
-import FieldInputWrapper from '../Form/FieldInputWrapper'
+import { makeFormattedAddressWithSubFields } from './helpers'
+import FieldInputWrapper from '../ContactForm/FieldInputWrapper'
+import { fieldInputAttributesTypes } from '../types'
 
 const ContactAddressModal = ({ onClose, name, subFields }) => {
   const { t } = useI18n()
@@ -67,7 +67,7 @@ const ContactAddressModal = ({ onClose, name, subFields }) => {
 ContactAddressModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
-  subFields: PropTypes.arrayOf(fieldInputAttributes).isRequired
+  subFields: PropTypes.arrayOf(fieldInputAttributesTypes).isRequired
 }
 
 export default ContactAddressModal

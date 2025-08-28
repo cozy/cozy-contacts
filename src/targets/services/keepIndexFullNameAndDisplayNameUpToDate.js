@@ -1,9 +1,9 @@
 import fetch from 'node-fetch'
 
 import CozyClient from 'cozy-client'
+import { updateIndexFullNameAndDisplayName } from 'cozy-client/dist/models/contact'
 import logger from 'cozy-logger'
 
-import { updateIndexFullNameAndDisplayName } from '../../helpers/contacts'
 import { schema, DOCTYPE_CONTACTS } from '../../helpers/doctypes'
 import {
   fetchContactsToUpdateAndUpdateWith,

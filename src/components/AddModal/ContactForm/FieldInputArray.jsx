@@ -10,9 +10,8 @@ import PlusIcon from 'cozy-ui/transpiled/react/Icons/Plus'
 import ListItemIcon from 'cozy-ui/transpiled/react/ListItemIcon'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import { fieldsRequired } from './ContactForm/helpers'
 import FieldInput from './FieldInput'
-import { addField, removeField } from '../../helpers/fields'
+import { fieldsRequired, addField, removeField } from './helpers'
 
 const FieldInputArray = ({
   attributes: { name, label, ...restAttributes },

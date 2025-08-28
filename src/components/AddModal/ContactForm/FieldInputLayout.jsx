@@ -5,9 +5,9 @@ import React from 'react'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
+import FieldInput from './FieldInput'
+import FieldInputArray from './FieldInputArray'
 import { fieldsRequired } from './helpers'
-import FieldInput from '../FieldInput'
-import FieldInputArray from '../FieldInputArray'
 
 const FieldInputLayout = ({
   attributes: { isArray, ...attributes }, // ⚠️ isArray is here removed from attributes to avoid DOM propagration
