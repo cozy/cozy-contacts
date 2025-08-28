@@ -21,6 +21,7 @@ export const getClient = () => {
       version: manifest.version
     },
     schema,
-    store: false
+    useCustomStore: true,
+    autoHydrate: true
   })
 }
