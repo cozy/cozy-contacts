@@ -1,16 +1,17 @@
 import MockDate from 'mockdate'
 
 import {
+  johnDoeContact,
+  johnDoeContactWithRelated
+} from 'cozy-ui/transpiled/react/Contacts/AddModal/mocks'
+
+import {
   getConnectedAccounts,
   normalizeFields,
   harmonizeAndSortByFamilyNameGivenNameEmailCozyUrl,
   reworkContacts,
   makeContactWithIdentitiesAddresses
 } from './contacts'
-import {
-  johnDoeContact,
-  johnDoeContactWithRelated
-} from '../components/AddModal/mocks'
 
 const MOCKED_DATE = '2018-01-01T12:00:00.210Z'
 

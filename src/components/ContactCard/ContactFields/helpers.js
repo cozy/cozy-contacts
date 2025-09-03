@@ -1,4 +1,4 @@
-import { makeCustomLabel } from '@/components/AddModal/ContactForm/helpers'
+import { makeCustomLabel } from 'cozy-ui/transpiled/react/Contacts/AddModal/ContactForm/helpers'
 
 const makeCustomOrSupportedLabel = ({ type, value, hasPrefix, t }) => {
   if (!value) return null

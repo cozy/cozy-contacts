@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { useClient, useQuery, useQueryAll } from 'cozy-client'
+import AddModal from 'cozy-ui/transpiled/react/Contacts/AddModal'
 import { useSelectedGroup } from 'cozy-ui/transpiled/react/Contacts/GroupsSelect/GroupsSelectProvider'
 
 import { createOrUpdateContact } from '../../connections/allContacts'
@@ -10,9 +11,6 @@ import {
   buildContactsQueryByFamilyNameGivenNameEmailCozyUrl,
   buildIdentitiesQueryByContact
 } from '../../queries/queries'
-
-import AddModal from '@/components/AddModal'
-import { getSubmitContactForm } from '@/components/AddModal/ContactForm'
 
 const ContactFormModalWrapper = () => {
   const navigate = useNavigate()
@@ -54,11 +52,6 @@ const ContactFormModalWrapper = () => {
       selectedGroup
     })
 
-  const triggerFormSubmit = event => {
-    const submitContactForm = getSubmitContactForm()
-    submitContactForm(event)
-  }
-
   const onClose = () => (contactId ? navigate(`/${contactId}`) : navigate('/'))
 
   return (
@@ -66,7 +59,6 @@ const ContactFormModalWrapper = () => {
       contacts={contacts}
       contact={contactWithIdentitiesAddresses}
       onSubmit={onSubmit}
-      onClick={triggerFormSubmit}
       onClose={onClose}
     />
   )
