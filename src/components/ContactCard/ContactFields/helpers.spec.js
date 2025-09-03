@@ -32,7 +32,7 @@ describe('makeTLabel', () => {
         polyglot
       })
 
-      expect(res).toBe('custom (label.home)')
+      expect(res).toBe('custom (contacts.addmodal.contactform.label.home)')
     })
 
     it('should return type if no label', () => {
@@ -78,7 +78,7 @@ describe('makeTLabel', () => {
         polyglot
       })
 
-      expect(res).toBe('custom (label.home)')
+      expect(res).toBe('custom (contacts.addmodal.contactform.label.home)')
     })
 
     it('should return the type if no label', () => {
@@ -124,7 +124,7 @@ describe('makeTLabel', () => {
         polyglot
       })
 
-      expect(res).toBe('custom (label.home)')
+      expect(res).toBe('custom (contacts.addmodal.contactform.label.home)')
     })
 
     it('should return type if no label', () => {
