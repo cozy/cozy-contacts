@@ -14,6 +14,14 @@ const FieldWrapper = ({ type, value }) => {
 
   const tLabel = makeTLabel({ type, value, t, polyglot })
 
+  // We don't deal with other impp value if it's not a matrix/work one
+  if (
+    type === 'impp' &&
+    (value.protocol !== 'matrix' || value.label !== 'work')
+  ) {
+    return null
+  }
+
   return (
     <div className="u-mb-half u-breakword u-fz-medium">
       <FieldByType value={value} type={type} />

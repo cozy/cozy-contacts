@@ -7,6 +7,7 @@ import {
   Birthday,
   Location,
   Email,
+  Impp,
   Phone,
   Cozy,
   Default,
@@ -24,6 +25,8 @@ const FieldByType = ({ value, type }) => {
       return <Location value={value} t={t} />
     case 'email':
       return <Email address={value.address} />
+    case 'impp':
+      return <Impp uri={value.uri} />
     case 'phone':
       return <Phone number={value.number} />
     case 'cozy':

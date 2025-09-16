@@ -98,6 +98,23 @@ describe('normalizeFields', () => {
         ]
       },
       {
+        type: 'impp',
+        values: [
+          {
+            uri: 'john.doe@xmpp.net',
+            protocol: 'xmpp',
+            label: 'home',
+            primary: false
+          },
+          {
+            uri: 'john@doe.matrix.net',
+            protocol: 'matrix',
+            label: 'work',
+            primary: true
+          }
+        ]
+      },
+      {
         type: 'address',
         values: [
           {
