@@ -3,17 +3,20 @@ node_modules/
 npm-debug.log
 yarn-error.log
 
+# Yarn
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # Build
 build/
 
 # Coverage
 coverage/
-
-
-# Coverage
-coverage/
-
 
 # OS generated files
 .DS_Store
@@ -24,7 +27,6 @@ coverage/
 ehthumbs.db
 Thumbs.db
 desktop.ini
-
 
 # Mobile
 targets/mobile/hooks
@@ -44,11 +46,9 @@ mobile/fastlane/Error*.png
 mobile/fastlane/Preview.html
 mobile/Preview.html
 
-
 # Services
 .token.json
 konnector-dev-config.json
-
 
 # Default
 # /!\ KEEP THIS SECTION THE LAST ONE
