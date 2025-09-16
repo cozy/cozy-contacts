@@ -7,6 +7,7 @@ import { updateIndexFullNameAndDisplayName } from 'cozy-client/dist/models/conta
 export const supportedFieldsInOrder = [
   'phone',
   'email',
+  'impp',
   'address',
   'cozy',
   'company',

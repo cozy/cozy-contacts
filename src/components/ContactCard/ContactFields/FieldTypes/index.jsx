@@ -14,6 +14,10 @@ export const Location = ({ value, t }) => {
   )
 }
 
+export const Impp = ({ uri }) => {
+  return <>{uri}</>
+}
+
 export const Email = ({ address }) => {
   return (
     <a href={`mailto:${address}`} className="u-link">
