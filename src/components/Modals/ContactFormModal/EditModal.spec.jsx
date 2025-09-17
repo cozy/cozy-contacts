@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 
 import { useQueryAll, useQuery } from 'cozy-client'
 
-import ContactFormModal from './CreateEditModal'
+import EditModal from './EditModal'
 
 import { createOrUpdateContact } from '@/connections/allContacts'
 import AppLike from '@/tests/Applike'
@@ -22,7 +22,7 @@ jest.mock('react-router-dom', () => ({
   useParams: jest.fn()
 }))
 
-describe('ContactFormModal component', () => {
+describe('EditModal component', () => {
   it('should render a contact form in a modal', async () => {
     const contact = {
       _id: 'ID',
@@ -45,7 +45,7 @@ describe('ContactFormModal component', () => {
 
     const jsx = (
       <AppLike>
-        <ContactFormModal />
+        <EditModal />
       </AppLike>
     )
 
@@ -77,7 +77,7 @@ describe('ContactFormModal component', () => {
 
     render(
       <AppLike>
-        <ContactFormModal />
+        <EditModal />
       </AppLike>
     )
 
@@ -93,60 +93,6 @@ describe('ContactFormModal component', () => {
     })
 
     expect(createOrUpdateContact).not.toBeCalled()
-  })
-
-  it('should pass a new contact to the creation function', async () => {
-    const formData = {
-      firstname: 'bob'
-    }
-    useQuery.mockReturnValue({
-      data: undefined
-    })
-    useQueryAll.mockReturnValue({
-      data: []
-    })
-    useParams.mockReturnValue({
-      contactId: 'ID'
-    })
-
-    const expected = {
-      address: [],
-      birthday: '',
-      birthplace: '',
-      gender: '',
-      company: '',
-      cozy: [],
-      displayName: 'bob',
-      email: [],
-      impp: [],
-      fullname: 'bob',
-      indexes: { byFamilyNameGivenNameEmailCozyUrl: 'bob' },
-      jobTitle: '',
-      metadata: { cozy: true, version: 1 },
-      name: { familyName: '', givenName: 'bob' },
-      note: '',
-      phone: [],
-      relationships: { groups: { data: [] }, related: { data: [] } }
-    }
-
-    render(
-      <AppLike>
-        <ContactFormModal />
-      </AppLike>
-    )
-
-    fireEvent.change(screen.getByLabelText('Firstname'), {
-      target: { value: formData.firstname }
-    })
-
-    fireEvent.click(screen.getByText('Save'))
-
-    expect(createOrUpdateContact).toBeCalledWith({
-      client: expect.anything(),
-      oldContact: undefined,
-      formData: expected,
-      selectedGroup: expect.anything()
-    })
   })
 
   it('should pass previous contact data to the update function', async () => {
@@ -200,7 +146,7 @@ describe('ContactFormModal component', () => {
 
     const jsx = (
       <AppLike>
-        <ContactFormModal />
+        <EditModal />
       </AppLike>
     )
 
