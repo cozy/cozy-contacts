@@ -7,7 +7,8 @@ import App from './App'
 import AppLayout from './AppLayout'
 import ContactImportationModal from './ContactImportationModal'
 import ConfirmDeleteModal from './Modals/ConfirmDeleteModal'
-import CreateEditModal from './Modals/ContactFormModal/CreateEditModal'
+import CreateModal from './Modals/ContactFormModal/CreateModal'
+import EditModal from './Modals/ContactFormModal/EditModal'
 import ContactInfoModal from './Modals/ContactInfoModal'
 import GroupDeleteConfirmationModal from './Modals/GroupDeleteConfirmationModal'
 
@@ -25,9 +26,9 @@ const AppRouter = ({ withTopBar }) => {
         <Route element={<AppLayout withTopBar={withTopBar} />}>
           <Route path="/" element={<OutletWrapper Component={App} />}>
             <Route path="import" element={<ContactImportationModal />} />
-            <Route path="new" element={<CreateEditModal />} />
+            <Route path="new" element={<CreateModal />} />
             <Route path=":contactId" element={<ContactInfoModal />} />
-            <Route path=":contactId/edit" element={<CreateEditModal />} />
+            <Route path=":contactId/edit" element={<EditModal />} />
             <Route path=":contactId/delete" element={<ConfirmDeleteModal />} />
             <Route
               path="group/:groupId/delete/:groupName"

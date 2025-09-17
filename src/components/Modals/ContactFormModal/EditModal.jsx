@@ -12,7 +12,7 @@ import {
   buildIdentitiesQueryByContact
 } from '@/queries/queries'
 
-const CreateEditModal = () => {
+const EditModal = () => {
   const navigate = useNavigate()
   const { contactId } = useParams()
   const client = useClient()
@@ -52,7 +52,7 @@ const CreateEditModal = () => {
       selectedGroup
     })
 
-  const onClose = () => (contactId ? navigate(`/${contactId}`) : navigate('/'))
+  const onClose = () => navigate(`/${contactId}`)
 
   return (
     <AddModal
@@ -64,4 +64,4 @@ const CreateEditModal = () => {
   )
 }
 
-export default CreateEditModal
+export default EditModal
