@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 
 import { useClient, useQuery, useQueryAll } from 'cozy-client'
 import AddModal from 'cozy-ui/transpiled/react/Contacts/AddModal'
@@ -15,8 +15,11 @@ import {
 const EditModal = () => {
   const navigate = useNavigate()
   const { contactId } = useParams()
+  const [searchParams] = useSearchParams()
   const client = useClient()
   const { selectedGroup } = useSelectedGroup()
+
+  const backToRoot = searchParams.get('backToRoot')
 
   const contactsQueryByFamilyNameGivenNameEmailCozyUrl =
     buildContactsQueryByFamilyNameGivenNameEmailCozyUrl()
@@ -52,7 +55,7 @@ const EditModal = () => {
       selectedGroup
     })
 
-  const onClose = () => navigate(`/${contactId}`)
+  const onClose = () => (backToRoot ? navigate('/') : navigate(`/${contactId}`))
 
   return (
     <AddModal

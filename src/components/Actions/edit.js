@@ -18,7 +18,7 @@ export const edit = () => {
       cozyUrl: client.getStackClient().uri,
       subDomainType: client.getInstanceOptions().subdomain,
       pathname: '/',
-      hash: `/${contactId}/edit`
+      hash: `/${contactId}/edit?backToRoot=true`
     })
 
     window.open(webLink, '_self')
