@@ -6462,7 +6462,7 @@ __metadata:
     cozy-sharing: "npm:^25.4.0"
     cozy-stack-client: "npm:^60.1.0"
     cozy-tsconfig: "npm:^1.8.1"
-    cozy-ui: "npm:^128.10.1"
+    cozy-ui: "npm:^130.0.0"
     cozy-vcard: "npm:^0.2.18"
     eslint: "npm:^8.35.0"
     eslint-config-cozy-app: "npm:^6.1.0"
@@ -6957,9 +6957,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cozy-ui@npm:^128.10.1":
-  version: 128.10.1
-  resolution: "cozy-ui@npm:128.10.1"
+"cozy-ui@npm:^130.0.0":
+  version: 130.0.0
+  resolution: "cozy-ui@npm:130.0.0"
   dependencies:
     "@babel/runtime": "npm:^7.3.4"
     "@date-io/date-fns": "npm:1"
@@ -7003,7 +7003,7 @@ __metadata:
     react-dom: ^16.14.0
   bin:
     rsg-screenshots: scripts/screenshots.js
-  checksum: 10c0/4af76b2f9f66da2202a0c47bfe9134ddcde4f29a6bf8b0a21e43f6069f7d04a663c7b556e4990b97d4dfe9f2c9dd6f2b6c421a6aebc1aada830a03dd762c2cc9
+  checksum: 10c0/bbb815ca140b0793de8fb69607d4a9044be06678287937bf9121ab3326d356fa5ba5c360dca6d07299af38ffb45e6f8c84ccd4868d91352ab5cb1ad068fe0299
   languageName: node
   linkType: hard
 
