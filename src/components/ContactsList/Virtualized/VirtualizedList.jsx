@@ -18,7 +18,10 @@ import Cell from '@/components/ContactsList/Virtualized/Cell'
 import { makeColumns } from '@/components/ContactsList/Virtualized/helpers'
 import withModalContainer from '@/components/HOCs/withModal'
 import withSelection from '@/components/Selection/selectionContainer'
-import { makeGroupLabelsAndCounts } from '@/helpers/contactList'
+import {
+  makeGroupLabelsAndCounts,
+  categorizeContacts
+} from '@/helpers/contactList'
 
 const VirtualizedList = ({
   contacts,
@@ -34,6 +37,10 @@ const VirtualizedList = ({
   const { t } = useI18n()
   const client = useClient()
 
+  const categorizedContacts = categorizeContacts(contacts, t)
+  const flattenCategorizedContacts = Object.values(categorizedContacts).flatMap(
+    el => el
+  )
   const columns = makeColumns({ t, isMobile })
   const isSelectionEnabled = selection.length > 0
   const actions = makeActions(
@@ -43,10 +50,9 @@ const VirtualizedList = ({
 
   return (
     <VirtualizedTable
-      rows={contacts}
+      rows={flattenCategorizedContacts}
       columns={columns}
       groups={data => makeGroupLabelsAndCounts(data, t)}
-      defaultOrder="indexes.byFamilyNameGivenNameEmailCozyUrl"
       selectedItems={selection}
       isSelectedItem={contact => selection.some(s => s.id === contact._id)}
       onSelect={toggleSelection}
