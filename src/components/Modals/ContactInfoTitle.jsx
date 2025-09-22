@@ -110,7 +110,7 @@ const ContactInfoTitle = ({ contact, allGroups }) => {
             label={<Icon icon={favoriteIcon} size={12} />}
             size="small"
             onClick={handleFavorite}
-            aria-label={t('edit')}
+            aria-label={t('favorite')}
           />
         </Grid>
         <Grid item>
