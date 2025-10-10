@@ -41,6 +41,11 @@
       "type": "io.cozy.identities",
       "verbs": ["GET"]
     },
+    "files": {
+      "description": "Required to get shortcuts",
+      "type": "io.cozy.files",
+      "verbs": ["GET"]
+    },
     "contacts": {
       "type": "io.cozy.contacts",
       "verbs": ["ALL"]
