@@ -19,11 +19,11 @@ import ConfirmDeleteActions from '../Common/ConfirmDeleteActions'
  * @param  {object} options.t - Translation function
  * @returns {object} Object with action
  */
-export const trash = ({ clearSelection, showModal, hideModal, t }) => {
+export const trash = ({ client, clearSelection, showModal, hideModal, t }) => {
   const name = 'trash'
   const label = t('SelectionBar.trash_action')
   const icon = TrashIcon
-  const action = (docs, { client }) => {
+  const action = docs => {
     const hasConnectedAccounts = doc => {
       return getConnectedAccounts(doc).length > 0
     }

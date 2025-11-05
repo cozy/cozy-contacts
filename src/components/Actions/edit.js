@@ -4,13 +4,13 @@ import PenIcon from 'cozy-ui/transpiled/react/Icons/Pen'
 
 import { getAppI18n } from '@/locales/index'
 
-export const edit = () => {
+export const edit = ({ client }) => {
   const { t } = getAppI18n()
 
   const name = 'edit'
   const icon = PenIcon
   const label = t('edit')
-  const action = (docs, { client }) => {
+  const action = docs => {
     const contactId = docs[0]._id
 
     const webLink = generateWebLink({

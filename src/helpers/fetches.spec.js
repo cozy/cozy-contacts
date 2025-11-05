@@ -1,6 +1,6 @@
 import CozyClient from 'cozy-client'
 import { updateIndexFullNameAndDisplayName } from 'cozy-client/dist/models/contact'
-import { johnDoeContact } from 'cozy-ui/transpiled/react/Contacts/AddModal/mocks'
+import { johnDoeContact } from 'cozy-ui-plus/dist/Contacts/AddModal/mocks'
 
 import {
   fetchContactsToUpdateAndUpdateWith,

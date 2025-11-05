@@ -1,6 +1,7 @@
 /* eslint-disable import/order */
 import 'cozy-ui/transpiled/react/stylesheet.css'
 import 'cozy-ui/dist/cozy-ui.utils.min.css'
+import 'cozy-ui-plus/dist/stylesheet.css'
 import 'cozy-bar/dist/stylesheet.css'
 
 import AppProviders from '@/components/AppProviders'

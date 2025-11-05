@@ -8,7 +8,7 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
     className="styles__o-layout___3TSz9 styles__o-layout-main-2panes___3ickD"
   >
     <li
-      className="MuiListItem-root u-c-pointer medium MuiListItem-gutters makeStyles-gutters-41 makeStyles-gutters-43"
+      className="MuiListItem-root u-c-pointer medium MuiListItem-gutters makeStyles-gutters-49 makeStyles-gutters-51"
       data-testid="contact-listItem"
       disabled={false}
       onClick={[Function]}
@@ -16,7 +16,7 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
     >
       <span
         aria-disabled={false}
-        className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-45 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+        className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-53 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
         onBlur={[Function]}
         onClick={[Function]}
         onDragLeave={[Function]}
@@ -38,7 +38,7 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
             aria-checked=""
             aria-label=""
             checked={false}
-            className="PrivateSwitchBase-input-48"
+            className="PrivateSwitchBase-input-56"
             data-indeterminate={false}
             onChange={[Function]}
             readOnly={true}
@@ -58,11 +58,11 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
         </span>
       </span>
       <div
-        className="styles__TableCell___3vgVE styles__contact-identity___mL3IJ u-flex u-flex-items-center u-ellipsis u-p-0"
+        className="styles__TableCell___3vgVE styles__contact-identity___1PxJr u-flex u-flex-items-center u-ellipsis u-p-0"
         data-testid="ContactIdentity"
       >
         <div
-          className="MuiAvatar-root MuiAvatar-circular size-s displayInline MuiAvatar-colorDefault makeStyles-colorDefault-49 makeStyles-colorDefault-50"
+          className="MuiAvatar-root makeStyles-root-57 makeStyles-root-59 MuiAvatar-circular size-s displayInline MuiAvatar-colorDefault makeStyles-colorDefault-58 makeStyles-colorDefault-60"
         >
           JD
         </div>
@@ -84,19 +84,19 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
         </p>
       </div>
       <div
-        className="styles__TableCell___3vgVE styles__contact-email___3n3q2 u-ellipsis u-p-0"
+        className="styles__TableCell___3vgVE styles__contact-email___2ol8_ u-ellipsis u-p-0"
         data-testid="ContactEmail"
       >
         johndoe@localhost
       </div>
       <div
-        className="styles__TableCell___3vgVE styles__contact-phone___1sA_m u-ellipsis u-p-0"
+        className="styles__TableCell___3vgVE styles__contact-phone___2fSrd u-ellipsis u-p-0"
         data-testid="ContactPhone"
       >
         0123456789
       </div>
       <div
-        className="styles__TableCell___3vgVE styles__contact-cozyurl___3kBp5 u-ellipsis u-p-0"
+        className="styles__TableCell___3vgVE styles__contact-cozyurl___V4Pb_ u-ellipsis u-p-0"
         data-testid="ContactCozy"
       >
         http://johndoe.mycozy.cloud

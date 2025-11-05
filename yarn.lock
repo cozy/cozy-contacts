@@ -5812,17 +5812,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:2.5.1":
-  version: 2.5.1
-  resolution: "classnames@npm:2.5.1"
-  checksum: 10c0/afff4f77e62cea2d79c39962980bf316bacb0d7c49e13a21adaadb9221e1c6b9d3cdb829d8bb1b23c406f4e740507f37e1dcf506f7e3b7113d17c5bab787aa69
-  languageName: node
-  linkType: hard
-
 "classnames@npm:^2.2.5, classnames@npm:^2.2.6":
   version: 2.3.2
   resolution: "classnames@npm:2.3.2"
   checksum: 10c0/cd50ead57b4f97436aaa9f9885c6926323efc7c2bea8e3d4eb10e4e972aa6a1cfca1c7a0e06f8a199ca7498d4339e30bb6002e589e61c9f21248cbf3e8b0b18d
+  languageName: node
+  linkType: hard
+
+"classnames@npm:^2.5.1":
+  version: 2.5.1
+  resolution: "classnames@npm:2.5.1"
+  checksum: 10c0/afff4f77e62cea2d79c39962980bf316bacb0d7c49e13a21adaadb9221e1c6b9d3cdb829d8bb1b23c406f4e740507f37e1dcf506f7e3b7113d17c5bab787aa69
   languageName: node
   linkType: hard
 
@@ -6226,9 +6226,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cozy-bar@npm:^25.0.0":
-  version: 25.0.0
-  resolution: "cozy-bar@npm:25.0.0"
+"cozy-bar@npm:^27.0.0":
+  version: 27.0.0
+  resolution: "cozy-bar@npm:27.0.0"
   dependencies:
     lodash.set: "npm:^4.3.2"
     lodash.unionwith: "npm:4.6.0"
@@ -6249,10 +6249,11 @@ __metadata:
     cozy-realtime: ">=4.0.5"
     cozy-search: ">=0.4.0"
     cozy-ui: ">=122.12.1"
+    cozy-ui-plus: ">=2.1.0"
     react: ">=16.10.1"
     react-dom: ">=16.10.1"
     react-router-dom: ">=6.14.2"
-  checksum: 10c0/a92f1377bace9dc84fcdde68b2cf4c7653c463e45bbe3506e4a70314bf9005c683c586cdd57040a73ecd86a1aadedbbdaaffe287769f3405a15aa346e753f699
+  checksum: 10c0/79bca9ee85926876fffe2940e8a68d6acd48d0b9e33954f414c8ef59991fe990beb08c720a54ab8498b221513713e77b87ac7c9ebe738f4718e9141f0bd167b8
   languageName: node
   linkType: hard
 
@@ -6441,7 +6442,7 @@ __metadata:
     bundlemon: "npm:3.1.0"
     classnames: "npm:2.3.1"
     cozy-app-publish: "npm:^0.41.0"
-    cozy-bar: "npm:^25.0.0"
+    cozy-bar: "npm:^27.0.0"
     cozy-client: "npm:^60.14.0"
     cozy-dataproxy-lib: "npm:^4.11.0"
     cozy-device-helper: "npm:^3.8.0"
@@ -6456,11 +6457,12 @@ __metadata:
     cozy-minilog: "npm:^3.10.0"
     cozy-pouch-link: "npm:^54.0.0"
     cozy-realtime: "npm:^5.0.0"
-    cozy-search: "npm:^0.6.0"
+    cozy-search: "npm:^0.13.0"
     cozy-sharing: "npm:^25.4.0"
     cozy-stack-client: "npm:^60.1.0"
     cozy-tsconfig: "npm:^1.8.1"
-    cozy-ui: "npm:^130.6.1"
+    cozy-ui: "npm:^133.0.0"
+    cozy-ui-plus: "npm:^2.1.0"
     cozy-vcard: "npm:^0.2.18"
     eslint: "npm:^8.35.0"
     eslint-config-cozy-app: "npm:^6.1.0"
@@ -6839,17 +6841,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cozy-search@npm:^0.6.0":
-  version: 0.6.0
-  resolution: "cozy-search@npm:0.6.0"
+"cozy-search@npm:^0.13.0":
+  version: 0.13.0
+  resolution: "cozy-search@npm:0.13.0"
   dependencies:
-    classnames: "npm:2.5.1"
-    lodash: "npm:4.17.21"
+    classnames: "npm:^2.5.1"
+    lodash: "npm:^4.17.21"
     mime-types: "npm:2.1.35"
     react-type-animation: "npm:3.2.0"
     rooks: "npm:7.14.1"
   peerDependencies:
-    cozy-client: ">=54.0.0"
+    cozy-client: ">=54.8.0"
     cozy-device-helper: ">=3.7.1"
     cozy-flags: ">=4.6.1"
     cozy-intent: ">=2.26.0"
@@ -6858,10 +6860,11 @@ __metadata:
     cozy-pouch-link: 54.0.0
     cozy-realtime: ">=5.6.4"
     cozy-ui: ">=122.0.0"
+    cozy-ui-plus: ">=1.2.0"
     react: ">=16.12.0"
     react-dom: ">=16.12.0"
     react-router-dom: ^6.28.0
-  checksum: 10c0/d725481460f618be508d335ad7d0c3718164d25862c6e6ae643eef76e0bcad5437d611207be77fe312e548e45153d7ffdbcb3cbaf58db1d7f3a7aee3439dc1ea
+  checksum: 10c0/7bd8f62065bfb97039691523da01a4ab03ee1b710b2009a2b7b70944d219c6993e1da4eef4937e66c716709306e2926c42e25da3aa982f79f0c956b4ee07cffc
   languageName: node
   linkType: hard
 
@@ -6955,9 +6958,35 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cozy-ui@npm:^130.6.1":
-  version: 130.6.1
-  resolution: "cozy-ui@npm:130.6.1"
+"cozy-ui-plus@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "cozy-ui-plus@npm:2.1.0"
+  dependencies:
+    classnames: "npm:^2.5.1"
+    cozy-interapp: "npm:^0.5.4"
+    filesize: "npm:8.0.7"
+    final-form: "npm:4.20.9"
+    final-form-arrays: "npm:3.1.0"
+    lodash: "npm:^4.17.21"
+    mime-types: "npm:2.1.35"
+    react-final-form: "npm:6.5.9"
+    react-final-form-arrays: "npm:3.1.4"
+    rooks: "npm:7.14.1"
+  peerDependencies:
+    cozy-client: ">=60.5.0"
+    cozy-device-helper: ">=2.0.0"
+    cozy-intent: ">=2.30.0"
+    cozy-logger: ">=1.17.0"
+    cozy-ui: ">=132.0.0"
+    react: ^16 || ^17 || ^18
+    react-dom: ^16 || ^17 || ^18
+  checksum: 10c0/5a95a91b4728c309cbcceac2fc9846fcae815fb50ac1aa0e9434bd6ea50f3eca31b2b0852608c862162726bbc6b72d6250f538d6a8da17f3e36bd85c1e2f28c0
+  languageName: node
+  linkType: hard
+
+"cozy-ui@npm:^133.0.0":
+  version: 133.0.0
+  resolution: "cozy-ui@npm:133.0.0"
   dependencies:
     "@babel/runtime": "npm:^7.3.4"
     "@date-io/date-fns": "npm:1"
@@ -6967,22 +6996,15 @@ __metadata:
     "@popperjs/core": "npm:^2.4.4"
     chart.js: "npm:3.7.1"
     classnames: "npm:^2.2.5"
-    cozy-interapp: "npm:^0.5.4"
     date-fns: "npm:2.30.0"
-    filesize: "npm:8.0.7"
-    final-form: "npm:4.20.9"
-    final-form-arrays: "npm:3.1.0"
     hammerjs: "npm:^2.0.8"
     intersection-observer: "npm:0.11.0"
-    mime-types: "npm:2.1.35"
     mui-bottom-sheet: "git+https://github.com/cozy/mui-bottom-sheet.git#v1.0.9"
     node-polyglot: "npm:^2.5.0"
     normalize.css: "npm:^8.0.0"
     patch-package: "npm:^8.0.0"
     pdf-lib: "npm:1.17.1"
     react-chartjs-2: "npm:4.1.0"
-    react-final-form: "npm:6.5.9"
-    react-final-form-arrays: "npm:3.1.4"
     react-markdown: "npm:^4.0.8"
     react-popper: "npm:^2.2.3"
     react-remove-scroll: "npm:^2.4.0"
@@ -6991,17 +7013,15 @@ __metadata:
     react-virtuoso: "npm:^4.13.0"
     rooks: "npm:7.14.1"
   peerDependencies:
-    cozy-client: ">=60.5.0"
     cozy-device-helper: ">=2.0.0"
-    cozy-flags: ">=2.10.1"
     cozy-intent: ">=2.29.1"
-    react: ^16.14.0
+    react: ^16 || ^17 || ^18
     react-dnd: ^16.0.1
     react-dnd-html5-backend: ^16.0.1
-    react-dom: ^16.14.0
+    react-dom: ^16 || ^17 || ^18
   bin:
     rsg-screenshots: scripts/screenshots.js
-  checksum: 10c0/e76a5fca586aac8e004e643ff9548f40deb274e949394b006dc38a384844d3454a066d10212e777dbb392ed2807e4168d258412b1859c469e22083b10eeacd8b
+  checksum: 10c0/ddc9d7b85cc7f64c170055f0a5727f3fc155b904ec6eccd2e25c3d1d111eb46cc0272c0e9c2ad96ce8046c760d14d5fe9acc65ecffdbcef336e10c03223342b5
   languageName: node
   linkType: hard
 

@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { useSelectedGroup } from 'cozy-ui/transpiled/react/Contacts/GroupsSelect/GroupsSelectProvider'
-import Header from 'cozy-ui/transpiled/react/Contacts/Header'
 import { Content } from 'cozy-ui/transpiled/react/Layout'
+import { useSelectedGroup } from 'cozy-ui-plus/dist/Contacts/GroupsSelect/GroupsSelectProvider'
+import Header from 'cozy-ui-plus/dist/Contacts/Header'
 
 import ContactsList from './ContactsList/ContactsList.jsx'
 import ContactsDiplayedContext from './Contexts/ContactsDiplayed'

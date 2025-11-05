@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, act, waitFor } from '@testing-library/react'
 import React from 'react'
 
-import { johnDoeContact } from 'cozy-ui/transpiled/react/Contacts/AddModal/mocks'
+import { johnDoeContact } from 'cozy-ui-plus/dist/Contacts/AddModal/mocks'
 
 import ContentResult from './ContentResult'
 import { groups, contactWithGroup } from '../helpers/testData'

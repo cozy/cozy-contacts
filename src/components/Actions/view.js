@@ -4,13 +4,13 @@ import People from 'cozy-ui/transpiled/react/Icons/People'
 
 import { getAppI18n } from '@/locales/index'
 
-export const view = () => {
+export const view = ({ client }) => {
   const { t } = getAppI18n()
 
   const name = 'view'
   const icon = People
   const label = t('view-contact')
-  const action = (docs, { client }) => {
+  const action = docs => {
     const contactId = docs[0]._id
 
     const webLink = generateWebLink({

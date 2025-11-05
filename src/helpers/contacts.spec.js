@@ -3,7 +3,7 @@ import MockDate from 'mockdate'
 import {
   johnDoeContact,
   johnDoeContactWithRelated
-} from 'cozy-ui/transpiled/react/Contacts/AddModal/mocks'
+} from 'cozy-ui-plus/dist/Contacts/AddModal/mocks'
 
 import {
   getConnectedAccounts,
