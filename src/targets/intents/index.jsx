@@ -3,6 +3,7 @@ import '@babel/polyfill'
 
 import 'cozy-ui/transpiled/react/stylesheet.css'
 import 'cozy-ui/dist/cozy-ui.utils.min.css'
+import 'cozy-ui-plus/dist/stylesheet.css'
 import '../../styles/index.styl'
 import '../../styles/intent.styl'
 

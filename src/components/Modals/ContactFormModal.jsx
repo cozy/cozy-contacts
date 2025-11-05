@@ -2,8 +2,8 @@ import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { useClient, useQuery, useQueryAll } from 'cozy-client'
-import AddModal from 'cozy-ui/transpiled/react/Contacts/AddModal'
-import { useSelectedGroup } from 'cozy-ui/transpiled/react/Contacts/GroupsSelect/GroupsSelectProvider'
+import AddModal from 'cozy-ui-plus/dist/Contacts/AddModal'
+import { useSelectedGroup } from 'cozy-ui-plus/dist/Contacts/GroupsSelect/GroupsSelectProvider'
 
 import { createOrUpdateContact } from '../../connections/allContacts'
 import { makeContactWithIdentitiesAddresses } from '../../helpers/contacts'

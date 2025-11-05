@@ -5,15 +5,15 @@ import { BarProvider } from 'cozy-bar'
 import { CozyProvider } from 'cozy-client'
 import { DataProxyProvider } from 'cozy-dataproxy-lib'
 import { WebviewIntentProvider } from 'cozy-intent'
-import SelectedGroupProvider from 'cozy-ui/transpiled/react/Contacts/GroupsSelect/GroupsSelectProvider'
 import AlertProvider from 'cozy-ui/transpiled/react/providers/Alert'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
-import CozyTheme from 'cozy-ui/transpiled/react/providers/CozyTheme'
 import { I18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import {
   StylesProvider,
   createGenerateClassName
 } from 'cozy-ui/transpiled/react/styles'
+import SelectedGroupProvider from 'cozy-ui-plus/dist/Contacts/GroupsSelect/GroupsSelectProvider'
+import CozyTheme from 'cozy-ui-plus/dist/providers/CozyTheme'
 
 import { ContactsDiplayedProvider } from './Contexts/ContactsDiplayed'
 import SearchProvider from './Contexts/Search'
