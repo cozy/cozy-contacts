@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, act } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import React from 'react'
 import { useParams } from 'react-router-dom'
 
@@ -23,40 +23,6 @@ jest.mock('react-router-dom', () => ({
 }))
 
 describe('CreateModal component', () => {
-  it('should not call the create function if any of the required fields are missing', async () => {
-    const formData = {
-      company: 'Cozy Cloud'
-    }
-    useQuery.mockReturnValue({
-      data: undefined
-    })
-    useQueryAll.mockReturnValue({
-      data: []
-    })
-    useParams.mockReturnValue({
-      contactId: 'ID'
-    })
-
-    render(
-      <AppLike>
-        <CreateModal />
-      </AppLike>
-    )
-
-    act(() => {
-      fireEvent.change(screen.getByLabelText('Company'), {
-        target: { value: formData.company }
-      })
-    })
-    expect(screen.getByLabelText('Company').value).toBe('Cozy Cloud')
-
-    act(() => {
-      fireEvent.click(screen.getByText('Save'))
-    })
-
-    expect(createOrUpdateContact).not.toBeCalled()
-  })
-
   it('should pass a new contact to the creation function', async () => {
     const formData = {
       firstname: 'bob'

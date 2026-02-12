@@ -1,12 +1,12 @@
 import flow from 'lodash/flow'
 import PropTypes from 'prop-types'
 import React, { useContext } from 'react'
+import { useI18n } from 'twake-i18n'
 
 import { useClient } from 'cozy-client'
 import ActionsBar from 'cozy-ui/transpiled/react/ActionsBar'
 import { makeActions } from 'cozy-ui/transpiled/react/ActionsMenu/Actions'
 import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { favorite as favoriteAction } from '../Actions/favorite'
 import { selectAll as selectAllAction } from '../Actions/selectAll'

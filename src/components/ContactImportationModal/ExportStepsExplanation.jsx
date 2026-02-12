@@ -1,6 +1,5 @@
 import React from 'react'
-
-import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
+import { translate } from 'twake-i18n'
 
 const ExportStepsExplanation = ({ t }) => {
   return (

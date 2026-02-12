@@ -1,5 +1,6 @@
 import React from 'react'
 import { Provider } from 'react-redux'
+import { I18n } from 'twake-i18n'
 
 import { BarProvider } from 'cozy-bar'
 import { CozyProvider } from 'cozy-client'
@@ -7,7 +8,6 @@ import { DataProxyProvider } from 'cozy-dataproxy-lib'
 import { WebviewIntentProvider } from 'cozy-intent'
 import AlertProvider from 'cozy-ui/transpiled/react/providers/Alert'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
-import { I18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import {
   StylesProvider,
   createGenerateClassName

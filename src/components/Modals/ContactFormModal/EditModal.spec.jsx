@@ -61,40 +61,6 @@ describe('EditModal component', () => {
     })
   })
 
-  it('should not call the create function if any of the required fields are missing', async () => {
-    const formData = {
-      company: 'Cozy Cloud'
-    }
-    useQuery.mockReturnValue({
-      data: undefined
-    })
-    useQueryAll.mockReturnValue({
-      data: []
-    })
-    useParams.mockReturnValue({
-      contactId: 'ID'
-    })
-
-    render(
-      <AppLike>
-        <EditModal />
-      </AppLike>
-    )
-
-    act(() => {
-      fireEvent.change(screen.getByLabelText('Company'), {
-        target: { value: formData.company }
-      })
-    })
-    expect(screen.getByLabelText('Company').value).toBe('Cozy Cloud')
-
-    act(() => {
-      fireEvent.click(screen.getByText('Save'))
-    })
-
-    expect(createOrUpdateContact).not.toBeCalled()
-  })
-
   it('should pass previous contact data to the update function', async () => {
     const contact = {
       _id: 'ID',

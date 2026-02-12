@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 import React, { Children, Component } from 'react'
+import { translate } from 'twake-i18n'
 
 import Empty from 'cozy-ui/transpiled/react/Empty'
 import CozyIcon from 'cozy-ui/transpiled/react/Icons/Cozy'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
-import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import contactsStyles from '@/styles/contacts.styl'
 import intentStyles from '@/styles/intent.styl'

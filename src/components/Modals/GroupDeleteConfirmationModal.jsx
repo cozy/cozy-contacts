@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { useI18n } from 'twake-i18n'
 
 import { useClient } from 'cozy-client'
 import Button from 'cozy-ui/transpiled/react/Buttons'
@@ -8,7 +9,6 @@ import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { useSelectedGroup } from 'cozy-ui-plus/dist/Contacts/GroupsSelect/GroupsSelectProvider'
 import { translatedDefaultSelectedGroup } from 'cozy-ui-plus/dist/Contacts/GroupsSelect/helpers'
 

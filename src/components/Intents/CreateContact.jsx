@@ -1,10 +1,10 @@
 import flow from 'lodash/flow'
 import PropTypes from 'prop-types'
 import React from 'react'
+import { translate } from 'twake-i18n'
 
 import { withClient } from 'cozy-client'
 import IntentHeader from 'cozy-ui/transpiled/react/IntentHeader'
-import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 import ContactForm from 'cozy-ui-plus/dist/Contacts/AddModal/ContactForm'
 
 import IntentMain from './IntentMain'

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { useI18n } from 'twake-i18n'
 
 import { useClient, useQuery } from 'cozy-client'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { getConnectedAccounts } from '../../helpers/contacts'
 import { buildContactsQueryById } from '../../queries/queries'

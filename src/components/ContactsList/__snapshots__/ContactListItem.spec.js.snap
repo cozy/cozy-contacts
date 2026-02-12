@@ -70,12 +70,8 @@ exports[`ContactListItem should match the contact snapshot 1`] = `
           className="MuiTypography-root u-ml-1 MuiTypography-body1 MuiTypography-colorTextPrimary MuiTypography-noWrap MuiTypography-displayInline"
           data-testid="ContactName"
         >
-          <span
-            className=""
-          >
-            John
-             
-          </span>
+          John
+           
           <span
             className="u-fw-bold"
           >

@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react'
+import { useI18n } from 'twake-i18n'
 
 import ActionsMenu from 'cozy-ui/transpiled/react/ActionsMenu'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import DotsIcon from 'cozy-ui/transpiled/react/Icons/Dots'
 import ListItemIcon from 'cozy-ui/transpiled/react/ListItemIcon'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import ContactIdentity from 'cozy-ui-plus/dist/ContactsList/Contacts/ContactIdentity'
 
 const Cell = ({ row, column, cell, actions }) => {
