@@ -1,10 +1,10 @@
 import cx from 'classnames'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
+import { useI18n } from 'twake-i18n'
 
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import UploadIcon from 'cozy-ui/transpiled/react/Icons/Upload'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import Importation from '../../../importation'
 

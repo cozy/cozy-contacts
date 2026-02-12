@@ -1,8 +1,8 @@
 import React from 'react'
+import { useI18n } from 'twake-i18n'
 
 import { useClient } from 'cozy-client'
 import Button from 'cozy-ui/transpiled/react/Buttons'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import AppIcon from 'cozy-ui-plus/dist/AppIcon'
 
 import { getFilteredStoreUrl } from '../../helpers/store'

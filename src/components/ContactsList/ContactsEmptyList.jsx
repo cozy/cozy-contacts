@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useI18n } from 'twake-i18n'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import Empty from 'cozy-ui/transpiled/react/Empty'
@@ -10,7 +11,6 @@ import TeamIcon from 'cozy-ui/transpiled/react/Icons/Team'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import Infos from 'cozy-ui/transpiled/react/deprecated/Infos'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { useSelectedGroup } from 'cozy-ui-plus/dist/Contacts/GroupsSelect/GroupsSelectProvider'
 
 import EmptyIcon from '../../assets/icons/empty-contact-list.svg'

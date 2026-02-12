@@ -2,6 +2,7 @@ import flow from 'lodash/flow'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useI18n } from 'twake-i18n'
 
 import { useClient } from 'cozy-client'
 import { splitFilename } from 'cozy-client/dist/models/file'
@@ -10,7 +11,6 @@ import { addToFavorites } from 'cozy-ui/transpiled/react/ActionsMenu/Actions/add
 import { removeFromFavorites } from 'cozy-ui/transpiled/react/ActionsMenu/Actions/removeFromFavorites'
 import VirtualizedTable from 'cozy-ui/transpiled/react/Table/Virtualized'
 import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { edit } from '@/components/Actions/edit'
 import { trash } from '@/components/Actions/trash'

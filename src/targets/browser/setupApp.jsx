@@ -2,10 +2,10 @@ import { CaptureConsole } from '@sentry/integrations'
 import * as Sentry from '@sentry/react'
 import memoize from 'lodash/memoize'
 import { createRoot } from 'react-dom/client'
+import { initTranslation } from 'twake-i18n'
 
 import flag from 'cozy-flags'
 import { RealtimePlugin } from 'cozy-realtime'
-import { initTranslation } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import manifest from '../../../manifest.webapp'
 import { getValues } from '../../helpers/bar'
