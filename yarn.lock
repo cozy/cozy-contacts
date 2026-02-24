@@ -7202,7 +7202,7 @@ __metadata:
     redux-thunk: "npm:2.4.1"
     remove-accents: "npm:0.4.2"
     replace: "npm:1.2.1"
-    rsbuild-config-cozy-app: "npm:^0.6.0"
+    rsbuild-config-cozy-app: "npm:^0.7.1"
     stylint: "npm:2.0.0"
     twake-i18n: "npm:^0.3.1"
     typescript: "npm:^4.9.5"
@@ -16851,9 +16851,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rsbuild-config-cozy-app@npm:^0.6.0":
-  version: 0.6.0
-  resolution: "rsbuild-config-cozy-app@npm:0.6.0"
+"rsbuild-config-cozy-app@npm:^0.7.1":
+  version: 0.7.1
+  resolution: "rsbuild-config-cozy-app@npm:0.7.1"
   dependencies:
     "@rsbuild/plugin-node-polyfill": "npm:1.4.2"
     "@rsbuild/plugin-react": "npm:1.4.0"
@@ -16864,7 +16864,7 @@ __metadata:
   peerDependencies:
     "@rsbuild/core": ">= 1.5.4"
     cozy-ui: ">= 113.2.0"
-  checksum: 10c0/71a1cc98d3d69739b782028fbc5ddac35ea450aa25b1800074e2d0431d62bd7bf99f5ecbdddc44d78d289d13dcc3bab6da912ff9c9b58de81d207d28b457fcfb
+  checksum: 10c0/ecc9688f510fb10cf7a856aca817ca62690d8bbe4cc9908c289072252f15a892456271450586df7b713a47d2f5b7b9615ad75f163dc469c18eabe85f8c940eff
   languageName: node
   linkType: hard
 
