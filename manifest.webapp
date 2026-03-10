@@ -1,0 +1,118 @@
+{
+  "name": "Contacts",
+  "editor": "Cozy",
+  "name_prefix": "Twake",
+  "slug": "contacts",
+  "icon": "assets/icon.svg",
+  "type": "webapp",
+  "description": "Contact manager for Twake Workplace",
+  "category": "cozy",
+  "version": "1.16.0",
+  "licence": "AGPL-3.0",
+  "source": "https://github.com/cozy/cozy-contacts.git@build",
+  "developer": {
+    "name": "Twake Workplace",
+    "url": "https://twake.app"
+  },
+  "default_locale": "en",
+  "screenshots": [
+    "assets/screenshots/fr/screenshot01.png",
+    "assets/screenshots/fr/screenshot02.png",
+    "assets/screenshots/fr/screenshot03.png"
+  ],
+  "routes": {
+    "/": {
+      "folder": "/",
+      "index": "index.html",
+      "public": false
+    },
+    "/services": {
+      "folder": "/intents",
+      "index": "index.html",
+      "public": false
+    }
+  },
+  "permissions": {
+    "apps": {
+      "type": "io.cozy.apps",
+      "verbs": ["GET"]
+    },
+    "identities": {
+      "type": "io.cozy.identities",
+      "verbs": ["GET"]
+    },
+    "files": {
+      "description": "Required to get shortcuts",
+      "type": "io.cozy.files",
+      "verbs": ["GET"]
+    },
+    "contacts": {
+      "type": "io.cozy.contacts",
+      "verbs": ["ALL"]
+    },
+    "contactsgroups": {
+      "type": "io.cozy.contacts.groups",
+      "verbs": ["ALL"]
+    },
+    "contactsAccounts": {
+      "type": "io.cozy.contacts.accounts",
+      "verbs": ["ALL"]
+    },
+    "settings": {
+      "description": "Required by the cozy-bar to display Claudy and know which applications are coming soon",
+      "type": "io.cozy.settings",
+      "verbs": ["GET"]
+    },
+    "triggers": {
+      "description": "Used to sort contacts",
+      "type": "io.cozy.triggers",
+      "verbs": ["GET", "POST"]
+    },
+    "chatConversations": {
+      "description": "Required by the cozy Assistant",
+      "type": "io.cozy.ai.chat.conversations",
+      "verbs": ["GET", "POST"]
+    },
+    "chatEvents": {
+      "description": "Required by the cozy Assistant",
+      "type": "io.cozy.ai.chat.events",
+      "verbs": ["GET"]
+    }
+  },
+  "intents": [
+    {
+      "action": "PICK",
+      "type": ["io.cozy.contacts"],
+      "href": "/services"
+    },
+    {
+      "action": "CREATE",
+      "type": ["io.cozy.contacts"],
+      "href": "/services"
+    },
+    {
+      "action": "LIST",
+      "type": ["io.cozy.contacts"],
+      "href": "/services"
+    }
+  ],
+  "services": {
+    "keepIndexFullNameAndDisplayNameUpToDate": {
+      "type": "node",
+      "file": "services/keepIndexFullNameAndDisplayNameUpToDate.js",
+      "trigger": "@event io.cozy.contacts:CREATED,UPDATED",
+      "debounce": "5s"
+    },
+    "autoDefineLabels": {
+      "type": "node",
+      "file": "services/autoDefineLabels.js",
+      "trigger": "@event io.cozy.contacts:CREATED,UPDATED",
+      "debounce": "5s"
+    },
+    "cleanRelatedContacts": {
+      "type": "node",
+      "file": "services/cleanRelatedContacts.js",
+      "trigger": "@event io.cozy.contacts:DELETED"
+    }
+  }
+}
